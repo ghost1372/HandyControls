@@ -1,0 +1,87 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; US-EN String Table
+; Default Resource (used for English and non-represented locales)
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; DataGrid Automation Strings
+DataGridCellItemAutomationPeer_NameCoreFormat=Item: {0}, Column Display Index: {1}
+
+CalendarAutomationPeer_CalendarButtonLocalizedControlType=Calendar button
+CalendarAutomationPeer_DayButtonLocalizedControlType=Day button
+CalendarAutomationPeer_BlackoutDayHelpText=Blackout Day - {0}
+Calendar_NextButtonName=Next button
+Calendar_PreviousButtonName=Previous button
+
+DatePickerAutomationPeer_LocalizedControlType=date picker
+DatePickerTextBox_DefaultWatermarkText=<Enter text here>
+DatePicker_DropDownButtonName=Show Calendar
+DatePicker_WatermarkText=Select a date
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;                          Exception Strings
+;
+; The following section is for all strings that will be used by exceptions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; DataGrid
+DataGrid_ColumnIndexOutOfRange=The index for the DataGridColumn with Header '{0}' is out of range. Index must be greater than or equal to 0 and less than Columns.Count.
+DataGrid_ColumnDisplayIndexOutOfRange=The DisplayIndex for the DataGridColumn with Header '{0}' is out of range.  DisplayIndex must be greater than or equal to 0 and less than Columns.Count.
+DataGrid_DisplayIndexOutOfRange=The given DisplayIndex is out of range.  DisplayIndex must be greater than or equal to 0 and less than Columns.Count.
+DataGrid_InvalidColumnReuse=DataGridColumn with Header '{0}' already exists in the Columns collection of a DataGrid. DataGrids cannot share columns and cannot contain duplicate column instances.
+DataGrid_DuplicateDisplayIndex=DisplayIndex is already used for other column.  DisplayIndex should be unique per column.
+DataGrid_NewColumnInvalidDisplayIndex=Cannot add a column with an invalid DisplayIndex to the DataGrid.Columns collection.
+DataGrid_NullColumn=Cannot add a null column to a DataGrid's column collection.
+DataGrid_ReadonlyCellsItemsSource=The ItemsSource for the DataGridCellsPresenter is read-only.
+DataGrid_InvalidSortDescription=The SortDescriptions added are not valid. The probable solutions are to set the CanUserSort on the Column to false, or to use SortMemberPath property on the Column, or to handle the Sorting event on DataGrid.
+DataGrid_ProbableInvalidSortDescription=Items refresh of the DataGrid failed. One of the probable causes is that the SortDescriptions added are not valid, in which case probable solutions are to set the CanUserSort on the Column to false, or to use SortMemberPath property on the Column, or to handle the Sorting event on DataGrid.
+DataGrid_AutomationInvokeFailed=Invoke operation failed. Cannot edit another cell or row while the current one has validation errors.
+
+; DataGrid Length
+DataGridLength_InvalidType=Invalid type.
+DataGridLength_Infinity=Value should not be infinity.
+
+; DataGrid Selection
+DataGrid_CannotSelectCell=Cannot change cell selection when the SelectionUnit is FullRow.
+DataGridRow_CannotSelectRowWhenCells=The current value of the SelectionUnit property on the parent DataGrid prevents rows from being selected.
+
+; SelectedCellsCollection
+SelectedCellsCollection_InvalidItem=The DataGridItem is invalid.
+SelectedCellsCollection_DuplicateItem=The collection already contains the item.
+
+; VirtualizedCellInfoCollection
+VirtualizedCellInfoCollection_IsReadOnly=The collection cannot be modified.
+VirtualizedCellInfoCollection_DoesNotSupportIndexChanges=This collection does not support changing values with specific indexes.
+
+; Copy
+ClipboardCopyMode_Disabled=Cannot perform copy if ClipboardCopyMode is None.
+
+;Calendar
+Calendar_OnDisplayModePropertyChanged_InvalidValue=DisplayMode value is not valid.
+Calendar_OnFirstDayOfWeekChanged_InvalidValue=FirstDayOfWeek value is not valid.
+Calendar_OnSelectedDateChanged_InvalidValue=SelectedDate value is not valid.
+Calendar_OnSelectedDateChanged_InvalidOperation=The SelectedDate property cannot be set when the selection mode is None.
+CalendarCollection_MultiThreadedCollectionChangeNotSupported=This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.
+Calendar_CheckSelectionMode_InvalidOperation=The SelectedDates collection can be changed only in a multiple selection mode. Use the SelectedDate in a single selection mode.
+Calendar_OnSelectionModeChanged_InvalidValue=SelectionMode value is not valid.
+Calendar_UnSelectableDates=Value is not valid.
+
+;DatePicker
+DatePickerTextBox_TemplatePartIsOfIncorrectType=The template part {0} is not an instance of {1}.
+DatePicker_OnSelectedDateFormatChanged_InvalidValue=DatePickerFormat value is not valid.
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;                         UIAutomation strings
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+CalendarAutomationPeer_MonthMode=Month
+CalendarAutomationPeer_YearMode=Year
+CalendarAutomationPeer_DecadeMode=Decade
+

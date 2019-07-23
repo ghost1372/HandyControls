@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 #endif
 
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Controls")]
+[assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "Microsoft.Windows.Controls")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Tools")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Tools.Converter")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Interactivity")]
