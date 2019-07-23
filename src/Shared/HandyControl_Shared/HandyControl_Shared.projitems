@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\ButtonGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\ToggleBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\PersianCalendarWithClock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarAutomationPeer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarButtonAutomationPeer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarDayButtonAutomationPeer.cs" />

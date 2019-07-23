@@ -4,10 +4,6 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
-        <WrapPanel>
-            <Calendar/>
-            <hc:PersianCalendar/>
-            <hc:PersianDatePicker/>
-        </WrapPanel>
+        <Calendar/>
     </hc:TransitioningContentControl>
 </UserControl>

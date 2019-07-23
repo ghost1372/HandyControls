@@ -60,6 +60,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\MagnifierDemoCtl.xaml.cs">
       <DependentUpon>MagnifierDemoCtl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\PersianToolkitDemoCtl.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\RangeSliderDemoCtl.xaml.cs">
       <DependentUpon>RangeSliderDemoCtl.xaml</DependentUpon>
     </Compile>
@@ -437,6 +438,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\PersianToolkitDemoCtl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\RelativePanelDemoCtl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -806,5 +811,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Service\Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="C:\Users\Mahdi\Documents\GitHub\HandyControls\src\Shared\HandyControlDemo_Shared\UserControl\Controls\PersianToolkitDemoCtl.xaml.cs">
+      <DependentUpon>PersianToolkitDemoCtl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -1,0 +1,16 @@
+﻿<UserControl
+    x:Class="HandyControlDemo.UserControl.PersianToolkitDemoCtl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:hc="https://handyorg.github.io/handycontrol"
+     Background="{DynamicResource RegionBrush}">
+    <hc:TransitioningContentControl>
+        <ScrollViewer>
+            <StackPanel>
+                <hc:PersianCalendar/>
+                <hc:PersianDatePicker Width="150"/>
+                <hc:PersianCalendarWithClock ClockConfirm="باشه"/>
+            </StackPanel>
+        </ScrollViewer>
+    </hc:TransitioningContentControl>
+</UserControl>

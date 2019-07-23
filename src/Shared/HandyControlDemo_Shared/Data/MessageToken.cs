@@ -106,6 +106,8 @@
 	
         public static readonly string ImageBlockDemoCtl = nameof(ImageBlockDemoCtl);
 	
+        public static readonly string PersianToolkitDemoCtl = nameof(PersianToolkitDemoCtl);
+	
         public static readonly string ButtonDemoCtl = nameof(ButtonDemoCtl);
 
         public static readonly string RepeatButtonDemoCtl = nameof(RepeatButtonDemoCtl);
