@@ -12,7 +12,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Calendar = Microsoft.Windows.Controls.Calendar;
+using PersianCalendar = Microsoft.Windows.Controls.PersianCalendar;
 using CalendarMode = Microsoft.Windows.Controls.CalendarMode;
 
 namespace Microsoft.Windows.Automation.Peers
@@ -33,7 +33,7 @@ namespace Microsoft.Windows.Automation.Peers
 
         #region Private Properties
 
-        private Calendar OwningCalendar => OwningCalendarButton.Owner;
+        private PersianCalendar OwningCalendar => OwningCalendarButton.Owner;
 
         private IRawElementProviderSimple OwningCalendarAutomationPeer
         {

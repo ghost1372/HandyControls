@@ -32,7 +32,7 @@ namespace Microsoft.Windows.Automation.Peers
 
         #region Private Properties
 
-        private Microsoft.Windows.Controls.Calendar OwningCalendar => OwningCalendarDayButton.Owner;
+        private Microsoft.Windows.Controls.PersianCalendar OwningCalendar => OwningCalendarDayButton.Owner;
 
         private IRawElementProviderSimple OwningCalendarAutomationPeer
         {

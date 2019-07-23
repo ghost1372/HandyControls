@@ -110,7 +110,7 @@ namespace Microsoft.Windows.Controls.Primitives
 
         #region Internal Properties
 
-        internal Microsoft.Windows.Controls.Calendar Owner
+        internal Microsoft.Windows.Controls.PersianCalendar Owner
         {
             get;
             set;

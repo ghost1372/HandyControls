@@ -21,9 +21,9 @@ namespace Microsoft.Windows.Controls
     /// <summary>
     /// Represents a control that enables a user to select a date by using a visual calendar display. 
     /// </summary>
-    [TemplatePart(Name = Calendar.ElementRoot, Type = typeof(Panel))]
-    [TemplatePart(Name = Calendar.ElementMonth, Type = typeof(CalendarItem))]
-    public class Calendar : Control
+    [TemplatePart(Name = PersianCalendar.ElementRoot, Type = typeof(Panel))]
+    [TemplatePart(Name = PersianCalendar.ElementMonth, Type = typeof(CalendarItem))]
+    public class PersianCalendar : Control
     {
         #region Constants
 
@@ -51,7 +51,7 @@ namespace Microsoft.Windows.Controls
 
         #region Public Events
 
-        public static readonly RoutedEvent SelectedDatesChangedEvent = EventManager.RegisterRoutedEvent("SelectedDatesChanged", RoutingStrategy.Direct, typeof(EventHandler<SelectionChangedEventArgs>), typeof(Calendar));
+        public static readonly RoutedEvent SelectedDatesChangedEvent = EventManager.RegisterRoutedEvent("SelectedDatesChanged", RoutingStrategy.Direct, typeof(EventHandler<SelectionChangedEventArgs>), typeof(PersianCalendar));
 
         /// <summary>
         /// Occurs when a date is selected.
@@ -82,21 +82,21 @@ namespace Microsoft.Windows.Controls
         /// <summary>
         /// Static constructor
         /// </summary>
-        static Calendar()
+        static PersianCalendar()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Calendar), new FrameworkPropertyMetadata(typeof(Calendar)));
-            KeyboardNavigation.TabNavigationProperty.OverrideMetadata(typeof(Calendar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Once));
-            KeyboardNavigation.DirectionalNavigationProperty.OverrideMetadata(typeof(Calendar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Contained));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(PersianCalendar), new FrameworkPropertyMetadata(typeof(PersianCalendar)));
+            KeyboardNavigation.TabNavigationProperty.OverrideMetadata(typeof(PersianCalendar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Once));
+            KeyboardNavigation.DirectionalNavigationProperty.OverrideMetadata(typeof(PersianCalendar), new FrameworkPropertyMetadata(KeyboardNavigationMode.Contained));
 
-            EventManager.RegisterClassHandler(typeof(Calendar), UIElement.GotFocusEvent, new RoutedEventHandler(OnGotFocus));
-            LanguageProperty.OverrideMetadata(typeof(Calendar), new FrameworkPropertyMetadata(new PropertyChangedCallback(OnLanguageChanged)));
+            EventManager.RegisterClassHandler(typeof(PersianCalendar), UIElement.GotFocusEvent, new RoutedEventHandler(OnGotFocus));
+            LanguageProperty.OverrideMetadata(typeof(PersianCalendar), new FrameworkPropertyMetadata(new PropertyChangedCallback(OnLanguageChanged)));
 
         }
 
         /// <summary>
         /// Initializes a new instance of the Calendar class.
         /// </summary>
-        public Calendar()
+        public PersianCalendar()
         {
             _blackoutDates = new CalendarBlackoutDatesCollection(this);
             _selectedDates = new SelectedDatesCollection(this);
@@ -141,7 +141,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "CalendarButtonStyle",
             typeof(Style),
-            typeof(Calendar));
+            typeof(PersianCalendar));
 
         #endregion CalendarButtonStyle
 
@@ -163,7 +163,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "CalendarDayButtonStyle",
             typeof(Style),
-            typeof(Calendar));
+            typeof(PersianCalendar));
 
         #endregion CalendarDayButtonStyle
 
@@ -185,7 +185,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "CalendarItemStyle",
             typeof(Style),
-            typeof(Calendar));
+            typeof(PersianCalendar));
 
         #endregion CalendarItemStyle
 
@@ -208,7 +208,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "DisplayDate",
             typeof(DateTime),
-            typeof(Calendar),
+            typeof(PersianCalendar),
             new FrameworkPropertyMetadata(DateTime.MinValue, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnDisplayDateChanged, CoerceDisplayDate));
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Microsoft.Windows.Controls
         /// <param name="e">DependencyPropertyChangedEventArgs.</param>
         private static void OnDisplayDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
             Debug.Assert(c != null);
 
             c.DisplayDateInternal = DateTimeHelper.DiscardDayTime((DateTime)e.NewValue);
@@ -230,7 +230,7 @@ namespace Microsoft.Windows.Controls
 
         private static object CoerceDisplayDate(DependencyObject d, object value)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
 
             DateTime date = (DateTime)value;
             if (c.DisplayDateStart.HasValue && (date < c.DisplayDateStart.Value))
@@ -266,7 +266,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "DisplayDateEnd",
             typeof(DateTime?),
-            typeof(Calendar),
+            typeof(PersianCalendar),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnDisplayDateEndChanged, CoerceDisplayDateEnd));
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace Microsoft.Windows.Controls
         /// <param name="e">DependencyPropertyChangedEventArgs.</param>
         private static void OnDisplayDateEndChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
             Debug.Assert(c != null);
 
             c.CoerceValue(DisplayDateProperty);
@@ -285,7 +285,7 @@ namespace Microsoft.Windows.Controls
 
         private static object CoerceDisplayDateEnd(DependencyObject d, object value)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
 
             DateTime? date = (DateTime?)value;
 
@@ -327,7 +327,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "DisplayDateStart",
             typeof(DateTime?),
-            typeof(Calendar),
+            typeof(PersianCalendar),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnDisplayDateStartChanged, CoerceDisplayDateStart));
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Microsoft.Windows.Controls
         /// <param name="e">DependencyPropertyChangedEventArgs.</param>
         private static void OnDisplayDateStartChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
             Debug.Assert(c != null);
 
             c.CoerceValue(DisplayDateEndProperty);
@@ -347,7 +347,7 @@ namespace Microsoft.Windows.Controls
 
         private static object CoerceDisplayDateStart(DependencyObject d, object value)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
 
             DateTime? date = (DateTime?)value;
 
@@ -383,7 +383,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "DisplayMode",
             typeof(CalendarMode),
-            typeof(Calendar),
+            typeof(PersianCalendar),
             new FrameworkPropertyMetadata(CalendarMode.Month, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnDisplayModePropertyChanged),
             new ValidateValueCallback(IsValidDisplayMode));
 
@@ -394,7 +394,7 @@ namespace Microsoft.Windows.Controls
         /// <param name="e">DependencyPropertyChangedEventArgs.</param>
         private static void OnDisplayModePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
             Debug.Assert(c != null);
             CalendarMode mode = (CalendarMode)e.NewValue;
             CalendarMode oldMode = (CalendarMode)e.OldValue;
@@ -455,7 +455,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "FirstDayOfWeek",
             typeof(DayOfWeek),
-            typeof(Calendar),
+            typeof(PersianCalendar),
             new FrameworkPropertyMetadata(DateTimeHelper.GetCurrentDateFormat().FirstDayOfWeek,
                                 OnFirstDayOfWeekChanged),
             new ValidateValueCallback(IsValidFirstDayOfWeek));
@@ -467,7 +467,7 @@ namespace Microsoft.Windows.Controls
         /// <param name="e">DependencyPropertyChangedEventArgs.</param>
         private static void OnFirstDayOfWeekChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
             c.UpdateCellItems();
         }
 
@@ -491,7 +491,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "IsTodayHighlighted",
             typeof(bool),
-            typeof(Calendar),
+            typeof(PersianCalendar),
             new FrameworkPropertyMetadata(true, OnIsTodayHighlightedChanged));
 
         /// <summary>
@@ -501,7 +501,7 @@ namespace Microsoft.Windows.Controls
         /// <param name="e">DependencyPropertyChangedEventArgs.</param>
         private static void OnIsTodayHighlightedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
 
             int i = DateTimeHelper.CompareYearMonth(c.DisplayDateInternal, DateTime.Today);
 
@@ -519,9 +519,9 @@ namespace Microsoft.Windows.Controls
         {
             try
             {
-                Calendar c = d as Calendar;
+                PersianCalendar c = d as PersianCalendar;
 
-                if (DependencyPropertyHelper.GetValueSource(d, Calendar.FirstDayOfWeekProperty).BaseValueSource == BaseValueSource.Default)
+                if (DependencyPropertyHelper.GetValueSource(d, PersianCalendar.FirstDayOfWeekProperty).BaseValueSource == BaseValueSource.Default)
                 {
                     c.CoerceValue(FirstDayOfWeekProperty);
                     c.UpdateCellItems();
@@ -553,7 +553,7 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "SelectedDate",
             typeof(DateTime?),
-            typeof(Calendar),
+            typeof(PersianCalendar),
             new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedDateChanged));
 
         /// <summary>
@@ -563,7 +563,7 @@ namespace Microsoft.Windows.Controls
         /// <param name="e">DependencyPropertyChangedEventArgs.</param>
         private static void OnSelectedDateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
             Debug.Assert(c != null);
 
             if (c.SelectionMode != CalendarSelectionMode.None || e.NewValue == null)
@@ -637,7 +637,7 @@ namespace Microsoft.Windows.Controls
         }
         public string GetSelectedDateToPersianDate()
         {
-            PersianCalendar pc = new PersianCalendar();
+            System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
             if (SelectedDate != null)
             {
                 return pc.GetYear(SelectedDate.Value) + "/" + pc.GetMonth(SelectedDate.Value).ToString("00") + "/" + pc.GetDayOfMonth(SelectedDate.Value).ToString("00");
@@ -682,13 +682,13 @@ namespace Microsoft.Windows.Controls
             DependencyProperty.Register(
             "SelectionMode",
             typeof(CalendarSelectionMode),
-            typeof(Calendar),
+            typeof(PersianCalendar),
             new FrameworkPropertyMetadata(CalendarSelectionMode.SingleDate, OnSelectionModeChanged),
             new ValidateValueCallback(IsValidSelectionMode));
 
         private static void OnSelectionModeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Calendar c = d as Calendar;
+            PersianCalendar c = d as PersianCalendar;
             Debug.Assert(c != null);
 
             c.HoverStart = c.HoverEnd = null;
@@ -897,7 +897,7 @@ namespace Microsoft.Windows.Controls
             return null;
         }
 
-        internal static bool IsValidDateSelection(Calendar cal, object value)
+        internal static bool IsValidDateSelection(PersianCalendar cal, object value)
         {
             return (value == null) || (!cal.BlackoutDates.Contains((DateTime)value));
         }
@@ -1185,7 +1185,7 @@ namespace Microsoft.Windows.Controls
                 || day == DayOfWeek.Saturday;
         }
 
-        private static bool IsValidKeyboardSelection(Calendar cal, object value)
+        private static bool IsValidKeyboardSelection(PersianCalendar cal, object value)
         {
             if (value == null)
             {
@@ -1254,7 +1254,7 @@ namespace Microsoft.Windows.Controls
         private static void OnGotFocus(object sender, RoutedEventArgs e)
         {
             // When Calendar gets focus move it to the DisplayDate
-            Calendar c = (Calendar)sender;
+            PersianCalendar c = (PersianCalendar)sender;
             if (!e.Handled && e.OriginalSource == c)
             {
                 // This check is for the case where the DisplayDate is the first of the month

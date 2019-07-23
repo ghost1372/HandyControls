@@ -450,11 +450,11 @@
                     </controls:SimplePanel>
                     <ControlTemplate.Triggers>
 
-                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=local:Calendar}}" Value="Year">
+                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=local:PersianCalendar}}" Value="Year">
                             <Setter Property="Visibility" TargetName="PART_MonthView" Value="Hidden"/>
                             <Setter Property="Visibility" TargetName="PART_YearView" Value="Visible"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=local:Calendar}}" Value="Decade">
+                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=local:PersianCalendar}}" Value="Decade">
                             <Setter Property="Visibility" TargetName="PART_MonthView" Value="Hidden"/>
                             <Setter Property="Visibility" TargetName="PART_YearView" Value="Visible"/>
                         </DataTrigger>
@@ -483,7 +483,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CalendarBaseStylePersian" TargetType="local:Calendar">
+    <Style x:Key="CalendarBaseStylePersian" TargetType="local:PersianCalendar">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
@@ -494,7 +494,7 @@
         <Setter Property="controls:TitleElement.Background" Value="{DynamicResource TitleBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:Calendar">
+                <ControlTemplate TargetType="local:PersianCalendar">
                     <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
                         <primitives:CalendarItem x:Name="PART_CalendarItem" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"/>
                     </StackPanel>
@@ -504,6 +504,6 @@
     </Style>
 
     <Style TargetType="Calendar" BasedOn="{StaticResource CalendarBaseStyle}"/>
-    <Style TargetType="local:Calendar" BasedOn="{StaticResource CalendarBaseStylePersian}"/>
+    <Style TargetType="local:PersianCalendar" BasedOn="{StaticResource CalendarBaseStylePersian}"/>
 
 </ResourceDictionary>

@@ -79,7 +79,7 @@ namespace Microsoft.Windows.Controls.Primitives
 
         internal Grid MonthView => _monthView;
 
-        internal Microsoft.Windows.Controls.Calendar Owner
+        internal Microsoft.Windows.Controls.PersianCalendar Owner
         {
             get;
             set;
@@ -1091,7 +1091,7 @@ namespace Microsoft.Windows.Controls.Primitives
 
         private void AddMonthModeHighlight()
         {
-            Calendar owner = Owner;
+            PersianCalendar owner = Owner;
             if (owner == null)
             {
                 return;

@@ -13,7 +13,7 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Controls;
-using Calendar = Microsoft.Windows.Controls.Calendar;
+using PersianCalendar = Microsoft.Windows.Controls.PersianCalendar;
 using CalendarMode = Microsoft.Windows.Controls.CalendarMode;
 using CalendarSelectionMode = Microsoft.Windows.Controls.CalendarSelectionMode;
 
@@ -28,14 +28,14 @@ namespace Microsoft.Windows.Automation.Peers
         /// Initializes a new instance of the CalendarAutomationPeer class.
         /// </summary>
         /// <param name="owner">Owning Calendar</param>
-        public CalendarAutomationPeer(Calendar owner)
+        public CalendarAutomationPeer(PersianCalendar owner)
             : base(owner)
         {
         }
 
         #region Private Properties
 
-        private Calendar OwningCalendar => Owner as Calendar;
+        private PersianCalendar OwningCalendar => Owner as PersianCalendar;
 
         private Grid OwningGrid
         {

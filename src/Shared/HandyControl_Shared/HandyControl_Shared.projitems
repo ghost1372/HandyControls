@@ -27,7 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarAutomationPeer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarButtonAutomationPeer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarDayButtonAutomationPeer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Controls\Calendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Controls\PersianCalendar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarBlackoutDatesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarDateChangedEventArgs.cs" />
