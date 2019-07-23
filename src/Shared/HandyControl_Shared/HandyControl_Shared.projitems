@@ -44,6 +44,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Controls\PersianCalendarHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Controls\SelectedDatesCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\Calendar\Microsoft\Windows\Controls\VisualStates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\DatePicker\Microsoft\Windows\Automation\Peers\DatePickerAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\DatePicker\Microsoft\Windows\Controls\PersianDatePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerDateValidationErrorEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerTextBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\HijriDate\DateTimeOffsetPart.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\HijriDate\DateTimeUtils.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PersianCalendar\HijriDate\IslamicDateUtils.cs" />
