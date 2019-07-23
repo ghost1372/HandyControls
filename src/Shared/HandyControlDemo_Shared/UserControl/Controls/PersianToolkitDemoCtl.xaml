@@ -6,11 +6,24 @@
      Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
         <ScrollViewer>
-            <StackPanel>
-                <hc:PersianCalendar/>
-                <hc:PersianDatePicker Width="150"/>
-                <hc:PersianCalendarWithClock ClockConfirm="باشه"/>
-            </StackPanel>
+            <WrapPanel>
+                <StackPanel>
+                    <hc:PersianCalendar/>
+                    <hc:PersianDatePicker Width="150"/>
+                    <hc:PersianCalendarWithClock ClockConfirm="باشه"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <hc:LoadingIndicator/>
+                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorArcsStyle}"/>
+                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorArcsRingStyle}"/>
+                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorDoubleBounceStyle}"/>
+                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorFlipPlaneStyle}"/>
+                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorPulseStyle}"/>
+                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorRingStyle}"/>
+                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorThreeDotsStyle}"/>
+                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorWaveStyle}"/>
+                </StackPanel>
+            </WrapPanel>
         </ScrollViewer>
     </hc:TransitioningContentControl>
 </UserControl>
