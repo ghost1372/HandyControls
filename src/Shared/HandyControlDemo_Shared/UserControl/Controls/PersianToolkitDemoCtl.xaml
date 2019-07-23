@@ -12,16 +12,25 @@
                     <hc:PersianDatePicker Width="150"/>
                     <hc:PersianCalendarWithClock ClockConfirm="باشه"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <hc:LoadingIndicator/>
-                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorArcsStyle}"/>
-                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorArcsRingStyle}"/>
-                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorDoubleBounceStyle}"/>
-                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorFlipPlaneStyle}"/>
-                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorPulseStyle}"/>
-                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorRingStyle}"/>
-                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorThreeDotsStyle}"/>
-                    <hc:LoadingIndicator Style="{StaticResource LoadingIndicatorWaveStyle}"/>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ToggleButton VerticalAlignment="Center" Style="{StaticResource ToggleButtonSwitch}" IsChecked="True" Name="isbusy"/>
+                        <Label Content="IsBusy"/>
+                    </StackPanel>
+                    <hc:BusyIndicator ProgressBarStyle="{StaticResource ProgressBarPrimaryStripe}" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}">
+                        <StackPanel Orientation="Horizontal">
+                            <UniformGrid Columns="8" Margin="10">
+                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsStyle}"/>
+                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>
+                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorDoubleBounceStyle}"/>
+                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorFlipPlaneStyle}"/>
+                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorPulseStyle}"/>
+                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorRingStyle}"/>
+                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorThreeDotsStyle}"/>
+                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorWaveStyle}"/>
+                            </UniformGrid>
+                        </StackPanel>
+                    </hc:BusyIndicator>
                 </StackPanel>
             </WrapPanel>
         </ScrollViewer>
