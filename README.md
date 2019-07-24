@@ -1,7 +1,7 @@
 ![logo](https://raw.githubusercontent.com/NaBian/HandyControl/master/Resources/icon.png)
 
-![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) ![csharp-version](https://img.shields.io/badge/C%23-7.3-blue.svg) ![IDE-version](https://img.shields.io/badge/IDE-vs2019-blue.svg) [![nuget-version](https://img.shields.io/nuget/v/HandyControl.svg)](https://www.nuget.org/packages/HandyControl) [![build-status](https://ci.appveyor.com/api/projects/status/github/handyorg/handycontrol?svg=true)](https://ci.appveyor.com/project/handyorg/handycontrol)
-[![wiki](https://img.shields.io/badge/wiki-Complete-brightgreen.svg)](https://github.com/ghost1372/HandyControl/wiki) ![repo-size](https://img.shields.io/github/repo-size/handyorg/handycontrol.svg)
+![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) ![csharp-version](https://img.shields.io/badge/C%23-7.3-blue.svg) ![IDE-version](https://img.shields.io/badge/IDE-vs2019-blue.svg) [![nuget-version](https://img.shields.io/nuget/v/HandyControl.svg)](https://www.nuget.org/packages/HandyControls)
+[![wiki](https://img.shields.io/badge/wiki-Complete-brightgreen.svg)](https://github.com/ghost1372/HandyControl/wiki) ![repo-size](https://img.shields.io/github/repo-size/ghost1372/handycontrols.svg)
 
 # Welcome to HandyControl
 This project is based on [HandyControl](https://github.com/handyOrg/HandyControl) But this project includes some controls and features that are not included in the original project For example, support for Persian Calendar
