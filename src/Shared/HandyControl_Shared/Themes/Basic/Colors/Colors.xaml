@@ -40,6 +40,9 @@
 
     <Color x:Key="DarkMaskColor">#20000000</Color>
     <Color x:Key="DarkOpacityColor">#40000000</Color>
+    
+    <Color x:Key="MainContentForegroundColor">#FFF0F0F0</Color>
+    <Color x:Key="MainContentBackgroundColor">#FFF5F5F5</Color>
     <system:UInt32 x:Key="BlurGradientValue">0x99FFFFFF</system:UInt32>
 
 </ResourceDictionary>

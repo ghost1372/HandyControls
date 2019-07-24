@@ -5,33 +5,33 @@
      xmlns:hc="https://handyorg.github.io/handycontrol"
      Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
-        <ScrollViewer>
-            <WrapPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto">
+            <WrapPanel Width="900">
+                <hc:PersianCalendar Margin="10"/>
+                <hc:PersianCalendarWithClock Margin="10" ClockConfirm="باشه"/>
+                <hc:PersianDatePicker Margin="10" Width="80"/>
                 <StackPanel>
-                    <hc:PersianCalendar/>
-                    <hc:PersianDatePicker Width="150"/>
-                    <hc:PersianCalendarWithClock ClockConfirm="باشه"/>
-                </StackPanel>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="10" Orientation="Horizontal">
                         <ToggleButton VerticalAlignment="Center" Style="{StaticResource ToggleButtonSwitch}" IsChecked="True" Name="isbusy"/>
                         <Label Content="IsBusy"/>
                     </StackPanel>
-                    <hc:BusyIndicator ProgressBarStyle="{StaticResource ProgressBarPrimaryStripe}" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}">
-                        <StackPanel Orientation="Horizontal">
-                            <UniformGrid Columns="8" Margin="10">
-                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsStyle}"/>
-                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>
-                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorDoubleBounceStyle}"/>
-                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorFlipPlaneStyle}"/>
-                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorPulseStyle}"/>
-                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorRingStyle}"/>
-                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorThreeDotsStyle}"/>
-                                <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorWaveStyle}"/>
-                            </UniformGrid>
-                        </StackPanel>
+                    <hc:BusyIndicator Margin="10" ProgressBarStyle="{StaticResource ProgressBarPrimaryStripe}" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}">
+                        <UniformGrid Columns="8" Margin="10">
+                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsStyle}"/>
+                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>
+                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorDoubleBounceStyle}"/>
+                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorFlipPlaneStyle}"/>
+                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorPulseStyle}"/>
+                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorRingStyle}"/>
+                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorThreeDotsStyle}"/>
+                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorWaveStyle}"/>
+                        </UniformGrid>
                     </hc:BusyIndicator>
                 </StackPanel>
+                <hc:MainContentBackground BorderThickness="2" hc:BorderElement.CornerRadius="5" BorderBrush="Red" Margin="10" Width="200" Height="100">
+                    <Button Content="Click" Width="200"/>
+                </hc:MainContentBackground>
+
             </WrapPanel>
         </ScrollViewer>
     </hc:TransitioningContentControl>
