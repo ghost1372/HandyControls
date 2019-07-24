@@ -2,6 +2,7 @@
     x:Class="HandyControlDemo.UserControl.PersianToolkitDemoCtl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="clr-namespace:System;assembly=mscorlib"
      xmlns:hc="https://handyorg.github.io/handycontrol"
      Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
@@ -34,8 +35,8 @@
                 <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="فقط حروف فارسی" Width="200" TextType="Persian"/>
                 <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="اعتبار سنجی کد ملی" Width="200" TextType="IranNationalCode"/>
                 <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Content="فعال است"/>
-                <hc:MaskedTextBox Mask="###-####-###"/>
-                <hc:MaskedTextBox Mask="0000-00-00"/>
+                <hc:MaskedTextBox Mask="LL#-LLLL-$-."/>
+                <hc:MaskedTextBox Mask="(000) 000-0000" ValueDataType="{x:Type s:String}"/>
             </WrapPanel>
         </ScrollViewer>
     </hc:TransitioningContentControl>

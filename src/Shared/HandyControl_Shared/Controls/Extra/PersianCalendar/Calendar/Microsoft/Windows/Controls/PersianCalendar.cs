@@ -635,18 +635,7 @@ namespace Microsoft.Windows.Controls
 
             return hijriNow;
         }
-        public string GetSelectedDateToPersianDate()
-        {
-            System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
-            if (SelectedDate != null)
-            {
-                return pc.GetYear(SelectedDate.Value) + "/" + pc.GetMonth(SelectedDate.Value).ToString("00") + "/" + pc.GetDayOfMonth(SelectedDate.Value).ToString("00");
-            }
-            else
-            {
-                return pc.GetYear(CurrentDate) + "/" + pc.GetMonth(CurrentDate).ToString("00") + "/" + pc.GetDayOfMonth(CurrentDate).ToString("00");
-            }
-        }
+       
         public string SelectedDateToString()
         {
             return string.Format("{0:yyyy/MM/dd}", _currentDate);
