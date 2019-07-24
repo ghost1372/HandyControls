@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using HandyControl.Data;
 
@@ -92,6 +93,35 @@ namespace HandyControl.Tools
         public static bool IsUrl(this string str)
         {
             return Regex.IsMatch(str, RegularPatterns.UrlPattern);
+        }
+
+        /// <summary>
+        ///     چک کردن ورودی به عنوان حروف فارسی
+        /// </summary>
+        /// <param name="str">ورودی متن</param>
+        /// <returns>اگر حروف فارسی باشد مقدار صحیح برمیگردد</returns>
+        public static bool IsPersian(this string str)
+        {
+            return Regex.IsMatch(str, RegularPatterns.PersianPattern);
+        }
+
+        /// <summary>
+        ///     چک کردن کد ملی
+        /// </summary>
+        /// <param name="str">کد ملی</param>
+        /// <returns></returns>
+        public static bool IsIranNationalCode(this string str)
+        {
+            // input has 10 digits that all of them are not equal
+            if (!Regex.IsMatch(str, RegularPatterns.IranNationalCodePattern))
+                return false;
+
+            var check = Convert.ToInt32(str.Substring(9, 1));
+            var sum = System.Linq.Enumerable.Range(0, 9)
+                .Select(x => Convert.ToInt32(str.Substring(x, 1)) * (10 - x))
+                .Sum() % 11;
+
+            return sum < 2 && check == sum || sum >= 2 && check + sum == 11;
         }
     }
 }

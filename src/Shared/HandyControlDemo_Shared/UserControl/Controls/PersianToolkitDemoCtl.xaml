@@ -31,7 +31,8 @@
                 <hc:MainContentBackground BorderThickness="2" hc:BorderElement.CornerRadius="5" BorderBrush="Red" Margin="10" Width="200" Height="100">
                     <Button Content="Click" Width="200"/>
                 </hc:MainContentBackground>
-
+                <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="فقط حروف فارسی" Width="200" TextType="Persian"/>
+                <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="اعتبار سنجی کد ملی" Width="200" TextType="IranNationalCode"/>
             </WrapPanel>
         </ScrollViewer>
     </hc:TransitioningContentControl>
