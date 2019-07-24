@@ -33,6 +33,7 @@
                 </hc:MainContentBackground>
                 <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="فقط حروف فارسی" Width="200" TextType="Persian"/>
                 <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="اعتبار سنجی کد ملی" Width="200" TextType="IranNationalCode"/>
+                <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Content="فعال است"/>
             </WrapPanel>
         </ScrollViewer>
     </hc:TransitioningContentControl>
