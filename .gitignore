@@ -3,13 +3,3 @@
 *.xml
 [Bb]in/
 [Oo]bj/
-*.nupkg
-src/lib/net40/HandyControl.dll
-src/lib/net40/Microsoft.Windows.Shell.dll
-src/lib/net45/HandyControl.dll
-src/lib/net462/HandyControl.dll
-src/lib/net47/HandyControl.dll
-src/lib/net48/HandyControl.dll
-src/lib/netcore/HandyControl.dll
-src/nuget.exe
-*.nuspec
