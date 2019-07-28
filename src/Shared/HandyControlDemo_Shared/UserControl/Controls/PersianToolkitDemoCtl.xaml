@@ -40,6 +40,11 @@
                 <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Content="فعال است"/>
                 <hc:MaskedTextBox Mask="LL#-LLLL-$-."/>
                 <hc:MaskedTextBox Mask="(000) 000-0000" ValueDataType="{x:Type s:String}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Tag="btnAddReg" Click="Button_Click" Content="Add Registry Key"/>
+                    <Button Tag="btnGetReg" Click="Button_Click" Content="Get Registry Key"/>
+                    <Button Tag="btnDelReg" Click="Button_Click" Content="Delete Registry Key"/>
+                </StackPanel>
             </WrapPanel>
         </ScrollViewer>
     </hc:TransitioningContentControl>

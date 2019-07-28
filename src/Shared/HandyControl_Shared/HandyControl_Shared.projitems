@@ -19,6 +19,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PanelElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PasswordBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\RectangleAttach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\RegistryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\HKEYType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoCompletingMaskEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoSelectBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoSelectTextBox.cs" />
