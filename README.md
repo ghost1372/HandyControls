@@ -1,6 +1,6 @@
 ![logo](https://raw.githubusercontent.com/NaBian/HandyControl/master/Resources/icon.png)
 
-![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) ![csharp-version](https://img.shields.io/badge/C%23-7.3-blue.svg) ![IDE-version](https://img.shields.io/badge/IDE-vs2019-blue.svg) [![nuget-version](https://img.shields.io/nuget/v/HandyControl.svg)](https://www.nuget.org/packages/HandyControls)
+![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) ![csharp-version](https://img.shields.io/badge/C%23-7.3-blue.svg) ![IDE-version](https://img.shields.io/badge/IDE-vs2019-blue.svg) [![nuget-version](https://img.shields.io/nuget/v/HandyControls)](https://www.nuget.org/packages/HandyControls)
 [![wiki](https://img.shields.io/badge/wiki-Complete-brightgreen.svg)](https://github.com/ghost1372/HandyControl/wiki) ![repo-size](https://img.shields.io/github/repo-size/ghost1372/handycontrols.svg)
 
 # Welcome to HandyControl
