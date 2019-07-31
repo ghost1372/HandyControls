@@ -1,6 +1,11 @@
 ﻿using HandyControl.Controls;
 using HandyControl.Data;
+using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Threading;
+using MessageBox = HandyControl.Controls.MessageBox;
 
 namespace HandyControlDemo.UserControl
 {
@@ -9,8 +14,38 @@ namespace HandyControlDemo.UserControl
         public PersianToolkitDemoCtl()
         {
             this.InitializeComponent();
+
+            #region NeonLabel
+            _dispatcherTimer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(1) };
+            _dispatcherTimer.Tick += DispatcherTimer_Tick;
+            _dispatcherTimer.Start();
+            #endregion
         }
 
+        #region NeonLabel
+        private DispatcherTimer _dispatcherTimer;
+        private int count = 0;
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            count++;
+            switch (count)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    break;
+                case 5:
+                    count = 0;
+                    break;
+            }
+            neon2.Next(NeonLabelType.FadeNext, Guid.NewGuid().ToString());
+            neon3.Next(NeonLabelType.SlideNext, Guid.NewGuid().ToString());
+            if (count == 1)
+                neon.Next(NeonLabelType.ScrollToEnd, null, 4);
+        }
+        #endregion
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             var btn = sender as Button;

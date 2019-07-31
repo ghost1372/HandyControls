@@ -72,6 +72,7 @@
         <ResourceDictionary Source="ToggleBlock.xaml"/>
         <ResourceDictionary Source="BusyIndicator.xaml"/>
         <ResourceDictionary Source="MainContentBackground.xaml"/>
+        <ResourceDictionary Source="NeonLabel.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>
