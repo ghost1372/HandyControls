@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

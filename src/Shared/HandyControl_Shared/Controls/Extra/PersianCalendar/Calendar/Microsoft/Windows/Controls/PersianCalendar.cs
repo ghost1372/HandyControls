@@ -13,7 +13,6 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using CalendarAutomationPeer = Microsoft.Windows.Automation.Peers.CalendarAutomationPeer;
 
 namespace Microsoft.Windows.Controls

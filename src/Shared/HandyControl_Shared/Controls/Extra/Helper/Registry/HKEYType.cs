@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace HandyControl.Controls
+﻿namespace HandyControl.Controls
 {
     public enum HKEYType
     {

@@ -14,14 +14,11 @@
 
   ***********************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel;
 
 namespace HandyControl.Controls
 {
-  public class AutoCompletingMaskEventArgs : CancelEventArgs
+    public class AutoCompletingMaskEventArgs : CancelEventArgs
   {
     public AutoCompletingMaskEventArgs( MaskedTextProvider maskedTextProvider, int startPosition, int selectionLength, string input )
     {

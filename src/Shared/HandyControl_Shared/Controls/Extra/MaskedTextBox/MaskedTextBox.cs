@@ -19,20 +19,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Controls;
 using System.Windows;
-using System.Windows.Data;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Diagnostics;
 using System.Windows.Documents;
 using System.Globalization;
-using System.Windows.Controls.Primitives;
 using System.Reflection;
 
-using System.Collections;
 using System.Security;
 using System.Security.Permissions;
-using System.Windows.Automation;
 
 namespace HandyControl.Controls
 {

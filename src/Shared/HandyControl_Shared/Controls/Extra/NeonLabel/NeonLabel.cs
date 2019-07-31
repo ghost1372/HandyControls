@@ -1,11 +1,8 @@
 ﻿using HandyControl.Data;
 using HandyControl.Tools;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace HandyControl.Controls
