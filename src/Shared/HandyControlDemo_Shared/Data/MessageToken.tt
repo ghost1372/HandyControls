@@ -4,6 +4,7 @@
 <# 
 var controlList = new List<string>
 {
+	"PersianToolkitDemoCtl",
 	"GrowlDemoCtl",
 	"LoadingDemoCtl",
 	"ImageBrowserDemoCtl",
@@ -56,7 +57,7 @@ var controlList = new List<string>
 	"CardDemoCtl",
 	"MagnifierDemoCtl",
 	"ImageBlockDemoCtl",
-	"PersianToolkitDemoCtl"
+	"RunningBlockDemoCtl"
 };
 var styleList = new List<string>
 {

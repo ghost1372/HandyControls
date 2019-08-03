@@ -2,6 +2,8 @@
 {
 	public class MessageToken
     {
+        public static readonly string PersianToolkitDemoCtl = nameof(PersianToolkitDemoCtl);
+        
         public static readonly string GrowlDemoCtl = nameof(GrowlDemoCtl);
 	
         public static readonly string LoadingDemoCtl = nameof(LoadingDemoCtl);
@@ -106,7 +108,7 @@
 	
         public static readonly string ImageBlockDemoCtl = nameof(ImageBlockDemoCtl);
 	
-        public static readonly string PersianToolkitDemoCtl = nameof(PersianToolkitDemoCtl);
+        public static readonly string RunningBlockDemoCtl = nameof(RunningBlockDemoCtl);
 	
         public static readonly string ButtonDemoCtl = nameof(ButtonDemoCtl);
 

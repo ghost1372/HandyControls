@@ -160,6 +160,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\RateDemoCtl.xaml.cs">
       <DependentUpon>RateDemoCtl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\RunningBlockDemoCtl.xaml.cs">
+      <DependentUpon>RunningBlockDemoCtl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\ScrollViewerDemoCtl.xaml.cs">
       <DependentUpon>ScrollViewerDemoCtl.xaml</DependentUpon>
     </Compile>
@@ -571,6 +574,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\RunningBlockDemoCtl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\ScrollViewerDemoCtl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -808,6 +815,9 @@
   <ItemGroup>
     <Compile Update="C:\Users\Mahdi\Documents\GitHub\HandyControls\src\Shared\HandyControlDemo_Shared\UserControl\Controls\PersianToolkitDemoCtl.xaml.cs">
       <DependentUpon>PersianToolkitDemoCtl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="E:\Work\GitHub\HandyControl\src\Shared\HandyControlDemo_Shared\UserControl\Controls\RunningTextDemoCtl.xaml.cs">
+      <DependentUpon>RunningBlockDemoCtl.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>
