@@ -812,12 +812,4 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Service\Data\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Update="C:\Users\Mahdi\Documents\GitHub\HandyControls\src\Shared\HandyControlDemo_Shared\UserControl\Controls\PersianToolkitDemoCtl.xaml.cs">
-      <DependentUpon>PersianToolkitDemoCtl.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="E:\Work\GitHub\HandyControl\src\Shared\HandyControlDemo_Shared\UserControl\Controls\RunningTextDemoCtl.xaml.cs">
-      <DependentUpon>RunningBlockDemoCtl.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
 </Project>
