@@ -1,6 +1,7 @@
 ﻿using HandyControl.Controls;
 using HandyControl.Data;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -69,6 +70,31 @@ namespace HandyControlDemo.UserControl
                     RegistryHelper.DeleteKey("myKey3", "myFolder");
                     //RegistryHelper.DeleteRegistryKey("myKey4", "myFolder",false, HKEYType.LocalMachine);
                     break;
+            }
+        }
+
+        private async void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < 181; i++)
+            {
+                sp.Value = i;
+                sld.Value = i;
+                await Task.Delay(30);
+
+                if (i == 180)
+                {
+                    while (i > 0)
+                    {
+                        i--;
+                        sp.Value = i;
+                        sld.Value = i;
+
+                        await Task.Delay(30);
+                        if (i == 0)
+                            return;
+                    }
+
+                }
             }
         }
     }

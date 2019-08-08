@@ -68,6 +68,21 @@
                                       Content="This is a scrollable neon label .I have to type these characters to make it longer."
                                       Margin="0,10,0,0" />
                 </StackPanel>
+                <UniformGrid>
+                    <StackPanel>
+                        <Slider Margin="10" x:Name="sld" IsSnapToTickEnabled="True" Value="25" Maximum="180"/>
+                        <hc:SpeedoMeter x:Name="sp" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
+                           MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
+                           />
+                        <Button Content="Start" Margin="10" Width="300" Click="btnStart_Click"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Slider Margin="10" x:Name="sld2" IsSnapToTickEnabled="True" Value="46" Maximum="180"/>
+                        <hc:SpeedoMeter FontWeight="Bold" ValueColor="{DynamicResource WarningBrush}" StatusColor="{DynamicResource PrimaryBrush}" StrokeColor="{DynamicResource DangerBrush}" ValueFontSize="90" StatusFontSize="20" Status="mph"
+                           MaximumValue="180" Value="{Binding ElementName=sld2, Path=Value}"
+                           />
+                    </StackPanel>
+                </UniformGrid>
             </WrapPanel>
         </ScrollViewer>
     </hc:TransitioningContentControl>

@@ -1,0 +1,68 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ed="clr-namespace:HandyControl.Expression.Shapes"
+    xmlns:hc="clr-namespace:HandyControl.Controls">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Basic/Converters.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="hc:SpeedoMeter">
+        <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="Height" Value="300" />
+        <Setter Property="Width" Value="300" />
+        <Setter Property="MaximumValue" Value="120"/>
+        <Setter Property="MinimumValue" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="hc:SpeedoMeter">
+                    <hc:SimplePanel>
+                        <ed:Arc StartAngle="{TemplateBinding MaximumValue, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25" EndAngle="{TemplateBinding MaximumValue}" Stroke="{DynamicResource BorderBrush}"
+                                Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}"/>
+                        <ed:Arc StartAngle="{TemplateBinding MaximumValue, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25" EndAngle="{TemplateBinding Value, Converter={StaticResource SpeedConverter}}"
+                                Width="{TemplateBinding ActualWidth}"
+                                Height="{TemplateBinding ActualHeight}">
+                            <ed:Arc.Style>
+                                <Style TargetType="ed:Arc">
+                                    <Setter Property="Stroke" Value="{Binding StrokeColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding StrokeColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
+                                            <Setter Property="Stroke" Value="{Binding Value, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}, Converter={StaticResource ValueToBrushConverter}}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ed:Arc.Style>
+                        </ed:Arc>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Path=Status, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" FontSize="{TemplateBinding StatusFontSize}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{Binding StatusColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding StatusColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
+                                                <Setter Property="Foreground" Value="{Binding Value, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}, Converter={StaticResource ValueToBrushConverter}}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock x:Name="SpeedLabel" FontSize="{TemplateBinding ValueFontSize}" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Value, RelativeSource={RelativeSource TemplatedParent}}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{Binding ValueColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ValueColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
+                                                <Setter Property="Foreground" Value="{Binding Value, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}, Converter={StaticResource ValueToBrushConverter}}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                    </hc:SimplePanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

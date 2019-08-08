@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="SpeedoMeter.xaml"/>
         <ResourceDictionary Source="BusyIndicator.xaml"/>
         <ResourceDictionary Source="MainContentBackground.xaml"/>
         <ResourceDictionary Source="NeonLabel.xaml"/>
