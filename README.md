@@ -47,6 +47,10 @@ Step 4：enjoy coding
 
 ## Latest examples
 
+### SpeedoMeter
+
+![SpeedoMeter](https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Resources/SpeedoMeter.gif)
+
 ### RunningBlock
 
 ![RunningBlock](https://raw.githubusercontent.com/NaBian/HandyControl/master/Resources/RunningBlock.gif)
