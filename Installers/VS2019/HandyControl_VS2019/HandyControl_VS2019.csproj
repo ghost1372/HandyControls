@@ -53,11 +53,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="Packages\handycontrols.2.2.0.nupkg">
+    <Content Include="ProjectTemplates\WpfCoreApp.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="ProjectTemplates\WpfCoreApp.zip">
+    <Content Include="Packages\handycontrols.2.3.0.nupkg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
