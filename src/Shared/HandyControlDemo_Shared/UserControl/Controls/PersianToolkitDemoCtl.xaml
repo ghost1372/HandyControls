@@ -7,7 +7,7 @@
      Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Auto">
-            <WrapPanel Width="900">
+            <WrapPanel Width="1000">
                 <hc:PersianCalendar Margin="10"/>
                 <hc:PersianCalendarWithClock Margin="10" ClockConfirm="باشه"/>
                 <hc:PersianDatePicker Margin="10" Width="80"/>
@@ -68,21 +68,25 @@
                                       Content="This is a scrollable neon label .I have to type these characters to make it longer."
                                       Margin="0,10,0,0" />
                 </StackPanel>
-                <UniformGrid>
-                    <StackPanel>
-                        <Slider Margin="10" x:Name="sld" IsSnapToTickEnabled="True" Value="25" Maximum="180"/>
-                        <hc:SpeedoMeter x:Name="sp" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Slider Width="200" Margin="10" x:Name="sld" IsSnapToTickEnabled="True" Value="25" Maximum="180"/>
+                        <Slider Width="200" Margin="10" x:Name="sld2" IsSnapToTickEnabled="True" Value="25" Maximum="130"/>
+                    </StackPanel>
+                    <Button Content="Start" Margin="10" Width="300" Click="btnStart_Click"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <hc:SpeedoMeter x:Name="sp" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
                            MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
                            />
-                        <Button Content="Start" Margin="10" Width="300" Click="btnStart_Click"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <Slider Margin="10" x:Name="sld2" IsSnapToTickEnabled="True" Value="46" Maximum="180"/>
-                        <hc:SpeedoMeter FontWeight="Bold" ValueColor="{DynamicResource WarningBrush}" StatusColor="{DynamicResource PrimaryBrush}" StrokeColor="{DynamicResource DangerBrush}" ValueFontSize="90" StatusFontSize="20" Status="mph"
-                           MaximumValue="180" Value="{Binding ElementName=sld2, Path=Value}"
+                        <hc:SpeedoMeter Margin="10" FontWeight="Bold" ValueColor="{DynamicResource WarningBrush}" StatusColor="{DynamicResource PrimaryBrush}" StrokeColor="{DynamicResource DangerBrush}" ValueFontSize="90" StatusFontSize="20" Status="mph"
+                           MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
+                           />
+                        <hc:SpeedoMeter Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
+                           MaximumValue="120" Value="{Binding ElementName=sld2, Path=Value}"
                            />
                     </StackPanel>
-                </UniformGrid>
+                </StackPanel>
             </WrapPanel>
         </ScrollViewer>
     </hc:TransitioningContentControl>

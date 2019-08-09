@@ -18,17 +18,26 @@
             <Setter.Value>
                 <ControlTemplate TargetType="hc:SpeedoMeter">
                     <hc:SimplePanel>
-                        <ed:Arc StartAngle="{TemplateBinding MaximumValue, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25" EndAngle="{TemplateBinding MaximumValue}" Stroke="{DynamicResource BorderBrush}"
+                        <ed:Arc x:Name="arc" Tag="{TemplateBinding Value}" StartAngle="{TemplateBinding MaximumValue, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25" EndAngle="{TemplateBinding MaximumValue}" Stroke="{DynamicResource BorderBrush}"
                                 Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}"/>
-                        <ed:Arc StartAngle="{TemplateBinding MaximumValue, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25" EndAngle="{TemplateBinding Value, Converter={StaticResource SpeedConverter}}"
+                        <ed:Arc StartAngle="{TemplateBinding MaximumValue, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25"
                                 Width="{TemplateBinding ActualWidth}"
                                 Height="{TemplateBinding ActualHeight}">
+                            <ed:Arc.EndAngle>
+                                <hc:ConverterBindableBinding Binding="{Binding ElementName=arc, Path=Tag}"
+                                       Converter="{StaticResource SpeedConverter}" ConverterParameterBinding="{Binding ElementName=arc, Path=EndAngle}"/>
+                            </ed:Arc.EndAngle>
                             <ed:Arc.Style>
                                 <Style TargetType="ed:Arc">
                                     <Setter Property="Stroke" Value="{Binding StrokeColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding StrokeColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
-                                            <Setter Property="Stroke" Value="{Binding Value, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}, Converter={StaticResource ValueToBrushConverter}}"/>
+                                            <Setter Property="Stroke">
+                                                <Setter.Value>
+                                                    <hc:ConverterBindableBinding Binding="{Binding ElementName=arc, Path=Tag}"
+                                                                                    Converter="{StaticResource ValueToBrushConverter}" ConverterParameterBinding="{Binding ElementName=arc, Path=EndAngle}"/>
+                                                </Setter.Value>
+                                            </Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -41,7 +50,12 @@
                                         <Setter Property="Foreground" Value="{Binding StatusColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding StatusColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
-                                                <Setter Property="Foreground" Value="{Binding Value, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}, Converter={StaticResource ValueToBrushConverter}}"/>
+                                                <Setter Property="Foreground">
+                                                    <Setter.Value>
+                                                        <hc:ConverterBindableBinding Binding="{Binding ElementName=arc, Path=Tag}"
+                                                                                    Converter="{StaticResource ValueToBrushConverter}" ConverterParameterBinding="{Binding ElementName=arc, Path=EndAngle}"/>
+                                                    </Setter.Value>
+                                                </Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -53,7 +67,12 @@
                                         <Setter Property="Foreground" Value="{Binding ValueColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding ValueColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
-                                                <Setter Property="Foreground" Value="{Binding Value, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}, Converter={StaticResource ValueToBrushConverter}}"/>
+                                                <Setter Property="Foreground">
+                                                    <Setter.Value>
+                                                        <hc:ConverterBindableBinding Binding="{Binding ElementName=arc, Path=Tag}"
+                                                                                    Converter="{StaticResource ValueToBrushConverter}" ConverterParameterBinding="{Binding ElementName=arc, Path=EndAngle}"/>
+                                                    </Setter.Value>
+                                                </Setter>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>

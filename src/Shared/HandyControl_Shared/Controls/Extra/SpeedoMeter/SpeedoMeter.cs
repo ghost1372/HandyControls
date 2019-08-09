@@ -7,21 +7,6 @@ namespace HandyControl.Controls
 {
     public class SpeedoMeter : ContentControl
     {
-        internal static SpeedoMeter speedo;
-        public SpeedoMeter()
-        {
-            speedo = this;
-        }
-
-        public static string getMaximumValue()
-        {
-            return speedo.MaximumValue.ToString();
-        }
-        public static string getMinimumValue()
-        {
-            return speedo.MinimumValue.ToString();
-        }
-
         #region Value
         public double Value
         {
@@ -119,8 +104,9 @@ namespace HandyControl.Controls
         private static void OnMaximumValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             //complete circle
+            var s = (SpeedoMeter)d;
             if ((double)e.NewValue > 180)
-                speedo.MaximumValue = 180;
+                s.MaximumValue = 180;
         }
 
         public Brush StrokeColor
@@ -131,11 +117,6 @@ namespace HandyControl.Controls
 
         public static readonly DependencyProperty StrokeColorProperty =
             DependencyProperty.Register("StrokeColor", typeof(Brush), typeof(SpeedoMeter), new PropertyMetadata(null));
-
-
-
-
-
 
     }
 }

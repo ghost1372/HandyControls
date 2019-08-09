@@ -11,8 +11,8 @@ namespace HandyControl.Tools.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var minimumInput = int.Parse(SpeedoMeter.getMinimumValue());
-            var maximumInput = int.Parse(SpeedoMeter.getMaximumValue());
+            var minimumInput = 0;
+            var maximumInput = System.Convert.ToInt32(parameter);
 
             var currentValue = ((double)value - minimumInput) / (maximumInput - minimumInput);
 

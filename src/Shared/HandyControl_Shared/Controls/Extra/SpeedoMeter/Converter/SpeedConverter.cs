@@ -9,7 +9,7 @@ namespace HandyControl.Tools.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var startAngle = double.Parse(SpeedoMeter.getMaximumValue()) * -1;
+            var startAngle = System.Convert.ToDouble(parameter) * -1;
             var endAngle = startAngle + (((double)value) * 2);
             return endAngle;
         }
