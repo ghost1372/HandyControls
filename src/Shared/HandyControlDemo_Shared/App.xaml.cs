@@ -2,6 +2,7 @@
 using System.Net;
 using System.Security.Authentication;
 using System.Windows;
+using HandyControl.Controls;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControlDemo.Data;
@@ -14,9 +15,12 @@ namespace HandyControlDemo
     /// </summary>
     public partial class App
     {
+       
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            
+            InstanceHelper.IsSingleInstance();
 
             ShutdownMode = ShutdownMode.OnMainWindowClose;
             GlobalData.Init();
