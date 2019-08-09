@@ -1,10 +1,8 @@
 ﻿using HandyControl.Controls;
-using HandyControl.Data;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Threading;
 using MessageBox = HandyControl.Controls.MessageBox;
 
@@ -29,22 +27,25 @@ namespace HandyControlDemo.UserControl
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            count++;
-            switch (count)
+           if(tab.SelectedIndex == 5)
             {
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                    break;
-                case 5:
-                    count = 0;
-                    break;
+                count++;
+                switch (count)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                        break;
+                    case 5:
+                        count = 0;
+                        break;
+                }
+                neon2.Next(NeonLabelType.FadeNext, Guid.NewGuid().ToString());
+                neon3.Next(NeonLabelType.SlideNext, Guid.NewGuid().ToString());
+                if (count == 1)
+                    neon.Next(NeonLabelType.ScrollToEnd, null, 4);
             }
-            neon2.Next(NeonLabelType.FadeNext, Guid.NewGuid().ToString());
-            neon3.Next(NeonLabelType.SlideNext, Guid.NewGuid().ToString());
-            if (count == 1)
-                neon.Next(NeonLabelType.ScrollToEnd, null, 4);
         }
         #endregion
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -73,7 +74,7 @@ namespace HandyControlDemo.UserControl
             }
         }
 
-        private async void btnStart_Click(object sender, RoutedEventArgs e)
+        public async void startSpeedoMeter1()
         {
             for (int i = 0; i < 181; i++)
             {
@@ -96,6 +97,35 @@ namespace HandyControlDemo.UserControl
 
                 }
             }
+        }
+        public async void startSpeedoMeter2()
+        {
+            for (int i = 0; i < 121; i++)
+            {
+                sp2.Value = i;
+                sld2.Value = i;
+                await Task.Delay(30);
+
+                if (i == 120)
+                {
+                    while (i > 0)
+                    {
+                        i--;
+                        sp2.Value = i;
+                        sld2.Value = i;
+
+                        await Task.Delay(30);
+                        if (i == 0)
+                            return;
+                    }
+
+                }
+            }
+        }
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+            startSpeedoMeter1();
+            startSpeedoMeter2();
         }
     }
 }
