@@ -13,7 +13,6 @@
         <Setter Property="Height" Value="300" />
         <Setter Property="Width" Value="300" />
         <Setter Property="MaximumValue" Value="120"/>
-        <Setter Property="MinimumValue" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="hc:SpeedoMeter">
@@ -44,7 +43,7 @@
                             </ed:Arc.Style>
                         </ed:Arc>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Text="{Binding Path=Status, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" FontSize="{TemplateBinding StatusFontSize}">
+                            <TextBlock Visibility="{TemplateBinding StatusVisibility}" Text="{Binding Path=Status, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" FontSize="{TemplateBinding StatusFontSize}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="Foreground" Value="{Binding StatusColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
@@ -61,7 +60,7 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <TextBlock x:Name="SpeedLabel" FontSize="{TemplateBinding ValueFontSize}" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Value, RelativeSource={RelativeSource TemplatedParent}}">
+                            <TextBlock Visibility="{TemplateBinding ValueVisibility}" FontSize="{TemplateBinding ValueFontSize}" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Value, RelativeSource={RelativeSource TemplatedParent}}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="Foreground" Value="{Binding ValueColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>

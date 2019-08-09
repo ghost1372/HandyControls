@@ -44,6 +44,19 @@ namespace HandyControl.Controls
 
         public static readonly DependencyProperty ValueColorProperty =
             DependencyProperty.Register("ValueColor", typeof(Brush), typeof(SpeedoMeter), new PropertyMetadata(null));
+
+
+
+        public Visibility ValueVisibility
+        {
+            get { return (Visibility)GetValue(ValueVisibilityProperty); }
+            set { SetValue(ValueVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty ValueVisibilityProperty =
+            DependencyProperty.Register("ValueVisibility", typeof(Visibility), typeof(SpeedoMeter), new PropertyMetadata(Visibility.Visible));
+
+
         #endregion
 
         #region Status
@@ -78,19 +91,18 @@ namespace HandyControl.Controls
             DependencyProperty.Register("StatusFontSize", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double20Box));
 
 
-        #endregion
 
-
-        public double MinimumValue
+        public Visibility StatusVisibility
         {
-            get { return (double)GetValue(MinimumValueProperty); }
-            set { SetValue(MinimumValueProperty, value); }
+            get { return (Visibility)GetValue(StatusVisibilityProperty); }
+            set { SetValue(StatusVisibilityProperty, value); }
         }
 
-        public static readonly DependencyProperty MinimumValueProperty =
-            DependencyProperty.Register("MinimumValue", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double0Box));
+        public static readonly DependencyProperty StatusVisibilityProperty =
+            DependencyProperty.Register("StatusVisibility", typeof(Visibility), typeof(SpeedoMeter), new PropertyMetadata(Visibility.Visible));
 
 
+        #endregion
 
         public double MaximumValue
         {
