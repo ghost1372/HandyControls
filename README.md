@@ -5,7 +5,7 @@
 
 # Welcome to HandyControl
 This project is based on [HandyControl](https://github.com/handyOrg/HandyControl) But this project includes some controls and features that are not included in the original project[For example, support for Persian Calendar]
-[See the changes here](https://github.com/ghost1372/HandyControl/wiki/Documentation#controls-and-styles-included-in-handycontrols-this-is-a-custom-version-based-on-original-handycontrol)
+[See the changes here](https://github.com/ghost1372/HandyControl/wiki/Documentation#features-included-in-handycontrols-this-is-a-custom-version-based-on-original-handycontrol)
 
 ## Special thanks to
 
