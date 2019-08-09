@@ -111,6 +111,71 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
+            <TabItem Header="Cryptography">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Margin="10" Header="Encrypt Text">
+                            <StackPanel>
+                                <GroupBox Margin="10" Header="Encrypt">
+                                    <StackPanel>
+                                        <hc:TextBox Name="txtEnText" hc:InfoElement.Placeholder="Enter Some Text"/>
+                                        <hc:TextBox Name="txtEnTextPass" hc:InfoElement.Placeholder="Enter Password"/>
+                                        <hc:TextBox Name="txtEn" hc:InfoElement.Placeholder="Encrypted Text" IsReadOnly="True"/>
+                                        <Button Content="Encrypt" Width="200" Name="btnEnText" Click="BtnEnText_Click"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <GroupBox Margin="10" Header="Decrypt">
+                                    <StackPanel>
+                                        <hc:TextBox Name="txtDeText" hc:InfoElement.Placeholder="Enter Encrypted Text"/>
+                                        <hc:TextBox Name="txtDeTextPass" hc:InfoElement.Placeholder="Enter Password"/>
+                                        <hc:TextBox Name="txtDe" hc:InfoElement.Placeholder="Decrypted Text" IsReadOnly="True"/>
+                                        <Button Content="Decrypt" Width="200" Name="btnDeText" Click="BtnDeText_Click"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Margin="10" Header="Encrypt File" Grid.Column="1">
+                            <StackPanel>
+                                <GroupBox Margin="10" Header="Encrypt">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <hc:TextBox Name="txtEnBrowse" hc:InfoElement.Placeholder="file for encrypt..."/>
+                                            <Button Tag="enc" Content="Browse File" Width="100" Name="btnBrowse" Click="BtnBrowse_Click"/>
+                                        </StackPanel>
+                                        <hc:TextBox Name="txtEnFilePass" hc:InfoElement.Placeholder="Enter Password"/>
+                                        <Button Content="Encrypt" Width="200" Name="btnEnFile" Click="btnEnFile_Click"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Margin="10,40" Header="Decrypt">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <hc:TextBox Name="txtDeBrowse" hc:InfoElement.Placeholder="file for decrypt..."/>
+                                            <Button Tag="dec" Content="Browse File" Click="BtnBrowse_Click"/>
+                                        </StackPanel>
+                                        <hc:TextBox Name="txtDeFilePass" hc:InfoElement.Placeholder="Enter Password"/>
+                                        <Button Content="Decrypt" Width="200" Name="btnDeFile" Click="btnDeFile_Click"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Margin="10" Header="Generate Hash" Grid.Column="2">
+                            <StackPanel>
+                                <hc:TextBox Name="txtHash" hc:InfoElement.Placeholder="Enter Some Text..."/>
+                                <hc:TextBox Name="txtmd5" hc:InfoElement.Placeholder="MD5 Hash..." IsReadOnly="True"/>
+                                <hc:TextBox Name="txtsha" hc:InfoElement.Placeholder="SHA256 Hash..." IsReadOnly="True"/>
+                                <Button Width="200" Content="Generate" Click="btnGenerateHash_Click"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
         </TabControl>
     </hc:TransitioningContentControl>
 </UserControl>

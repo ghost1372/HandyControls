@@ -1,5 +1,7 @@
 ﻿using HandyControl.Controls;
+using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,6 +50,8 @@ namespace HandyControlDemo.UserControl
             }
         }
         #endregion
+
+        #region RegistryHelper
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             var btn = sender as Button;
@@ -73,7 +77,9 @@ namespace HandyControlDemo.UserControl
                     break;
             }
         }
+        #endregion
 
+        #region SpeedoMeter
         public async void startSpeedoMeter1()
         {
             for (int i = 0; i < 181; i++)
@@ -127,5 +133,68 @@ namespace HandyControlDemo.UserControl
             startSpeedoMeter1();
             startSpeedoMeter2();
         }
+        #endregion
+
+        #region Encryption
+        private void BtnEnText_Click(object sender, RoutedEventArgs e)
+        {
+           txtEn.Text = CryptographyHelper.EncryptTextAES(txtEnText.Text, txtEnTextPass.Text);
+        }
+
+        private void BtnDeText_Click(object sender, RoutedEventArgs e)
+        {
+            txtDe.Text = CryptographyHelper.DecryptTextAES(txtDeText.Text, txtEnTextPass.Text);
+        }
+
+        string globalFileName = string.Empty;
+        private void BtnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var dialog = new OpenFileDialog();
+            dialog.Title = "Open File";
+            if (dialog.ShowDialog() == true)
+            {
+                if (btn.Tag.Equals("enc"))
+                {
+                    txtEnBrowse.Text = dialog.FileName;
+                }
+                else
+                {
+                    txtDeBrowse.Text = dialog.FileName;
+
+                }
+                globalFileName = Path.GetExtension(dialog.FileName); ;
+            }
+           
+        }
+
+        private void btnEnFile_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            dialog.Title = "Save File";
+            if (dialog.ShowDialog() == true)
+            {
+                Console.WriteLine(dialog.SafeFileName);
+                CryptographyHelper.EncryptFileAES(txtEnBrowse.Text, dialog.FileName + globalFileName, txtEnFilePass.Text);
+            }
+
+        }
+
+        private void btnDeFile_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog();
+            dialog.Title = "Save File";
+            if (dialog.ShowDialog() == true)
+            {
+                CryptographyHelper.DecryptFileAES(txtDeBrowse.Text, dialog.FileName + globalFileName, txtDeFilePass.Text);
+            }
+        }
+
+        private void btnGenerateHash_Click(object sender, RoutedEventArgs e)
+        {
+            txtmd5.Text = CryptographyHelper.GenerateMD5(txtHash.Text);
+            txtsha.Text = CryptographyHelper.GenerateSHA256(txtHash.Text);
+        }
+        #endregion
     }
 }
