@@ -1,4 +1,5 @@
 ﻿using HandyControl.Data;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -7,6 +8,8 @@ namespace HandyControl.Controls
 {
     public class SpeedoMeter : ContentControl
     {
+        public event EventHandler ValueChanged;
+
         #region Value
         public double Value
         {
@@ -15,7 +18,17 @@ namespace HandyControl.Controls
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double0Box, null, OnCoerceValueChanged));
+            DependencyProperty.Register("Value", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double0Box, OnChanged, OnCoerceValueChanged));
+
+        private static void OnChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            SpeedoMeter speedoMeter = (SpeedoMeter)d;
+            EventHandler handler = speedoMeter.ValueChanged;
+            if (handler != null)
+            {
+                handler(speedoMeter, EventArgs.Empty);
+            }
+        }
 
         private static object OnCoerceValueChanged(DependencyObject d, object value)
         {
