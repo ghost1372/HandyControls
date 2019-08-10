@@ -87,6 +87,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\HijriDate\PersianDay.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\HijriDate\PersianMonth.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\HijriDate\PersianYear.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\HoneycombPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Slider\RangeSlider\RangeTrack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Slider\RangeSlider\RangeThumb.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Slider\RangeSlider\TwoWayRangeBase.cs" />

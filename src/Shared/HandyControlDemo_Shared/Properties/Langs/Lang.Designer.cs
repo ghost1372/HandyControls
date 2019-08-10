@@ -70,7 +70,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 动画路径.
+        ///   查找类似 添加项 的本地化字符串。
+        /// </summary>
+        public static string AddItem {
+            get {
+                return ResourceManager.GetString("AddItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 动画路径 的本地化字符串。
         /// </summary>
         public static string AnimationPath {
             get {
@@ -673,7 +682,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 混合布局.
+        ///   查找类似 蜂窝布局 的本地化字符串。
+        /// </summary>
+        public static string HoneycombPanel {
+            get {
+                return ResourceManager.GetString("HoneycombPanel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 混合布局 的本地化字符串。
         /// </summary>
         public static string HybridLayout {
             get {
@@ -1195,7 +1213,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 重复按钮.
+        ///   查找类似 删除项 的本地化字符串。
+        /// </summary>
+        public static string RemoveItem {
+            get {
+                return ResourceManager.GetString("RemoveItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 重复按钮 的本地化字符串。
         /// </summary>
         public static string RepeatButton {
             get {

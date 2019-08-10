@@ -110,6 +110,8 @@
 	
         public static readonly string RunningBlockDemoCtl = nameof(RunningBlockDemoCtl);
 	
+        public static readonly string HoneycombPanelDemoCtl = nameof(HoneycombPanelDemoCtl);
+	
         public static readonly string ButtonDemoCtl = nameof(ButtonDemoCtl);
 
         public static readonly string RepeatButtonDemoCtl = nameof(RepeatButtonDemoCtl);
