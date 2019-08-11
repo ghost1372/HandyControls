@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\ConverterBindableBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\MultiValueConverterAdapter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Cryptography\CryptographyHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\IniHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Instance\InstanceHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\HKEYType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\RegistryHelper.cs" />

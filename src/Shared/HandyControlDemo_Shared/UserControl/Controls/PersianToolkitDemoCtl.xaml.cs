@@ -196,5 +196,36 @@ namespace HandyControlDemo.UserControl
             txtsha.Text = CryptographyHelper.GenerateSHA256(txtHash.Text);
         }
         #endregion
+
+        #region InIHelper
+        private void btnIniHelper_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            switch (btn.Tag)
+            {
+                case "add":
+                    InIHelper.AddValue("key1", "test1");
+                    InIHelper.AddValue("key2", "test2");
+                    InIHelper.AddValue("key3", "test3", "mySection");
+                    InIHelper.AddValue("file4", "test4", "mySection");
+                    InIHelper.AddValue("file5", "test5", "mySection");
+                    //InIHelper.AddValue("file6", "test6", "mySection2", @"D:\config.ini");
+                    break;
+                case "read":
+                    MessageBox.Info(InIHelper.ReadValue("key1"));
+                    MessageBox.Info(InIHelper.ReadValue("key3", "mySection"));
+                    //MessageBox.Info(InIHelper.ReadValue("key3", "mySection", @"D:\config.ini"));
+                    break;
+                case "delete":
+                    InIHelper.DeleteKey("key4", "mySection");
+                    //InIHelper.DeleteSection("mySection");
+                    //InIHelper.DeleteKey("key4", "mySection", @"D:\config.ini");
+                    break;
+                case "exist":
+                    MessageBox.Info(InIHelper.IsKeyExists("key4", "mySection") + "");
+                    break;
+            }
+        }
+        #endregion
     }
 }

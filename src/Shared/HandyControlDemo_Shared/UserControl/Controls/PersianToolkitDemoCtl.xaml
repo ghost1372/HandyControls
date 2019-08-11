@@ -176,6 +176,14 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
+            <TabItem Header="Ini Config">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button Margin="10" Tag="add" Click="btnIniHelper_Click" Content="Add Value"/>
+                    <Button Margin="10" Tag="read" Click="btnIniHelper_Click" Content="Read Value"/>
+                    <Button Margin="10" Tag="delete" Click="btnIniHelper_Click" Content="Delete Value"/>
+                    <Button Margin="10" Tag="exist" Click="btnIniHelper_Click" Content="Exist Value"/>
+                </StackPanel>
+            </TabItem>
         </TabControl>
     </hc:TransitioningContentControl>
 </UserControl>
