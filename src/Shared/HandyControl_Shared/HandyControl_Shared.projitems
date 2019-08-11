@@ -9,11 +9,12 @@
     <Import_RootNamespace>HandyControl_Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\AppHost.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\BindableBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\ConverterBindableBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\MultiValueConverterAdapter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Cryptography\CryptographyHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\IniHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Instance\InstanceHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\HKEYType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\RegistryHelper.cs" />
@@ -415,6 +416,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\SkinViolet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\AppHost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

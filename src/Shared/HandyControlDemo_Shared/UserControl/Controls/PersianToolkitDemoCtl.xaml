@@ -184,6 +184,9 @@
                     <Button Margin="10" Tag="exist" Click="btnIniHelper_Click" Content="Exist Value"/>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="AppHost">
+                <Button Content="Load Notepad inside window" Click="btnAppHost_Click"/>
+            </TabItem>
         </TabControl>
     </hc:TransitioningContentControl>
 </UserControl>

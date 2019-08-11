@@ -51,6 +51,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\AnimationPathDemoCtl.xaml.cs">
       <DependentUpon>AnimationPathDemoCtl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\AppHostWindow.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\CardDemoCtl.xaml.cs">
       <DependentUpon>CardDemoCtl.xaml</DependentUpon>
     </Compile>
@@ -426,6 +427,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\AnimationPathDemoCtl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\AppHostWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -819,7 +824,10 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Service\Data\" />
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
+    <Compile Update="C:\Users\Mahdi\Documents\GitHub\HandyControls\src\Shared\HandyControlDemo_Shared\UserControl\Controls\AppHostWindow.xaml.cs">
+      <DependentUpon>AppHostWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Update="C:\Users\Mahdi\Documents\GitHub\HandyControls\src\Shared\HandyControlDemo_Shared\UserControl\Controls\PersianToolkitDemoCtl.xaml.cs">
       <DependentUpon>PersianToolkitDemoCtl.xaml</DependentUpon>
     </Compile>
