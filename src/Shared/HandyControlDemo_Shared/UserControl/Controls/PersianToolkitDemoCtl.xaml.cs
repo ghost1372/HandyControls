@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Net.Security;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -81,13 +82,13 @@ namespace HandyControlDemo.UserControl
         #endregion
 
         #region SpeedoMeter
-        public async void startSpeedoMeter1()
+        public void startSpeedoMeter1()
         {
             for (int i = 0; i < 181; i++)
             {
                 sp.Value = i;
                 sld.Value = i;
-                await Task.Delay(30);
+                Thread.Sleep(30);
 
                 if (i == 180)
                 {
@@ -97,7 +98,7 @@ namespace HandyControlDemo.UserControl
                         sp.Value = i;
                         sld.Value = i;
 
-                        await Task.Delay(30);
+                        Thread.Sleep(30);
                         if (i == 0)
                             return;
                     }
@@ -105,13 +106,13 @@ namespace HandyControlDemo.UserControl
                 }
             }
         }
-        public async void startSpeedoMeter2()
+        public void startSpeedoMeter2()
         {
             for (int i = 0; i < 121; i++)
             {
                 sp2.Value = i;
                 sld2.Value = i;
-                await Task.Delay(30);
+                Thread.Sleep(30);
 
                 if (i == 120)
                 {
@@ -121,7 +122,7 @@ namespace HandyControlDemo.UserControl
                         sp2.Value = i;
                         sld2.Value = i;
 
-                        await Task.Delay(30);
+                        Thread.Sleep(30);
                         if (i == 0)
                             return;
                     }
@@ -134,9 +135,9 @@ namespace HandyControlDemo.UserControl
             startSpeedoMeter1();
             startSpeedoMeter2();
         }
-        #endregion
+#endregion
 
-        #region Encryption
+#region Encryption
         private void BtnEnText_Click(object sender, RoutedEventArgs e)
         {
            txtEn.Text = CryptographyHelper.EncryptTextAES(txtEnText.Text, txtEnTextPass.Text);
@@ -196,9 +197,9 @@ namespace HandyControlDemo.UserControl
             txtmd5.Text = CryptographyHelper.GenerateMD5(txtHash.Text);
             txtsha.Text = CryptographyHelper.GenerateSHA256(txtHash.Text);
         }
-        #endregion
+#endregion
 
-        #region InIHelper
+#region InIHelper
         private void btnIniHelper_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
@@ -227,7 +228,7 @@ namespace HandyControlDemo.UserControl
                     break;
             }
         }
-        #endregion
+#endregion
 
         private void btnAppHost_Click(object sender, RoutedEventArgs e)
         {

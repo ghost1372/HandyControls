@@ -16,15 +16,14 @@ namespace HandyControl.Controls
 
         /// <summary>
         /// check only one instance is running 
-        /// example: IsRunOnlyOneInstance("8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F");
+        /// example: IsRunOnlyOneInstance();
         /// </summary>
-        /// <param name="MutexName">Random Strings (you can use GUID)</param>
         /// <param name="ShowErrorMessage"></param>
         /// <param name="ErrorMessage"></param>
         /// <returns></returns>
         public static bool IsSingleInstance(bool ShowErrorMessage = true, string ErrorMessage = "Another instance of the app is running")
         {
-            var guid = System.Runtime.InteropServices.Marshal.GetTypeLibGuidForAssembly(System.Reflection.Assembly.GetExecutingAssembly()).ToString();
+            var guid = CryptographyHelper.GenerateMD5(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
             mutex = new Mutex(true, "{" + $"{guid}" + "}");
             if (mutex.WaitOne(TimeSpan.Zero, true))
             {

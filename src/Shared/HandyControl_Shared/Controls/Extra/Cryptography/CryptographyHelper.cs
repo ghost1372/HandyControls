@@ -50,7 +50,7 @@ namespace HandyControl.Controls
         /// <param name="sourceFilename">The full path and name of the file to be decrypted.</param>
         /// <param name="destinationFilename">The full path and name of the file to be output.</param>
         /// <param name="password">The password for the decryption.</param>
-        public async static void DecryptFileAES(string sourceFilename, string destinationFilename, string password)
+        public static void DecryptFileAES(string sourceFilename, string destinationFilename, string password)
         {
             AesManaged aes = new AesManaged();
             aes.BlockSize = aes.LegalBlockSizes[0].MaxSize;
@@ -70,7 +70,7 @@ namespace HandyControl.Controls
                     {
                         using (FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
                         {
-                           await source.CopyToAsync(cryptoStream);
+                            source.CopyTo(cryptoStream);
                         }
                     }
                     catch (CryptographicException exception)
@@ -88,7 +88,7 @@ namespace HandyControl.Controls
         /// <param name="sourceFilename">The full path and name of the file to be encrypted.</param>
         /// <param name="destinationFilename">The full path and name of the file to be output.</param>
         /// <param name="password">The password for the encryption.</param>
-        public async static void EncryptFileAES(string sourceFilename, string destinationFilename, string password)
+        public static void EncryptFileAES(string sourceFilename, string destinationFilename, string password)
         {
             AesManaged aes = new AesManaged();
             aes.BlockSize = aes.LegalBlockSizes[0].MaxSize;
@@ -106,7 +106,7 @@ namespace HandyControl.Controls
                 {
                     using (FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
                     {
-                       await source.CopyToAsync(cryptoStream);
+                        source.CopyTo(cryptoStream);
                     }
                 }
             }
