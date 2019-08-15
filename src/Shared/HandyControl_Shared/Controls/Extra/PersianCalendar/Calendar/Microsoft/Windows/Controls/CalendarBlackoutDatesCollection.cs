@@ -20,7 +20,7 @@ namespace Microsoft.Windows.Controls
         #region Data
 
         private readonly Thread _dispatcherThread;
-        private readonly PersianCalendar _owner;
+        private readonly HandyControl.Controls.PersianCalendar _owner;
 
         #endregion Data
 
@@ -28,7 +28,7 @@ namespace Microsoft.Windows.Controls
         /// Initializes a new instance of the CalendarBlackoutDatesCollection class.
         /// </summary>
         /// <param name="owner"></param>
-        public CalendarBlackoutDatesCollection(PersianCalendar owner)
+        public CalendarBlackoutDatesCollection(HandyControl.Controls.PersianCalendar owner)
         {
             _owner = owner;
             _dispatcherThread = Thread.CurrentThread;

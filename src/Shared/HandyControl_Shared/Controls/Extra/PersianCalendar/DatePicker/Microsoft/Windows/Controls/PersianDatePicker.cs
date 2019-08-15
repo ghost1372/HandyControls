@@ -5,6 +5,7 @@
 //---------------------------------------------------------------------------
 
 using HandyControl;
+using Microsoft.Windows.Controls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,10 +18,16 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Threading;
+using CalendarBlackoutDatesCollection = Microsoft.Windows.Controls.CalendarBlackoutDatesCollection;
+using CalendarDateChangedEventArgs = Microsoft.Windows.Controls.CalendarDateChangedEventArgs;
+using CalendarMode = Microsoft.Windows.Controls.CalendarMode;
+using CalendarSelectionMode = Microsoft.Windows.Controls.CalendarSelectionMode;
 using DatePickerAutomationPeer = Microsoft.Windows.Automation.Peers.DatePickerAutomationPeer;
+using DatePickerDateValidationErrorEventArgs = Microsoft.Windows.Controls.DatePickerDateValidationErrorEventArgs;
+using DatePickerFormat = Microsoft.Windows.Controls.DatePickerFormat;
 using DatePickerTextBox = Microsoft.Windows.Controls.Primitives.DatePickerTextBox;
 
-namespace Microsoft.Windows.Controls
+namespace HandyControl.Controls
 {
     /// <summary>
     /// Represents a control that allows the user to select a date.
@@ -44,7 +51,7 @@ namespace Microsoft.Windows.Controls
 
         #region Data
 
-        private PersianCalendar _calendar;
+        private HandyControl.Controls.PersianCalendar _calendar;
         private string _defaultText;
         private ButtonBase _dropDownButton;
         private Popup _popUp;
@@ -291,7 +298,7 @@ namespace Microsoft.Windows.Controls
             typeof(DayOfWeek),
             typeof(PersianDatePicker),
             null,
-            PersianCalendar.IsValidFirstDayOfWeek);
+            HandyControl.Controls.PersianCalendar.IsValidFirstDayOfWeek);
 
         #endregion FirstDayOfWeek
 
@@ -999,7 +1006,7 @@ namespace Microsoft.Windows.Controls
 
         private void CalendarDayOrMonthButton_PreviewKeyDown(object sender, RoutedEventArgs e)
         {
-            PersianCalendar c = sender as PersianCalendar;
+            HandyControl.Controls.PersianCalendar c = sender as HandyControl.Controls.PersianCalendar;
             KeyEventArgs args = (KeyEventArgs)e;
 
             Debug.Assert(c != null);
@@ -1121,7 +1128,7 @@ namespace Microsoft.Windows.Controls
 
         private void InitializeCalendar()
         {
-            _calendar = new PersianCalendar();
+            _calendar = new HandyControl.Controls.PersianCalendar();
             _calendar.DayButtonMouseUp += new MouseButtonEventHandler(Calendar_DayButtonMouseUp);
             _calendar.DisplayDateChanged += new EventHandler<CalendarDateChangedEventArgs>(Calendar_DisplayDateChanged);
             _calendar.SelectedDatesChanged += new EventHandler<SelectionChangedEventArgs>(Calendar_SelectedDatesChanged);
@@ -1130,10 +1137,10 @@ namespace Microsoft.Windows.Controls
             _calendar.VerticalAlignment = VerticalAlignment.Top;
 
             _calendar.SelectionMode = CalendarSelectionMode.SingleDate;
-            _calendar.SetBinding(PersianCalendar.ForegroundProperty, GetDatePickerBinding(PersianDatePicker.ForegroundProperty));
-            _calendar.SetBinding(PersianCalendar.StyleProperty, GetDatePickerBinding(PersianDatePicker.CalendarStyleProperty));
-            _calendar.SetBinding(PersianCalendar.IsTodayHighlightedProperty, GetDatePickerBinding(PersianDatePicker.IsTodayHighlightedProperty));
-            _calendar.SetBinding(PersianCalendar.FirstDayOfWeekProperty, GetDatePickerBinding(PersianDatePicker.FirstDayOfWeekProperty));
+            _calendar.SetBinding(HandyControl.Controls.PersianCalendar.ForegroundProperty, GetDatePickerBinding(PersianDatePicker.ForegroundProperty));
+            _calendar.SetBinding(HandyControl.Controls.PersianCalendar.StyleProperty, GetDatePickerBinding(PersianDatePicker.CalendarStyleProperty));
+            _calendar.SetBinding(HandyControl.Controls.PersianCalendar.IsTodayHighlightedProperty, GetDatePickerBinding(PersianDatePicker.IsTodayHighlightedProperty));
+            _calendar.SetBinding(HandyControl.Controls.PersianCalendar.FirstDayOfWeekProperty, GetDatePickerBinding(PersianDatePicker.FirstDayOfWeekProperty));
         }
 
         private BindingBase GetDatePickerBinding(DependencyProperty property)
@@ -1176,7 +1183,7 @@ namespace Microsoft.Windows.Controls
                     newSelectedDate = DateTime.Parse(text, DateTimeHelper.GetDateFormat(DateTimeHelper.GetCulture(this)));
                 }
 
-                if (PersianCalendar.IsValidDateSelection(_calendar, newSelectedDate))
+                if (HandyControl.Controls.PersianCalendar.IsValidDateSelection(_calendar, newSelectedDate))
                 {
                     return newSelectedDate;
                 }

@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using Calendar = Microsoft.Windows.Controls.PersianCalendar;
+using Calendar = HandyControl.Controls.PersianCalendar;
 
 namespace HandyControl.Controls
 {

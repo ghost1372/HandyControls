@@ -23,7 +23,7 @@ namespace Microsoft.Windows.Controls
         private readonly Collection<DateTime> _removedItems;
         private readonly Thread _dispatcherThread;
         private bool _isAddingRange;
-        private readonly PersianCalendar _owner;
+        private readonly HandyControl.Controls.PersianCalendar _owner;
         private DateTime? _maximumDate;
         private DateTime? _minimumDate;
 
@@ -33,7 +33,7 @@ namespace Microsoft.Windows.Controls
         /// Initializes a new instance of the CalendarSelectedDatesCollection class.
         /// </summary>
         /// <param name="owner"></param>
-        public SelectedDatesCollection(PersianCalendar owner)
+        public SelectedDatesCollection(HandyControl.Controls.PersianCalendar owner)
         {
             _dispatcherThread = Thread.CurrentThread;
             _owner = owner;
@@ -161,7 +161,7 @@ namespace Microsoft.Windows.Controls
 
                 bool isCleared = CheckSelectionMode();
 
-                if (PersianCalendar.IsValidDateSelection(_owner, item))
+                if (HandyControl.Controls.PersianCalendar.IsValidDateSelection(_owner, item))
                 {
                     // If the Collection is cleared since it is SingleRange and it had another range
                     // set the index to 0
@@ -277,7 +277,7 @@ namespace Microsoft.Windows.Controls
                 }
                 else
                 {
-                    if (item != null && DateTime.Compare(this[index], item) != 0 && PersianCalendar.IsValidDateSelection(_owner, item))
+                    if (item != null && DateTime.Compare(this[index], item) != 0 && HandyControl.Controls.PersianCalendar.IsValidDateSelection(_owner, item))
                     {
                         removedItems.Add(this[index]);
                         base.SetItem(index, item);
@@ -324,7 +324,7 @@ namespace Microsoft.Windows.Controls
             DateTime lastAddedDate = start;
             foreach (DateTime current in GetDaysInRange(start, end))
             {
-                if (PersianCalendar.IsValidDateSelection(_owner, current))
+                if (HandyControl.Controls.PersianCalendar.IsValidDateSelection(_owner, current))
                 {
                     Add(current);
                     lastAddedDate = current;
@@ -381,7 +381,7 @@ namespace Microsoft.Windows.Controls
 
         internal void Toggle(DateTime date)
         {
-            if (PersianCalendar.IsValidDateSelection(_owner, date))
+            if (HandyControl.Controls.PersianCalendar.IsValidDateSelection(_owner, date))
             {
                 switch (_owner.SelectionMode)
                 {
@@ -424,7 +424,7 @@ namespace Microsoft.Windows.Controls
 
         private void RaiseSelectionChanged(IList removedItems, IList addedItems)
         {
-            _owner.OnSelectedDatesCollectionChanged(new CalendarSelectionChangedEventArgs(PersianCalendar.SelectedDatesChangedEvent, removedItems, addedItems));
+            _owner.OnSelectedDatesCollectionChanged(new CalendarSelectionChangedEventArgs(HandyControl.Controls.PersianCalendar.SelectedDatesChangedEvent, removedItems, addedItems));
         }
 
         private void BeginAddRange()

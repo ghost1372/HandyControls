@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:local="clr-namespace:Microsoft.Windows.Controls"
                      xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives"
                     xmlns:controls="clr-namespace:HandyControl.Controls"
                     xmlns:tools="clr-namespace:HandyControl.Tools">
@@ -450,11 +449,11 @@
                     </controls:SimplePanel>
                     <ControlTemplate.Triggers>
 
-                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=local:PersianCalendar}}" Value="Year">
+                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=controls:PersianCalendar}}" Value="Year">
                             <Setter Property="Visibility" TargetName="PART_MonthView" Value="Hidden"/>
                             <Setter Property="Visibility" TargetName="PART_YearView" Value="Visible"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=local:PersianCalendar}}" Value="Decade">
+                        <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=controls:PersianCalendar}}" Value="Decade">
                             <Setter Property="Visibility" TargetName="PART_MonthView" Value="Hidden"/>
                             <Setter Property="Visibility" TargetName="PART_YearView" Value="Visible"/>
                         </DataTrigger>
@@ -483,7 +482,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="CalendarBaseStylePersian" TargetType="local:PersianCalendar">
+    <Style x:Key="CalendarBaseStylePersian" TargetType="controls:PersianCalendar">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
@@ -494,7 +493,7 @@
         <Setter Property="controls:TitleElement.Background" Value="{DynamicResource TitleBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:PersianCalendar">
+                <ControlTemplate TargetType="controls:PersianCalendar">
                     <StackPanel x:Name="PART_Root" HorizontalAlignment="Center">
                         <primitives:CalendarItem x:Name="PART_CalendarItem" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"/>
                     </StackPanel>
@@ -504,6 +503,6 @@
     </Style>
 
     <Style TargetType="Calendar" BasedOn="{StaticResource CalendarBaseStyle}"/>
-    <Style TargetType="local:PersianCalendar" BasedOn="{StaticResource CalendarBaseStylePersian}"/>
+    <Style TargetType="controls:PersianCalendar" BasedOn="{StaticResource CalendarBaseStylePersian}"/>
 
 </ResourceDictionary>

@@ -5,7 +5,6 @@
 //---------------------------------------------------------------------------
 
 using Microsoft.Windows.Controls.Primitives;
-using HandyControl;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -14,8 +13,16 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using CalendarAutomationPeer = Microsoft.Windows.Automation.Peers.CalendarAutomationPeer;
+using Microsoft.Windows.Controls;
+using CalendarMode = Microsoft.Windows.Controls.CalendarMode;
+using SelectedDatesCollection = Microsoft.Windows.Controls.SelectedDatesCollection;
+using CalendarBlackoutDatesCollection = Microsoft.Windows.Controls.CalendarBlackoutDatesCollection;
+using CalendarModeChangedEventArgs = Microsoft.Windows.Controls.CalendarModeChangedEventArgs;
+using CalendarSelectionMode = Microsoft.Windows.Controls.CalendarSelectionMode;
+using CalendarDateChangedEventArgs = Microsoft.Windows.Controls.CalendarDateChangedEventArgs;
+using CalendarDateRange = Microsoft.Windows.Controls.CalendarDateRange;
 
-namespace Microsoft.Windows.Controls
+namespace HandyControl.Controls
 {
     /// <summary>
     /// Represents a control that enables a user to select a date by using a visual calendar display. 

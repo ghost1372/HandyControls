@@ -4,6 +4,7 @@
 //
 //---------------------------------------------------------------------------
 
+using HandyControl.Controls;
 using Microsoft.Windows.Controls;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;

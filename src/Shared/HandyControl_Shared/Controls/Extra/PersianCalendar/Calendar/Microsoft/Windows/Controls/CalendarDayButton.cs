@@ -201,7 +201,7 @@ namespace Microsoft.Windows.Controls.Primitives
 
         #region Internal Properties
 
-        internal Microsoft.Windows.Controls.PersianCalendar Owner
+        internal HandyControl.Controls.PersianCalendar Owner
         {
             get;
             set;
