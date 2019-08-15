@@ -192,8 +192,7 @@
                      <TabItem Header="Update">
                         <StackPanel>
                             <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate_Click"/>
-                            <Label Margin="10" Name="lblUpdate" Width="200"/>
-                            <Label Margin="10" Name="lblUrl" Width="200"/>
+                            <Label Margin="10" Name="lblUrl"/>
                             <TextBlock TextWrapping="WrapWithOverflow" Margin="10" Name="txtChangelog" Width="200"/>
                         </StackPanel>   
                      </TabItem>
