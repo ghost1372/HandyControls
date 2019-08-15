@@ -632,11 +632,11 @@ namespace HandyControl.Controls
             IslamicDay hijriNow;
             if (SelectedDate != null)
             {
-                hijriNow = IslamicDateUtils.GregorianToIslamicDay(SelectedDate.Value.Year, SelectedDate.Value.Month, SelectedDate.Value.Day + HijriAdjust);
+                hijriNow = DateHelper.GregorianToIslamicDay(SelectedDate.Value.Year, SelectedDate.Value.Month, SelectedDate.Value.Day + HijriAdjust);
             }
             else
             {
-                hijriNow = IslamicDateUtils.GregorianToIslamicDay(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day + HijriAdjust);
+                hijriNow = DateHelper.GregorianToIslamicDay(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day + HijriAdjust);
             }
 
             return hijriNow;

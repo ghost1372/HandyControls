@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
-namespace HandyControl
+namespace HandyControl.Controls
 {
     /// <summary>
-    /// کلاسی برای محاسبات تاریخ قمری
+    /// کلاسی برای محاسبات تاریخ قمری، شمسی، میلادی
     /// </summary>
-    public static class IslamicDateUtils
+    public static class DateHelper
     {
         private static readonly IDictionary<int, long[]> _yearsMonthsInJd = new Dictionary<int, long[]>();
         private static readonly int _supportedYearsStart;
@@ -18,7 +19,7 @@ namespace HandyControl
         /// <summary>
         /// ایده گرفته شده از: https://github.com/ebraminio/DroidPersianCalendar
         /// </summary>
-        static IslamicDateUtils()
+        static DateHelper()
         {
             // https://github.com/ilius/starcal/blob/master/scal3/cal_types/hijri-monthes.json
             int[] hijriMonths =
@@ -670,6 +671,18 @@ namespace HandyControl
         public static long PersianDayToJdn(this PersianDay persian)
         {
             return PersianDayToJdn(persian.Year, persian.Month, persian.Day);
+        }
+
+        /// <summary>
+        /// تبدیل تاریخ میلادی به شمسی
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static PersianDay GregorianToPersianDay(DateTime date)
+        {
+            System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
+            return new PersianDay(pc.GetYear(date), pc.GetMonth(date), pc.GetDayOfMonth(date));
+
         }
     }
 }

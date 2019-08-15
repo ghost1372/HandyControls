@@ -235,6 +235,7 @@ namespace HandyControlDemo.UserControl
             new AppHostWindow().ShowDialog();
         }
 
+        #region Update Helper
         private void btnCheckUpdate_Click(object sender, RoutedEventArgs e)
         {
             var isExist = UpdateHelper.IsNewVersionExist("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
@@ -251,5 +252,42 @@ namespace HandyControlDemo.UserControl
                 txtChangelog.Text = string.Empty;
             }
         }
+        #endregion
+
+        #region DateHelper
+        private void btnDateHelper_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            switch (btn.Tag)
+            {
+                case "I2P":
+                    Growl.InfoGlobal(DateHelper.IslamicDayToPersianDay(1440,10,12).ToString());
+                    break;
+                case "I2G":
+                    var iDate = new IslamicDay(1440, 10, 16);
+                    Growl.InfoGlobal(DateHelper.IslamicDayToGregorian(iDate).ToString());
+
+                    break;
+                case "P2I":
+                    Growl.InfoGlobal(DateHelper.PersianDayToIslamicDay(1398,5,24).ToString());
+
+                    break;
+                case "P2G":
+                    var pDate = new PersianDay(1398, 5, 24);
+
+                    Growl.InfoGlobal(DateHelper.PersianDayToGregorian(pDate).ToString());
+
+                    break;
+                case "G2P":
+                    Growl.InfoGlobal(DateHelper.GregorianToPersianDay(DateTime.Now).ToString());
+
+                    break;
+                case "G2I":
+                    Growl.InfoGlobal(DateHelper.GregorianToIslamicDay(2019,10,20).ToString());
+
+                    break;
+            }
+        }
+        #endregion
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace HandyControl
+namespace HandyControl.Controls
 {
     /// <summary>
     /// متدهای کمکی جهت کار با تاریخ میلادی

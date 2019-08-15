@@ -196,6 +196,16 @@
                             <TextBlock TextWrapping="WrapWithOverflow" Margin="10" Name="txtChangelog" Width="200"/>
                         </StackPanel>   
                      </TabItem>
+                    <TabItem Header="Date">
+                        <StackPanel>
+                            <Button Click="btnDateHelper_Click" Tag="I2P" Content="Islamic Date To Persian Date" Width="200" Margin="10"/>
+                            <Button Click="btnDateHelper_Click" Tag="I2G" Content="Islamic Date To Gregorian Date" Width="200" Margin="10"/>
+                            <Button Click="btnDateHelper_Click" Tag="P2I" Content="Persian Date To Islamic Date" Width="200" Margin="10"/>
+                            <Button Click="btnDateHelper_Click" Tag="P2G" Content="Persian Date To Gregorian Date" Width="200" Margin="10"/>
+                            <Button Click="btnDateHelper_Click" Tag="G2P" Content="Gregorian Date To Persian Date" Width="200" Margin="10"/>
+                            <Button Click="btnDateHelper_Click" Tag="G2I" Content="Gregorian Date To Islamic Date" Width="200" Margin="10"/>
+                        </StackPanel>
+                    </TabItem>
                 </TabControl>
             </TabItem>
         </TabControl>

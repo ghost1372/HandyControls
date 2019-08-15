@@ -1,33 +1,20 @@
 ﻿using System;
 
-namespace HandyControl
+namespace HandyControl.Controls
 {
     /// <summary>
-
-    /// اجزای سال شمسی
-
+    /// اجزای ماه شمسی
     /// </summary>
-
-    public class PersianYear
-
+    public class PersianMonth
     {
-
         /// <summary>
-
-        /// اولین روز سال شمسی
-
+        /// اولین روز ماه شمسی
         /// </summary>
-
         public DateTime StartDate { set; get; }
 
-
-
         /// <summary>
-
-        /// آخرین روز سال شمسی
-
+        /// آخرین روز ماه شمسی
         /// </summary>
-
         public DateTime EndDate { set; get; }
 
     }
