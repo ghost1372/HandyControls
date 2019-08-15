@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Instance\InstanceHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\HKEYType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\RegistryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\UpdateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoCompletingMaskEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoSelectBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoSelectTextBox.cs" />
@@ -844,6 +845,7 @@
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\SpeedoMeter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Sprite.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

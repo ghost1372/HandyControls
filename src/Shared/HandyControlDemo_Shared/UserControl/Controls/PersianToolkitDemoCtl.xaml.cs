@@ -234,5 +234,22 @@ namespace HandyControlDemo.UserControl
         {
             new AppHostWindow().ShowDialog();
         }
+
+        private void btnCheckUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            var isExist = UpdateHelper.IsNewVersionExist("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
+            if(isExist)
+            {
+                lblUpdate.Content = "New Version Found!";
+                lblUrl.Content = UpdateHelper.URL;
+                txtChangelog.Text = UpdateHelper.ChangeLog;
+            }
+            else
+            {
+                lblUpdate.Content = "you are using latest version";
+                lblUrl.Content = string.Empty;
+                txtChangelog.Text = string.Empty;
+            }
+        }
     }
 }

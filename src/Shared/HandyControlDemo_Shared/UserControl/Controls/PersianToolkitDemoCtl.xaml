@@ -52,13 +52,6 @@
                     <hc:MaskedTextBox Margin="10,20" Mask="(000) 000-0000" ValueDataType="{x:Type s:String}"/>
                 </UniformGrid>
             </TabItem>
-            <TabItem Header="RegistryHelper">
-                <StackPanel Orientation="Horizontal" Margin="10">
-                    <Button Margin="10" Tag="btnAddReg" Click="Button_Click" Content="Add Registry Key"/>
-                    <Button Margin="10" Tag="btnGetReg" Click="Button_Click" Content="Get Registry Key"/>
-                    <Button Margin="10" Tag="btnDelReg" Click="Button_Click" Content="Delete Registry Key"/>
-                </StackPanel>
-            </TabItem>
             <TabItem Header="NeonLabel">
                 <StackPanel Margin="10">
                     <hc:NeonLabel x:Name="neon"
@@ -111,7 +104,19 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Cryptography">
+            <TabItem Header="AppHost">
+                <Button Content="Load Notepad inside window" Click="btnAppHost_Click"/>
+            </TabItem>
+            <TabItem Header="Helpers">
+                <TabControl>
+                     <TabItem Header="Registry">
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Button Margin="10" Tag="btnAddReg" Click="Button_Click" Content="Add Registry Key"/>
+                    <Button Margin="10" Tag="btnGetReg" Click="Button_Click" Content="Get Registry Key"/>
+                    <Button Margin="10" Tag="btnDelReg" Click="Button_Click" Content="Delete Registry Key"/>
+                </StackPanel>
+            </TabItem>
+                     <TabItem Header="Cryptography">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -176,7 +181,7 @@
                     </Grid>
                 </ScrollViewer>
             </TabItem>
-            <TabItem Header="Ini Config">
+                     <TabItem Header="Ini Config">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <Button Margin="10" Tag="add" Click="btnIniHelper_Click" Content="Add Value"/>
                     <Button Margin="10" Tag="read" Click="btnIniHelper_Click" Content="Read Value"/>
@@ -184,8 +189,15 @@
                     <Button Margin="10" Tag="exist" Click="btnIniHelper_Click" Content="Exist Value"/>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="AppHost">
-                <Button Content="Load Notepad inside window" Click="btnAppHost_Click"/>
+                     <TabItem Header="Update">
+                        <StackPanel>
+                            <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate_Click"/>
+                            <Label Margin="10" Name="lblUpdate" Width="200"/>
+                            <Label Margin="10" Name="lblUrl" Width="200"/>
+                            <TextBlock TextWrapping="WrapWithOverflow" Margin="10" Name="txtChangelog" Width="200"/>
+                        </StackPanel>   
+                     </TabItem>
+                </TabControl>
             </TabItem>
         </TabControl>
     </hc:TransitioningContentControl>
