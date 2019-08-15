@@ -853,7 +853,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 托盘图标.
+        ///   查找类似 桌面通知 的本地化字符串。
+        /// </summary>
+        public static string Notification {
+            get {
+                return ResourceManager.GetString("Notification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 托盘图标 的本地化字符串。
         /// </summary>
         public static string NotifyIcon {
             get {
@@ -1330,7 +1339,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 徽章.
+        ///   查找类似 发送通知 的本地化字符串。
+        /// </summary>
+        public static string SendNotification {
+            get {
+                return ResourceManager.GetString("SendNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 徽章 的本地化字符串。
         /// </summary>
         public static string Shield {
             get {
@@ -1389,6 +1407,15 @@ namespace HandyControlDemo.Properties.Langs {
         public static string Sprite {
             get {
                 return ResourceManager.GetString("Sprite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保持打开 的本地化字符串。
+        /// </summary>
+        public static string StaysOpen {
+            get {
+                return ResourceManager.GetString("StaysOpen", resourceCulture);
             }
         }
         
