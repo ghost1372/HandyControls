@@ -86,12 +86,20 @@ namespace HandyControlDemo.UserControl
         {
             for (int i = 0; i < 181; i++)
             {
-                Dispatcher.Invoke(() =>
+#if netle40
+                Action a1 = delegate()
+                {
+                    sp.Value = i;
+                    sld.Value = i;
+                };
+                Dispatcher.Invoke(DispatcherPriority.Normal, a1);
+#else
+               Dispatcher.Invoke(() =>
                 {
                     sp.Value = i;
                     sld.Value = i;
                 });
-
+#endif
                 Thread.Sleep(30);
 
                 if (i == 180)
@@ -99,11 +107,20 @@ namespace HandyControlDemo.UserControl
                     while (i > 0)
                     {
                         i--;
-                        Dispatcher.Invoke(() =>
-                        {
-                            sp.Value = i;
-                            sld.Value = i;
-                        });
+#if netle40
+                Action a2 = delegate()
+                {
+                    sp.Value = i;
+                    sld.Value = i;
+                };
+                Dispatcher.Invoke(DispatcherPriority.Normal, a2);
+#else
+               Dispatcher.Invoke(() =>
+                {
+                    sp.Value = i;
+                    sld.Value = i;
+                });
+#endif
 
                         Thread.Sleep(30);
                         if (i == 0)
@@ -117,11 +134,20 @@ namespace HandyControlDemo.UserControl
         {
             for (int i = 0; i < 121; i++)
             {
-                Dispatcher.Invoke(() =>
+#if netle40
+                Action a1 = delegate()
+                {
+                    sp2.Value = i;
+                    sld2.Value = i;
+                };
+                Dispatcher.Invoke(DispatcherPriority.Normal, a1);
+#else
+               Dispatcher.Invoke(() =>
                 {
                     sp2.Value = i;
                     sld2.Value = i;
                 });
+#endif
                 Thread.Sleep(30);
 
                 if (i == 120)
@@ -129,11 +155,20 @@ namespace HandyControlDemo.UserControl
                     while (i > 0)
                     {
                         i--;
-                        Dispatcher.Invoke(() =>
-                        {
-                            sp2.Value = i;
-                            sld2.Value = i;
-                        });
+#if netle40
+                Action a2 = delegate()
+                {
+                    sp2.Value = i;
+                    sld2.Value = i;
+                };
+                Dispatcher.Invoke(DispatcherPriority.Normal, a2);
+#else
+               Dispatcher.Invoke(() =>
+                {
+                    sp2.Value = i;
+                    sld2.Value = i;
+                });
+#endif
 
                         Thread.Sleep(30);
                         if (i == 0)
@@ -254,7 +289,7 @@ namespace HandyControlDemo.UserControl
             new AppHostWindow().ShowDialog();
         }
 
-        #region Update Helper
+#region Update Helper
         private void btnCheckUpdate_Click(object sender, RoutedEventArgs e)
         {
             var isExist = UpdateHelper.IsNewVersionExist("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
@@ -271,9 +306,9 @@ namespace HandyControlDemo.UserControl
                 txtChangelog.Text = string.Empty;
             }
         }
-        #endregion
+#endregion
 
-        #region DateHelper
+#region DateHelper
         private void btnDateHelper_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
@@ -307,6 +342,6 @@ namespace HandyControlDemo.UserControl
                     break;
             }
         }
-        #endregion
+#endregion
     }
 }
