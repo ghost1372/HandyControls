@@ -81,6 +81,9 @@
                     <Button Tag="en" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
                         <Image Width="32" Source="/HandyControlDemo;component/Resources/Img/Flag/en.png"/>
                     </Button>
+                    <Button Tag="fa" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
+                        <Image Width="32" Source="/HandyControlDemo;component/Resources/Img/Flag/fa.png"/>
+                    </Button>
                     <Button Tag="fr" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
                         <Image Width="32" Source="/HandyControlDemo;component/Resources/Img/Flag/fr.png"/>
                     </Button>
