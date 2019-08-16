@@ -20,7 +20,7 @@ namespace HandyControl.Tools
 
         public static ConfigHelper Instance = new Lazy<ConfigHelper>(() => new ConfigHelper()).Value; 
 
-        private XmlLanguage _lang = XmlLanguage.GetLanguage("en-us");
+        private XmlLanguage _lang = XmlLanguage.GetLanguage("en");
 
         public XmlLanguage Lang
         {
