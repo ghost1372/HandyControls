@@ -1,8 +1,8 @@
 ﻿using HandyControl.Controls;
 using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.IO;
-using System.Net.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,7 +31,7 @@ namespace HandyControlDemo.UserControl
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-           if(tab.SelectedIndex == 5)
+           if(tab.SelectedIndex == 4)
             {
                 count++;
                 switch (count)
@@ -86,8 +86,12 @@ namespace HandyControlDemo.UserControl
         {
             for (int i = 0; i < 181; i++)
             {
-                sp.Value = i;
-                sld.Value = i;
+                Dispatcher.Invoke(() =>
+                {
+                    sp.Value = i;
+                    sld.Value = i;
+                });
+
                 Thread.Sleep(30);
 
                 if (i == 180)
@@ -95,8 +99,11 @@ namespace HandyControlDemo.UserControl
                     while (i > 0)
                     {
                         i--;
-                        sp.Value = i;
-                        sld.Value = i;
+                        Dispatcher.Invoke(() =>
+                        {
+                            sp.Value = i;
+                            sld.Value = i;
+                        });
 
                         Thread.Sleep(30);
                         if (i == 0)
@@ -110,8 +117,11 @@ namespace HandyControlDemo.UserControl
         {
             for (int i = 0; i < 121; i++)
             {
-                sp2.Value = i;
-                sld2.Value = i;
+                Dispatcher.Invoke(() =>
+                {
+                    sp2.Value = i;
+                    sld2.Value = i;
+                });
                 Thread.Sleep(30);
 
                 if (i == 120)
@@ -119,8 +129,11 @@ namespace HandyControlDemo.UserControl
                     while (i > 0)
                     {
                         i--;
-                        sp2.Value = i;
-                        sld2.Value = i;
+                        Dispatcher.Invoke(() =>
+                        {
+                            sp2.Value = i;
+                            sld2.Value = i;
+                        });
 
                         Thread.Sleep(30);
                         if (i == 0)
@@ -130,10 +143,16 @@ namespace HandyControlDemo.UserControl
                 }
             }
         }
+        BackgroundWorker worker = new BackgroundWorker();
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Parallel.Invoke(startSpeedoMeter1, startSpeedoMeter2);
+        }
+
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            startSpeedoMeter1();
-            startSpeedoMeter2();
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerAsync();
         }
 #endregion
 
