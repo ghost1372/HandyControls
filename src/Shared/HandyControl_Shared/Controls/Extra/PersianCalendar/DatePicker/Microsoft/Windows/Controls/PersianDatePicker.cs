@@ -4,7 +4,6 @@
 //
 //---------------------------------------------------------------------------
 
-using HandyControl;
 using Microsoft.Windows.Controls;
 using System;
 using System.Collections.Generic;
@@ -540,20 +539,6 @@ namespace HandyControl.Controls
             }
         }
 
-        public IslamicDay GetSelectedDateToHijriDate(int HijriAdjust = -1)
-        {
-            IslamicDay hijriNow;
-            if (SelectedDate != null)
-            {
-                hijriNow = DateHelper.GregorianToIslamicDay(SelectedDate.Value.Year, SelectedDate.Value.Month, SelectedDate.Value.Day + HijriAdjust);
-            }
-            else
-            {
-                hijriNow = DateHelper.GregorianToIslamicDay(DisplayDate.Year, DisplayDate.Month, DisplayDate.Day + HijriAdjust);
-            }
-
-            return hijriNow;
-        }
         public string GetSelectedDateToPersianDate()
         {
             System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();

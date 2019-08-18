@@ -627,21 +627,6 @@ namespace HandyControl.Controls
             }
         }
 
-        public IslamicDay GetSelectedDateToHijriDate(int HijriAdjust = -1)
-        {
-            IslamicDay hijriNow;
-            if (SelectedDate != null)
-            {
-                hijriNow = DateHelper.GregorianToIslamicDay(SelectedDate.Value.Year, SelectedDate.Value.Month, SelectedDate.Value.Day + HijriAdjust);
-            }
-            else
-            {
-                hijriNow = DateHelper.GregorianToIslamicDay(CurrentDate.Year, CurrentDate.Month, CurrentDate.Day + HijriAdjust);
-            }
-
-            return hijriNow;
-        }
-       
         public string SelectedDateToString()
         {
             return string.Format("{0:yyyy/MM/dd}", _currentDate);

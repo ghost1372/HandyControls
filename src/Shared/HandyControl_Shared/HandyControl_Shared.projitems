@@ -85,13 +85,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerDateValidationErrorEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerFormat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerTextBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\DateHelper\DateTimeOffsetPart.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\DateHelper\DateTimeUtils.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\DateHelper\DateHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\DateHelper\IslamicDay.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\DateHelper\PersianDay.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\DateHelper\PersianMonth.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\DateHelper\PersianYear.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\HoneycombPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Slider\RangeSlider\RangeTrack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Slider\RangeSlider\RangeThumb.cs" />
