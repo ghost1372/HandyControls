@@ -15,7 +15,7 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 
 Step 1：Add a reference to HandyControl or search for HandyControl on the nuget; 
 
-```Install-Package HandyControl```
+```Install-Package HandyControls```
 
 Step 2：Add code in App.xaml as follows:
 ```XML
