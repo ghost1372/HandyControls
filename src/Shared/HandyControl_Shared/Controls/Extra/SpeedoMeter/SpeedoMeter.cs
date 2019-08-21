@@ -8,8 +8,23 @@ namespace HandyControl.Controls
 {
     public class SpeedoMeter : ContentControl
     {
-        public event EventHandler ValueChanged;
+        protected virtual void OnValueChanged(FunctionEventArgs<double> e) => RaiseEvent(e);
 
+        /// <summary>
+        ///     值改变事件
+        /// </summary>
+        public static readonly RoutedEvent ValueChangedEvent =
+            EventManager.RegisterRoutedEvent("ValueChanged", RoutingStrategy.Bubble,
+                typeof(EventHandler<FunctionEventArgs<double>>), typeof(SpeedoMeter));
+
+        /// <summary>
+        ///     值改变事件
+        /// </summary>
+        public event EventHandler<FunctionEventArgs<double>> ValueChanged
+        {
+            add => AddHandler(ValueChangedEvent, value);
+            remove => RemoveHandler(ValueChangedEvent, value);
+        }
         #region Value
         public double Value
         {
@@ -18,16 +33,17 @@ namespace HandyControl.Controls
         }
 
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double0Box, OnChanged, OnCoerceValueChanged));
+            DependencyProperty.Register("Value", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double0Box, OnValueChanged, OnCoerceValueChanged));
 
-        private static void OnChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            SpeedoMeter speedoMeter = (SpeedoMeter)d;
-            EventHandler handler = speedoMeter.ValueChanged;
-            if (handler != null)
+            var ctl = (SpeedoMeter)d;
+            var v = (double)e.NewValue;
+            
+            ctl.OnValueChanged(new FunctionEventArgs<double>(ValueChangedEvent, ctl)
             {
-                handler(speedoMeter, EventArgs.Empty);
-            }
+                Info = v
+            });
         }
 
         private static object OnCoerceValueChanged(DependencyObject d, object value)
