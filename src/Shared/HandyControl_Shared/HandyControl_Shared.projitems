@@ -15,7 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\MultiValueConverterAdapter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Cryptography\CryptographyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InIHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Instance\InstanceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InstanceHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\HKEYType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\RegistryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\UpdateHelper.cs" />
