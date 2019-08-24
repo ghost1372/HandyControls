@@ -44,31 +44,19 @@ namespace HandyControl.Controls
                 Mouse.OverrideCursor = Cursors.Arrow;
                 MouseHook.Stop();
                 MouseHook.StatusChanged -= MouseHook_StatusChanged;
+                ColorPicker.IsCheckedToggleButtonDropper(false);
             }
         }
 
         private void MouseHook_StatusChanged(object sender, MouseHookEventArgs e)
         {
-            var window = System.Windows.Window.GetWindow(_colorPicker);
-            if (window == null)
+            UpdateCursor(true);
+            var brush = new SolidColorBrush(GetColorAt(e.Point.X, e.Point.Y));
+            _colorPicker.SelectedBrush = brush;
+            if (e.Message == MouseHookMessageType.LeftButtonDown)
             {
                 UpdateCursor(false);
-
-                return;
-            }
-
-            if (!_colorPicker.IsMouseOver && window.IsMouseOver)
-            {
-                UpdateCursor(true);
-                if (e.Message == MouseHookMessageType.LeftButtonDown)
-                {
-                    var brush = new SolidColorBrush(GetColorAt(e.Point.X, e.Point.Y));
-                    _colorPicker.SelectedBrush = brush;
-                }
-            }
-            else
-            {
-                UpdateCursor(false);
+                Update(false);
             }
         }
 
