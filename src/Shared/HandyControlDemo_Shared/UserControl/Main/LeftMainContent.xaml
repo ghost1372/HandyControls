@@ -200,7 +200,12 @@
                                 <Image Source="../../Resources/Img/LeftMainContent/ImageStack_16x.png"/>
                             </hc:EdgeElement.LeftContent>
                         </ListBoxItem>
-                        <ListBoxItem Style="{StaticResource ListBoxItemNew}" Tag="{x:Static data:MessageToken.ImageBlockDemoCtl}" Content="{x:Static langs:Lang.ImageBlock}">
+                         <ListBoxItem Style="{StaticResource ListBoxItemNew}" Tag="{x:Static data:MessageToken.FloatingBlockDemoCtl}" Content="{x:Static langs:Lang.FloatingBlock}">
+                            <hc:EdgeElement.LeftContent>
+                                <Image Source="../../Resources/Img/LeftMainContent/thumbs_up.png"/>
+                            </hc:EdgeElement.LeftContent>
+                        </ListBoxItem>
+                        <ListBoxItem Tag="{x:Static data:MessageToken.ImageBlockDemoCtl}" Content="{x:Static langs:Lang.ImageBlock}">
                             <hc:EdgeElement.LeftContent>
                                 <Image Source="../../Resources/Img/LeftMainContent/ImageStack_16x.png"/>
                             </hc:EdgeElement.LeftContent>
