@@ -111,7 +111,9 @@ var messageList = new List<string>
 	"MainWindow",
 	"OverView",
 	"ProjectsView",
-	"BlogsView"
+	"BlogsView",
+	"NotifyIconDemo",
+	"NotifyIconContextDemo"
 };
 #>
 namespace HandyControlDemo.Data
