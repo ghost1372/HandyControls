@@ -292,20 +292,59 @@ namespace HandyControlDemo.UserControl
 #region Update Helper
         private void btnCheckUpdate_Click(object sender, RoutedEventArgs e)
         {
-            var isExist = UpdateHelper.IsNewVersionExist("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
-            if(isExist)
+            var ver = UpdateHelper.CheckForUpdate("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
+            if(ver.IsExistNewVersion)
             {
                 Growl.InfoGlobal("New Version Found!");
-                lblUrl.Content = UpdateHelper.URL;
-                txtChangelog.Text = UpdateHelper.ChangeLog;
+                lblUrl.Text = ver.Url;
+                txtChangelog.Text = ver.Changelog;
             }
             else
             {
                 Growl.ErrorGlobal("you are using latest version");
-                lblUrl.Content = string.Empty;
+                lblUrl.Text = string.Empty;
                 txtChangelog.Text = string.Empty;
             }
         }
-#endregion
+
+        private void btnCheckUpdate2_Click(object sender, RoutedEventArgs e)
+        {
+            if(!string.IsNullOrEmpty(txtus.Text) && !string.IsNullOrEmpty(txtrp.Text))
+            {
+                var ver = UpdateHelper.CheckForUpdateGithubRelease(txtus.Text, txtrp.Text);
+                if (ver.IsExistNewVersion)
+                {
+                    Growl.InfoGlobal("New Version Found!");
+                    lblUrl2.Text = ver.Url;
+                    lbl1.Text = ver.CreatedAt.ToString();
+                    lbl2.Text = ver.PublishedAt.ToString();
+                    
+                    //Asset is List so maybe there is more than one file just use forech or increase index
+                    lbl3.Text = ver.Asset[0].browser_download_url;
+                    lbl4.Text = ver.IsPreRelease.ToString();
+                    lbl5.Text = ver.Asset[0].size.ToString();
+                    lbl6.Text = ver.Version;
+                    txtChangelog2.Text = ver.Changelog;
+                }
+                else
+                {
+                    Growl.ErrorGlobal("you are using latest version");
+                    lblUrl2.Text = string.Empty;
+                    lbl1.Text = string.Empty;
+                    lbl2.Text = string.Empty;
+                    lbl3.Text = string.Empty;
+                    lbl4.Text = string.Empty;
+                    lbl5.Text = string.Empty;
+                    lbl6.Text = string.Empty;
+                    txtChangelog2.Text = string.Empty;
+                }
+            }
+            else
+            {
+               Growl.ErrorGlobal("please use correct username and repo");
+            }
+
+        }
+        #endregion
     }
 }

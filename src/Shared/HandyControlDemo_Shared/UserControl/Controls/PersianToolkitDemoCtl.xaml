@@ -190,11 +190,58 @@
                 </StackPanel>
             </TabItem>
                      <TabItem Header="Update">
-                        <StackPanel>
-                            <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate_Click"/>
-                            <Label Margin="10" Name="lblUrl"/>
-                            <TextBlock TextWrapping="WrapWithOverflow" Margin="10" Name="txtChangelog" Width="200"/>
-                        </StackPanel>   
+                        <hc:ScrollViewer>
+                            <StackPanel>
+                                <GroupBox Header="WebHost">
+                                    <StackPanel>
+                                        <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate_Click"/>
+                                        <hc:TextBox IsReadOnly="True" Margin="10" Name="lblUrl"/>
+                                        <TextBox IsReadOnly="True" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" Margin="10" Name="txtChangelog" Height="100" Width="400" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="Github Release">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource LabelDanger}" Content="Github Username" Margin="5"/>
+                                            <hc:TextBox Name="txtus" Text="ghost1372" Margin="10" hc:InfoElement.Placeholder="Github Username" Width="200"/>
+                                            <Label Style="{DynamicResource LabelDanger}" Content="Github Repository" Margin="5"/>
+                                            <hc:TextBox Name="txtrp" Text="MoalemYar" Margin="10" hc:InfoElement.Placeholder="Github Repository" Width="200"/>
+                                        </StackPanel>
+                                        <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate2_Click"/>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource LabelInfo}" Content="Url" Margin="5"/>
+                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lblUrl2"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource LabelInfo}" Content="Created At " Margin="5"/>
+                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl1"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource LabelInfo}" Content="Published At " Margin="5"/>
+                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl2"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource LabelInfo}" Content="Download Url " Margin="5"/>
+                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl3"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource LabelInfo}" Content="Is PreRelease " Margin="5"/>
+                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl4"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource LabelInfo}" Content="Size " Margin="5"/>
+                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl5"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Style="{DynamicResource LabelInfo}" Content="Version " Margin="5"/>
+                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl6"/>
+                                        </StackPanel>
+                                        <TextBox IsReadOnly="True" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" Margin="5" Name="txtChangelog2" Width="400" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </hc:ScrollViewer>
                      </TabItem>
                 </TabControl>
             </TabItem>
