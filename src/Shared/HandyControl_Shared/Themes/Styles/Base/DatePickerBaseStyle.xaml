@@ -369,13 +369,13 @@
     </Style>
 
     <Style x:Key="DatePickerExtendBaseStylePersian" BasedOn="{StaticResource DatePickerBaseStylePersian}" TargetType="controls:PersianDatePicker">
-        <Setter Property="Height" Value="{x:Static system:Double.NaN}"/>
+        <Setter Property="Height" Value="Auto"/>
         <Setter Property="controls:InfoElement.Symbol" Value="●"/>
         <Setter Property="Template" Value="{StaticResource DatePickerExtendTopTemplatePersian}"/>
         <Style.Triggers>
             <Trigger Property="controls:InfoElement.TitleAlignment" Value="Left">
                 <Setter Property="Template" Value="{StaticResource DatePickerExtendLeftTemplatePersian}"/>
-                <Setter Property="Width" Value="{x:Static system:Double.NaN}"/>
+                <Setter Property="Width" Value="Auto"/>
             </Trigger>
         </Style.Triggers>
     </Style>
