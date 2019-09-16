@@ -13,5 +13,6 @@
     <Style x:Key="TextBoxExtend" BasedOn="{StaticResource TextBoxExtendBaseStyle}" TargetType="TextBox"/>
 
     <Style BasedOn="{StaticResource TextBoxPlusBaseStyle}" TargetType="controls:TextBox"/>
+    <Style BasedOn="{StaticResource TextBoxPlusBaseStyle}" TargetType="controls:MaskedTextBox"/>
 
 </ResourceDictionary>

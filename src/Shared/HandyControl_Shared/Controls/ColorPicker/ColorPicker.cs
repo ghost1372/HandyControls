@@ -26,6 +26,7 @@ namespace HandyControl.Controls
     [TemplatePart(Name = ElementButtonDropper, Type = typeof(ToggleButton))]
     public class ColorPicker : Control, ISingleOpen
     {
+        internal static ColorPicker cPicker;
         #region Constants
 
         private const string ElementBorderColor = "PART_BorderColor";
@@ -361,6 +362,8 @@ namespace HandyControl.Controls
                     _isLoaded = true;
                 }
             };
+
+            cPicker = this;
         }
 
         public override void OnApplyTemplate()
@@ -730,6 +733,10 @@ namespace HandyControl.Controls
         }
 
         public bool CanDispose { get; } = true;
-        
+
+        public static void IsCheckedToggleButtonDropper(bool value)
+        {
+            ColorPicker.cPicker._toggleButtonDropper.IsChecked = value;
+        }
     }
 }

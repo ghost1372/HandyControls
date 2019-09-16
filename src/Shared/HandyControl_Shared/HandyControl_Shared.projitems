@@ -9,6 +9,34 @@
     <Import_RootNamespace>HandyControl</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\AppHost.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\BindableBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\ConverterBindableBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\MultiValueConverterAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Cryptography\CryptographyHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InIHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InstanceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\HKEYType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\RegistryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\UpdateHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoCompletingMaskEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoSelectBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\AutoSelectTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\CachedTextInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\ChangeTypeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\InsertKeyModeEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\MaskedTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\MaskFormatEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\QueryMoveFocusEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\QueryTextFromValueEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\QueryValueFromTextEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\TreeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MaskedTextBox\ValueRangeTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Loading\BusyIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Loading\LoadingIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MainContentBackground.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\NeonLabel\NeonLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\NeonLabel\NeonLabelType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\BackgroundSwitchElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\BorderElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\DataGridAttach.cs" />
@@ -19,6 +47,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PanelElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PasswordBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\RectangleAttach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\SpeedoMeter\Converter\Positive2Nagative.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\SpeedoMeter\Converter\SpeedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\SpeedoMeter\Converter\ValueToBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\SpeedoMeter\SpeedoMeter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\TextBlockAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Block\FloatingBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Button\SplitButton.cs" />
@@ -29,6 +61,32 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Notification.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Sprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\PersianCalendarWithClock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarButtonAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarDayButtonAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\PersianCalendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarBlackoutDatesCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarDateChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarDateRange.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarDateRangeChangingEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarDayButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarModeChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarSelectionChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\CalendarSelectionMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\DateTimeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\KeyboardHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\PersianCalendarHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\SelectedDatesCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Controls\VisualStates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\DatePicker\Microsoft\Windows\Automation\Peers\DatePickerAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\DatePicker\Microsoft\Windows\Controls\PersianDatePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerDateValidationErrorEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\DatePicker\Microsoft\Windows\Controls\DatePickerTextBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Block\ToggleBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\HoneycombPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Slider\RangeSlider\RangeTrack.cs" />
@@ -43,6 +101,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\BorderCircularClipConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\CornerRadiusSplitConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\Number2PercentageConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\ProgressBarWidthConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\RectangleCircularConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\ThicknessSplitConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Extension\FrameworkElementExtension.cs" />
@@ -367,6 +426,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\AppHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\CardBaseStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -400,6 +463,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\ToggleBlockBaseStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\BusyIndicator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -707,6 +774,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\NeonLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Notification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -791,6 +862,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\SpeedoMeter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Sprite.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -856,6 +931,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\MainContentBackground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

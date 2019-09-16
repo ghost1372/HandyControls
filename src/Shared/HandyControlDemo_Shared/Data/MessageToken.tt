@@ -4,6 +4,7 @@
 <# 
 var controlList = new List<string>
 {
+	"PersianToolkitDemoCtl",
 	"GrowlDemoCtl",
 	"LoadingDemoCtl",
 	"ImageBrowserDemoCtl",

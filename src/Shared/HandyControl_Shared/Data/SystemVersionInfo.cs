@@ -10,11 +10,12 @@ namespace HandyControl.Data
         public static SystemVersionInfo Windows10 => new SystemVersionInfo(10, 0, 10240);
         public static SystemVersionInfo Windows10_1809 => new SystemVersionInfo(10, 0, 17763);
 
-        public SystemVersionInfo(int major, int minor, int build)
+        public SystemVersionInfo(int major, int minor, int build, int revision = 0)
         {
             Major = major;
             Minor = minor;
             Build = build;
+            Revision = revision;
         }
 
         public int Major { get; }
@@ -23,11 +24,13 @@ namespace HandyControl.Data
 
         public int Build { get; }
 
-        public bool Equals(SystemVersionInfo other) => Major == other.Major && Minor == other.Minor && Build == other.Build;
+        public int Revision { get; }
+
+        public bool Equals(SystemVersionInfo other) => Major == other.Major && Minor == other.Minor && Build == other.Build && Revision == other.Revision;
 
         public override bool Equals(object obj) => obj is SystemVersionInfo other && Equals(other);
 
-        public override int GetHashCode() => Major.GetHashCode() ^ Minor.GetHashCode() ^ Build.GetHashCode();
+        public override int GetHashCode() => Major.GetHashCode() ^ Minor.GetHashCode() ^ Build.GetHashCode() ^ Revision.GetHashCode();
 
         public static bool operator ==(SystemVersionInfo left, SystemVersionInfo right) => left.Equals(right);
 
@@ -48,6 +51,11 @@ namespace HandyControl.Data
             if (Build != other.Build)
             {
                 return Build.CompareTo(other.Build);
+            }
+
+            if(Revision != other.Revision)
+            {
+                return Revision.CompareTo(other.Revision);
             }
 
             return 0;
@@ -71,6 +79,6 @@ namespace HandyControl.Data
 
         public static bool operator >=(SystemVersionInfo left, SystemVersionInfo right) => left.CompareTo(right) >= 0;
 
-        public override string ToString() => $"{Major}.{Minor}.{Build}";
+        public override string ToString() => $"{Major}.{Minor}.{Build}.{Revision}";
     }
 }

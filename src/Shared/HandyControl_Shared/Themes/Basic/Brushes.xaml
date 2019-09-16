@@ -57,4 +57,21 @@
     <SolidColorBrush x:Key="DarkMaskBrush" Color="{DynamicResource DarkMaskColor}"/>
     <SolidColorBrush x:Key="DarkOpacityBrush" Color="{DynamicResource DarkOpacityColor}"/>
 
+    <SolidColorBrush x:Key="MainContentBackgroundBrush" Color="{DynamicResource MainContentBackgroundColor}"/>
+    <SolidColorBrush x:Key="MainContentForegroundBrush" Color="{DynamicResource MainContentForegroundColor}"/>
+
+    <DrawingBrush x:Key="MainContentForegroundDrawingBrush" RenderOptions.CachingHint="Cache" Viewport="0,0,16,16" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="{DynamicResource MainContentForegroundBrush}">
+                    <GeometryDrawing.Geometry>
+                        <GeometryGroup>
+                            <RectangleGeometry Rect="0,0,8,8" />
+                            <RectangleGeometry Rect="8,8,8,8" />
+                        </GeometryGroup>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
 </ResourceDictionary>

@@ -142,6 +142,20 @@
         public const string NpDoublePattern = @"^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$";
 
         /// <summary>
+        ///     شناسایی حروف فارسی
+        /// </summary>
+        public const string PersianPattern = @"^([\u0600-\u0605 ؐ-ؚ\u061Cـ ۖ-\u06DD ۟-ۤ ۧ ۨ ۪-ۭ ً-ٕ ٟ ٖ-ٞ ٰ ، ؍ ٫ ٬ ؛ ؞ ؟ ۔ ٭ ٪ ؉ ؊ ؈ ؎ ؏
+۞ ۩ ؆ ؇ ؋  0 1 2 3 4 5 6 7 8 9 ٠ ۰ ١ ۱ ٢ ۲ ٣ ۳ ٤ ۴ ٥ ۵ ٦ ۶ ٧ ۷ ٨ ۸ ٩ ۹ ءٴ۽ آ أ ٲ ٱ ؤ إ ٳ ئ ا ٵ ٮ ب ٻ پ ڀ
+ة-ث ٹ ٺ ټ ٽ ٿ ج ڃ ڄ چ ڿ ڇ ح خ ځ ڂ څ د ذ ڈ-ڐ ۮ ر ز ڑ-ڙ ۯ س ش ښ-ڜ ۺ ص ض ڝ ڞ
+ۻ ط ظ ڟ ع غ ڠ ۼ ف ڡ-ڦ ٯ ق ڧ ڨ ك ک-ڴ ػ ؼ ل ڵ-ڸ م۾ ن ں-ڽ ڹ ه ھ ہ-ۃ ۿ ەۀ وۥ ٶ
+ۄ-ۇ ٷ ۈ-ۋ ۏ ى يۦ ٸ ی-ێ ې ۑ ؽ-ؿ ؠ ے ۓ \u061D])+$";
+
+        /// <summary>
+        ///     شناسایی کد ملی
+        /// </summary>
+        public const string IranNationalCodePattern = @"^(?!(\d)\1{9})\d{10}$";
+
+        /// <summary>
         ///     根据属性名称使用反射来获取值
         /// </summary>
         /// <param name="propertyName"></param>

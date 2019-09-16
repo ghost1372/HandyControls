@@ -1,27 +1,11 @@
 ![logo](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/icon.png)
 
-![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) ![csharp-version](https://img.shields.io/badge/C%23-7.3-blue.svg) ![IDE-version](https://img.shields.io/badge/IDE-vs2019-blue.svg) [![nuget-version](https://img.shields.io/nuget/v/HandyControl.svg)](https://www.nuget.org/packages/HandyControl) [![build-status](https://ci.appveyor.com/api/projects/status/github/handyorg/handycontrol?svg=true)](https://ci.appveyor.com/project/handyorg/handycontrol) [![Join the chat at https://gitter.im/HandyControl/Lobby](https://badges.gitter.im/HandyControl/Lobby.svg)](https://gitter.im/HandyControl/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![qq-group](https://img.shields.io/badge/qq-714704041-red.svg)](//shang.qq.com/wpa/qunwpa?idkey=a571e5553c9d41e49c4f22f3a8b2865451497a795ff281fedf3285def247efc1)
-[![wiki](https://img.shields.io/badge/wiki-Complete-brightgreen.svg)](https://github.com/ghost1372/HandyControl/wiki) [![Nuget](https://img.shields.io/nuget/dt/handycontrol)](https://www.nuget.org/packages/HandyControl)
+![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) ![csharp-version](https://img.shields.io/badge/C%23-7.3-blue.svg) ![IDE-version](https://img.shields.io/badge/IDE-vs2019-blue.svg) [![nuget-version](https://img.shields.io/nuget/v/HandyControls.svg)](https://www.nuget.org/packages/HandyControls)  [![Gitter](https://badges.gitter.im/HandyControls/community.svg)](https://gitter.im/HandyControls/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![wiki](https://img.shields.io/badge/wiki-Complete-brightgreen.svg)](https://github.com/ghost1372/HandyControl/wiki) [![Nuget](https://img.shields.io/nuget/dt/handycontrols)](https://www.nuget.org/packages/HandyControls)
 
 # Welcome to HandyControl
-
-## We're all here
-
-![qq-group](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/qq-group.png)
-
-## 面向中国
-
-### 中文文档（刚开始写）
-
-[https://handyorg.github.io/handycontrol/](https://handyorg.github.io/handycontrol/)
-
-### 捐赠
-如果您觉得HandyControl还不错，并且刚好有些闲钱，那么可以选择以下两种方式来捐赠：
-
-* [以HandyControl的名义为慈善事业做贡献](http://www.chinacharityfederation.org/ConfirmDonation/0.html?zhijie=3)  
-
-* 为我们购买防脱洗发水  
-![qrcode](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/qrcode.png)
+This project is based on [HandyControl](https://github.com/handyOrg/HandyControl) But this project includes some controls and features that are not included in the original project[For example, support for Persian Calendar]
+[See the changes here](https://github.com/ghost1372/HandyControl/wiki/Documentation#features-included-in-handycontrols-this-is-a-custom-version-based-on-original-handycontrol) 
 
 ## Special thanks to
 
@@ -31,7 +15,7 @@
 
 Step 1：Add a reference to HandyControl or search for HandyControl on the nuget; 
 
-```Install-Package HandyControl```
+```Install-Package HandyControls```
 
 Step 2：Add code in App.xaml as follows:
 ```XML
@@ -52,7 +36,7 @@ Step 4：enjoy coding
 
 ## VSIX packages for Visual Studio
 
-| [VS2019](https://marketplace.visualstudio.com/items?itemName=HandyOrg.handycontrolforvs2019) |
+| [VS2019](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.HandyControls) |
 | ------------- |
 
 ## Overview

@@ -12,6 +12,7 @@
     <Description>Contains some commonly used simple WPF controls</Description>
     <Configurations>Debug;Release</Configurations>
     <LangVersion>latest</LangVersion>
+    <FileVersion>2.1.11.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;Core</DefineConstants>
@@ -43,13 +44,25 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Resources\ExceptionStringTable.txt">
+      <Type>Resx</Type>
+      <WithCulture>false</WithCulture>
+      <ManifestResourceName>ExceptionStringTable</ManifestResourceName>
+    </EmbeddedResource>
     <Compile Include="..\..\Shared\HandyControl_Shared\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Shared\HandyControl_Shared\Resources\SR.cs" />
+    <Compile Include="..\..\Shared\HandyControl_Shared\Resources\SRID.cs" />
+  </ItemGroup>
   <Import Project="..\..\Shared\HandyControl_Shared\HandyControl_Shared.projitems" Label="Shared" />
   <ItemGroup>
     <None Remove="Themes\Styles\Base\TreeViewBaseStyle.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Management" Version="4.6.0-preview7.19362.9" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="..\..\Shared\HandyControl_Shared\Resources\dropper.cur">

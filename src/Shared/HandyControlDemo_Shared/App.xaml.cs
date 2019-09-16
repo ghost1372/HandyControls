@@ -2,6 +2,7 @@
 using System.Net;
 using System.Security.Authentication;
 using System.Windows;
+using HandyControl.Controls;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControlDemo.Data;
@@ -11,9 +12,12 @@ namespace HandyControlDemo
 {
     public partial class App
     {
+       
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            
+            InstanceHelper.IsSingleInstance();
 
             ShutdownMode = ShutdownMode.OnMainWindowClose;
             GlobalData.Init();
@@ -25,7 +29,6 @@ namespace HandyControlDemo
             }
 
             ConfigHelper.Instance.SetSystemVersionInfo(CommonHelper.GetSystemVersionInfo());
-
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)(SslProtocols)0x00000C00;
         }
 
