@@ -1,9 +1,11 @@
 ﻿namespace HandyControlDemo.Data
 {
 	public class MessageToken
-    {
+    {        
+		/*-------------------- Controls --------------------*/
+
         public static readonly string PersianToolkitDemoCtl = nameof(PersianToolkitDemoCtl);
-        
+
         public static readonly string GrowlDemoCtl = nameof(GrowlDemoCtl);
 	
         public static readonly string LoadingDemoCtl = nameof(LoadingDemoCtl);
@@ -120,7 +122,13 @@
 	
         public static readonly string SplitButtonDemoCtl = nameof(SplitButtonDemoCtl);
 	
-        public static readonly string ButtonDemoCtl = nameof(ButtonDemoCtl);
+    	/*-------------------- Tools --------------------*/
+
+	    public static readonly string HatchBrushGeneratorDemoCtl = nameof(HatchBrushGeneratorDemoCtl);
+
+    	/*-------------------- Styles --------------------*/
+
+	    public static readonly string ButtonDemoCtl = nameof(ButtonDemoCtl);
 
         public static readonly string RepeatButtonDemoCtl = nameof(RepeatButtonDemoCtl);
 
@@ -176,11 +184,15 @@
 
         public static readonly string LabelDemoCtl = nameof(LabelDemoCtl);
 
-        public static readonly string CommonWindow = nameof(CommonWindow);
+    	/*-------------------- Windows --------------------*/
+
+	    public static readonly string CommonWindow = nameof(CommonWindow);
 
         public static readonly string CustomNonClientAreaWindow = nameof(CustomNonClientAreaWindow);
 
-        public static readonly string LoadShowContent = nameof(LoadShowContent);
+    	/*-------------------- Messages --------------------*/
+
+	    public static readonly string LoadShowContent = nameof(LoadShowContent);
 
         public static readonly string FullSwitch = nameof(FullSwitch);
 

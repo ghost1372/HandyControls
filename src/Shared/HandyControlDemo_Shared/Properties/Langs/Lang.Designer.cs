@@ -691,6 +691,15 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
+        ///   查找类似 阴影画笔生成器 的本地化字符串。
+        /// </summary>
+        public static string HatchBrushGenerator {
+            get {
+                return ResourceManager.GetString("HatchBrushGenerator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 蜂窝布局 的本地化字符串。
         /// </summary>
         public static string HoneycombPanel {
@@ -1627,7 +1636,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 穿梭框.
+        ///   查找类似 工具 的本地化字符串。
+        /// </summary>
+        public static string Tools {
+            get {
+                return ResourceManager.GetString("Tools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 穿梭框 的本地化字符串。
         /// </summary>
         public static string Transfer {
             get {
