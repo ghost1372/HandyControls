@@ -126,6 +126,8 @@
 
 	    public static readonly string HatchBrushGeneratorDemoCtl = nameof(HatchBrushGeneratorDemoCtl);
 
+        public static readonly string GeometryAnimationDemoCtl = nameof(GeometryAnimationDemoCtl);
+
     	/*-------------------- Styles --------------------*/
 
 	    public static readonly string ButtonDemoCtl = nameof(ButtonDemoCtl);

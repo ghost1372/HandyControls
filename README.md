@@ -47,6 +47,10 @@ Step 4：enjoy coding
 
 ## Latest examples
 
+### GeometryAnimation
+
+![GeometryAnimation](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/GeometryAnimation.gif)
+
 ### SplitButton
 
 ![SplitButton](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/SplitButton.png)
@@ -69,11 +73,11 @@ Step 4：enjoy coding
 
 ![ImageBlock](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/ImageBlock.png)
 
+## History publication
+
 ### Magnifier
 
 ![Magnifier](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/Magnifier.png)
-
-## History publication
 
 ### Card
 
