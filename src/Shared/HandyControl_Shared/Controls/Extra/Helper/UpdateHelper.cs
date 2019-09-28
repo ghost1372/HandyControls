@@ -6,7 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+#if !Core
 using System.Web.Script.Serialization;
+#endif
 using System.Xml.Linq;
 
 namespace HandyControl.Controls
@@ -155,9 +157,12 @@ namespace HandyControl.Controls
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+#if !Core
                     JavaScriptSerializer javaScript = new JavaScriptSerializer();
-
                     return javaScript.Deserialize<Root>(reader.ReadToEnd());
+#else
+                    return System.Text.Json.JsonSerializer.Deserialize<Root>(reader.ReadToEnd());
+#endif
                 }
             }
             catch (WebException ex)
@@ -173,8 +178,8 @@ namespace HandyControl.Controls
             }
         }
 
-        #region Model
-        #region Model for Deserialize json
+#region Model
+#region Model for Deserialize json
 
         public class Asset
         {
@@ -192,7 +197,7 @@ namespace HandyControl.Controls
             public List<Asset> assets { get; set; }
             public string body { get; set; }
         }
-        #endregion
+#endregion
 
         /// <summary>
         /// Model for Return data to user
@@ -218,6 +223,6 @@ namespace HandyControl.Controls
             public string Changelog { get; set; }
             public string Url { get; set; }
         }
-        #endregion
+#endregion
     }
 }

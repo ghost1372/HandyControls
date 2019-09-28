@@ -1,5 +1,7 @@
 ﻿using System.IO;
+#if !Core
 using Newtonsoft.Json;
+#endif
 
 namespace HandyControlDemo.Data
 {
@@ -12,7 +14,11 @@ namespace HandyControlDemo.Data
                 try
                 {
                     var json = File.ReadAllText(AppConfig.SavePath);
+#if !Core
                     Config = JsonConvert.DeserializeObject<AppConfig>(json);
+#else
+                   Config = System.Text.Json.JsonSerializer.Deserialize<AppConfig>(json);
+#endif
                 }
                 catch
                 {
@@ -27,7 +33,11 @@ namespace HandyControlDemo.Data
 
         public static void Save()
         {
+#if !Core
             var json = JsonConvert.SerializeObject(Config);
+#else
+            var json = System.Text.Json.JsonSerializer.Serialize<AppConfig>(Config);
+#endif
             File.WriteAllText(AppConfig.SavePath, json);
         }
 
