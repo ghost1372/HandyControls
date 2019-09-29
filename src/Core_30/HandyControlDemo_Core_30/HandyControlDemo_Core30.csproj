@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="2.0.2" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
-    <PackageReference Include="System.Management" Version="4.6.0-rc1.19456.4" />
+    <PackageReference Include="System.Management" Version="4.6.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Shared\HandyControlDemo_Shared\Data\MessageToken.cs">
