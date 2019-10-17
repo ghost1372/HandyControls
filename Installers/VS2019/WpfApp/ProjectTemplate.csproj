@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HandyControl, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HandyControls.2.4.1\lib\net47\HandyControl.dll</HintPath>
+      <HintPath>..\packages\HandyControls.2.4.2\lib\net47\HandyControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xaml">
