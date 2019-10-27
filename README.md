@@ -47,6 +47,10 @@ Step 4：enjoy coding
 
 ## Latest examples
 
+### Divider
+
+![Divider](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/Divider.png)
+
 ### GeometryAnimation
 
 ![GeometryAnimation](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/GeometryAnimation.gif)
@@ -63,6 +67,8 @@ Step 4：enjoy coding
 
 ![HoneycombPanel](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/HoneycombPanel.png)
 
+## History publication
+
 ### RunningBlock
 
 ![RunningBlock](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/RunningBlock.gif)
@@ -72,8 +78,6 @@ Step 4：enjoy coding
 ![ImageBlock](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/ImageBlock.gif)  
 
 ![ImageBlock](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/ImageBlock.png)
-
-## History publication
 
 ### Magnifier
 

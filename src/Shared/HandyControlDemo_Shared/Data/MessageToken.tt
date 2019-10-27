@@ -62,7 +62,8 @@ var controlList = new List<string>
 	"SpriteDemoCtl",
 	"NotificationDemoCtl",
 	"FloatingBlockDemoCtl",
-	"SplitButtonDemoCtl"
+	"SplitButtonDemoCtl",
+	"DividerDemoCtl"
 };
 var styleList = new List<string>
 {
