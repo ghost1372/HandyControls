@@ -6,7 +6,7 @@ namespace HandyControl.Controls
 {
     public class InIHelper
     {
-        internal static string AppName = Assembly.GetExecutingAssembly().GetName().Name;
+        internal static string AppName = Assembly.GetCallingAssembly().GetName().Name;
         internal static string Pathx = Environment.CurrentDirectory + @"\config.ini";
 
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
