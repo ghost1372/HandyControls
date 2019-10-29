@@ -44,7 +44,12 @@ namespace HandyControl.Tools
         public void SetLang(string lang)
         {
             Application.Current.Dispatcher.Thread.CurrentUICulture = new CultureInfo(lang);
-            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+
+            //BUG
+            //Todo: if we enable this GeometryAnimation Work Fine but PersianDatePicker Cant Run
+            // if we disable it PersianDatePicker Work Fine but GeometryAnimation Cant Run
+
+            //Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Lang = XmlLanguage.GetLanguage(lang);
         }
 
