@@ -5,8 +5,8 @@
     <Description>Creates a HandyControl WPF App(.NET Framework)</Description>
     <Icon>icon.ico</Icon>
     <ProjectType>CSharp</ProjectType>
-    <RequiredFrameworkVersion>4.7</RequiredFrameworkVersion>
-    <MaxFrameworkVersion>4.7.2</MaxFrameworkVersion>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <MaxFrameworkVersion>4.8</MaxFrameworkVersion>
     <TemplateID>38e0a2df-5858-4bde-b373-7c50bc982906</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>
     <DefaultName>HandyControlProject</DefaultName>
