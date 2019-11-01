@@ -10,6 +10,10 @@
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
     </Style>
 
+    <Style x:Key="BadgeDefault" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="controls:Badge">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+    </Style>
+    
     <Style x:Key="BadgePrimary" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="controls:Badge">
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
     </Style>
