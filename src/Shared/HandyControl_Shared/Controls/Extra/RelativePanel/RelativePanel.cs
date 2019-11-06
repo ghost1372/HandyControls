@@ -689,7 +689,11 @@ namespace HandyControl.Controls
             }
         }
 
+#if netle40
+        [MethodImpl(256)]
+#else
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+#endif
         public static object GetBoxed(bool value) => value ? ValueBoxes.TrueBox : ValueBoxes.FalseBox;
     }
 }
