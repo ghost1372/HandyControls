@@ -100,6 +100,8 @@
 	
         public static readonly string GridDemoCtl = nameof(GridDemoCtl);
 	
+        public static readonly string PoptipDemoCtl = nameof(PoptipDemoCtl);
+        
         public static readonly string RangeSliderDemoCtl = nameof(RangeSliderDemoCtl);
 	
         public static readonly string ButtonGroupDemoCtl = nameof(ButtonGroupDemoCtl);

@@ -63,6 +63,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\ButtonGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Card.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Notification.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Poptip.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Sprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\PersianCalendarWithClock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\Calendar\Microsoft\Windows\Automation\Peers\CalendarAutomationPeer.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Slider\RangeSlider\TwoWayRangeBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Block\RunningBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\HatchStyle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\MouseHitMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\HitMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\ShowAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\NotifyIconInfoType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\CloseWindowCommand.cs" />
@@ -441,6 +442,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\SkinViolet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Poptip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\PoptipBaseStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
