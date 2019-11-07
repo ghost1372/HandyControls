@@ -6,7 +6,7 @@
     <Icon>icon.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
-    <MaxFrameworkVersion>4.8</MaxFrameworkVersion>
+    <MaxFrameworkVersion>4.7.2</MaxFrameworkVersion>
     <TemplateID>38e0a2df-5858-4bde-b373-7c50bc982906</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>
     <DefaultName>HandyControlProject</DefaultName>
@@ -19,6 +19,7 @@
   <TemplateContent>
     <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\DesignTimeResources.xaml">DesignTimeResources.xaml</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="App.xaml">App.xaml</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="App.xaml.cs">App.xaml.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="MainWindow.xaml">MainWindow.xaml</ProjectItem>
