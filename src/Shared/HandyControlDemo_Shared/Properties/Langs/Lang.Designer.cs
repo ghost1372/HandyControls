@@ -1691,7 +1691,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 树视图.
+        ///   查找类似 内容过渡控件 的本地化字符串。
+        /// </summary>
+        public static string TransitioningContentControl {
+            get {
+                return ResourceManager.GetString("TransitioningContentControl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 树视图 的本地化字符串。
         /// </summary>
         public static string TreeView {
             get {
