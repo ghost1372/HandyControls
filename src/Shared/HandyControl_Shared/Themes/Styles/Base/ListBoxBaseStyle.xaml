@@ -62,6 +62,29 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="ListBoxItemModernBaseStyle" BasedOn="{StaticResource ListBoxItemBaseStyle}" TargetType="ListBoxItem">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3,0,0,0">
+                            <Path Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" Fill="{TemplateBinding Foreground}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}"/>
+                            <ContentPresenter Margin="6,0,0,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="true">
+                <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="3,0,0,0"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="ListBoxBaseStyle" TargetType="ListBox">
         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -85,6 +108,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="ListBoxBaseModernStyle" BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemModernBaseStyle}"/>
     </Style>
 
 </ResourceDictionary>

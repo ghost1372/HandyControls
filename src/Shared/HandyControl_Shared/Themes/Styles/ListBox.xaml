@@ -7,6 +7,7 @@
 
     <!--默认样式-->
     <Style BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox"/>
+    <Style x:Key="ListBoxModernStyle" BasedOn="{StaticResource ListBoxBaseModernStyle}" TargetType="ListBox"/>
 
     <Style x:Key="ListBoxItemCustom" TargetType="ListBoxItem">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
