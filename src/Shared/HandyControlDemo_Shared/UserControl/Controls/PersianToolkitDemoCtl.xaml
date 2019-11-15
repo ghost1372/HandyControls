@@ -10,6 +10,7 @@
             <TabItem Header="Calendar">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <StackPanel Orientation="Horizontal">
+                        <hc:PersianDateTimePicker Height="40"/>
                         <hc:PersianCalendar Margin="10"/>
                         <hc:PersianCalendarWithClock Margin="10" ClockConfirm="باشه"/>
                         <hc:PersianDatePicker Name="pDP" Margin="10" Width="200" />
