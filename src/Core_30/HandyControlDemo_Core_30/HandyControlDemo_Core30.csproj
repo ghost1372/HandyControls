@@ -23,6 +23,7 @@
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="2.0.2" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="System.Management" Version="4.6.0" />
   </ItemGroup>
   <ItemGroup>
