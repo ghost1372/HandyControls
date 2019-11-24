@@ -148,7 +148,14 @@ namespace HandyControl.Controls
                       "https://api.github.com/repos/{0}/{1}/releases/latest",
                       Username, Repository);
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            //Fix Could not create SSL/TLS secure channel
+#if netle40
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+#else
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+#endif
+
+             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             try
             {
                 request.UserAgent = Username;
