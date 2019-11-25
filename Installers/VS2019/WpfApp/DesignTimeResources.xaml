@@ -131,7 +131,7 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/MenuBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/NumericUpDownBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/PasswordBoxBaseStyle.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/PasswordBoxBaseStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ProgressBarBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/PoptipBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ProgressButtonBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/RadioButtonBaseStyle.xaml"/>
