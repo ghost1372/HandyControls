@@ -96,6 +96,8 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/TransitioningContentControl.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/TreeView.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Poptip.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Drawer.xaml"/>
+
 
 
         <!--#endregion-->
@@ -118,6 +120,7 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/DateTimePickerBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/DialogBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/DividerBaseStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/DrawerBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ExpanderBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/GotoTopBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/GravatarBaseStyle.xaml"/>

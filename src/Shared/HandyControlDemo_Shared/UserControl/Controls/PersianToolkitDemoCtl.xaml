@@ -374,14 +374,49 @@
                 </TabControl>
             </TabItem>
             <TabItem Header="Style">
-                <StackPanel HorizontalAlignment="Left">
-                    <ListBox Style="{StaticResource ListBoxModernStyle}" Width="200" Margin="32">
-                        <ListBoxItem BorderBrush="Orange" hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{StaticResource ConfigGeometry}" Content="Item 1"/>
-                        <ListBoxItem BorderBrush="Orange" hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{StaticResource DeleteGeometry}" Content="Item 2"/>
-                        <ListBoxItem BorderBrush="Green" hc:IconElement.Geometry="{StaticResource AddGeometry}" hc:IconElement.Height="16" hc:IconElement.Width="16" Content="Item 3"/>
-                        <ListBoxItem BorderBrush="Violet" Content="Item 4"/>
-                    </ListBox>
-                </StackPanel>
+                <TabControl>
+                    <TabItem Header="ListBox">
+                        <StackPanel HorizontalAlignment="Left">
+                            <ListBox Style="{StaticResource ListBoxModernStyle}" Width="200" Margin="32">
+                                <ListBoxItem BorderBrush="Orange" hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{StaticResource ConfigGeometry}" Content="Item 1"/>
+                                <ListBoxItem BorderBrush="Orange" hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{StaticResource DeleteGeometry}" Content="Item 2"/>
+                                <ListBoxItem BorderBrush="Green" hc:IconElement.Geometry="{StaticResource AddGeometry}" hc:IconElement.Height="16" hc:IconElement.Width="16" Content="Item 3"/>
+                                <ListBoxItem BorderBrush="Violet" Content="Item 4"/>
+                            </ListBox>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="TabControl">
+                        <hc:ScrollViewer>
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="32,32,32,16">
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="0" Content="HeaderBrushAlignment = Top"/>
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsUWPStyle = True"/>
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="HeaderBrush"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="16,0">
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsDraggable = True"/>
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsEnableAnimation = True"/>
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowOverflowButton = False"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="16,15">
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsScrollable = True"/>
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowCloseButton = True"/>
+                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowScrollButton = True"/>
+                                </StackPanel>
+                                <hc:TabControl Name="uwpTab" HeaderBrushAlignment="Top" HeaderBrush="{DynamicResource PrimaryBrush}" ShowCloseButton="True" IsUWPStyle="True" IsDraggable="True" ShowOverflowButton="True" ShowScrollButton="True" Margin="32,16,32,0" Width="800" Height="300" IsScrollable="True" IsEnableAnimation="True">
+                                    <hc:TabItem Header="TabItem1" IsSelected="True"/>
+                                    <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource ConfigGeometry}" Header="TabItem2"/>
+                                    <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource CalendarGeometry}" Header="TabItem3"/>
+                                    <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource WindowsGeometry}" Header="TabItem4"/>
+                                    <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource ClockGeometry}" Header="TabItem5"/>
+                                    <hc:TabItem Header="TabItem6"/>
+                                    <hc:TabItem Header="TabItem7"/>
+                                </hc:TabControl>
+                            </StackPanel>
+                        </hc:ScrollViewer>
+                    </TabItem>
+                </TabControl>
+
             </TabItem>
         </TabControl>
     </hc:TransitioningContentControl>

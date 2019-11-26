@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Media;
 using HandyControl.Data;
 using HandyControl.Tools.Extension;
 
@@ -208,6 +209,44 @@ namespace HandyControl.Controls
             get => (bool) GetValue(ShowScrollButtonProperty);
             set => SetValue(ShowScrollButtonProperty, value);
         }
+
+        #region UWP Style Property
+        public bool IsUWPStyle
+        {
+            get { return (bool)GetValue(IsUWPStyleProperty); }
+            set { SetValue(IsUWPStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsUWPStyleProperty =
+            DependencyProperty.Register("IsUWPStyle", typeof(bool), typeof(TabControl), new PropertyMetadata(ValueBoxes.FalseBox));
+
+
+        public Brush HeaderBrush
+        {
+            get { return (Brush)GetValue(HeaderBrushProperty); }
+            set { SetValue(HeaderBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderBrushProperty =
+            DependencyProperty.Register("HeaderBrush", typeof(Brush), typeof(TabControl), new PropertyMetadata(Brushes.Violet));
+
+
+        public enum BrushAlignment
+        {
+            Top,
+            Bottom
+        }
+
+        public BrushAlignment HeaderBrushAlignment
+        {
+            get { return (BrushAlignment)GetValue(HeaderBrushAlignmentProperty); }
+            set { SetValue(HeaderBrushAlignmentProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderBrushAlignmentProperty =
+            DependencyProperty.Register("HeaderBrushAlignment", typeof(BrushAlignment), typeof(TabControl), new PropertyMetadata(BrushAlignment.Top));
+
+        #endregion
 
         /// <summary>
         ///     可见的标签数量

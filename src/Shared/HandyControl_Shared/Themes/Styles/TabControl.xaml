@@ -20,7 +20,7 @@
         <MenuItem Command="interactivity:ControlCommands.CloseOther" Header="{x:Static langs:Lang.CloseOther}"/>
     </ContextMenu>
 
-    <Style TargetType="controls:TabItem">
+    <Style x:Key="BaseTabItem" TargetType="controls:TabItem">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
@@ -72,6 +72,91 @@
         </Setter>
     </Style>
 
+    <Style x:Key="UWPTabItem" TargetType="controls:TabItem">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="16,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Menu" Value="{StaticResource TabItemMenu}"/>
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Background="Transparent" Text="{Binding Header,RelativeSource={RelativeSource AncestorType=controls:TabItem}}"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:TabItem">
+                    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" ContextMenu="{TemplateBinding Menu}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.ColumnSpan="3" BorderThickness="{TemplateBinding BorderThickness}" x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Margin="0">
+                            <Border Margin="0,0,0,-1" x:Name="innerBorder" Background="{DynamicResource RegionBrush}" Opacity="1"/>
+                        </Border>
+                        <Path Grid.Column="0" Margin="10,0,0,0" x:Name="PathMain" Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" Fill="{TemplateBinding Foreground}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}">
+                            <Path.Style>
+                                <Style TargetType="Path">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="Data" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Path.Style>
+                        </Path>
+                        <ContentPresenter Grid.Column="1" x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center">
+                            <ContentPresenter.OpacityMask>
+                                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                    <GradientStop Offset="1"/>
+                                    <GradientStop Color="White" Offset="0.8"/>
+                                </LinearGradientBrush>
+                            </ContentPresenter.OpacityMask>
+                        </ContentPresenter>
+                        <Button Grid.Column="2" Focusable="False" Command="interactivity:ControlCommands.Close" Visibility="{TemplateBinding ShowCloseButton,Converter={StaticResource Boolean2VisibilityConverter}}" Background="Transparent" Style="{StaticResource ButtonCustom}" Width="28">
+                            <Path Fill="{DynamicResource PrimaryTextBrush}" Width="8" Height="8" Style="{StaticResource ClosePathStyle}"/>
+                        </Button>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Panel.ZIndex" Value="1"/>
+                            <Setter Property="Opacity" TargetName="innerBorder" Value="0"/>
+                            <Setter Property="BorderThickness" Value="0,3,0,0"/>
+                            <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
+                        </Trigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="True" />
+                                <Condition Binding="{Binding Path=HeaderBrushAlignment, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="Bottom" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="BorderThickness" Value="0,0,0,3"/>
+                                <Setter Property="Panel.ZIndex" Value="0"/>
+                                <Setter Property="Opacity" TargetName="innerBorder" Value="0"/>
+                                <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Effect" Value="{StaticResource EffectShadow3}"/>
+                            <Setter Property="Opacity" TargetName="innerBorder" Value="0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <ControlTemplate x:Key="TabControlPlusTemplate" TargetType="controls:TabControl">
         <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
             <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
@@ -116,14 +201,33 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Visibility="{TemplateBinding ShowScrollButton,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="0,-1,0,0" Grid.Row="0" Grid.Column="0" BorderThickness="0,0,1,1" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}" HorizontalAlignment="Left" Panel.ZIndex="2">
+                <Border Visibility="{TemplateBinding ShowScrollButton,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="0,-1,0,0" Grid.Row="0" Grid.Column="0" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}" HorizontalAlignment="Left" Panel.ZIndex="2">
                     <Border.CacheMode>
                         <BitmapCache SnapsToDevicePixels="True"/>
                     </Border.CacheMode>
-                    <RepeatButton Focusable="False" Style="{StaticResource RepeatButtonIcon}" Padding="8" controls:IconElement.Geometry="{StaticResource LeftGeometry}" Foreground="{DynamicResource PrimaryTextBrush}" Background="{DynamicResource SecondaryRegionBrush}" x:Name="PART_ScrollButtonLeft"/>
+                    <RepeatButton Focusable="False" Style="{StaticResource RepeatButtonIcon}" Padding="8" controls:IconElement.Geometry="{StaticResource LeftGeometry}" Foreground="{DynamicResource PrimaryTextBrush}" x:Name="PART_ScrollButtonLeft">
+                        <Style TargetType="RepeatButton">
+                            <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource self}}" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </RepeatButton>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="True">
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
                 </Border>
                 <controls:ScrollViewer HorizontalScrollBarVisibility="Hidden" CanMouseWheel="True" Orientation="Horizontal" IsEnableInertia="True" Grid.Row="0" Grid.Column="1" IsDeferredScrollingEnabled="True" x:Name="PART_OverflowScrollviewer">
-                    <Border Background="{TemplateBinding Background}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BorderBrush}" Name="PART_HeaderBorder">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{DynamicResource BorderBrush}" Name="PART_HeaderBorder">
                         <controls:TabPanel MinHeight="{TemplateBinding TabItemHeight}" TabItemHeight="{TemplateBinding TabItemHeight}" TabItemWidth="{TemplateBinding TabItemWidth}" IsEnableTabFill="{TemplateBinding IsEnableTabFill}" Margin="0,0,-1,-1" x:Name="PART_HeaderPanel" HorizontalAlignment="Left" Background="{DynamicResource SecondaryTextBrush}" IsItemsHost="true" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1">
                             <interactivity:Interaction.Behaviors>
                                 <interactivity:FluidMoveBehavior AppliesTo="Children" Duration="{Binding FluidMoveDuration,ElementName=PART_HeaderPanel}">
@@ -133,17 +237,57 @@
                                 </interactivity:FluidMoveBehavior>
                             </interactivity:Interaction.Behaviors>
                         </controls:TabPanel>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="True">
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
                     </Border>
                 </controls:ScrollViewer>
-                <Border Margin="0,-1,0,0" Grid.Row="0" Grid.Column="2" BorderThickness="1,0,0,1" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}" HorizontalAlignment="Right">
+                <Border Margin="0,-1,0,0" Grid.Row="0" Grid.Column="2" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}" HorizontalAlignment="Right">
                     <Border.CacheMode>
                         <BitmapCache SnapsToDevicePixels="True"/>
                     </Border.CacheMode>
                     <StackPanel Orientation="Horizontal">
-                        <RepeatButton Focusable="False" Visibility="{TemplateBinding ShowScrollButton,Converter={StaticResource Boolean2VisibilityConverter}}" Style="{StaticResource RepeatButtonIcon}" BorderBrush="{DynamicResource BorderBrush}" Padding="8" controls:IconElement.Geometry="{StaticResource RightGeometry}" Foreground="{DynamicResource PrimaryTextBrush}" Background="{DynamicResource SecondaryRegionBrush}" x:Name="PART_ScrollButtonRight"/>
-                        <Border Visibility="{Binding Visibility,ElementName=PART_OverflowButton}" Width="1" Background="{DynamicResource BorderBrush}"/>
+                        <RepeatButton Focusable="False" Visibility="{TemplateBinding ShowScrollButton,Converter={StaticResource Boolean2VisibilityConverter}}" Style="{StaticResource RepeatButtonIcon}" BorderBrush="{DynamicResource BorderBrush}" Padding="8" controls:IconElement.Geometry="{StaticResource RightGeometry}" Foreground="{DynamicResource PrimaryTextBrush}" x:Name="PART_ScrollButtonRight">
+                            <Style TargetType="RepeatButton">
+                                <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource self}}" Value="True">
+                                        <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RepeatButton>
+                        <Border Visibility="{Binding Visibility,ElementName=PART_OverflowButton}" Background="{DynamicResource BorderBrush}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Width" Value="1"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="True">
+                                            <Setter Property="Width" Value="0"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
                         <controls:ContextMenuToggleButton x:Name="PART_OverflowButton" Visibility="Collapsed" Style="{StaticResource ToggleButtonIconTransparent}" controls:IconSwitchElement.Geometry="{StaticResource DownGeometry}" controls:IconSwitchElement.GeometrySelected="{StaticResource UpGeometry}"/>
                     </StackPanel>
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderThickness" Value="1,0,0,1"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="True">
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
                 </Border>
                 <Border x:Name="contentPanel" Background="{DynamicResource SecondaryRegionBrush}" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
                     <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -160,6 +304,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template" Value="{StaticResource TabControlPlusTemplate}"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource BaseTabItem}"/>
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -168,6 +313,11 @@
                 </MultiTrigger.Conditions>
                 <Setter Property="Template" Value="{StaticResource TabControlPlusScrollableTemplate}"/>
             </MultiTrigger>
+
+            <DataTrigger Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource self}}" Value="True">
+                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                <Setter Property="ItemContainerStyle" Value="{StaticResource UWPTabItem}"/>
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
