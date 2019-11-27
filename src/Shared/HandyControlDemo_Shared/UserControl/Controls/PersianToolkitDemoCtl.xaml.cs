@@ -1,6 +1,7 @@
 ﻿using HandyControl.Controls;
 using Microsoft.Win32;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Threading;
@@ -344,6 +345,25 @@ namespace HandyControlDemo.UserControl
                Growl.ErrorGlobal("please use correct username and repo");
             }
 
+        }
+        #endregion
+
+        #region TimeLine
+        private void LoadTimeLine()
+        {
+            ObservableCollection<Tuple<int, string, string>> listTimeLine = new ObservableCollection<Tuple<int, string, string>>();
+            for (int i = 0; i < 5; i++)
+            {
+                listTimeLine.Add(new Tuple<int, string, string>(i, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "Hahahaha"));
+            }
+            Timeline.ItemsSource = listTimeLine;
+        }
+
+        private void Tab_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var tab = sender as HandyControl.Controls.TabControl;
+            if (tab.SelectedIndex == 1)
+                LoadTimeLine();
         }
         #endregion
     }

@@ -2,6 +2,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="AppHost.xaml"/>
+        <ResourceDictionary Source="TimeLine.xaml"/>
         <ResourceDictionary Source="SpeedoMeter.xaml"/>
         <ResourceDictionary Source="BusyIndicator.xaml"/>
         <ResourceDictionary Source="MainContentBackground.xaml"/>
