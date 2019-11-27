@@ -6,283 +6,285 @@
      xmlns:hc="https://handyorg.github.io/handycontrol"
      Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
-        <TabControl x:Name="tab" TabStripPlacement="Top" Margin="16" Style="{StaticResource TabControlCapsuleSolid}">
-            <TabItem Header="Calendar">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                    <StackPanel Orientation="Horizontal">
-                        <hc:PersianDateTimePicker Height="40"/>
-                        <hc:PersianCalendar Margin="10"/>
-                        <hc:PersianCalendarWithClock Margin="10" ClockConfirm="باشه"/>
-                        <hc:PersianDatePicker Name="pDP" Margin="10" Width="200" />
-                    </StackPanel>
-                </ScrollViewer>
-            </TabItem>
+        <hc:TabControl Margin="10" SelectionChanged="Tab_SelectionChanged" IsUWPStyle="True">
+            <hc:TabItem Header="Part 1">
+                <TabControl x:Name="tab" TabStripPlacement="Top" Margin="16" Style="{StaticResource TabControlCapsuleSolid}">
+                    <TabItem Header="Calendar">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <StackPanel Orientation="Horizontal">
+                                <hc:PersianDateTimePicker Height="40"/>
+                                <hc:PersianCalendar Margin="10"/>
+                                <hc:PersianCalendarWithClock Margin="10" ClockConfirm="باشه"/>
+                                <hc:PersianDatePicker Name="pDP" Margin="10" Width="200" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
 
-            <TabItem Header="BusyIndicator/LoadingIndicator">
-                <StackPanel>
-                    <ToggleButton Margin="10" Content="IsBusy" VerticalAlignment="Center" Style="{StaticResource ToggleButtonSwitch}" IsChecked="True" Name="isbusy"/>
-                    <hc:BusyIndicator Margin="10" ProgressBarStyle="{StaticResource ProgressBarPrimaryStripe}" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}">
-                        <UniformGrid Columns="8" Margin="10">
-                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsStyle}"/>
-                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>
-                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorDoubleBounceStyle}"/>
-                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorFlipPlaneStyle}"/>
-                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorPulseStyle}"/>
-                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorRingStyle}"/>
-                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorThreeDotsStyle}"/>
-                            <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorWaveStyle}"/>
+                    <TabItem Header="BusyIndicator/LoadingIndicator">
+                        <StackPanel>
+                            <ToggleButton Margin="10" Content="IsBusy" VerticalAlignment="Center" Style="{StaticResource ToggleButtonSwitch}" IsChecked="True" Name="isbusy"/>
+                            <hc:BusyIndicator Margin="10" ProgressBarStyle="{StaticResource ProgressBarPrimaryStripe}" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}">
+                                <UniformGrid Columns="8" Margin="10">
+                                    <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsStyle}"/>
+                                    <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>
+                                    <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorDoubleBounceStyle}"/>
+                                    <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorFlipPlaneStyle}"/>
+                                    <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorPulseStyle}"/>
+                                    <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorRingStyle}"/>
+                                    <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorThreeDotsStyle}"/>
+                                    <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorWaveStyle}"/>
+                                </UniformGrid>
+                            </hc:BusyIndicator>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="MainContentBackground">
+                        <UniformGrid>
+                            <hc:MainContentBackground hc:BorderElement.CornerRadius="5" Margin="10" Width="200" Height="100">
+                                <Button Content="Click" Width="200"/>
+                            </hc:MainContentBackground>
+                            <hc:MainContentBackground Background="White" Style="{StaticResource LiveStyle}" Margin="10" Width="800" Height="500">
+                                <Button Content="Click" Width="200"/>
+                            </hc:MainContentBackground>
                         </UniformGrid>
-                    </hc:BusyIndicator>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="MainContentBackground">
-                <UniformGrid>
-                    <hc:MainContentBackground hc:BorderElement.CornerRadius="5" Margin="10" Width="200" Height="100">
-                        <Button Content="Click" Width="200"/>
-                    </hc:MainContentBackground>
-                    <hc:MainContentBackground Background="White" Style="{StaticResource LiveStyle}" Margin="10" Width="800" Height="500">
-                        <Button Content="Click" Width="200"/>
-                    </hc:MainContentBackground>
-                </UniformGrid>
-            </TabItem>
-            <TabItem Header="Input">
-                <UniformGrid>
-                    <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="فقط حروف فارسی" Width="200" TextType="Persian"/>
-                    <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="اعتبار سنجی کد ملی" Width="200" TextType="IranNationalCode"/>
-                    <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Content="فعال است"/>
-                    <hc:MaskedTextBox Margin="10,20" Mask="LL#-LLLL-$-."/>
-                    <hc:MaskedTextBox Margin="10,20" Mask="(000) 000-0000" ValueDataType="{x:Type s:String}"/>
-                </UniformGrid>
-            </TabItem>
-            <TabItem Header="NeonLabel">
-                <StackPanel Margin="10">
-                    <hc:NeonLabel x:Name="neon"
+                    </TabItem>
+                    <TabItem Header="Input">
+                        <UniformGrid>
+                            <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="فقط حروف فارسی" Width="200" TextType="Persian"/>
+                            <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="اعتبار سنجی کد ملی" Width="200" TextType="IranNationalCode"/>
+                            <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Content="فعال است"/>
+                            <hc:MaskedTextBox Margin="10,20" Mask="LL#-LLLL-$-."/>
+                            <hc:MaskedTextBox Margin="10,20" Mask="(000) 000-0000" ValueDataType="{x:Type s:String}"/>
+                        </UniformGrid>
+                    </TabItem>
+                    <TabItem Header="NeonLabel">
+                        <StackPanel Margin="10">
+                            <hc:NeonLabel x:Name="neon"
                                       Height="30"
                                       Width="350"
                                       HorizontalAlignment="Left"
                                       Content="This is a scrollable neon label .I have to type these characters to make it longer. This is a scrollable neon label .I have to type these characters to make it longer."
                                       Margin="20" />
-                    <hc:NeonLabel x:Name="neon2"
+                            <hc:NeonLabel x:Name="neon2"
                                       Height="30"
                                       NeonStyle="{StaticResource LabelInfo}"
                                       Width="350"
                                       HorizontalAlignment="Left"
                                       Content="HelloWorld"
                                       Margin="20" />
-                    <hc:NeonLabel x:Name="neon3"
+                            <hc:NeonLabel x:Name="neon3"
                                       Height="30"
                                       Width="350"
                                       NeonStyle="{StaticResource LabelPrimary}"
                                       HorizontalAlignment="Left"
                                       Content="This is a scrollable neon label .I have to type these characters to make it longer."
                                       Margin="20" />
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="SpeedoMeter">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel>
-                            <Button Content="Start" Margin="10" Width="300" Click="btnStart_Click"/>
-                            <Slider Width="200" Margin="10" x:Name="sld" IsSnapToTickEnabled="True" Value="25" Maximum="180"/>
-                            <StackPanel Orientation="Horizontal">
-                                <hc:SpeedoMeter x:Name="sp" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
-                           MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
-                           />
-                                <hc:SpeedoMeter Margin="10" FontWeight="Bold" ValueColor="{DynamicResource WarningBrush}" StatusColor="{DynamicResource PrimaryBrush}" StrokeColor="{DynamicResource DangerBrush}" ValueFontSize="90" StatusFontSize="20" Status="mph"
-                           MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
-                           />
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Margin="0,50" Grid.Column="1">
-                            <Slider Width="200" Margin="10" x:Name="sld2" IsSnapToTickEnabled="True" Value="25" Maximum="130"/>
-                            <hc:SpeedoMeter x:Name="sp2" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
-                           MaximumValue="120" Value="{Binding ElementName=sld2, Path=Value}"
-                           />
-                        </StackPanel>
-                    </Grid>
-                </ScrollViewer>
-            </TabItem>
-            <TabItem Header="AppHost">
-                <Button Content="Load Notepad inside window" Click="btnAppHost_Click"/>
-            </TabItem>
-            <TabItem Header="Helpers">
-                <TabControl>
-                    <TabItem Header="Registry">
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <Button Margin="10" Tag="btnAddReg" Click="Button_Click" Content="Add Registry Key"/>
-                            <Button Margin="10" Tag="btnGetReg" Click="Button_Click" Content="Get Registry Key"/>
-                            <Button Margin="10" Tag="btnDelReg" Click="Button_Click" Content="Delete Registry Key"/>
                         </StackPanel>
                     </TabItem>
-                    <TabItem Header="Cryptography">
+                    <TabItem Header="SpeedoMeter">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <GroupBox Margin="10" Header="Encrypt Text">
-                                    <StackPanel>
-                                        <GroupBox Margin="10" Header="Encrypt">
-                                            <StackPanel>
-                                                <hc:TextBox Name="txtEnText" hc:InfoElement.Placeholder="Enter Some Text"/>
-                                                <hc:TextBox Name="txtEnTextPass" hc:InfoElement.Placeholder="Enter Password"/>
-                                                <hc:TextBox Name="txtEn" hc:InfoElement.Placeholder="Encrypted Text" IsReadOnly="True"/>
-                                                <Button Content="Encrypt" Width="200" Name="btnEnText" Click="BtnEnText_Click"/>
-                                            </StackPanel>
-                                        </GroupBox>
-
-                                        <GroupBox Margin="10" Header="Decrypt">
-                                            <StackPanel>
-                                                <hc:TextBox Name="txtDeText" hc:InfoElement.Placeholder="Enter Encrypted Text"/>
-                                                <hc:TextBox Name="txtDeTextPass" hc:InfoElement.Placeholder="Enter Password"/>
-                                                <hc:TextBox Name="txtDe" hc:InfoElement.Placeholder="Decrypted Text" IsReadOnly="True"/>
-                                                <Button Content="Decrypt" Width="200" Name="btnDeText" Click="BtnDeText_Click"/>
-                                            </StackPanel>
-                                        </GroupBox>
+                                <StackPanel>
+                                    <Button Content="Start" Margin="10" Width="300" Click="btnStart_Click"/>
+                                    <Slider Width="200" Margin="10" x:Name="sld" IsSnapToTickEnabled="True" Value="25" Maximum="180"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <hc:SpeedoMeter x:Name="sp" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
+                           MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
+                           />
+                                        <hc:SpeedoMeter Margin="10" FontWeight="Bold" ValueColor="{DynamicResource WarningBrush}" StatusColor="{DynamicResource PrimaryBrush}" StrokeColor="{DynamicResource DangerBrush}" ValueFontSize="90" StatusFontSize="20" Status="mph"
+                           MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
+                           />
                                     </StackPanel>
-                                </GroupBox>
-                                <GroupBox Margin="10" Header="Encrypt File" Grid.Column="1">
-                                    <StackPanel>
-                                        <GroupBox Margin="10" Header="Encrypt">
-                                            <StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <hc:TextBox Name="txtEnBrowse" hc:InfoElement.Placeholder="file for encrypt..."/>
-                                                    <Button Tag="enc" Content="Browse File" Width="100" Name="btnBrowse" Click="BtnBrowse_Click"/>
-                                                </StackPanel>
-                                                <hc:TextBox Name="txtEnFilePass" hc:InfoElement.Placeholder="Enter Password"/>
-                                                <Button Content="Encrypt" Width="200" Name="btnEnFile" Click="btnEnFile_Click"/>
-                                            </StackPanel>
-                                        </GroupBox>
-                                        <GroupBox Margin="10,40" Header="Decrypt">
-                                            <StackPanel>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <hc:TextBox Name="txtDeBrowse" hc:InfoElement.Placeholder="file for decrypt..."/>
-                                                    <Button Tag="dec" Content="Browse File" Click="BtnBrowse_Click"/>
-                                                </StackPanel>
-                                                <hc:TextBox Name="txtDeFilePass" hc:InfoElement.Placeholder="Enter Password"/>
-                                                <Button Content="Decrypt" Width="200" Name="btnDeFile" Click="btnDeFile_Click"/>
-                                            </StackPanel>
-                                        </GroupBox>
-
-                                    </StackPanel>
-                                </GroupBox>
-                                <GroupBox Margin="10" Header="Generate Hash" Grid.Column="2">
-                                    <StackPanel>
-                                        <hc:TextBox Name="txtHash" hc:InfoElement.Placeholder="Enter Some Text..."/>
-                                        <hc:TextBox Name="txtmd5" hc:InfoElement.Placeholder="MD5 Hash..." IsReadOnly="True"/>
-                                        <hc:TextBox Name="txtsha" hc:InfoElement.Placeholder="SHA256 Hash..." IsReadOnly="True"/>
-                                        <Button Width="200" Content="Generate" Click="btnGenerateHash_Click"/>
-                                    </StackPanel>
-                                </GroupBox>
+                                </StackPanel>
+                                <StackPanel Margin="0,50" Grid.Column="1">
+                                    <Slider Width="200" Margin="10" x:Name="sld2" IsSnapToTickEnabled="True" Value="25" Maximum="130"/>
+                                    <hc:SpeedoMeter x:Name="sp2" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
+                           MaximumValue="120" Value="{Binding ElementName=sld2, Path=Value}"
+                           />
+                                </StackPanel>
                             </Grid>
                         </ScrollViewer>
                     </TabItem>
-                    <TabItem Header="Ini Config">
-                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                            <Button Margin="10" Tag="add" Click="btnIniHelper_Click" Content="Add Value"/>
-                            <Button Margin="10" Tag="read" Click="btnIniHelper_Click" Content="Read Value"/>
-                            <Button Margin="10" Tag="delete" Click="btnIniHelper_Click" Content="Delete Value"/>
-                            <Button Margin="10" Tag="exist" Click="btnIniHelper_Click" Content="Exist Value"/>
-                        </StackPanel>
+                    <TabItem Header="AppHost">
+                        <Button Content="Load Notepad inside window" Click="btnAppHost_Click"/>
                     </TabItem>
-                    <TabItem Header="Update">
-                        <hc:ScrollViewer>
-                            <StackPanel>
-                                <GroupBox Header="WebHost">
-                                    <StackPanel>
-                                        <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate_Click"/>
-                                        <hc:TextBox IsReadOnly="True" Margin="10" Name="lblUrl"/>
-                                        <TextBox IsReadOnly="True" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" Margin="10" Name="txtChangelog" Height="100" Width="400" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
-                                    </StackPanel>
-                                </GroupBox>
-                                <GroupBox Header="Github Release">
-                                    <StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Style="{DynamicResource LabelDanger}" Content="Github Username" Margin="5"/>
-                                            <hc:TextBox Name="txtus" Text="ghost1372" Margin="10" hc:InfoElement.Placeholder="Github Username" Width="200"/>
-                                            <Label Style="{DynamicResource LabelDanger}" Content="Github Repository" Margin="5"/>
-                                            <hc:TextBox Name="txtrp" Text="MoalemYar" Margin="10" hc:InfoElement.Placeholder="Github Repository" Width="200"/>
-                                        </StackPanel>
-                                        <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate2_Click"/>
+                    <TabItem Header="Helpers">
+                        <TabControl>
+                            <TabItem Header="Registry">
+                                <StackPanel Orientation="Horizontal" Margin="10">
+                                    <Button Margin="10" Tag="btnAddReg" Click="Button_Click" Content="Add Registry Key"/>
+                                    <Button Margin="10" Tag="btnGetReg" Click="Button_Click" Content="Get Registry Key"/>
+                                    <Button Margin="10" Tag="btnDelReg" Click="Button_Click" Content="Delete Registry Key"/>
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="Cryptography">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <GroupBox Margin="10" Header="Encrypt Text">
+                                            <StackPanel>
+                                                <GroupBox Margin="10" Header="Encrypt">
+                                                    <StackPanel>
+                                                        <hc:TextBox Name="txtEnText" hc:InfoElement.Placeholder="Enter Some Text"/>
+                                                        <hc:TextBox Name="txtEnTextPass" hc:InfoElement.Placeholder="Enter Password"/>
+                                                        <hc:TextBox Name="txtEn" hc:InfoElement.Placeholder="Encrypted Text" IsReadOnly="True"/>
+                                                        <Button Content="Encrypt" Width="200" Name="btnEnText" Click="BtnEnText_Click"/>
+                                                    </StackPanel>
+                                                </GroupBox>
 
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Style="{DynamicResource LabelInfo}" Content="Url" Margin="5"/>
-                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lblUrl2"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Style="{DynamicResource LabelInfo}" Content="Created At " Margin="5"/>
-                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl1"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Style="{DynamicResource LabelInfo}" Content="Published At " Margin="5"/>
-                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl2"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Style="{DynamicResource LabelInfo}" Content="Download Url " Margin="5"/>
-                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl3"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Style="{DynamicResource LabelInfo}" Content="Is PreRelease " Margin="5"/>
-                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl4"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Style="{DynamicResource LabelInfo}" Content="Size " Margin="5"/>
-                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl5"/>
-                                        </StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Label Style="{DynamicResource LabelInfo}" Content="Version " Margin="5"/>
-                                            <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl6"/>
-                                        </StackPanel>
-                                        <TextBox IsReadOnly="True" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" Margin="5" Name="txtChangelog2" Width="400" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                                <GroupBox Margin="10" Header="Decrypt">
+                                                    <StackPanel>
+                                                        <hc:TextBox Name="txtDeText" hc:InfoElement.Placeholder="Enter Encrypted Text"/>
+                                                        <hc:TextBox Name="txtDeTextPass" hc:InfoElement.Placeholder="Enter Password"/>
+                                                        <hc:TextBox Name="txtDe" hc:InfoElement.Placeholder="Decrypted Text" IsReadOnly="True"/>
+                                                        <Button Content="Decrypt" Width="200" Name="btnDeText" Click="BtnDeText_Click"/>
+                                                    </StackPanel>
+                                                </GroupBox>
+                                            </StackPanel>
+                                        </GroupBox>
+                                        <GroupBox Margin="10" Header="Encrypt File" Grid.Column="1">
+                                            <StackPanel>
+                                                <GroupBox Margin="10" Header="Encrypt">
+                                                    <StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <hc:TextBox Name="txtEnBrowse" hc:InfoElement.Placeholder="file for encrypt..."/>
+                                                            <Button Tag="enc" Content="Browse File" Width="100" Name="btnBrowse" Click="BtnBrowse_Click"/>
+                                                        </StackPanel>
+                                                        <hc:TextBox Name="txtEnFilePass" hc:InfoElement.Placeholder="Enter Password"/>
+                                                        <Button Content="Encrypt" Width="200" Name="btnEnFile" Click="btnEnFile_Click"/>
+                                                    </StackPanel>
+                                                </GroupBox>
+                                                <GroupBox Margin="10,40" Header="Decrypt">
+                                                    <StackPanel>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <hc:TextBox Name="txtDeBrowse" hc:InfoElement.Placeholder="file for decrypt..."/>
+                                                            <Button Tag="dec" Content="Browse File" Click="BtnBrowse_Click"/>
+                                                        </StackPanel>
+                                                        <hc:TextBox Name="txtDeFilePass" hc:InfoElement.Placeholder="Enter Password"/>
+                                                        <Button Content="Decrypt" Width="200" Name="btnDeFile" Click="btnDeFile_Click"/>
+                                                    </StackPanel>
+                                                </GroupBox>
+
+                                            </StackPanel>
+                                        </GroupBox>
+                                        <GroupBox Margin="10" Header="Generate Hash" Grid.Column="2">
+                                            <StackPanel>
+                                                <hc:TextBox Name="txtHash" hc:InfoElement.Placeholder="Enter Some Text..."/>
+                                                <hc:TextBox Name="txtmd5" hc:InfoElement.Placeholder="MD5 Hash..." IsReadOnly="True"/>
+                                                <hc:TextBox Name="txtsha" hc:InfoElement.Placeholder="SHA256 Hash..." IsReadOnly="True"/>
+                                                <Button Width="200" Content="Generate" Click="btnGenerateHash_Click"/>
+                                            </StackPanel>
+                                        </GroupBox>
+                                    </Grid>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="Ini Config">
+                                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <Button Margin="10" Tag="add" Click="btnIniHelper_Click" Content="Add Value"/>
+                                    <Button Margin="10" Tag="read" Click="btnIniHelper_Click" Content="Read Value"/>
+                                    <Button Margin="10" Tag="delete" Click="btnIniHelper_Click" Content="Delete Value"/>
+                                    <Button Margin="10" Tag="exist" Click="btnIniHelper_Click" Content="Exist Value"/>
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="Update">
+                                <hc:ScrollViewer>
+                                    <StackPanel>
+                                        <GroupBox Header="WebHost">
+                                            <StackPanel>
+                                                <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate_Click"/>
+                                                <hc:TextBox IsReadOnly="True" Margin="10" Name="lblUrl"/>
+                                                <TextBox IsReadOnly="True" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" Margin="10" Name="txtChangelog" Height="100" Width="400" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                            </StackPanel>
+                                        </GroupBox>
+                                        <GroupBox Header="Github Release">
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Style="{DynamicResource LabelDanger}" Content="Github Username" Margin="5"/>
+                                                    <hc:TextBox Name="txtus" Text="ghost1372" Margin="10" hc:InfoElement.Placeholder="Github Username" Width="200"/>
+                                                    <Label Style="{DynamicResource LabelDanger}" Content="Github Repository" Margin="5"/>
+                                                    <hc:TextBox Name="txtrp" Text="MoalemYar" Margin="10" hc:InfoElement.Placeholder="Github Repository" Width="200"/>
+                                                </StackPanel>
+                                                <Button Margin="10" Content="Check for Update" Width="200" Click="btnCheckUpdate2_Click"/>
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Style="{DynamicResource LabelInfo}" Content="Url" Margin="5"/>
+                                                    <hc:TextBox IsReadOnly="True" Margin="5" Name="lblUrl2"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Style="{DynamicResource LabelInfo}" Content="Created At " Margin="5"/>
+                                                    <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl1"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Style="{DynamicResource LabelInfo}" Content="Published At " Margin="5"/>
+                                                    <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl2"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Style="{DynamicResource LabelInfo}" Content="Download Url " Margin="5"/>
+                                                    <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl3"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Style="{DynamicResource LabelInfo}" Content="Is PreRelease " Margin="5"/>
+                                                    <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl4"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Style="{DynamicResource LabelInfo}" Content="Size " Margin="5"/>
+                                                    <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl5"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Style="{DynamicResource LabelInfo}" Content="Version " Margin="5"/>
+                                                    <hc:TextBox IsReadOnly="True" Margin="5" Name="lbl6"/>
+                                                </StackPanel>
+                                                <TextBox IsReadOnly="True" VerticalContentAlignment="Top" TextWrapping="WrapWithOverflow" Margin="5" Name="txtChangelog2" Width="400" Height="100" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                                            </StackPanel>
+                                        </GroupBox>
                                     </StackPanel>
-                                </GroupBox>
-                            </StackPanel>
-                        </hc:ScrollViewer>
+                                </hc:ScrollViewer>
+                            </TabItem>
+                        </TabControl>
                     </TabItem>
-                </TabControl>
-            </TabItem>
-            <TabItem Header="RelativePanel">
-                <TabControl>
-                    <TabItem Header="Sample 1">
-                        <hc:RelativePanel>
-                            <Rectangle x:Name="RedRect" Fill="{DynamicResource DangerBrush}" MinHeight="100" MinWidth="100" />
-                            <Rectangle x:Name="BlueRect" Fill="{DynamicResource PrimaryBrush}" MinHeight="100" MinWidth="100"
+                    <TabItem Header="RelativePanel">
+                        <TabControl>
+                            <TabItem Header="Sample 1">
+                                <hc:RelativePanel>
+                                    <Rectangle x:Name="RedRect" Fill="{DynamicResource DangerBrush}" MinHeight="100" MinWidth="100" />
+                                    <Rectangle x:Name="BlueRect" Fill="{DynamicResource PrimaryBrush}" MinHeight="100" MinWidth="100"
                        hc:RelativePanel.RightOf="RedRect" />
-                            <Rectangle x:Name="GreenRect" Fill="{DynamicResource SuccessBrush}" MinHeight="100" Margin="0,5,0,0"
+                                    <Rectangle x:Name="GreenRect" Fill="{DynamicResource SuccessBrush}" MinHeight="100" Margin="0,5,0,0"
                        hc:RelativePanel.Below="RedRect"
                        hc:RelativePanel.AlignLeftWith="RedRect"
                        hc:RelativePanel.AlignRightWith="BlueRect" />
-                            <Rectangle Fill="Yellow" MinHeight="100"
+                                    <Rectangle Fill="Yellow" MinHeight="100"
                        hc:RelativePanel.Below="GreenRect"
                        hc:RelativePanel.AlignLeftWith="BlueRect"
                        hc:RelativePanel.AlignRightWithPanel="True" />
-                        </hc:RelativePanel>
-                    </TabItem>
-                    <TabItem Header="Sample 2">
-                        <hc:RelativePanel>
-                            <Rectangle x:Name="RedRect2" Fill="{DynamicResource DangerBrush}" Width="44" Height="44" />
-                            <Rectangle x:Name="BlueRect2" Fill="{DynamicResource PrimaryBrush}" Width="88" Height="44"
+                                </hc:RelativePanel>
+                            </TabItem>
+                            <TabItem Header="Sample 2">
+                                <hc:RelativePanel>
+                                    <Rectangle x:Name="RedRect2" Fill="{DynamicResource DangerBrush}" Width="44" Height="44" />
+                                    <Rectangle x:Name="BlueRect2" Fill="{DynamicResource PrimaryBrush}" Width="88" Height="44"
                        hc:RelativePanel.RightOf="RedRect2" />
-                            <Rectangle x:Name="GreenRect2" Fill="{DynamicResource SuccessBrush}" Height="44"
+                                    <Rectangle x:Name="GreenRect2" Fill="{DynamicResource SuccessBrush}" Height="44"
                        hc:RelativePanel.Below="RedRect2"
                        hc:RelativePanel.AlignLeftWith="RedRect2"
                        hc:RelativePanel.AlignRightWith="BlueRect2" />
-                            <Rectangle Fill="{DynamicResource WarningBrush}"
+                                    <Rectangle Fill="{DynamicResource WarningBrush}"
                        hc:RelativePanel.Below="GreenRect2"
                        hc:RelativePanel.AlignLeftWith="BlueRect2"
                        hc:RelativePanel.AlignRightWithPanel="True"
                        hc:RelativePanel.AlignBottomWithPanel="True" />
-                        </hc:RelativePanel>
-                    </TabItem>
-                    <TabItem Header="Sample 3">
-                        <hc:RelativePanel>
-                            <Rectangle
+                                </hc:RelativePanel>
+                            </TabItem>
+                            <TabItem Header="Sample 3">
+                                <hc:RelativePanel>
+                                    <Rectangle
             x:Name="Red"
             Fill="{DynamicResource DangerBrush}"
             Width="50"
@@ -290,7 +292,7 @@
             hc:RelativePanel.AlignHorizontalCenterWithPanel="True"
             hc:RelativePanel.AlignVerticalCenterWithPanel="True"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="Green"
             Fill="{DynamicResource SuccessBrush}"
             Width="50"
@@ -298,7 +300,7 @@
             hc:RelativePanel.Above="Red"
             hc:RelativePanel.AlignLeftWith="Red"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="Yellow"
             Fill="Yellow"
             Width="50"
@@ -306,7 +308,7 @@
             hc:RelativePanel.Below="Red"
             hc:RelativePanel.AlignLeftWith="Red"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="Blue"
             Fill="{DynamicResource PrimaryBrush}"
             Width="50"
@@ -314,7 +316,7 @@
             hc:RelativePanel.LeftOf="Red"
             hc:RelativePanel.AlignBottomWith="Red"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="Olive"
             Fill="Olive"
             Width="50"
@@ -322,7 +324,7 @@
             hc:RelativePanel.RightOf="Red"
             hc:RelativePanel.AlignBottomWith="Red"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="Orchid"
             Fill="Orchid"
             Width="50"
@@ -330,7 +332,7 @@
             hc:RelativePanel.Above="Green"
             hc:RelativePanel.LeftOf="Green"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="Orange"
             Fill="{DynamicResource WarningBrush}"
             Width="50"
@@ -338,14 +340,14 @@
             hc:RelativePanel.Below="Olive"
             hc:RelativePanel.RightOf="Olive"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="Black"
             Fill="Black"
             Width="50"
             Height="50"
             hc:RelativePanel.AlignTopWithPanel="True"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="DodgerBlue"
             Fill="{DynamicResource InfoBrush}"
             Width="50"
@@ -353,7 +355,7 @@
             hc:RelativePanel.AlignTopWithPanel="True"
             hc:RelativePanel.AlignRightWithPanel="True"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="SeaGreen"
             Fill="SeaGreen"
             Width="50"
@@ -361,7 +363,7 @@
             hc:RelativePanel.AlignBottomWithPanel="True"
             hc:RelativePanel.AlignLeftWithPanel="True"
             />
-                            <Rectangle
+                                    <Rectangle
             x:Name="Navy"
             Fill="Navy"
             Width="50"
@@ -369,55 +371,102 @@
             hc:RelativePanel.AlignBottomWithPanel="True"
             hc:RelativePanel.AlignRightWithPanel="True"
             />
-                        </hc:RelativePanel>
+                                </hc:RelativePanel>
+                            </TabItem>
+                        </TabControl>
                     </TabItem>
-                </TabControl>
-            </TabItem>
-            <TabItem Header="Style">
-                <TabControl>
-                    <TabItem Header="ListBox">
-                        <StackPanel HorizontalAlignment="Left">
-                            <ListBox Style="{StaticResource ListBoxModernStyle}" Width="200" Margin="32">
-                                <ListBoxItem BorderBrush="Orange" hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{StaticResource ConfigGeometry}" Content="Item 1"/>
-                                <ListBoxItem BorderBrush="Orange" hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{StaticResource DeleteGeometry}" Content="Item 2"/>
-                                <ListBoxItem BorderBrush="Green" hc:IconElement.Geometry="{StaticResource AddGeometry}" hc:IconElement.Height="16" hc:IconElement.Width="16" Content="Item 3"/>
-                                <ListBoxItem BorderBrush="Violet" Content="Item 4"/>
-                            </ListBox>
-                        </StackPanel>
-                    </TabItem>
-                    <TabItem Header="TabControl">
-                        <hc:ScrollViewer>
-                            <StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="32,32,32,16">
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="0" Content="HeaderBrushAlignment = Top"/>
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsUWPStyle = True"/>
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="HeaderBrush"/>
+                    <TabItem Header="Style">
+                        <TabControl>
+                            <TabItem Header="ListBox">
+                                <StackPanel HorizontalAlignment="Left">
+                                    <ListBox Style="{StaticResource ListBoxModernStyle}" Width="200" Margin="32">
+                                        <ListBoxItem BorderBrush="Orange" hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{StaticResource ConfigGeometry}" Content="Item 1"/>
+                                        <ListBoxItem BorderBrush="Orange" hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{StaticResource DeleteGeometry}" Content="Item 2"/>
+                                        <ListBoxItem BorderBrush="Green" hc:IconElement.Geometry="{StaticResource AddGeometry}" hc:IconElement.Height="16" hc:IconElement.Width="16" Content="Item 3"/>
+                                        <ListBoxItem BorderBrush="Violet" Content="Item 4"/>
+                                    </ListBox>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="16,0">
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsDraggable = True"/>
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsEnableAnimation = True"/>
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowOverflowButton = False"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="16,15">
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsScrollable = True"/>
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowCloseButton = True"/>
-                                    <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowScrollButton = True"/>
-                                </StackPanel>
-                                <hc:TabControl Name="uwpTab" HeaderBrushAlignment="Top" HeaderBrush="{DynamicResource PrimaryBrush}" ShowCloseButton="True" IsUWPStyle="True" IsDraggable="True" ShowOverflowButton="True" ShowScrollButton="True" Margin="32,16,32,0" Width="800" Height="300" IsScrollable="True" IsEnableAnimation="True">
-                                    <hc:TabItem Header="TabItem1" IsSelected="True"/>
-                                    <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource ConfigGeometry}" Header="TabItem2"/>
-                                    <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource CalendarGeometry}" Header="TabItem3"/>
-                                    <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource WindowsGeometry}" Header="TabItem4"/>
-                                    <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource ClockGeometry}" Header="TabItem5"/>
-                                    <hc:TabItem Header="TabItem6"/>
-                                    <hc:TabItem Header="TabItem7"/>
-                                </hc:TabControl>
-                            </StackPanel>
-                        </hc:ScrollViewer>
-                    </TabItem>
-                </TabControl>
+                            </TabItem>
+                            <TabItem Header="TabControl">
+                                <hc:ScrollViewer>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="32,32,32,16">
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="0" Content="HeaderBrushAlignment = Top"/>
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsUWPStyle = True"/>
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="HeaderBrush"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="16,0">
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsDraggable = True"/>
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsEnableAnimation = True"/>
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowOverflowButton = False"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="16,15">
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="IsScrollable = True"/>
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowCloseButton = True"/>
+                                            <Label Style="{StaticResource LabelPrimary}" Margin="16,0,0,0" Content="ShowScrollButton = True"/>
+                                        </StackPanel>
+                                        <hc:TabControl Name="uwpTab" HeaderBrushAlignment="Top" HeaderBrush="{DynamicResource PrimaryBrush}" ShowCloseButton="True" IsUWPStyle="True" IsDraggable="True" ShowOverflowButton="True" ShowScrollButton="True" Margin="32,16,32,0" Width="800" Height="300" IsScrollable="True" IsEnableAnimation="True">
+                                            <hc:TabItem Header="TabItem1" IsSelected="True"/>
+                                            <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource ConfigGeometry}" Header="TabItem2"/>
+                                            <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource CalendarGeometry}" Header="TabItem3"/>
+                                            <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource WindowsGeometry}" Header="TabItem4"/>
+                                            <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource ClockGeometry}" Header="TabItem5"/>
+                                            <hc:TabItem Header="TabItem6"/>
+                                            <hc:TabItem Header="TabItem7"/>
+                                        </hc:TabControl>
+                                    </StackPanel>
+                                </hc:ScrollViewer>
+                            </TabItem>
+                        </TabControl>
 
-            </TabItem>
-        </TabControl>
+                    </TabItem>
+                </TabControl>
+            </hc:TabItem>
+            <hc:TabItem Header="Part 2">
+                <UniformGrid Margin="10">
+                    <hc:Timeline IsCustomEverySlot="True" VerticalAlignment="Center" x:Name="Timeline" HorizontalAlignment="Center">
+                        <hc:Timeline.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock x:Name="timePart" Text="{Binding Item2}" Foreground="{DynamicResource PrimaryTextBrush}" />
+                                    <TextBlock Text="{Binding Item3}" Margin="0,10,0,30" />
+                                </StackPanel>
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsFirstItem, RelativeSource={RelativeSource AncestorType={x:Type hc:TimelineItem}}}" Value="True">
+                                        <Setter TargetName="timePart" Property="Foreground" Value="{DynamicResource WarningBrush}" />
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </hc:Timeline.ItemTemplate>
+                        <hc:Timeline.SlotTemplate>
+                            <DataTemplate>
+                                <Border x:Name="border" Width="15" Height="15" CornerRadius="100" 
+                                BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="1" 
+                                SnapsToDevicePixels="True" UseLayoutRounding="True" />
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding Item1}" Value="1">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#09CD6B" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Item1}" Value="2">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#FD4416" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Item1}" Value="3">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#46A2FF" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Item1}" Value="4">
+                                        <Setter TargetName="border" Property="BorderBrush" Value="#06CD6A" />
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </hc:Timeline.SlotTemplate>
+                    </hc:Timeline>
+                    <hc:Timeline>
+                        <hc:TimelineItem IsFirstItem="True" Content="Test 1" />
+                        <hc:TimelineItem Content="Test 2"/>
+                        <hc:TimelineItem Content="Test 3"/>
+                    </hc:Timeline>
+                </UniformGrid>
+            </hc:TabItem>
+        </hc:TabControl>
     </hc:TransitioningContentControl>
 </UserControl>
