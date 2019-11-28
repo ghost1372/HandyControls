@@ -242,6 +242,10 @@ namespace HandyControl.Controls
 
         private void InitCalendarAndClock()
         {
+            if (Microsoft.Windows.Controls.DateTimeHelper.GetCulture(this).LCID == 1033)
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("fa-IR");
+            }
             _clock = new Clock
             {
                 BorderThickness = new Thickness(),

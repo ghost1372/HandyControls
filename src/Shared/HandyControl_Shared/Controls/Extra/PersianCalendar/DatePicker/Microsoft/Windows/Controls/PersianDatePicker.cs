@@ -103,6 +103,7 @@ namespace HandyControl.Controls
             KeyboardNavigation.TabNavigationProperty.OverrideMetadata(typeof(PersianDatePicker), new FrameworkPropertyMetadata(KeyboardNavigationMode.Once));
             KeyboardNavigation.IsTabStopProperty.OverrideMetadata(typeof(PersianDatePicker), new FrameworkPropertyMetadata(false));
             IsEnabledProperty.OverrideMetadata(typeof(PersianDatePicker), new UIPropertyMetadata(new PropertyChangedCallback(OnIsEnabledChanged)));
+
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace HandyControl.Controls
 
             // Binding to FirstDayOfWeek and DisplayDate wont work
             FirstDayOfWeek = DateTimeHelper.GetCurrentDateFormat().FirstDayOfWeek;
-            DisplayDate = DateTime.Today;
+            SelectedDate = DateTime.Now;
         }
 
         #region Public properties
@@ -1158,15 +1159,7 @@ namespace HandyControl.Controls
             // TryParse is not used in order to be able to pass the exception to the TextParseError event
             try
             {
-                // Persian culture is an exception
-                if (DateTimeHelper.GetCulture(this).LCID == 1065)
-                {
-                    newSelectedDate = ParsePersianDate(text);
-                }
-                else
-                {
-                    newSelectedDate = DateTime.Parse(text, DateTimeHelper.GetDateFormat(DateTimeHelper.GetCulture(this)));
-                }
+                newSelectedDate = ParsePersianDate(text);
 
                 if (HandyControl.Controls.PersianCalendar.IsValidDateSelection(_calendar, newSelectedDate))
                 {

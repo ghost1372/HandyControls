@@ -97,7 +97,7 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/TreeView.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Poptip.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Drawer.xaml"/>
-
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/TimeLine.xaml"/>
 
 
         <!--#endregion-->
