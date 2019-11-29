@@ -12,10 +12,12 @@
                     <TabItem Header="Calendar">
                         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                             <StackPanel Orientation="Horizontal">
-                                <hc:PersianDateTimePicker Height="40"/>
+                                <StackPanel>
+                                    <hc:PersianDatePicker Name="pDP" Margin="10" Width="200" />
+                                    <hc:PersianDateTimePicker Height="40"/>
+                                </StackPanel>
                                 <hc:PersianCalendar Margin="10"/>
                                 <hc:PersianCalendarWithClock Margin="10" ClockConfirm="باشه"/>
-                                <hc:PersianDatePicker Name="pDP" Margin="10" Width="200" />
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>

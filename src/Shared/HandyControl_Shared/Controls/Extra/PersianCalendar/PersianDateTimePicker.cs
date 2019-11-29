@@ -655,7 +655,21 @@ namespace HandyControl.Controls
             }
         }
 
-        private string DateTimeToString(DateTime d) => d.ToString(DateTimeFormat);
+        private string DateTimeToString(DateTime d) 
+        {
+            var data = d.ToString(DateTimeFormat);
+
+            //Fix for SelectedDateTime in xaml that double converted so we check if year start with 0 we fix date 
+            //Note: this fix work until year = 1599
+            if (data.StartsWith("0"))
+            {
+                var year = data.Substring(0, 4);
+                var month = data.Substring(5, 2);
+                var day = data.Substring(8, 2);
+                data = data.Replace(year, d.Year.ToString()).Replace(month,d.Month.ToString()).Replace(day, d.Day.ToString());
+            }
+            return data;
+        }
 
         private static void OnGotFocus(object sender, RoutedEventArgs e)
         {

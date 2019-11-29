@@ -116,7 +116,9 @@ namespace HandyControl.Controls
 
             // Binding to FirstDayOfWeek and DisplayDate wont work
             FirstDayOfWeek = DateTimeHelper.GetCurrentDateFormat().FirstDayOfWeek;
-            SelectedDate = DateTime.Now;
+            if(SelectedDate == null)
+                SelectedDate = DateTime.Now;
+
         }
 
         #region Public properties
@@ -480,14 +482,8 @@ namespace HandyControl.Controls
             if (dp.SelectedDate.HasValue)
             {
                 DateTime day = dp.SelectedDate.Value;
-                dp.SetTextInternal(dp.DateTimeToString(day));
 
-                // When DatePickerDisplayDateFlag is TRUE, the SelectedDate change is coming from the Calendar UI itself,
-                // so, we shouldn't change the DisplayDate since it will automatically be changed by the Calendar
-                if ((day.Month != dp.DisplayDate.Month || day.Year != dp.DisplayDate.Year) && !dp._calendar.DatePickerDisplayDateFlag)
-                {
-                    dp.DisplayDate = day;
-                }
+                dp.SetTextInternal(dp.DateTimeToString(day));
 
                 dp._calendar.DatePickerDisplayDateFlag = false;
             }
@@ -695,17 +691,6 @@ namespace HandyControl.Controls
         #endregion Text
 
         #endregion Public Properties
-
-        #region Protected properties
-
-        #endregion Protected Properties
-
-        #region Internal Properties
-
-        #endregion Internal Properties
-
-        #region Private Properties
-        #endregion Private Properties
 
         #region Public Methods
 
@@ -1044,12 +1029,36 @@ namespace HandyControl.Controls
             {
                 case DatePickerFormat.Short:
                     {
-                        return string.Format("{0:00}/{1:00}/{2:00}", pc.GetYear(d) % 100, pc.GetMonth(d), pc.GetDayOfMonth(d));
 
+                        //Fix for SelectedDate in xaml that double converted so we check if year is 3 number like 777 we convert date to gregorian 
+                        int year = pc.GetYear(d) % 100;
+                        int month = pc.GetMonth(d);
+                        int day = pc.GetDayOfMonth(d);
+
+                        if (year.ToString().Length < 4)
+                        {
+                            DateTime dt = new DateTime(year, month, day, pc);
+                            year = dt.Year;
+                            month = dt.Month;
+                            day = dt.Day;
+                        }
+                        return string.Format("{0:00}/{1:00}/{2:00}", year, month, day);
                     }
                 case DatePickerFormat.Long:
                     {
-                        return string.Format("{0:0000}/{1:00}/{2:00}", pc.GetYear(d), pc.GetMonth(d), pc.GetDayOfMonth(d));
+                        int year = pc.GetYear(d);
+                        int month = pc.GetMonth(d);
+                        int day = pc.GetDayOfMonth(d);
+
+                        if (year.ToString().Length < 4)
+                        {
+                            DateTime dt = new DateTime(year, month, day, pc);
+                            year = dt.Year;
+                            month = dt.Month;
+                            day = dt.Day;
+                        }
+                        
+                        return string.Format("{0:0000}/{1:00}/{2:00}", year, month, day);
 
                     }
             }
