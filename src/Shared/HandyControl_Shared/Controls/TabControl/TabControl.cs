@@ -7,6 +7,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using HandyControl.Data;
+using HandyControl.Tools;
 using HandyControl.Tools.Extension;
 
 namespace HandyControl.Controls
@@ -42,6 +43,11 @@ namespace HandyControl.Controls
         private ButtonBase _buttonScrollRight;
 
         private Border _headerBorder;
+
+        public TabControl()
+        {
+            HeaderBrush = ResourceHelper.GetResource<Brush>("PrimaryBrush");
+        }
 
         /// <summary>
         ///     是否为内部操作
@@ -228,7 +234,7 @@ namespace HandyControl.Controls
         }
 
         public static readonly DependencyProperty HeaderBrushProperty =
-            DependencyProperty.Register("HeaderBrush", typeof(Brush), typeof(TabControl), new PropertyMetadata(Brushes.Violet));
+            DependencyProperty.Register("HeaderBrush", typeof(Brush), typeof(TabControl), new PropertyMetadata());
 
 
         public enum BrushAlignment

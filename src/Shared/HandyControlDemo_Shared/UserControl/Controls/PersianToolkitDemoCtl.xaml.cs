@@ -1,4 +1,5 @@
 ﻿using HandyControl.Controls;
+using HandyControl.Tools;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using MessageBox = HandyControl.Controls.MessageBox;
 
@@ -32,7 +34,7 @@ namespace HandyControlDemo.UserControl
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-           if(tab.SelectedIndex == 4)
+            if (tab.SelectedIndex == 4)
             {
                 count++;
                 switch (count)
@@ -95,11 +97,11 @@ namespace HandyControlDemo.UserControl
                 };
                 Dispatcher.Invoke(DispatcherPriority.Normal, a1);
 #else
-               Dispatcher.Invoke(() =>
-                {
-                    sp.Value = i;
-                    sld.Value = i;
-                });
+                Dispatcher.Invoke(() =>
+                 {
+                     sp.Value = i;
+                     sld.Value = i;
+                 });
 #endif
                 Thread.Sleep(30);
 
@@ -116,11 +118,11 @@ namespace HandyControlDemo.UserControl
                 };
                 Dispatcher.Invoke(DispatcherPriority.Normal, a2);
 #else
-               Dispatcher.Invoke(() =>
-                {
-                    sp.Value = i;
-                    sld.Value = i;
-                });
+                        Dispatcher.Invoke(() =>
+                         {
+                             sp.Value = i;
+                             sld.Value = i;
+                         });
 #endif
 
                         Thread.Sleep(30);
@@ -143,11 +145,11 @@ namespace HandyControlDemo.UserControl
                 };
                 Dispatcher.Invoke(DispatcherPriority.Normal, a1);
 #else
-               Dispatcher.Invoke(() =>
-                {
-                    sp2.Value = i;
-                    sld2.Value = i;
-                });
+                Dispatcher.Invoke(() =>
+                 {
+                     sp2.Value = i;
+                     sld2.Value = i;
+                 });
 #endif
                 Thread.Sleep(30);
 
@@ -164,11 +166,11 @@ namespace HandyControlDemo.UserControl
                 };
                 Dispatcher.Invoke(DispatcherPriority.Normal, a2);
 #else
-               Dispatcher.Invoke(() =>
-                {
-                    sp2.Value = i;
-                    sld2.Value = i;
-                });
+                        Dispatcher.Invoke(() =>
+                         {
+                             sp2.Value = i;
+                             sld2.Value = i;
+                         });
 #endif
 
                         Thread.Sleep(30);
@@ -190,12 +192,12 @@ namespace HandyControlDemo.UserControl
             worker.DoWork += worker_DoWork;
             worker.RunWorkerAsync();
         }
-#endregion
+        #endregion
 
-#region Encryption
+        #region Encryption
         private void BtnEnText_Click(object sender, RoutedEventArgs e)
         {
-           txtEn.Text = CryptographyHelper.EncryptTextAES(txtEnText.Text, txtEnTextPass.Text);
+            txtEn.Text = CryptographyHelper.EncryptTextAES(txtEnText.Text, txtEnTextPass.Text);
         }
 
         private void BtnDeText_Click(object sender, RoutedEventArgs e)
@@ -222,7 +224,7 @@ namespace HandyControlDemo.UserControl
                 }
                 globalFileName = Path.GetExtension(dialog.FileName); ;
             }
-           
+
         }
 
         private void btnEnFile_Click(object sender, RoutedEventArgs e)
@@ -252,9 +254,9 @@ namespace HandyControlDemo.UserControl
             txtmd5.Text = CryptographyHelper.GenerateMD5(txtHash.Text);
             txtsha.Text = CryptographyHelper.GenerateSHA256(txtHash.Text);
         }
-#endregion
+        #endregion
 
-#region InIHelper
+        #region InIHelper
         private void btnIniHelper_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
@@ -283,18 +285,18 @@ namespace HandyControlDemo.UserControl
                     break;
             }
         }
-#endregion
+        #endregion
 
         private void btnAppHost_Click(object sender, RoutedEventArgs e)
         {
             new AppHostWindow().ShowDialog();
         }
 
-#region Update Helper
+        #region Update Helper
         private void btnCheckUpdate_Click(object sender, RoutedEventArgs e)
         {
             var ver = UpdateHelper.CheckForUpdate("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
-            if(ver.IsExistNewVersion)
+            if (ver.IsExistNewVersion)
             {
                 Growl.InfoGlobal("New Version Found!");
                 lblUrl.Text = ver.Url;
@@ -303,14 +305,14 @@ namespace HandyControlDemo.UserControl
             else
             {
                 Growl.ErrorGlobal("you are using latest version");
-                lblUrl.Text = string.Empty;
-                txtChangelog.Text = string.Empty;
+                lblUrl.Text = ver.Url;
+                txtChangelog.Text = ver.Changelog;
             }
         }
 
         private void btnCheckUpdate2_Click(object sender, RoutedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(txtus.Text) && !string.IsNullOrEmpty(txtrp.Text))
+            if (!string.IsNullOrEmpty(txtus.Text) && !string.IsNullOrEmpty(txtrp.Text))
             {
                 var ver = UpdateHelper.CheckForUpdateGithubRelease(txtus.Text, txtrp.Text);
                 if (ver.IsExistNewVersion)
@@ -319,7 +321,7 @@ namespace HandyControlDemo.UserControl
                     lblUrl2.Text = ver.Url;
                     lbl1.Text = ver.CreatedAt.ToString();
                     lbl2.Text = ver.PublishedAt.ToString();
-                    
+
                     //Asset is List so maybe there is more than one file just use forech or increase index
                     lbl3.Text = ver.Asset[0].browser_download_url;
                     lbl4.Text = ver.IsPreRelease.ToString();
@@ -330,19 +332,19 @@ namespace HandyControlDemo.UserControl
                 else
                 {
                     Growl.ErrorGlobal("you are using latest version");
-                    lblUrl2.Text = string.Empty;
-                    lbl1.Text = string.Empty;
-                    lbl2.Text = string.Empty;
-                    lbl3.Text = string.Empty;
-                    lbl4.Text = string.Empty;
-                    lbl5.Text = string.Empty;
-                    lbl6.Text = string.Empty;
-                    txtChangelog2.Text = string.Empty;
+                    lblUrl2.Text = ver.Url;
+                    lbl1.Text = ver.CreatedAt.ToString();
+                    lbl2.Text = ver.PublishedAt.ToString();
+                    lbl3.Text = ver.Asset[0].browser_download_url;
+                    lbl4.Text = ver.IsPreRelease.ToString();
+                    lbl5.Text = ver.Asset[0].size.ToString();
+                    lbl6.Text = ver.Version;
+                    txtChangelog2.Text = ver.Changelog;
                 }
             }
             else
             {
-               Growl.ErrorGlobal("please use correct username and repo");
+                Growl.ErrorGlobal("please use correct username and repo");
             }
 
         }
@@ -366,5 +368,28 @@ namespace HandyControlDemo.UserControl
                 LoadTimeLine();
         }
         #endregion
+
+        #region TabControl
+        private void CmbBrush_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string resourceName = ((ComboBoxItem)cmbBrush.SelectedItem).Content.ToString();
+            uwpTab.HeaderBrush = ResourceHelper.GetResource<Brush>(resourceName);
+        }
+
+        private void cmbAligment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cmbAligment.SelectedIndex)
+            {
+                case 0:
+                    uwpTab.HeaderBrushAlignment = HandyControl.Controls.TabControl.BrushAlignment.Top;
+                    break;
+                case 1:
+                    uwpTab.HeaderBrushAlignment = HandyControl.Controls.TabControl.BrushAlignment.Bottom;
+                    break;
+            }
+        }
+        #endregion
+
     }
 }
+

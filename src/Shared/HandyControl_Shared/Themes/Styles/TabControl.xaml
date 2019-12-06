@@ -99,7 +99,21 @@
         <Setter Property="HeaderTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <TextBlock Background="Transparent" Text="{Binding Header,RelativeSource={RelativeSource AncestorType=controls:TabItem}}"/>
+                    <TextBlock Background="Transparent" Text="{Binding Header,RelativeSource={RelativeSource AncestorType=controls:TabItem}}">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsSelected}" Value="True">
+                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsMouseOver}" Value="True">
+                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -115,14 +129,23 @@
                         <Border Grid.ColumnSpan="3" BorderThickness="{TemplateBinding BorderThickness}" x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Margin="0">
                             <Border Margin="0,0,0,-1" x:Name="innerBorder" Background="{DynamicResource RegionBrush}" Opacity="1"/>
                         </Border>
-                        <Path Grid.Column="0" Margin="10,0,0,0" x:Name="PathMain" Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" Fill="{TemplateBinding Foreground}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}">
+                        <Path Grid.Column="0" Margin="10,0,0,0" x:Name="PathMain" Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}">
                             <Path.Style>
                                 <Style TargetType="Path">
                                     <Setter Property="Visibility" Value="Visible"/>
+                                    <Setter Property="Fill" Value="{DynamicResource SecondaryTextBrush}"/>
+
                                     <Style.Triggers>
                                         <Trigger Property="Data" Value="{x:Null}">
                                             <Setter Property="Visibility" Value="Collapsed"/>
                                         </Trigger>
+
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsSelected}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource PrimaryTextBrush}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsMouseOver}" Value="True">
+                                            <Setter Property="Fill" Value="{DynamicResource PrimaryTextBrush}"/>
+                                        </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </Path.Style>
@@ -138,6 +161,15 @@
                         <Button Grid.Column="2" Focusable="False" Command="interactivity:ControlCommands.Close" Visibility="{TemplateBinding ShowCloseButton,Converter={StaticResource Boolean2VisibilityConverter}}" Background="Transparent" Style="{StaticResource ButtonCustom}" Width="28">
                             <Path Fill="{DynamicResource PrimaryTextBrush}" Width="8" Height="8" Style="{StaticResource ClosePathStyle}"/>
                         </Button>
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Effect" Value="{StaticResource EffectShadow2}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
@@ -146,7 +178,6 @@
                             <Setter Property="BorderThickness" Value="0,3,0,0"/>
                             <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
                         </Trigger>
-
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="True" />
@@ -159,9 +190,7 @@
                                 <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
-
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Effect" Value="{StaticResource EffectShadow3}"/>
                             <Setter Property="Opacity" TargetName="innerBorder" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
