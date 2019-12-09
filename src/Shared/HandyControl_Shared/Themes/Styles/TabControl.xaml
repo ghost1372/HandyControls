@@ -190,9 +190,15 @@
                                 <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" TargetName="innerBorder" Value="0"/>
-                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="False" />
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource self}}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Opacity" TargetName="innerBorder" Value="0.1"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

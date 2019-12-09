@@ -22,7 +22,7 @@ namespace Microsoft.Windows.Automation.Peers
     /// <summary>
     /// AutomationPeer for Calendar Control
     /// </summary>
-    public sealed class CalendarAutomationPeer : FrameworkElementAutomationPeer, IGridProvider, IMultipleViewProvider, ISelectionProvider, ITableProvider
+    internal sealed class CalendarAutomationPeer : FrameworkElementAutomationPeer, IGridProvider, IMultipleViewProvider, ISelectionProvider, ITableProvider
     {
         /// <summary>
         /// Initializes a new instance of the CalendarAutomationPeer class.
