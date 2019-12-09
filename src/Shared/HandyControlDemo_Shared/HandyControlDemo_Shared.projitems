@@ -188,6 +188,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\RateDemoCtl.xaml.cs">
       <DependentUpon>RateDemoCtl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\RelativePanelDemoCtl.xaml.cs">
+      <DependentUpon>RelativePanelDemoCtl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\RunningBlockDemoCtl.xaml.cs">
       <DependentUpon>RunningBlockDemoCtl.xaml</DependentUpon>
     </Compile>
@@ -651,6 +654,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\RateDemoCtl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\RelativePanelDemoCtl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
