@@ -19,7 +19,7 @@ namespace Microsoft.Windows.Automation.Peers
     /// <summary>
     /// AutomationPeer for CalendarDayButton
     /// </summary>
-    public sealed class CalendarDayButtonAutomationPeer : ButtonAutomationPeer, IGridItemProvider, ISelectionItemProvider, ITableItemProvider
+    internal sealed class CalendarDayButtonAutomationPeer : ButtonAutomationPeer, IGridItemProvider, ISelectionItemProvider, ITableItemProvider
     {
         /// <summary>
         /// Initializes a new instance of the CalendarDayButtonAutomationPeer class.
