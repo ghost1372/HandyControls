@@ -29,7 +29,11 @@
     <Style x:Key="LabelDanger" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
-
+    
+    <Style x:Key="LabelViolet" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
+        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
+    </Style>
+    
     <Style x:Key="LabelDefault" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>

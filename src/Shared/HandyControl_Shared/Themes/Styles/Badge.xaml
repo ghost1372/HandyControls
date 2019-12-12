@@ -33,5 +33,9 @@
     <Style x:Key="BadgeDanger" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="controls:Badge">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
-
+    
+    <Style x:Key="BadgeViolet" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="controls:Badge">
+        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
+    </Style>
+    
 </ResourceDictionary>

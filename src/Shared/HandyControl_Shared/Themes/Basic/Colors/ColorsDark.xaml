@@ -17,6 +17,9 @@
     <Color x:Key="SuccessColor">#2db84d</Color>
     <Color x:Key="DarkSuccessColor">#2db84d</Color>
 
+    <Color x:Key="VioletColor">#7b1fa2</Color>
+    <Color x:Key="DarkVioletColor">#7b1fa2</Color>
+    
     <Color x:Key="PrimaryTextColor">White</Color>
     <Color x:Key="SecondaryTextColor">#757575</Color>
     <Color x:Key="ThirdlyTextColor">#3f3f46</Color>

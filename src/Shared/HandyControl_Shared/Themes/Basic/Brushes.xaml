@@ -51,6 +51,12 @@
     </LinearGradientBrush>
     <SolidColorBrush x:Key="DarkSuccessBrush" Color="{DynamicResource DarkSuccessColor}"/>
 
+    <LinearGradientBrush x:Key="VioletBrush" EndPoint="1,0" StartPoint="0,0">
+        <GradientStop Color="{DynamicResource VioletColor}" Offset="0"/>
+        <GradientStop Color="{DynamicResource DarkVioletColor}" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="DarkVioletBrush" Color="{DynamicResource DarkVioletColor}"/>
+
     <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}"/>
     <SolidColorBrush x:Key="DarkAccentBrush" Color="{DynamicResource DarkAccentColor}"/>
 

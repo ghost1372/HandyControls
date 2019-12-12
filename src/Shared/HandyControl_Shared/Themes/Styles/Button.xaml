@@ -48,6 +48,10 @@
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
 
+    <Style x:Key="ButtonViolet" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
+    </Style>
+
     <Style x:Key="ButtonIcon" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>

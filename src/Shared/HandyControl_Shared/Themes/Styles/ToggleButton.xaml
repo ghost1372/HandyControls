@@ -56,6 +56,10 @@
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
 
+    <Style x:Key="ToggleButtonViolet" BasedOn="{StaticResource ToggleButtonBaseStyle}" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
+    </Style>
+    
     <!--图标-->
     <Style x:Key="ToggleButtonIcon" BasedOn="{StaticResource ToggleButtonIconBaseStyle}" TargetType="ToggleButton">
         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
@@ -89,6 +93,10 @@
 
     <Style x:Key="ToggleButtonIconDanger" BasedOn="{StaticResource ToggleButtonIconBaseStyle}" TargetType="ToggleButton">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
+    </Style>
+    
+    <Style x:Key="ToggleButtonIconViolet" BasedOn="{StaticResource ToggleButtonIconBaseStyle}" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
     </Style>
 
     <Style x:Key="ToggleButtonIconTransparent" BasedOn="{StaticResource ToggleButtonIconBaseStyle}" TargetType="ToggleButton">
@@ -378,4 +386,8 @@
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
 
+    <Style x:Key="ToggleButtonLoadingViolet" BasedOn="{StaticResource ToggleButtonLoadingPrimary}" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
+    </Style>
+    
 </ResourceDictionary>
