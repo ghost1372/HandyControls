@@ -13,14 +13,19 @@
     <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
         <Menu Margin="10,0,0,0" Background="Transparent">
             <MenuItem Height="29" Header="{x:Static langs:Lang.Repository}">
-                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/NaBian/HandyControl" Header="GitHub">
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/ghost1372/HandyControls" Header="GitHub">
                     <MenuItem.Icon>
                         <Path Data="{StaticResource GithubGeometry}" Fill="{DynamicResource PrimaryTextBrush}"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://www.nuget.org/packages/HandyControl" Header="NuGet">
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://www.nuget.org/packages/HandyControls" Header="NuGet">
                     <MenuItem.Icon>
                         <Path Data="{StaticResource NugetGeometry}" Fill="#30a5dd"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.HandyControls" Header="MarketPlace">
+                    <MenuItem.Icon>
+                        <Path Data="{StaticResource VisualStudioGeometry}" Fill="{DynamicResource PrimaryTextBrush}"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -40,7 +45,7 @@
                         <Path Data="{StaticResource EmailGeometry}" Fill="{DynamicResource WarningBrush}"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://gitter.im/HandyControl/Lobby" Header="{x:Static langs:Lang.Chatroom}">
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://gitter.im/HandyControls/community" Header="{x:Static langs:Lang.Chatroom}">
                     <MenuItem.Icon>
                         <Path Data="{StaticResource GitterGeometry}" Fill="#e52e64"/>
                     </MenuItem.Icon>

@@ -146,7 +146,7 @@
                                         <Setter Property="Background" Value="#00000000"/>
                                         <Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="{DynamicResource ThirdlyRegionBrush}"/>
+                                                <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -201,8 +201,6 @@
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="MinHeight" Value="40"/>
         <Setter Property="MinWidth" Value="150" />
-        <Setter Property="hc:IconSwitchElement.Geometry" Value="{DynamicResource WindowsGeometry}"/>
-        <Setter Property="hc:IconSwitchElement.GeometrySelected" Value="{DynamicResource InfoGeometry}"/>
         <Setter Property="hc:IconElement.Width" Value="24"/>
         <Setter Property="hc:IconElement.Height" Value="24"/>
         <Setter Property="Template">
