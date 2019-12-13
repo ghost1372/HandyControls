@@ -1,4 +1,5 @@
 ﻿using HandyControl.Controls;
+using HandyControl.Data;
 using HandyControl.Tools;
 using Microsoft.Win32;
 using System;
@@ -26,7 +27,64 @@ namespace HandyControlDemo.UserControl
             _dispatcherTimer.Tick += DispatcherTimer_Tick;
             _dispatcherTimer.Start();
             #endregion
+            LoadGithubTimeLineItem();
         }
+
+        #region GithubTimeLine
+        ObservableCollection<GithubTimeLine> data = new ObservableCollection<GithubTimeLine>();
+
+        private void LoadGithubTimeLineItem()
+        {
+            var item = new GithubTimeLine() { TitleLabel = "2.2.4", TitleInfo = "December 11th 2019", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelViolet) };
+            item.Members.Add(new ContentMember() { ContentTitle = "FIXED", ContentInfo = "Warn when committing to a protected branch", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "ADDED", ContentInfo = "Warn when committing to a repository you don't have write access to", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Adding integration for Xcode as external editor", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelPrimary) });
+            data.Add(item);
+
+            var item2 = new GithubTimeLine() { TitleLabel = "2.2.3", TitleInfo = "November 7th 2019", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelInfo) };
+            item2.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Update embedded Git to address security vulnerabilities", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item2.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Changed wording to match git autocrlf behavior", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            data.Add(item2);
+            gitTime.ItemsSource = data;
+        }
+        private void btnAddGit_Click(object sender, RoutedEventArgs e)
+        {
+            var item = new GithubTimeLine() { TitleLabel = "3.1.0", TitleInfo = "Aug 11th 2018", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelViolet) };
+            item.Members.Add(new ContentMember() { ContentTitle = "FIXED", ContentInfo = "Warn when committing to a protected branch", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "ADDED", ContentInfo = "Warn when committing to a repository you don't have write access to", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Adding integration for Xcode as external editor", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelPrimary) });
+            data.Add(item);
+            gitTime.ItemsSource = data;
+        }
+        private void btnRemoveGit_Click(object sender, RoutedEventArgs e)
+        {
+            gitTime.ItemsSource = null;
+            data.Clear();
+        }
+        private void TgSort_Unchecked(object sender, RoutedEventArgs e)
+        {
+            gitTime.OrderBy = GithubTimeLine.OrderType.DessendingTitleLabel;
+            tgSort.Content = "DessendingTitleLabel";
+        }
+
+        private void TgSort_Checked(object sender, RoutedEventArgs e)
+        {
+            gitTime.OrderBy = GithubTimeLine.OrderType.AssendingTitleLabel;
+            tgSort.Content = "AssendingTitleLabel";
+        }
+
+        private void TgSort_Unchecked2(object sender, RoutedEventArgs e)
+        {
+            gitTime.OrderBy = GithubTimeLine.OrderType.DessendingTitleInfo;
+            tgSort2.Content = "DessendingTitleInfo";
+        }
+
+        private void TgSort_Checked2(object sender, RoutedEventArgs e)
+        {
+            gitTime.OrderBy = GithubTimeLine.OrderType.AssendingTitleInfo;
+            tgSort2.Content = "AssendingTitleInfo";
+        }
+        #endregion
 
         #region NeonLabel
         private DispatcherTimer _dispatcherTimer;

@@ -193,6 +193,7 @@
         public const string DarkAccentColor = nameof(DarkAccentColor);
         public const string DarkMaskColor = nameof(DarkMaskColor);
         public const string DarkOpacityColor = nameof(DarkOpacityColor);
+        public const string ForthlyRegionColor = nameof(ForthlyRegionColor);
         public const string MainContentForegroundColor = nameof(MainContentForegroundColor);
         public const string MainContentBackgroundColor = nameof(MainContentBackgroundColor);
         #endregion
