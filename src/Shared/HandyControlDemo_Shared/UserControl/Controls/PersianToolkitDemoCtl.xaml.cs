@@ -35,14 +35,13 @@ namespace HandyControlDemo.UserControl
 
         private void LoadGithubTimeLineItem()
         {
-
             var item = new GithubTimeLine() { TitleLabel = "2.2.4", TitleInfo = "December 11th 2019", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelViolet) };
-            item.Members.Add(new ContentMember() { ContentTitle = "Fixed", ContentInfo = "Warn when committing to a protected branch", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
-            item.Members.Add(new ContentMember() { ContentTitle = "Added", ContentInfo = "Warn when committing to a repository you don't have write access to", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "FIXED", ContentInfo = "Warn when committing to a protected branch", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "ADDED", ContentInfo = "Warn when committing to a repository you don't have write access to", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
             item.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Adding integration for Xcode as external editor", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelPrimary) });
             data.Add(item);
 
-            var item2 = new GithubTimeLine() { TitleLabel = "2.2.3", TitleInfo = "November 7th 2019", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelViolet) };
+            var item2 = new GithubTimeLine() { TitleLabel = "2.2.3", TitleInfo = "November 7th 2019", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelInfo) };
             item2.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Update embedded Git to address security vulnerabilities", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
             item2.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Changed wording to match git autocrlf behavior", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
             data.Add(item2);
@@ -51,8 +50,8 @@ namespace HandyControlDemo.UserControl
         private void btnAddGit_Click(object sender, RoutedEventArgs e)
         {
             var item = new GithubTimeLine() { TitleLabel = "3.1.0", TitleInfo = "Aug 11th 2018", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelViolet) };
-            item.Members.Add(new ContentMember() { ContentTitle = "Fixed", ContentInfo = "Warn when committing to a protected branch", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
-            item.Members.Add(new ContentMember() { ContentTitle = "Added", ContentInfo = "Warn when committing to a repository you don't have write access to", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "FIXED", ContentInfo = "Warn when committing to a protected branch", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "ADDED", ContentInfo = "Warn when committing to a repository you don't have write access to", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
             item.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Adding integration for Xcode as external editor", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelPrimary) });
             data.Add(item);
             gitTime.ItemsSource = data;

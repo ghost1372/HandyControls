@@ -188,14 +188,14 @@
             <Setter.Value>
                 <HierarchicalDataTemplate DataType="{x:Type hc:GithubTimeLine}" ItemsSource="{Binding Members}">
                     <StackPanel Orientation="Horizontal">
-                        <Label Style="{Binding TitleStyle}" Width="70" Height="30" Margin="5" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="13" BorderThickness="0"  Content="{Binding TitleLabel}"/>
+                        <Label Style="{Binding TitleStyle}" Width="80" Height="32" Margin="5" FontWeight="DemiBold" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" BorderThickness="0"  Content="{Binding TitleLabel}"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" FontWeight="Thin" Foreground="{DynamicResource SecondaryTextBrush}" VerticalAlignment="Center" Text="{Binding TitleInfo}"/>
                     </StackPanel>
                     <HierarchicalDataTemplate.ItemTemplate>
                         <DataTemplate DataType="{x:Type hc:ContentMember}">
-                            <StackPanel Margin="60,0,0,0" Orientation="Horizontal">
-                                <Label Style="{Binding ContentStyle}" Content="{Binding ContentTitle}" Width="70" Height="24" Margin="5" FontWeight="Bold" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="9" BorderThickness="0"/>
-                                <TextBlock FontSize="14" Foreground="{DynamicResource SecondaryTextBrush}" VerticalAlignment="Center" Text="{Binding ContentInfo}"/>
+                            <StackPanel Margin="70,0,0,0" Orientation="Horizontal">
+                                <Label Style="{Binding ContentStyle}" Content="{Binding ContentTitle}" Width="80" Height="23" Margin="5" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="DemiBold" FontSize="10" BorderThickness="0"/>
+                                <TextBlock Margin="5,0" FontSize="14" Foreground="{DynamicResource SecondaryTextBrush}" VerticalAlignment="Center" Text="{Binding ContentInfo}"/>
                             </StackPanel>
                         </DataTemplate>
                     </HierarchicalDataTemplate.ItemTemplate>
