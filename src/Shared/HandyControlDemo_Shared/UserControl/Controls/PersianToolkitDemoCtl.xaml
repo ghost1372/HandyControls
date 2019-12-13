@@ -364,7 +364,21 @@
             </hc:TabItem>
             <hc:TabItem Header="Part 3">
                 <TabControl MinWidth="700" TabStripPlacement="Top" Margin="16" Style="{StaticResource TabControlCapsuleSolid}">
-                   
+                    <TabItem Margin="0,10" Header="GithubTimeLine">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Margin="5" Content="Add" Click="btnAddGit_Click"/>
+                                <Button Margin="5" Content="Remove" Click="btnRemoveGit_Click"/>
+                                <ToggleButton Margin="5" x:Name="tgSort" Checked="TgSort_Checked" Unchecked="TgSort_Unchecked" Content="TitleLabel Sort"/>
+                                <ToggleButton Margin="5" x:Name="tgSort2" Checked="TgSort_Checked2" Unchecked="TgSort_Unchecked2" Content="TitleInfo Sort"/>
+                            </StackPanel>
+                            <hc:GithubTimeLine Grid.Row="1" Name="gitTime"/>
+                        </Grid>
+                    </TabItem>
                 </TabControl>
             </hc:TabItem>
         </hc:TabControl>

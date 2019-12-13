@@ -51,5 +51,9 @@
     <Style x:Key="SplitButtonDanger"  BasedOn="{StaticResource SplitButtonBaseStyle}" TargetType="controls:SplitButton">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
+    
+    <Style x:Key="SplitButtonViolet"  BasedOn="{StaticResource SplitButtonBaseStyle}" TargetType="controls:SplitButton">
+        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
+    </Style>
 
 </ResourceDictionary>
