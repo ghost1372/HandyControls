@@ -693,4 +693,7 @@
   <data name="Documentation" xml:space="preserve">
     <value>Documentation</value>
   </data>
+  <data name="Effects" xml:space="preserve">
+    <value>Effects</value>
+  </data>
 </root>

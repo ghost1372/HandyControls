@@ -694,6 +694,9 @@
     <value>抽屉</value>
   </data>
   <data name="Documentation" xml:space="preserve">
-    <value>Documentation</value>
+    <value>文献资料</value>
+  </data>
+  <data name="Effects" xml:space="preserve">
+    <value>效果</value>
   </data>
 </root>
