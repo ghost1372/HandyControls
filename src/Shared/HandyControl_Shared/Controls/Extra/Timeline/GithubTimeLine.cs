@@ -36,7 +36,6 @@ namespace HandyControl.Controls
 		#endregion
 
 		public ObservableCollection<ContentMember> Members { get; set; }
-		internal ObservableCollection<GithubTimeLine> data = new ObservableCollection<GithubTimeLine>();
 
 		private string titleLabel;
 		public string TitleLabel
