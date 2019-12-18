@@ -88,8 +88,6 @@
         public const string FatalGeometry = nameof(FatalGeometry);
         #endregion
 
-        #endregion
-
         #region Brush
 
         public const string PrimaryBrush = nameof(PrimaryBrush);
@@ -303,7 +301,6 @@
         public const string BehaviorY400 = nameof(BehaviorY400);
 
         #endregion
-
         #endregion
 
         #region Internal
