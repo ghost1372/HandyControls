@@ -57,7 +57,7 @@ namespace HandyControl.Controls
             };
             
             var newInfo = GetSystemVersion(versionItem.FirstOrDefault());
-            var oldInfo = GetSystemVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            var oldInfo = GetSystemVersion(Assembly.GetCallingAssembly().GetName().Version.ToString());
             var newVer = new SystemVersionInfo(newInfo.Major, newInfo.Minor, newInfo.Build, newInfo.Revision);
             var oldVer = new SystemVersionInfo(oldInfo.Major, oldInfo.Minor, oldInfo.Build, oldInfo.Revision);
 
@@ -120,7 +120,7 @@ namespace HandyControl.Controls
                     Url = rel?.url
                 };
                 var newInfo = GetSystemVersion(rel.tag_name);
-                var oldInfo = GetSystemVersion(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                var oldInfo = GetSystemVersion(Assembly.GetCallingAssembly().GetName().Version.ToString());
                 var newVer = new SystemVersionInfo(newInfo.Major, newInfo.Minor, newInfo.Build, newInfo.Revision);
                 var oldVer = new SystemVersionInfo(oldInfo.Major, oldInfo.Minor, oldInfo.Build, oldInfo.Revision);
                 if (newVer > oldVer)
