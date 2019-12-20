@@ -116,8 +116,9 @@ namespace HandyControl.Controls
                     Asset = rel.assets.Any() ? rel?.assets.ToList() : null,
                     IsPreRelease = rel.prerelease,
                     PublishedAt = Convert.ToDateTime(rel?.published_at),
-                    Version = rel.tag_name,
-                    Url = rel?.url
+                    TagName = rel.tag_name,
+                    ApiUrl = rel?.url,
+                    ReleaseUrl = rel?.html_url
                 };
                 var newInfo = GetSystemVersion(rel.tag_name);
                 var oldInfo = GetSystemVersion(Assembly.GetCallingAssembly().GetName().Version.ToString());
@@ -197,6 +198,7 @@ namespace HandyControl.Controls
         internal class Root
         {
             public string url { get; set; }
+            public string html_url { get; set; }
             public string tag_name { get; set; }
             public bool prerelease { get; set; }
             public DateTime created_at { get; set; }
@@ -212,9 +214,10 @@ namespace HandyControl.Controls
         public class GithubReleaseModel
         {
             public bool IsExistNewVersion { get; internal set; }
-            public string Url { get; internal set; }
+            public string ApiUrl { get; internal set; }
+            public string ReleaseUrl { get; internal set; }
             public string Changelog { get; internal set; }
-            public string Version { get; internal set; }
+            public string TagName { get; internal set; }
             public List<Asset> Asset { get; internal set; }
             public bool IsPreRelease { get; internal set; }
             public DateTime CreatedAt { get; internal set; }

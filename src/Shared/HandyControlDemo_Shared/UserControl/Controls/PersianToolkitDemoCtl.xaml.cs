@@ -376,7 +376,7 @@ namespace HandyControlDemo.UserControl
                 if (ver.IsExistNewVersion)
                 {
                     Growl.InfoGlobal("New Version Found!");
-                    lblUrl2.Text = ver.Url;
+                    lblUrl2.Text = ver.ApiUrl;
                     lbl1.Text = ver.CreatedAt.ToString();
                     lbl2.Text = ver.PublishedAt.ToString();
 
@@ -384,19 +384,19 @@ namespace HandyControlDemo.UserControl
                     lbl3.Text = ver.Asset[0].browser_download_url;
                     lbl4.Text = ver.IsPreRelease.ToString();
                     lbl5.Text = ver.Asset[0].size.ToString();
-                    lbl6.Text = ver.Version;
+                    lbl6.Text = ver.TagName;
                     txtChangelog2.Text = ver.Changelog;
                 }
                 else
                 {
                     Growl.ErrorGlobal("you are using latest version");
-                    lblUrl2.Text = ver.Url;
+                    lblUrl2.Text = ver.ApiUrl;
                     lbl1.Text = ver.CreatedAt.ToString();
                     lbl2.Text = ver.PublishedAt.ToString();
                     lbl3.Text = ver.Asset[0].browser_download_url;
                     lbl4.Text = ver.IsPreRelease.ToString();
                     lbl5.Text = ver.Asset[0].size.ToString();
-                    lbl6.Text = ver.Version;
+                    lbl6.Text = ver.TagName;
                     txtChangelog2.Text = ver.Changelog;
                 }
             }
