@@ -22,11 +22,6 @@ namespace HandyControlDemo.UserControl
         {
             this.InitializeComponent();
 
-            #region NeonLabel
-            _dispatcherTimer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(1) };
-            _dispatcherTimer.Tick += DispatcherTimer_Tick;
-            _dispatcherTimer.Start();
-            #endregion
             LoadGithubTimeLineItem();
         }
 
@@ -83,34 +78,6 @@ namespace HandyControlDemo.UserControl
         {
             gitTime.OrderBy = GithubTimeLine.OrderType.AssendingTitleInfo;
             tgSort2.Content = "AssendingTitleInfo";
-        }
-        #endregion
-
-        #region NeonLabel
-        private DispatcherTimer _dispatcherTimer;
-        private int count = 0;
-
-        private void DispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            if (tab.SelectedIndex == 4)
-            {
-                count++;
-                switch (count)
-                {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                        break;
-                    case 5:
-                        count = 0;
-                        break;
-                }
-                neon2.Next(NeonLabelType.FadeNext, Guid.NewGuid().ToString());
-                neon3.Next(NeonLabelType.SlideNext, Guid.NewGuid().ToString());
-                if (count == 1)
-                    neon.Next(NeonLabelType.ScrollToEnd, null, 4);
-            }
         }
         #endregion
 

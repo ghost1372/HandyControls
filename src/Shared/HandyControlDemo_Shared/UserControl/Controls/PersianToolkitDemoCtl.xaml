@@ -40,30 +40,6 @@
                             <hc:MaskedTextBox Margin="10,20" Mask="(000) 000-0000" ValueDataType="{x:Type s:String}"/>
                         </UniformGrid>
                     </TabItem>
-                    <TabItem Header="NeonLabel">
-                        <StackPanel Margin="10">
-                            <hc:NeonLabel x:Name="neon"
-                                      Height="30"
-                                      Width="350"
-                                      HorizontalAlignment="Left"
-                                      Content="This is a scrollable neon label .I have to type these characters to make it longer. This is a scrollable neon label .I have to type these characters to make it longer."
-                                      Margin="20" />
-                            <hc:NeonLabel x:Name="neon2"
-                                      Height="30"
-                                      NeonStyle="{StaticResource LabelInfo}"
-                                      Width="350"
-                                      HorizontalAlignment="Left"
-                                      Content="HelloWorld"
-                                      Margin="20" />
-                            <hc:NeonLabel x:Name="neon3"
-                                      Height="30"
-                                      Width="350"
-                                      NeonStyle="{StaticResource LabelPrimary}"
-                                      HorizontalAlignment="Left"
-                                      Content="This is a scrollable neon label .I have to type these characters to make it longer."
-                                      Margin="20" />
-                        </StackPanel>
-                    </TabItem>
                     <TabItem Header="SpeedoMeter">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <Grid>

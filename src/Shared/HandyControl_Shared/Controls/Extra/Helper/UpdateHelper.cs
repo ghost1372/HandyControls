@@ -113,7 +113,7 @@ namespace HandyControl.Controls
                 {
                     Changelog = rel?.body,
                     CreatedAt = Convert.ToDateTime(rel?.created_at),
-                    Asset = rel.assets.Any() ? rel?.assets.ToList() : null,
+                    Asset = rel.assets,
                     IsPreRelease = rel.prerelease,
                     PublishedAt = Convert.ToDateTime(rel?.published_at),
                     TagName = rel.tag_name,
@@ -191,8 +191,8 @@ namespace HandyControl.Controls
 
         public class Asset
         {
-            public int size { get; internal set; }
-            public string browser_download_url { get; internal set; }
+            public int size { get; set; }
+            public string browser_download_url { get; set; }
         }
 
         internal class Root

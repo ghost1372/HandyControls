@@ -7,7 +7,6 @@
         <ResourceDictionary Source="SpeedoMeter.xaml"/>
         <ResourceDictionary Source="BusyIndicator.xaml"/>
         <ResourceDictionary Source="MainContentBackground.xaml"/>
-        <ResourceDictionary Source="NeonLabel.xaml"/>
         <ResourceDictionary Source="Window.xaml"/>
         <ResourceDictionary Source="PopupWindow.xaml"/>
         <ResourceDictionary Source="MessageBox.xaml"/>
