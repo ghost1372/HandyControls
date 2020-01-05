@@ -86,7 +86,7 @@
         <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="Padding" Value="16,0"/>
+        <Setter Property="Padding" Value="10,0,0,0"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="Menu" Value="{StaticResource TabItemMenu}"/>
@@ -123,17 +123,11 @@
                         <Border Grid.ColumnSpan="3" BorderThickness="{TemplateBinding BorderThickness}" x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Margin="0">
                             <Border Margin="0,0,0,-1" x:Name="innerBorder" Background="{DynamicResource RegionBrush}" Opacity="1"/>
                         </Border>
-                        <Path Grid.Column="0" Margin="10,0,0,0" x:Name="PathMain" Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}">
-                            <Path.Style>
+                        <Path x:Name="PathMain" Margin="10,0,0,0" Grid.Column="0" Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}">
+                        <Path.Style>
                                 <Style TargetType="Path">
-                                    <Setter Property="Visibility" Value="Visible"/>
                                     <Setter Property="Fill" Value="{DynamicResource SecondaryTextBrush}"/>
-
                                     <Style.Triggers>
-                                        <Trigger Property="Data" Value="{x:Null}">
-                                            <Setter Property="Visibility" Value="Collapsed"/>
-                                        </Trigger>
-
                                         <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsSelected}" Value="True">
                                             <Setter Property="Fill" Value="{DynamicResource PrimaryTextBrush}"/>
                                         </DataTrigger>
@@ -171,6 +165,9 @@
                             <Setter Property="Opacity" TargetName="innerBorder" Value="0"/>
                             <Setter Property="BorderThickness" Value="0,3,0,0"/>
                             <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
+                        </Trigger>
+                        <Trigger Property="controls:IconElement.Geometry" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="PathMain"/>
                         </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>

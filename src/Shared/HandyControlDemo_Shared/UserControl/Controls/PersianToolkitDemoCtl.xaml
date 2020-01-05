@@ -288,7 +288,7 @@
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Margin="16,0">
                                             <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Margin="16,0,0,0" IsChecked="True" Name="IsDraggable" Content="IsDraggable"/>
-                                            <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Margin="16,0,0,0" IsChecked="True" Name="IsEnableAnimation" Content="IsEnableAnimation"/>
+                                            <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Margin="16,0,0,0" IsChecked="True" Name="IsAnimationEnable" Content="IsAnimationEnable"/>
                                             <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Margin="16,0,0,0" IsChecked="True" Name="ShowOverflowButton" Content="ShowOverflowButton"/>
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal" Margin="16,15">
@@ -297,7 +297,7 @@
                                             <ToggleButton Style="{StaticResource ToggleButtonSwitch}" Margin="16,0,0,0" IsChecked="True" Name="ShowScrollButton" Content="ShowScrollButton"/>
                                         </StackPanel>
 
-                                        <hc:TabControl Name="uwpTab" ShowCloseButton="{Binding ElementName=ShowCloseButton, Path=IsChecked}" IsUWPStyle="True" IsDraggable="{Binding ElementName=IsDraggable, Path=IsChecked}" ShowOverflowButton="{Binding ElementName=ShowOverflowButton, Path=IsChecked}" ShowScrollButton="{Binding ElementName=ShowScrollButton, Path=IsChecked}" Margin="32,16,32,0" Width="800" Height="300" IsScrollable="{Binding ElementName=IsScrollable, Path=IsChecked}" IsEnableAnimation="{Binding ElementName=IsEnableAnimation, Path=IsChecked}">
+                                        <hc:TabControl Name="uwpTab" ShowCloseButton="{Binding ElementName=ShowCloseButton, Path=IsChecked}" IsUWPStyle="True" IsDraggable="{Binding ElementName=IsDraggable, Path=IsChecked}" ShowOverflowButton="{Binding ElementName=ShowOverflowButton, Path=IsChecked}" ShowScrollButton="{Binding ElementName=ShowScrollButton, Path=IsChecked}" Margin="32,16,32,0" Width="800" Height="300" IsScrollable="{Binding ElementName=IsScrollable, Path=IsChecked}" IsAnimationEnabled="{Binding ElementName=IsAnimationEnable, Path=IsChecked}">
                                             <hc:TabItem Header="TabItem1" IsSelected="True"/>
                                             <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource ConfigGeometry}" Header="TabItem2"/>
                                             <hc:TabItem hc:IconElement.Height="16" hc:IconElement.Width="16" hc:IconElement.Geometry="{DynamicResource CalendarGeometry}" Header="TabItem3"/>
