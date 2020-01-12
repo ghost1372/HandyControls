@@ -714,4 +714,7 @@
   <data name="Demo" xml:space="preserve">
     <value>示例</value>
   </data>
+  <data name="PinBox" xml:space="preserve">
+    <value>PIN码框</value>
+  </data>
 </root>

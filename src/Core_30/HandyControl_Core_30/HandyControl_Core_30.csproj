@@ -8,7 +8,7 @@
     <AssemblyVersion>2.4.0.0</AssemblyVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Copyright>Copyright © HandyOrg 2018-2019</Copyright>
+    <Copyright>Copyright © HandyOrg 2018-2020</Copyright>
     <Description>Contains some commonly used simple WPF controls</Description>
     <Configurations>Debug;Release</Configurations>
     <LangVersion>8.0</LangVersion>
@@ -38,6 +38,9 @@
     </EmbeddedResource>
       <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.fr.resx">
       <Link>Properties\Langs\Lang.fr.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.ko-KR.resx">
+      <Link>Properties\Langs\Lang.ko-KR.resx</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.resx">
       <Link>Properties\Langs\Lang.resx</Link>
