@@ -16,7 +16,7 @@ namespace HandyControl.Controls
         /// <param name="ShowErrorMessage"></param>
         /// <param name="ErrorMessage"></param>
         /// <returns></returns>
-        public static bool IsSingleInstance(string ErrorMessage = "Another instance of the app is running", bool ShowErrorMessage = true)
+        public static bool IsSingleInstance(bool ShowErrorMessage = true, string ErrorMessage = "Another instance of the app is running")
         {
             var guid = CryptographyHelper.GenerateMD5(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
             mutex = new Mutex(true, "{" + $"{guid}" + "}");

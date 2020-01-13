@@ -184,4 +184,7 @@
   <data name="No" xml:space="preserve">
     <value>خیر</value>
   </data>
+  <data name="BusyIndicatorLoading" xml:space="preserve">
+    <value>در حال بارگزاری...</value>
+  </data>
 </root>

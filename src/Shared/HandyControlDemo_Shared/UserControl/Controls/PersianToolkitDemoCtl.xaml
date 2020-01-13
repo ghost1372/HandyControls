@@ -314,7 +314,7 @@
                     <TabItem Header="Loading">
                         <StackPanel>
                             <ToggleButton Margin="10" Content="IsBusy" VerticalAlignment="Center" Style="{StaticResource ToggleButtonSwitch}" IsChecked="True" Name="isbusy"/>
-                            <hc:BusyIndicator Margin="10" ProgressBarStyle="{StaticResource ProgressBarPrimaryStripe}" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}">
+                            <hc:BusyIndicator Margin="10" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}">
                                 <UniformGrid Columns="8" Margin="10">
                                     <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsStyle}"/>
                                     <hc:LoadingIndicator SpeedRatio="{Binding SpeedRatio}" Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>

@@ -2,18 +2,20 @@
 	                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
 	                    xmlns:conv="clr-namespace:HandyControl.Tools.Converter"
+                        xmlns:langs="clr-namespace:HandyControl.Properties.Langs"
 	                    xmlns:local="clr-namespace:HandyControl.Controls">
    <conv:ProgressBarWidthConverter x:Key="ProgressBarWidthConverter" />
 
     <Style TargetType="{x:Type local:BusyIndicator}">
         <Setter Property="BusyContent"
-	            Value="Please wait..." />
+	            Value="{x:Static langs:Lang.BusyIndicatorLoading}" />
         <Setter Property="IsTabStop"
 	            Value="False" />
         <Setter Property="Focusable"
 	            Value="False" />
         <Setter Property="Foreground"
 	                Value="White"/>
+        <Setter Property="ProgressBarStyle" Value="{DynamicResource ProgressBarPrimaryStripe}"/>
         <Setter Property="OverlayStyle">
             <Setter.Value>
                 <Style TargetType="Rectangle">
