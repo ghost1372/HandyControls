@@ -628,7 +628,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gif图片.
+        ///   查找类似 流文档滚动视图 的本地化字符串。
+        /// </summary>
+        public static string FlowDocumentScrollViewer {
+            get {
+                return ResourceManager.GetString("FlowDocumentScrollViewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Gif图片 的本地化字符串。
         /// </summary>
         public static string GifImage {
             get {

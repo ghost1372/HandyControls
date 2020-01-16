@@ -207,4 +207,10 @@
   <data name="BusyIndicatorLoading" xml:space="preserve">
     <value>Please wait...</value>
   </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Zoom in</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Zoom out</value>
+  </data>
 </root>
