@@ -99,6 +99,9 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Drawer.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/TimeLine.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/PinBox.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Separator.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/StatusBar.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/FlowDocumentScrollViewer.xaml"/>
 
 
         <!--#endregion-->
@@ -145,10 +148,12 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/RunningBlockBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ScrollViewerBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/SearchBarBaseStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/SeparatorBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ShieldBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/SideMenuBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/SliderBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/SplitButtonBaseStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/StatusBarBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/StepBarBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/TabControlBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/TagBaseStyle.xaml"/>
