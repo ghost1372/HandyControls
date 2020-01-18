@@ -43,7 +43,7 @@ namespace HandyControl.Controls
             var processes = Process.GetProcessesByName(currentProcess.ProcessName);
             var process = processes.FirstOrDefault(p => p.Id != currentProcess.Id);
             if (process == null) return;
-            UnsafeNativeMethods.SetForegroundWindow(process.MainWindowHandle);
+            InteropMethods.SetForegroundWindow(process.MainWindowHandle);
         }
     }
 }
