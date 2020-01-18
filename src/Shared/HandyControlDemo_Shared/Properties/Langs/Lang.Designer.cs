@@ -1051,7 +1051,16 @@ namespace HandyControlDemo.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 点击打开图片浏览器.
+        ///   查找类似 点击打开辉光窗口 的本地化字符串。
+        /// </summary>
+        public static string OpenGlowWindow {
+            get {
+                return ResourceManager.GetString("OpenGlowWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 点击打开图片浏览器 的本地化字符串。
         /// </summary>
         public static string OpenImageBrowser {
             get {
