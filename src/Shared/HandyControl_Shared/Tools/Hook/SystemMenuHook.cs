@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using HandyControl.Tools.Interop;
 
@@ -8,9 +9,21 @@ namespace HandyControl.Tools
 {
     public class SystemMenuHook
     {
+        private static ContextMenu context = null;
         private static readonly Dictionary<int, HwndSource> DataDic = new Dictionary<int, HwndSource>();
 
         public static event Action<int> Click;
+
+        public static void SetCustomContextMenu(Window window, ContextMenu contextMenu)
+        {
+            context = contextMenu;
+            var hookId = window.GetHandle();
+            var source = HwndSource.FromHwnd(hookId);
+            if (source != null)
+            {
+                source.AddHook(new HwndSourceHook(WndProc));
+            }
+        }
 
         public static void Insert(int index, int id, string text, Window window)
         {
@@ -46,6 +59,16 @@ namespace HandyControl.Tools
                 {
                     Click?.Invoke(id);
                 }
+            }
+            return IntPtr.Zero;
+        }
+
+        private static IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if ((msg == InteropValues.WM_NCRBUTTONDOWN) && (wParam.ToInt32() == InteropValues.HTCAPTION))
+            {
+                context.IsOpen = true;
+                handled = true;
             }
             return IntPtr.Zero;
         }
