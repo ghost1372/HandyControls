@@ -186,10 +186,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Shared\HandyControl_Shared\Resources\SR.cs" />
-    <Compile Include="..\..\Shared\HandyControl_Shared\Resources\SRID.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.en.resx">
       <Link>Properties\Langs\Lang.en.resx</Link>
     </EmbeddedResource>
@@ -207,11 +203,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Resources\ExceptionStringTable.txt">
-      <Type>Resx</Type>
-      <WithCulture>false</WithCulture>
-      <ManifestResourceName>ExceptionStringTable</ManifestResourceName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -135,7 +135,7 @@ namespace Microsoft.Windows.Controls
         {
             if (!IsValidThread())
             {
-                throw new NotSupportedException(SR.Get(SRID.CalendarCollection_MultiThreadedCollectionChangeNotSupported));
+                throw new NotSupportedException("This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.");
             }
 
             // Turn off highlight
@@ -152,7 +152,7 @@ namespace Microsoft.Windows.Controls
         {
             if (!IsValidThread())
             {
-                throw new NotSupportedException(SR.Get(SRID.CalendarCollection_MultiThreadedCollectionChangeNotSupported));
+                throw new NotSupportedException("This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.");
             }
 
             if (!Contains(item))
@@ -200,7 +200,7 @@ namespace Microsoft.Windows.Controls
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException(SR.Get(SRID.Calendar_OnSelectedDateChanged_InvalidValue));
+                    throw new ArgumentOutOfRangeException("SelectedDate value is not valid.");
                 }
             }
         }
@@ -213,7 +213,7 @@ namespace Microsoft.Windows.Controls
         {
             if (!IsValidThread())
             {
-                throw new NotSupportedException(SR.Get(SRID.CalendarCollection_MultiThreadedCollectionChangeNotSupported));
+                throw new NotSupportedException("This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.");
             }
 
             if (index >= Count)
@@ -262,7 +262,7 @@ namespace Microsoft.Windows.Controls
         {
             if (!IsValidThread())
             {
-                throw new NotSupportedException(SR.Get(SRID.CalendarCollection_MultiThreadedCollectionChangeNotSupported));
+                throw new NotSupportedException("This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.");
             }
 
             if (!Contains(item))
@@ -448,12 +448,12 @@ namespace Microsoft.Windows.Controls
         {
             if (_owner.SelectionMode == CalendarSelectionMode.None)
             {
-                throw new InvalidOperationException(SR.Get(SRID.Calendar_OnSelectedDateChanged_InvalidOperation));
+                throw new InvalidOperationException("The SelectedDate property cannot be set when the selection mode is None.");
             }
 
             if (_owner.SelectionMode == CalendarSelectionMode.SingleDate && Count > 0)
             {
-                throw new InvalidOperationException(SR.Get(SRID.Calendar_CheckSelectionMode_InvalidOperation));
+                throw new InvalidOperationException("The SelectedDates collection can be changed only in a multiple selection mode. Use the SelectedDate in a single selection mode.");
             }
 
             // if user tries to add an item into the SelectedDates in SingleRange mode, we throw away the old range and replace it with the new one

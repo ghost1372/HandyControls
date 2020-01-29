@@ -747,7 +747,7 @@ namespace HandyControl.Controls
                 // this text is not shown on the UI, just used for Accessibility purposes
                 if (_dropDownButton.Content == null)
                 {
-                    _dropDownButton.Content = SR.Get(SRID.DatePicker_DropDownButtonName);
+                    _dropDownButton.Content = "Show Calendar";
                 }
             }
 
@@ -1176,7 +1176,7 @@ namespace HandyControl.Controls
                 }
                 else
                 {
-                    DatePickerDateValidationErrorEventArgs dateValidationError = new DatePickerDateValidationErrorEventArgs(new ArgumentOutOfRangeException("text", SR.Get(SRID.Calendar_OnSelectedDateChanged_InvalidValue)), text);
+                    DatePickerDateValidationErrorEventArgs dateValidationError = new DatePickerDateValidationErrorEventArgs(new ArgumentOutOfRangeException("text", "SelectedDate value is not valid."), text);
                     OnDateValidationError(dateValidationError);
 
                     if (dateValidationError.ThrowException)
@@ -1361,13 +1361,13 @@ namespace HandyControl.Controls
                 {
                     case DatePickerFormat.Long:
                         {
-                            _textBox.Watermark = string.Format(CultureInfo.CurrentCulture, SR.Get(SRID.DatePicker_WatermarkText), dtfi.LongDatePattern.ToString());
+                            _textBox.Watermark = string.Format(CultureInfo.CurrentCulture, "Select a date", dtfi.LongDatePattern.ToString());
                             break;
                         }
 
                     case DatePickerFormat.Short:
                         {
-                            _textBox.Watermark = string.Format(CultureInfo.CurrentCulture, SR.Get(SRID.DatePicker_WatermarkText), dtfi.ShortDatePattern.ToString());
+                            _textBox.Watermark = string.Format(CultureInfo.CurrentCulture, "Select a date", dtfi.ShortDatePattern.ToString());
                             break;
                         }
                 }

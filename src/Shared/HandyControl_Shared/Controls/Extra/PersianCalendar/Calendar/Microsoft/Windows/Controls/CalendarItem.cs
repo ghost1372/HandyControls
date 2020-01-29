@@ -151,7 +151,7 @@ namespace Microsoft.Windows.Controls.Primitives
                 // this text is not shown on the UI, just used for Accessibility purposes
                 if (_previousButton.Content == null)
                 {
-                    _previousButton.Content = SR.Get(SRID.Calendar_PreviousButtonName);
+                    _previousButton.Content = "Previous button";
                 }
 
                 _previousButton.Click += new RoutedEventHandler(PreviousButton_Click);
@@ -163,7 +163,7 @@ namespace Microsoft.Windows.Controls.Primitives
                 // this text is not shown on the UI, just used for Accessibility purposes
                 if (_nextButton.Content == null)
                 {
-                    _nextButton.Content = SR.Get(SRID.Calendar_NextButtonName);
+                    _nextButton.Content = "Next button";
                 }
 
                 _nextButton.Click += new RoutedEventHandler(NextButton_Click);

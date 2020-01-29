@@ -161,7 +161,7 @@ namespace Microsoft.Windows.Controls
         {
             if (!IsValidThread())
             {
-                throw new NotSupportedException(SR.Get(SRID.CalendarCollection_MultiThreadedCollectionChangeNotSupported));
+                throw new NotSupportedException("This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.");
             }
 
             foreach (CalendarDateRange item in Items)
@@ -182,7 +182,7 @@ namespace Microsoft.Windows.Controls
         {
             if (!IsValidThread())
             {
-                throw new NotSupportedException(SR.Get(SRID.CalendarCollection_MultiThreadedCollectionChangeNotSupported));
+                throw new NotSupportedException("This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.");
             }
 
             if (IsValid(item))
@@ -193,7 +193,7 @@ namespace Microsoft.Windows.Controls
             }
             else
             {
-                throw new ArgumentOutOfRangeException(SR.Get(SRID.Calendar_UnSelectableDates));
+                throw new ArgumentOutOfRangeException("Value is not valid.");
             }
         }
 
@@ -205,7 +205,7 @@ namespace Microsoft.Windows.Controls
         {
             if (!IsValidThread())
             {
-                throw new NotSupportedException(SR.Get(SRID.CalendarCollection_MultiThreadedCollectionChangeNotSupported));
+                throw new NotSupportedException("This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.");
             }
 
             if (index >= 0 && index < Count)
@@ -226,7 +226,7 @@ namespace Microsoft.Windows.Controls
         {
             if (!IsValidThread())
             {
-                throw new NotSupportedException(SR.Get(SRID.CalendarCollection_MultiThreadedCollectionChangeNotSupported));
+                throw new NotSupportedException("This type of Collection does not support changes to its SourceCollection from a thread different from the Dispatcher thread.");
             }
 
             if (IsValid(item))
@@ -246,7 +246,7 @@ namespace Microsoft.Windows.Controls
             }
             else
             {
-                throw new ArgumentOutOfRangeException(SR.Get(SRID.Calendar_UnSelectableDates));
+                throw new ArgumentOutOfRangeException("Value is not valid.");
             }
         }
 
@@ -291,7 +291,7 @@ namespace Microsoft.Windows.Controls
             {
                 if (!IsValid(e.Start, e.End))
                 {
-                    throw new ArgumentOutOfRangeException(SR.Get(SRID.Calendar_UnSelectableDates));
+                    throw new ArgumentOutOfRangeException("Value is not valid.");
                 }
             }
         }
