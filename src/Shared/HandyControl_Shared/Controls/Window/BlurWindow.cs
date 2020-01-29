@@ -23,8 +23,7 @@ namespace HandyControl.Controls
 
         internal static void EnableBlur(Window window)
         {
-            if (SystemVersionInfo < SystemVersionInfo.Windows10 ||
-                SystemVersionInfo >= SystemVersionInfo.Windows10_1903)
+            if (SystemVersionInfo < SystemVersionInfo.Windows10)
             {
                 var colorValue = ResourceHelper.GetResource<uint>(ResourceToken.BlurGradientValue);
                 var color = ColorHelper.ToColor(colorValue);
