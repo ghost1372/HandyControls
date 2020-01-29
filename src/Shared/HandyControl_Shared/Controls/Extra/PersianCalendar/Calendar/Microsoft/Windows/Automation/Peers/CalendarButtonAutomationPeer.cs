@@ -139,7 +139,7 @@ namespace Microsoft.Windows.Automation.Peers
         /// <returns></returns>
         protected override string GetLocalizedControlTypeCore()
         {
-            return SR.Get(SRID.CalendarAutomationPeer_CalendarButtonLocalizedControlType);
+            return "Calendar button";
         }
 
         /// <summary>

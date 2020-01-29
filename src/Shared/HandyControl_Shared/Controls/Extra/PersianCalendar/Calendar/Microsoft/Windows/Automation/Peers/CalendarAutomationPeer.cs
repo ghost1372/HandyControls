@@ -264,17 +264,17 @@ namespace Microsoft.Windows.Automation.Peers
             {
                 case 0:
                     {
-                        return SR.Get(SRID.CalendarAutomationPeer_MonthMode);
+                        return "Month";
                     }
 
                 case 1:
                     {
-                        return SR.Get(SRID.CalendarAutomationPeer_YearMode);
+                        return "Year";
                     }
 
                 case 2:
                     {
-                        return SR.Get(SRID.CalendarAutomationPeer_DecadeMode);
+                        return "Decade";
                     }
             }
 

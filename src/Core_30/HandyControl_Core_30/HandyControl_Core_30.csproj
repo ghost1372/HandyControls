@@ -47,18 +47,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Resources\ExceptionStringTable.txt">
-      <Type>Resx</Type>
-      <WithCulture>false</WithCulture>
-      <ManifestResourceName>ExceptionStringTable</ManifestResourceName>
-    </EmbeddedResource>
     <Compile Include="..\..\Shared\HandyControl_Shared\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\..\Shared\HandyControl_Shared\Resources\SR.cs" />
-    <Compile Include="..\..\Shared\HandyControl_Shared\Resources\SRID.cs" />
   </ItemGroup>
   <Import Project="..\..\Shared\HandyControl_Shared\HandyControl_Shared.projitems" Label="Shared" />
   <ItemGroup>

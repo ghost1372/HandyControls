@@ -146,7 +146,7 @@ namespace Microsoft.Windows.Automation.Peers
 
                 if (OwningCalendarDayButton.IsBlackedOut)
                 {
-                    return string.Format(DateTimeHelper.GetCurrentDateFormat(), SR.Get(SRID.CalendarAutomationPeer_BlackoutDayHelpText), dateString);
+                    return string.Format(DateTimeHelper.GetCurrentDateFormat(), $"Blackout Day - {dateString}");
                 }
                 else
                 {
@@ -165,7 +165,7 @@ namespace Microsoft.Windows.Automation.Peers
         /// <returns></returns>
         protected override string GetLocalizedControlTypeCore()
         {
-            return SR.Get(SRID.CalendarAutomationPeer_DayButtonLocalizedControlType);
+            return "Day button";
         }
 
         /// <summary>
