@@ -286,6 +286,15 @@ namespace HandyControl.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Seperate Tags with ; or space.
+        /// </summary>
+        public static string TagPlaceHolder {
+            get {
+                return ResourceManager.GetString("TagPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 提示.
         /// </summary>
         public static string Tip {
@@ -331,7 +340,7 @@ namespace HandyControl.Properties.Langs {
         }
         
         /// <summary>
-        ///   查找类似 放大 的本地化字符串。
+        ///   Looks up a localized string similar to 放大.
         /// </summary>
         public static string ZoomIn {
             get {
@@ -340,7 +349,7 @@ namespace HandyControl.Properties.Langs {
         }
         
         /// <summary>
-        ///   查找类似 缩小 的本地化字符串。
+        ///   Looks up a localized string similar to 缩小.
         /// </summary>
         public static string ZoomOut {
             get {
