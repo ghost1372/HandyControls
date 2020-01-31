@@ -286,7 +286,7 @@ namespace HandyControl.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Seperate Tags with ; or space.
+        ///   Looks up a localized string similar to 用;分隔标签; 或空间.
         /// </summary>
         public static string TagPlaceHolder {
             get {

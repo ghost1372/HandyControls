@@ -194,6 +194,6 @@
     <value>缩小</value>
   </data>
   <data name="TagPlaceHolder" xml:space="preserve">
-    <value>Seperate Tags with ; or space</value>
+    <value>用;分隔标签; 或空间</value>
   </data>
 </root>

@@ -110,7 +110,7 @@ namespace HandyControl.Controls
                 {
                     _addTagTextBox = new HandyControl.Controls.TextBox
                     {
-                        Width = 170,
+                        Width = 180,
                         Margin = TagMargin
                     };
                     _addTagTextBox.TextChanged += AddTagTextBox_TextChanged;

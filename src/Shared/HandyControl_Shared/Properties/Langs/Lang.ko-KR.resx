@@ -214,6 +214,6 @@
     <value>Zoom out</value>
   </data>
   <data name="TagPlaceHolder" xml:space="preserve">
-    <value>Seperate Tags with ; or space</value>
+    <value>;로 태그를 구분하십시오. 또는 공간</value>
   </data>
 </root>
