@@ -21,22 +21,14 @@ namespace $safeprojectname$.ViewModels
     public object ContentTitle
     {
         get => _contentTitle;
-#if netle40
-            set => Set(nameof(ContentTitle), ref _contentTitle, value);
-#else
         set => Set(ref _contentTitle, value);
-#endif
     }
 
     private object _subContent;
     public object SubContent
     {
         get => _subContent;
-#if netle40
-            set => Set(nameof(SubContent), ref _subContent, value);
-#else
         set => Set(ref _subContent, value);
-#endif
     }
 
     public RelayCommand OpenOverviewCmd => new Lazy<RelayCommand>(() =>

@@ -5,7 +5,7 @@
     <Description>Creates a HandyControl WPF App with MVVM Pattern(.NET Framework)</Description>
     <Icon>icon.ico</Icon>
     <ProjectType>CSharp</ProjectType>
-    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
     <MaxFrameworkVersion>4.7.2</MaxFrameworkVersion>
     <TemplateID>40ba6aac-cb50-4398-89f0-e0b7b581e32e</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>
