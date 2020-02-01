@@ -75,6 +75,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WpfAppMVVM\WpfAppMVVM.csproj">
+      <Project>{EEDA7B9E-3562-4F93-937B-CBE4352D39D6}</Project>
+      <Name>WpfAppMVVM</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
     <ProjectReference Include="..\WpfApp\WpfApp.csproj">
       <Project>{83C70EB1-3A3F-4812-B86C-C7D1936699EB}</Project>
       <Name>WpfApp</Name>
