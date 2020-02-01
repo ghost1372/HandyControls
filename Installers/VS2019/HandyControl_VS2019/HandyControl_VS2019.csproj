@@ -75,9 +75,23 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WpfAppMVVM\WpfAppMVVM.csproj">
+      <Project>{EEDA7B9E-3562-4F93-937B-CBE4352D39D6}</Project>
+      <Name>WpfAppMVVM</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
     <ProjectReference Include="..\WpfApp\WpfApp.csproj">
       <Project>{83C70EB1-3A3F-4812-B86C-C7D1936699EB}</Project>
       <Name>WpfApp</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfCoreAppMVVM\WpfCoreAppMVVM.csproj">
+      <Project>{754340D1-9DE6-483B-801E-DBE325F92BD2}</Project>
+      <Name>WpfCoreAppMVVM</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
