@@ -6,9 +6,9 @@ using System.Runtime.CompilerServices;
 #endif
 using System.Windows;
 using System.Windows.Markup;
-using System.Windows.Media.Animation;
 using HandyControl.Controls;
 using HandyControl.Data;
+using Timeline = System.Windows.Media.Animation.Timeline;
 
 namespace HandyControl.Tools
 {

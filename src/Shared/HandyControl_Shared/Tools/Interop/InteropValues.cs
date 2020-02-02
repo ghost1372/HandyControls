@@ -60,7 +60,6 @@ namespace HandyControl.Tools.Interop
             WM_SYSKEYDOWN = 0x0104,
             WM_SYSKEYUP = 0x0105,
             WM_SYSCOMMAND = 0x112,
-            WM_NCRBUTTONDOWN = 0xa4,
             WM_MOUSEMOVE = 0x0200,
             WM_LBUTTONUP = 0x0202,
             WM_LBUTTONDBLCLK = 0x0203,
