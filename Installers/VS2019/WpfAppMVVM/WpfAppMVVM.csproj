@@ -73,6 +73,7 @@
     <None Include="MessageToken.cs" />
     <None Include="AssemblyHelper.cs" />
     <None Include="MainViewModel.cs" />
+    <None Include="OverViewModel.cs" />
     <None Include="LeftMainContent.xaml.cs">
       <DependentUpon>LeftMainContent.xaml</DependentUpon>
     </None>

@@ -59,13 +59,14 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
-    <Compile Include="View\Main\LeftMainContent.xaml.cs">
+    <Compile Include="ViewModels\OverViewModel.cs" />
+    <Compile Include="Views\Main\LeftMainContent.xaml.cs">
       <DependentUpon>LeftMainContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Main\MainContent.xaml.cs">
+    <Compile Include="Views\Main\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\OverView.xaml.cs">
+    <Compile Include="Views\OverView.xaml.cs">
       <DependentUpon>OverView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -82,15 +83,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Main\LeftMainContent.xaml">
+    <Page Include="Views\Main\LeftMainContent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Main\MainContent.xaml">
+    <Page Include="Views\Main\MainContent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\OverView.xaml">
+    <Page Include="Views\OverView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

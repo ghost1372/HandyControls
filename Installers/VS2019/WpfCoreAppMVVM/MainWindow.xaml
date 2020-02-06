@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         DataContext="{Binding Main,Source={StaticResource Locator}}"
-        xmlns:userControl="clr-namespace:$safeprojectname$.View"
+        xmlns:userControl="clr-namespace:$safeprojectname$.Views"
         mc:Ignorable="d"
         Title="MainWindow" 
         WindowStartupLocation="CenterScreen"
@@ -63,9 +63,5 @@
         </Grid.ColumnDefinitions>
         <userControl:LeftMainContent/>
         <userControl:MainContent Grid.Column="1"/>
-        <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Width="4" Background="Transparent" BorderThickness="1,0,0,0" BorderBrush="{DynamicResource BorderBrush}"/>
-        <hc:ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right" IsInertiaEnabled="True" IsPenetrating="True">
-            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
-        </hc:ScrollViewer>
     </Grid>
 </hc:Window>

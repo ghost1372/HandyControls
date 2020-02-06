@@ -1,6 +1,6 @@
 ﻿<Border xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="$safeprojectname$.View.MainContent"
+        x:Class="$safeprojectname$.Views.MainContent"
         Background="{DynamicResource MainContentBackgroundBrush}">
     <Border Background="{DynamicResource MainContentForegroundDrawingBrush}">
         <Grid Name="GridMain" MinHeight="300" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16">

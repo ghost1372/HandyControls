@@ -37,7 +37,7 @@ namespace $safeprojectname$.ViewModels
     private void OpenOverview()
     {
         ContentTitle = MessageToken.OverView;
-        Messenger.Default.Send(AssemblyHelper.CreateInternalInstance($"View.{MessageToken.OverView}"), MessageToken.LoadShowContent);
+        Messenger.Default.Send(AssemblyHelper.CreateInternalInstance($"Views.{MessageToken.OverView}"), MessageToken.LoadShowContent);
 
         // If you want to pass a variable between views, Use one of the following codes
         //Messenger.Default.Send("Hello", MessageToken.SimpleMessage);

@@ -10,10 +10,10 @@ namespace $safeprojectname$.ViewModels
     {
         ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-        SimpleIoc.Default.Register<MainViewModel>();
-
         // Register ViewModels Here
 
+        SimpleIoc.Default.Register<MainViewModel>();
+        SimpleIoc.Default.Register<OverViewModel>();
     }
 
     public static ViewModelLocator Instance => new Lazy<ViewModelLocator>(() =>
@@ -22,6 +22,7 @@ namespace $safeprojectname$.ViewModels
     #region Vm
 
     public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+    public OverViewModel Over => ServiceLocator.Current.GetInstance<OverViewModel>();
 
     #endregion
 }

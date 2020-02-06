@@ -1,4 +1,4 @@
-﻿namespace $safeprojectname$.View
+﻿namespace $safeprojectname$.Views
 {
     /// <summary>
     /// Interaction logic for MainContent.xaml
