@@ -101,7 +101,9 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/PinBox.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Separator.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/StatusBar.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/FlowDocumentScrollViewer.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/FlowDocument.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/NavigationWindow.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Frame.xaml"/>
 
 
         <!--#endregion-->
@@ -126,6 +128,8 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/DividerBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/DrawerBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ExpanderBaseStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/FlowDocumentBaseStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/FrameBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/GotoTopBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/GravatarBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/GroupBoxBaseStyle.xaml"/>
@@ -136,6 +140,7 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/LoadingLineBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/MagnifierBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/MenuBaseStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/NavigationWindowBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/NumericUpDownBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/PasswordBoxBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/PinBoxBaseStyle.xaml"/>

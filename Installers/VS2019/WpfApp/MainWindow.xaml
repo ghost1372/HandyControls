@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" 
         WindowStartupLocation="CenterScreen"
-        Style="{StaticResource WindowWin10}"
         ShowTitle="True"
         Height="450" 
         Width="800">

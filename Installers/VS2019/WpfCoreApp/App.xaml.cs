@@ -5,6 +5,12 @@ namespace $safeprojectname$
 {
     public partial class App
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            ConfigHelper.Instance.SetWindowDefaultStyle();
+        }
+        
     internal void UpdateSkin(SkinType skin)
     {
         Resources.MergedDictionaries.Clear();
