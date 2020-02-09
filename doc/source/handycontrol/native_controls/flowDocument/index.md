@@ -1,10 +1,15 @@
-﻿<UserControl x:Class="HandyControlDemo.UserControl.FlowDocumentScrollViewerDemoCtl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:hc="https://handyorg.github.io/handycontrol"
-             Background="{DynamicResource RegionBrush}">
-    <hc:TransitioningContentControl>
-        <FlowDocumentScrollViewer IsToolBarVisible="True" Width="502" Height="400" Margin="32">
+---
+title: FlowDocument 流文档
+---
+
+# FlowDocumentScrollViewerBaseStyle
+
+流文档滚动视图默认样式，不推荐直接使用，应该始终被其它样式以BasedOn的方式使用。
+
+案例：
+
+``` xml
+<FlowDocumentScrollViewer IsToolBarVisible="True" Width="502" Height="400" Margin="32">
             <FlowDocument ColumnWidth="400" IsOptimalParagraphEnabled="True" IsHyphenationEnabled="True">
                 <Section FontSize="12">
                     <Paragraph>
@@ -97,5 +102,16 @@
                 </Section>
             </FlowDocument>
         </FlowDocumentScrollViewer>
-    </hc:TransitioningContentControl>
-</UserControl>
+```
+
+效果：
+
+![FlowDocumentScrollViewer](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/FlowDocumentScrollViewer.png)
+
+# FlowDocumentPageViewerBaseStyle
+
+流文档单页视图默认样式，不推荐直接使用，应该始终被其它样式以BasedOn的方式使用。
+
+# FlowDocumentReaderBaseStyle
+
+流文档查看器默认样式，不推荐直接使用，应该始终被其它样式以BasedOn的方式使用。

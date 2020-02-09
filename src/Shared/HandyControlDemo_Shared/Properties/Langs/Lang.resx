@@ -723,4 +723,22 @@
   <data name="OpenGlowWindow" xml:space="preserve">
     <value>点击打开辉光窗口</value>
   </data>
+  <data name="FlowDocument" xml:space="preserve">
+    <value>流文档</value>
+  </data>
+  <data name="FlowDocumentPageViewer" xml:space="preserve">
+    <value>流文档单页视图</value>
+  </data>
+  <data name="FlowDocumentReader" xml:space="preserve">
+    <value>流文档查看器</value>
+  </data>
+  <data name="OpenNativeCommonWindow" xml:space="preserve">
+    <value>点击打开原生常规窗口</value>
+  </data>
+  <data name="OpenNavigationWindow" xml:space="preserve">
+    <value>点击打开导航窗口</value>
+  </data>
+  <data name="Frame" xml:space="preserve">
+    <value>导航框架</value>
+  </data>
 </root>

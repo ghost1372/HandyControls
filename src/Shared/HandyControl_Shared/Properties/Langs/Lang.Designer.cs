@@ -170,6 +170,16 @@ namespace HandyControl.Properties.Langs {
         
         /// <summary>
         ///   Looks up a localized string similar to 格式错误.
+        ///   查找类似 查找 的本地化字符串。
+        /// </summary>
+        public static string Find {
+            get {
+                return ResourceManager.GetString("Find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 格式错误 的本地化字符串。
         /// </summary>
         public static string FormatError {
             get {
@@ -251,6 +261,16 @@ namespace HandyControl.Properties.Langs {
         
         /// <summary>
         ///   Looks up a localized string similar to 否.
+        ///   查找类似 下一页 的本地化字符串。
+        /// </summary>
+        public static string NextPage {
+            get {
+                return ResourceManager.GetString("NextPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 否 的本地化字符串。
         /// </summary>
         public static string No {
             get {
@@ -269,6 +289,16 @@ namespace HandyControl.Properties.Langs {
         
         /// <summary>
         ///   Looks up a localized string similar to 下午.
+        ///   查找类似 页面模式 的本地化字符串。
+        /// </summary>
+        public static string PageMode {
+            get {
+                return ResourceManager.GetString("PageMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 下午 的本地化字符串。
         /// </summary>
         public static string Pm {
             get {
@@ -293,9 +323,26 @@ namespace HandyControl.Properties.Langs {
                 return ResourceManager.GetString("TagPlaceHolder", resourceCulture);
             }
         }
+        ///   查找类似 上一页 的本地化字符串。
+        /// </summary>
+        public static string PreviousPage {
+            get {
+                return ResourceManager.GetString("PreviousPage", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to 提示.
+        ///   查找类似 滚动模式 的本地化字符串。
+        /// </summary>
+        public static string ScrollMode {
+            get {
+                return ResourceManager.GetString("ScrollMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 提示 的本地化字符串。
         /// </summary>
         public static string Tip {
             get {
@@ -314,6 +361,16 @@ namespace HandyControl.Properties.Langs {
         
         /// <summary>
         ///   Looks up a localized string similar to 未知.
+        ///   查找类似 双页模式 的本地化字符串。
+        /// </summary>
+        public static string TwoPageMode {
+            get {
+                return ResourceManager.GetString("TwoPageMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 未知 的本地化字符串。
         /// </summary>
         public static string Unknown {
             get {
