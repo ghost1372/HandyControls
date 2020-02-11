@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Windows;
 using HandyControl.Data;
+using $safeprojectname$.Views;
+using Prism.Ioc;
 using HandyControl.Tools;
 namespace $safeprojectname$
 {
     public partial class App
 {
+    protected override Window CreateShell()
+    {
+        return Container.Resolve<MainWindow>();
+    }
+
+    protected override void RegisterTypes(IContainerRegistry containerRegistry)
+    {
+
+    }
+
     protected override void OnStartup(StartupEventArgs e)
-        {
-            base.OnStartup(e);
-            ConfigHelper.Instance.SetWindowDefaultStyle();
-        }
-        
+    {
+        base.OnStartup(e);
+        ConfigHelper.Instance.SetWindowDefaultStyle();
+    }
     internal void UpdateSkin(SkinType skin)
     {
         Resources.MergedDictionaries.Clear();
