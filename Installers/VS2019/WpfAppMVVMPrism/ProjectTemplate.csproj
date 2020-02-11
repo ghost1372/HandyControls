@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="HandyControls">
-      <Version>2.4.7</Version>
+      <Version>2.4.8</Version>
     </PackageReference>
     <PackageReference Include="Prism.DryIoc" Version="7.2.0.1422" />
   </ItemGroup>
