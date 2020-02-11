@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using HandyControl.Data;
+using HandyControl.Tools;
 namespace $safeprojectname$
 {
     public partial class App
