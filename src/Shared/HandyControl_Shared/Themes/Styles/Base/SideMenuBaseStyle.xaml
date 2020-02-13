@@ -36,7 +36,7 @@
                             <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
                         </DataTrigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+                            <Setter Property="BorderBrush" Value="{Binding Path=(controls:SideMenu.SubSideBrush),RelativeSource={RelativeSource AncestorType=controls:SideMenu}}"/>
                             <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
                             <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="PresenterHeader"/>
                         </Trigger>
@@ -74,7 +74,7 @@
                             <Setter Property="BorderBrush" Value="Transparent"/>
                         </DataTrigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
+                            <Setter Property="BorderBrush" Value="{Binding Path=(controls:SideMenu.SubSideBrush),RelativeSource={RelativeSource AncestorType=controls:SideMenu}}"/>
                             <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
                             <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="PresenterHeader"/>
                         </Trigger>
@@ -119,7 +119,7 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="BorderBack" Property="BorderThickness" Value="4,0,0,0"/>
-                            <Setter TargetName="BorderBack" Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter TargetName="BorderBack" Property="BorderBrush" Value="{Binding Path=(controls:SideMenu.SideBrush),RelativeSource={RelativeSource AncestorType=controls:SideMenu}}"/>
                             <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="PresenterHeader"/>
                         </Trigger>
                         <Trigger SourceName="PanelHeader" Property="IsMouseOver" Value="true">
@@ -162,7 +162,7 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="BorderBack" Property="BorderThickness" Value="4,0,0,0"/>
-                            <Setter TargetName="BorderBack" Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+                            <Setter TargetName="BorderBack" Property="BorderBrush" Value="{Binding Path=(controls:SideMenu.SideBrush),RelativeSource={RelativeSource AncestorType=controls:SideMenu}}"/>
                             <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="PresenterHeader"/>
                         </Trigger>
                         <Trigger SourceName="PanelHeader" Property="IsMouseOver" Value="true">
@@ -180,6 +180,8 @@
         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource SideMenuItemHeaderBaseStyle}"/>
+        <Setter Property="SideBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="SubSideBrush" Value="{DynamicResource PrimaryBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:SideMenu">
