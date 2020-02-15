@@ -365,6 +365,9 @@
     <Resource Include="..\HandyControlDemo_Shared\UserControl\Controls\WindowDemoCtl.xaml">
       <Link>UserControl\Controls\WindowDemoCtl.xaml</Link>
     </Resource>
+    <Resource Include="..\HandyControlDemo_Shared\UserControl\Controls\PersianToolkitDemoCtl.xaml">
+      <Link>UserControl\Controls\PersianToolkitDemoCtl.xaml</Link>
+    </Resource>
     <Resource Include="..\HandyControlDemo_Shared\UserControl\Styles\BorderDemoCtl.xaml">
       <Link>UserControl\Styles\BorderDemoCtl.xaml</Link>
     </Resource>
@@ -776,6 +779,10 @@
     <Resource Include="..\HandyControlDemo_Shared\UserControl\Controls\WindowDemoCtl.xaml.cs">
       <Link>UserControl\Controls\WindowDemoCtl.xaml.cs</Link>
       <DependentUpon>WindowDemoCtl.xaml</DependentUpon>
+    </Resource>
+    <Resource Include="..\HandyControlDemo_Shared\UserControl\Controls\PersianToolkitDemoCtl.xaml.cs">
+      <Link>UserControl\Controls\PersianToolkitDemoCtl.xaml.cs</Link>
+      <DependentUpon>PersianToolkitDemoCtl.xaml</DependentUpon>
     </Resource>
     <Resource Include="..\HandyControlDemo_Shared\UserControl\Styles\BorderDemoCtl.xaml.cs">
       <Link>UserControl\Styles\BorderDemoCtl.xaml.cs</Link>
