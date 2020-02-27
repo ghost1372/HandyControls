@@ -44,11 +44,18 @@ Task("Build")
         ToolPath = msBuildPath,
     }.WithProperty("OutputPath", MakeAbsolute(Directory("lib/net48")).FullPath);
 
-    var settingsCore30 = new DotNetCoreBuildSettings
+    var settingsCoreGE30 = new DotNetCoreBuildSettings
     {
         Framework = "netcoreapp3.0",
-        Configuration = "Release",
+        Configuration = "Release-Core30",
         OutputDirectory = "lib/netcoreapp3.0"
+    };
+
+    var settingsCoreGE31 = new DotNetCoreBuildSettings
+    {
+        Framework = "netcoreapp3.1",
+        Configuration = "Release-Core31",
+        OutputDirectory = "lib/netcoreapp3.1"
     };
 
     MSBuild("../src/Net_40/HandyControl_Net_40/HandyControl_Net_40.csproj", settingsNet40);
@@ -56,7 +63,8 @@ Task("Build")
     MSBuild("../src/Net_GE45/HandyControl_Net_GE45/HandyControl_Net_GE45.csproj", settingsNet462);
     MSBuild("../src/Net_GE45/HandyControl_Net_GE45/HandyControl_Net_GE45.csproj", settingsNet47);
     MSBuild("../src/Net_GE45/HandyControl_Net_GE45/HandyControl_Net_GE45.csproj", settingsNet48);
-    DotNetCoreBuild("../src/Core_30/HandyControl_Core_30/HandyControl_Core_30.csproj", settingsCore30);
+    DotNetCoreBuild("../src/Core_GE30/HandyControl_Core_GE30/HandyControl_Core_GE30.csproj", settingsCoreGE30);
+    DotNetCoreBuild("../src/Core_GE30/HandyControl_Core_GE30/HandyControl_Core_GE30.csproj", settingsCoreGE31);
 });
 
 RunTarget(target);
