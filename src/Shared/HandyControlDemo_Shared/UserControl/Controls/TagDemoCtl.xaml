@@ -5,7 +5,7 @@
              xmlns:langs="clr-namespace:HandyControlDemo.Properties.Langs"
              xmlns:hc="https://handyorg.github.io/handycontrol">
     <hc:TransitioningContentControl>
-        <hc:TagPanel AddTagButtonClick="TagPanel_OnAddTagButtonClick" Margin="32" Orientation="Horizontal" MaxWidth="400" VerticalAlignment="Center" ShowAddButton="True">
+        <hc:TagPanel AddTagButtonClick="TagPanel_OnAddTagButtonClick" Margin="32" Orientation="Horizontal" MaxWidth="400" VerticalAlignment="Center" ShowAddButton="False">
             <hc:Tag ShowCloseButton="False" Content="{Binding Source={x:Static langs:Lang.Text}, Converter={StaticResource StringRepeatConverter}, ConverterParameter=2}"/>
             <hc:Tag Selectable="True" Content="{Binding Source={x:Static langs:Lang.Text}, Converter={StaticResource StringRepeatConverter}, ConverterParameter=3}"/>
             <hc:Tag ShowCloseButton="False" Content="{Binding Source={x:Static langs:Lang.Text}, Converter={StaticResource StringRepeatConverter}, ConverterParameter=4}"/>

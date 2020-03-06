@@ -52,7 +52,7 @@ namespace Microsoft.Windows.Controls.Primitives
         /// </summary>
         public DatePickerTextBox()
         {
-            Watermark = SR.Get(SRID.DatePickerTextBox_DefaultWatermarkText);
+            Watermark = "<Enter text here>";
             Loaded += OnLoaded;
             IsEnabledChanged += new DependencyPropertyChangedEventHandler(OnDatePickerTextBoxIsEnabledChanged);
         }
@@ -212,7 +212,7 @@ namespace Microsoft.Windows.Controls.Primitives
         {
             Debug.Assert(
                 obj == null || typeof(T).IsInstanceOfType(obj),
-                string.Format(CultureInfo.InvariantCulture, SR.Get(SRID.DatePickerTextBox_TemplatePartIsOfIncorrectType), partName, typeof(T).Name));
+                string.Format(CultureInfo.InvariantCulture, "The template part {0} is not an instance of {1}.", partName, typeof(T).Name));
             return obj as T;
         }
 

@@ -20,7 +20,7 @@ namespace Microsoft.Windows.Automation.Peers
     /// <summary>
     /// AutomationPeer for CalendarButton
     /// </summary>
-    public sealed class CalendarButtonAutomationPeer : ButtonAutomationPeer, IGridItemProvider, ISelectionItemProvider
+    internal sealed class CalendarButtonAutomationPeer : ButtonAutomationPeer, IGridItemProvider, ISelectionItemProvider
     {
         /// <summary>
         /// Initializes a new instance of the CalendarButtonAutomationPeer class.
@@ -139,7 +139,7 @@ namespace Microsoft.Windows.Automation.Peers
         /// <returns></returns>
         protected override string GetLocalizedControlTypeCore()
         {
-            return SR.Get(SRID.CalendarAutomationPeer_CalendarButtonLocalizedControlType);
+            return "Calendar button";
         }
 
         /// <summary>

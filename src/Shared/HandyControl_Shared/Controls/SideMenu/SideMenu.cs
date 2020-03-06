@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 using HandyControl.Data;
 
 namespace HandyControl.Controls
@@ -40,6 +41,8 @@ namespace HandyControl.Controls
             {
                 if (item.Role == SideMenuItemRole.Item)
                 {
+                    _isItemSelected = true;
+
                     if (Equals(item, _selectedItem)) return;
 
                     if (_selectedItem != null)
@@ -53,7 +56,6 @@ namespace HandyControl.Controls
                     {
                         Info = e.OriginalSource
                     });
-                    _isItemSelected = true;
                 }
                 else
                 {
@@ -92,7 +94,10 @@ namespace HandyControl.Controls
                     }
                     else if(_selectedHeader != null)
                     {
-                        _selectedHeader.SelectDefaultItem();
+                        if (AutoSelect)
+                        {
+                            _selectedHeader.SelectDefaultItem();
+                        }
                         _isItemSelected = false;
                     }
                 }
@@ -116,6 +121,32 @@ namespace HandyControl.Controls
         protected override DependencyObject GetContainerForItemOverride() => new SideMenuItem();
 
         protected override bool IsItemItsOwnContainerOverride(object item) => item is SideMenuItem;
+
+        public Brush SubSideBrush
+        {
+            get => (Brush)GetValue(SubSideBrushProperty);
+            set => SetValue(SubSideBrushProperty, value);
+        }
+        public static readonly DependencyProperty SubSideBrushProperty =
+            DependencyProperty.RegisterAttached("SubSideBrush", typeof(Brush), typeof(SideMenu), new FrameworkPropertyMetadata(default(Brushes), FrameworkPropertyMetadataOptions.Inherits));
+
+        public Brush SideBrush
+        {
+            get => (Brush)GetValue(SideBrushProperty);
+            set => SetValue(SideBrushProperty, value);
+        }
+        public static readonly DependencyProperty SideBrushProperty =
+            DependencyProperty.RegisterAttached("SideBrush", typeof(Brush), typeof(SideMenu), new FrameworkPropertyMetadata(default(Brushes), FrameworkPropertyMetadataOptions.Inherits));
+
+
+        public static readonly DependencyProperty AutoSelectProperty = DependencyProperty.Register(
+            "AutoSelect", typeof(bool), typeof(SideMenu), new PropertyMetadata(ValueBoxes.TrueBox));
+
+        public bool AutoSelect
+        {
+            get => (bool) GetValue(AutoSelectProperty);
+            set => SetValue(AutoSelectProperty, value);
+        }
 
         public static readonly DependencyProperty ExpandModeProperty = DependencyProperty.Register(
             "ExpandMode", typeof(ExpandMode), typeof(SideMenu), new PropertyMetadata(default(ExpandMode), OnExpandModeChanged));

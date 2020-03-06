@@ -12,7 +12,8 @@ namespace HandyControlDemo.Data
                 try
                 {
                     var json = File.ReadAllText(AppConfig.SavePath);
-                    Config = JsonConvert.DeserializeObject<AppConfig>(json);
+                    Config = (string.IsNullOrEmpty(json) ? new AppConfig() : JsonConvert.DeserializeObject<AppConfig>(json)) ?? new AppConfig();
+
                 }
                 catch
                 {

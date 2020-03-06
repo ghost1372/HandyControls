@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Windows;
 using HandyControl.Data;
 using HandyControlDemo.Data;
 using HandyControlDemo.Tools.Converter;
@@ -13,6 +15,38 @@ namespace HandyControlDemo.Service
 {
     public class DataService
     {
+        internal ObservableCollection<TabControlDemoModel> GetTabControlDemoDataList()
+        {
+            return new ObservableCollection<TabControlDemoModel>
+            {
+                new TabControlDemoModel
+                {
+                    Header = "Success",
+                    BackgroundToken = ResourceToken.SuccessBrush
+                },
+                new TabControlDemoModel
+                {
+                    Header = "Primary",
+                    BackgroundToken = ResourceToken.PrimaryBrush
+                },
+                new TabControlDemoModel
+                {
+                    Header = "Warning",
+                    BackgroundToken = ResourceToken.WarningBrush
+                },
+                new TabControlDemoModel
+                {
+                    Header = "Danger",
+                    BackgroundToken = ResourceToken.DangerBrush
+                },
+                new TabControlDemoModel
+                {
+                    Header = "Info",
+                    BackgroundToken = ResourceToken.InfoBrush
+                }
+            };
+        }
+
         internal List<DemoDataModel> GetDemoDataList()
         {
             var list = new List<DemoDataModel>();
@@ -87,6 +121,7 @@ namespace HandyControlDemo.Service
             {
                 var json = client.DownloadString(new Uri("https://api.github.com/repos/nabian/handycontrol/contributors"));
                 var objList = JsonConvert.DeserializeObject<List<dynamic>>(json);
+
                 list.AddRange(objList.Select(item => new AvatarModel
                 {
                     DisplayName = item.login,
@@ -147,12 +182,19 @@ namespace HandyControlDemo.Service
                     DisplayName = "AutumnBox",
                     AvatarUri = "https://www.atmb.top/images/leaves.png",
                     Link = "https://github.com/zsh2401/AutumnBox"
-                },
+                }
+            };
+        }
+
+        internal List<AvatarModel> GetWebsiteDataList()
+        {
+            return new List<AvatarModel>
+            {
                 new AvatarModel
                 {
-                    DisplayName = "PandaX Studio",
-                    AvatarUri = "https://raw.githubusercontent.com/aboutlong/pandaxstudio/master/pandax/pandax/source/image/logo.png",
-                    Link = "https://github.com/aboutlong/pandaxstudio"
+                    DisplayName = "Dotnet9",
+                    AvatarUri = "https://pic.cnblogs.com/avatar/1663243/20191124121029.png",
+                    Link = "https://dotnet9.com/"
                 }
             };
         }
@@ -314,6 +356,59 @@ namespace HandyControlDemo.Service
                     BackgroundToken = ResourceToken.DangerBrush
                 }
             };
+        }
+
+        internal List<DemoInfoModel> GetDemoInfo()
+        {
+            var infoList = new List<DemoInfoModel>();
+
+            var stream = Application.GetResourceStream(new Uri("Data/DemoInfo.json", UriKind.Relative))?.Stream;
+            if (stream == null) return infoList;
+
+            string jsonStr;
+            using (var reader = new StreamReader(stream))
+            {
+                jsonStr = reader.ReadToEnd();
+            }
+
+            var jsonObj = JsonConvert.DeserializeObject<dynamic>(jsonStr);
+            foreach (var item in jsonObj)
+            {
+                var titleKey = (string) item.title;
+                var title = Properties.Langs.Lang.ResourceManager.GetString(titleKey);
+                var list = Convert2DemoItemList(item.demoItemList);
+                infoList.Add(new DemoInfoModel
+                {
+                    Key = titleKey,
+                    Title = title,
+                    DemoItemList = list
+                });
+            }
+
+            return infoList;
+        }
+
+        private List<DemoItemModel> Convert2DemoItemList(dynamic list)
+        {
+            var resultList = new List<DemoItemModel>();
+
+            foreach (var item in list)
+            {
+                var name = Properties.Langs.Lang.ResourceManager.GetString((string)item[0]);
+                string targetCtlName = item[1];
+                string imageName = item[2];
+                var isNew = !string.IsNullOrEmpty((string)item[3]);
+
+                resultList.Add(new DemoItemModel
+                {
+                    Name = name,
+                    TargetCtlName = targetCtlName,
+                    ImageName = $"../../Resources/Img/LeftMainContent/{imageName}.png",
+                    IsNew = isNew
+                });
+            }
+
+            return resultList;
         }
     }
 }

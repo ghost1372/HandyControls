@@ -22,7 +22,7 @@ namespace Microsoft.Windows.Automation.Peers
     /// <summary>
     /// AutomationPeer for Calendar Control
     /// </summary>
-    public sealed class CalendarAutomationPeer : FrameworkElementAutomationPeer, IGridProvider, IMultipleViewProvider, ISelectionProvider, ITableProvider
+    internal sealed class CalendarAutomationPeer : FrameworkElementAutomationPeer, IGridProvider, IMultipleViewProvider, ISelectionProvider, ITableProvider
     {
         /// <summary>
         /// Initializes a new instance of the CalendarAutomationPeer class.
@@ -264,17 +264,17 @@ namespace Microsoft.Windows.Automation.Peers
             {
                 case 0:
                     {
-                        return SR.Get(SRID.CalendarAutomationPeer_MonthMode);
+                        return "Month";
                     }
 
                 case 1:
                     {
-                        return SR.Get(SRID.CalendarAutomationPeer_YearMode);
+                        return "Year";
                     }
 
                 case 2:
                     {
-                        return SR.Get(SRID.CalendarAutomationPeer_DecadeMode);
+                        return "Decade";
                     }
             }
 

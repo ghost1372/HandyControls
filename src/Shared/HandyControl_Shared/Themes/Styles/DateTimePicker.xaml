@@ -7,9 +7,12 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style BasedOn="{StaticResource DateTimePickerBaseStyle}" TargetType="controls:DateTimePicker"/>
+    <Style BasedOn="{StaticResource DateTimePickerBaseStylePersian}" TargetType="controls:PersianDateTimePicker"/>
 
     <Style x:Key="DateTimePickerExtend" BasedOn="{StaticResource DateTimePickerExtendBaseStyle}" TargetType="controls:DateTimePicker"/>
+    <Style x:Key="DateTimePickerExtendPersian" BasedOn="{StaticResource DateTimePickerExtendBaseStylePersian}" TargetType="controls:PersianDateTimePicker"/>
 
     <Style x:Key="DateTimePickerPlus" BasedOn="{StaticResource DateTimePickerPlusBaseStyle}" TargetType="controls:DateTimePicker"/>
+    <Style x:Key="DateTimePickerPlusPersian" BasedOn="{StaticResource DateTimePickerPlusBaseStylePersian}" TargetType="controls:PersianDateTimePicker"/>
 
 </ResourceDictionary>

@@ -20,6 +20,20 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="ProgressButtonDefault" BasedOn="{StaticResource ProgressButtonBaseStyle}" TargetType="controls:ProgressButton">
+        <Setter Property="Background" Value="{DynamicResource DefaultBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="ProgressButtonPrimary" BasedOn="{StaticResource ProgressButtonBaseStyle}" TargetType="controls:ProgressButton">
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
     </Style>
@@ -40,4 +54,7 @@
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
 
+    <Style x:Key="ProgressButtonViolet" BasedOn="{StaticResource ProgressButtonBaseStyle}" TargetType="controls:ProgressButton">
+        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
+    </Style>
 </ResourceDictionary>

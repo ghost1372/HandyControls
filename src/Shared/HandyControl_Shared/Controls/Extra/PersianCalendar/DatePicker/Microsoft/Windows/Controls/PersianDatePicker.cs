@@ -103,6 +103,7 @@ namespace HandyControl.Controls
             KeyboardNavigation.TabNavigationProperty.OverrideMetadata(typeof(PersianDatePicker), new FrameworkPropertyMetadata(KeyboardNavigationMode.Once));
             KeyboardNavigation.IsTabStopProperty.OverrideMetadata(typeof(PersianDatePicker), new FrameworkPropertyMetadata(false));
             IsEnabledProperty.OverrideMetadata(typeof(PersianDatePicker), new UIPropertyMetadata(new PropertyChangedCallback(OnIsEnabledChanged)));
+
         }
 
         /// <summary>
@@ -115,7 +116,9 @@ namespace HandyControl.Controls
 
             // Binding to FirstDayOfWeek and DisplayDate wont work
             FirstDayOfWeek = DateTimeHelper.GetCurrentDateFormat().FirstDayOfWeek;
-            DisplayDate = DateTime.Today;
+            if(SelectedDate == null)
+                SelectedDate = DateTime.Now;
+
         }
 
         #region Public properties
@@ -479,14 +482,8 @@ namespace HandyControl.Controls
             if (dp.SelectedDate.HasValue)
             {
                 DateTime day = dp.SelectedDate.Value;
-                dp.SetTextInternal(dp.DateTimeToString(day));
 
-                // When DatePickerDisplayDateFlag is TRUE, the SelectedDate change is coming from the Calendar UI itself,
-                // so, we shouldn't change the DisplayDate since it will automatically be changed by the Calendar
-                if ((day.Month != dp.DisplayDate.Month || day.Year != dp.DisplayDate.Year) && !dp._calendar.DatePickerDisplayDateFlag)
-                {
-                    dp.DisplayDate = day;
-                }
+                dp.SetTextInternal(dp.DateTimeToString(day));
 
                 dp._calendar.DatePickerDisplayDateFlag = false;
             }
@@ -695,17 +692,6 @@ namespace HandyControl.Controls
 
         #endregion Public Properties
 
-        #region Protected properties
-
-        #endregion Protected Properties
-
-        #region Internal Properties
-
-        #endregion Internal Properties
-
-        #region Private Properties
-        #endregion Private Properties
-
         #region Public Methods
 
         /// <summary>
@@ -761,7 +747,7 @@ namespace HandyControl.Controls
                 // this text is not shown on the UI, just used for Accessibility purposes
                 if (_dropDownButton.Content == null)
                 {
-                    _dropDownButton.Content = SR.Get(SRID.DatePicker_DropDownButtonName);
+                    _dropDownButton.Content = "Show Calendar";
                 }
             }
 
@@ -1043,12 +1029,36 @@ namespace HandyControl.Controls
             {
                 case DatePickerFormat.Short:
                     {
-                        return string.Format("{0:00}/{1:00}/{2:00}", pc.GetYear(d) % 100, pc.GetMonth(d), pc.GetDayOfMonth(d));
 
+                        //Fix for SelectedDate in xaml that double converted so we check if year is 3 number like 777 we convert date to gregorian 
+                        int year = pc.GetYear(d) % 100;
+                        int month = pc.GetMonth(d);
+                        int day = pc.GetDayOfMonth(d);
+
+                        if (year.ToString().Length < 4)
+                        {
+                            DateTime dt = new DateTime(year, month, day, pc);
+                            year = dt.Year;
+                            month = dt.Month;
+                            day = dt.Day;
+                        }
+                        return string.Format("{0:00}/{1:00}/{2:00}", year, month, day);
                     }
                 case DatePickerFormat.Long:
                     {
-                        return string.Format("{0:0000}/{1:00}/{2:00}", pc.GetYear(d), pc.GetMonth(d), pc.GetDayOfMonth(d));
+                        int year = pc.GetYear(d);
+                        int month = pc.GetMonth(d);
+                        int day = pc.GetDayOfMonth(d);
+
+                        if (year.ToString().Length < 4)
+                        {
+                            DateTime dt = new DateTime(year, month, day, pc);
+                            year = dt.Year;
+                            month = dt.Month;
+                            day = dt.Day;
+                        }
+                        
+                        return string.Format("{0:0000}/{1:00}/{2:00}", year, month, day);
 
                     }
             }
@@ -1158,15 +1168,7 @@ namespace HandyControl.Controls
             // TryParse is not used in order to be able to pass the exception to the TextParseError event
             try
             {
-                // Persian culture is an exception
-                if (DateTimeHelper.GetCulture(this).LCID == 1065)
-                {
-                    newSelectedDate = ParsePersianDate(text);
-                }
-                else
-                {
-                    newSelectedDate = DateTime.Parse(text, DateTimeHelper.GetDateFormat(DateTimeHelper.GetCulture(this)));
-                }
+                newSelectedDate = ParsePersianDate(text);
 
                 if (HandyControl.Controls.PersianCalendar.IsValidDateSelection(_calendar, newSelectedDate))
                 {
@@ -1174,7 +1176,7 @@ namespace HandyControl.Controls
                 }
                 else
                 {
-                    DatePickerDateValidationErrorEventArgs dateValidationError = new DatePickerDateValidationErrorEventArgs(new ArgumentOutOfRangeException("text", SR.Get(SRID.Calendar_OnSelectedDateChanged_InvalidValue)), text);
+                    DatePickerDateValidationErrorEventArgs dateValidationError = new DatePickerDateValidationErrorEventArgs(new ArgumentOutOfRangeException("text", "SelectedDate value is not valid."), text);
                     OnDateValidationError(dateValidationError);
 
                     if (dateValidationError.ThrowException)
@@ -1359,13 +1361,13 @@ namespace HandyControl.Controls
                 {
                     case DatePickerFormat.Long:
                         {
-                            _textBox.Watermark = string.Format(CultureInfo.CurrentCulture, SR.Get(SRID.DatePicker_WatermarkText), dtfi.LongDatePattern.ToString());
+                            _textBox.Watermark = string.Format(CultureInfo.CurrentCulture, "Select a date", dtfi.LongDatePattern.ToString());
                             break;
                         }
 
                     case DatePickerFormat.Short:
                         {
-                            _textBox.Watermark = string.Format(CultureInfo.CurrentCulture, SR.Get(SRID.DatePicker_WatermarkText), dtfi.ShortDatePattern.ToString());
+                            _textBox.Watermark = string.Format(CultureInfo.CurrentCulture, "Select a date", dtfi.ShortDatePattern.ToString());
                             break;
                         }
                 }

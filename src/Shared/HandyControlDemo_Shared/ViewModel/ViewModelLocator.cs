@@ -14,6 +14,7 @@ namespace HandyControlDemo.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register<DataService>();
+            var dataService = ServiceLocator.Current.GetInstance<DataService>();
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register(() => new GrowlDemoViewModel(), "GrowlDemo");
@@ -21,9 +22,10 @@ namespace HandyControlDemo.ViewModel
             SimpleIoc.Default.Register<ImageBrowserDemoViewModel>();
             SimpleIoc.Default.Register<ComboBoxDemoViewModel>();
             SimpleIoc.Default.Register<WindowDemoViewModel>();
-            SimpleIoc.Default.Register(() => new ItemsDisplayViewModel(ServiceLocator.Current.GetInstance<DataService>().GetContributorDataList), "Contributors");
-            SimpleIoc.Default.Register(() => new ItemsDisplayViewModel(ServiceLocator.Current.GetInstance<DataService>().GetBlogDataList), "Blogs");
-            SimpleIoc.Default.Register(() => new ItemsDisplayViewModel(ServiceLocator.Current.GetInstance<DataService>().GetProjectDataList), "Projects");
+            SimpleIoc.Default.Register(() => new ItemsDisplayViewModel(dataService.GetContributorDataList), "Contributors");
+            SimpleIoc.Default.Register(() => new ItemsDisplayViewModel(dataService.GetBlogDataList), "Blogs");
+            SimpleIoc.Default.Register(() => new ItemsDisplayViewModel(dataService.GetProjectDataList), "Projects");
+            SimpleIoc.Default.Register(() => new ItemsDisplayViewModel(dataService.GetWebsiteDataList), "Websites");
             SimpleIoc.Default.Register<StepBarDemoViewModel>();
             SimpleIoc.Default.Register<PaginationDemoViewModel>();
             SimpleIoc.Default.Register<ChatBoxViewModel>();
@@ -39,6 +41,7 @@ namespace HandyControlDemo.ViewModel
             SimpleIoc.Default.Register<CardDemoViewModel>();
             SimpleIoc.Default.Register<SpriteDemoViewModel>();
             SimpleIoc.Default.Register<NotificationDemoViewModel>();
+            SimpleIoc.Default.Register<SplitButtonDemoViewModel>();
         }
 
         public static ViewModelLocator Instance => new Lazy<ViewModelLocator>(() =>
@@ -64,6 +67,8 @@ namespace HandyControlDemo.ViewModel
 
         public ItemsDisplayViewModel ProjectsView => ServiceLocator.Current.GetInstance<ItemsDisplayViewModel>("Projects");
 
+        public ItemsDisplayViewModel WebsitesView => ServiceLocator.Current.GetInstance<ItemsDisplayViewModel>("Websites");
+
         public StepBarDemoViewModel StepBarDemo => ServiceLocator.Current.GetInstance<StepBarDemoViewModel>();
 
         public PaginationDemoViewModel PaginationDemo => ServiceLocator.Current.GetInstance<PaginationDemoViewModel>();
@@ -84,7 +89,7 @@ namespace HandyControlDemo.ViewModel
 
         public SideMenuDemoViewModel SideMenuDemo => ServiceLocator.Current.GetInstance<SideMenuDemoViewModel>();
 
-        public TabControlDemoViewModel TabControlDemo => ServiceLocator.Current.GetInstance<TabControlDemoViewModel>();
+        public TabControlDemoViewModel TabControlDemo => new TabControlDemoViewModel(ServiceLocator.Current.GetInstance<DataService>());
 
         public NoUserViewModel NoUser => ServiceLocator.Current.GetInstance<NoUserViewModel>();
 
@@ -93,6 +98,8 @@ namespace HandyControlDemo.ViewModel
         public SpriteDemoViewModel SpriteDemo => ServiceLocator.Current.GetInstance<SpriteDemoViewModel>();
 
         public NotificationDemoViewModel NotificationDemo => ServiceLocator.Current.GetInstance<NotificationDemoViewModel>();
+
+        public SplitButtonDemoViewModel SplitButtonDemo => ServiceLocator.Current.GetInstance<SplitButtonDemoViewModel>();
 
         #endregion
     }

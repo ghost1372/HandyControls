@@ -1,12 +1,16 @@
 ﻿using HandyControl.Controls;
+using HandyControl.Data;
+using HandyControl.Tools;
 using Microsoft.Win32;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using MessageBox = HandyControl.Controls.MessageBox;
 
@@ -18,38 +22,62 @@ namespace HandyControlDemo.UserControl
         {
             this.InitializeComponent();
 
-            #region NeonLabel
-            _dispatcherTimer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(1) };
-            _dispatcherTimer.Tick += DispatcherTimer_Tick;
-            _dispatcherTimer.Start();
-            #endregion
+            LoadGithubTimeLineItem();
         }
 
-        #region NeonLabel
-        private DispatcherTimer _dispatcherTimer;
-        private int count = 0;
+        #region GithubTimeLine
+        ObservableCollection<GithubTimeLine> data = new ObservableCollection<GithubTimeLine>();
 
-        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        private void LoadGithubTimeLineItem()
         {
-           if(tab.SelectedIndex == 4)
-            {
-                count++;
-                switch (count)
-                {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                        break;
-                    case 5:
-                        count = 0;
-                        break;
-                }
-                neon2.Next(NeonLabelType.FadeNext, Guid.NewGuid().ToString());
-                neon3.Next(NeonLabelType.SlideNext, Guid.NewGuid().ToString());
-                if (count == 1)
-                    neon.Next(NeonLabelType.ScrollToEnd, null, 4);
-            }
+            var item = new GithubTimeLine() { TitleLabel = "2.2.4", TitleInfo = "December 11th 2019", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelViolet) };
+            item.Members.Add(new ContentMember() { ContentTitle = "FIXED", ContentInfo = "Warn when committing to a protected branch", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "ADDED", ContentInfo = "Warn when committing to a repository you don't have write access to", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Adding integration for Xcode as external editor", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelPrimary) });
+            data.Add(item);
+
+            var item2 = new GithubTimeLine() { TitleLabel = "2.2.3", TitleInfo = "November 7th 2019", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelInfo) };
+            item2.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Update embedded Git to address security vulnerabilities", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item2.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Changed wording to match git autocrlf behavior", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            data.Add(item2);
+            gitTime.ItemsSource = data;
+        }
+        private void btnAddGit_Click(object sender, RoutedEventArgs e)
+        {
+            var item = new GithubTimeLine() { TitleLabel = "3.1.0", TitleInfo = "Aug 11th 2018", TitleStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelViolet) };
+            item.Members.Add(new ContentMember() { ContentTitle = "FIXED", ContentInfo = "Warn when committing to a protected branch", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "ADDED", ContentInfo = "Warn when committing to a repository you don't have write access to", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelSuccess) });
+            item.Members.Add(new ContentMember() { ContentTitle = "IMPROVED", ContentInfo = "Adding integration for Xcode as external editor", ContentStyle = ResourceHelper.GetResource<Style>(ResourceToken.LabelPrimary) });
+            data.Add(item);
+            gitTime.ItemsSource = data;
+        }
+        private void btnRemoveGit_Click(object sender, RoutedEventArgs e)
+        {
+            gitTime.ItemsSource = null;
+            data.Clear();
+        }
+        private void TgSort_Unchecked(object sender, RoutedEventArgs e)
+        {
+            gitTime.OrderBy = GithubTimeLine.OrderType.DessendingTitleLabel;
+            tgSort.Content = "DessendingTitleLabel";
+        }
+
+        private void TgSort_Checked(object sender, RoutedEventArgs e)
+        {
+            gitTime.OrderBy = GithubTimeLine.OrderType.AssendingTitleLabel;
+            tgSort.Content = "AssendingTitleLabel";
+        }
+
+        private void TgSort_Unchecked2(object sender, RoutedEventArgs e)
+        {
+            gitTime.OrderBy = GithubTimeLine.OrderType.DessendingTitleInfo;
+            tgSort2.Content = "DessendingTitleInfo";
+        }
+
+        private void TgSort_Checked2(object sender, RoutedEventArgs e)
+        {
+            gitTime.OrderBy = GithubTimeLine.OrderType.AssendingTitleInfo;
+            tgSort2.Content = "AssendingTitleInfo";
         }
         #endregion
 
@@ -94,11 +122,11 @@ namespace HandyControlDemo.UserControl
                 };
                 Dispatcher.Invoke(DispatcherPriority.Normal, a1);
 #else
-               Dispatcher.Invoke(() =>
-                {
-                    sp.Value = i;
-                    sld.Value = i;
-                });
+                Dispatcher.Invoke(() =>
+                 {
+                     sp.Value = i;
+                     sld.Value = i;
+                 });
 #endif
                 Thread.Sleep(30);
 
@@ -115,11 +143,11 @@ namespace HandyControlDemo.UserControl
                 };
                 Dispatcher.Invoke(DispatcherPriority.Normal, a2);
 #else
-               Dispatcher.Invoke(() =>
-                {
-                    sp.Value = i;
-                    sld.Value = i;
-                });
+                        Dispatcher.Invoke(() =>
+                         {
+                             sp.Value = i;
+                             sld.Value = i;
+                         });
 #endif
 
                         Thread.Sleep(30);
@@ -142,11 +170,11 @@ namespace HandyControlDemo.UserControl
                 };
                 Dispatcher.Invoke(DispatcherPriority.Normal, a1);
 #else
-               Dispatcher.Invoke(() =>
-                {
-                    sp2.Value = i;
-                    sld2.Value = i;
-                });
+                Dispatcher.Invoke(() =>
+                 {
+                     sp2.Value = i;
+                     sld2.Value = i;
+                 });
 #endif
                 Thread.Sleep(30);
 
@@ -163,11 +191,11 @@ namespace HandyControlDemo.UserControl
                 };
                 Dispatcher.Invoke(DispatcherPriority.Normal, a2);
 #else
-               Dispatcher.Invoke(() =>
-                {
-                    sp2.Value = i;
-                    sld2.Value = i;
-                });
+                        Dispatcher.Invoke(() =>
+                         {
+                             sp2.Value = i;
+                             sld2.Value = i;
+                         });
 #endif
 
                         Thread.Sleep(30);
@@ -189,12 +217,12 @@ namespace HandyControlDemo.UserControl
             worker.DoWork += worker_DoWork;
             worker.RunWorkerAsync();
         }
-#endregion
+        #endregion
 
-#region Encryption
+        #region Encryption
         private void BtnEnText_Click(object sender, RoutedEventArgs e)
         {
-           txtEn.Text = CryptographyHelper.EncryptTextAES(txtEnText.Text, txtEnTextPass.Text);
+            txtEn.Text = CryptographyHelper.EncryptTextAES(txtEnText.Text, txtEnTextPass.Text);
         }
 
         private void BtnDeText_Click(object sender, RoutedEventArgs e)
@@ -221,7 +249,7 @@ namespace HandyControlDemo.UserControl
                 }
                 globalFileName = Path.GetExtension(dialog.FileName); ;
             }
-           
+
         }
 
         private void btnEnFile_Click(object sender, RoutedEventArgs e)
@@ -251,9 +279,9 @@ namespace HandyControlDemo.UserControl
             txtmd5.Text = CryptographyHelper.GenerateMD5(txtHash.Text);
             txtsha.Text = CryptographyHelper.GenerateSHA256(txtHash.Text);
         }
-#endregion
+        #endregion
 
-#region InIHelper
+        #region InIHelper
         private void btnIniHelper_Click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
@@ -282,30 +310,111 @@ namespace HandyControlDemo.UserControl
                     break;
             }
         }
-#endregion
+        #endregion
 
         private void btnAppHost_Click(object sender, RoutedEventArgs e)
         {
             new AppHostWindow().ShowDialog();
         }
 
-#region Update Helper
+        #region Update Helper
         private void btnCheckUpdate_Click(object sender, RoutedEventArgs e)
         {
-            var isExist = UpdateHelper.IsNewVersionExist("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
-            if(isExist)
+            var ver = UpdateHelper.CheckForUpdate("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
+            if (ver.IsExistNewVersion)
             {
                 Growl.InfoGlobal("New Version Found!");
-                lblUrl.Content = UpdateHelper.URL;
-                txtChangelog.Text = UpdateHelper.ChangeLog;
+                lblUrl.Text = ver.Url;
+                txtChangelog.Text = ver.Changelog;
             }
             else
             {
                 Growl.ErrorGlobal("you are using latest version");
-                lblUrl.Content = string.Empty;
-                txtChangelog.Text = string.Empty;
+                lblUrl.Text = ver.Url;
+                txtChangelog.Text = ver.Changelog;
             }
         }
-#endregion
+
+        private void btnCheckUpdate2_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtus.Text) && !string.IsNullOrEmpty(txtrp.Text))
+            {
+                var ver = UpdateHelper.CheckForUpdateGithubRelease(txtus.Text, txtrp.Text);
+                if (ver.IsExistNewVersion)
+                {
+                    Growl.InfoGlobal("New Version Found!");
+                    lblUrl2.Text = ver.ApiUrl;
+                    lbl1.Text = ver.CreatedAt.ToString();
+                    lbl2.Text = ver.PublishedAt.ToString();
+
+                    //Asset is List so maybe there is more than one file just use forech or increase index
+                    lbl3.Text = ver.Asset[0].browser_download_url;
+                    lbl4.Text = ver.IsPreRelease.ToString();
+                    lbl5.Text = ver.Asset[0].size.ToString();
+                    lbl6.Text = ver.TagName;
+                    txtChangelog2.Text = ver.Changelog;
+                }
+                else
+                {
+                    Growl.ErrorGlobal("you are using latest version");
+                    lblUrl2.Text = ver.ApiUrl;
+                    lbl1.Text = ver.CreatedAt.ToString();
+                    lbl2.Text = ver.PublishedAt.ToString();
+                    lbl3.Text = ver.Asset[0].browser_download_url;
+                    lbl4.Text = ver.IsPreRelease.ToString();
+                    lbl5.Text = ver.Asset[0].size.ToString();
+                    lbl6.Text = ver.TagName;
+                    txtChangelog2.Text = ver.Changelog;
+                }
+            }
+            else
+            {
+                Growl.ErrorGlobal("please use correct username and repo");
+            }
+
+        }
+        #endregion
+
+        #region TimeLine
+        private void LoadTimeLine()
+        {
+            ObservableCollection<Tuple<int, string, string>> listTimeLine = new ObservableCollection<Tuple<int, string, string>>();
+            for (int i = 0; i < 5; i++)
+            {
+                listTimeLine.Add(new Tuple<int, string, string>(i, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "Hahahaha"));
+            }
+            Timeline.ItemsSource = listTimeLine;
+        }
+
+        private void Tab_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var tab = sender as HandyControl.Controls.TabControl;
+            if (tab.SelectedIndex == 1)
+                LoadTimeLine();
+        }
+        #endregion
+
+        #region TabControl
+        private void CmbBrush_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string resourceName = ((ComboBoxItem)cmbBrush.SelectedItem).Content.ToString();
+            uwpTab.HeaderBrush = ResourceHelper.GetResource<Brush>(resourceName);
+        }
+
+        private void cmbAligment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (cmbAligment.SelectedIndex)
+            {
+                case 0:
+                    uwpTab.HeaderBrushAlignment = HandyControl.Controls.TabControl.BrushAlignment.Top;
+                    break;
+                case 1:
+                    uwpTab.HeaderBrushAlignment = HandyControl.Controls.TabControl.BrushAlignment.Bottom;
+                    break;
+            }
+        }
+        #endregion
+
     }
 }
+

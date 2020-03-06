@@ -31,44 +31,48 @@ namespace HandyControl.Controls
 
         private void CoverViewItem_OnSelected(object sender, RoutedEventArgs e)
         {
-            if (e.OriginalSource is CoverViewItem item)
+            if (ShowContent)
             {
-                if (_selectedItem == null)
+                if (e.OriginalSource is CoverViewItem item)
                 {
-                    item.IsSelected = true;
-                    _selectedItem = item;
-                    if (_viewContent != null)
+                    if (_selectedItem == null)
                     {
-                        _viewContent.Content = item.Content;
-                        _viewContent.ContentTemplate = ItemTemplate;
-                        UpdateCoverViewContent(true);
+                        item.IsSelected = true;
+                        _selectedItem = item;
+                        if (_viewContent != null)
+                        {
+                            _viewContent.Content = item.Content;
+                            _viewContent.ContentTemplate = ItemTemplate;
+                            UpdateCoverViewContent(true);
+                        }
+
+                        return;
                     }
 
-                    return;
-                }
+                    if (!Equals(_selectedItem, item))
+                    {
+                        _selectedItem.IsSelected = false;
+                        item.IsSelected = true;
+                        _selectedItem = item;
+                        if (_viewContent != null)
+                        {
+                            _viewContent.Content = item.Content;
+                            UpdateCoverViewContent(true);
+                        }
 
-                if (!Equals(_selectedItem, item))
-                {
+                        return;
+                    }
+
+                    if (_viewContent != null)
+                    {
+                        _viewContent.Content = null;
+                        _viewContent.ContentTemplate = null;
+                        UpdateCoverViewContent(false);
+                    }
                     _selectedItem.IsSelected = false;
-                    item.IsSelected = true;
-                    _selectedItem = item;
-                    if (_viewContent != null)
-                    {
-                        _viewContent.Content = item.Content;
-                        UpdateCoverViewContent(true);
-                    }
-
-                    return;
+                    _selectedItem = null;
                 }
 
-                if (_viewContent != null)
-                {
-                    _viewContent.Content = null;
-                    _viewContent.ContentTemplate = null;
-                    UpdateCoverViewContent(false);
-                }
-                _selectedItem.IsSelected = false;
-                _selectedItem = null;
             }
         }
 
@@ -107,6 +111,19 @@ namespace HandyControl.Controls
             get => (Style)GetValue(CoverViewContentStyleProperty);
             set => SetValue(CoverViewContentStyleProperty, value);
         }
+
+
+
+        public bool ShowContent
+        {
+            get { return (bool)GetValue(ShowContentProperty); }
+            set { SetValue(ShowContentProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowContentProperty =
+            DependencyProperty.Register("ShowContent", typeof(bool), typeof(CoverView), new PropertyMetadata(true));
+
+
 
         internal static readonly DependencyProperty GroupsProperty = DependencyProperty.Register(
             "Groups", typeof(int), typeof(CoverView),
@@ -223,7 +240,7 @@ namespace HandyControl.Controls
             {
                 ItemsHost.Children.Remove(_viewContent);
             }
-            var total = Items.Count + 1;
+            var total = _entryDic.Count + 1;
             var totalRow = total / Groups + (total % Groups > 0 ? 1 : 0);
             if (total <= Groups)
             {
@@ -359,9 +376,9 @@ namespace HandyControl.Controls
         private void GenerateIndex()
         {
             var index = 0;
-            foreach (var item in Items)
+            foreach (var item in _entryDic.Values)
             {
-                _entryDic[item].Index = index++;
+                item.Index = index++;
             }
         }
 

@@ -1,11 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Navigation.xaml"/>
         <ResourceDictionary Source="AppHost.xaml"/>
+        <ResourceDictionary Source="TimeLine.xaml"/>
         <ResourceDictionary Source="SpeedoMeter.xaml"/>
         <ResourceDictionary Source="BusyIndicator.xaml"/>
         <ResourceDictionary Source="MainContentBackground.xaml"/>
-        <ResourceDictionary Source="NeonLabel.xaml"/>
         <ResourceDictionary Source="Window.xaml"/>
         <ResourceDictionary Source="PopupWindow.xaml"/>
         <ResourceDictionary Source="MessageBox.xaml"/>
@@ -79,6 +80,17 @@
         <ResourceDictionary Source="Sprite.xaml"/>
         <ResourceDictionary Source="Notification.xaml"/>
         <ResourceDictionary Source="FloatingBlock.xaml"/>
+        <ResourceDictionary Source="SplitButton.xaml"/>
+        <ResourceDictionary Source="Divider.xaml"/>
+        <ResourceDictionary Source="Poptip.xaml"/>
+        <ResourceDictionary Source="Drawer.xaml"/>
+        <ResourceDictionary Source="PinBox.xaml"/>
+        <ResourceDictionary Source="Separator.xaml"/>
+        <ResourceDictionary Source="StatusBar.xaml"/>
+        <ResourceDictionary Source="FlowDocument.xaml"/>
+        <ResourceDictionary Source="NavigationWindow.xaml"/>
+        <ResourceDictionary Source="Frame.xaml"/>
+        <ResourceDictionary Source="BlendEffectBox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

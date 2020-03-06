@@ -604,12 +604,12 @@ namespace HandyControl.Controls
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("d", SR.Get(SRID.Calendar_OnSelectedDateChanged_InvalidValue));
+                    throw new ArgumentOutOfRangeException("d", "SelectedDate value is not valid.");
                 }
             }
             else
             {
-                throw new InvalidOperationException(SR.Get(SRID.Calendar_OnSelectedDateChanged_InvalidOperation));
+                throw new InvalidOperationException("The SelectedDate property cannot be set when the selection mode is None.");
             }
 
         }

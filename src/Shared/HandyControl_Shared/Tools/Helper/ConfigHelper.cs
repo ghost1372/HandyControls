@@ -6,8 +6,11 @@ using System.Runtime.CompilerServices;
 #endif
 using System.Windows;
 using System.Windows.Markup;
+using System.Windows.Media.Animation;
+using System.Windows.Navigation;
 using HandyControl.Controls;
 using HandyControl.Data;
+using Timeline = System.Windows.Media.Animation.Timeline;
 
 namespace HandyControl.Tools
 {
@@ -50,6 +53,28 @@ namespace HandyControl.Tools
         {
             SetSystemVersionInfo(config.SystemVersionInfo);
             SetLang(config.Lang);
+            SetTimelineFrameRate(config.TimelineFrameRate);
+        }
+
+        public void SetTimelineFrameRate(int rate) => 
+            Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata(rate));
+
+        public void SetWindowDefaultStyle(object resourceKey = null)
+        {
+            var metadata = resourceKey == null
+                ? new FrameworkPropertyMetadata(Application.Current.FindResource(typeof(System.Windows.Window)))
+                : new FrameworkPropertyMetadata(Application.Current.FindResource(resourceKey));
+
+            FrameworkElement.StyleProperty.OverrideMetadata(typeof(System.Windows.Window), metadata);
+        }
+
+        public void SetNavigationWindowDefaultStyle(object resourceKey = null)
+        {
+            var metadata = resourceKey == null
+                ? new FrameworkPropertyMetadata(Application.Current.FindResource(typeof(NavigationWindow)))
+                : new FrameworkPropertyMetadata(Application.Current.FindResource(resourceKey));
+
+            FrameworkElement.StyleProperty.OverrideMetadata(typeof(NavigationWindow), metadata);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

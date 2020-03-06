@@ -6,7 +6,6 @@ namespace HandyControl.Controls
 {
     public class InIHelper
     {
-        internal static string AppName = Assembly.GetExecutingAssembly().GetName().Name;
         internal static string Pathx = Environment.CurrentDirectory + @"\config.ini";
 
         [DllImport("kernel32", CharSet = CharSet.Unicode)]
@@ -25,7 +24,7 @@ namespace HandyControl.Controls
         public static string ReadValue(string Key, string Section = null, string Path = null)
         {
             var RetVal = new StringBuilder(255);
-            GetPrivateProfileString(Section ?? AppName, Key, "", RetVal, 255, Path ?? Pathx);
+            GetPrivateProfileString(Section ?? Assembly.GetCallingAssembly().GetName().Name, Key, "", RetVal, 255, Path ?? Pathx);
             return RetVal.ToString();
         }
 
@@ -38,7 +37,7 @@ namespace HandyControl.Controls
         /// <param name="Path">default is: application startup folder location</param>
         public static void AddValue(string Key, string Value, string Section = null, string Path = null)
         {
-            WritePrivateProfileString(Section ?? AppName, Key, Value, Path ?? Pathx);
+            WritePrivateProfileString(Section ?? Assembly.GetCallingAssembly().GetName().Name, Key, Value, Path ?? Pathx);
         }
 
         /// <summary>
@@ -49,7 +48,7 @@ namespace HandyControl.Controls
         /// <param name="Path"></param>
         public static void DeleteKey(string Key, string Section = null, string Path = null)
         {
-            AddValue(Key, null, Section ?? AppName, Path ?? Pathx);
+            AddValue(Key, null, Section ?? Assembly.GetCallingAssembly().GetName().Name, Path ?? Pathx);
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace HandyControl.Controls
         /// <param name="Path"></param>
         public static void DeleteSection(string Section = null, string Path = null)
         {
-            AddValue(null, null, Section ?? AppName, Path ?? Pathx);
+            AddValue(null, null, Section ?? Assembly.GetCallingAssembly().GetName().Name, Path ?? Pathx);
         }
 
         /// <summary>

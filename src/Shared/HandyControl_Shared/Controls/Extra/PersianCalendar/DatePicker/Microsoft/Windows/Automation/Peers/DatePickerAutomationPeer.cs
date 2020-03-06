@@ -78,7 +78,7 @@ namespace Microsoft.Windows.Automation.Peers
         /// <returns></returns>
         protected override string GetLocalizedControlTypeCore()
         {
-            return SR.Get(SRID.DatePickerAutomationPeer_LocalizedControlType);
+            return "date picker";
         }
 
         #endregion Protected Methods

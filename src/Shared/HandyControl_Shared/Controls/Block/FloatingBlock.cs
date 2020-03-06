@@ -101,13 +101,13 @@ namespace HandyControl.Controls
         {
             if (!(d is UIElement target)) return;
 
-            target.RemoveHandler(PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(Target_PreviewMouseLeftButtonDown));
-            target.RemoveHandler(PreviewMouseLeftButtonUpEvent, new MouseButtonEventHandler(Target_PreviewMouseLeftButtonUp));
+            target.PreviewMouseLeftButtonDown -= Target_PreviewMouseLeftButtonDown;
+            target.PreviewMouseLeftButtonUp -= Target_PreviewMouseLeftButtonUp;
 
             if (e.NewValue != null)
             {
-                target.AddHandler(PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(Target_PreviewMouseLeftButtonDown));
-                target.AddHandler(PreviewMouseLeftButtonUpEvent, new MouseButtonEventHandler(Target_PreviewMouseLeftButtonUp));
+                target.PreviewMouseLeftButtonDown += Target_PreviewMouseLeftButtonDown;
+                target.PreviewMouseLeftButtonUp += Target_PreviewMouseLeftButtonUp;
             }
         }
 
@@ -173,9 +173,16 @@ namespace HandyControl.Controls
             storyboard.Completed += (s, e) =>
             {
                 var layer = AdornerLayer.GetAdornerLayer(element);
-                if (layer == null) return;
+                if (layer != null)
+                {
+                    layer.Remove(adorner);
+                }
+                else if (adorner.Parent is AdornerLayer parent)
+                {
+                    parent.Remove(adorner);
+                }
+
                 adorner.Child = null;
-                layer.Remove(adorner);
             };
             storyboard.Children.Add(animationX);
             storyboard.Children.Add(animationY);
