@@ -214,7 +214,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="DateTimePickerExtendLeftTemplate" TargetType="controls:PersianDateTimePicker">
+    <ControlTemplate x:Key="DateTimePickerExtendLeftTemplate" TargetType="controls:DateTimePicker">
         <Grid MinHeight="{Binding Path=(controls:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(controls:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{Binding Path=(controls:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}"/>
