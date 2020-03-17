@@ -105,6 +105,7 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/NavigationWindow.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Frame.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/BlendEffectBox.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Screenshot.xaml"/>
 
         <!--#endregion-->
 
