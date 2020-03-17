@@ -7,8 +7,6 @@ using System.Runtime;
 using System.Security.Authentication; 
 using System.Threading;
 using System.Windows;
-using HandyControl.Controls;
-using System.Windows.Media.Animation;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControlDemo.Data;

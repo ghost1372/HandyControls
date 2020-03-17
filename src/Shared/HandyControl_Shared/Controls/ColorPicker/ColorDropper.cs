@@ -53,7 +53,7 @@ namespace HandyControl.Controls
             UpdateCursor(true);
             var brush = new SolidColorBrush(GetColorAt(e.Point.X, e.Point.Y));
             _colorPicker.SelectedBrush = brush;
-            if (e.Message == MouseHookMessageType.LeftButtonDown)
+            if (e.MessageType == MouseHookMessageType.LeftButtonDown)
             {
                 UpdateCursor(false);
                 Update(false);
