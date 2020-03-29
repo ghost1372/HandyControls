@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="../ScrollViewer.xaml" />
+        <ResourceDictionary Source="../../Basic/Effects.xaml"/>
+        <ResourceDictionary Source="../ScrollViewer.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="ContextMenuBaseStyle" TargetType="ContextMenu">
@@ -10,14 +11,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContextMenu">
-                    <Border
-                        MaxHeight="{TemplateBinding MaxHeight}"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{DynamicResource BorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="2">
-                        <ScrollViewer Margin="0,6" Style="{StaticResource ScrollViewerUpDown}">
-                            <ItemsPresenter />
+                    <Border Effect="{StaticResource EffectShadow2}" Margin="8" Background="{TemplateBinding Background}" CornerRadius="2" MaxHeight="{TemplateBinding MaxHeight}" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}">
+                        <ScrollViewer Style="{StaticResource ScrollViewerUpDown}"  Margin="0,6">
+                            <ItemsPresenter/>
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>
