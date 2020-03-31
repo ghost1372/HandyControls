@@ -20,6 +20,7 @@
     <SolidColorBrush o:Freeze="True" x:Key="RegionBrush" Color="{DynamicResource RegionColor}"/>
     <SolidColorBrush o:Freeze="True" x:Key="SecondaryRegionBrush" Color="{DynamicResource SecondaryRegionColor}"/>
     <SolidColorBrush o:Freeze="True" x:Key="ThirdlyRegionBrush" Color="{DynamicResource ThirdlyRegionColor}"/>
+    <SolidColorBrush o:Freeze="True" x:Key="OddEvenRegionBrush" Color="{DynamicResource OddEvenRegionColor}"/>
     <LinearGradientBrush o:Freeze="True" x:Key="TitleBrush" EndPoint="1,0" StartPoint="0,0">
         <GradientStop o:Freeze="True" Color="{DynamicResource TitleColor}" Offset="0"/>
         <GradientStop o:Freeze="True" Color="{DynamicResource SecondaryTitleColor}" Offset="1"/>

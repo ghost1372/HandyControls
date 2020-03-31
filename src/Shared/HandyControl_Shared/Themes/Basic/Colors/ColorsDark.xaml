@@ -47,6 +47,8 @@
     <Color x:Key="MainContentForegroundColor">#FF1A1A1A</Color>
     <Color x:Key="MainContentBackgroundColor">#FF1C1C1C</Color>
     <Color x:Key="ForthlyRegionColor">#2d2d30</Color>
+    <Color x:Key="OddEvenRegionColor">#36363A</Color>
+    
     <system:UInt32 x:Key="BlurGradientValue">0x99000000</system:UInt32>
 
 </ResourceDictionary>

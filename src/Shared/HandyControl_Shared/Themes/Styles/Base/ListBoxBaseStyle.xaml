@@ -28,6 +28,21 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="controls:ListBoxAttach.IsOddEvenRow" Value="True"/>
+                    <Condition Property="ItemsControl.AlternationIndex" Value="0"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="controls:ListBoxAttach.IsOddEvenRow" Value="True"/>
+                    <Condition Property="ItemsControl.AlternationIndex" Value="1"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource OddEvenRegionBrush}"/>
+            </MultiTrigger>
+            
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
             </Trigger>
