@@ -20,7 +20,7 @@
         <MenuItem Command="interactivity:ControlCommands.CloseOther" Header="{x:Static langs:Lang.CloseOther}"/>
     </ContextMenu>
 
-    <Style x:Key="BaseTabItem" TargetType="controls:TabItem">
+    <Style TargetType="controls:TabItem">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
@@ -41,149 +41,103 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Border Grid.ColumnSpan="3" BorderThickness="{TemplateBinding BorderThickness}" x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Margin="0">
-                            <Border Margin="0,0,0,-1" x:Name="innerBorder" Background="{DynamicResource RegionBrush}" Visibility="Collapsed"/>
+                            <Border Margin="0,0,0,-1" x:Name="innerBorder" Background="{DynamicResource RegionBrush}">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="true">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                            </Border>
                         </Border>
                         <Path x:Name="PathMain" Margin="10,0,0,0" Grid.Column="0" Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" Fill="{TemplateBinding Foreground}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}"/>
                         <ContentPresenter Grid.Column="1" x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                         <Border Name="BorderMask" Grid.Column="1" HorizontalAlignment="Right" Width="20" Background="{TemplateBinding Background}" Margin="0,0,1,1">
-                            <Border.OpacityMask>
-                                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                            <Border.Resources>
+                                <LinearGradientBrush x:Key="grdBrush" EndPoint="1,0" StartPoint="0,0">
                                     <GradientStop Color="White" Offset="1"/>
                                     <GradientStop Offset="0"/>
                                 </LinearGradientBrush>
-                            </Border.OpacityMask>
+                                <LinearGradientBrush x:Key="grdBrushUWP" EndPoint="1,0" StartPoint="0,0">
+                                    <GradientStop Color="White" Offset="0"/>
+                                    <GradientStop Offset="0"/>
+                                </LinearGradientBrush>
+                            </Border.Resources>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="OpacityMask" Value="{StaticResource grdBrush}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="true">
+                                            <Setter Property="OpacityMask" Value="{StaticResource grdBrushUWP}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
                         </Border>
                         <Button Grid.Column="2" Focusable="False" Command="interactivity:ControlCommands.Close" Visibility="{TemplateBinding ShowCloseButton,Converter={StaticResource Boolean2VisibilityConverter}}" Background="Transparent" Style="{StaticResource ButtonCustom}" Width="28">
                             <Path Fill="{DynamicResource PrimaryTextBrush}" Width="8" Height="8" Style="{StaticResource ClosePathStyle}"/>
                         </Button>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="Panel.ZIndex" Value="1"/>
-                            <Setter Property="Visibility" TargetName="innerBorder" Value="Visible"/>
-                            <Setter Property="Background" TargetName="BorderMask" Value="{DynamicResource RegionBrush}"/>
-                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="true"/>
+                                <Condition Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="false"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Panel.ZIndex" Value="1"/>
+                                <Setter Property="Visibility" TargetName="innerBorder" Value="Visible"/>
+                                <Setter Property="Background" TargetName="BorderMask" Value="{DynamicResource RegionBrush}"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+
                         <Trigger Property="controls:IconElement.Geometry" Value="{x:Null}">
                             <Setter Property="Visibility" Value="Collapsed" TargetName="PathMain"/>
                         </Trigger>
                         <Trigger Property="ShowCloseButton" Value="True">
                             <Setter Property="Margin" Value="0,0,0,1" TargetName="BorderMask"/>
                         </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
-    <Style x:Key="UWPTabItem" TargetType="controls:TabItem">
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
-        <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="Padding" Value="10,0,0,0"/>
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="Menu" Value="{StaticResource TabItemMenu}"/>
-        <Setter Property="HeaderTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <TextBlock Background="Transparent" Text="{Binding Header,RelativeSource={RelativeSource AncestorType=controls:TabItem}}">
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsSelected}" Value="True">
-                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsMouseOver}" Value="True">
-                                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="controls:TabItem">
-                    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" ContextMenu="{TemplateBinding Menu}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.ColumnSpan="3" BorderThickness="{TemplateBinding BorderThickness}" x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" Margin="0">
-                            <Border Margin="0,0,0,-1" x:Name="innerBorder" Background="{DynamicResource RegionBrush}" Opacity="1"/>
-                        </Border>
-                        <Path x:Name="PathMain" Margin="10,0,0,0" Grid.Column="0" Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}">
-                        <Path.Style>
-                                <Style TargetType="Path">
-                                    <Setter Property="Fill" Value="{DynamicResource SecondaryTextBrush}"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsSelected}" Value="True">
-                                            <Setter Property="Fill" Value="{DynamicResource PrimaryTextBrush}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type controls:TabItem}}, Path=IsMouseOver}" Value="True">
-                                            <Setter Property="Fill" Value="{DynamicResource PrimaryTextBrush}"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Path.Style>
-                        </Path>
-                        <ContentPresenter Grid.Column="1" x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="Stretch" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center">
-                            <ContentPresenter.OpacityMask>
-                                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                                    <GradientStop Offset="1"/>
-                                    <GradientStop Color="White" Offset="0.8"/>
-                                </LinearGradientBrush>
-                            </ContentPresenter.OpacityMask>
-                        </ContentPresenter>
-                        <Button Grid.Column="2" Focusable="False" Command="interactivity:ControlCommands.Close" Visibility="{TemplateBinding ShowCloseButton,Converter={StaticResource Boolean2VisibilityConverter}}" Background="Transparent" Style="{StaticResource ButtonCustom}" Width="28">
-                            <Path Fill="{DynamicResource PrimaryTextBrush}" Width="8" Height="8" Style="{StaticResource ClosePathStyle}"/>
-                        </Button>
-                        <Grid.Style>
-                            <Style TargetType="Grid">
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Effect" Value="{StaticResource EffectShadow2}"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Grid.Style>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Panel.ZIndex" Value="1"/>
-                            <Setter Property="Opacity" TargetName="innerBorder" Value="0"/>
-                            <Setter Property="BorderThickness" Value="0,3,0,0"/>
-                            <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
-                        </Trigger>
-                        <Trigger Property="controls:IconElement.Geometry" Value="{x:Null}">
-                            <Setter Property="Visibility" Value="Collapsed" TargetName="PathMain"/>
-                        </Trigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="True" />
-                                <Condition Binding="{Binding Path=HeaderBrushAlignment, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="Bottom" />
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="false"/>
+                                <Condition Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="true"/>
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
-                                <Setter Property="BorderThickness" Value="0,0,0,3"/>
-                                <Setter Property="Panel.ZIndex" Value="0"/>
-                                <Setter Property="Opacity" TargetName="innerBorder" Value="0"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                        
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="true"/>
+                                <Condition Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="true"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Panel.ZIndex" Value="1"/>
+                                <Setter Property="Visibility" TargetName="innerBorder" Value="Collapsed"/>
+                                <Setter Property="Background" TargetName="BorderMask" Value="{DynamicResource RegionBrush}"/>
+                                <Setter Property="BorderThickness" Value="0,3,0,0"/>
                                 <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
+
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="False" />
-                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource self}}" Value="True" />
+                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="True" />
+                                <Condition Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="true"/>
+                                <Condition Binding="{Binding Path=HeaderBrushAlignment, RelativeSource={RelativeSource AncestorType=controls:TabControl}}" Value="Bottom" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
-                                <Setter Property="Opacity" TargetName="innerBorder" Value="0.1"/>
+                                <Setter Property="Panel.ZIndex" Value="1"/>
+                                <Setter Property="Visibility" TargetName="innerBorder" Value="Visible"/>
+                                <Setter Property="Background" TargetName="BorderMask" Value="{DynamicResource RegionBrush}"/>
+                                <Setter Property="BorderThickness" Value="0,0,0,3"/>
+                                <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=controls:TabControl}}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
@@ -359,7 +313,6 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template" Value="{StaticResource TabControlPlusTemplate}"/>
-        <Setter Property="ItemContainerStyle" Value="{StaticResource BaseTabItem}"/>
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -371,7 +324,6 @@
 
             <DataTrigger Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource self}}" Value="True">
                 <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                <Setter Property="ItemContainerStyle" Value="{StaticResource UWPTabItem}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
