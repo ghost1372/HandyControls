@@ -324,6 +324,7 @@
 
             <DataTrigger Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource self}}" Value="True">
                 <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
