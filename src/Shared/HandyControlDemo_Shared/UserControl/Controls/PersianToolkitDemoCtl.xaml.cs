@@ -24,6 +24,7 @@ namespace HandyControlDemo.UserControl
 
             LoadGithubTimeLineItem();
             initDate();
+            initCheckTreeView();
         }
 
         #region GithubTimeLine
@@ -431,6 +432,25 @@ namespace HandyControlDemo.UserControl
         }
         #endregion
 
+        #region CheckTreeView
+        public ObservableCollection<CheckTreeView> TreeRoot { get; set; } = new ObservableCollection<CheckTreeView>();
+
+        private void initCheckTreeView()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                CheckTreeView contributorItem = new CheckTreeView() { Text = $"Item {i}", IsChecked = false, CTag = "TAG" };
+                CheckTreeView contributorTagItem = new CheckTreeView() { Text = "SubItem 1", IsChecked = false, CTag = "TAG" };
+                CheckTreeView contributorTagItem2 = new CheckTreeView() { Text = "SubItem 2", IsChecked = false, CTag = "TAG" };
+                contributorItem.Add(contributorTagItem);
+                contributorItem.Add(contributorTagItem2);
+                TreeRoot.Add(contributorItem);
+            }
+
+
+            DataContext = this;
+        }
+        #endregion
     }
 }
 

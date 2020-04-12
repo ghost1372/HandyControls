@@ -366,6 +366,9 @@
                             <TextBlock Margin="0,10" x:Name="txtP8"/>
                         </StackPanel>
                     </TabItem>
+                    <TabItem Margin="0,10" Header="CheckTreeView">
+                        <hc:CheckTreeView Margin="10" ItemsSource="{Binding TreeRoot}"/>
+                    </TabItem>
                 </TabControl>
             </hc:TabItem>
         </hc:TabControl>
