@@ -17,7 +17,6 @@
 
         <!--#region Styles -->
 
-        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Navigation.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/AppHost.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Badge.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Border.xaml"/>

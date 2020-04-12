@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:s="clr-namespace:System;assembly=mscorlib"
+    xmlns:enum="clr-namespace:HandyControlDemo.Data"
      xmlns:hc="https://handyorg.github.io/handycontrol"
      Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
@@ -328,13 +329,11 @@
                             </hc:BusyIndicator>
                         </StackPanel>
                     </TabItem>
-                    <TabItem Header="Navigation">
-                        <hc:Navigation>
-                            <hc:NavigationItem hc:IconElement.Height="24" hc:IconElement.Width="24" hc:IconSwitchElement.Geometry="{DynamicResource ConfigGeometry}" hc:IconSwitchElement.GeometrySelected="{DynamicResource CalendarGeometry}" Header="Test 1"/>
-                            <hc:NavigationItem Header="Test 2"/>
-                            <hc:NavigationItem Header="Test 3"/>
-                            <hc:NavigationItem Header="Test 4"/>
-                        </hc:Navigation>
+                    <TabItem Header="BindToEnum">
+                        <StackPanel>
+                            <hc:ComboBox hc:TitleElement.Title="Bind To Enum Description" ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type enum:StatusDescription}}}" Margin="10" />
+                            <hc:ComboBox hc:TitleElement.Title="Bind To Enum" ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type enum:Status}}}" Margin="10" />
+                        </StackPanel>
                     </TabItem>
                 </TabControl>
             </hc:TabItem>

@@ -13,9 +13,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\BindableBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\ConverterBindableBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\MultiValueConverterAdapter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Cryptography\CryptographyHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\ListBoxAttach.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Navigation\ElementBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumBindingSourceExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumDescriptionTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\CryptographyHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\ListBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InstanceHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\HKEYType.cs" />
@@ -37,8 +38,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Loading\BusyIndicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Loading\LoadingIndicator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MainContentBackground.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Navigation\Navigation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Navigation\NavigationItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Collections\ManualObservableCollection!1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\BackgroundSwitchElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\BorderElement.cs" />
@@ -559,10 +558,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\DrawerBaseStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Navigation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1107,6 +1102,7 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\Effects\GrayScaleEffect.fx" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\" />
   </ItemGroup>
 </Project>
