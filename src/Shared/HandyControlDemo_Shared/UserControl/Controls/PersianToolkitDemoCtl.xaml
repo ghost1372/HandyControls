@@ -354,6 +354,18 @@
                             <hc:GithubTimeLine Grid.Row="1" Name="gitTime"/>
                         </Grid>
                     </TabItem>
+                    <TabItem Margin="0,10" Header="PersianDate">
+                        <StackPanel Margin="20,10">
+                            <TextBlock x:Name="txtP1"/>
+                            <TextBlock Margin="0,10" x:Name="txtP2"/>
+                            <TextBlock x:Name="txtP3"/>
+                            <TextBlock Margin="0,10" x:Name="txtP4"/>
+                            <TextBlock x:Name="txtP5"/>
+                            <TextBlock Margin="0,10" x:Name="txtP6"/>
+                            <TextBlock x:Name="txtP7"/>
+                            <TextBlock Margin="0,10" x:Name="txtP8"/>
+                        </StackPanel>
+                    </TabItem>
                 </TabControl>
             </hc:TabItem>
         </hc:TabControl>

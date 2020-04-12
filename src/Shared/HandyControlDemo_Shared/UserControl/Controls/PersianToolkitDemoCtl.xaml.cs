@@ -23,6 +23,7 @@ namespace HandyControlDemo.UserControl
             this.InitializeComponent();
 
             LoadGithubTimeLineItem();
+            initDate();
         }
 
         #region GithubTimeLine
@@ -412,6 +413,21 @@ namespace HandyControlDemo.UserControl
                     uwpTab.HeaderBrushAlignment = HandyControl.Controls.TabControl.BrushAlignment.Bottom;
                     break;
             }
+        }
+        #endregion
+
+        #region PersianDate
+        private void initDate()
+        {
+            PersianDate persian = new PersianDate();
+            txtP1.Text = persian.GetShamsiYear(DateTime.Now).ToString();
+            txtP2.Text = persian.GetShamsiMonthName(DateTime.Now).ToString();
+            txtP3.Text = persian.GetShamsiDayString(DateTime.Now).ToString();
+            txtP4.Text = persian.GetShamsiDayName(DateTime.Now).ToString();
+            txtP5.Text = persian.GetShamsiDayShortName(DateTime.Now).ToString();
+            txtP6.Text = DateTime.Now.ToShamsiDate();
+            txtP7.Text = DateTime.Now.ToShortShamsiDate();
+            txtP8.Text = DateTime.Now.ToLongShamsiDate();
         }
         #endregion
 

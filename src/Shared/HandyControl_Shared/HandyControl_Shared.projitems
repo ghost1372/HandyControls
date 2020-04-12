@@ -51,6 +51,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PasswordBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\RectangleAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\PersianDateTimePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianDate\PersianDate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianDate\ToShamsi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\SpeedoMeter\Converter\Positive2Nagative.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\SpeedoMeter\Converter\SpeedConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\SpeedoMeter\Converter\ValueToBrushConverter.cs" />
