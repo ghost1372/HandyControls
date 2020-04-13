@@ -439,12 +439,12 @@ namespace HandyControlDemo.UserControl
         {
             for (int i = 0; i < 10; i++)
             {
-                CheckTreeView contributorItem = new CheckTreeView() { Text = $"Item {i}", IsChecked = false, CTag = "TAG" };
-                CheckTreeView contributorTagItem = new CheckTreeView() { Text = "SubItem 1", IsChecked = false, CTag = "TAG" };
-                CheckTreeView contributorTagItem2 = new CheckTreeView() { Text = "SubItem 2", IsChecked = false, CTag = "TAG" };
-                contributorItem.Add(contributorTagItem);
-                contributorItem.Add(contributorTagItem2);
-                TreeRoot.Add(contributorItem);
+                CheckTreeView item = new CheckTreeView() { Text = $"Item {i}", IsChecked = false, CTag = "TAG" };
+                CheckTreeView subItem1 = new CheckTreeView() { Text = "SubItem 1", IsChecked = false, CTag = "TAG" };
+                CheckTreeView subItem2 = new CheckTreeView() { Text = "SubItem 2", IsChecked = false, CTag = "TAG" };
+                item.Add(subItem1);
+                item.Add(subItem2);
+                TreeRoot.Add(item);
             }
 
 

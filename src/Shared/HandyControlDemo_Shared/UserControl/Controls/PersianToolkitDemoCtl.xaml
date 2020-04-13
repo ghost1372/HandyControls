@@ -314,19 +314,22 @@
                     </TabItem>
                     <TabItem Header="Loading">
                         <StackPanel>
-                            <ToggleButton Margin="10" Content="IsBusy" VerticalAlignment="Center" Style="{StaticResource ToggleButtonSwitch}" IsChecked="True" Name="isbusy"/>
-                            <hc:BusyIndicator Margin="10" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}">
-                                <UniformGrid Columns="8" Margin="10">
-                                    <hc:LoadingIndicator Style="{DynamicResource LoadingIndicatorArcsStyle}"/>
-                                    <hc:LoadingIndicator Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>
-                                    <hc:LoadingIndicator Style="{DynamicResource LoadingIndicatorDoubleBounceStyle}"/>
-                                    <hc:LoadingIndicator Style="{DynamicResource LoadingIndicatorFlipPlaneStyle}"/>
-                                    <hc:LoadingIndicator Style="{DynamicResource LoadingIndicatorPulseStyle}"/>
-                                    <hc:LoadingIndicator Style="{DynamicResource LoadingIndicatorRingStyle}"/>
-                                    <hc:LoadingIndicator Style="{DynamicResource LoadingIndicatorThreeDotsStyle}"/>
-                                    <hc:LoadingIndicator Style="{DynamicResource LoadingIndicatorWaveStyle}"/>
-                                </UniformGrid>
-                            </hc:BusyIndicator>
+                            <ToggleButton Margin="20" Content="IsBusy" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource ToggleButtonSwitch}" IsChecked="True" Name="isbusy"/>
+                            <hc:BusyIndicator Margin="10" IsBusy="{Binding ElementName=isbusy, Path=IsChecked}"/>
+                            <UniformGrid Columns="8" Margin="10">
+                                <hc:LoadingIndicator HorizontalAlignment="Center" VerticalAlignment="Center" IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorArcsStyle}"/>
+                                <hc:LoadingIndicator IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorArcsRingStyle}"/>
+                                <hc:LoadingIndicator IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorDoubleBounceStyle}"/>
+                                <hc:LoadingIndicator IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorFlipPlaneStyle}"/>
+                                <hc:LoadingIndicator IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorPulseStyle}"/>
+                                <hc:LoadingIndicator IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorRingStyle}"/>
+                                <hc:LoadingIndicator IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorThreeDotsStyle}"/>
+                                <hc:LoadingIndicator IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorWaveStyle}"/>
+                                <hc:LoadingIndicator Margin="0,30" IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorAppleStyle}"/>
+                                <hc:LoadingIndicator Margin="0,30" IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorGridsStyle}"/>
+                                <hc:LoadingIndicator Margin="0,30" IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorLinesStyle}"/>
+                                <hc:LoadingIndicator Margin="10,30" IsActive="{Binding ElementName=isbusy, Path=IsChecked}" Style="{DynamicResource LoadingIndicatorRotateStyle}"/>
+                            </UniformGrid>
                         </StackPanel>
                     </TabItem>
                     <TabItem Header="BindToEnum">
