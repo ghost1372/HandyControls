@@ -4,8 +4,8 @@
 [![Document](https://img.shields.io/badge/Document-Updated-success)](https://ghost1372.github.io/) [![Nuget](https://img.shields.io/nuget/dt/handycontrols)](https://www.nuget.org/packages/HandyControls) ![Github-build-status](https://github.com/ghost1372/HandyControls/workflows/build/badge.svg)
 
 # Welcome to HandyControl
-This project is based on [HandyControl](https://github.com/handyOrg/HandyControl) But this project includes some controls and features that are not included in the original project[For example, support for Persian Calendar]
-[See the changes here](https://github.com/ghost1372/HandyControl/wiki/Documentation#features-included-in-handycontrols-this-is-a-custom-version-based-on-original-handycontrol) 
+This project is based on [HandyControl](https://github.com/handyOrg/HandyControl) and includes some controls and features that are not included in the original project [for example support for Persian Calendar and PersianDate, More Controls and More Styles]
+[See what's there](https://ghost1372.github.io/handycontrol/persianToolkit/) 
 
 ## Contributors
 
