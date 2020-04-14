@@ -13,6 +13,6 @@ namespace HandyControl.Controls
 
         public static void SetIsOddEvenRow(DependencyObject element, bool value) => element.SetValue(IsOddEvenRowProperty, value);
 
-        public static bool GetIsOddEvenRowProperty(DependencyObject element) => (bool)element.GetValue(IsOddEvenRowProperty);
+        public static bool GetIsOddEvenRow(DependencyObject element) => (bool)element.GetValue(IsOddEvenRowProperty);
     }
 }
