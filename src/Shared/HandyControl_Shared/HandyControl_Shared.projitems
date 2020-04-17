@@ -67,6 +67,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Timeline\GithubTimeLine.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Timeline\Timeline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Timeline\TimelineItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\TranslationSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Growl\GrowlWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Image\ImageBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Input\PinBox.cs" />

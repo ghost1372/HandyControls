@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:s="clr-namespace:System;assembly=mscorlib"
     xmlns:enum="clr-namespace:HandyControlDemo.Data"
-     xmlns:hc="https://handyorg.github.io/handycontrol"
-     Background="{DynamicResource RegionBrush}">
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:lang="clr-namespace:HandyControlDemo.Properties.Langs"
+    hc:Translation.ResourceManager="{x:Static lang:Lang.ResourceManager}"
+    Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
         <hc:TabControl MinWidth="700" Margin="10" SelectionChanged="Tab_SelectionChanged" IsUWPStyle="True">
             <hc:TabItem Header="Part 1">
@@ -371,6 +373,9 @@
                     </TabItem>
                     <TabItem Margin="0,10" Header="CheckTreeView">
                         <hc:CheckTreeView Margin="10" ItemsSource="{Binding TreeRoot}"/>
+                    </TabItem>
+                    <TabItem Header="Dynamic Language">
+                        <ToggleButton x:Name="tgLanguage" Content="{hc:Loc ChangeLangAsk}" Unchecked="btnLanguageChanged" Checked="btnLanguageChanged"/>
                     </TabItem>
                 </TabControl>
             </hc:TabItem>
