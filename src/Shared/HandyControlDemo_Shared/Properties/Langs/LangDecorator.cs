@@ -1305,6 +1305,8 @@ namespace HandyControlDemo.Properties.Langs
         /// </summary>
 		public string Window => Lang.Window;
 
+		public string PersianToolkit => Lang.PersianToolkit;
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -2368,6 +2370,8 @@ namespace HandyControlDemo.Properties.Langs
         ///   查找类似 窗口 的本地化字符串。
         /// </summary>
 		public static string Window = nameof(Window);
+
+		public static string PersianToolkit = nameof(PersianToolkit);
 
     }
 }
