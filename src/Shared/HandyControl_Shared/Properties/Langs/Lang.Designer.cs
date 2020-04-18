@@ -260,7 +260,15 @@ namespace HandyControl.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 否.
+        ///   查找类似 查找类似 {0} 的本地化字符串。 的本地化字符串。
+        /// </summary>
+        public static string LangComment {
+            get {
+                return ResourceManager.GetString("LangComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 下一页 的本地化字符串。
         /// </summary>
         public static string NextPage {
