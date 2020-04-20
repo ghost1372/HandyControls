@@ -122,23 +122,9 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.ColumnSpan="2"
-                Margin="1"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -182,6 +168,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -236,25 +226,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="1"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=toggleButton}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Row="1" Grid.Column="0" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -306,6 +280,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -362,24 +340,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Margin="1"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Column="1" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -427,6 +390,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -492,22 +459,9 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -548,6 +502,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -602,24 +560,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Column="0" Grid.Row="1" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -669,6 +612,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -725,23 +672,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Column="1" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -790,6 +723,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -971,25 +908,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Margin="1"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=toggleButton}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Row="1" Grid.Column="0" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -1063,6 +984,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -1165,24 +1090,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Margin="1"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Column="1" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -1250,6 +1160,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -1351,24 +1265,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Column="0" Grid.Row="1" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -1440,6 +1339,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -1558,24 +1461,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Column="0" Grid.Row="1" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -1593,24 +1481,9 @@
                     </ScrollViewer>
                 </Border>
             </Popup>
-            <Popup
-                x:Name="PART_Popup_AutoComplete"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}"
-                StaysOpen="False">
-                <Border
-                    x:Name="dropDownBorder_AutoComplete"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer_AutoComplete" Margin="0,4">
+            <Popup Grid.Column="0" Grid.Row="1" x:Name="PART_Popup_AutoComplete" PlacementTarget="{Binding ElementName=toggleButton}" StaysOpen="False" AllowsTransparency="true" Grid.ColumnSpan="2" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder_AutoComplete" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer_AutoComplete">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -1686,6 +1559,12 @@
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
                 <Setter TargetName="dropDownBorder_AutoComplete" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MaxWidth" TargetName="dropDownBorder_AutoComplete" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder_AutoComplete" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -1810,23 +1689,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Column="1" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -1894,6 +1759,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -2013,23 +1882,9 @@
                     TextElement.Foreground="{DynamicResource DangerBrush}"
                     Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
-            <Popup
-                x:Name="PART_Popup"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer" Margin="0,4">
+            <Popup Grid.Column="1" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -2047,22 +1902,9 @@
                     </ScrollViewer>
                 </Border>
             </Popup>
-            <Popup
-                x:Name="PART_Popup_AutoComplete"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                AllowsTransparency="true"
-                Placement="Bottom"
-                PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                <Border
-                    x:Name="dropDownBorder_AutoComplete"
-                    MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
-                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                    Background="{DynamicResource RegionBrush}"
-                    BorderBrush="{DynamicResource BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}">
-                    <ScrollViewer x:Name="DropDownScrollViewer_AutoComplete" Margin="0,4">
+            <Popup Grid.Column="1" x:Name="PART_Popup_AutoComplete" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+                <Border CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder_AutoComplete" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}">
+                    <ScrollViewer Margin="0,4" x:Name="DropDownScrollViewer_AutoComplete">
                         <controls:SimplePanel RenderOptions.ClearTypeHint="Enabled">
                             <Canvas
                                 Width="0"
@@ -2134,6 +1976,12 @@
             <Trigger Property="HasItems" Value="false">
                 <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
                 <Setter TargetName="dropDownBorder_AutoComplete" Property="Height" Value="95" />
+            </Trigger>
+            <Trigger Property="controls:DropDownElement.ConsistentWidth" Value="True">
+                <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MaxWidth" TargetName="dropDownBorder_AutoComplete" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
+                <Setter Property="MinWidth" TargetName="dropDownBorder_AutoComplete" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
