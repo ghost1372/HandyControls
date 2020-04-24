@@ -53,11 +53,26 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 
 ## Usage
 
-Step 1：Add a reference to HandyControl or search for HandyControl on the nuget; 
+Step 1：Add a reference to HandyControls on the nuget; 
 
 ```Install-Package HandyControls```
 
 Step 2：Add code in App.xaml as follows:
+```XML
+<Application 
+             xmlns:hc="https://handyorg.github.io/handycontrol">
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <hc:Theme Name="HandyTheme"/>
+         </ResourceDictionary.MergedDictionaries>
+     </ResourceDictionary>
+  </Application.Resources>
+</Application>
+```
+
+`In older versions of 2.5, you should write like this`
+
 ```XML
 <Application.Resources>
     <ResourceDictionary>
