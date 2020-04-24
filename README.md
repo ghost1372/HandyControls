@@ -71,7 +71,7 @@ Step 2：Add code in App.xaml as follows:
 </Application>
 ```
 
-`In older versions of 2.5, you should write like this`
+`In older versions of 2.5.1, you should add this code`
 
 ```XML
 <Application.Resources>
