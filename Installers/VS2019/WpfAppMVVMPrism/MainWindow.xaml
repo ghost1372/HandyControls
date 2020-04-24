@@ -23,16 +23,13 @@
                     <MenuItem Header="Header1">
                         <MenuItem Header="Header1"/>
                         <MenuItem Header="Header2"/>
-                        <MenuItem Header="Header2"/>
                     </MenuItem>
                     <MenuItem Header="Header2">
                         <MenuItem Header="Header1"/>
                         <MenuItem Header="Header2"/>
-                        <MenuItem Header="Header2"/>
                     </MenuItem>
                     <MenuItem Header="Header3">
                         <MenuItem Header="Header1"/>
-                        <MenuItem Header="Header2"/>
                         <MenuItem Header="Header2"/>
                     </MenuItem>
                 </Menu>
