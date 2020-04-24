@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using HandyControl.Data;
+using HandyControl.Tools;
 using $safeprojectname$.Views;
 using Prism.Ioc;
 namespace $safeprojectname$
