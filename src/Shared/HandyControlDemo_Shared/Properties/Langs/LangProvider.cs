@@ -248,6 +248,7 @@ namespace HandyControlDemo.Properties.Langs
 			OnPropertyChanged(nameof(WaterfallPanel));
 			OnPropertyChanged(nameof(Website));
 			OnPropertyChanged(nameof(Window));
+			OnPropertyChanged(nameof(PersianToolkit));
         }
 
         /// <summary>
@@ -1304,6 +1305,8 @@ namespace HandyControlDemo.Properties.Langs
         ///   查找类似 窗口 的本地化字符串。
         /// </summary>
 		public string Window => Lang.Window;
+
+		public string PersianToolkit => Lang.PersianToolkit;
 
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -2368,6 +2371,8 @@ namespace HandyControlDemo.Properties.Langs
         ///   查找类似 窗口 的本地化字符串。
         /// </summary>
 		public static string Window = nameof(Window);
+
+		public static string PersianToolkit = nameof(PersianToolkit);
 
     }
 }
