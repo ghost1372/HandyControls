@@ -9,7 +9,6 @@
     <Import_RootNamespace>HandyControl</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\AppHost.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\TreeViewAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\BindableBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\ConverterBindableBinding.cs" />
@@ -67,8 +66,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Block\FloatingBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Button\SplitButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Timeline\GithubTimeLine.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Timeline\Timeline.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Timeline\TimelineItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\TranslationSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Growl\GrowlWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Image\ImageBlock.cs" />
@@ -595,10 +592,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\DividerBaseStyle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\AppHost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

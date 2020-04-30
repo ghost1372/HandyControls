@@ -18,7 +18,6 @@
         <!--#region Styles -->
 
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/CheckTreeView.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/AppHost.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Badge.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Border.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/BusyIndicator.xaml"/>
@@ -97,7 +96,6 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/TreeView.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Poptip.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Drawer.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/TimeLine.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/PinBox.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Separator.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/StatusBar.xaml"/>
@@ -106,6 +104,7 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Frame.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/BlendEffectBox.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Screenshot.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Watermark.xaml"/>
 
         <!--#endregion-->
 
@@ -170,6 +169,7 @@
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ToggleButtonBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ToolBarBaseStyle.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/TransferBaseStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/WatermarkBaseStyle.xaml"/>
 
         <!--#endregion-->
     </ResourceDictionary.MergedDictionaries>

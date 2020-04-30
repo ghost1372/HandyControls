@@ -9,7 +9,7 @@
     hc:Translation.ResourceManager="{x:Static lang:Lang.ResourceManager}"
     Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
-        <hc:TabControl MinWidth="700" Margin="10" SelectionChanged="Tab_SelectionChanged" IsUWPStyle="True">
+        <hc:TabControl MinWidth="700" Margin="10" IsUWPStyle="True">
             <hc:TabItem Header="Part 1">
                 <TabControl x:Name="tab" TabStripPlacement="Top" Margin="16" Style="{StaticResource TabControlCapsuleSolid}">
                     <TabItem Margin="0,10" Header="Calendar">
@@ -213,54 +213,6 @@
             </hc:TabItem>
             <hc:TabItem Header="Part 2">
                 <TabControl MinWidth="700" TabStripPlacement="Top" Margin="16" Style="{StaticResource TabControlCapsuleSolid}">
-                    <TabItem Margin="0,10" Header="TimeLine">
-                        <UniformGrid Margin="10">
-                            <hc:Timeline IsCustomEverySlot="True" VerticalAlignment="Center" x:Name="Timeline" HorizontalAlignment="Center">
-                                <hc:Timeline.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <TextBlock x:Name="timePart" Text="{Binding Item2}" Foreground="{DynamicResource PrimaryTextBrush}" />
-                                            <TextBlock Text="{Binding Item3}" Margin="0,10,0,30" />
-                                        </StackPanel>
-                                        <DataTemplate.Triggers>
-                                            <DataTrigger Binding="{Binding Path=IsFirstItem, RelativeSource={RelativeSource AncestorType={x:Type hc:TimelineItem}}}" Value="True">
-                                                <Setter TargetName="timePart" Property="Foreground" Value="{DynamicResource WarningBrush}" />
-                                            </DataTrigger>
-                                        </DataTemplate.Triggers>
-                                    </DataTemplate>
-                                </hc:Timeline.ItemTemplate>
-                                <hc:Timeline.SlotTemplate>
-                                    <DataTemplate>
-                                        <Border x:Name="border" Width="15" Height="15" CornerRadius="100" 
-                                BorderBrush="{DynamicResource PrimaryBrush}" BorderThickness="1" 
-                                SnapsToDevicePixels="True" UseLayoutRounding="True" />
-                                        <DataTemplate.Triggers>
-                                            <DataTrigger Binding="{Binding Item1}" Value="1">
-                                                <Setter TargetName="border" Property="BorderBrush" Value="#09CD6B" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Item1}" Value="2">
-                                                <Setter TargetName="border" Property="BorderBrush" Value="#FD4416" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Item1}" Value="3">
-                                                <Setter TargetName="border" Property="BorderBrush" Value="#46A2FF" />
-                                            </DataTrigger>
-                                            <DataTrigger Binding="{Binding Item1}" Value="4">
-                                                <Setter TargetName="border" Property="BorderBrush" Value="#06CD6A" />
-                                            </DataTrigger>
-                                        </DataTemplate.Triggers>
-                                    </DataTemplate>
-                                </hc:Timeline.SlotTemplate>
-                            </hc:Timeline>
-                            <hc:Timeline>
-                                <hc:TimelineItem IsFirstItem="True" Content="Test 1" />
-                                <hc:TimelineItem Content="Test 2"/>
-                                <hc:TimelineItem Content="Test 3"/>
-                            </hc:Timeline>
-                        </UniformGrid>
-                    </TabItem>
-                    <TabItem Header="AppHost">
-                        <Button Content="Load Notepad inside window" Click="btnAppHost_Click"/>
-                    </TabItem>
                     <TabItem Header="Style">
                         <TabControl>
                             <TabItem Header="ListBox">
@@ -340,10 +292,6 @@
                             <hc:ComboBox hc:TitleElement.Title="Bind To Enum" ItemsSource="{Binding Source={hc:EnumBindingSource {x:Type enum:Status}}}" Margin="10" />
                         </StackPanel>
                     </TabItem>
-                </TabControl>
-            </hc:TabItem>
-            <hc:TabItem Header="Part 3">
-                <TabControl MinWidth="700" TabStripPlacement="Top" Margin="16" Style="{StaticResource TabControlCapsuleSolid}">
                     <TabItem Margin="0,10" Header="GithubTimeLine">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -359,6 +307,13 @@
                             <hc:GithubTimeLine Grid.Row="1" Name="gitTime"/>
                         </Grid>
                     </TabItem>
+                    <TabItem Margin="0,10" Header="CheckTreeView">
+                        <hc:CheckTreeView Margin="10" ItemsSource="{Binding TreeRoot}"/>
+                    </TabItem>
+                </TabControl>
+            </hc:TabItem>
+            <hc:TabItem Header="Part 3">
+                <TabControl MinWidth="700" TabStripPlacement="Top" Margin="16" Style="{StaticResource TabControlCapsuleSolid}">
                     <TabItem Margin="0,10" Header="PersianDate">
                         <StackPanel Margin="20,10">
                             <TextBlock x:Name="txtP1"/>
@@ -370,9 +325,6 @@
                             <TextBlock x:Name="txtP7"/>
                             <TextBlock Margin="0,10" x:Name="txtP8"/>
                         </StackPanel>
-                    </TabItem>
-                    <TabItem Margin="0,10" Header="CheckTreeView">
-                        <hc:CheckTreeView Margin="10" ItemsSource="{Binding TreeRoot}"/>
                     </TabItem>
                     <TabItem Header="Dynamic Language">
                         <ToggleButton x:Name="tgLanguage" Content="{hc:Loc ChangeLangAsk}" Unchecked="btnLanguageChanged" Checked="btnLanguageChanged"/>
