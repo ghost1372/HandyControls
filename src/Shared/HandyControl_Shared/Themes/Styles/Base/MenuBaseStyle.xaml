@@ -167,8 +167,8 @@
                                     <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
                                 </Trigger>
                                 <Trigger Property="IsHighlighted" Value="True">
-                                    <Setter TargetName="templateRoot" Property="Background" Value="{DynamicResource DarkDefaultBrush}" />
-                                    <Setter TargetName="menuHeaderContainer" Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                                    <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource SecondaryRegionBrush}"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsSubmenuOpen" Value="True">
                                     <Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
@@ -249,8 +249,8 @@
                                     <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
                                 </Trigger>
                                 <Trigger Property="IsHighlighted" Value="True">
-                                    <Setter TargetName="templateRoot" Property="Background" Value="{DynamicResource DarkDefaultBrush}" />
-                                    <Setter TargetName="menuHeaderContainer" Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                                    <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource SecondaryRegionBrush}"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsSubmenuOpen" Value="True">
                                     <Setter TargetName="templateRoot" Property="Background" Value="White" />
