@@ -31,7 +31,11 @@ namespace HandyControl.Controls
                 if (Equals(value, Thread.CurrentThread.CurrentUICulture))
                     return;
                 Thread.CurrentThread.CurrentUICulture = value;
+#if netle40
+                Thread.CurrentThread.CurrentCulture = value;
+#else
                 CultureInfo.DefaultThreadCurrentUICulture = value;
+#endif
                 OnCultureChanged();
             }
         }
