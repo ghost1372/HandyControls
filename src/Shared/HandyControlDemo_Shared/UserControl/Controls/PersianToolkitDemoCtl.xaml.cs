@@ -1,7 +1,6 @@
 ﻿using HandyControl.Controls;
 using HandyControl.Data;
 using HandyControl.Tools;
-using HandyControlDemo.Data;
 using Microsoft.Win32;
 using System;
 using System.Collections.ObjectModel;
@@ -426,20 +425,6 @@ namespace HandyControlDemo.UserControl
 
 
             DataContext = this;
-        }
-        #endregion
-
-        #region Dynamic Language Change
-        private void btnLanguageChanged(object sender, RoutedEventArgs e)
-        {
-            if (tgLanguage.IsChecked.Value)
-            {
-                TranslationSource.Instance.Language = "fa";
-            }
-            else
-            {
-                TranslationSource.Instance.Language = "en";
-            }
         }
         #endregion
     }

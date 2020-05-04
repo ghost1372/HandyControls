@@ -6,7 +6,6 @@
     xmlns:enum="clr-namespace:HandyControlDemo.Data"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:lang="clr-namespace:HandyControlDemo.Properties.Langs"
-    hc:Translation.ResourceManager="{x:Static lang:Lang.ResourceManager}"
     Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
         <hc:TabControl MinWidth="700" Margin="10" IsUWPStyle="True">
@@ -325,9 +324,6 @@
                             <TextBlock x:Name="txtP7"/>
                             <TextBlock Margin="0,10" x:Name="txtP8"/>
                         </StackPanel>
-                    </TabItem>
-                    <TabItem Header="Dynamic Language">
-                        <ToggleButton x:Name="tgLanguage" Content="{hc:Loc ChangeLangAsk}" Unchecked="btnLanguageChanged" Checked="btnLanguageChanged"/>
                     </TabItem>
                 </TabControl>
             </hc:TabItem>

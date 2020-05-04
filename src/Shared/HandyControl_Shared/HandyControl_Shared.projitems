@@ -53,7 +53,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PanelElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PasswordBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\RectangleAttach.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\DynamicLanguage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\ResourceDictionary\DynamicLanguage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\BaseLocalizationListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\BindingLocalizationConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\BindingLocalizationListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\CultureChangedEventManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\ILocalizationProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\KeyLocalizationListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\LocalizationExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\LocalizationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianCalendar\PersianDateTimePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianDate\PersianDate.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\PersianDate\ToShamsi.cs" />
@@ -66,7 +74,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Block\FloatingBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Button\SplitButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Timeline\GithubTimeLine.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\TranslationSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Growl\GrowlWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Image\ImageBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Input\PinBox.cs" />
@@ -1120,6 +1127,7 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\Effects\GrayScaleEffect.fx" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\ResourceDictionary\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\" />
   </ItemGroup>
 </Project>
