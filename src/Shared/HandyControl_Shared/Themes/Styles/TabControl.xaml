@@ -493,4 +493,7 @@
         <Setter Property="controls:TitleElement.Foreground" Value="{DynamicResource TextIconBrush}"/>
     </Style>
 
+    <Style x:Key="TabItemTransparentStyle" BasedOn="{StaticResource TabItemInLine}" TargetType="TabItem">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
 </ResourceDictionary>
