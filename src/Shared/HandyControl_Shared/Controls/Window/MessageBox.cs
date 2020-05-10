@@ -28,6 +28,43 @@ namespace HandyControl.Controls
 
         private bool _showNo;
 
+        #region Button Text
+        public static readonly DependencyProperty CancelContentProperty = DependencyProperty.Register(
+           "CancelContent", typeof(string), typeof(MessageBox), new PropertyMetadata(Properties.Langs.Lang.Cancel));
+
+        public string CancelContent
+        {
+            get => (string)GetValue(CancelContentProperty);
+            set => SetValue(CancelContentProperty, value);
+        }
+
+        public static readonly DependencyProperty ConfirmContentProperty = DependencyProperty.Register(
+           "ConfirmContent", typeof(string), typeof(MessageBox), new PropertyMetadata(Properties.Langs.Lang.Confirm));
+
+        public string ConfirmContent
+        {
+            get => (string)GetValue(ConfirmContentProperty);
+            set => SetValue(ConfirmContentProperty, value);
+        }
+
+        public static readonly DependencyProperty YesContentProperty = DependencyProperty.Register(
+           "YesContent", typeof(string), typeof(MessageBox), new PropertyMetadata(Properties.Langs.Lang.Yes));
+
+        public string YesContent
+        {
+            get => (string)GetValue(YesContentProperty);
+            set => SetValue(YesContentProperty, value);
+        }
+
+        public static readonly DependencyProperty NoContentProperty = DependencyProperty.Register(
+           "NoContent", typeof(string), typeof(MessageBox), new PropertyMetadata(Properties.Langs.Lang.No));
+
+        public string NoContent
+        {
+            get => (string)GetValue(NoContentProperty);
+            set => SetValue(NoContentProperty, value);
+        }
+        #endregion
         public static readonly DependencyProperty MessageProperty = DependencyProperty.Register(
             "Message", typeof(string), typeof(MessageBox), new PropertyMetadata(default(string)));
 
@@ -267,7 +304,7 @@ namespace HandyControl.Controls
             MessageBox messageBox = null;
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
-                messageBox = CreateMessageBox(null, info.Message, info.Caption, info.Button, MessageBoxImage.None, info.DefaultResult);
+                messageBox = CreateMessageBox(null, info.Message, info.Caption, info.Button, MessageBoxImage.None, info.DefaultResult, info.CancelContent, info.ConfirmContent, info.YesContent, info.NoContent);
                 SetButtonStatus(messageBox, info.Button);
 
                 if (!string.IsNullOrEmpty(info.IconKey))
@@ -333,7 +370,11 @@ namespace HandyControl.Controls
             string caption,
             MessageBoxButton button,
             MessageBoxImage icon,
-            MessageBoxResult defaultResult)
+            MessageBoxResult defaultResult,
+            string cancelContent = null,
+            string confirmContent = null,
+            string yesContent = null,
+            string noContent = null)
         {
             if (!IsValidMessageBoxButton(button))
             {
@@ -358,6 +399,10 @@ namespace HandyControl.Controls
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
                 ShowTitle = true,
                 Title = caption ?? string.Empty,
+                CancelContent = cancelContent ?? Properties.Langs.Lang.Cancel,
+                ConfirmContent = confirmContent ?? Properties.Langs.Lang.Confirm,
+                YesContent = yesContent ?? Properties.Langs.Lang.Yes,
+                NoContent = noContent ?? Properties.Langs.Lang.No,
                 Topmost = ownerIsNull,
                 _messageBoxResult = defaultResult
             };
