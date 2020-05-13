@@ -236,6 +236,7 @@
   </data>
   <data name="TagPlaceHolder" xml:space="preserve">
     <value>Separate Tags with ; or space</value>
+  </data>
   <data name="Jump" xml:space="preserve">
     <value>Прыгать</value>
   </data>

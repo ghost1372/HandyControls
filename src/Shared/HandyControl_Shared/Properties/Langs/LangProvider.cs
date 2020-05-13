@@ -38,6 +38,7 @@ namespace HandyControl.Properties.Langs
 		private void UpdateLangs()
         {
 			OnPropertyChanged(nameof(Am));
+			OnPropertyChanged(nameof(BusyIndicatorLoading));
 			OnPropertyChanged(nameof(Cancel));
 			OnPropertyChanged(nameof(CannotRegisterCompositeCommandInItself));
 			OnPropertyChanged(nameof(CannotRegisterSameCommandTwice));
@@ -68,6 +69,7 @@ namespace HandyControl.Properties.Langs
 			OnPropertyChanged(nameof(PngImg));
 			OnPropertyChanged(nameof(PreviousPage));
 			OnPropertyChanged(nameof(ScrollMode));
+			OnPropertyChanged(nameof(TagPlaceHolder));
 			OnPropertyChanged(nameof(Tip));
 			OnPropertyChanged(nameof(TooLarge));
 			OnPropertyChanged(nameof(TwoPageMode));
@@ -83,10 +85,12 @@ namespace HandyControl.Properties.Langs
         /// </summary>
 		public string Am => Lang.Am;
 
+        public string BusyIndicatorLoading => Lang.BusyIndicatorLoading;
+
         /// <summary>
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
-		public string Cancel => Lang.Cancel;
+        public string Cancel => Lang.Cancel;
 
         /// <summary>
         ///   查找类似 无法自注册复合命令 的本地化字符串。
@@ -233,10 +237,11 @@ namespace HandyControl.Properties.Langs
         /// </summary>
 		public string ScrollMode => Lang.ScrollMode;
 
+        public string TagPlaceHolder => Lang.TagPlaceHolder;
         /// <summary>
         ///   查找类似 提示 的本地化字符串。
         /// </summary>
-		public string Tip => Lang.Tip;
+        public string Tip => Lang.Tip;
 
         /// <summary>
         ///   查找类似 过大 的本地化字符串。
@@ -286,6 +291,8 @@ namespace HandyControl.Properties.Langs
         ///   查找类似 上午 的本地化字符串。
         /// </summary>
 		public static string Am = nameof(Am);
+
+        public static string BusyIndicatorLoading = nameof(BusyIndicatorLoading);
 
         /// <summary>
         ///   查找类似 取消 的本地化字符串。
@@ -437,10 +444,11 @@ namespace HandyControl.Properties.Langs
         /// </summary>
 		public static string ScrollMode = nameof(ScrollMode);
 
+        public static string TagPlaceHolder = nameof(TagPlaceHolder);
         /// <summary>
         ///   查找类似 提示 的本地化字符串。
         /// </summary>
-		public static string Tip = nameof(Tip);
+        public static string Tip = nameof(Tip);
 
         /// <summary>
         ///   查找类似 过大 的本地化字符串。
