@@ -232,9 +232,11 @@
     <value>Looks up a localized string similar to "{0}".</value>
   </data>
   <data name="BusyIndicatorLoading" xml:space="preserve">
-    <value>Please wait...</value>
+    <value>Lütfen bekle...</value>
   </data>
   <data name="TagPlaceHolder" xml:space="preserve">
     <value>Separate Tags with ; or space</value>
+  <data name="Jump" xml:space="preserve">
+    <value>Atlama</value>
   </data>
 </root>
