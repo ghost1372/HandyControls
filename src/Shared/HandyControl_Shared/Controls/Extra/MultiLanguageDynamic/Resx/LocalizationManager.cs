@@ -56,5 +56,10 @@ namespace HandyControl.Controls
             var localizedValue = LocalizationProvider?.Localize(key);
             return localizedValue ?? $"[{key}]";
         }
+
+        public string LocalizeString(string key)
+        {
+            return Localize(key).ToString();
+        }
     }
 }
