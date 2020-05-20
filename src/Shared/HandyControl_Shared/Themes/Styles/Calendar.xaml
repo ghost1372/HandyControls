@@ -2,12 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                      xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives"
                     xmlns:controls="clr-namespace:HandyControl.Controls"
-                    xmlns:tools="clr-namespace:HandyControl.Tools">
+                    xmlns:tools="clr-namespace:HandyControl.Tools"
+                    xmlns:themes="clr-namespace:HandyControl.Themes">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="../Basic/Geometries.xaml"/>
-        <ResourceDictionary Source="Rectangle.xaml"/>
-        <ResourceDictionary Source="Button.xaml"/>
+        <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Basic/Geometries.xaml"/>
+        <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Rectangle.xaml"/>
+        <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Button.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="CalendarButtonStyle" TargetType="CalendarButton">
