@@ -17,7 +17,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumDescriptionTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\CheckTreeView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\ComparableExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\ConvertTypes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\EnumeratorWithIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\InlineFormatString.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\GlobalDataHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\CryptographyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\ListBoxAttach.cs" />
