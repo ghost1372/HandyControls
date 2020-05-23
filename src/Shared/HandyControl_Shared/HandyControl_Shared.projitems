@@ -9,6 +9,7 @@
     <Import_RootNamespace>HandyControl</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\AddOnUi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\TreeViewAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\BindableBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\ConverterBindableBinding.cs" />
@@ -16,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumDescriptionTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\CheckTreeView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\EnumeratorWithIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\GlobalDataHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\CryptographyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\ListBoxAttach.cs" />
