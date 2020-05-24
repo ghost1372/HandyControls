@@ -16,8 +16,8 @@
     <PackageReference Include="Microsoft.Windows.Shell">
       <Version>3.0.1</Version>
     </PackageReference>
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Themes\Styles\Base\ComboBoxBaseStyle.xaml">

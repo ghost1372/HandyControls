@@ -116,7 +116,7 @@ namespace HandyControlDemo.UserControl
         {
             for (int i = 0; i < 181; i++)
             {
-#if netle40
+#if NET40
                 Action a1 = delegate()
                 {
                     sp.Value = i;
@@ -137,7 +137,7 @@ namespace HandyControlDemo.UserControl
                     while (i > 0)
                     {
                         i--;
-#if netle40
+#if NET40
                 Action a2 = delegate()
                 {
                     sp.Value = i;
@@ -164,7 +164,7 @@ namespace HandyControlDemo.UserControl
         {
             for (int i = 0; i < 121; i++)
             {
-#if netle40
+#if NET40
                 Action a1 = delegate()
                 {
                     sp2.Value = i;
@@ -185,7 +185,7 @@ namespace HandyControlDemo.UserControl
                     while (i > 0)
                     {
                         i--;
-#if netle40
+#if NET40
                 Action a2 = delegate()
                 {
                     sp2.Value = i;

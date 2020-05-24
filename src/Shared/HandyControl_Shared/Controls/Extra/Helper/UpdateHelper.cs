@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
-#if !Core
+#if NET40 || NET45 || NET462 || NET47 || NET48
 using System.Web.Script.Serialization;
 #endif
 using System.Xml.Linq;
@@ -150,11 +150,7 @@ namespace HandyControl.Controls
                       Username, Repository);
 
             //Fix Could not create SSL/TLS secure channel
-#if netle40
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
-#else
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-#endif
 
              HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             try
@@ -165,7 +161,7 @@ namespace HandyControl.Controls
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-#if !Core
+#if NET40 || NET45 || NET462 || NET47 || NET48
                     JavaScriptSerializer javaScript = new JavaScriptSerializer();
                     return javaScript.Deserialize<Root>(reader.ReadToEnd());
 #else
