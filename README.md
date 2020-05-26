@@ -60,21 +60,6 @@ Step 1：Add a reference to HandyControls on the nuget;
 
 Step 2：Add code in App.xaml as follows:
 ```XML
-<Application 
-             xmlns:hc="https://handyorg.github.io/handycontrol">
-<Application.Resources>
-    <ResourceDictionary>
-        <ResourceDictionary.MergedDictionaries>
-            <hc:Theme Name="HandyTheme"/>
-         </ResourceDictionary.MergedDictionaries>
-     </ResourceDictionary>
-  </Application.Resources>
-</Application>
-```
-
-`In older versions of 2.5.1, you should add this code`
-
-```XML
 <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
