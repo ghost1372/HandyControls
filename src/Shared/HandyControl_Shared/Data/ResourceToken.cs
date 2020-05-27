@@ -80,6 +80,10 @@
 
         public const string VisualStudioGeometry = nameof(VisualStudioGeometry);
 
+        public const string ConfigGeometry = nameof(ConfigGeometry);
+
+        public const string NewGeometry = nameof(NewGeometry);
+
         public const string SuccessGeometry = nameof(SuccessGeometry);
         public const string InfoGeometry = nameof(InfoGeometry);
         public const string ErrorGeometry = nameof(ErrorGeometry);
@@ -91,19 +95,23 @@
         #region Brush
 
         public const string PrimaryBrush = nameof(PrimaryBrush);
-
+        public const string LightPrimaryBrush = nameof(LightPrimaryBrush);
         public const string DarkPrimaryBrush = nameof(DarkPrimaryBrush);
 
         public const string SuccessBrush = nameof(SuccessBrush);
+        public const string LightSuccessBrush = nameof(LightSuccessBrush);
         public const string DarkSuccessBrush = nameof(DarkSuccessBrush);
 
         public const string InfoBrush = nameof(InfoBrush);
+        public const string LightInfoBrush = nameof(LightInfoBrush);
         public const string DarkInfoBrush = nameof(DarkInfoBrush);
 
         public const string DangerBrush = nameof(DangerBrush);
+        public const string LightDangerBrush = nameof(LightDangerBrush);
         public const string DarkDangerBrush = nameof(DarkDangerBrush);
 
         public const string WarningBrush = nameof(WarningBrush);
+        public const string LightWarningBrush = nameof(LightWarningBrush);
         public const string DarkWarningBrush = nameof(DarkWarningBrush);
 
         public const string VioletBrush = nameof(VioletBrush);
@@ -199,6 +207,8 @@
 
         public const string DoubleMinConverter = nameof(DoubleMinConverter);
 
+        public const string StringRepeatConverter = nameof(StringRepeatConverter);
+
         #endregion
 
         #region Effect
@@ -221,21 +231,31 @@
 
         public const string PrimaryColor = nameof(PrimaryColor);
 
+        public const string LightPrimaryColor = nameof(LightPrimaryColor);
+
         public const string DarkPrimaryColor = nameof(DarkPrimaryColor);
 
         public const string DangerColor = nameof(DangerColor);
+
+        public const string LightDangerColor = nameof(LightDangerColor);
 
         public const string DarkDangerColor = nameof(DarkDangerColor);
 
         public const string WarningColor = nameof(WarningColor);
 
+        public const string LightWarningColor = nameof(LightWarningColor);
+
         public const string DarkWarningColor = nameof(DarkWarningColor);
 
         public const string InfoColor = nameof(InfoColor);
 
+        public const string LightInfoColor = nameof(LightInfoColor);
+
         public const string DarkInfoColor = nameof(DarkInfoColor);
 
         public const string SuccessColor = nameof(SuccessColor);
+
+        public const string LightSuccessColor = nameof(LightSuccessColor);
 
         public const string DarkSuccessColor = nameof(DarkSuccessColor);
 

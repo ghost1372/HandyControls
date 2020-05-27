@@ -29,6 +29,11 @@ namespace HandyControl.Controls
             }
         }
 
+        /// <summary>
+        /// Generate SHA256 for String
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string GenerateSHA256(string input)
         {
             var crypt = new System.Security.Cryptography.SHA256Managed();
@@ -39,6 +44,35 @@ namespace HandyControl.Controls
                 hash.Append(theByte.ToString("x2"));
             }
             return hash.ToString();
+        }
+
+        /// <summary>
+        /// Generate SHA256 for File
+        /// </summary>
+        /// <param name="FilePath"></param>
+        /// <returns></returns>
+        public static string GenerateSHA256ForFile(string FilePath)
+        {
+            return BytesToString(GetHashSha256(FilePath));
+        }
+
+        private static readonly SHA256 Sha256 = SHA256.Create();
+        private static byte[] GetHashSha256(string filename)
+        {
+            using (FileStream stream = File.OpenRead(filename))
+            {
+                return Sha256.ComputeHash(stream);
+            }
+        }
+        private static string BytesToString(byte[] bytes)
+        {
+            string result = "";
+            foreach (byte b in bytes)
+            {
+                result += b.ToString("x2");
+            }
+
+            return result;
         }
 
         // Rfc2898DeriveBytes constants:
