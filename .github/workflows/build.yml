@@ -13,13 +13,13 @@ jobs:
         uses: actions/checkout@develop
       
       - name: Setup Nuget.exe
-        uses: nuget/setup-nuget@develop
+        uses: nuget/setup-nuget@master
       
       - name: Restore Nuget packages
         run: nuget restore src/HandyControl.sln
 
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@develop
+        uses: actions/setup-dotnet@master
       
       - name: Build Net_40
         run: dotnet build src/Net_40/HandyControl_Net_40/HandyControl_Net_40.csproj -p:Configuration=Release
