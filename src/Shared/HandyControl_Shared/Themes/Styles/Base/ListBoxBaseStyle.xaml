@@ -80,25 +80,97 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="ListBoxItemModernBaseStyle" BasedOn="{StaticResource ListBoxItemBaseStyle}" TargetType="ListBoxItem">
+    <Style x:Key="ListBoxModernItemBaseStyle" BasedOn="{StaticResource BaseStyle}" TargetType="ListBoxItem">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualRadius0Margin0}"/>
+        <Setter Property="controls:BorderElement.CornerRadius" Value="6"/>
+        <Setter Property="controls:IconElement.Width" Value="16"/>
+        <Setter Property="controls:IconElement.Height" Value="16"/>
+        <Setter Property="controls:ListBoxAttach.Geometry" Value="{DynamicResource NewGeometry}"/>
+        <Setter Property="controls:ListBoxAttach.GeoemtryBrush" Value="{DynamicResource DangerBrush}"/>
+        <Setter Property="controls:ListBoxAttach.Width" Value="30"/>
+        <Setter Property="controls:ListBoxAttach.Height" Value="14"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Padding" Value="10,0"/>
+        <Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}"/>
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType=ItemsControl}}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Height" Value="38"/>
+        <Setter Property="Margin" Value="0,3,0,3"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3,0,0,0">
-                            <Path Width="{TemplateBinding controls:IconElement.Width}" Height="{TemplateBinding controls:IconElement.Height}" Fill="{TemplateBinding Foreground}" SnapsToDevicePixels="True" Stretch="Uniform" Data="{TemplateBinding controls:IconElement.Geometry}"/>
-                            <ContentPresenter Margin="6,0,0,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </StackPanel>
+                    <Border x:Name="BdSide" BorderThickness="0" BorderBrush="{DynamicResource PrimaryBrush}" SnapsToDevicePixels="true">
+                        <Border Margin="20,0,10,0" x:Name="Bd" CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Path x:Name="ContentPath" SnapsToDevicePixels="True" Stretch="Uniform" Fill="{DynamicResource PrimaryTextBrush}" Width="{Binding Path=(controls:IconElement.Width),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(controls:IconElement.Height),RelativeSource={RelativeSource TemplatedParent}}" Data="{Binding Path=(controls:IconElement.Geometry),RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <ContentPresenter Margin="10,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                <Path Visibility="{Binding Path=(controls:ListBoxAttach.IsNew),RelativeSource={RelativeSource self},Converter={StaticResource Boolean2VisibilityConverter}}" FlowDirection="LeftToRight" VerticalAlignment="Center" Data="{Binding Path=(controls:ListBoxAttach.Geometry),RelativeSource={RelativeSource TemplatedParent}}" Stretch="Uniform" Width="{Binding Path=(controls:ListBoxAttach.Width),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(controls:ListBoxAttach.Height),RelativeSource={RelativeSource TemplatedParent}}" Fill="{Binding Path=(controls:ListBoxAttach.GeoemtryBrush),RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </StackPanel>
+                        </Border>
                     </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="BdSide" Property="BorderThickness" Value="4,0,0,0"/>
+                            <Setter TargetName="ContentPath" Property="Fill" Value="white"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="false"/>
+                                <Condition Property="IsMouseOver" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ContentPath" Property="Fill" Value="{DynamicResource PrimaryTextBrush}"/>
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="Selector.IsSelectionActive" Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="ContentPath" Property="Fill" Value="{DynamicResource PrimaryTextBrush}"/>
+                            <Setter TargetName="BdSide" Property="BorderBrush" Value="{DynamicResource DarkDefaultBrush}"/>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
+
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="IsSelected" Value="true">
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="controls:ListBoxAttach.IsOddEvenRow" Value="True"/>
+                    <Condition Property="ItemsControl.AlternationIndex" Value="0"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="controls:ListBoxAttach.IsOddEvenRow" Value="True"/>
+                    <Condition Property="ItemsControl.AlternationIndex" Value="1"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource OddEvenRegionBrush}"/>
+            </MultiTrigger>
+
+            <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="true">
+                <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource TextIconBrush}"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsSelected" Value="true"/>
+                    <Condition Property="Selector.IsSelectionActive" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
-                <Setter Property="BorderThickness" Value="3,0,0,0"/>
+            </MultiTrigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value=".4"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -128,14 +200,15 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ListBoxBaseModernStyle" BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox">
-        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemModernBaseStyle}"/>
+    <Style x:Key="ListBoxModernBaseStyle" BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxModernItemBaseStyle}"/>
     </Style>
 
     <Style x:Key="ListBoxItemBaseTransparent" BasedOn="{StaticResource ListBoxItemBaseStyle}" TargetType="ListBoxItem">
         <Setter Property="controls:BorderElement.CornerRadius" Value="4"/>
         <Setter Property="Background" Value="Transparent"/>
     </Style>
+    
     <Style x:Key="ListBoxBaseTransparentStyle" BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemBaseTransparent}"/>

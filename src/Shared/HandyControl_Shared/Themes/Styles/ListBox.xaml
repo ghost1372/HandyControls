@@ -8,7 +8,7 @@
 
     <!--默认样式-->
     <Style BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox"/>
-    <Style x:Key="ListBoxModernStyle" BasedOn="{StaticResource ListBoxBaseModernStyle}" TargetType="ListBox"/>
+    <Style x:Key="ListBoxModernStyle" BasedOn="{StaticResource ListBoxModernBaseStyle}" TargetType="ListBox"/>
     <Style x:Key="ListBoxTransparentStyle" BasedOn="{StaticResource ListBoxBaseTransparentStyle}" TargetType="ListBox"/>
     <Style x:Key="ListBoxItemNewStyle" BasedOn="{StaticResource ListBoxItemBaseNewStyle}" TargetType="ListBoxItem"/>
 
