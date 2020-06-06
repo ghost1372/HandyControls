@@ -634,7 +634,7 @@
         <Setter Property="controls:InfoElement.Symbol" Value="●" />
         <Setter Property="Template" Value="{StaticResource DatePickerExtendTopTemplatePersian}" />
         <Style.Triggers>
-            <Trigger Property="controls:InfoElement.TitleAlignment" Value="Left">
+            <Trigger Property="controls:InfoElement.TitlePlacement" Value="Left">
                 <Setter Property="Template" Value="{StaticResource DatePickerExtendLeftTemplatePersian}" />
                 <Setter Property="Width" Value="Auto" />
             </Trigger>
@@ -930,9 +930,9 @@
         TargetType="controls:DatePicker">
         <Setter Property="Template" Value="{StaticResource DatePickerPlusTopTemplate}" />
         <Style.Triggers>
-            <Trigger Property="controls:InfoElement.TitleAlignment" Value="Left">
-                <Setter Property="Template" Value="{StaticResource DatePickerPlusLeftTemplate}" />
-                <Setter Property="Width" Value="Auto" />
+            <Trigger Property="controls:InfoElement.TitlePlacement" Value="Left">
+                <Setter Property="Template" Value="{StaticResource DatePickerPlusLeftTemplate}"/>
+                <Setter Property="Width" Value="Auto"/>
             </Trigger>
         </Style.Triggers>
     </Style>
