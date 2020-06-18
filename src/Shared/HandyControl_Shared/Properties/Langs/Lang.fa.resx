@@ -240,4 +240,7 @@
   <data name="Jump" xml:space="preserve">
     <value>برو</value>
   </data>
+  <data name="Miscellaneous" xml:space="preserve">
+    <value>Miscellaneous</value>
+  </data>
 </root>

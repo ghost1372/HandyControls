@@ -25,6 +25,7 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 <a href="https://github.com/yxhq" target="_blank"><img style="border-radius:50%" width="64px" alt="yxhq" src="https://avatars3.githubusercontent.com/u/10378954?s=64&v=4"></a>
 <a href="https://github.com/AiHaibara" target="_blank"><img style="border-radius:50%" width="64px" alt="AiHaibara" src="https://avatars3.githubusercontent.com/u/5195234?s=64&v=4"></a>
 <a href="https://github.com/walterlv" target="_blank"><img style="border-radius:50%" width="64px" alt="walterlv" src="https://avatars3.githubusercontent.com/u/9959623?s=64&v=4"></a>
+<a href="https://github.com/Luoyingliang" target="_blank"><img style="border-radius:50%" width="64px" alt="Luoyingliang" src="https://avatars2.githubusercontent.com/u/29297262?s=64&v=4"></a>
 
 ## Backers
 
@@ -89,6 +90,10 @@ Step 4：enjoy coding
 
 ## Latest examples
 
+### PropertyGrid
+
+![PropertyGrid](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/PropertyGrid.png)
+
 ### Screenshot
 
 ![Screenshot](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/Screenshot.png)
@@ -105,11 +110,11 @@ Step 4：enjoy coding
 
 ![FlowDocumentScrollViewerStyle](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/FlowDocumentScrollViewer.png)
 
+## History publication
+
 ### PinBox
 
 ![PinBox](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/PinBox.png)
-
-## History publication
 
 ### Effects
 

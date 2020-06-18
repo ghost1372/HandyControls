@@ -93,6 +93,7 @@
         <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/CheckTreeView.xaml"/>
         <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/MainContentBackground.xaml"/>
         <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/SpeedoMeter.xaml"/>
+        <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/PropertyGrid.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

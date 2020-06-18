@@ -753,4 +753,7 @@
   <data name="PersianToolkit" xml:space="preserve">
     <value>PersianToolkit</value>
   </data>
+  <data name="PropertyGrid" xml:space="preserve">
+    <value>PropertyGrid</value>
+  </data>
 </root>
