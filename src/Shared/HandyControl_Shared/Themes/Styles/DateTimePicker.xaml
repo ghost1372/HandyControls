@@ -1,19 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:HandyControl.Controls"
+                    xmlns:hc="clr-namespace:HandyControl.Controls"
                     xmlns:themes="clr-namespace:HandyControl.Themes">
 
     <ResourceDictionary.MergedDictionaries>
         <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/DateTimePickerBaseStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource DateTimePickerBaseStyle}" TargetType="controls:DateTimePicker"/>
-    <Style BasedOn="{StaticResource DateTimePickerBaseStylePersian}" TargetType="controls:PersianDateTimePicker"/>
+    <Style BasedOn="{StaticResource DateTimePickerBaseStyle}" TargetType="hc:DateTimePicker"/>
+    <Style BasedOn="{StaticResource DateTimePickerBaseStylePersian}" TargetType="hc:PersianDateTimePicker"/>
 
-    <Style x:Key="DateTimePickerExtend" BasedOn="{StaticResource DateTimePickerExtendBaseStyle}" TargetType="controls:DateTimePicker"/>
-    <Style x:Key="DateTimePickerExtendPersian" BasedOn="{StaticResource DateTimePickerExtendBaseStylePersian}" TargetType="controls:PersianDateTimePicker"/>
+    <Style x:Key="DateTimePickerExtend" BasedOn="{StaticResource DateTimePickerExtendBaseStyle}" TargetType="hc:DateTimePicker"/>
+    <Style x:Key="DateTimePickerExtendPersian" BasedOn="{StaticResource DateTimePickerExtendBaseStylePersian}" TargetType="hc:PersianDateTimePicker"/>
 
-    <Style x:Key="DateTimePickerPlus" BasedOn="{StaticResource DateTimePickerPlusBaseStyle}" TargetType="controls:DateTimePicker"/>
-    <Style x:Key="DateTimePickerPlusPersian" BasedOn="{StaticResource DateTimePickerPlusBaseStylePersian}" TargetType="controls:PersianDateTimePicker"/>
+    <Style x:Key="DateTimePickerPlus" BasedOn="{StaticResource DateTimePickerPlusBaseStyle}" TargetType="hc:DateTimePicker"/>
+    <Style x:Key="DateTimePickerPlusPersian" BasedOn="{StaticResource DateTimePickerPlusBaseStylePersian}" TargetType="hc:PersianDateTimePicker"/>
 
 </ResourceDictionary>

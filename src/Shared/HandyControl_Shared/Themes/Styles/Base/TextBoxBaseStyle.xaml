@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="clr-namespace:HandyControl.Controls"
+                    xmlns:hc="clr-namespace:HandyControl.Controls"
                     xmlns:interactivity="clr-namespace:HandyControl.Interactivity"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:themes="clr-namespace:HandyControl.Themes">
@@ -13,7 +13,7 @@
         <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/ContextMenuBaseStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style x:Key="WatermarkTextBoxBaseStyle" TargetType="controls:WatermarkTextBox">
+    <Style x:Key="WatermarkTextBoxBaseStyle" TargetType="hc:WatermarkTextBox">
         <Setter Property="Background" Value="{x:Null}" />
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
@@ -23,8 +23,8 @@
         <Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="controls:WatermarkTextBox">
-                    <controls:SimplePanel x:Name="WatermarkContent">
+                <ControlTemplate TargetType="hc:WatermarkTextBox">
+                    <hc:SimplePanel x:Name="WatermarkContent">
                         <TextBlock
                             x:Name="PART_Watermark"
                             Margin="{TemplateBinding Padding}"
@@ -41,7 +41,7 @@
                             Focusable="false"
                             HorizontalScrollBarVisibility="Hidden"
                             VerticalScrollBarVisibility="Hidden" />
-                    </controls:SimplePanel>
+                    </hc:SimplePanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -54,7 +54,7 @@
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
-        <Setter Property="controls:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+        <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -72,7 +72,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                        CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                         SnapsToDevicePixels="True">
                         <ScrollViewer
                             x:Name="PART_ContentHost"
@@ -103,18 +103,18 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="{Binding Path=(controls:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(controls:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
+                <RowDefinition Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
             </Grid.RowDefinitions>
             <StackPanel
                 Margin="{TemplateBinding Padding}"
                 Orientation="Horizontal"
-                Visibility="{Binding Path=(controls:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource String2VisibilityConverter}}">
-                <TextBlock Margin="1,0,0,0" Text="{Binding Path=(controls:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}}" />
+                Visibility="{Binding Path=(hc:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource String2VisibilityConverter}}">
+                <TextBlock Margin="1,0,0,0" Text="{Binding Path=(hc:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}}" />
                 <ContentPresenter
                     Margin="4,0,0,0"
-                    Content="{Binding Path=(controls:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}"
+                    Content="{Binding Path=(hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}"
                     TextElement.Foreground="{DynamicResource DangerBrush}"
-                    Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
+                    Visibility="{Binding Path=(hc:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
             <Border
                 x:Name="border"
@@ -122,7 +122,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                 SnapsToDevicePixels="True" />
             <TextBlock
                 x:Name="Placeholder"
@@ -132,7 +132,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                 Style="{StaticResource TextBlockDefaultThiLight}"
-                Text="{Binding Path=(controls:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
+                Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
                 Visibility="{TemplateBinding Text,
                                              Converter={StaticResource String2VisibilityReConverter}}" />
             <ScrollViewer
@@ -161,22 +161,22 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="TextBoxExtendLeftTemplate" TargetType="TextBox">
-        <Grid Height="{Binding Path=(controls:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(controls:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+        <Grid Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding Path=(controls:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
+                <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel
                 Margin="0,7,6,7"
                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                 Orientation="Horizontal"
-                Visibility="{Binding Path=(controls:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource String2VisibilityConverter}}">
-                <TextBlock Text="{Binding Path=(controls:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}}" />
+                Visibility="{Binding Path=(hc:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource String2VisibilityConverter}}">
+                <TextBlock Text="{Binding Path=(hc:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}}" />
                 <ContentPresenter
                     Margin="4,0,0,0"
-                    Content="{Binding Path=(controls:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}"
+                    Content="{Binding Path=(hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}"
                     TextElement.Foreground="{DynamicResource DangerBrush}"
-                    Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
+                    Visibility="{Binding Path=(hc:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
             <Border
                 x:Name="border"
@@ -184,7 +184,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                 SnapsToDevicePixels="True" />
             <TextBlock
                 x:Name="Placeholder"
@@ -194,7 +194,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                 Style="{StaticResource TextBlockDefaultThiLight}"
-                Text="{Binding Path=(controls:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
+                Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
                 Visibility="{TemplateBinding Text,
                                              Converter={StaticResource String2VisibilityReConverter}}" />
             <ScrollViewer
@@ -225,20 +225,20 @@
         x:Key="TextBoxExtendBaseStyle"
         BasedOn="{StaticResource TextBoxBaseStyle}"
         TargetType="TextBox">
-        <Setter Property="controls:InfoElement.Symbol" Value="●" />
-        <Setter Property="controls:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
-        <Setter Property="controls:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
+        <Setter Property="hc:InfoElement.Symbol" Value="●" />
+        <Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
+        <Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
         <Setter Property="Height" Value="Auto" />
         <Setter Property="Template" Value="{StaticResource TextBoxExtendTopTemplate}" />
         <Style.Triggers>
-            <Trigger Property="controls:InfoElement.TitlePlacement" Value="Left">
+            <Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
                 <Setter Property="Template" Value="{StaticResource TextBoxExtendLeftTemplate}"/>
                 <Setter Property="Width" Value="Auto"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <ControlTemplate x:Key="TextBoxPlusTopTemplate" TargetType="controls:TextBox">
+    <ControlTemplate x:Key="TextBoxPlusTopTemplate" TargetType="hc:TextBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
                 <ThicknessAnimation
@@ -258,7 +258,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="{Binding Path=(controls:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(controls:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
+                <RowDefinition Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
             </Grid.RowDefinitions>
             <TextBlock
                 Name="TextBlockError"
@@ -272,13 +272,13 @@
                 Grid.Row="0"
                 Margin="{TemplateBinding Padding}"
                 Orientation="Horizontal"
-                Visibility="{Binding Path=(controls:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource String2VisibilityConverter}}">
-                <TextBlock Margin="1,0,0,0" Text="{Binding Path=(controls:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}}" />
+                Visibility="{Binding Path=(hc:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource String2VisibilityConverter}}">
+                <TextBlock Margin="1,0,0,0" Text="{Binding Path=(hc:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}}" />
                 <ContentPresenter
                     Margin="4,0,0,0"
-                    Content="{Binding Path=(controls:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}"
+                    Content="{Binding Path=(hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}"
                     TextElement.Foreground="{DynamicResource DangerBrush}"
-                    Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
+                    Visibility="{Binding Path=(hc:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
             <Border
                 x:Name="templateRoot"
@@ -286,7 +286,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                 SnapsToDevicePixels="True">
                 <Grid SnapsToDevicePixels="true">
                     <Grid.ColumnDefinitions>
@@ -298,7 +298,7 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                         Style="{StaticResource TextBlockDefaultThiLight}"
-                        Text="{Binding Path=(controls:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
+                        Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
                         Visibility="{TemplateBinding Text,
                                                      Converter={StaticResource String2VisibilityReConverter}}" />
                     <ScrollViewer
@@ -317,7 +317,7 @@
                         Height="{x:Static system:Double.NaN}"
                         Margin="0,0,7,0"
                         Padding="0,6"
-                        controls:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"
+                        hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"
                         Command="interactivity:ControlCommands.Clear"
                         Foreground="{Binding BorderBrush, ElementName=templateRoot}"
                         Style="{StaticResource ButtonIcon}"
@@ -354,7 +354,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="TextBoxPlusLeftTemplate" TargetType="controls:TextBox">
+    <ControlTemplate x:Key="TextBoxPlusLeftTemplate" TargetType="hc:TextBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
                 <ThicknessAnimation
@@ -371,9 +371,9 @@
                     Duration="0:0:0" />
             </Storyboard>
         </ControlTemplate.Resources>
-        <Grid Height="{Binding Path=(controls:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(controls:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+        <Grid Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding Path=(controls:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
+                <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <TextBlock
@@ -389,13 +389,13 @@
                 Margin="0,7,6,7"
                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                 Orientation="Horizontal"
-                Visibility="{Binding Path=(controls:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource String2VisibilityConverter}}">
-                <TextBlock Text="{Binding Path=(controls:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}}" />
+                Visibility="{Binding Path=(hc:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource String2VisibilityConverter}}">
+                <TextBlock Text="{Binding Path=(hc:InfoElement.Title), RelativeSource={RelativeSource TemplatedParent}}" />
                 <ContentPresenter
                     Margin="4,0,0,0"
-                    Content="{Binding Path=(controls:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}"
+                    Content="{Binding Path=(hc:InfoElement.Symbol), RelativeSource={RelativeSource TemplatedParent}}"
                     TextElement.Foreground="{DynamicResource DangerBrush}"
-                    Visibility="{Binding Path=(controls:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
+                    Visibility="{Binding Path=(hc:InfoElement.Necessary), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" />
             </StackPanel>
             <Border
                 x:Name="templateRoot"
@@ -403,7 +403,7 @@
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
-                CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
+                CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
                 SnapsToDevicePixels="True">
                 <Grid SnapsToDevicePixels="true">
                     <Grid.ColumnDefinitions>
@@ -415,7 +415,7 @@
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                         Style="{StaticResource TextBlockDefaultThiLight}"
-                        Text="{Binding Path=(controls:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
+                        Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
                         Visibility="{TemplateBinding Text,
                                                      Converter={StaticResource String2VisibilityReConverter}}" />
                     <ScrollViewer
@@ -434,7 +434,7 @@
                         Height="{x:Static system:Double.NaN}"
                         Margin="0,0,7,0"
                         Padding="0,6"
-                        controls:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"
+                        hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"
                         Command="interactivity:ControlCommands.Clear"
                         Foreground="{Binding BorderBrush, ElementName=templateRoot}"
                         Style="{StaticResource ButtonIcon}"
@@ -474,10 +474,10 @@
     <Style
         x:Key="TextBoxPlusBaseStyle"
         BasedOn="{StaticResource TextBoxExtendBaseStyle}"
-        TargetType="controls:TextBox">
+        TargetType="hc:TextBox">
         <Setter Property="Template" Value="{StaticResource TextBoxPlusTopTemplate}" />
         <Style.Triggers>
-            <Trigger Property="controls:InfoElement.TitlePlacement" Value="Left">
+            <Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
                 <Setter Property="Template" Value="{StaticResource TextBoxPlusLeftTemplate}"/>
                 <Setter Property="Width" Value="Auto"/>
             </Trigger>
