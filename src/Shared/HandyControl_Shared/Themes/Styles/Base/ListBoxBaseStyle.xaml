@@ -32,14 +32,14 @@
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="controls:ListBoxAttach.IsOddEvenRow" Value="True"/>
+                    <Condition Property="hc:ListBoxAttach.IsOddEvenRow" Value="True"/>
                     <Condition Property="ItemsControl.AlternationIndex" Value="0"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="controls:ListBoxAttach.IsOddEvenRow" Value="True"/>
+                    <Condition Property="hc:ListBoxAttach.IsOddEvenRow" Value="True"/>
                     <Condition Property="ItemsControl.AlternationIndex" Value="1"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource OddEvenRegionBrush}"/>
@@ -82,13 +82,13 @@
 
     <Style x:Key="ListBoxModernItemBaseStyle" BasedOn="{StaticResource BaseStyle}" TargetType="ListBoxItem">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualRadius0Margin0}"/>
-        <Setter Property="controls:BorderElement.CornerRadius" Value="6"/>
-        <Setter Property="controls:IconElement.Width" Value="16"/>
-        <Setter Property="controls:IconElement.Height" Value="16"/>
-        <Setter Property="controls:ListBoxAttach.Geometry" Value="{DynamicResource NewGeometry}"/>
-        <Setter Property="controls:ListBoxAttach.GeoemtryBrush" Value="{DynamicResource DangerBrush}"/>
-        <Setter Property="controls:ListBoxAttach.Width" Value="30"/>
-        <Setter Property="controls:ListBoxAttach.Height" Value="14"/>
+        <Setter Property="hc:BorderElement.CornerRadius" Value="6"/>
+        <Setter Property="hc:IconElement.Width" Value="16"/>
+        <Setter Property="hc:IconElement.Height" Value="16"/>
+        <Setter Property="hc:ListBoxAttach.Geometry" Value="{DynamicResource NewGeometry}"/>
+        <Setter Property="hc:ListBoxAttach.GeoemtryBrush" Value="{DynamicResource DangerBrush}"/>
+        <Setter Property="hc:ListBoxAttach.Width" Value="30"/>
+        <Setter Property="hc:ListBoxAttach.Height" Value="14"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Padding" Value="10,0"/>
         <Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}"/>
@@ -103,11 +103,11 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
                     <Border x:Name="BdSide" BorderThickness="0" BorderBrush="{DynamicResource PrimaryBrush}" SnapsToDevicePixels="true">
-                        <Border Margin="20,0,10,0" x:Name="Bd" CornerRadius="{Binding Path=(controls:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <Border Margin="20,0,10,0" x:Name="Bd" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                <Path x:Name="ContentPath" SnapsToDevicePixels="True" Stretch="Uniform" Fill="{DynamicResource PrimaryTextBrush}" Width="{Binding Path=(controls:IconElement.Width),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(controls:IconElement.Height),RelativeSource={RelativeSource TemplatedParent}}" Data="{Binding Path=(controls:IconElement.Geometry),RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Path x:Name="ContentPath" SnapsToDevicePixels="True" Stretch="Uniform" Fill="{DynamicResource PrimaryTextBrush}" Width="{Binding Path=(hc:IconElement.Width),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:IconElement.Height),RelativeSource={RelativeSource TemplatedParent}}" Data="{Binding Path=(hc:IconElement.Geometry),RelativeSource={RelativeSource TemplatedParent}}"/>
                                 <ContentPresenter Margin="10,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                                <Path Visibility="{Binding Path=(controls:ListBoxAttach.IsNew),RelativeSource={RelativeSource self},Converter={StaticResource Boolean2VisibilityConverter}}" FlowDirection="LeftToRight" VerticalAlignment="Center" Data="{Binding Path=(controls:ListBoxAttach.Geometry),RelativeSource={RelativeSource TemplatedParent}}" Stretch="Uniform" Width="{Binding Path=(controls:ListBoxAttach.Width),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(controls:ListBoxAttach.Height),RelativeSource={RelativeSource TemplatedParent}}" Fill="{Binding Path=(controls:ListBoxAttach.GeoemtryBrush),RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Path Visibility="{Binding Path=(hc:ListBoxAttach.IsNew),RelativeSource={RelativeSource self},Converter={StaticResource Boolean2VisibilityConverter}}" FlowDirection="LeftToRight" VerticalAlignment="Center" Data="{Binding Path=(hc:ListBoxAttach.Geometry),RelativeSource={RelativeSource TemplatedParent}}" Stretch="Uniform" Width="{Binding Path=(hc:ListBoxAttach.Width),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:ListBoxAttach.Height),RelativeSource={RelativeSource TemplatedParent}}" Fill="{Binding Path=(hc:ListBoxAttach.GeoemtryBrush),RelativeSource={RelativeSource TemplatedParent}}"/>
                             </StackPanel>
                         </Border>
                     </Border>
@@ -141,14 +141,14 @@
         <Style.Triggers>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="controls:ListBoxAttach.IsOddEvenRow" Value="True"/>
+                    <Condition Property="hc:ListBoxAttach.IsOddEvenRow" Value="True"/>
                     <Condition Property="ItemsControl.AlternationIndex" Value="0"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="controls:ListBoxAttach.IsOddEvenRow" Value="True"/>
+                    <Condition Property="hc:ListBoxAttach.IsOddEvenRow" Value="True"/>
                     <Condition Property="ItemsControl.AlternationIndex" Value="1"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource OddEvenRegionBrush}"/>
@@ -205,7 +205,7 @@
     </Style>
 
     <Style x:Key="ListBoxItemBaseTransparent" BasedOn="{StaticResource ListBoxItemBaseStyle}" TargetType="ListBoxItem">
-        <Setter Property="controls:BorderElement.CornerRadius" Value="4"/>
+        <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
         <Setter Property="Background" Value="Transparent"/>
     </Style>
     
@@ -228,13 +228,13 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <Trigger Property="controls:EdgeElement.ShowEdgeContent" Value="true">
+            <Trigger Property="hc:EdgeElement.ShowEdgeContent" Value="true">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ListBoxItem">
                             <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                                 <StackPanel Orientation="Horizontal">
-                                    <ContentControl Width="16" Height="16" Content="{Binding Path=(controls:EdgeElement.LeftContent),RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <ContentControl Width="16" Height="16" Content="{Binding Path=(hc:EdgeElement.LeftContent),RelativeSource={RelativeSource TemplatedParent}}"/>
                                     <ContentPresenter Margin="6,0,0,0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                                     <Path FlowDirection="LeftToRight" VerticalAlignment="Center" Data="{StaticResource NewGeometry}" Stretch="Uniform" Margin="10,0,0,0" Width="30" Height="14" Fill="{DynamicResource DangerBrush}"/>
                                 </StackPanel>

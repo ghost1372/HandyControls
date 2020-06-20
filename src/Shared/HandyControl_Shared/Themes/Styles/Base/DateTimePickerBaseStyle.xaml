@@ -332,7 +332,7 @@
         <Setter Property="hc:InfoElement.Symbol" Value="●"/>
         <Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}"/>
         <Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}"/>
-        <Setter Property="Template" Value="{StaticResource DateTimePickerExtendTopTemplate}"/>
+        <Setter Property="Template" Value="{StaticResource DateTimePickerExtendTopTemplatePersian}"/>
         <Style.Triggers>
             <Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
                 <Setter Property="Template" Value="{StaticResource DateTimePickerExtendLeftTemplatePersian}"/>
@@ -656,7 +656,7 @@
     </Style>
 
     <Style x:Key="DateTimePickerPlusBaseStylePersian" BasedOn="{StaticResource DateTimePickerExtendBaseStylePersian}" TargetType="hc:PersianDateTimePicker">
-        <Setter Property="Template" Value="{StaticResource DateTimePickerPlusTopTemplate}"/>
+        <Setter Property="Template" Value="{StaticResource DateTimePickerPlusTopTemplatePersian}"/>
         <Style.Triggers>
             <Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
                 <Setter Property="Template" Value="{StaticResource DateTimePickerPlusLeftTemplatePersian}"/>

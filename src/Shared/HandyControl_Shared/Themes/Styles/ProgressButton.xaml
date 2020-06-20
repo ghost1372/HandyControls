@@ -54,7 +54,7 @@
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
 
-    <Style x:Key="ProgressButtonViolet" BasedOn="{StaticResource ProgressButtonBaseStyle}" TargetType="controls:ProgressButton">
+    <Style x:Key="ProgressButtonViolet" BasedOn="{StaticResource ProgressButtonBaseStyle}" TargetType="hc:ProgressButton">
         <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
     </Style>
 </ResourceDictionary>

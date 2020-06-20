@@ -37,7 +37,7 @@
                             <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
                         </DataTrigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="BorderBrush" Value="{Binding Path=(controls:SideMenu.SubSideBrush),RelativeSource={RelativeSource AncestorType=controls:SideMenu}}"/>
+                            <Setter Property="BorderBrush" Value="{Binding Path=(hc:SideMenu.SubSideBrush),RelativeSource={RelativeSource AncestorType=hc:SideMenu}}"/>
                             <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
                             <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="PresenterHeader"/>
                         </Trigger>
@@ -75,7 +75,7 @@
                             <Setter Property="BorderBrush" Value="Transparent"/>
                         </DataTrigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="BorderBrush" Value="{Binding Path=(controls:SideMenu.SubSideBrush),RelativeSource={RelativeSource AncestorType=controls:SideMenu}}"/>
+                            <Setter Property="BorderBrush" Value="{Binding Path=(hc:SideMenu.SubSideBrush),RelativeSource={RelativeSource AncestorType=hc:SideMenu}}"/>
                             <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
                             <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="PresenterHeader"/>
                         </Trigger>
@@ -120,7 +120,7 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="BorderBack" Property="BorderThickness" Value="4,0,0,0"/>
-                            <Setter TargetName="BorderBack" Property="BorderBrush" Value="{Binding Path=(controls:SideMenu.SideBrush),RelativeSource={RelativeSource AncestorType=controls:SideMenu}}"/>
+                            <Setter TargetName="BorderBack" Property="BorderBrush" Value="{Binding Path=(hc:SideMenu.SideBrush),RelativeSource={RelativeSource AncestorType=hc:SideMenu}}"/>
                             <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="PresenterHeader"/>
                         </Trigger>
                         <Trigger SourceName="PanelHeader" Property="IsMouseOver" Value="true">
@@ -163,7 +163,7 @@
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="BorderBack" Property="BorderThickness" Value="4,0,0,0"/>
-                            <Setter TargetName="BorderBack" Property="BorderBrush" Value="{Binding Path=(controls:SideMenu.SideBrush),RelativeSource={RelativeSource AncestorType=controls:SideMenu}}"/>
+                            <Setter TargetName="BorderBack" Property="BorderBrush" Value="{Binding Path=(hc:SideMenu.SideBrush),RelativeSource={RelativeSource AncestorType=hc:SideMenu}}"/>
                             <Setter Property="TextElement.FontWeight" Value="Bold" TargetName="PresenterHeader"/>
                         </Trigger>
                         <Trigger SourceName="PanelHeader" Property="IsMouseOver" Value="true">

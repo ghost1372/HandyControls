@@ -9,7 +9,7 @@
 
     <Style BasedOn="{StaticResource DatePickerBaseStyle}" TargetType="DatePicker"/>
 
-    <Style BasedOn="{StaticResource DatePickerBaseStylePersian}" TargetType="controls:PersianDatePicker"/>
+    <Style BasedOn="{StaticResource DatePickerBaseStylePersian}" TargetType="hc:PersianDatePicker"/>
 
     <Style x:Key="DatePickerExtend" BasedOn="{StaticResource DatePickerExtendBaseStyle}" TargetType="DatePicker"/>
 
