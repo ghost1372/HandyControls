@@ -356,6 +356,7 @@
                                 </Grid>
                             </Border>
                         </Border>
+                        <Rectangle x:Name="PART_DisabledVisual" Visibility="Collapsed"/>
                     </hc:SimplePanel>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding DisplayMode, RelativeSource={RelativeSource  AncestorType=Calendar}}" Value="Year">
@@ -447,6 +448,7 @@
                                 </Grid>
                             </Border>
                         </Border>
+                        <Rectangle x:Name="PART_DisabledVisual" Visibility="Collapsed"/>
                     </hc:SimplePanel>
                     <ControlTemplate.Triggers>
 
