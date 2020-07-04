@@ -229,18 +229,18 @@
     <value>Bul</value>
   </data>
   <data name="LangComment" xml:space="preserve">
-    <value>Looks up a localized string similar to "{0}".</value>
+    <value>"{0}" benzeri yerelleştirilmiş bir dize arar.</value>
   </data>
   <data name="BusyIndicatorLoading" xml:space="preserve">
     <value>Lütfen bekle...</value>
   </data>
   <data name="TagPlaceHolder" xml:space="preserve">
-    <value>Separate Tags with ; or space</value>
+    <value>Etiketleri ; veya Boşluk ile ayır</value>
   </data>
   <data name="Jump" xml:space="preserve">
     <value>Atlama</value>
   </data>
   <data name="Miscellaneous" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>Çeşitli</value>
   </data>
 </root>
