@@ -671,7 +671,15 @@ namespace HandyControlDemo.Properties.Langs {
                 return ResourceManager.GetString("Frame", resourceCulture);
             }
         }
-        
+
+        public static string Geometry
+        {
+            get
+            {
+                return ResourceManager.GetString("Geometry", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Gif图片.
         /// </summary>
@@ -851,7 +859,18 @@ namespace HandyControlDemo.Properties.Langs {
                 return ResourceManager.GetString("ImageBrowser", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   查找类似 图片选择器 的本地化字符串。
+        /// </summary>
+        public static string ImageSelector
+        {
+            get
+            {
+                return ResourceManager.GetString("ImageSelector", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to 索引.
         /// </summary>

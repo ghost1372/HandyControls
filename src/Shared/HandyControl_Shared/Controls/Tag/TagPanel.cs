@@ -55,7 +55,7 @@ namespace HandyControl.Controls
         public bool ShowAddButton
         {
             get => (bool) GetValue(ShowAddButtonProperty);
-            set => SetValue(ShowAddButtonProperty, value);
+            set => SetValue(ShowAddButtonProperty, ValueBoxes.BooleanBox(value));
         }
 
         public static readonly DependencyProperty ShowAddTextBoxProperty = DependencyProperty.Register(

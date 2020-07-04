@@ -168,7 +168,6 @@ namespace HandyControl.Controls
                 case InteropValues.WM_GETMINMAXINFO:
                     WmGetMinMaxInfo(hwnd, lparam);
                     Padding = WindowState == WindowState.Maximized ? WindowHelper.WindowMaximizedPadding : _commonPadding;
-                    handled = true;
                     break;
             }
 
@@ -209,7 +208,7 @@ namespace HandyControl.Controls
         public bool IsFullScreen
         {
             get => (bool)GetValue(IsFullScreenProperty);
-            set => SetValue(IsFullScreenProperty, value);
+            set => SetValue(IsFullScreenProperty, ValueBoxes.BooleanBox(value));
         }
 
         public object NonClientAreaContent
@@ -257,13 +256,13 @@ namespace HandyControl.Controls
         public bool ShowNonClientArea
         {
             get => (bool)GetValue(ShowNonClientAreaProperty);
-            set => SetValue(ShowNonClientAreaProperty, value);
+            set => SetValue(ShowNonClientAreaProperty, ValueBoxes.BooleanBox(value));
         }
 
         public bool ShowTitle
         {
             get => (bool)GetValue(ShowTitleProperty);
-            set => SetValue(ShowTitleProperty, value);
+            set => SetValue(ShowTitleProperty, ValueBoxes.BooleanBox(value));
         }
 
         private static void OnShowNonClientAreaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

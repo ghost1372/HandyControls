@@ -27,12 +27,13 @@
       [ "GroupBox", "GroupBoxDemoCtl", "GroupBox_16x", "" ],
       [ "Menu", "MenuDemoCtl", "ContextMenu_16x", "" ],
       [ "RichTextBox", "RichTextBoxDemoCtl", "RichTextBox_16x", "" ],
-      [ "FlowDocument", "FlowDocumentDemoCtl", "WPFFlowDocument_16x", "1" ],
+      [ "FlowDocument", "FlowDocumentDemoCtl", "WPFFlowDocument_16x", "" ],
       [ "ToolBar", "ToolBarDemoCtl", "ToolBar_16x", "" ],
       [ "Border", "BorderDemoCtl", "BorderElement_16x", "" ],
       [ "Label", "LabelDemoCtl", "Label_16x", "" ],
       [ "Frame", "FrameDemoCtl", "frame_16xLG", "1" ],
-      [ "Window", "NativeWindowDemoCtl", "WindowsForm_16x", "1" ]
+      [ "Window", "NativeWindowDemoCtl", "WindowsForm_16x", "1" ],
+      [ "Geometry", "GeometryDemoCtl", "Path_16x", "1" ]
     ]
   },
   {
@@ -42,6 +43,7 @@
       [ "PersianToolkit", "PersianToolkitDemoCtl", "thumbs_up", "1" ],
       [ "FloatingBlock", "FloatingBlockDemoCtl", "thumbs_up", "" ],
       [ "PropertyGrid", "PropertyGridDemoCtl", "PropertyGridEditorPart_16x", "1" ],
+      [ "ImageSelector", "ImageSelectorDemoCtl", "Image_16x", "1" ],
       [ "ImageBlock", "ImageBlockDemoCtl", "ImageStack_16x", "" ],
       [ "Magnifier", "MagnifierDemoCtl", "Search_16x", "" ],
       [ "Gravatar", "GravatarDemoCtl", "User_16x", "" ],

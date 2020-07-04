@@ -209,7 +209,7 @@ namespace HandyControl.Controls
         public static string GetToken(DependencyObject element)
             => (string)element.GetValue(TokenProperty);
 
-        public static void SetGrowlParent(DependencyObject element, bool value) => element.SetValue(GrowlParentProperty, value);
+        public static void SetGrowlParent(DependencyObject element, bool value) => element.SetValue(GrowlParentProperty, ValueBoxes.BooleanBox(value));
 
         public static bool GetGrowlParent(DependencyObject element) => (bool)element.GetValue(GrowlParentProperty);
 
@@ -234,7 +234,7 @@ namespace HandyControl.Controls
         public bool ShowDateTime
         {
             get => (bool)GetValue(ShowDateTimeProperty);
-            set => SetValue(ShowDateTimeProperty, value);
+            set => SetValue(ShowDateTimeProperty, ValueBoxes.BooleanBox(value));
         }
 
         public string Message

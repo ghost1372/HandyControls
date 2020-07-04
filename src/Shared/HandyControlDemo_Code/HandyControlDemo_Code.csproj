@@ -138,6 +138,9 @@
     <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Controls\ImageBrowserDemoCtl.xaml">
       <Link>UserControl\Controls\ImageBrowserDemoCtl.xaml</Link>
     </Resource>
+    <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Controls\ImageSelectorDemoCtl.xaml">
+      <Link>UserControl\Controls\ImageSelectorDemoCtl.xaml</Link>
+    </Resource>
     <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Controls\LoadingDemoCtl.xaml">
       <Link>UserControl\Controls\LoadingDemoCtl.xaml</Link>
     </Resource>
@@ -272,6 +275,9 @@
     </Resource>
     <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Styles\FrameDemoCtl.xaml">
       <Link>UserControl\Styles\FrameDemoCtl.xaml</Link>
+    </Resource>
+    <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Styles\GeometryDemoCtl.xaml">
+      <Link>UserControl\Styles\GeometryDemoCtl.xaml</Link>
     </Resource>
     <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Styles\GroupBoxDemoCtl.xaml">
       <Link>UserControl\Styles\GroupBoxDemoCtl.xaml</Link>
@@ -526,6 +532,10 @@
       <Link>UserControl\Controls\ImageBrowserDemoCtl.xaml.cs</Link>
       <DependentUpon>ImageBrowserDemoCtl.xaml</DependentUpon>
     </Resource>
+    <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Controls\ImageSelectorDemoCtl.xaml.cs">
+      <Link>UserControl\Controls\ImageSelectorDemoCtl.xaml.cs</Link>
+      <DependentUpon>ImageSelectorDemoCtl.xaml</DependentUpon>
+    </Resource>
     <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Controls\LoadingDemoCtl.xaml.cs">
       <Link>UserControl\Controls\LoadingDemoCtl.xaml.cs</Link>
       <DependentUpon>LoadingDemoCtl.xaml</DependentUpon>
@@ -705,6 +715,10 @@
     <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Styles\FrameDemoCtl.xaml.cs">
       <Link>UserControl\Styles\FrameDemoCtl.xaml.cs</Link>
       <DependentUpon>FrameDemoCtl.xaml</DependentUpon>
+    </Resource>
+    <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Styles\GeometryDemoCtl.xaml.cs">
+      <Link>UserControl\Styles\GeometryDemoCtl.xaml.cs</Link>
+      <DependentUpon>GeometryDemoCtl.xaml</DependentUpon>
     </Resource>
     <Resource Include="..\..\Shared\HandyControlDemo_Shared\UserControl\Styles\GroupBoxDemoCtl.xaml.cs">
       <Link>UserControl\Styles\GroupBoxDemoCtl.xaml.cs</Link>
