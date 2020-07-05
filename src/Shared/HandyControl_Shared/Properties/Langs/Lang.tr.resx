@@ -243,4 +243,7 @@
   <data name="Miscellaneous" xml:space="preserve">
     <value>Çeşitli</value>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
 </root>

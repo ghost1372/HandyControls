@@ -60,7 +60,8 @@ namespace HandyControlDemo.Properties.Langs
 			OnPropertyChanged(nameof(ChatBubble));
 			OnPropertyChanged(nameof(Chatroom));
 			OnPropertyChanged(nameof(CheckBox));
-			OnPropertyChanged(nameof(CirclePanel));
+            OnPropertyChanged(nameof(CheckComboBox));
+            OnPropertyChanged(nameof(CirclePanel));
 			OnPropertyChanged(nameof(Clear));
 			OnPropertyChanged(nameof(Click2Count));
 			OnPropertyChanged(nameof(Clock));
@@ -368,6 +369,11 @@ namespace HandyControlDemo.Properties.Langs
         ///   查找类似 复选框 的本地化字符串。
         /// </summary>
 		public string CheckBox => Lang.CheckBox;
+
+        /// <summary>
+        ///   查找类似 多选组合框 的本地化字符串。
+        /// </summary>
+        public string CheckComboBox => Lang.CheckComboBox;
 
         /// <summary>
         ///   查找类似 圆形布局 的本地化字符串。
@@ -1449,6 +1455,11 @@ namespace HandyControlDemo.Properties.Langs
         ///   查找类似 复选框 的本地化字符串。
         /// </summary>
 		public static string CheckBox = nameof(CheckBox);
+
+        /// <summary>
+        ///   查找类似 多选组合框 的本地化字符串。
+        /// </summary>
+        public static string CheckComboBox = nameof(CheckComboBox);
 
         /// <summary>
         ///   查找类似 圆形布局 的本地化字符串。

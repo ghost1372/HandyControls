@@ -97,6 +97,10 @@ Step 4: Enjoy coding
 
 ## Latest examples
 
+### CheckComboBox
+
+![CheckComboBox](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/CheckComboBox.png)
+
 ### ImageSelector
 
 ![ImageSelector](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/ImageSelector.png)
@@ -113,11 +117,11 @@ Step 4: Enjoy coding
 
 ![GooeyEffect](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/GooeyEffect.gif)
 
+## History publication
+
 ### GlowWindow
 
 ![GlowWindow](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/GlowWindow.png)
-
-## History publication
 
 ### FlowDocumentScrollViewerStyle
 
