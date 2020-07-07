@@ -118,67 +118,67 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Confirm" xml:space="preserve">
-    <value>Onayla</value>
+    <value>Bestätigen</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>İptal</value>
+    <value>Abbrechen</value>
   </data>
   <data name="PngImg" xml:space="preserve">
-    <value>PNG resmi</value>
+    <value>PNG-Bild</value>
   </data>
   <data name="ErrorImgPath" xml:space="preserve">
-    <value>Hatalı resim yolu</value>
+    <value>Fehlerhafter Bildpfad</value>
   </data>
   <data name="ErrorImgSize" xml:space="preserve">
-    <value>Hatalı resim boyutu</value>
+    <value>Schlechte Bildgröße</value>
   </data>
   <data name="UnknownSize" xml:space="preserve">
-    <value>Bilinmeyen boyut</value>
+    <value>Unbekannte Größe</value>
   </data>
   <data name="TooLarge" xml:space="preserve">
-    <value>Çok uzun</value>
+    <value>Zu lang</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Bilinmiyor</value>
+    <value>Unbekannt</value>
   </data>
   <data name="Interval30s" xml:space="preserve">
-    <value>30 saniye aralık</value>
+    <value>30 Sekunden Intervall</value>
   </data>
   <data name="Interval1m" xml:space="preserve">
-    <value>1 dakika aralık</value>
+    <value>1 Minuten Intervall</value>
   </data>
   <data name="Interval5m" xml:space="preserve">
-    <value>5 dakika aralık</value>
+    <value>5 Minuten Intervall</value>
   </data>
   <data name="Interval10m" xml:space="preserve">
-    <value>10 dakika aralık</value>
+    <value>10 Minuten Intervall</value>
   </data>
   <data name="Interval30m" xml:space="preserve">
-    <value>30 dakika aralık</value>
+    <value>30 Minuten Intervall</value>
   </data>
   <data name="Interval1h" xml:space="preserve">
-    <value>1 saat aralık</value>
+    <value>1 Stunde Intervall</value>
   </data>
   <data name="Interval2h" xml:space="preserve">
-    <value>2 saat aralık</value>
+    <value>2 Stunde Intervall</value>
   </data>
   <data name="Clear" xml:space="preserve">
-    <value>Temizle</value>
+    <value>Klar</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Kapat</value>
+    <value>Schließen</value>
   </data>
   <data name="CloseAll" xml:space="preserve">
-    <value>Hepsini kapat</value>
+    <value>Alle schließen</value>
   </data>
   <data name="CloseOther" xml:space="preserve">
-    <value>Diğerlerini kapat</value>
+    <value>Schließen Sie andere</value>
   </data>
   <data name="Am" xml:space="preserve">
-    <value>ÖÖ</value>
+    <value>VM</value>
   </data>
   <data name="Pm" xml:space="preserve">
-    <value>ÖS</value>
+    <value>NM</value>
   </data>
   <data name="Tip" xml:space="preserve">
     <value>Komut İstemi</value>
@@ -199,51 +199,51 @@
     <value>Aynı Komut İki Kez Kaydedilemiyor</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Evet</value>
+    <value>Ja</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>Hayır</value>
+    <value>Nein</value>
   </data>
   <data name="ZoomIn" xml:space="preserve">
-    <value>Yakınlaştır</value>
+    <value>Hineinzoomen</value>
   </data>
   <data name="ZoomOut" xml:space="preserve">
-    <value>Uzaklaştır</value>
+    <value>Rauszoomen</value>
   </data>
   <data name="PreviousPage" xml:space="preserve">
-    <value>Önceki sayfa</value>
+    <value>Vorherige Seite</value>
   </data>
   <data name="NextPage" xml:space="preserve">
-    <value>Sonraki sayfa</value>
+    <value>Nächste Seite</value>
   </data>
   <data name="PageMode" xml:space="preserve">
-    <value>Sayfa modu</value>
+    <value>Seitenmodus</value>
   </data>
   <data name="TwoPageMode" xml:space="preserve">
-    <value>2 sayfa modu</value>
+    <value>2 Seitenmodi</value>
   </data>
   <data name="ScrollMode" xml:space="preserve">
-    <value>Kaydırma modu</value>
+    <value>Scroll-Modus</value>
   </data>
   <data name="Find" xml:space="preserve">
-    <value>Bul</value>
+    <value>Finden</value>
   </data>
   <data name="LangComment" xml:space="preserve">
     <value>"{0}" benzeri yerelleştirilmiş bir dize arar.</value>
   </data>
   <data name="BusyIndicatorLoading" xml:space="preserve">
-    <value>Lütfen bekle...</value>
+    <value>Bitte warten...</value>
   </data>
   <data name="TagPlaceHolder" xml:space="preserve">
     <value>Etiketleri ; veya Boşluk ile ayır</value>
   </data>
   <data name="Jump" xml:space="preserve">
-    <value>Atlama</value>
+    <value>Springen</value>
   </data>
   <data name="Miscellaneous" xml:space="preserve">
-    <value>Çeşitli</value>
+    <value>Verschiedenen</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>All</value>
+    <value>Alle</value>
   </data>
 </root>
