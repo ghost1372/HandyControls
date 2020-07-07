@@ -181,22 +181,22 @@
     <value>NM</value>
   </data>
   <data name="Tip" xml:space="preserve">
-    <value>Komut İstemi</value>
+    <value>Eingabeaufforderung</value>
   </data>
   <data name="IsNecessary" xml:space="preserve">
-    <value>boş olamaz</value>
+    <value>kann nicht leer sein</value>
   </data>
   <data name="OutOfRange" xml:space="preserve">
-    <value>kapsama alanı dışında</value>
+    <value>außer Reichweite</value>
   </data>
   <data name="FormatError" xml:space="preserve">
-    <value>format hatası</value>
+    <value>Formatfehler</value>
   </data>
   <data name="CannotRegisterCompositeCommandInItself" xml:space="preserve">
-    <value>Kompozit Komut Kendi Kendine Kaydedilemiyor</value>
+    <value>Composite-Befehl kann nicht selbst registriert werden</value>
   </data>
   <data name="CannotRegisterSameCommandTwice" xml:space="preserve">
-    <value>Aynı Komut İki Kez Kaydedilemiyor</value>
+    <value>Kann Denselben Befehl Nicht Zweimal Registrieren</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
@@ -229,13 +229,13 @@
     <value>Finden</value>
   </data>
   <data name="LangComment" xml:space="preserve">
-    <value>"{0}" benzeri yerelleştirilmiş bir dize arar.</value>
+    <value>Sucht eine lokalisierte Zeichenfolge, die dem "{0}" ähnelt.</value>
   </data>
   <data name="BusyIndicatorLoading" xml:space="preserve">
     <value>Bitte warten...</value>
   </data>
   <data name="TagPlaceHolder" xml:space="preserve">
-    <value>Etiketleri ; veya Boşluk ile ayır</value>
+    <value>Separate Tags mit; oder Raum</value>
   </data>
   <data name="Jump" xml:space="preserve">
     <value>Springen</value>
