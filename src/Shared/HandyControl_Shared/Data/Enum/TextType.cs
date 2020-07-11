@@ -24,6 +24,6 @@ namespace HandyControl.Data
         NnDouble,
         NpDouble,
         Persian,
-        IranNationalCode,
+        IranNationalCode
     }
 }

@@ -8,9 +8,9 @@ namespace HandyControl.Tools
     /// <summary>
     ///     包含一些正则验证操作
     /// </summary>
-    public static class RegularJudgment
+    public static class RegexJudgment
     {
-        private static readonly RegularPatterns RegularPatterns = new RegularPatterns();
+        private static readonly RegexPatterns RegexPatterns = new RegexPatterns();
 
         /// <summary>
         ///     判断字符串格式是否符合某种要求
@@ -33,7 +33,7 @@ namespace HandyControl.Tools
         {
             if (textType == TextType.Common) return true;
             return Regex.IsMatch(text,
-                RegularPatterns.GetValue(Enum.GetName(typeof(TextType), textType) + "Pattern").ToString());
+                RegexPatterns.GetValue(Enum.GetName(typeof(TextType), textType) + "Pattern").ToString());
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace HandyControl.Tools
         /// <returns>方法返回布尔值</returns>
         public static bool IsEmail(this string email)
         {
-            return Regex.IsMatch(email, RegularPatterns.MailPattern);
+            return Regex.IsMatch(email, RegexPatterns.MailPattern);
         }
 
         /// <summary>
@@ -56,11 +56,11 @@ namespace HandyControl.Tools
         {
             switch (ipType)
             {
-                case IpType.A: return Regex.IsMatch(ip, RegularPatterns.IpAPattern);
-                case IpType.B: return Regex.IsMatch(ip, RegularPatterns.IpBPattern);
-                case IpType.C: return Regex.IsMatch(ip, RegularPatterns.IpCPattern);
-                case IpType.D: return Regex.IsMatch(ip, RegularPatterns.IpDPattern);
-                case IpType.E: return Regex.IsMatch(ip, RegularPatterns.IpEPattern);
+                case IpType.A: return Regex.IsMatch(ip, RegexPatterns.IpAPattern);
+                case IpType.B: return Regex.IsMatch(ip, RegexPatterns.IpBPattern);
+                case IpType.C: return Regex.IsMatch(ip, RegexPatterns.IpCPattern);
+                case IpType.D: return Regex.IsMatch(ip, RegexPatterns.IpDPattern);
+                case IpType.E: return Regex.IsMatch(ip, RegexPatterns.IpEPattern);
                 default: return false;
             }
         }
@@ -72,7 +72,7 @@ namespace HandyControl.Tools
         /// <returns>方法返回布尔值</returns>
         public static bool IsIp(this string ip)
         {
-            return Regex.IsMatch(ip, RegularPatterns.IpPattern);
+            return Regex.IsMatch(ip, RegexPatterns.IpPattern);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace HandyControl.Tools
         /// <returns>方法返回布尔值</returns>
         public static bool IsChinese(this string str)
         {
-            return Regex.IsMatch(str, RegularPatterns.ChinesePattern);
+            return Regex.IsMatch(str, RegexPatterns.ChinesePattern);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace HandyControl.Tools
         /// <returns>方法返回布尔值</returns>
         public static bool IsUrl(this string str)
         {
-            return Regex.IsMatch(str, RegularPatterns.UrlPattern);
+            return Regex.IsMatch(str, RegexPatterns.UrlPattern);
         }
 
         /// <summary>
