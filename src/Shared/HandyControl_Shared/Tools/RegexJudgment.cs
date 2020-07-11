@@ -102,7 +102,7 @@ namespace HandyControl.Tools
         /// <returns>اگر حروف فارسی باشد مقدار صحیح برمیگردد</returns>
         public static bool IsPersian(this string str)
         {
-            return Regex.IsMatch(str, RegularPatterns.PersianPattern);
+            return Regex.IsMatch(str, RegexPatterns.PersianPattern);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace HandyControl.Tools
         public static bool IsIranNationalCode(this string str)
         {
             // input has 10 digits that all of them are not equal
-            if (!Regex.IsMatch(str, RegularPatterns.IranNationalCodePattern))
+            if (!Regex.IsMatch(str, RegexPatterns.IranNationalCodePattern))
                 return false;
 
             var check = Convert.ToInt32(str.Substring(9, 1));
