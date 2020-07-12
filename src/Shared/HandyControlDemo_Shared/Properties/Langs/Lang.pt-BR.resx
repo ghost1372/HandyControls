@@ -762,4 +762,7 @@
   <data name="CheckComboBox" xml:space="preserve">
     <value>CheckComboBox</value>
   </data>
+  <data name="PersianToolkit" xml:space="preserve">
+    <value>PersianToolkit</value>
+  </data>
 </root>
