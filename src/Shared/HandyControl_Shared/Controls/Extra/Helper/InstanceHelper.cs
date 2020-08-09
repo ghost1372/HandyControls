@@ -1,7 +1,9 @@
-﻿using HandyControl.Tools.Interop;
+﻿using HandyControl.Data;
+using HandyControl.Tools.Interop;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace HandyControl.Controls
@@ -44,6 +46,14 @@ namespace HandyControl.Controls
             var process = processes.FirstOrDefault(p => p.Id != currentProcess.Id);
             if (process == null) return;
             InteropMethods.SetForegroundWindow(process.MainWindowHandle);
+        }
+
+        public static SystemVersionInfo GetWindowsVersion()
+        {
+            var osv = new InteropValues.RTL_OSVERSIONINFOEX();
+            osv.dwOSVersionInfoSize = (uint)Marshal.SizeOf(osv);
+            InteropMethods.Gdip.RtlGetVersion(out osv);
+            return new SystemVersionInfo((int)osv.dwMajorVersion, (int)osv.dwMinorVersion, (int)osv.dwBuildNumber);
         }
     }
 }

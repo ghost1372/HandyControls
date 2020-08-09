@@ -1,8 +1,5 @@
-﻿#if NETCOREAPP3_0 || NETCOREAPP3_1
-using System;
-using System.Collections.Generic;
+﻿#if NETCOREAPP3_0 || NETCOREAPP3_1 || NET5_0
 using System.IO;
-using System.Text;
 using System.Text.Json;
 
 namespace HandyControl.Controls
