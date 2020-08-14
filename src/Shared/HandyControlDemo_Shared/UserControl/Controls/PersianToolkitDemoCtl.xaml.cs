@@ -1,4 +1,5 @@
 ﻿using HandyControl.Controls;
+using HandyControl.Tools.Extension;
 using HandyControl.Data;
 using HandyControl.Tools;
 using Microsoft.Win32;

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using HandyControl.Controls;
+using System;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools.Extension
 {
     public static class ToShamsi
     {

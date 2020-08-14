@@ -5,7 +5,6 @@
     xmlns:s="clr-namespace:System;assembly=mscorlib"
     xmlns:enum="clr-namespace:HandyControlDemo.Data"
     xmlns:hc="https://handyorg.github.io/handycontrol"
-    xmlns:lang="clr-namespace:HandyControlDemo.Properties.Langs"
     Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
         <hc:TabControl MinWidth="700" Margin="10" IsUWPStyle="True">
