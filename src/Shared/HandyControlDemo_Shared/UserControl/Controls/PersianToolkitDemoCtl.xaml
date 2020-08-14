@@ -22,16 +22,6 @@
                             </StackPanel>
                         </ScrollViewer>
                     </TabItem>
-                    <TabItem Header="Background">
-                        <UniformGrid>
-                            <ContentControl Style="{StaticResource ChessBoard}" hc:BorderElement.CornerRadius="5" Margin="10" Width="200" Height="100">
-                                <Button Content="Click" Width="200"/>
-                            </ContentControl>
-                            <ContentControl Background="White" Style="{StaticResource LiveStyle}" Margin="10" Width="800" Height="500">
-                                <Button Content="Click" Width="200"/>
-                            </ContentControl>
-                        </UniformGrid>
-                    </TabItem>
                     <TabItem Header="Input">
                         <UniformGrid>
                             <hc:TextBox Margin="10,20" hc:InfoElement.Placeholder="فقط حروف فارسی" Width="200" TextType="Persian"/>
@@ -52,18 +42,18 @@
                                     <Button Content="Start" Margin="10" Width="300" Click="btnStart_Click"/>
                                     <Slider Width="200" Margin="10" x:Name="sld" IsSnapToTickEnabled="True" Value="25" Maximum="180"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <hc:SpeedoMeter x:Name="sp" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
-                           MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
+                                        <hc:SpeedoMeter x:Name="sp" MaximumValue="{Binding ElementName=sld, Path=Maximum}" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
+                           Value="{Binding ElementName=sld, Path=Value}"
                            />
-                                        <hc:SpeedoMeter Margin="10" FontWeight="Bold" ValueColor="{DynamicResource WarningBrush}" StatusColor="{DynamicResource PrimaryBrush}" StrokeColor="{DynamicResource DangerBrush}" ValueFontSize="90" StatusFontSize="20" Status="mph"
-                           MaximumValue="180" Value="{Binding ElementName=sld, Path=Value}"
+                                        <hc:SpeedoMeter MaximumValue="{Binding ElementName=sld, Path=Maximum}" Margin="10" FontWeight="Bold" ValueColor="{DynamicResource WarningBrush}" StatusColor="{DynamicResource PrimaryBrush}" StrokeColor="{DynamicResource DangerBrush}" ValueFontSize="90" StatusFontSize="20" Status="mph"
+                           Angle="180" Value="{Binding ElementName=sld, Path=Value}"
                            />
                                     </StackPanel>
                                 </StackPanel>
                                 <StackPanel Margin="0,50" Grid.Column="1">
                                     <Slider Width="200" Margin="10" x:Name="sld2" IsSnapToTickEnabled="True" Value="25" Maximum="130"/>
-                                    <hc:SpeedoMeter x:Name="sp2" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
-                           MaximumValue="120" Value="{Binding ElementName=sld2, Path=Value}"
+                                    <hc:SpeedoMeter MaximumValue="{Binding ElementName=sld2, Path=Maximum}" x:Name="sp2" Margin="10" FontWeight="Bold" ValueFontSize="90" StatusFontSize="20" Status="Km/h"
+                           Angle="120" Value="{Binding ElementName=sld2, Path=Value}"
                            />
                                 </StackPanel>
                             </Grid>
@@ -268,6 +258,16 @@
                                         </hc:TabControl>
                                     </StackPanel>
                                 </hc:ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="ContentControl">
+                                <UniformGrid>
+                                    <ContentControl Style="{StaticResource ChessBoard}" hc:BorderElement.CornerRadius="5" Margin="10" Width="200" Height="100">
+                                        <Button Content="Click" Width="200"/>
+                                    </ContentControl>
+                                    <ContentControl Background="White" Style="{StaticResource LiveStyle}" Margin="10" Width="800" Height="500">
+                                        <Button Content="Click" Width="200"/>
+                                    </ContentControl>
+                                </UniformGrid>
                             </TabItem>
                         </TabControl>
                     </TabItem>

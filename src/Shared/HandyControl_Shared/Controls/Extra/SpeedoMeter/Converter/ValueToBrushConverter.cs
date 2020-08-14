@@ -1,5 +1,4 @@
-﻿using HandyControl.Controls;
-using HandyControl.Data;
+﻿using HandyControl.Data;
 using System;
 using System.Globalization;
 using System.Windows.Data;
@@ -7,16 +6,13 @@ using System.Windows.Media;
 
 namespace HandyControl.Tools.Converter
 {
-    public class ValueToBrushConverter : IValueConverter
+    public class ValueToBrushConverter : IMultiValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value !=null)
+            if (values != null)
             {
-                var minimumInput = 0;
-                var maximumInput = System.Convert.ToInt32(parameter);
-
-                var currentValue = ((double)value - minimumInput) / (maximumInput - minimumInput);
+                var currentValue = System.Convert.ToInt32(values[0]) / (double)values[1];
 
                 var color = ResourceHelper.GetResource<Brush>(ResourceToken.PrimaryBrush);
                 if (currentValue < 0.30)
@@ -33,7 +29,7 @@ namespace HandyControl.Tools.Converter
             return ResourceHelper.GetResource<Brush>(ResourceToken.PrimaryBrush);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

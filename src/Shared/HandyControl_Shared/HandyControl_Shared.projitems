@@ -11,9 +11,6 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\AddOnUi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\TreeViewAttach.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\BindableBinding.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\ConverterBindableBinding.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindableConvertParameter\MultiValueConverterAdapter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumDescriptionTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\CheckTreeView.cs" />

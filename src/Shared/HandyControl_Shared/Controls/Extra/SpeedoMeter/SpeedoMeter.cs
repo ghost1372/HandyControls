@@ -6,8 +6,10 @@ using System.Windows.Media;
 
 namespace HandyControl.Controls
 {
-    public class SpeedoMeter : ContentControl
+    public class SpeedoMeter : Control
     {
+
+        #region Value
         protected virtual void OnValueChanged(FunctionEventArgs<double> e) => RaiseEvent(e);
 
         /// <summary>
@@ -25,13 +27,15 @@ namespace HandyControl.Controls
             add => AddHandler(ValueChangedEvent, value);
             remove => RemoveHandler(ValueChangedEvent, value);
         }
-        #region Value
+
         public double Value
         {
             get { return (double)GetValue(ValueProperty); }
             set { SetValue(ValueProperty, value); }
         }
 
+
+        //todo: onceorce removed
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double0Box, OnValueChanged, OnCoerceValueChanged));
 
@@ -39,7 +43,7 @@ namespace HandyControl.Controls
         {
             var ctl = (SpeedoMeter)d;
             var v = (double)e.NewValue;
-            
+
             ctl.OnValueChanged(new FunctionEventArgs<double>(ValueChangedEvent, ctl)
             {
                 Info = v
@@ -54,6 +58,17 @@ namespace HandyControl.Controls
                 val = s.MaximumValue;
             return val;
         }
+
+        public double MaximumValue
+        {
+            get { return (double)GetValue(MaximumValueProperty); }
+            set { SetValue(MaximumValueProperty, value); }
+        }
+
+        public static readonly DependencyProperty MaximumValueProperty =
+            DependencyProperty.Register("MaximumValue", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double100Box));
+
+
 
         public double ValueFontSize
         {
@@ -84,7 +99,6 @@ namespace HandyControl.Controls
 
         public static readonly DependencyProperty ValueVisibilityProperty =
             DependencyProperty.Register("ValueVisibility", typeof(Visibility), typeof(SpeedoMeter), new PropertyMetadata(Visibility.Visible));
-
 
         #endregion
 
@@ -119,8 +133,6 @@ namespace HandyControl.Controls
         public static readonly DependencyProperty StatusFontSizeProperty =
             DependencyProperty.Register("StatusFontSize", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double20Box));
 
-
-
         public Visibility StatusVisibility
         {
             get { return (Visibility)GetValue(StatusVisibilityProperty); }
@@ -133,22 +145,14 @@ namespace HandyControl.Controls
 
         #endregion
 
-        public double MaximumValue
+        public double Angle
         {
-            get { return (double)GetValue(MaximumValueProperty); }
-            set { SetValue(MaximumValueProperty, value); }
+            get { return (double)GetValue(AngleProperty); }
+            set { SetValue(AngleProperty, value); }
         }
 
-        public static readonly DependencyProperty MaximumValueProperty =
-            DependencyProperty.Register("MaximumValue", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(ValueBoxes.Double100Box, OnMaximumValueChanged));
-
-        private static void OnMaximumValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            //complete circle
-            var s = (SpeedoMeter)d;
-            if ((double)e.NewValue > 180)
-                s.MaximumValue = 180;
-        }
+        public static readonly DependencyProperty AngleProperty =
+            DependencyProperty.Register("Angle", typeof(double), typeof(SpeedoMeter), new PropertyMetadata(180d));
 
         public Brush StrokeColor
         {
@@ -158,6 +162,5 @@ namespace HandyControl.Controls
 
         public static readonly DependencyProperty StrokeColorProperty =
             DependencyProperty.Register("StrokeColor", typeof(Brush), typeof(SpeedoMeter), new PropertyMetadata(null));
-
     }
 }

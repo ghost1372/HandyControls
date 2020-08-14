@@ -13,29 +13,34 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
         <Setter Property="Height" Value="300" />
         <Setter Property="Width" Value="300" />
-        <Setter Property="MaximumValue" Value="120"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="hc:SpeedoMeter">
                     <hc:SimplePanel>
-                        <ed:Arc x:Name="arc" Tag="{TemplateBinding Value}" StartAngle="{TemplateBinding MaximumValue, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25" EndAngle="{TemplateBinding MaximumValue}" Stroke="{DynamicResource BorderBrush}"
+                        <ed:Arc x:Name="arc" StartAngle="{Binding Angle, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25" EndAngle="{Binding Angle, RelativeSource={RelativeSource Mode=TemplatedParent}}" Stroke="{DynamicResource BorderBrush}"
                                 Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}"/>
-                        <ed:Arc StartAngle="{TemplateBinding MaximumValue, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25"
+                        <ed:Arc StartAngle="{Binding Angle, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25"
                                 Width="{TemplateBinding ActualWidth}"
                                 Height="{TemplateBinding ActualHeight}">
                             <ed:Arc.EndAngle>
-                                <hc:ConverterBindableBinding Binding="{Binding ElementName=arc, Path=Tag}"
-                                       Converter="{StaticResource SpeedConverter}" ConverterParameterBinding="{Binding ElementName=arc, Path=EndAngle}"/>
+                                <MultiBinding Converter="{StaticResource SpeedConverter}">
+                                    <Binding Path="Angle" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                    <Binding Path="Value" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                    <Binding Path="MaximumValue" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                </MultiBinding>
+
                             </ed:Arc.EndAngle>
                             <ed:Arc.Style>
                                 <Style TargetType="ed:Arc">
-                                    <Setter Property="Stroke" Value="{Binding StrokeColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
+                                    <Setter Property="Stroke" Value="{Binding StrokeColor, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding StrokeColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
+                                        <DataTrigger Binding="{Binding StrokeColor, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="{x:Null}">
                                             <Setter Property="Stroke">
                                                 <Setter.Value>
-                                                    <hc:ConverterBindableBinding Binding="{Binding ElementName=arc, Path=Tag}"
-                                                                                    Converter="{StaticResource ValueToBrushConverter}" ConverterParameterBinding="{Binding ElementName=arc, Path=EndAngle}"/>
+                                                    <MultiBinding Converter="{StaticResource ValueToBrushConverter}">
+                                                        <Binding Path="Value" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                        <Binding Path="MaximumValue" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                    </MultiBinding>
                                                 </Setter.Value>
                                             </Setter>
                                         </DataTrigger>
@@ -44,16 +49,18 @@
                             </ed:Arc.Style>
                         </ed:Arc>
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Visibility="{TemplateBinding StatusVisibility}" Text="{Binding Path=Status, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" FontSize="{TemplateBinding StatusFontSize}">
+                            <TextBlock Visibility="{Binding StatusVisibility, RelativeSource={RelativeSource Mode=TemplatedParent}}" Text="{Binding Path=Status, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" FontSize="{Binding StatusFontSize, RelativeSource={RelativeSource Mode=TemplatedParent}}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
-                                        <Setter Property="Foreground" Value="{Binding StatusColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
+                                        <Setter Property="Foreground" Value="{Binding StatusColor, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding StatusColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding StatusColor, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="{x:Null}">
                                                 <Setter Property="Foreground">
                                                     <Setter.Value>
-                                                        <hc:ConverterBindableBinding Binding="{Binding ElementName=arc, Path=Tag}"
-                                                                                    Converter="{StaticResource ValueToBrushConverter}" ConverterParameterBinding="{Binding ElementName=arc, Path=EndAngle}"/>
+                                                        <MultiBinding Converter="{StaticResource ValueToBrushConverter}">
+                                                            <Binding Path="Value" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                            <Binding Path="MaximumValue" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                        </MultiBinding>
                                                     </Setter.Value>
                                                 </Setter>
                                             </DataTrigger>
@@ -61,16 +68,18 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <TextBlock Visibility="{TemplateBinding ValueVisibility}" FontSize="{TemplateBinding ValueFontSize}" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Value, RelativeSource={RelativeSource TemplatedParent}}">
+                            <TextBlock Visibility="{Binding ValueVisibility, RelativeSource={RelativeSource Mode=TemplatedParent}}" FontSize="{Binding ValueFontSize, RelativeSource={RelativeSource Mode=TemplatedParent}}" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Value, RelativeSource={RelativeSource TemplatedParent}}">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
-                                        <Setter Property="Foreground" Value="{Binding ValueColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}"/>
+                                        <Setter Property="Foreground" Value="{Binding ValueColor, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding ValueColor, RelativeSource={RelativeSource  AncestorType=hc:SpeedoMeter}}" Value="{x:Null}">
+                                            <DataTrigger Binding="{Binding ValueColor, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="{x:Null}">
                                                 <Setter Property="Foreground">
                                                     <Setter.Value>
-                                                        <hc:ConverterBindableBinding Binding="{Binding ElementName=arc, Path=Tag}"
-                                                                                    Converter="{StaticResource ValueToBrushConverter}" ConverterParameterBinding="{Binding ElementName=arc, Path=EndAngle}"/>
+                                                        <MultiBinding Converter="{StaticResource ValueToBrushConverter}">
+                                                            <Binding Path="Value" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                            <Binding Path="MaximumValue" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                        </MultiBinding>
                                                     </Setter.Value>
                                                 </Setter>
                                             </DataTrigger>
