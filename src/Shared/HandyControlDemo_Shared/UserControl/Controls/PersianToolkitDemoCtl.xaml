@@ -25,12 +25,12 @@
                     </TabItem>
                     <TabItem Header="Background">
                         <UniformGrid>
-                            <hc:MainContentBackground hc:BorderElement.CornerRadius="5" Margin="10" Width="200" Height="100">
+                            <ContentControl Style="{StaticResource ChessBoard}" hc:BorderElement.CornerRadius="5" Margin="10" Width="200" Height="100">
                                 <Button Content="Click" Width="200"/>
-                            </hc:MainContentBackground>
-                            <hc:MainContentBackground Background="White" Style="{StaticResource LiveStyle}" Margin="10" Width="800" Height="500">
+                            </ContentControl>
+                            <ContentControl Background="White" Style="{StaticResource LiveStyle}" Margin="10" Width="800" Height="500">
                                 <Button Content="Click" Width="200"/>
-                            </hc:MainContentBackground>
+                            </ContentControl>
                         </UniformGrid>
                     </TabItem>
                     <TabItem Header="Input">
