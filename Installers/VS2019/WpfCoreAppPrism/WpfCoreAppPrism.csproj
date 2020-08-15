@@ -80,10 +80,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="DesignTimeResources.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <None Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
