@@ -5,6 +5,19 @@
 ![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) ![dotnetcore-version](https://img.shields.io/badge/.net%20Core-%3E%3D3.0-blue) ![csharp-version](https://img.shields.io/badge/C%23-8.0-blue.svg) ![IDE-version](https://img.shields.io/badge/IDE-vs2019-blue.svg) [![nuget-version](https://img.shields.io/nuget/v/HandyControls.svg)](https://www.nuget.org/packages/HandyControls) [![Gitter](https://badges.gitter.im/HandyControls/community.svg)](https://gitter.im/HandyControls/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Document](https://img.shields.io/badge/Document-Updated-success)](https://ghost1372.github.io/) [![Nuget](https://img.shields.io/nuget/dt/handycontrols)](https://www.nuget.org/packages/HandyControls) ![Github-build-status](https://github.com/ghost1372/HandyControls/workflows/build/badge.svg) [![Issues](https://img.shields.io/github/issues/handyorg/handycontrol?color=orange&label=Issues)](https://github.com/handyorg/HandyControl/issues)
 
+<br>
+<p align="center">
+	<a href="https://blockchain.com/btc/payment_request?address=19cmmVkh4ZsEdrcumbRMvQXmCFfw8nAbX5&amount=0.00041825&message=Buy a cup of tea"><img width="185" src="https://yourdonation.rocks/images/badge.svg" alt="Badge"></a>
+	<br><br>
+	<b>🙌 Use <a href="https://blockchain.com/btc/payment_request?address=19cmmVkh4ZsEdrcumbRMvQXmCFfw8nAbX5&amount=0.00041825&message=Buy a cup of tea">donations</a> to help support <b>your</b> projects! 🙌</b>
+</p>
+<br>
+
+---
+
+<br>
+
+
 # Welcome to HandyControl
 This project is based on [HandyControl](https://github.com/handyOrg/HandyControl) and includes some controls and features that are not included in the original project [for example support for Persian Calendar and PersianDate, More Controls and More Styles]
 [See what's there](https://ghost1372.github.io/handycontrol/persianToolkit/) 
