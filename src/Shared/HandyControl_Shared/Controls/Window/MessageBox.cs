@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Media;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -500,7 +501,7 @@ namespace HandyControl.Controls
                     {
                         IsCancel = true,
                         IsDefault = true,
-                        Content = ConfirmContent,
+                        Content = messageBox.ConfirmContent,
                         Command = ControlCommands.Confirm,
                         Style = ResourceHelper.GetResource<Style>("MessageBoxButtonStyle")
                     };
@@ -510,7 +511,7 @@ namespace HandyControl.Controls
                     messageBox._showOk = true;
                     messageBox._buttonOk = new Button
                     {
-                        Content = ConfirmContent,
+                        Content = messageBox.ConfirmContent,
                         Command = ControlCommands.Confirm
                     };
 
@@ -518,7 +519,7 @@ namespace HandyControl.Controls
                     messageBox._buttonCancel = new Button
                     {
                         IsCancel = true,
-                        Content = CancelContent,
+                        Content = messageBox.CancelContent,
                         Command = ControlCommands.Cancel
                     };
 
@@ -540,14 +541,14 @@ namespace HandyControl.Controls
                     messageBox._showYes = true;
                     messageBox._buttonYes = new Button
                     {
-                        Content = YesContent,
+                        Content = messageBox.YesContent,
                         Command = ControlCommands.Yes
                     };
 
                     messageBox._showNo = true;
                     messageBox._buttonNo = new Button
                     {
-                        Content = NoContent,
+                        Content = messageBox.NoContent,
                         Command = ControlCommands.No
                     };
 
@@ -569,14 +570,14 @@ namespace HandyControl.Controls
                     messageBox._showYes = true;
                     messageBox._buttonYes = new Button
                     {
-                        Content = YesContent,
+                        Content = messageBox.YesContent,
                         Command = ControlCommands.Yes
                     };
 
                     messageBox._showNo = true;
                     messageBox._buttonNo = new Button
                     {
-                        Content = NoContent,
+                        Content = messageBox.NoContent,
                         Command = ControlCommands.No
                     };
 
@@ -584,7 +585,7 @@ namespace HandyControl.Controls
                     messageBox._buttonCancel = new Button
                     {
                         IsCancel = true,
-                        Content = CancelContent,
+                        Content = messageBox.CancelContent,
                         Command = ControlCommands.Cancel
                     };
 
