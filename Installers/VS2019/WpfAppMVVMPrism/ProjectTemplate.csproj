@@ -35,9 +35,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="HandyControls">
-      <Version>2.5.3.2</Version>
+      <Version>3.0.0-rc.2</Version>
     </PackageReference>
-    <PackageReference Include="Prism.DryIoc" Version="7.2.0.1422" />
+    <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -54,6 +54,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+	<Compile Include="Bootstrapper.cs" />
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

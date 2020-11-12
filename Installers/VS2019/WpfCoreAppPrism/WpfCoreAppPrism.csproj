@@ -64,6 +64,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </None>
     <None Include="MainWindowViewModel.cs" />
+    <None Include="Bootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
