@@ -6,7 +6,6 @@ using System.Net;
 #if !NET40
 using System.Runtime;
 #endif
-using System.Security.Authentication; 
 using System.Threading;
 using System.Windows;
 using HandyControl.Controls;
@@ -78,7 +77,7 @@ namespace HandyControlDemo
                 ConfigHelper.Instance.SetWindowDefaultStyle();
                 ConfigHelper.Instance.SetNavigationWindowDefaultStyle();
 
-                ServicePointManager.SecurityProtocol = (SecurityProtocolType)(SslProtocols)0x00000C00;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             }
         }
 
