@@ -3,7 +3,7 @@ name: Code format check
 on: 
   push:
     branches: 
-      - master
+      - develop
 jobs:
   dotnet-format:
     runs-on: windows-latest
@@ -45,7 +45,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           # 以下是给定代码审查者，需要设置仓库有权限的开发者
-          assignees: NaBian
-          reviewers: NaBian
+          assignees: ghost1372
+          reviewers: ghost1372
           # 对应的上传分支
           branch: t/bot/fix-codeformatting
