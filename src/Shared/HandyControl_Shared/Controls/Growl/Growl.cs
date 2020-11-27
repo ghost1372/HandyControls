@@ -161,6 +161,9 @@ namespace HandyControl.Controls
         public static readonly DependencyProperty ShowDateTimeProperty = DependencyProperty.Register(
             "ShowDateTime", typeof(bool), typeof(Growl), new PropertyMetadata(ValueBoxes.TrueBox));
 
+        public static readonly DependencyProperty ShowPersianDateTimeProperty = DependencyProperty.Register(
+            "ShowPersianDateTime", typeof(bool), typeof(Growl), new PropertyMetadata(ValueBoxes.FalseBox));
+
         public static readonly DependencyProperty MessageProperty = DependencyProperty.Register(
             "Message", typeof(string), typeof(Growl), new PropertyMetadata(default(string)));
 
@@ -235,6 +238,12 @@ namespace HandyControl.Controls
         {
             get => (bool)GetValue(ShowDateTimeProperty);
             set => SetValue(ShowDateTimeProperty, ValueBoxes.BooleanBox(value));
+        }
+
+        public bool ShowPersianDateTime
+        {
+            get => (bool)GetValue(ShowPersianDateTimeProperty);
+            set => SetValue(ShowPersianDateTimeProperty, ValueBoxes.BooleanBox(value));
         }
 
         public string Message
@@ -354,16 +363,26 @@ namespace HandyControl.Controls
 #endif
                     () =>
                     {
+                        var showDateTime = growlInfo.ShowDateTime;
+                        var time = DateTime.Now;
+                        if (growlInfo.ShowPersianDateTime)
+                        {
+                            System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
+                            time = new DateTime(pc.GetYear(DateTime.Now), pc.GetMonth(DateTime.Now), pc.GetDayOfMonth(DateTime.Now), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Local);
+                            showDateTime = false;
+                        }
+
                         var ctl = new Growl
                         {
                             Message = growlInfo.Message,
-                            Time = DateTime.Now,
+                            Time = time,
                             Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey),
                             IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey),
                             _showCloseButton = growlInfo.ShowCloseButton,
                             ActionBeforeClose = growlInfo.ActionBeforeClose,
                             _staysOpen = growlInfo.StaysOpen,
-                            ShowDateTime = growlInfo.ShowDateTime,
+                            ShowDateTime = showDateTime,
+                            ShowPersianDateTime = growlInfo.ShowPersianDateTime,
                             ConfirmStr = growlInfo.ConfirmStr,
                             CancelStr = growlInfo.CancelStr,
                             Type = growlInfo.Type,
@@ -389,16 +408,26 @@ namespace HandyControl.Controls
 #endif
                     () =>
                     {
+                        var showDateTime = growlInfo.ShowDateTime;
+                        var time = DateTime.Now;
+                        if (growlInfo.ShowPersianDateTime)
+                        {
+                            System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
+                            time = new DateTime(pc.GetYear(DateTime.Now), pc.GetMonth(DateTime.Now), pc.GetDayOfMonth(DateTime.Now),DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Local);
+                            showDateTime = false;
+                        }
+
                         var ctl = new Growl
                         {
                             Message = growlInfo.Message,
-                            Time = DateTime.Now,
+                            Time = time,
                             Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey),
                             IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey),
                             _showCloseButton = growlInfo.ShowCloseButton,
                             ActionBeforeClose = growlInfo.ActionBeforeClose,
                             _staysOpen = growlInfo.StaysOpen,
-                            ShowDateTime = growlInfo.ShowDateTime,
+                            ShowDateTime = showDateTime,
+                            ShowPersianDateTime = growlInfo.ShowPersianDateTime,
                             ConfirmStr = growlInfo.ConfirmStr,
                             CancelStr = growlInfo.CancelStr,
                             Type = growlInfo.Type,

@@ -428,5 +428,10 @@ namespace HandyControlDemo.UserControl
             DataContext = this;
         }
         #endregion
+
+        private void OpenGrowl_Click(object sender, RoutedEventArgs e)
+        {
+            Growl.SuccessGlobal(new GrowlInfo { ShowPersianDateTime = true, Message = "Hello" });
+        }
     }
 }

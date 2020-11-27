@@ -8,6 +8,8 @@ namespace HandyControl.Data
 
         public bool ShowDateTime { get; set; } = true;
 
+        public bool ShowPersianDateTime { get; set; } = false;
+
         public int WaitTime { get; set; } = 6;
 
         public string CancelStr { get; set; } = Properties.Langs.Lang.Cancel;
