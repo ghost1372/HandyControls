@@ -7,8 +7,6 @@
 
 <br>
 <p align="center">
-	<a href="https://blockchain.com/btc/payment_request?address=19cmmVkh4ZsEdrcumbRMvQXmCFfw8nAbX5&amount=0.00041825&message=Buy a cup of tea"><img width="185" src="https://yourdonation.rocks/images/badge.svg" alt="Badge"></a>
-	<br><br>
 	<b>🙌 Use <a href="https://blockchain.com/btc/payment_request?address=19cmmVkh4ZsEdrcumbRMvQXmCFfw8nAbX5&amount=0.00041825&message=Buy a cup of tea">donations</a> to help support <b>your</b> projects! 🙌</b>
 </p>
 <br>
