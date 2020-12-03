@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:langs="clr-namespace:HandyControl.Properties.Langs" xmlns:interactivity="clr-namespace:HandyControl.Interactivity" xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" xmlns:converter="clr-namespace:HandyControl.Tools.Converter" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:themes="clr-namespace:HandyControl.Themes" xmlns:hc="clr-namespace:HandyControl.Controls" xmlns:tools="clr-namespace:HandyControl.Tools" xmlns:ex="clr-namespace:HandyControl.Tools.Extension" xmlns:shapes="clr-namespace:HandyControl.Expression.Shapes">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:langs="clr-namespace:HandyControl.Properties.Langs" xmlns:interactivity="clr-namespace:HandyControl.Interactivity" xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options" xmlns:converter="clr-namespace:HandyControl.Tools.Converter" xmlns:system="clr-namespace:System;assembly=mscorlib" xmlns:themes="clr-namespace:HandyControl.Themes" xmlns:hc="clr-namespace:HandyControl.Controls" xmlns:tools="clr-namespace:HandyControl.Tools" xmlns:ex="clr-namespace:HandyControl.Tools.Extension" xmlns:shapes="clr-namespace:HandyControl.Expression.Shapes" xmlns:shell="http://schemas.microsoft.com/winfx/2006/xaml/presentation/shell">
   <langs:LangProvider x:Key="Langs" />
   <interactivity:FluidMoveBehavior x:Key="BehaviorXY200" x:Shared="False" AppliesTo="Children" Duration="0:0:.2">
     <interactivity:FluidMoveBehavior.EaseX>
@@ -1317,13 +1317,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -1393,13 +1386,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -1466,13 +1452,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -1640,13 +1619,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -1673,7 +1645,7 @@
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -1708,13 +1680,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -1739,7 +1704,7 @@
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <ControlTemplate x:Key="ComboBoxLeftTemplate" TargetType="ComboBox">
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -1774,13 +1739,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -1852,13 +1810,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -1885,7 +1836,7 @@
     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -1920,13 +1871,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -1951,7 +1895,7 @@
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <ControlTemplate x:Key="ComboBoxEditableLeftTemplate" TargetType="ComboBox">
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -1986,13 +1930,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -4276,6 +4213,7 @@
           <Condition Property="IsSelected" Value="true" />
           <Condition Property="Selector.IsSelectionActive" Value="false" />
         </MultiTrigger.Conditions>
+        <Setter Property="Foreground" Value="White" />
         <Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
       </MultiTrigger>
@@ -4338,7 +4276,7 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="DataGridRowHeader">
-          <hc:SimplePanel HorizontalAlignment="Center">
+          <Grid HorizontalAlignment="Center">
             <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Padding="{TemplateBinding Padding}">
               <StackPanel Orientation="Horizontal">
                 <ContentPresenter RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
@@ -4346,7 +4284,7 @@
             </Border>
             <Thumb x:Name="PART_TopHeaderGripper" Style="{StaticResource RowHeaderGripperStyle}" VerticalAlignment="Top" />
             <Thumb x:Name="PART_BottomHeaderGripper" Style="{StaticResource RowHeaderGripperStyle}" VerticalAlignment="Bottom" />
-          </hc:SimplePanel>
+          </Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
@@ -4416,7 +4354,7 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="GridViewColumnHeader">
-          <hc:SimplePanel SnapsToDevicePixels="true">
+          <Grid SnapsToDevicePixels="true">
             <Border x:Name="HeaderBorder" BorderBrush="{TemplateBinding BorderBrush}" Background="Transparent">
               <Grid>
                 <Grid.RowDefinitions>
@@ -4431,7 +4369,7 @@
             <Canvas>
               <Thumb x:Name="PART_HeaderGripper" Style="{StaticResource GridViewColumnHeaderGripper}" />
             </Canvas>
-          </hc:SimplePanel>
+          </Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
@@ -4552,15 +4490,6 @@
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Style.Triggers>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
-    </Style.Triggers>
   </Style>
   <Style BasedOn="{StaticResource LoadingLineBaseStyle}" TargetType="hc:LoadingLine" />
   <Style x:Key="LoadingLineLight" BasedOn="{StaticResource LoadingLineBaseStyle}" TargetType="hc:LoadingLine">
@@ -5272,7 +5201,7 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="ResizeGrip">
-          <hc:SimplePanel Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+          <Grid Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
             <Path Width="11" Height="11" Data="M 9,0 L 11,0 L 11,11 L 0,11 L 0,9 L 3,9 L 3,6 L 6,6 L 6,3 L 9,3 z" HorizontalAlignment="Right" VerticalAlignment="Bottom">
               <Path.Fill>
                 <DrawingBrush TileMode="Tile" Viewbox="0,0,3,3" Viewport="0,0,3,3" ViewportUnits="Absolute" ViewboxUnits="Absolute">
@@ -5288,7 +5217,7 @@
                 </DrawingBrush>
               </Path.Fill>
             </Path>
-          </hc:SimplePanel>
+          </Grid>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
@@ -7570,7 +7499,6 @@
     <Setter Property="hc:ScrollViewer.IsInertiaEnabled" Value="False" />
     <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
-    <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="TreeView">
@@ -7583,24 +7511,10 @@
             <Trigger Property="IsEnabled" Value="false">
               <Setter Property="Background" TargetName="Bd" Value="{StaticResource {x:Static SystemColors.ControlBrushKey}}" />
             </Trigger>
-            <Trigger Property="VirtualizingPanel.IsVirtualizing" Value="true">
-              <Setter Property="CanContentScroll" TargetName="_tv_scrollviewer_" Value="true" />
-            </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Style.Triggers>
-      <Trigger Property="VirtualizingPanel.IsVirtualizing" Value="true">
-        <Setter Property="ItemsPanel">
-          <Setter.Value>
-            <ItemsPanelTemplate>
-              <VirtualizingStackPanel />
-            </ItemsPanelTemplate>
-          </Setter.Value>
-        </Setter>
-      </Trigger>
-    </Style.Triggers>
   </Style>
   <Style x:Key="ButtonDefault" BasedOn="{StaticResource ButtonBaseStyle}" TargetType="Button">
     <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
@@ -9017,7 +8931,8 @@
   <Style BasedOn="{StaticResource TransferBaseStyle}" TargetType="hc:Transfer" />
   <Style BasedOn="{StaticResource TreeViewItemBaseStyle}" TargetType="TreeViewItem" />
   <Style BasedOn="{StaticResource TreeViewBaseStyle}" TargetType="TreeView" />
-  <Style x:Key="WindowWin10" TargetType="hc:Window">
+  <Style x:Key="WindowWin10" BasedOn="{x:Null}" TargetType="hc:Window">
+    <Setter Property="OverridesDefaultStyle" Value="True" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="#262e2f" />
     <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
@@ -9047,11 +8962,11 @@
                   <ColumnDefinition />
                   <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <StackPanel Name="ButtonPanel" WindowChrome.IsHitTestVisibleInChrome="True" UseLayoutRounding="True" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                  <Button Background="{TemplateBinding OtherButtonBackground}" Foreground="{TemplateBinding OtherButtonForeground}" Command="SystemCommands.MinimizeWindowCommand" IsTabStop="False" Name="ButtonMin" Height="29" Style="{StaticResource ButtonIcon}" Width="45" hc:IconElement.Geometry="{StaticResource WindowMinGeometry}" BorderThickness="1,0,1,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
-                  <Button Background="{TemplateBinding OtherButtonBackground}" Foreground="{TemplateBinding OtherButtonForeground}" Command="SystemCommands.MaximizeWindowCommand" IsTabStop="False" Name="ButtonMax" Height="29" Style="{StaticResource ButtonIcon}" Width="46" hc:IconElement.Geometry="{StaticResource WindowMaxGeometry}" BorderThickness="1,0,1,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
-                  <Button Background="{TemplateBinding OtherButtonBackground}" Foreground="{TemplateBinding OtherButtonForeground}" Command="SystemCommands.RestoreWindowCommand" IsTabStop="False" Name="ButtonRestore" Height="29" Style="{StaticResource ButtonIcon}" Width="46" hc:IconElement.Geometry="{StaticResource WindowRestoreGeometry}" BorderThickness="1,0,1,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
-                  <Button Background="{TemplateBinding CloseButtonBackground}" Foreground="{TemplateBinding CloseButtonForeground}" Command="SystemCommands.CloseWindowCommand" IsTabStop="False" Name="ButtonClose" Height="29" Style="{StaticResource ButtonIcon}" Width="46" hc:IconElement.Geometry="{StaticResource CloseGeometry}" BorderThickness="1,0,0,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
+                <StackPanel Name="ButtonPanel" shell:WindowChrome.IsHitTestVisibleInChrome="True" UseLayoutRounding="True" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                  <Button Background="{TemplateBinding OtherButtonBackground}" Foreground="{TemplateBinding OtherButtonForeground}" Command="shell:SystemCommands.MinimizeWindowCommand" IsTabStop="False" Name="ButtonMin" Height="29" Style="{StaticResource ButtonIcon}" Width="45" hc:IconElement.Geometry="{StaticResource WindowMinGeometry}" BorderThickness="1,0,1,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
+                  <Button Background="{TemplateBinding OtherButtonBackground}" Foreground="{TemplateBinding OtherButtonForeground}" Command="shell:SystemCommands.MaximizeWindowCommand" IsTabStop="False" Name="ButtonMax" Height="29" Style="{StaticResource ButtonIcon}" Width="46" hc:IconElement.Geometry="{StaticResource WindowMaxGeometry}" BorderThickness="1,0,1,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
+                  <Button Background="{TemplateBinding OtherButtonBackground}" Foreground="{TemplateBinding OtherButtonForeground}" Command="shell:SystemCommands.RestoreWindowCommand" IsTabStop="False" Name="ButtonRestore" Height="29" Style="{StaticResource ButtonIcon}" Width="46" hc:IconElement.Geometry="{StaticResource WindowRestoreGeometry}" BorderThickness="1,0,1,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
+                  <Button Background="{TemplateBinding CloseButtonBackground}" Foreground="{TemplateBinding CloseButtonForeground}" Command="shell:SystemCommands.CloseWindowCommand" IsTabStop="False" Name="ButtonClose" Height="29" Style="{StaticResource ButtonIcon}" Width="46" hc:IconElement.Geometry="{StaticResource CloseGeometry}" BorderThickness="1,0,0,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
                 </StackPanel>
                 <Grid Grid.Column="0">
                   <Grid.ColumnDefinitions>
@@ -9059,13 +8974,13 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                   </Grid.ColumnDefinitions>
-                  <Button Name="ButtonIcon" Visibility="{TemplateBinding Icon,Converter={StaticResource Object2VisibilityConverter}}" Command="{x:Static SystemCommands.ShowSystemMenuCommand}" Background="Transparent" Margin="10,0,0,0" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource ButtonCustom}" VerticalAlignment="Center">
+                  <Button Name="ButtonIcon" Visibility="{TemplateBinding Icon,Converter={StaticResource Object2VisibilityConverter}}" Command="{x:Static shell:SystemCommands.ShowSystemMenuCommand}" Background="Transparent" Margin="10,0,0,0" shell:WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource ButtonCustom}" VerticalAlignment="Center">
                     <interactivity:Interaction.Triggers>
                       <interactivity:EventTrigger EventName="MouseDoubleClick">
-                        <interactivity:InvokeCommandAction Command="{x:Static SystemCommands.CloseWindowCommand}" />
+                        <interactivity:InvokeCommandAction Command="{x:Static shell:SystemCommands.CloseWindowCommand}" />
                       </interactivity:EventTrigger>
                     </interactivity:Interaction.Triggers>
-                    <Image IsHitTestVisible="False" Source="{TemplateBinding Icon}" VerticalAlignment="Center" Width="16" Height="16" />
+                    <Image IsHitTestVisible="False" Name="Icon" Source="{TemplateBinding Icon}" VerticalAlignment="Center" Width="16" Height="16" />
                   </Button>
                   <TextBlock Grid.Column="1" Text="{TemplateBinding Title}" Padding="10,0,0,0" VerticalAlignment="Center">
                     <TextBlock.Visibility>
@@ -9077,13 +8992,13 @@
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
-                  <ContentPresenter WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="2" x:Name="ContentPresenterMain" Content="{TemplateBinding NonClientAreaContent}" />
+                  <ContentPresenter shell:WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="2" x:Name="ContentPresenterMain" Content="{TemplateBinding NonClientAreaContent}" />
                 </Grid>
               </Grid>
               <AdornerDecorator Grid.Row="1">
                 <ContentPresenter ClipToBounds="True" />
               </AdornerDecorator>
-              <ResizeGrip Width="10" Height="10" x:Name="ResizeGrip" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" IsTabStop="False" Visibility="Collapsed" WindowChrome.ResizeGripDirection="BottomRight" />
+              <ResizeGrip Width="10" Height="10" x:Name="ResizeGrip" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" IsTabStop="False" Visibility="Collapsed" />
             </Grid>
           </Border>
           <ControlTemplate.Triggers>
@@ -9156,12 +9071,12 @@
         <ControlTemplate TargetType="hc:ImageBrowser">
           <ControlTemplate.Resources>
             <Storyboard x:Key="Storyboard1">
-              <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_PanelTop">
+              <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_GridTop">
                 <EasingDoubleKeyFrame KeyTime="0:0:.1" Value="1" />
               </DoubleAnimationUsingKeyFrames>
             </Storyboard>
             <Storyboard x:Key="Storyboard2">
-              <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_PanelTop">
+              <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_GridTop">
                 <EasingDoubleKeyFrame KeyTime="0:0:.4" Value="0" />
               </DoubleAnimationUsingKeyFrames>
             </Storyboard>
@@ -9172,13 +9087,13 @@
               <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <hc:ImageViewer x:Name="PART_ImageViewer" ShowImgMap="True" BorderThickness="0" Background="#dd000000" />
-            <hc:SimplePanel x:Name="PART_PanelTop" Opacity="0" Background="{DynamicResource DarkOpacityBrush}" VerticalAlignment="Top" Grid.Row="0">
+            <Grid Name="PART_GridTop" Opacity="0" Background="{DynamicResource DarkOpacityBrush}" VerticalAlignment="Top" Grid.Row="0">
               <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                 <TextBlock Text="{Binding ImgPath,ElementName=PART_ImageViewer}" Foreground="White" Margin="10,0,0,0" />
                 <TextBlock Text="{Binding ImgSize,ElementName=PART_ImageViewer,Converter={StaticResource Long2FileSizeConverter}}" Foreground="White" Margin="30,0,0,0" />
               </StackPanel>
-              <Button Command="interactivity:ControlCommands.Close" WindowChrome.IsHitTestVisibleInChrome="True" Background="Red" Padding="14" hc:IconElement.Geometry="{StaticResource DeleteGeometry}" Style="{StaticResource ButtonIcon}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="40" Height="40" />
-            </hc:SimplePanel>
+              <Button Command="interactivity:ControlCommands.Close" shell:WindowChrome.IsHitTestVisibleInChrome="True" Background="Red" Grid.Row="0" Padding="14" hc:IconElement.Geometry="{StaticResource DeleteGeometry}" Style="{StaticResource ButtonIcon}" HorizontalAlignment="Right" VerticalAlignment="Top" Width="40" Height="40" />
+            </Grid>
           </Grid>
           <ControlTemplate.Triggers>
             <Trigger SourceName="PART_ImageViewer" Property="ShowCloseButton" Value="True">
@@ -9255,13 +9170,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -9368,13 +9276,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -9550,7 +9451,7 @@
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -9587,13 +9488,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -9656,7 +9550,7 @@
         <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
       </Storyboard>
     </ControlTemplate.Resources>
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -9693,13 +9587,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -9765,7 +9652,7 @@
     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -9802,13 +9689,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -9892,7 +9772,7 @@
     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -9944,13 +9824,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder_AutoComplete" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder_AutoComplete" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -10035,7 +9908,7 @@
         <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
       </Storyboard>
     </ControlTemplate.Resources>
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -10072,13 +9945,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -10159,7 +10025,7 @@
         <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
       </Storyboard>
     </ControlTemplate.Resources>
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -10211,13 +10077,6 @@
         <Setter Property="MaxWidth" TargetName="dropDownBorder_AutoComplete" Value="{Binding ActualWidth, ElementName=toggleButton}" />
         <Setter Property="MinWidth" TargetName="dropDownBorder_AutoComplete" Value="{Binding ActualWidth, ElementName=toggleButton}" />
       </Trigger>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
       <Trigger Property="ScrollViewer.CanContentScroll" SourceName="DropDownScrollViewer" Value="false">
         <Setter Property="Canvas.Top" TargetName="opaqueRect" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}" />
         <Setter Property="Canvas.Left" TargetName="opaqueRect" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}" />
@@ -12790,15 +12649,6 @@
         </ControlTemplate>
       </Setter.Value>
     </Setter>
-    <Style.Triggers>
-      <MultiTrigger>
-        <MultiTrigger.Conditions>
-          <Condition Property="IsGrouping" Value="true" />
-          <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
-        </MultiTrigger.Conditions>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
-      </MultiTrigger>
-    </Style.Triggers>
   </Style>
   <Style BasedOn="{StaticResource DatePickerBaseStyle}" TargetType="DatePicker" />
   <Style x:Key="DatePickerExtend" BasedOn="{StaticResource DatePickerExtendBaseStyle}" TargetType="DatePicker" />
@@ -12891,7 +12741,7 @@
                   <ColumnDefinition />
                   <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <StackPanel WindowChrome.IsHitTestVisibleInChrome="True" UseLayoutRounding="True" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                <StackPanel shell:WindowChrome.IsHitTestVisibleInChrome="True" UseLayoutRounding="True" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
                   <Button Background="{TemplateBinding CloseButtonBackground}" Foreground="{TemplateBinding CloseButtonForeground}" IsTabStop="False" Name="PART_ButtonClose" Height="29" Style="{StaticResource ButtonIcon}" Width="46" hc:IconElement.Geometry="{StaticResource CloseGeometry}" BorderThickness="1,0,0,0" hc:IconElement.Width="10" hc:IconElement.Height="10" />
                 </StackPanel>
                 <Grid Grid.Column="0">
@@ -12900,10 +12750,10 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                   </Grid.ColumnDefinitions>
-                  <Button Name="ButtonIcon" Visibility="{TemplateBinding Icon,Converter={StaticResource Object2VisibilityConverter}}" Command="{x:Static SystemCommands.ShowSystemMenuCommand}" Background="Transparent" Margin="10,0,0,0" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource ButtonCustom}" VerticalAlignment="Center">
+                  <Button Name="ButtonIcon" Visibility="{TemplateBinding Icon,Converter={StaticResource Object2VisibilityConverter}}" Command="{x:Static shell:SystemCommands.ShowSystemMenuCommand}" Background="Transparent" Margin="10,0,0,0" shell:WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource ButtonCustom}" VerticalAlignment="Center">
                     <interactivity:Interaction.Triggers>
                       <interactivity:EventTrigger EventName="MouseDoubleClick">
-                        <interactivity:InvokeCommandAction Command="{x:Static SystemCommands.CloseWindowCommand}" />
+                        <interactivity:InvokeCommandAction Command="{x:Static shell:SystemCommands.CloseWindowCommand}" />
                       </interactivity:EventTrigger>
                     </interactivity:Interaction.Triggers>
                     <Image IsHitTestVisible="False" Source="{TemplateBinding Icon}" VerticalAlignment="Center" Width="16" Height="16" />
@@ -12918,7 +12768,7 @@
                       </MultiBinding>
                     </TextBlock.Visibility>
                   </TextBlock>
-                  <ContentPresenter WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="2" x:Name="ContentPresenterMain" Content="{TemplateBinding NonClientAreaContent}" />
+                  <ContentPresenter shell:WindowChrome.IsHitTestVisibleInChrome="True" Grid.Column="2" x:Name="ContentPresenterMain" Content="{TemplateBinding NonClientAreaContent}" />
                 </Grid>
               </Grid>
               <Grid Grid.Row="1">
