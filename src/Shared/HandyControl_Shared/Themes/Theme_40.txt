@@ -76,6 +76,7 @@ Styles\Base\WatermarkBaseStyle.xaml
 Styles\Badge.xaml
 Styles\BlendEffectBox.xaml
 Styles\Border.xaml
+Styles\BusyIndicator.xaml
 Styles\Button.xaml
 Styles\ButtonGroup.xaml
 Styles\Calendar.xaml
@@ -85,6 +86,7 @@ Styles\Carousel.xaml
 Styles\ChatBubble.xaml
 Styles\CheckBox.xaml
 Styles\CheckComboBox.xaml
+Styles\CheckTreeView.xaml
 Styles\Clock.xaml
 Styles\Col.xaml
 Styles\ColorPicker.xaml
@@ -144,6 +146,7 @@ Styles\Shield.xaml
 Styles\SideMenu.xaml
 Styles\SimpleItemsControl.xaml
 Styles\Slider.xaml
+Styles\SpeedoMeter.xaml
 Styles\SplitButton.xaml
 Styles\Sprite.xaml
 Styles\StatusBar.xaml
