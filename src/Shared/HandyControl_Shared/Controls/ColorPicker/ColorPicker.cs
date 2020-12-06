@@ -734,6 +734,9 @@ namespace HandyControl.Controls
         }
 
         public bool CanDispose { get; } = true;
-
+        public static void IsCheckedToggleButtonDropper(bool value)
+        {
+            ColorPicker.cPicker._toggleButtonDropper.IsChecked = value;
+        }
     }
 }
