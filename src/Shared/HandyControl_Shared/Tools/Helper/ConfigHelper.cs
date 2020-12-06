@@ -21,7 +21,7 @@ namespace HandyControl.Tools
 
         }
 
-        public static ConfigHelper Instance = new Lazy<ConfigHelper>(() => new ConfigHelper()).Value; 
+        public static ConfigHelper Instance = new Lazy<ConfigHelper>(() => new ConfigHelper()).Value;
 
         private XmlLanguage _lang = XmlLanguage.GetLanguage("en");
 
@@ -51,7 +51,7 @@ namespace HandyControl.Tools
             SetTimelineFrameRate(config.TimelineFrameRate);
         }
 
-        public void SetTimelineFrameRate(int rate) => 
+        public void SetTimelineFrameRate(int rate) =>
             Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata(rate));
 
         public void SetWindowDefaultStyle(object resourceKey = null)
@@ -83,7 +83,7 @@ namespace HandyControl.Tools
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }  
+        }
 #endif
     }
 }

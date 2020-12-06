@@ -65,7 +65,7 @@ namespace HandyControl.Controls
         /// </summary>
         public bool IsAnimationEnabled
         {
-            get => (bool)GetValue(IsAnimationEnabledProperty);
+            get => (bool) GetValue(IsAnimationEnabledProperty);
             set => SetValue(IsAnimationEnabledProperty, ValueBoxes.BooleanBox(value));
         }
 
@@ -80,7 +80,7 @@ namespace HandyControl.Controls
         /// </summary>
         public bool IsDraggable
         {
-            get => (bool)GetValue(IsDraggableProperty);
+            get => (bool) GetValue(IsDraggableProperty);
             set => SetValue(IsDraggableProperty, ValueBoxes.BooleanBox(value));
         }
 
@@ -101,7 +101,7 @@ namespace HandyControl.Controls
         /// </summary>
         public bool ShowCloseButton
         {
-            get => (bool)GetValue(ShowCloseButtonProperty);
+            get => (bool) GetValue(ShowCloseButtonProperty);
             set => SetValue(ShowCloseButtonProperty, value);
         }
 
@@ -122,7 +122,7 @@ namespace HandyControl.Controls
         /// </summary>
         public bool ShowContextMenu
         {
-            get => (bool)GetValue(ShowContextMenuProperty);
+            get => (bool) GetValue(ShowContextMenuProperty);
             set => SetValue(ShowContextMenuProperty, value);
         }
 
@@ -137,7 +137,7 @@ namespace HandyControl.Controls
         /// </summary>
         public bool IsTabFillEnabled
         {
-            get => (bool)GetValue(IsTabFillEnabledProperty);
+            get => (bool) GetValue(IsTabFillEnabledProperty);
             set => SetValue(IsTabFillEnabledProperty, ValueBoxes.BooleanBox(value));
         }
 
@@ -152,7 +152,7 @@ namespace HandyControl.Controls
         /// </summary>
         public double TabItemWidth
         {
-            get => (double)GetValue(TabItemWidthProperty);
+            get => (double) GetValue(TabItemWidthProperty);
             set => SetValue(TabItemWidthProperty, value);
         }
 
@@ -167,7 +167,7 @@ namespace HandyControl.Controls
         /// </summary>
         public double TabItemHeight
         {
-            get => (double)GetValue(TabItemHeightProperty);
+            get => (double) GetValue(TabItemHeightProperty);
             set => SetValue(TabItemHeightProperty, value);
         }
 
@@ -344,7 +344,7 @@ namespace HandyControl.Controls
         {
             if (!IsTabFillEnabled)
             {
-                _itemShowCount = (int)(ActualWidth / TabItemWidth);
+                _itemShowCount = (int) (ActualWidth / TabItemWidth);
                 _buttonOverflow?.Show(ShowOverflowButton && Items.Count > 0 && Items.Count >= _itemShowCount);
             }
         }
@@ -366,7 +366,7 @@ namespace HandyControl.Controls
                 _buttonOverflow.Menu.Items.Clear();
                 for (var i = 0; i < Items.Count; i++)
                 {
-                    if(!(ItemContainerGenerator.ContainerFromIndex(i) is TabItem item)) continue;
+                    if (!(ItemContainerGenerator.ContainerFromIndex(i) is TabItem item)) continue;
 
                     var menuItem = new MenuItem
                     {

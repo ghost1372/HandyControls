@@ -7,19 +7,12 @@
     <PackageId>HandyControl</PackageId>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <NoWarn>0067;0649;1591</NoWarn>
+    <NoWarn>0067;0649;1591;0108;1717</NoWarn>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release-Net40|AnyCPU' ">
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\HandyControl.xml</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.Shell">
-      <Version>3.0.1</Version>
-    </PackageReference>
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web" />
-  </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.Designer.cs">
       <Link>Properties\Langs\Lang.Designer.cs</Link>
@@ -76,6 +69,7 @@
     </Content>
   </ItemGroup>
   <Import Project="..\..\Shared\HandyControl_Shared\HandyControl_Shared.projitems" Label="Shared" />
+  <Import Project="..\..\Shared\Microsoft.Windows.Shell\Microsoft.Windows.Shell.projitems" Label="Shared" />
   <ItemGroup>
     <Resource Include="..\..\Shared\HandyControl_Shared\Resources\dropper.cur">
       <Link>Resources\dropper.cur</Link>

@@ -93,7 +93,7 @@ namespace HandyControl.Controls
 
         public string Message
         {
-            get => (string)GetValue(MessageProperty);
+            get => (string) GetValue(MessageProperty);
             set => SetValue(MessageProperty, value);
         }
 
@@ -102,7 +102,7 @@ namespace HandyControl.Controls
 
         public Geometry Image
         {
-            get => (Geometry)GetValue(ImageProperty);
+            get => (Geometry) GetValue(ImageProperty);
             set => SetValue(ImageProperty, value);
         }
 
@@ -111,7 +111,7 @@ namespace HandyControl.Controls
 
         public Brush ImageBrush
         {
-            get => (Brush)GetValue(ImageBrushProperty);
+            get => (Brush) GetValue(ImageBrushProperty);
             set => SetValue(ImageBrushProperty, value);
         }
 
@@ -120,7 +120,7 @@ namespace HandyControl.Controls
 
         public bool ShowImage
         {
-            get => (bool)GetValue(ShowImageProperty);
+            get => (bool) GetValue(ShowImageProperty);
             set => SetValue(ShowImageProperty, ValueBoxes.BooleanBox(value));
         }
 
@@ -171,7 +171,7 @@ namespace HandyControl.Controls
         {
             base.OnApplyTemplate();
 
-            _panel  = GetTemplateChild(ElementPanel) as Panel;
+            _panel = GetTemplateChild(ElementPanel) as Panel;
             if (_panel != null)
             {
                 if (_buttonOk != null)
@@ -461,15 +461,15 @@ namespace HandyControl.Controls
         {
             if (!IsValidMessageBoxButton(button))
             {
-                throw new InvalidEnumArgumentException(nameof(button), (int)button, typeof(MessageBoxButton));
+                throw new InvalidEnumArgumentException(nameof(button), (int) button, typeof(MessageBoxButton));
             }
             if (!IsValidMessageBoxImage(icon))
             {
-                throw new InvalidEnumArgumentException(nameof(icon), (int)icon, typeof(MessageBoxImage));
+                throw new InvalidEnumArgumentException(nameof(icon), (int) icon, typeof(MessageBoxImage));
             }
             if (!IsValidMessageBoxResult(defaultResult))
             {
-                throw new InvalidEnumArgumentException(nameof(defaultResult), (int)defaultResult, typeof(MessageBoxResult));
+                throw new InvalidEnumArgumentException(nameof(defaultResult), (int) defaultResult, typeof(MessageBoxResult));
             }
 
             var ownerWindow = owner ?? WindowHelper.GetActiveWindow();
