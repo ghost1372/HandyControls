@@ -376,7 +376,8 @@ namespace HandyControl.Controls
                         Header = item.Header,
                         Width = TabItemWidth,
                         IsChecked = item.IsSelected,
-                        IsCheckable = true
+                        IsCheckable = true,
+                        IsEnabled = item.IsEnabled
                     };
 
                     menuItem.Click += delegate
