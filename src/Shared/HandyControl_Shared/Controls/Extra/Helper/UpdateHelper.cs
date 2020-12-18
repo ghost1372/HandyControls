@@ -1,198 +1,149 @@
 ﻿#if !NET40
-using HandyControl.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Net.Http;
 using System.Text;
 #if NET45 || NET462 || NET47 || NET48
 using System.Web.Script.Serialization;
+#else
+using System.Text.Json;
 #endif
-using System.Xml.Linq;
+using System.Threading.Tasks;
+using HandyControl.Data;
 
 namespace HandyControl.Controls
 {
     public class UpdateHelper
     {
-        private const string UpdateXmlChildTag = "AppVersion"; //Defined in Xml file
-        private const string UpdateVersionTag = "version"; //Defined in Xml file
-        private const string UpdateUrlTag = "url"; //Defined in Xml file
-        private const string UpdateChangeLogTag = "changelog"; //Defined in Xml file
+        public static UpdateHelper Instance => new UpdateHelper();
 
-        /// <summary>
-        /// Check if new version exist or not
-        /// xml must contains one element called: AppVersion
-        /// and AppVersion must contains 3 items called:
-        /// version, url, changelog
-        /// </summary>
-        /// <param name="UpdateServerUrl">uploaded xml file url</param>
-        /// <example>
-        /// https://test.com/myxml.xml
-        /// <code>
-        /// <?xml version="1.0" encoding="utf-8"?>
-        /// <AppVersion>
-        /// <version>2.2.5772.0</version>
-        /// <url>https://github.com/ghost1372/MoalemYar/releases</url>
-        /// <changelog>
-        /// fixed bug
-        /// </changelog>
-        /// </AppVersion>
-        /// </code>
-        /// </example>
-        /// <returns></returns>
-        public static WebHostModel CheckForUpdate(string UpdateServerUrl)
-        {
-            XDocument doc = XDocument.Load(UpdateServerUrl);
-            var items = doc
-                .Elements(XName.Get(UpdateXmlChildTag));
-            var versionItem = items.Select(ele => ele.Element(XName.Get(UpdateVersionTag)).Value);
-            var urlItem = items.Select(ele => ele.Element(XName.Get(UpdateUrlTag)).Value);
-            var changelogItem = items.Select(ele => ele.Element(XName.Get(UpdateChangeLogTag)).Value);
-
-            var model = new WebHostModel 
-            { 
-                Url = urlItem.FirstOrDefault(),
-                Changelog = changelogItem.FirstOrDefault()
-            };
-            
-            var newInfo = GetSystemVersion(versionItem.FirstOrDefault());
-            var oldInfo = GetSystemVersion(Assembly.GetCallingAssembly().GetName().Version.ToString());
-            var newVer = new SystemVersionInfo(newInfo.Major, newInfo.Minor, newInfo.Build, newInfo.Revision);
-            var oldVer = new SystemVersionInfo(oldInfo.Major, oldInfo.Minor, oldInfo.Build, oldInfo.Revision);
-
-            if (newVer > oldVer)
-                model.IsExistNewVersion = true;
-            else
-                model.IsExistNewVersion = false;
-
-            return model;
-        }
-
-        /// <summary>
-        /// get version as SystemVersionInfo Format
-        /// </summary>
-        /// <param name="version"></param>
-        /// <returns></returns>
-        private static SystemVersionInfo GetSystemVersion(string version)
+        private SystemVersionInfo GetSystemVersion(string version)
         {
             string removedchar = RemoveExtraText(version);
             var nums = removedchar.Split('.').Select(int.Parse).ToList();
 
             if (nums.Count <= 3)
+            {
                 return new SystemVersionInfo(nums[0], nums[1], nums[2], 0);
+            }
 
             return new SystemVersionInfo(nums[0], nums[1], nums[2], nums[3]);
         }
 
-        /// <summary>
-        /// Remove Extra string from version
-        /// </summary>
-        /// <param name="version"></param>
-        /// <returns></returns>
-        private static string RemoveExtraText(string version)
+        private string RemoveExtraText(string version)
         {
             var allowedChars = "01234567890.";
             return new string(version.Where(c => allowedChars.Contains(c)).ToArray());
         }
 
-        /// <summary>
-        /// Check if new version in Github [Release] Exist or Not
-        /// </summary>
-        /// <param name="Username">Github Username</param>
-        /// <param name="Repository">Github Repository</param>
-        /// <returns></returns>
-        public static GithubReleaseModel CheckForUpdateGithubRelease(string Username, string Repository)
+        public async Task<GithubModel> CheckUpdateAsync(string username, string repository)
         {
-            var rel = SendGithubRestApi(Username, Repository);
-            var model = new GithubReleaseModel();
-
-            if(rel !=null)
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(repository))
             {
-                model = new GithubReleaseModel
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType) 3072;
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("User-Agent", username);
+                string url = $"https://api.github.com/repos/{username}/{repository}/releases/latest";
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+#if NET45 || NET462 || NET47 || NET48
+                JavaScriptSerializer javaScript = new JavaScriptSerializer();
+                var result = javaScript.Deserialize<RootModel>(responseBody);
+#else
+                var result = JsonSerializer.Deserialize<RootModel>(responseBody);
+#endif
+                if (result != null)
                 {
-                    Changelog = rel?.body,
-                    CreatedAt = Convert.ToDateTime(rel?.created_at),
-                    Asset = rel.assets,
-                    IsPreRelease = rel.prerelease,
-                    PublishedAt = Convert.ToDateTime(rel?.published_at),
-                    TagName = rel.tag_name,
-                    ApiUrl = rel?.url,
-                    ReleaseUrl = rel?.html_url
-                };
-                var newInfo = GetSystemVersion(rel.tag_name);
-                var oldInfo = GetSystemVersion(Assembly.GetCallingAssembly().GetName().Version.ToString());
-                var newVer = new SystemVersionInfo(newInfo.Major, newInfo.Minor, newInfo.Build, newInfo.Revision);
-                var oldVer = new SystemVersionInfo(oldInfo.Major, oldInfo.Minor, oldInfo.Build, oldInfo.Revision);
-                if (newVer > oldVer)
-                {
-                    model.IsExistNewVersion = true;
-                }
-                else
-                {
-                    model.IsExistNewVersion = false;
+                    var newInfo = GetSystemVersion(result.tag_name);
+                    var oldInfo = GetSystemVersion(Assembly.GetCallingAssembly().GetName().Version?.ToString());
+                    var newVer = new SystemVersionInfo(newInfo.Major, newInfo.Minor, newInfo.Build, newInfo.Revision);
+                    var oldVer = new SystemVersionInfo(oldInfo.Major, oldInfo.Minor, oldInfo.Build, oldInfo.Revision);
+
+                    var model = new GithubModel
+                    {
+                        Changelog = result?.body,
+                        CreatedAt = Convert.ToDateTime(result?.created_at),
+                        Asset = result.assets,
+                        IsPreRelease = result.prerelease,
+                        PublishedAt = Convert.ToDateTime(result?.published_at),
+                        TagName = result.tag_name,
+                        ApiUrl = result?.url,
+                        ReleaseUrl = result?.html_url,
+                        IsExistNewVersion = newVer > oldVer
+                    };
+
+
+                    return model;
                 }
             }
+            else
+            {
+                throw new Exception("Username and Repository can not be empty.");
+            }
 
-            return model;
+            return new GithubModel();
         }
 
-        /// <summary>
-        /// Rest Request to Github API
-        /// </summary>
-        /// <param name="Username">Github Username</param>
-        /// <param name="Repository">Github Repository</param>
-        /// <returns></returns>
-        internal static Root SendGithubRestApi(string Username, string Repository)
+        public GithubModel CheckUpdate(string username, string repository)
         {
-            string url = url = string.Format(
-                      "https://api.github.com/repos/{0}/{1}/releases/latest",
-                      Username, Repository);
-
-            //Fix Could not create SSL/TLS secure channel
-            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
-
-             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            try
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(repository))
             {
-                request.UserAgent = Username;
-
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType) 3072;
+                string url = $"https://api.github.com/repos/{username}/{repository}/releases/latest";
+                HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
+                request.UserAgent = username;
                 WebResponse response = request.GetResponse();
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
 #if NET45 || NET462 || NET47 || NET48
                     JavaScriptSerializer javaScript = new JavaScriptSerializer();
-                    return javaScript.Deserialize<Root>(reader.ReadToEnd());
+                    var result = javaScript.Deserialize<RootModel>(reader.ReadToEnd());
 #else
-                    return System.Text.Json.JsonSerializer.Deserialize<Root>(reader.ReadToEnd());
+                    var result = System.Text.Json.JsonSerializer.Deserialize<RootModel>(reader.ReadToEnd());
 #endif
+                    if (result != null)
+                    {
+                        var newInfo = GetSystemVersion(result.tag_name);
+                        var oldInfo = GetSystemVersion(Assembly.GetCallingAssembly().GetName().Version?.ToString());
+                        var newVer = new SystemVersionInfo(newInfo.Major, newInfo.Minor, newInfo.Build, newInfo.Revision);
+                        var oldVer = new SystemVersionInfo(oldInfo.Major, oldInfo.Minor, oldInfo.Build, oldInfo.Revision);
+
+                        var model = new GithubModel
+                        {
+                            Changelog = result?.body,
+                            CreatedAt = Convert.ToDateTime(result?.created_at),
+                            Asset = result.assets,
+                            IsPreRelease = result.prerelease,
+                            PublishedAt = Convert.ToDateTime(result?.published_at),
+                            TagName = result.tag_name,
+                            ApiUrl = result?.url,
+                            ReleaseUrl = result?.html_url,
+                            IsExistNewVersion = newVer > oldVer
+                        };
+
+                        return model;
+                    }
                 }
             }
-            catch (WebException ex)
+            else
             {
-                WebResponse errorResponse = ex.Response;
-                using (Stream responseStream = errorResponse.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
-                    String errorText = reader.ReadToEnd();
-                    // log errorText
-                }
-                return null;
+                throw new Exception("Username and Repository can not be empty.");
             }
+
+            return new GithubModel();
         }
-
-#region Model
-#region Model for Deserialize json
-
         public class Asset
         {
             public int size { get; set; }
             public string browser_download_url { get; set; }
         }
-
-        internal class Root
+        private class RootModel
         {
             public string url { get; set; }
             public string html_url { get; set; }
@@ -203,12 +154,7 @@ namespace HandyControl.Controls
             public List<Asset> assets { get; set; }
             public string body { get; set; }
         }
-#endregion
-
-        /// <summary>
-        /// Model for Return data to user
-        /// </summary>
-        public class GithubReleaseModel
+        public class GithubModel
         {
             public bool IsExistNewVersion { get; internal set; }
             public string ApiUrl { get; internal set; }
@@ -220,17 +166,6 @@ namespace HandyControl.Controls
             public DateTime CreatedAt { get; internal set; }
             public DateTime PublishedAt { get; internal set; }
         }
-
-        /// <summary>
-        /// Model for Return data to user
-        /// </summary>
-        public class WebHostModel
-        {
-            public bool IsExistNewVersion { get; set; }
-            public string Changelog { get; set; }
-            public string Url { get; set; }
-        }
-#endregion
     }
 }
 #endif

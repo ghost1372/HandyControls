@@ -316,28 +316,12 @@ namespace HandyControlDemo.UserControl
         #endregion
 
         #region Update Helper
-        private void btnCheckUpdate_Click(object sender, RoutedEventArgs e)
-        {
-            var ver = UpdateHelper.CheckForUpdate("https://raw.githubusercontent.com/ghost1372/HandyControls/develop/Updater.xml");
-            if (ver.IsExistNewVersion)
-            {
-                Growl.InfoGlobal("New Version Found!");
-                lblUrl.Text = ver.Url;
-                txtChangelog.Text = ver.Changelog;
-            }
-            else
-            {
-                Growl.ErrorGlobal("you are using latest version");
-                lblUrl.Text = ver.Url;
-                txtChangelog.Text = ver.Changelog;
-            }
-        }
 
-        private void btnCheckUpdate2_Click(object sender, RoutedEventArgs e)
+        private async void btnCheckUpdate2_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtus.Text) && !string.IsNullOrEmpty(txtrp.Text))
             {
-                var ver = UpdateHelper.CheckForUpdateGithubRelease(txtus.Text, txtrp.Text);
+                var ver = await UpdateHelper.Instance.CheckUpdateAsync(txtus.Text, txtrp.Text);
                 if (ver.IsExistNewVersion)
                 {
                     Growl.InfoGlobal("New Version Found!");
