@@ -1,4 +1,5 @@
-﻿using HandyControl.Data;
+﻿#if !NET40
+using HandyControl.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
-#if NET40 || NET45 || NET462 || NET47 || NET48
+#if NET45 || NET462 || NET47 || NET48
 using System.Web.Script.Serialization;
 #endif
 using System.Xml.Linq;
@@ -161,7 +162,7 @@ namespace HandyControl.Controls
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-#if NET40 || NET45 || NET462 || NET47 || NET48
+#if NET45 || NET462 || NET47 || NET48
                     JavaScriptSerializer javaScript = new JavaScriptSerializer();
                     return javaScript.Deserialize<Root>(reader.ReadToEnd());
 #else
@@ -232,3 +233,4 @@ namespace HandyControl.Controls
 #endregion
     }
 }
+#endif
