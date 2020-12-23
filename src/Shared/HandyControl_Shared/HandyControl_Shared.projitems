@@ -9,22 +9,33 @@
     <Import_RootNamespace>HandyControl</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\AddOnUi.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\TreeViewAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumDescriptionTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\CheckTreeView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\ComparableExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\ConvertTypes.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Cryptography.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\EnumeratorWithIndex.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\InlineFormatString.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\ToShamsi.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\MergedDictionariesExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Transformer\IStringTransformer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Transformer\To.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Transformer\ToLowerCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Transformer\ToSentenceCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Transformer\ToTitleCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Transformer\ToUpperCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\FixedLengthTruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\FixedNumberOfCharactersTruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\FixedNumberOfWordsTruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\ITruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\TruncateFrom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\Truncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\GenericCompare.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\GlobalDataHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\CryptographyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\ListBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InstanceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\OSVersionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\PackUriHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\HKEYType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\RegistryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\UpdateHelper.cs" />
@@ -57,7 +68,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PanelElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PasswordBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\RectangleAttach.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\ResourceDictionary\DynamicLanguage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\BaseLocalizationListener.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\BindingLocalizationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\Resx\BindingLocalizationListener.cs" />
@@ -1015,7 +1025,6 @@
     <None Include="$(MSBuildThisFileDirectory)Resources\Effects\GrayScaleEffect.fx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Controls\Extra\MultiLanguageDynamic\ResourceDictionary\" />
     <Folder Include="$(MSBuildThisFileDirectory)Data\Info\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\" />
   </ItemGroup>

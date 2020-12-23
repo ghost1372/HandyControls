@@ -1,9 +1,8 @@
-﻿using HandyControl.Data;
-using HandyControl.Tools.Interop;
+﻿using HandyControl.Tools.Interop;
 using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Threading;
 
 namespace HandyControl.Controls
@@ -48,12 +47,11 @@ namespace HandyControl.Controls
             InteropMethods.SetForegroundWindow(process.MainWindowHandle);
         }
 
-        public static SystemVersionInfo GetWindowsVersion()
+        public static void IsAdministrator()
         {
-            var osv = new InteropValues.RTL_OSVERSIONINFOEX();
-            osv.dwOSVersionInfoSize = (uint)Marshal.SizeOf(osv);
-            InteropMethods.Gdip.RtlGetVersion(out osv);
-            return new SystemVersionInfo((int)osv.dwMajorVersion, (int)osv.dwMinorVersion, (int)osv.dwBuildNumber);
+            if (!(new WindowsPrincipal(WindowsIdentity.GetCurrent()))
+                .IsInRole(WindowsBuiltInRole.Administrator))
+                throw new UnauthorizedAccessException();
         }
     }
 }

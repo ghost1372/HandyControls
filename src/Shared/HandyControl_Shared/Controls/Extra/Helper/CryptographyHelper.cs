@@ -3,8 +3,6 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace HandyControl.Controls
 {
@@ -15,18 +13,16 @@ namespace HandyControl.Controls
 
         public static string GenerateMD5(string input)
         {
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-            {
-                byte[] inputBytes = System.Text.Encoding.UTF8.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+            using MD5 md5 = MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.UTF8.GetBytes(input);
+            byte[] hashBytes = md5.ComputeHash(inputBytes);
 
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
-                {
-                    sb.Append(hashBytes[i].ToString("X2"));
-                }
-                return sb.ToString();
+            StringBuilder sb = new StringBuilder();
+            foreach (var t in hashBytes)
+            {
+                sb.Append(t.ToString("X2"));
             }
+            return sb.ToString();
         }
 
         /// <summary>
@@ -36,8 +32,8 @@ namespace HandyControl.Controls
         /// <returns></returns>
         public static string GenerateSHA256(string input)
         {
-            var crypt = new System.Security.Cryptography.SHA256Managed();
-            var hash = new System.Text.StringBuilder();
+            var crypt = new SHA256Managed();
+            var hash = new StringBuilder();
             byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(input));
             foreach (byte theByte in crypto)
             {
@@ -59,10 +55,8 @@ namespace HandyControl.Controls
         private static readonly SHA256 Sha256 = SHA256.Create();
         private static byte[] GetHashSha256(string filename)
         {
-            using (FileStream stream = File.OpenRead(filename))
-            {
-                return Sha256.ComputeHash(stream);
-            }
+            using FileStream stream = File.OpenRead(filename);
+            return Sha256.ComputeHash(stream);
         }
         private static string BytesToString(byte[] bytes)
         {
@@ -96,25 +90,19 @@ namespace HandyControl.Controls
             aes.Mode = CipherMode.CBC;
             ICryptoTransform transform = aes.CreateDecryptor(aes.Key, aes.IV);
 
-            using (FileStream destination = new FileStream(destinationFilename, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+            using FileStream destination = new FileStream(destinationFilename, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+            using CryptoStream cryptoStream = new CryptoStream(destination, transform, CryptoStreamMode.Write);
+            try
             {
-                using (CryptoStream cryptoStream = new CryptoStream(destination, transform, CryptoStreamMode.Write))
-                {
-                    try
-                    {
-                        using (FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
-                        {
-                            source.CopyTo(cryptoStream);
-                        }
-                    }
-                    catch (CryptographicException exception)
-                    {
-                        if (exception.Message == "Padding is invalid and cannot be removed.")
-                            throw new ApplicationException("Universal Microsoft Cryptographic Exception (Not to be believed!)", exception);
-                        else
-                            throw;
-                    }
-                }
+                using FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
+                source.CopyTo(cryptoStream);
+            }
+            catch (CryptographicException exception)
+            {
+                if (exception.Message == "Padding is invalid and cannot be removed.")
+                    throw new ApplicationException("Universal Microsoft Cryptographic Exception (Not to be believed!)", exception);
+                else
+                    throw;
             }
         }
 
@@ -134,29 +122,19 @@ namespace HandyControl.Controls
             aes.Mode = CipherMode.CBC;
             ICryptoTransform transform = aes.CreateEncryptor(aes.Key, aes.IV);
 
-            using (FileStream destination = new FileStream(destinationFilename, FileMode.CreateNew, FileAccess.Write, FileShare.None))
-            {
-                using (CryptoStream cryptoStream = new CryptoStream(destination, transform, CryptoStreamMode.Write))
-                {
-                    using (FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read))
-                    {
-                        source.CopyTo(cryptoStream);
-                    }
-                }
-            }
+            using FileStream destination = new FileStream(destinationFilename, FileMode.CreateNew, FileAccess.Write, FileShare.None);
+            using CryptoStream cryptoStream = new CryptoStream(destination, transform, CryptoStreamMode.Write);
+            using FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
+            source.CopyTo(cryptoStream);
         }
 
         public static string EncryptTextAES(string input, string password)
         {
-            RijndaelManaged objrij = new RijndaelManaged();
-            //set the mode for operation of the algorithm
-            objrij.Mode = CipherMode.CBC;
-            //set the padding mode used in the algorithm.
-            objrij.Padding = PaddingMode.PKCS7;
-            //set the size, in bits, for the secret key.
-            objrij.KeySize = 0x80;
-            //set the block size in bits for the cryptographic operation.
-            objrij.BlockSize = 0x80;
+            RijndaelManaged objrij = new RijndaelManaged
+            {
+                Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7, KeySize = 0x80, BlockSize = 0x80
+            };
+           
             //set the symmetric key that is used for encryption & decryption.
             byte[] passBytes = Encoding.UTF8.GetBytes(password);
             //set the initialization vector (IV) for the symmetric algorithm
@@ -178,11 +156,10 @@ namespace HandyControl.Controls
 
         public static string DecryptTextAES(string EncryptedText, string password)
         {
-            RijndaelManaged objrij = new RijndaelManaged();
-            objrij.Mode = CipherMode.CBC;
-            objrij.Padding = PaddingMode.PKCS7;
-            objrij.KeySize = 0x80;
-            objrij.BlockSize = 0x80;
+            RijndaelManaged objrij = new RijndaelManaged
+            {
+                Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7, KeySize = 0x80, BlockSize = 0x80
+            };
             byte[] encryptedTextByte = Convert.FromBase64String(EncryptedText);
             byte[] passBytes = Encoding.UTF8.GetBytes(password);
             byte[] EncryptionkeyBytes = new byte[0x10];
