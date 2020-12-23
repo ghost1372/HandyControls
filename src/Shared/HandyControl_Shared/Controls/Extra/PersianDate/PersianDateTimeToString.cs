@@ -3,13 +3,8 @@ using System.Globalization;
 
 namespace HandyControl.Controls
 {
-    public class PersianDate
+    public partial class PersianDateTime
     {
-        System.Globalization.PersianCalendar persianCalendar;
-        public PersianDate()
-        {
-            persianCalendar = new System.Globalization.PersianCalendar();
-        }
         #region Year
         /// <summary>
         /// Get Shamsi Year From Miladi Year
@@ -117,5 +112,59 @@ namespace HandyControl.Controls
             return dateTime.ToString("dddd", CultureInfo.CreateSpecificCulture("fa")).Substring(0, 1);
         }
         #endregion
+
+        /// <summary>
+        ///     شنبه بیست آذر سال یکهزار سیصد و نود وهفت ساعت هفت و سی دقیقه و بیست ثانیه
+        /// </summary>
+        /// <returns></returns>
+        public string ToLongStringYMDHMS()
+        {
+            return
+                $"{DayOfWeek} {PersianUtil.Convert(Day)} {months[Month]} سال  {PersianUtil.Convert(Year)} ساعت {PersianUtil.Convert(Hour)} و {PersianUtil.Convert(Minute)} دقیقه و {PersianUtil.Convert(Second)} ثانیه";
+        }
+
+        /// <summary>
+        ///     شنبه بیست آذر سال یکهزار سیصد و نود وهفت ساعت هفت و سی دقیقه
+        /// </summary>
+        /// <returns></returns>
+        public string ToLongStringYMDHM()
+        {
+            return
+                $"{DayOfWeek} {PersianUtil.Convert(Day)} {months[Month]} سال  {PersianUtil.Convert(Year)} ساعت {PersianUtil.Convert(Hour)} و {PersianUtil.Convert(Minute)} دقیقه";
+        }
+
+        /// <summary>
+        ///     شنبه بیست آذر سال یکهزار سیصد و نود وهفت
+        /// </summary>
+        /// <returns></returns>
+        public string ToLongStringYMD()
+        {
+            return
+                $"{DayOfWeek} {PersianUtil.Convert(Day)} {months[Month]} سال  {PersianUtil.Convert(Year)}";
+        }
+
+        /// <summary>
+        ///     ساعت پانزده و سی دقیقه و ده ثانیه
+        /// </summary>
+        /// <returns></returns>
+        public string ToLongStringHMS()
+        {
+            return
+                $"ساعت {PersianUtil.Convert(Hour)} و {PersianUtil.Convert(Minute)} دقیقه و {PersianUtil.Convert(Second)} ثانیه";
+        }
+
+        /// <summary>
+        ///     ساعت پانزده و سی دقیقه
+        /// </summary>
+        /// <returns></returns>
+        public string ToLongStringHM()
+        {
+            return $"ساعت {PersianUtil.Convert(Hour)} و {PersianUtil.Convert(Minute)} دقیقه";
+        }
+
+        public override string ToString()
+        {
+            return $"{Year}/{Month.ToString("00")}/{Day.ToString("00")}";
+        }
     }
 }
