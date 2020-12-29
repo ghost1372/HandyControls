@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Data;
 using HandyControl.Controls;
 
 namespace HandyControl.Tools.Extension
@@ -177,6 +179,29 @@ namespace HandyControl.Tools.Extension
         public static IEnumerable<EnumeratorWithIndex<T>> GetEnumeratorWithIndex<T>(this IEnumerable<T> enumerable)
         {
             return enumerable.Select(EnumeratorWithIndex<T>.Create);
+        }
+
+        /// <summary>
+        /// This Extension Help you to Easily implement search, sort, and group operations
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static CollectionViewExtension<TSource> ShapeView<TSource>(this IEnumerable<TSource> source)
+        {
+            var view = CollectionViewSource.GetDefaultView(source);
+            return new CollectionViewExtension<TSource>(view);
+        }
+
+        /// <summary>
+        /// This Extension Help you to Easily implement search, sort, and group operations
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="view"></param>
+        /// <returns></returns>
+        public static CollectionViewExtension<TSource> Shape<TSource>(this ICollectionView view)
+        {
+            return new CollectionViewExtension<TSource>(view);
         }
         #endregion
 

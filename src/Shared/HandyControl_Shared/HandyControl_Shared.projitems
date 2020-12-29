@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindToEnum\EnumDescriptionTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\CheckTreeView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\CollectionViewExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\EnumeratorWithIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Extensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\MergedDictionariesExtensions.cs" />
