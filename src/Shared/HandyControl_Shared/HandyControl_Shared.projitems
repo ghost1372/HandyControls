@@ -111,6 +111,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Poptip.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Watermark.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\FlexPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleStackPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\UniformSpacingPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\ImagePropertyEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\VerticalAlignmentPropertyEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\HorizontalAlignmentPropertyEditor.cs" />
@@ -167,6 +169,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\SimpleText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Window\GlowWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Collections\DateTimeRangeComparer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\VisualWrapping.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Flex\FlexContentJustify.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Flex\FlexContentAlignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Flex\FlexItemAlignment.cs" />
@@ -463,6 +466,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SecurityHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SingleOpenHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\TokenizerHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\TouchDragMoveWindowHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ValidateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\VisualHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\WindowHelper.cs" />

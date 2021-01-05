@@ -7,6 +7,7 @@ using System.Security;
 using System.Windows;
 using System.Windows.Interop;
 using HandyControl.Tools.Extension;
+using HandyControl.Tools.Helper;
 using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
@@ -154,7 +155,7 @@ namespace HandyControl.Tools
         public static HwndSource GetHwndSource(this Window window) => HwndSource.FromHwnd(window.GetHandle());
 
         /// <summary>
-        /// 让窗口激活作为前台最上层窗口
+        ///     让窗口激活作为前台最上层窗口
         /// </summary>
         /// <param name="window"></param>
         public static void SetWindowToForeground(Window window)
@@ -189,5 +190,10 @@ namespace HandyControl.Tools
                 window.Topmost = false;
             }
         }
+
+        /// <summary>
+        ///     开始使用触摸拖动窗口，在触摸抬起后自动结束
+        /// </summary>
+        public static void TouchDragMove(this Window window) => new TouchDragMoveWindowHelper(window).Start();
     }
 }
