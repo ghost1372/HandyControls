@@ -7,7 +7,7 @@
     <PackageId>HandyControl</PackageId>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <NoWarn>0067;0649;1591;MSB3061;SYSLIB0003;SYSLIB0004</NoWarn>
+    <NoWarn>0067;0649;1591;MSB3061;SYSLIB0003;SYSLIB0004;CS8632;MSB3245;MSB3243;CS8073;CS0108</NoWarn>
     <MSBuildWarningsAsMessages>NETSDK1138</MSBuildWarningsAsMessages>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
