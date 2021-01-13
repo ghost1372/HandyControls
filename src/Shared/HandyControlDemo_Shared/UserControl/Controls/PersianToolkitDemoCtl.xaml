@@ -5,8 +5,8 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
-        <StackPanel Orientation="Horizontal">
-            <Button Content="Persian Toolkit" Command="hc:ControlCommand.OpenLink" CommandParameter="https://ghost1372.github.io/handycontrol/persianToolkit/"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Command="hc:ControlCommands.OpenLink" Content="Click here to see the list of changes" CommandParameter="https://ghost1372.github.io/handycontrol/persianToolkit/"/>
         </StackPanel>
     </hc:TransitioningContentControl>
 </UserControl>

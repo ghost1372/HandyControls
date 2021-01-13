@@ -42,7 +42,7 @@
     "selectedIndex": 0,
     "group": true,
     "demoItemList": [
-      [ "PersianToolkit", "PersianToolkitDemoCtl", "thumbs_up", "1", "Persian"],
+      [ "PersianToolkit", "PersianToolkitDemoCtl", "thumbs_up", "1", "PersianToolkit" ],
       [ "FloatingBlock", "FloatingBlockDemoCtl", "thumbs_up", "", "Interacting" ],
       [ "PropertyGrid", "PropertyGridDemoCtl", "PropertyGridEditorPart_16x", "1", "DataEntry" ],
       [ "ImageSelector", "ImageSelectorDemoCtl", "Image_16x", "1", "DataEntry" ],
