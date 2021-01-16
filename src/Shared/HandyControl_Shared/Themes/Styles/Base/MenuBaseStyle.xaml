@@ -114,36 +114,9 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <ContentPresenter
-                                        x:Name="Icon"
-                                        Width="16"
-                                        Height="16"
-                                        Margin="0,0,10,0"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        ContentSource="Icon"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                        Visibility="Collapsed" />
-                                    <Border
-                                        x:Name="GlyphPanel"
-                                        Grid.Column="0"
-                                        Width="16"
-                                        Height="16"
-                                        Margin="0,0,10,0"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Background="{DynamicResource PrimaryBrush}"
-                                        ClipToBounds="False"
-                                        CornerRadius="2"
-                                        Visibility="Collapsed">
-                                        <Path
-                                            Width="12"
-                                            Height="12"
-                                            Data="{StaticResource CheckedGeometry}"
-                                            Stretch="Uniform"
-                                            Stroke="{DynamicResource TextIconBrush}"
-                                            StrokeThickness="2"
-                                            UseLayoutRounding="True" />
+                                    <ContentPresenter Margin="0,0,10,0" x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Right" Height="16" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
+                                    <Border Margin="0,0,10,0" Grid.Column="0" x:Name="GlyphPanel" CornerRadius="2" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" HorizontalAlignment="Right" Height="16" Visibility="Collapsed" VerticalAlignment="Center" Width="16">
+                                        <Path UseLayoutRounding="True" Width="12" Height="12" Data="{StaticResource CheckedGeometry}" StrokeThickness="2" Stretch="Uniform" Stroke="{DynamicResource TextIconBrush}"/>
                                     </Border>
                                     <ContentPresenter x:Name="menuHeaderContainer" ContentTemplate="{TemplateBinding HeaderTemplate}" Grid.Column="1" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                     <Popup Grid.Column="0" x:Name="PART_Popup" PlacementTarget="{Binding ElementName=templateRoot}" AllowsTransparency="True" Focusable="False" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom">
@@ -196,37 +169,9 @@
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <ContentPresenter
-                                        x:Name="Icon"
-                                        Width="16"
-                                        Height="16"
-                                        Margin="0,0,10,0"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        ContentSource="Icon"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                        Visibility="Collapsed" />
-                                    <Border
-                                        x:Name="GlyphPanel"
-                                        Grid.Column="0"
-                                        Width="16"
-                                        Height="16"
-                                        Margin="0,0,10,0"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Background="{DynamicResource PrimaryBrush}"
-                                        ClipToBounds="False"
-                                        CornerRadius="2"
-                                        IsHitTestVisible="False"
-                                        Visibility="Collapsed">
-                                        <Path
-                                            Width="12"
-                                            Height="12"
-                                            Data="{StaticResource CheckedGeometry}"
-                                            Stretch="Uniform"
-                                            Stroke="{DynamicResource TextIconBrush}"
-                                            StrokeThickness="2"
-                                            UseLayoutRounding="True" />
+                                    <ContentPresenter Margin="0,0,10,0" x:Name="Icon" HorizontalAlignment="Left" ContentSource="Icon" Height="16" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
+                                    <Border Margin="0,0,10,0" IsHitTestVisible="False" Grid.Column="0" x:Name="GlyphPanel" CornerRadius="2" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" HorizontalAlignment="Right" Height="16" Visibility="Collapsed" VerticalAlignment="Center" Width="16">
+                                        <Path UseLayoutRounding="True" Width="12" Height="12" Data="{StaticResource CheckedGeometry}" StrokeThickness="2" Stretch="Uniform" Stroke="{DynamicResource TextIconBrush}"/>
                                     </Border>
                                     <ContentPresenter
                                         x:Name="menuHeaderContainer"

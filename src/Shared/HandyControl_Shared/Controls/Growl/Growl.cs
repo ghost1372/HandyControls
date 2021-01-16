@@ -330,6 +330,8 @@ namespace HandyControl.Controls
 
         private void Update()
         {
+            if (DesignerHelper.IsInDesignMode) return;
+
             if (Type == InfoType.Ask)
             {
                 _panelMore.IsEnabled = true;

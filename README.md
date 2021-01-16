@@ -120,6 +120,10 @@ Step 4: Enjoy coding
 
 ## Latest examples
 
+### UniformSpacingPanel
+
+![UniformSpacingPanel](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/UniformSpacingPanel.png)
+
 ### FlexPanel
 
 ![FlexPanel](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/FlexPanel.gif)
@@ -135,10 +139,6 @@ Step 4: Enjoy coding
 ### PropertyGrid
 
 ![PropertyGrid](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/PropertyGrid.png)
-
-### UniformSpacingPanel
-
-![UniformSpacingPanel](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/UniformSpacingPanel.png)
 
 ## History publication
 
