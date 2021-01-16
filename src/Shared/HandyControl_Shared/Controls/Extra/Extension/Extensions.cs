@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -311,6 +312,18 @@ namespace HandyControl.Tools.Extension
 
         public static double DateDifference(this PersianDateTime d1, PersianDateTime d2)
             => (d1.DateTime - d2.DateTime).TotalDays;
+
+        public static DateTime ToGregorianDate(this PersianDateTime persianDateTime)
+        {
+            GregorianCalendar gc = new GregorianCalendar();
+            return new DateTime(gc.GetYear(persianDateTime.DateTime), gc.GetMonth(persianDateTime.DateTime), gc.GetDayOfMonth(persianDateTime.DateTime), gc.GetHour(persianDateTime.DateTime), gc.GetMinute(persianDateTime.DateTime), gc.GetSecond(persianDateTime.DateTime), new System.Globalization.PersianCalendar());
+        }
+
+        public static DateTime ToGregorianDate(this DateTime dateTime)
+        {
+            GregorianCalendar gc = new GregorianCalendar();
+            return new DateTime(gc.GetYear(dateTime), gc.GetMonth(dateTime), gc.GetDayOfMonth(dateTime), gc.GetHour(dateTime), gc.GetMinute(dateTime), gc.GetSecond(dateTime), new System.Globalization.PersianCalendar());
+        }
         #endregion
 
         #region Application
