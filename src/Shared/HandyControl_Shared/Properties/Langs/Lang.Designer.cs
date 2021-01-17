@@ -316,7 +316,18 @@ namespace HandyControl.Properties.Langs {
                 return ResourceManager.GetString("No", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   查找类似 暂无数据 的本地化字符串。
+        /// </summary>
+        public static string NoData
+        {
+            get
+            {
+                return ResourceManager.GetString("NoData", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to 不在范围内.
         /// </summary>

@@ -64,6 +64,7 @@ namespace HandyControl.Properties.Langs
             OnPropertyChanged(nameof(LangComment));
             OnPropertyChanged(nameof(NextPage));
             OnPropertyChanged(nameof(No));
+            OnPropertyChanged(nameof(NoData));
             OnPropertyChanged(nameof(OutOfRange));
             OnPropertyChanged(nameof(PageMode));
             OnPropertyChanged(nameof(Pm));
@@ -211,6 +212,11 @@ namespace HandyControl.Properties.Langs
         ///   查找类似 否 的本地化字符串。
         /// </summary>
 		public string No => Lang.No;
+
+        /// <summary>
+        ///   查找类似 暂无数据 的本地化字符串。
+        /// </summary>
+        public string NoData => Lang.NoData;
 
         /// <summary>
         ///   查找类似 不在范围内 的本地化字符串。
@@ -423,6 +429,11 @@ namespace HandyControl.Properties.Langs
         ///   查找类似 否 的本地化字符串。
         /// </summary>
 		public static string No = nameof(No);
+
+        /// <summary>
+        ///   查找类似 暂无数据 的本地化字符串。
+        /// </summary>
+        public static string NoData = nameof(NoData);
 
         /// <summary>
         ///   查找类似 不在范围内 的本地化字符串。

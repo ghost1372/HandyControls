@@ -240,10 +240,10 @@
   <data name="All" xml:space="preserve">
     <value>All</value>
   </data>
+  <data name="NoData" xml:space="preserve">
+    <value>No Data</value>
+  </data>
   <data name="BusyIndicatorLoading" xml:space="preserve">
     <value>Por favor, espere...</value>
-  </data>
-  <data name="TagPlaceHolder" xml:space="preserve">
-    <value>Separe as tags com; ou espaço</value>
   </data>
 </root>
