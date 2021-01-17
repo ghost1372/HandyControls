@@ -213,9 +213,6 @@
   <data name="ZoomOut" xml:space="preserve">
     <value>缩小</value>
   </data>
-  <data name="TagPlaceHolder" xml:space="preserve">
-    <value>用;分隔标签; 或空间</value>
-  </data>
   <data name="NextPage" xml:space="preserve">
     <value>下一页</value>
   </data>

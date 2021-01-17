@@ -205,16 +205,13 @@
     <value>خیر</value>
   </data>
   <data name="BusyIndicatorLoading" xml:space="preserve">
-    <value>در حال بارگزاری...</value>
+    <value>در حال بارگذاری...</value>
   </data>
   <data name="ZoomIn" xml:space="preserve">
     <value>بزرگنمایی</value>
   </data>
   <data name="ZoomOut" xml:space="preserve">
     <value>کوچکنمایی</value>
-  </data>
-  <data name="TagPlaceHolder" xml:space="preserve">
-    <value>تگ ها را با ; یا فاصله جدا کنید</value>
   </data>
   <data name="PreviousPage" xml:space="preserve">
     <value>صفحه قبلی</value>
@@ -241,12 +238,12 @@
     <value>برو</value>
   </data>
   <data name="Miscellaneous" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>متفرقه</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>All</value>
+    <value>همه</value>
   </data>
   <data name="NoData" xml:space="preserve">
-    <value>No Data</value>
+    <value>اطلاعاتی موجود نیست</value>
   </data>
 </root>

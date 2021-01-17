@@ -248,7 +248,6 @@ namespace HandyControl.Properties.Langs
         /// </summary>
 		public string ScrollMode => Lang.ScrollMode;
 
-        public string TagPlaceHolder => Lang.TagPlaceHolder;
         /// <summary>
         ///   查找类似 提示 的本地化字符串。
         /// </summary>
@@ -465,7 +464,6 @@ namespace HandyControl.Properties.Langs
         /// </summary>
 		public static string ScrollMode = nameof(ScrollMode);
 
-        public static string TagPlaceHolder = nameof(TagPlaceHolder);
         /// <summary>
         ///   查找类似 提示 的本地化字符串。
         /// </summary>

@@ -213,9 +213,6 @@
   <data name="ZoomOut" xml:space="preserve">
     <value>Zoom out</value>
   </data>
-  <data name="TagPlaceHolder" xml:space="preserve">
-    <value>balises séparées avec; ou l'espace</value>
-  </data>
   <data name="PreviousPage" xml:space="preserve">
     <value>Previous page</value>
   </data>

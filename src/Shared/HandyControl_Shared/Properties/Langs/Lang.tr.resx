@@ -234,9 +234,6 @@
   <data name="BusyIndicatorLoading" xml:space="preserve">
     <value>Lütfen bekle...</value>
   </data>
-  <data name="TagPlaceHolder" xml:space="preserve">
-    <value>Etiketleri ; veya Boşluk ile ayır</value>
-  </data>
   <data name="Jump" xml:space="preserve">
     <value>Atlama</value>
   </data>

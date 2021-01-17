@@ -365,14 +365,6 @@ namespace HandyControl.Properties.Langs {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to 用;分隔标签; 或空间.
-        /// </summary>
-        public static string TagPlaceHolder {
-            get {
-                return ResourceManager.GetString("TagPlaceHolder", resourceCulture);
-            }
-        }
         ///   查找类似 上一页 的本地化字符串。
         /// </summary>
         public static string PreviousPage {
