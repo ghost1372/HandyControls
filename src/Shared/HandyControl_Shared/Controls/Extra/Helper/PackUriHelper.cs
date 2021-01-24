@@ -2,7 +2,7 @@
 
 namespace HandyControl.Controls
 {
-    internal static class PackUriHelper
+    public static class PackUriHelper
     {
         public static Uri GetAbsoluteUri(string Namespace, string path)
         {
