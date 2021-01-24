@@ -323,7 +323,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 多选组合框 的本地化字符串。
+        ///   Looks up a localized string similar to 多选组合框.
         /// </summary>
         public static string CheckComboBox
         {
@@ -543,7 +543,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 数据展示 的本地化字符串。
+        ///   Looks up a localized string similar to 数据展示.
         /// </summary>
         public static string DataDisplay
         {
@@ -554,7 +554,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 数据录入 的本地化字符串。
+        ///   Looks up a localized string similar to 数据录入.
         /// </summary>
         public static string DataEntry
         {
@@ -565,7 +565,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 数据表格 的本地化字符串。
+        ///   Looks up a localized string similar to 数据表格.
         /// </summary>
         public static string DataGrid
         {
@@ -730,7 +730,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 空状态 的本地化字符串。
+        ///   Looks up a localized string similar to 空状态.
         /// </summary>
         public static string Empty
         {
@@ -741,7 +741,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 错误 的本地化字符串。
+        ///   Looks up a localized string similar to 错误.
         /// </summary>
         public static string Error
         {
@@ -785,7 +785,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 反馈 的本地化字符串。
+        ///   Looks up a localized string similar to 反馈.
         /// </summary>
         public static string Feedback
         {
@@ -796,7 +796,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 弹性盒子 的本地化字符串。
+        ///   Looks up a localized string similar to 弹性盒子.
         /// </summary>
         public static string FlexPanel
         {
@@ -883,6 +883,9 @@ namespace HandyControlDemo.Properties.Langs
             }
         }
 
+        /// <summary>
+        ///   Looks up a localized string similar to 几何形状.
+        /// </summary>
         public static string Geometry
         {
             get
@@ -1112,7 +1115,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 图片选择器 的本地化字符串。
+        ///   Looks up a localized string similar to 图片选择器.
         /// </summary>
         public static string ImageSelector
         {
@@ -1145,7 +1148,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 交互 的本地化字符串。
+        ///   Looks up a localized string similar to 交互.
         /// </summary>
         public static string Interacting
         {
@@ -1156,7 +1159,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 可交互对话框 的本地化字符串。
+        ///   Looks up a localized string similar to 可交互对话框.
         /// </summary>
         public static string InteractiveDialog
         {
@@ -1200,7 +1203,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 布局 的本地化字符串。
+        ///   Looks up a localized string similar to 布局.
         /// </summary>
         public static string Layout
         {
@@ -1211,7 +1214,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 列表框 的本地化字符串。
+        ///   Looks up a localized string similar to 列表框.
         /// </summary>
         public static string ListBox
         {
@@ -1277,7 +1280,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 杂项 的本地化字符串。
+        ///   Looks up a localized string similar to 杂项.
         /// </summary>
         public static string Misc
         {
@@ -1288,7 +1291,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 变形动画 的本地化字符串。
+        ///   Looks up a localized string similar to 变形动画.
         /// </summary>
         public static string Morphing_Animation
         {
@@ -1310,7 +1313,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 导航 的本地化字符串。
+        ///   Looks up a localized string similar to 导航.
         /// </summary>
         public static string Navigation
         {
@@ -1321,7 +1324,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 新建窗口 的本地化字符串。
+        ///   Looks up a localized string similar to 新建窗口.
         /// </summary>
         public static string NewWindow
         {
@@ -1530,18 +1533,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 点击打开触摸拖动窗口 的本地化字符串。
-        /// </summary>
-        public static string OpenTouchDragMoveWindow
-        {
-            get
-            {
-                return ResourceManager.GetString("OpenTouchDragMoveWindow", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   查找类似 打开无非客户端区域可拖拽窗口 的本地化字符串。
+        ///   Looks up a localized string similar to 打开无非客户端区域可拖拽窗口.
         /// </summary>
         public static string OpenNoNonClientAreaDragableWindow
         {
@@ -1570,6 +1562,17 @@ namespace HandyControlDemo.Properties.Langs
             get
             {
                 return ResourceManager.GetString("OpenSprite", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to 点击打开触摸拖动窗口.
+        /// </summary>
+        public static string OpenTouchDragMoveWindow
+        {
+            get
+            {
+                return ResourceManager.GetString("OpenTouchDragMoveWindow", resourceCulture);
             }
         }
 
@@ -1781,7 +1784,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 属性编辑器 的本地化字符串。
+        ///   Looks up a localized string similar to 属性编辑器.
         /// </summary>
         public static string PropertyGrid
         {
@@ -2463,7 +2466,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 等间距布局 的本地化字符串。
+        ///   Looks up a localized string similar to 等间距布局.
         /// </summary>
         public static string UniformSpacingPanel
         {
@@ -2474,7 +2477,7 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 上传文件 的本地化字符串。
+        ///   Looks up a localized string similar to 上传文件.
         /// </summary>
         public static string UploadFile
         {

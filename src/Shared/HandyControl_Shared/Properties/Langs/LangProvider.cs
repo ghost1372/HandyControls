@@ -41,8 +41,6 @@ namespace HandyControl.Properties.Langs
             OnPropertyChanged(nameof(All));
             OnPropertyChanged(nameof(Am));
             OnPropertyChanged(nameof(Cancel));
-            OnPropertyChanged(nameof(CannotRegisterCompositeCommandInItself));
-            OnPropertyChanged(nameof(CannotRegisterSameCommandTwice));
             OnPropertyChanged(nameof(Clear));
             OnPropertyChanged(nameof(Close));
             OnPropertyChanged(nameof(CloseAll));
@@ -62,6 +60,7 @@ namespace HandyControl.Properties.Langs
             OnPropertyChanged(nameof(IsNecessary));
             OnPropertyChanged(nameof(Jump));
             OnPropertyChanged(nameof(LangComment));
+            OnPropertyChanged(nameof(Miscellaneous));
             OnPropertyChanged(nameof(NextPage));
             OnPropertyChanged(nameof(No));
             OnPropertyChanged(nameof(NoData));
@@ -82,9 +81,9 @@ namespace HandyControl.Properties.Langs
         }
 
         /// <summary>
-        ///   查找类似 所有 的本地化字符串。
+        ///   查找类似 全部 的本地化字符串。
         /// </summary>
-        public string All => Lang.All;
+		public string All => Lang.All;
 
         /// <summary>
         ///   查找类似 上午 的本地化字符串。
@@ -97,16 +96,6 @@ namespace HandyControl.Properties.Langs
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
         public string Cancel => Lang.Cancel;
-
-        /// <summary>
-        ///   查找类似 无法自注册复合命令 的本地化字符串。
-        /// </summary>
-		public string CannotRegisterCompositeCommandInItself => Lang.CannotRegisterCompositeCommandInItself;
-
-        /// <summary>
-        ///   查找类似 不能注册同一命令两次 的本地化字符串。
-        /// </summary>
-		public string CannotRegisterSameCommandTwice => Lang.CannotRegisterSameCommandTwice;
 
         /// <summary>
         ///   查找类似 清空 的本地化字符串。
@@ -204,6 +193,11 @@ namespace HandyControl.Properties.Langs
 		public string LangComment => Lang.LangComment;
 
         /// <summary>
+        ///   查找类似 杂项 的本地化字符串。
+        /// </summary>
+		public string Miscellaneous => Lang.Miscellaneous;
+
+        /// <summary>
         ///   查找类似 下一页 的本地化字符串。
         /// </summary>
 		public string NextPage => Lang.NextPage;
@@ -298,9 +292,9 @@ namespace HandyControl.Properties.Langs
     public class LangKeys
     {
         /// <summary>
-        ///   查找类似 所有 的本地化字符串。
+        ///   查找类似 全部 的本地化字符串。
         /// </summary>
-        public static string All = nameof(All);
+		public static string All = nameof(All);
 
         /// <summary>
         ///   查找类似 上午 的本地化字符串。
@@ -313,16 +307,6 @@ namespace HandyControl.Properties.Langs
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
 		public static string Cancel = nameof(Cancel);
-
-        /// <summary>
-        ///   查找类似 无法自注册复合命令 的本地化字符串。
-        /// </summary>
-		public static string CannotRegisterCompositeCommandInItself = nameof(CannotRegisterCompositeCommandInItself);
-
-        /// <summary>
-        ///   查找类似 不能注册同一命令两次 的本地化字符串。
-        /// </summary>
-		public static string CannotRegisterSameCommandTwice = nameof(CannotRegisterSameCommandTwice);
 
         /// <summary>
         ///   查找类似 清空 的本地化字符串。
@@ -418,6 +402,11 @@ namespace HandyControl.Properties.Langs
         ///   查找类似 查找类似 {0} 的本地化字符串。 的本地化字符串。
         /// </summary>
 		public static string LangComment = nameof(LangComment);
+
+        /// <summary>
+        ///   查找类似 杂项 的本地化字符串。
+        /// </summary>
+		public static string Miscellaneous = nameof(Miscellaneous);
 
         /// <summary>
         ///   查找类似 下一页 的本地化字符串。
