@@ -1,4 +1,4 @@
-﻿using HandyControl.Data;
+﻿using HandyControl.Tools;
 using System.Windows;
 using System.Windows.Controls;
 namespace $safeprojectname$
@@ -9,17 +9,17 @@ namespace $safeprojectname$
         {
             InitializeComponent();
         }
-    #region Change Skin
-    private void ButtonConfig_OnClick(object sender, RoutedEventArgs e) => PopupConfig.IsOpen = true;
+        #region Change Skin
+        private void ButtonConfig_OnClick(object sender, RoutedEventArgs e) => PopupConfig.IsOpen = true;
 
-    private void ButtonSkins_OnClick(object sender, RoutedEventArgs e)
-    {
-        if (e.OriginalSource is Button button && button.Tag is SkinType tag)
+        private void ButtonSkins_OnClick(object sender, RoutedEventArgs e)
         {
-            PopupConfig.IsOpen = false;
-            ((App)Application.Current).UpdateSkin(tag);
+            if (e.OriginalSource is Button button && button.Tag is ApplicationTheme tag)
+            {
+                PopupConfig.IsOpen = false;
+                ((App)Application.Current).UpdateSkin(tag);
+            }
         }
+        #endregion
     }
-    #endregion
-}
 }
