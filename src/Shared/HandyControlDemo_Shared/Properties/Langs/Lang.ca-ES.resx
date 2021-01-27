@@ -795,4 +795,7 @@
   <data name="Empty" xml:space="preserve">
     <value>Empty</value>
   </data>
+  <data name="PersianToolkit" xml:space="preserve">
+    <value>PersianToolkit</value>
+  </data>
 </root>
