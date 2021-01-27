@@ -8,5 +8,10 @@ namespace HandyControl.Controls
         {
             return new Uri($"pack://application:,,,/{Namespace};component/{path}");
         }
+
+        internal static Uri GetAbsoluteUri(string Path)
+        {
+            return new Uri($"pack://application:,,,/HandyControl;component/{Path}");
+        }
     }
 }

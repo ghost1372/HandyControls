@@ -1,9 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace HandyControl.Tools.Extension
 {
-    internal static class MergedDictionariesHelper
+    public static class MergedDictionariesExtensions
     {
         public static void AddIfNotNull(this Collection<ResourceDictionary> mergedDictionaries, ResourceDictionary item)
         {
@@ -50,6 +51,20 @@ namespace HandyControl.Tools.Extension
             {
                 mergedDictionaries.Insert(index, item);
             }
+        }
+
+        public static void Swap(this Collection<ResourceDictionary> mergedDictionaries, int index1, int index2)
+        {
+            if (index1 == index2)
+            {
+                return;
+            }
+
+            var smallIndex = Math.Min(index1, index2);
+            var largeIndex = Math.Max(index1, index2);
+            var tmp = mergedDictionaries[smallIndex];
+            mergedDictionaries.RemoveAt(smallIndex);
+            mergedDictionaries.Insert(largeIndex, tmp);
         }
     }
 }
