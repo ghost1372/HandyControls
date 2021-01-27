@@ -13,6 +13,7 @@
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Properties.Langs")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Themes")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Markup")]
+[assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.DesignTime")]
 #if NET40
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "Microsoft.Windows.Shell")]
 #endif

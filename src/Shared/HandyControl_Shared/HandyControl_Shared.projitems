@@ -198,6 +198,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Info\ImageCodecInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\DoubleRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\IValueRange.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\CloseWindowCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\OpenLinkCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\StartScreenshotCommand.cs" />
@@ -511,6 +512,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Themes\XamlCombine.exe" />
+    <Page Include="$(MSBuildThisFileDirectory)DesignTime\DesignTimeResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Colors\Light.xaml">
       <SubType>Designer</SubType>
     </Page>
