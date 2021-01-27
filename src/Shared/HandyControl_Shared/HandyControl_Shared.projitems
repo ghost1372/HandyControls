@@ -230,6 +230,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ResourceDictionaryEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ResourceDictionaryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\Theme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ThemeDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ThemeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ThemeResources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\TypedEventHandler.cs" />
