@@ -1,20 +1,43 @@
-[中文](https://github.com/HandyOrg/HandyControl/blob/master/README-cn.md) - [English](https://github.com/HandyOrg/HandyControl/blob/master/README.md)
+<p align="center">
+    <img align="center" src="https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/Cover.png">
+</p>
 
-![logo](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/icon.png)
+<p align="center">
+    <a href="https://github.com/HandyOrg/HandyControl/blob/master/README-cn.md">中文</a> 
+    ❤ 
+    <a href="https://github.com/HandyOrg/HandyControl/blob/master/README.md">English</a>
+</p>
 
-![dotnet-version](https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg) ![dotnetcore-version](https://img.shields.io/badge/.net%20Core-%3E%3D3.0-blue) ![csharp-version](https://img.shields.io/badge/C%23-8.0-blue.svg) ![IDE-version](https://img.shields.io/badge/IDE-vs2019-blue.svg) [![nuget-version](https://img.shields.io/nuget/v/HandyControls.svg)](https://www.nuget.org/packages/HandyControls) [![Gitter](https://badges.gitter.im/HandyControls/community.svg)](https://gitter.im/HandyControls/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![Document](https://img.shields.io/badge/Document-Updated-success)](https://ghost1372.github.io/) [![Nuget](https://img.shields.io/nuget/dt/handycontrols)](https://www.nuget.org/packages/HandyControls) ![Github-build-status](https://github.com/ghost1372/HandyControls/workflows/build/badge.svg) [![Issues](https://img.shields.io/github/issues/handyorg/handycontrol?color=orange&label=Issues)](https://github.com/handyorg/HandyControl/issues)
+<p align="center">
+    <img alt="dotnet-version" src="https://img.shields.io/badge/.net-%3E%3D4.0-blue.svg"></img>
+    <img alt="csharp-version" src="https://img.shields.io/badge/C%23-8.0-blue.svg"></img>
+    <img alt="IDE-version" src="https://img.shields.io/badge/IDE-vs2019-blue.svg"></img>
+    <a href="https://www.nuget.org/packages/HandyControls">
+        <img alt="nuget-version" src="https://img.shields.io/nuget/v/HandyControls.svg"></img>
+    </a> 
+    <a href="https://github.com/ghost1372/HandyControls/actions?query=workflow%3Abuild">
+        <img alt="Github-build-status" src="https://github.com/ghost1372/HandyControls/workflows/build/badge.svg"></img>
+    </a>
+    <a href="https://gitter.im/HandyControls/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
+        <img alt="Join the chat at https://gitter.im/HandyControls/community" src="https://badges.gitter.im/HandyControls/community.svg"></img>
+    </a> 
+    <a href="https://www.nuget.org/packages/HandyControls">
+        <img alt="Nuget" src="https://img.shields.io/nuget/dt/handycontrols"></img>
+    </a> 
+    <a href="https://ghost1372.github.io">
+        <img alt="Document" src="https://img.shields.io/badge/Document-Updated-success"></img>
+    </a> 
+    <a href="https://github.com/handyorg/HandyControl/issues">
+        <img alt="Issues" src="https://img.shields.io/github/issues/handyorg/handycontrol?color=orange&label=Issues"></img>
+    </a> 
+</p>
 
 <br>
 <p align="center">
-	<b>🙌 Use <a href="https://blockchain.com/btc/payment_request?address=19cmmVkh4ZsEdrcumbRMvQXmCFfw8nAbX5&amount=0.00041825&message=Buy a cup of tea">donations</a> to help support <b>your</b> projects! 🙌</b>
+	<b>🙌 Use <a href="https://blockchain.com/btc/payment_request?address=19cmmVkh4ZsEdrcumbRMvQXmCFfw8nAbX5&amount=0.00041825&message=Buy a cup of tea">donations</a> to help support <b>your</b> project! 🙌</b>
 </p>
-<br>
-
----
 
 <br>
-
 
 # Welcome to HandyControl
 This project is based on [HandyControl](https://github.com/handyOrg/HandyControl) and includes some controls and features that are not included in the original project [for example support for Persian Calendar and PersianDate, More Controls and More Styles]
@@ -47,6 +70,7 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 <a href="https://github.com/GF-Huang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="GF-Huang" src="https://avatars1.githubusercontent.com/u/4510984?s=64v=4"></a>
 <a href="https://github.com/cuiliang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="cuiliang" src="https://avatars2.githubusercontent.com/u/1972649?s=64&v=4"></a>
 <a href="https://github.com/lwqwag" target="_blank"><img style="border-radius:50%!important" width="64px" alt="lwqwag" src="https://avatars3.githubusercontent.com/u/29883542?s=64&v=4"></a>
+<a href="https://github.com/Epacik" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Epacik" src="https://avatars.githubusercontent.com/u/23077337?s=64&v=4"></a>
 
 ## Backers
 
