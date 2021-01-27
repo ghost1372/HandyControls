@@ -31,7 +31,7 @@
 
     <DrawingBrush o:Freeze="True" x:Key="MainContentForegroundDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,16,16" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
         <DrawingBrush.Drawing>
-            <GeometryDrawing o:Freeze="True" Brush="{hc:StaticColor MainContentForegroundBrush}">
+            <GeometryDrawing o:Freeze="True" Brush="{hc:StaticResource MainContentForegroundBrush}">
                 <GeometryDrawing.Geometry>
                     <GeometryGroup o:Freeze="True">
                         <RectangleGeometry o:Freeze="True" Rect="0,0,8,8" />

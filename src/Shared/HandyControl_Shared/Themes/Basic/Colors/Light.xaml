@@ -131,7 +131,7 @@
     <DrawingBrush o:Freeze="True" x:Key="MainContentForegroundDrawingBrush" RenderOptions.CachingHint="Cache" Viewport="0,0,16,16" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
         <DrawingBrush.Drawing>
             <DrawingGroup o:Freeze="True">
-                <GeometryDrawing o:Freeze="True" Brush="{m:StaticColor MainContentForegroundBrush}">
+                <GeometryDrawing o:Freeze="True" Brush="{m:StaticResource MainContentForegroundBrush}">
                     <GeometryDrawing.Geometry>
                         <GeometryGroup o:Freeze="True">
                             <RectangleGeometry o:Freeze="True" Rect="0,0,8,8" />
