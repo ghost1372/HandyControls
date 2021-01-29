@@ -1053,4 +1053,7 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Service\Data\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)app.manifest" />
+  </ItemGroup>
 </Project>
