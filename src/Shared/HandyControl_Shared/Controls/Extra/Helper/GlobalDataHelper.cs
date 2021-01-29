@@ -1,4 +1,4 @@
-﻿#if NETCOREAPP3_0 || NETCOREAPP3_1 || NET5_0
+﻿#if NETCOREAPP
 using System.IO;
 using System.Text.Json;
 

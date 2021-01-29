@@ -1,7 +1,4 @@
 ﻿using HandyControl.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 
 namespace HandyControl.Controls

@@ -7,10 +7,10 @@ using System.Net;
 using System.Reflection;
 using System.Net.Http;
 using System.Text;
-#if NET45 || NET462 || NET47 || NET48
-using System.Web.Script.Serialization;
-#else
+#if NETCOREAPP
 using System.Text.Json;
+#else
+using System.Web.Script.Serialization;
 #endif
 using System.Threading.Tasks;
 using HandyControl.Data;
@@ -51,11 +51,11 @@ namespace HandyControl.Controls
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
-#if NET45 || NET462 || NET47 || NET48
+#if NETCOREAPP
+                var result = JsonSerializer.Deserialize<RootModel>(responseBody);
+#else
                 JavaScriptSerializer javaScript = new JavaScriptSerializer();
                 var result = javaScript.Deserialize<RootModel>(responseBody);
-#else
-                var result = JsonSerializer.Deserialize<RootModel>(responseBody);
 #endif
                 if (result != null)
                 {
@@ -101,11 +101,11 @@ namespace HandyControl.Controls
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-#if NET45 || NET462 || NET47 || NET48
+#if NETCOREAPP
+                    var result = System.Text.Json.JsonSerializer.Deserialize<RootModel>(reader.ReadToEnd());
+#else
                     JavaScriptSerializer javaScript = new JavaScriptSerializer();
                     var result = javaScript.Deserialize<RootModel>(reader.ReadToEnd());
-#else
-                    var result = System.Text.Json.JsonSerializer.Deserialize<RootModel>(reader.ReadToEnd());
 #endif
                     if (result != null)
                     {

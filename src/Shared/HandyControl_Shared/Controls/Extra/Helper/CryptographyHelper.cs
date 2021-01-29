@@ -3,12 +3,13 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using HandyControl.Tools.Interop;
 
 namespace HandyControl.Controls
 {
     public class CryptographyHelper
     {
-        [DllImport("KERNEL32.DLL", EntryPoint = "RtlZeroMemory")]
+        [DllImport(InteropValues.ExternDll.Kernel32, EntryPoint = "RtlZeroMemory")]
         public static extern bool ZeroMemory(IntPtr Destination, int Length);
 
         public static string GenerateMD5(string input)
