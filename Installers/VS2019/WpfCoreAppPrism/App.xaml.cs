@@ -1,5 +1,6 @@
 ﻿using HandyControl.Tools;
 using System.Windows;
+using System.Windows.Media;
 namespace $safeprojectname$
 {
     public partial class App : Application
@@ -11,9 +12,20 @@ namespace $safeprojectname$
             boot.Run();
         }
 
-        internal void UpdateSkin(ApplicationTheme theme)
+        internal void UpdateTheme(ApplicationTheme theme)
         {
-            ThemeManager.Current.ApplicationTheme = theme;
+            if (ThemeManager.Current.ApplicationTheme != theme)
+            {
+                ThemeManager.Current.ApplicationTheme = theme;
+            }
+        }
+
+        internal void UpdateAccent(Brush accent)
+        {
+            if (ThemeManager.Current.ActualAccentColor != accent)
+            {
+                ThemeManager.Current.ActualAccentColor = accent;
+            }
         }
     }
 }
