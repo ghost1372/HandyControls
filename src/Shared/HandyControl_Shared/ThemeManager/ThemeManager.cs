@@ -238,16 +238,13 @@ namespace HandyControl.Tools
 
         public static readonly DependencyProperty AccentColorProperty =
             DependencyProperty.RegisterAttached("AccentColor", typeof(Brush), typeof(ThemeManager),
-                new FrameworkPropertyMetadata(default,
-                    OnAccentColorChanged));
+                new FrameworkPropertyMetadata(OnAccentColorChanged));
 
         private static void OnAccentColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is FrameworkElement ctl)
             {
                 ctl.Resources["PrimaryBrush"] = e.NewValue;
-                ctl.Resources["TitleColor"] = e.NewValue;
-                ctl.Resources["SecondaryTitleColor"] = e.NewValue;
             }
         }
 
@@ -277,8 +274,6 @@ namespace HandyControl.Tools
         private void applyAccentColor(object Value)
         {
             Application.Current.Resources["PrimaryBrush"] = Value;
-            Application.Current.Resources["TitleColor"] = Value;
-            Application.Current.Resources["SecondaryTitleColor"] = Value;
         }
 
         #endregion

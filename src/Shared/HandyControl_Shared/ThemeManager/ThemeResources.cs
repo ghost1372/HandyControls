@@ -79,7 +79,7 @@ namespace HandyControl.Controls
                 if (HandyControl.Tools.ThemeManager.Current.ActualAccentColor != value)
                 {
                     HandyControl.Tools.ThemeManager.Current.SetCurrentValue(
-                        HandyControl.Tools.ThemeManager.AccentColorProperty, value);
+                        HandyControl.Tools.ThemeManager.ActualAccentColorProperty, value);
 
                     if (DesignMode.DesignModeEnabled)
                     {
