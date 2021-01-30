@@ -224,7 +224,7 @@ namespace HandyControl.Tools
 
         #endregion
 
-        #region AccentColor
+        #region ActualAccentColor
 
         public static Brush GetActualAccentColor(DependencyObject d)
         {
@@ -250,7 +250,7 @@ namespace HandyControl.Tools
 
         #endregion
 
-        #region ActualAccentColor
+        #region AccentColor
 
         public static readonly DependencyProperty AccentColorProperty =
             DependencyProperty.Register(
