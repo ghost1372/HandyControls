@@ -47,7 +47,7 @@
                                     <Style TargetType="Border">
                                         <Setter Property="Visibility" Value="Collapsed"/>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true">
+                                            <DataTrigger Binding="{Binding UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true">
                                                 <Setter Property="Visibility" Value="Visible"/>
                                             </DataTrigger>
                                         </Style.Triggers>
@@ -72,7 +72,7 @@
                                 <Style TargetType="Border">
                                     <Setter Property="OpacityMask" Value="{StaticResource grdBrush}"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true">
+                                        <DataTrigger Binding="{Binding UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true">
                                             <Setter Property="OpacityMask" Value="{StaticResource grdBrushUWP}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -87,7 +87,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="true"/>
-                                <Condition Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="false"/>
+                                <Condition Binding="{Binding UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="false"/>
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
                                 <Setter Property="Panel.ZIndex" Value="1"/>
@@ -108,7 +108,7 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="false"/>
-                                <Condition Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true"/>
+                                <Condition Binding="{Binding UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true"/>
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
                                 <Setter Property="BorderThickness" Value="0"/>
@@ -118,29 +118,29 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="true"/>
-                                <Condition Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true"/>
+                                <Condition Binding="{Binding UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true"/>
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
                                 <Setter Property="Panel.ZIndex" Value="1"/>
                                 <Setter Property="Visibility" TargetName="innerBorder" Value="Collapsed"/>
                                 <Setter Property="Background" TargetName="BorderMask" Value="{DynamicResource RegionBrush}"/>
                                 <Setter Property="BorderThickness" Value="0,3,0,0"/>
-                                <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=hc:TabControl}}"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
 
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource self}}" Value="True" />
-                                <Condition Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true"/>
-                                <Condition Binding="{Binding Path=HeaderBrushAlignment, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="Bottom" />
+                                <Condition Binding="{Binding UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="true"/>
+                                <Condition Binding="{Binding Path=IndicatorDisplayMode, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="Bottom" />
                             </MultiDataTrigger.Conditions>
                             <MultiDataTrigger.Setters>
                                 <Setter Property="Panel.ZIndex" Value="1"/>
                                 <Setter Property="Visibility" TargetName="innerBorder" Value="Visible"/>
                                 <Setter Property="Background" TargetName="BorderMask" Value="{DynamicResource RegionBrush}"/>
                                 <Setter Property="BorderThickness" Value="0,0,0,3"/>
-                                <Setter Property="BorderBrush" Value="{Binding Path=HeaderBrush, RelativeSource={RelativeSource AncestorType=hc:TabControl}}"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
@@ -174,7 +174,7 @@
                         <Style TargetType="Border">
                             <Setter Property="BorderThickness" Value="0,0,0,1"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
+                                <DataTrigger Binding="{Binding Path=UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
                                     <Setter Property="BorderThickness" Value="0"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -190,7 +190,7 @@
                         <Style TargetType="Border">
                             <Setter Property="BorderThickness" Value="1,0,0,1"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
+                                <DataTrigger Binding="{Binding Path=UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
                                     <Setter Property="BorderThickness" Value="0"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -221,7 +221,7 @@
                         <Style TargetType="RepeatButton">
                             <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource self}}" Value="True">
+                                <DataTrigger Binding="{Binding Path=UsingWinUIStyle, RelativeSource={RelativeSource self}}" Value="True">
                                     <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -231,7 +231,7 @@
                         <Style TargetType="Border">
                             <Setter Property="BorderThickness" Value="0,0,1,1"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
+                                <DataTrigger Binding="{Binding Path=UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
                                     <Setter Property="BorderThickness" Value="0"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -253,7 +253,7 @@
                             <Style TargetType="Border">
                                 <Setter Property="BorderThickness" Value="0,0,0,1"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
+                                    <DataTrigger Binding="{Binding Path=UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
                                         <Setter Property="BorderThickness" Value="0"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -270,7 +270,7 @@
                             <Style TargetType="RepeatButton">
                                 <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource self}}" Value="True">
+                                    <DataTrigger Binding="{Binding Path=UsingWinUIStyle, RelativeSource={RelativeSource self}}" Value="True">
                                         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -281,7 +281,7 @@
                                 <Style TargetType="Border">
                                     <Setter Property="Width" Value="1"/>
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
+                                        <DataTrigger Binding="{Binding Path=UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
                                             <Setter Property="Width" Value="0"/>
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -294,7 +294,7 @@
                         <Style TargetType="Border">
                             <Setter Property="BorderThickness" Value="1,0,0,1"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=IsUWPStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
+                                <DataTrigger Binding="{Binding Path=UsingWinUIStyle, RelativeSource={RelativeSource AncestorType=hc:TabControl}}" Value="True">
                                     <Setter Property="BorderThickness" Value="0"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -325,7 +325,7 @@
                 <Setter Property="Template" Value="{StaticResource TabControlPlusScrollableTemplate}"/>
             </MultiTrigger>
 
-            <DataTrigger Binding="{Binding IsUWPStyle, RelativeSource={RelativeSource self}}" Value="True">
+            <DataTrigger Binding="{Binding UsingWinUIStyle, RelativeSource={RelativeSource self}}" Value="True">
                 <Setter Property="BorderThickness" Value="0,0,0,1"/>
                 <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
             </DataTrigger>
