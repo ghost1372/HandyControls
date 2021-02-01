@@ -224,23 +224,23 @@ namespace HandyControl.Tools
 
         #endregion
 
-        #region ActualAccentColor
+        #region RequestedAccentColor
 
-        public static Brush GetActualAccentColor(DependencyObject d)
+        public static Brush GetRequestedAccentColor(DependencyObject d)
         {
-            return (Brush) d.GetValue(ActualAccentColorProperty);
+            return (Brush) d.GetValue(RequestedAccentColorProperty);
         }
 
-        public static void SetActualAccentColor(DependencyObject d, Brush value)
+        public static void SetRequestedAccentColor(DependencyObject d, Brush value)
         {
-            d.SetValue(ActualAccentColorProperty, value);
+            d.SetValue(RequestedAccentColorProperty, value);
         }
 
-        public static readonly DependencyProperty ActualAccentColorProperty =
-            DependencyProperty.RegisterAttached("ActualAccentColor", typeof(Brush), typeof(ThemeManager),
-                new FrameworkPropertyMetadata(OnActualAccentColorChanged));
+        public static readonly DependencyProperty RequestedAccentColorProperty =
+            DependencyProperty.RegisterAttached("RequestedAccentColor", typeof(Brush), typeof(ThemeManager),
+                new FrameworkPropertyMetadata(OnRequestedAccentColorChanged));
 
-        private static void OnActualAccentColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnRequestedAccentColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is FrameworkElement ctl)
             {
