@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿// http://github.com/kinnara/ModernWpf
 
-namespace HandyControl.ThemeManager
+using System.Windows;
+
+namespace HandyControl.Themes
 {
     internal static class ResourceDictionaryHelper
     {

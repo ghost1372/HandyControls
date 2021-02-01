@@ -1,4 +1,6 @@
-﻿namespace HandyControl.ThemeManager
+﻿// http://github.com/kinnara/ModernWpf
+
+namespace HandyControl.Themes
 {
     /// <summary>
     /// Represents a method that handles general events.

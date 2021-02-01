@@ -1,14 +1,15 @@
-﻿using System;
+﻿// http://github.com/kinnara/ModernWpf
+
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using HandyControl.Data;
-using HandyControl.ThemeManager;
-using HandyControl.Tools;
+using HandyControl.Controls;
 using HandyControl.Tools.Extension;
 
-namespace HandyControl.Controls
+namespace HandyControl.Themes
 {
     public class ThemeResources : ResourceDictionaryEx, ISupportInitialize
     {
@@ -52,13 +53,13 @@ namespace HandyControl.Controls
         /// </returns>
         public ApplicationTheme? RequestedTheme
         {
-            get => HandyControl.Tools.ThemeManager.Current.ApplicationTheme;
+            get => ThemeManager.Current.ApplicationTheme;
             set
             {
-                if (HandyControl.Tools.ThemeManager.Current.ApplicationTheme != value)
+                if (ThemeManager.Current.ApplicationTheme != value)
                 {
-                    HandyControl.Tools.ThemeManager.Current.SetCurrentValue(
-                        HandyControl.Tools.ThemeManager.ApplicationThemeProperty, value);
+                    ThemeManager.Current.SetCurrentValue(
+                        ThemeManager.ApplicationThemeProperty, value);
 
                     if (DesignMode.DesignModeEnabled)
                     {
@@ -73,13 +74,13 @@ namespace HandyControl.Controls
         /// </summary>
         public Brush AccentColor
         {
-            get => HandyControl.Tools.ThemeManager.Current.AccentColor;
+            get => ThemeManager.Current.AccentColor;
             set
             {
-                if (HandyControl.Tools.ThemeManager.Current.AccentColor != value)
+                if (ThemeManager.Current.AccentColor != value)
                 {
-                    HandyControl.Tools.ThemeManager.Current.SetCurrentValue(
-                        HandyControl.Tools.ThemeManager.AccentColorProperty, value);
+                    ThemeManager.Current.SetCurrentValue(
+                        ThemeManager.AccentColorProperty, value);
 
                     if (DesignMode.DesignModeEnabled)
                     {
@@ -113,23 +114,23 @@ namespace HandyControl.Controls
             get => _usingSystemTheme;
             set
             {
-                if (Tools.ThemeManager.Current.UsingSystemTheme != value)
+                if (ThemeManager.Current.UsingSystemTheme != value)
                 {
-                    Tools.ThemeManager.Current.UsingSystemTheme = value;
+                    ThemeManager.Current.UsingSystemTheme = value;
                     if (value)
                     {
-                        Tools.ThemeManager.Current.initSystemTheme();
+                        ThemeManager.Current.initSystemTheme();
                     }
                 }
                 _usingSystemTheme = value;
             }
         }
 
-        public event EventHandler<FunctionEventArgs<Tools.ThemeManager.SystemTheme>> SystemThemeChanged;
-        public virtual void OnSystemThemeChanged(Tools.ThemeManager.SystemTheme theme)
+        public event EventHandler<FunctionEventArgs<ThemeManager.SystemTheme>> SystemThemeChanged;
+        public virtual void OnSystemThemeChanged(ThemeManager.SystemTheme theme)
         {
-            EventHandler<FunctionEventArgs<Tools.ThemeManager.SystemTheme>> handler = SystemThemeChanged;
-            handler?.Invoke(this, new FunctionEventArgs<Tools.ThemeManager.SystemTheme>(theme));
+            EventHandler<FunctionEventArgs<ThemeManager.SystemTheme>> handler = SystemThemeChanged;
+            handler?.Invoke(this, new FunctionEventArgs<ThemeManager.SystemTheme>(theme));
         }
         #region Design Time
 
@@ -215,7 +216,7 @@ namespace HandyControl.Controls
             }
             else
             {
-                HandyControl.Tools.ThemeManager.Current.Initialize();
+                ThemeManager.Current.Initialize();
 
                 if (CanBeAccessedAcrossThreads)
                 {
@@ -315,10 +316,10 @@ namespace HandyControl.Controls
         {
             switch (key)
             {
-                case HandyControl.Tools.ThemeManager.LightKey:
+                case ThemeManager.LightKey:
                     EnsureLightResources();
                     return _lightResources;
-                case HandyControl.Tools.ThemeManager.DarkKey:
+                case ThemeManager.DarkKey:
                     EnsureDarkResources();
                     return _darkResources;
                 default:
@@ -330,8 +331,8 @@ namespace HandyControl.Controls
         {
             return key switch
             {
-                HandyControl.Tools.ThemeManager.LightKey => _lightResources,
-                HandyControl.Tools.ThemeManager.DarkKey => _darkResources,
+                ThemeManager.LightKey => _lightResources,
+                ThemeManager.DarkKey => _darkResources,
                 _ => null,
             };
         }
@@ -340,7 +341,7 @@ namespace HandyControl.Controls
         {
             if (_lightResources == null)
             {
-                _lightResources = InitializeThemeDictionary(HandyControl.Tools.ThemeManager.LightKey);
+                _lightResources = InitializeThemeDictionary(ThemeManager.LightKey);
             }
         }
 
@@ -348,7 +349,7 @@ namespace HandyControl.Controls
         {
             if (_darkResources == null)
             {
-                _darkResources = InitializeThemeDictionary(HandyControl.Tools.ThemeManager.DarkKey);
+                _darkResources = InitializeThemeDictionary(ThemeManager.DarkKey);
             }
         }
 
@@ -359,7 +360,7 @@ namespace HandyControl.Controls
 
         private ResourceDictionary InitializeThemeDictionary(string key)
         {
-            ResourceDictionary defaultThemeDictionary = HandyControl.Tools.ThemeManager.GetDefaultThemeDictionary(key);
+            ResourceDictionary defaultThemeDictionary = ThemeManager.GetDefaultThemeDictionary(key);
 
             if (ThemeDictionaries.TryGetValue(key, out ResourceDictionary themeDictionary))
             {

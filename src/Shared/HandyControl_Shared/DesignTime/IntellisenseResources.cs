@@ -1,6 +1,6 @@
-﻿using HandyControl.ThemeManager;
+﻿// http://github.com/kinnara/ModernWpf
 
-namespace HandyControl.DesignTime
+namespace HandyControl.Themes
 {
     public class IntellisenseResources : IntellisenseResourcesBase
     {

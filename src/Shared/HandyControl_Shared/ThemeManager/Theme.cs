@@ -1,7 +1,9 @@
-﻿using System.Windows;
-using HandyControl.ThemeManager;
+﻿// http://github.com/kinnara/ModernWpf
 
-namespace HandyControl.Controls
+using System.Windows;
+using HandyControl.Controls;
+
+namespace HandyControl.Themes
 {
     /// <summary>
     /// Default styles for controls.

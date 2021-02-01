@@ -1,4 +1,6 @@
-﻿using System;
+﻿// http://github.com/kinnara/ModernWpf
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,12 +9,12 @@ using System.Windows;
 using System.Windows.Media;
 using HandyControl.Controls;
 using HandyControl.Data;
-using HandyControl.ThemeManager;
+using HandyControl.Tools;
 using HandyControl.Tools.Extension;
 using Microsoft.Win32;
 using Window = HandyControl.Controls.Window;
 
-namespace HandyControl.Tools
+namespace HandyControl.Themes
 {
     public class ThemeManager : DependencyObject
     {
@@ -81,7 +83,7 @@ namespace HandyControl.Tools
             using var key = Registry.CurrentUser.OpenSubKey(RegistryThemePath);
             var themeValue = key?.GetValue(RegSysMode) as int?;
 
-            return themeValue != 0 ? Tools.ApplicationTheme.Light : Tools.ApplicationTheme.Dark;
+            return themeValue != 0 ? Themes.ApplicationTheme.Light : Themes.ApplicationTheme.Dark;
         }
 
         public Brush GetAccentColorFromSystem()
@@ -177,7 +179,7 @@ namespace HandyControl.Tools
                 nameof(ActualApplicationTheme),
                 typeof(ApplicationTheme),
                 typeof(ThemeManager),
-                new PropertyMetadata(HandyControl.Tools.ApplicationTheme.Light, OnActualApplicationThemeChanged));
+                new PropertyMetadata(Themes.ApplicationTheme.Light, OnActualApplicationThemeChanged));
 
         public static readonly DependencyProperty ActualApplicationThemeProperty =
             ActualApplicationThemePropertyKey.DependencyProperty;
@@ -195,10 +197,10 @@ namespace HandyControl.Tools
 
             switch (newValue)
             {
-                case HandyControl.Tools.ApplicationTheme.Light:
+                case Themes.ApplicationTheme.Light:
                     tm._defaultActualTheme = ElementTheme.Light;
                     break;
-                case HandyControl.Tools.ApplicationTheme.Dark:
+                case Themes.ApplicationTheme.Dark:
                     tm._defaultActualTheme = ElementTheme.Dark;
                     break;
             }
@@ -210,7 +212,7 @@ namespace HandyControl.Tools
 
         private void UpdateActualApplicationTheme()
         {
-            ActualApplicationTheme = ApplicationTheme ?? HandyControl.Tools.ApplicationTheme.Light;
+            ActualApplicationTheme = ApplicationTheme ?? Themes.ApplicationTheme.Light;
         }
 
         private void ApplyApplicationTheme()
@@ -653,37 +655,6 @@ namespace HandyControl.Tools
         private static Uri GetDefaultSource(string theme)
         {
             return PackUriHelper.GetAbsoluteUri($"Themes/Basic/Colors/{theme}.xaml");
-        }
-
-        private static ResourceDictionary FindDictionary(ResourceDictionary parent, Uri source)
-        {
-            if (parent.Source == source)
-            {
-                return parent;
-            }
-            else
-            {
-                foreach (var md in parent.MergedDictionaries)
-                {
-                    if (md != null)
-                    {
-                        if (md.Source == source)
-                        {
-                            return md;
-                        }
-                        else
-                        {
-                            var result = FindDictionary(md, source);
-                            if (result != null)
-                            {
-                                return result;
-                            }
-                        }
-                    }
-                }
-            }
-
-            return null;
         }
 
         internal void Initialize()

@@ -1,8 +1,10 @@
-﻿using System;
+﻿// http://github.com/kinnara/ModernWpf
+
+using System;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace HandyControl.Markup
+namespace HandyControl.Themes
 {
     public class StaticColorExtension : System.Windows.StaticResourceExtension
     {

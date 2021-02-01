@@ -1,8 +1,10 @@
-﻿using System;
+﻿// http://github.com/kinnara/ModernWpf
+
+using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace HandyControl.ThemeManager
+namespace HandyControl.Themes
 {
     /// <summary>
     /// Enables you to detect whether your app is in design mode in a visual designer.

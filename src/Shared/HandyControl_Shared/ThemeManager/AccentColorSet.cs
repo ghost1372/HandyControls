@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Media;
 using HandyControl.Tools.Interop;
 
-namespace HandyControl.ThemeManager
+namespace HandyControl.Themes
 {
     //https://github.com/Code-Inside/Samples/blob/master/2016/WpfGetWindows10AccentColor/WpfApplication1/MainWindow.xaml.cs
     internal class AccentColorSet

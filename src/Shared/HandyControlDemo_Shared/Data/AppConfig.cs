@@ -1,6 +1,5 @@
 ﻿using System;
-using HandyControl.Data;
-using HandyControl.Tools;
+using HandyControl.Themes;
 
 namespace HandyControlDemo.Data
 {

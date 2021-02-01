@@ -1,8 +1,10 @@
-﻿using System;
+﻿// http://github.com/kinnara/ModernWpf
+
+using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace HandyControl.ThemeManager
+namespace HandyControl.Themes
 {
     public abstract class IntellisenseResourcesBase : ResourceDictionary, ISupportInitialize
     {

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿// http://github.com/kinnara/ModernWpf
+
+using System.Collections.Generic;
 using System.Windows;
 
-namespace HandyControl.ThemeManager
+namespace HandyControl.Themes
 {
     public class ResourceDictionaryEx : ResourceDictionary
     {

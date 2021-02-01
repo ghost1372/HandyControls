@@ -10,7 +10,7 @@ using System.Runtime;
 using System.Threading;
 using System.Windows;
 using HandyControl.Controls;
-using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
 using HandyControlDemo.Data;

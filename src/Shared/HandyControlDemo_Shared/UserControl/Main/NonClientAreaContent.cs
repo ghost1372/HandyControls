@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using GalaSoft.MvvmLight.Messaging;
 using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControlDemo.Data;
 using HandyControlDemo.Properties.Langs;

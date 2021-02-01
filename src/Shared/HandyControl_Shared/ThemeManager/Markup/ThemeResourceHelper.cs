@@ -1,7 +1,9 @@
-﻿using System.Windows;
+﻿// http://github.com/kinnara/ModernWpf
+
+using System.Windows;
 using System.Windows.Media;
 
-namespace HandyControl.Markup
+namespace HandyControl.Themes
 {
     internal static class ThemeResourceHelper
     {

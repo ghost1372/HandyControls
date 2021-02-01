@@ -1,4 +1,6 @@
-﻿namespace HandyControl.Markup
+﻿// http://github.com/kinnara/ModernWpf
+
+namespace HandyControl.Themes
 {
     public class StaticResourceExtension : System.Windows.StaticResourceExtension
     {

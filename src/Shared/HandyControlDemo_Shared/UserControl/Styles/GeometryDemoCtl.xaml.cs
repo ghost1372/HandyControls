@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Media;
-using HandyControl.Controls;
+using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControlDemo.Data;
 

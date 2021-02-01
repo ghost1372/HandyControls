@@ -1,7 +1,8 @@
-﻿using System.Windows;
-using HandyControl.Controls;
+﻿// http://github.com/kinnara/ModernWpf
 
-namespace HandyControl.ThemeManager
+using System.Windows;
+
+namespace HandyControl.Themes
 {
     public static class ThemeDictionary
     {
@@ -14,7 +15,7 @@ namespace HandyControl.ThemeManager
         private static ResourceDictionary GetBaseThemeDictionary(string key)
         {
             ResourceDictionary themeDictionary = ThemeResources.Current?.TryGetThemeDictionary(key);
-            return themeDictionary ?? Tools.ThemeManager.GetDefaultThemeDictionary(key);
+            return themeDictionary ?? ThemeManager.GetDefaultThemeDictionary(key);
         }
     }
 }

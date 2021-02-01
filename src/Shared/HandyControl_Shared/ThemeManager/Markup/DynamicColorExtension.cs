@@ -1,4 +1,6 @@
-﻿using System;
+﻿// http://github.com/kinnara/ModernWpf
+
+using System;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
 using System.Globalization;
@@ -6,7 +8,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace HandyControl.Markup
+namespace HandyControl.Themes
 {
     [TypeConverter(typeof(DynamicColorExtensionConverter))]
     public class DynamicColorExtension : DynamicResourceExtension
