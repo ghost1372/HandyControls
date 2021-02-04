@@ -6,19 +6,17 @@ using System.Runtime.CompilerServices;
 #endif
 using System.Windows;
 using System.Windows.Markup;
-using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using HandyControl.Data;
 using HandyControl.Properties.Langs;
 using Timeline = System.Windows.Media.Animation.Timeline;
-
 namespace HandyControl.Tools
 {
     public class ConfigHelper : INotifyPropertyChanged
     {
         private ConfigHelper()
         {
-
+            
         }
 
         public static ConfigHelper Instance = new Lazy<ConfigHelper>(() => new ConfigHelper()).Value;
@@ -43,6 +41,7 @@ namespace HandyControl.Tools
             LangProvider.Culture = new CultureInfo(lang);
             Application.Current.Dispatcher.Thread.CurrentUICulture = new CultureInfo(lang);
             Lang = XmlLanguage.GetLanguage(lang);
+            HandyControl.Controls.LocalizationManager.Instance.OnCultureChanged();
         }
 
         public void SetConfig(HandyControlConfig config)

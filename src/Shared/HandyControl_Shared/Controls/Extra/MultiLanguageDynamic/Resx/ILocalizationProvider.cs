@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
-
-namespace HandyControl.Controls
+﻿namespace HandyControl.Controls
 
 {
     /// <summary>
@@ -15,10 +12,5 @@ namespace HandyControl.Controls
         /// <param name="key">Key</param>
         /// <returns></returns>
         object Localize(string key);
-
-        /// <summary>
-        /// Available Cultures
-        /// </summary>
-        IEnumerable<CultureInfo> Cultures { get; }
     }
 }

@@ -14,6 +14,7 @@ namespace HandyControl.Tools.Extension
     public static class Extensions
     {
         #region String
+
         /// <summary>
         /// Generate MD5 Hash 
         /// </summary>
@@ -69,7 +70,8 @@ namespace HandyControl.Tools.Extension
         /// <param name="truncator">The truncate to use</param>
         /// <param name="from">The enum value used to determine from where to truncate the string</param>
         /// <returns>The truncated string</returns>
-        public static string Truncate(this string input, int length, ITruncator truncator, TruncateFrom from = TruncateFrom.Right)
+        public static string Truncate(this string input, int length, ITruncator truncator,
+            TruncateFrom from = TruncateFrom.Right)
         {
             return input.Truncate(length, "…", truncator, from);
         }
@@ -82,7 +84,8 @@ namespace HandyControl.Tools.Extension
         /// <param name="truncationString">The string used to truncate with</param>
         /// <param name="from">The enum value used to determine from where to truncate the string</param>
         /// <returns>The truncated string</returns>
-        public static string Truncate(this string input, int length, string truncationString, TruncateFrom from = TruncateFrom.Right)
+        public static string Truncate(this string input, int length, string truncationString,
+            TruncateFrom from = TruncateFrom.Right)
         {
             return input.Truncate(length, truncationString, Truncator.FixedLength, from);
         }
@@ -96,7 +99,8 @@ namespace HandyControl.Tools.Extension
         /// <param name="truncator">The truncator to use</param>
         /// <param name="from">The enum value used to determine from where to truncate the string</param>
         /// <returns>The truncated string</returns>
-        public static string Truncate(this string input, int length, string truncationString, ITruncator truncator, TruncateFrom from = TruncateFrom.Right)
+        public static string Truncate(this string input, int length, string truncationString, ITruncator truncator,
+            TruncateFrom from = TruncateFrom.Right)
         {
             if (truncator == null)
             {
@@ -110,9 +114,11 @@ namespace HandyControl.Tools.Extension
 
             return truncator.Truncate(input, length, truncationString, from);
         }
+
         #endregion
 
         #region T
+
         /// <summary>
         /// This Extension Method Help you to Add Items into ObservableCollection from Another Thread
         /// </summary>
@@ -151,6 +157,7 @@ namespace HandyControl.Tools.Extension
             {
                 return result;
             }
+
             return 0;
         }
 
@@ -168,6 +175,7 @@ namespace HandyControl.Tools.Extension
             {
                 return result;
             }
+
             return defaultValue;
         }
 
@@ -204,9 +212,11 @@ namespace HandyControl.Tools.Extension
         {
             return new CollectionViewExtension<TSource>(view);
         }
+
         #endregion
 
         #region DateTime
+
         /// <summary>
         /// Get Shamsi Date From Miladi Year
         /// </summary>
@@ -215,8 +225,11 @@ namespace HandyControl.Tools.Extension
         public static string ToShamsiDate(this DateTime dateTime)
         {
             PersianDateTime persianDateShamsi = new PersianDateTime();
-            return persianDateShamsi.GetShamsiYearToString(dateTime) + "/" + persianDateShamsi.GetShamsiMonthString(dateTime) + "/" + persianDateShamsi.GetShamsiDayString(dateTime);
+            return persianDateShamsi.GetShamsiYearToString(dateTime) + "/" +
+                   persianDateShamsi.GetShamsiMonthString(dateTime) + "/" +
+                   persianDateShamsi.GetShamsiDayString(dateTime);
         }
+
         /// <summary>
         /// Get Short Shamsi Date From Miladi Year
         /// </summary>
@@ -225,8 +238,11 @@ namespace HandyControl.Tools.Extension
         public static string ToShortShamsiDate(this DateTime dateTime)
         {
             PersianDateTime persianDateShamsi = new PersianDateTime();
-            return persianDateShamsi.GetShortShamsiYear(dateTime) + "/" + persianDateShamsi.GetShamsiMonthString(dateTime) + "/" + persianDateShamsi.GetShamsiDayString(dateTime);
+            return persianDateShamsi.GetShortShamsiYear(dateTime) + "/" +
+                   persianDateShamsi.GetShamsiMonthString(dateTime) + "/" +
+                   persianDateShamsi.GetShamsiDayString(dateTime);
         }
+
         /// <summary>
         /// Get Long Shamsi Date From Miladi Year
         /// </summary>
@@ -235,7 +251,8 @@ namespace HandyControl.Tools.Extension
         public static string ToLongShamsiDate(this DateTime dateTime)
         {
             PersianDateTime persianDateShamsi = new PersianDateTime();
-            return persianDateShamsi.GetShamsiDayName(dateTime) + " " + persianDateShamsi.GetShamsiDay(dateTime) + " " + persianDateShamsi.GetShamsiMonthName(dateTime) + " " + persianDateShamsi.GetShamsiYear(dateTime);
+            return persianDateShamsi.GetShamsiDayName(dateTime) + " " + persianDateShamsi.GetShamsiDay(dateTime) + " " +
+                   persianDateShamsi.GetShamsiMonthName(dateTime) + " " + persianDateShamsi.GetShamsiYear(dateTime);
         }
 
         public static string GetDiffrenceToNow(this DateTime dt)
@@ -248,6 +265,7 @@ namespace HandyControl.Tools.Extension
                 opr = "بعد";
                 ts = dt - Current;
             }
+
             if (ts.TotalMinutes < 1)
                 return "اکنون";
             if (ts.TotalMinutes < 60)
@@ -256,10 +274,12 @@ namespace HandyControl.Tools.Extension
             {
                 return $"{ts.Hours} ساعت و {ts.Minutes} دقیقه {opr}";
             }
+
             if (ts.TotalDays < 30)
             {
                 return $"{ts.Days} روز و {ts.Hours} ساعت و {ts.Minutes} دقیقه {opr}";
             }
+
             if (ts.TotalDays > 30 && ts.TotalDays < 365)
             {
                 var months = Math.Floor(ts.TotalDays / 30);
@@ -269,6 +289,7 @@ namespace HandyControl.Tools.Extension
                        (ts.Hours > 0 ? $"{ts.Hours} ساعت و " : String.Empty) +
                        (ts.Minutes > 0 ? $"{ts.Minutes} دقیقه " : String.Empty) + opr;
             }
+
             if (ts.TotalDays >= 365)
             {
                 var year = Math.Floor(ts.TotalDays / 365);
@@ -280,8 +301,10 @@ namespace HandyControl.Tools.Extension
                        (ts.Hours > 0 ? $"{ts.Hours} ساعت و " : String.Empty) +
                        (ts.Minutes > 0 ? $"{ts.Minutes} دقیقه " : String.Empty) + opr;
             }
+
             return "نامشخص";
         }
+
         public static string GetDiffrenceToNow(this PersianDateTime dt) =>
             GetDiffrenceToNow(dt.DateTime);
 
@@ -316,17 +339,24 @@ namespace HandyControl.Tools.Extension
         public static DateTime ToGregorianDate(this PersianDateTime persianDateTime)
         {
             GregorianCalendar gc = new GregorianCalendar();
-            return new DateTime(gc.GetYear(persianDateTime.DateTime), gc.GetMonth(persianDateTime.DateTime), gc.GetDayOfMonth(persianDateTime.DateTime), gc.GetHour(persianDateTime.DateTime), gc.GetMinute(persianDateTime.DateTime), gc.GetSecond(persianDateTime.DateTime), new System.Globalization.PersianCalendar());
+            return new DateTime(gc.GetYear(persianDateTime.DateTime), gc.GetMonth(persianDateTime.DateTime),
+                gc.GetDayOfMonth(persianDateTime.DateTime), gc.GetHour(persianDateTime.DateTime),
+                gc.GetMinute(persianDateTime.DateTime), gc.GetSecond(persianDateTime.DateTime),
+                new System.Globalization.PersianCalendar());
         }
 
         public static DateTime ToGregorianDate(this DateTime dateTime)
         {
             GregorianCalendar gc = new GregorianCalendar();
-            return new DateTime(gc.GetYear(dateTime), gc.GetMonth(dateTime), gc.GetDayOfMonth(dateTime), gc.GetHour(dateTime), gc.GetMinute(dateTime), gc.GetSecond(dateTime), new System.Globalization.PersianCalendar());
+            return new DateTime(gc.GetYear(dateTime), gc.GetMonth(dateTime), gc.GetDayOfMonth(dateTime),
+                gc.GetHour(dateTime), gc.GetMinute(dateTime), gc.GetSecond(dateTime),
+                new System.Globalization.PersianCalendar());
         }
+
         #endregion
 
         #region Application
+
         /// <summary>
         /// Get the path of the executable file of the current application, including the name of the executable file.
         /// </summary>
@@ -334,9 +364,11 @@ namespace HandyControl.Tools.Extension
         /// <returns>The path of the executable file of the current application, including the name of the executable file</returns>
         public static string ExecutablePath(this Application value)
         {
-            Uri uri = new Uri(Assembly.GetEntryAssembly().CodeBase);
-            if (uri.IsFile) return uri.LocalPath + Uri.UnescapeDataString(uri.Fragment);
-            else return uri.ToString();
+            Uri uri = new Uri(Assembly.GetEntryAssembly().Location);
+            if (uri.IsFile)
+                return uri.LocalPath + Uri.UnescapeDataString(uri.Fragment);
+            else
+                return uri.ToString();
         }
 
         /// <summary>
@@ -356,6 +388,7 @@ namespace HandyControl.Tools.Extension
             value.Shutdown();
             Process.Start(startInfo);
         }
+
         #endregion
     }
 }
