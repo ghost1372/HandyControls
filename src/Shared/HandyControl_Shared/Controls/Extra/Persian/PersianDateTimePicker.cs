@@ -23,7 +23,7 @@ namespace HandyControl.Controls
     public class PersianDateTimePicker : Control, IDataInput
     {
         public static readonly DependencyProperty SelectionBrushProperty =
-            TextBoxBase.SelectionBrushProperty.AddOwner(typeof(DateTimePicker));
+            TextBoxBase.SelectionBrushProperty.AddOwner(typeof(PersianDateTimePicker));
 
         public Brush SelectionBrush
         {
@@ -34,7 +34,7 @@ namespace HandyControl.Controls
 #if !(NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471 || NET472)
 
         public static readonly DependencyProperty SelectionTextBrushProperty =
-            TextBoxBase.SelectionTextBrushProperty.AddOwner(typeof(DateTimePicker));
+            TextBoxBase.SelectionTextBrushProperty.AddOwner(typeof(PersianDateTimePicker));
 
         public Brush SelectionTextBrush
         {
@@ -45,7 +45,7 @@ namespace HandyControl.Controls
 #endif
 
         public static readonly DependencyProperty SelectionOpacityProperty =
-            TextBoxBase.SelectionOpacityProperty.AddOwner(typeof(DateTimePicker));
+            TextBoxBase.SelectionOpacityProperty.AddOwner(typeof(PersianDateTimePicker));
 
         public double SelectionOpacity
         {
@@ -54,7 +54,7 @@ namespace HandyControl.Controls
         }
 
         public static readonly DependencyProperty CaretBrushProperty =
-            TextBoxBase.CaretBrushProperty.AddOwner(typeof(DateTimePicker));
+            TextBoxBase.CaretBrushProperty.AddOwner(typeof(PersianDateTimePicker));
 
         public Brush CaretBrush
         {

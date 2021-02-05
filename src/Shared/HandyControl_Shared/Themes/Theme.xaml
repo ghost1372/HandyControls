@@ -6173,12 +6173,11 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
-	<Style x:Key="CheckComboBoxWatermarkToggleButton" TargetType="ToggleButton">
-		<Setter Property="OverridesDefaultStyle" Value="true" />
-		<Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}" />
-		<Setter Property="IsTabStop" Value="false" />
-		<Setter Property="Focusable" Value="false" />
-		<Setter Property="ClickMode" Value="Press" />
+	<Style x:Key="CheckComboBoxToggleButton" BasedOn="{StaticResource ComboBoxToggleButton}" TargetType="ToggleButton">
+		<Setter Property="ClickMode" Value="Release" />
+	</Style>
+	<Style x:Key="CheckComboBoxWatermarkToggleButton" BasedOn="{StaticResource ComboBoxWatermarkToggleButton}" TargetType="ToggleButton">
+		<Setter Property="ClickMode" Value="Release" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ToggleButton">
@@ -6257,7 +6256,7 @@
 					</hc:ToggleBlock>
 				</Border>
 			</Popup>
-			<ToggleButton Grid.Column="0" x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Style="{StaticResource ComboBoxToggleButton}" />
+			<ToggleButton Grid.Column="0" x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Style="{StaticResource CheckComboBoxToggleButton}" />
 			<Border Grid.Column="0" Margin="-1,1">
 				<WrapPanel Name="PART_Panel" Margin="5,0,5,3" />
 			</Border>
@@ -7503,60 +7502,7 @@
 							</Grid.ColumnDefinitions>
 							<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 							<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-							<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
-						</Grid>
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
-						</Trigger>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition Property="IsMouseOver" Value="true" />
-								<Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
-							</MultiTrigger.Conditions>
-							<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
-						</MultiTrigger>
-						<MultiTrigger>
-							<MultiTrigger.Conditions>
-								<Condition Property="IsMouseOver" Value="true" />
-								<Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
-							</MultiTrigger.Conditions>
-							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-						</MultiTrigger>
-						<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
-							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-						</Trigger>
-						<Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
-							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style x:Key="DateTimePickerBaseStylePersian" TargetType="hc:PersianDateTimePicker">
-		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
-		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
-		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
-		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
-		<Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
-		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
-		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="hc:PersianDateTimePicker">
-					<Border x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-						<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="30" />
-							</Grid.ColumnDefinitions>
-							<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
-							<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-							<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+							<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 						</Grid>
 					</Border>
 					<ControlTemplate.Triggers>
@@ -7606,55 +7552,7 @@
 					</Grid.ColumnDefinitions>
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
-				</Grid>
-			</Border>
-		</Grid>
-		<ControlTemplate.Triggers>
-			<Trigger Property="IsEnabled" Value="false">
-				<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
-			</Trigger>
-			<MultiTrigger>
-				<MultiTrigger.Conditions>
-					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
-					<Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
-				</MultiTrigger.Conditions>
-				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
-			</MultiTrigger>
-			<MultiTrigger>
-				<MultiTrigger.Conditions>
-					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
-					<Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
-				</MultiTrigger.Conditions>
-				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-			</MultiTrigger>
-			<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
-				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
-			</Trigger>
-			<Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
-				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-			</Trigger>
-		</ControlTemplate.Triggers>
-	</ControlTemplate>
-	<ControlTemplate x:Key="DateTimePickerExtendTopTemplatePersian" TargetType="hc:PersianDateTimePicker">
-		<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto" />
-				<RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
-			</Grid.RowDefinitions>
-			<StackPanel Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" Orientation="Horizontal" Margin="{TemplateBinding Padding}">
-				<TextBlock Margin="1,0,0,0" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
-				<ContentPresenter TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
-			</StackPanel>
-			<Border Grid.Row="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-				<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="30" />
-					</Grid.ColumnDefinitions>
-					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
-					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -7702,55 +7600,7 @@
 					</Grid.ColumnDefinitions>
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
-				</Grid>
-			</Border>
-		</Grid>
-		<ControlTemplate.Triggers>
-			<Trigger Property="IsEnabled" Value="false">
-				<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
-			</Trigger>
-			<MultiTrigger>
-				<MultiTrigger.Conditions>
-					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
-					<Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
-				</MultiTrigger.Conditions>
-				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
-			</MultiTrigger>
-			<MultiTrigger>
-				<MultiTrigger.Conditions>
-					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
-					<Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
-				</MultiTrigger.Conditions>
-				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-			</MultiTrigger>
-			<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
-				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
-			</Trigger>
-			<Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
-				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-			</Trigger>
-		</ControlTemplate.Triggers>
-	</ControlTemplate>
-	<ControlTemplate x:Key="DateTimePickerExtendLeftTemplatePersian" TargetType="hc:PersianDateTimePicker">
-		<Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
-			<StackPanel Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" Orientation="Horizontal" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="0,7,6,7">
-				<TextBlock Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
-				<ContentPresenter TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
-			</StackPanel>
-			<Border Grid.Column="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-				<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="30" />
-					</Grid.ColumnDefinitions>
-					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
-					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -7793,19 +7643,6 @@
 			</Trigger>
 		</Style.Triggers>
 	</Style>
-	<Style x:Key="DateTimePickerExtendBaseStylePersian" BasedOn="{StaticResource DateTimePickerBaseStylePersian}" TargetType="hc:PersianDateTimePicker">
-		<Setter Property="Height" Value="Auto" />
-		<Setter Property="hc:InfoElement.Symbol" Value="●" />
-		<Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
-		<Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
-		<Setter Property="Template" Value="{StaticResource DateTimePickerExtendTopTemplatePersian}" />
-		<Style.Triggers>
-			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
-				<Setter Property="Template" Value="{StaticResource DateTimePickerExtendLeftTemplatePersian}" />
-				<Setter Property="Width" Value="Auto" />
-			</Trigger>
-		</Style.Triggers>
-	</Style>
 	<ControlTemplate x:Key="DateTimePickerPlusTopTemplate" TargetType="hc:DateTimePicker">
 		<ControlTemplate.Resources>
 			<Storyboard x:Key="StoryboardShow">
@@ -7835,82 +7672,7 @@
 					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="2,6,7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
-				</Grid>
-			</Border>
-		</Grid>
-		<ControlTemplate.Triggers>
-			<Trigger Property="IsEnabled" Value="false">
-				<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
-			</Trigger>
-			<MultiTrigger>
-				<MultiTrigger.Conditions>
-					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
-					<Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
-				</MultiTrigger.Conditions>
-				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
-			</MultiTrigger>
-			<MultiTrigger>
-				<MultiTrigger.Conditions>
-					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
-					<Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
-				</MultiTrigger.Conditions>
-				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-			</MultiTrigger>
-			<MultiTrigger>
-				<MultiTrigger.Conditions>
-					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
-					<Condition Property="ShowClearButton" Value="True" />
-				</MultiTrigger.Conditions>
-				<Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
-			</MultiTrigger>
-			<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
-				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
-			</Trigger>
-			<Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
-				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-			</Trigger>
-			<Trigger Property="IsError" Value="true">
-				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}" />
-				<Trigger.EnterActions>
-					<BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
-				</Trigger.EnterActions>
-				<Trigger.ExitActions>
-					<BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
-				</Trigger.ExitActions>
-			</Trigger>
-		</ControlTemplate.Triggers>
-	</ControlTemplate>
-	<ControlTemplate x:Key="DateTimePickerPlusTopTemplatePersian" TargetType="hc:PersianDateTimePicker">
-		<ControlTemplate.Resources>
-			<Storyboard x:Key="StoryboardShow">
-				<ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2" />
-			</Storyboard>
-			<Storyboard x:Key="StoryboardHidden">
-				<ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
-			</Storyboard>
-		</ControlTemplate.Resources>
-		<Grid>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto" />
-				<RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
-			</Grid.RowDefinitions>
-			<StackPanel Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" Orientation="Horizontal" Margin="{TemplateBinding Padding}">
-				<TextBlock Margin="1,0,0,0" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
-				<ContentPresenter TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
-			</StackPanel>
-			<TextBlock FontSize="12" Grid.Row="1" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}" />
-			<Border Grid.Row="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-				<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
-						<ColumnDefinition Width="Auto" />
-						<ColumnDefinition Width="25" />
-					</Grid.ColumnDefinitions>
-					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
-					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="2,6,7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
-					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -7985,7 +7747,253 @@
 					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="2,6,7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+				</Grid>
+			</Border>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsEnabled" Value="false">
+				<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+			</Trigger>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+					<Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+				</MultiTrigger.Conditions>
+				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+			</MultiTrigger>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+					<Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+				</MultiTrigger.Conditions>
+				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+			</MultiTrigger>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+					<Condition Property="ShowClearButton" Value="True" />
+				</MultiTrigger.Conditions>
+				<Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
+			</MultiTrigger>
+			<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
+			</Trigger>
+			<Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+			</Trigger>
+			<Trigger Property="IsError" Value="true">
+				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}" />
+				<Trigger.EnterActions>
+					<BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+				</Trigger.EnterActions>
+				<Trigger.ExitActions>
+					<BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+				</Trigger.ExitActions>
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<Style x:Key="DateTimePickerPlusBaseStyle" BasedOn="{StaticResource DateTimePickerExtendBaseStyle}" TargetType="hc:DateTimePicker">
+		<Setter Property="Template" Value="{StaticResource DateTimePickerPlusTopTemplate}" />
+		<Style.Triggers>
+			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+				<Setter Property="Template" Value="{StaticResource DateTimePickerPlusLeftTemplate}" />
+				<Setter Property="Width" Value="Auto" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="DateTimePickerBaseStylePersian" TargetType="hc:PersianDateTimePicker">
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
+		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+		<Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="hc:PersianDateTimePicker">
+					<Border x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+						<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="30" />
+							</Grid.ColumnDefinitions>
+							<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
+							<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+							<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+						</Trigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsMouseOver" Value="true" />
+								<Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+							</MultiTrigger.Conditions>
+							<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
+								<Condition Property="IsMouseOver" Value="true" />
+								<Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+							</MultiTrigger.Conditions>
+							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+						</MultiTrigger>
+						<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+						</Trigger>
+						<Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<ControlTemplate x:Key="DateTimePickerExtendTopTemplatePersian" TargetType="hc:PersianDateTimePicker">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
+			</Grid.RowDefinitions>
+			<StackPanel Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" Orientation="Horizontal" Margin="{TemplateBinding Padding}">
+				<TextBlock Margin="1,0,0,0" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
+				<ContentPresenter TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
+			</StackPanel>
+			<Border Grid.Row="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+				<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="30" />
+					</Grid.ColumnDefinitions>
+					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
+					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+				</Grid>
+			</Border>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsEnabled" Value="false">
+				<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+			</Trigger>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+					<Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+				</MultiTrigger.Conditions>
+				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+			</MultiTrigger>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+					<Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+				</MultiTrigger.Conditions>
+				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+			</MultiTrigger>
+			<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
+			</Trigger>
+			<Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<ControlTemplate x:Key="DateTimePickerExtendLeftTemplatePersian" TargetType="hc:PersianDateTimePicker">
+		<Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<StackPanel Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" Orientation="Horizontal" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="0,7,6,7">
+				<TextBlock Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
+				<ContentPresenter TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
+			</StackPanel>
+			<Border Grid.Column="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+				<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="30" />
+					</Grid.ColumnDefinitions>
+					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
+					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+				</Grid>
+			</Border>
+		</Grid>
+		<ControlTemplate.Triggers>
+			<Trigger Property="IsEnabled" Value="false">
+				<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+			</Trigger>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+					<Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+				</MultiTrigger.Conditions>
+				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+			</MultiTrigger>
+			<MultiTrigger>
+				<MultiTrigger.Conditions>
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+					<Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+				</MultiTrigger.Conditions>
+				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+			</MultiTrigger>
+			<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
+			</Trigger>
+			<Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+			</Trigger>
+		</ControlTemplate.Triggers>
+	</ControlTemplate>
+	<Style x:Key="DateTimePickerExtendBaseStylePersian" BasedOn="{StaticResource DateTimePickerBaseStylePersian}" TargetType="hc:PersianDateTimePicker">
+		<Setter Property="Height" Value="Auto" />
+		<Setter Property="hc:InfoElement.Symbol" Value="●" />
+		<Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
+		<Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
+		<Setter Property="Template" Value="{StaticResource DateTimePickerExtendTopTemplatePersian}" />
+		<Style.Triggers>
+			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+				<Setter Property="Template" Value="{StaticResource DateTimePickerExtendLeftTemplatePersian}" />
+				<Setter Property="Width" Value="Auto" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<ControlTemplate x:Key="DateTimePickerPlusTopTemplatePersian" TargetType="hc:PersianDateTimePicker">
+		<ControlTemplate.Resources>
+			<Storyboard x:Key="StoryboardShow">
+				<ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2" />
+			</Storyboard>
+			<Storyboard x:Key="StoryboardHidden">
+				<ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
+			</Storyboard>
+		</ControlTemplate.Resources>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
+			</Grid.RowDefinitions>
+			<StackPanel Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" Orientation="Horizontal" Margin="{TemplateBinding Padding}">
+				<TextBlock Margin="1,0,0,0" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
+				<ContentPresenter TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
+			</StackPanel>
+			<TextBlock FontSize="12" Grid.Row="1" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}" />
+			<Border Grid.Row="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+				<Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="25" />
+					</Grid.ColumnDefinitions>
+					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
+					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="2,6,7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
+					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -8060,7 +8068,7 @@
 					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="2,6,7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -8106,15 +8114,6 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
-	<Style x:Key="DateTimePickerPlusBaseStyle" BasedOn="{StaticResource DateTimePickerExtendBaseStyle}" TargetType="hc:DateTimePicker">
-		<Setter Property="Template" Value="{StaticResource DateTimePickerPlusTopTemplate}" />
-		<Style.Triggers>
-			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
-				<Setter Property="Template" Value="{StaticResource DateTimePickerPlusLeftTemplate}" />
-				<Setter Property="Width" Value="Auto" />
-			</Trigger>
-		</Style.Triggers>
-	</Style>
 	<Style x:Key="DateTimePickerPlusBaseStylePersian" BasedOn="{StaticResource DateTimePickerExtendBaseStylePersian}" TargetType="hc:PersianDateTimePicker">
 		<Setter Property="Template" Value="{StaticResource DateTimePickerPlusTopTemplatePersian}" />
 		<Style.Triggers>
@@ -9781,14 +9780,6 @@
 	</Style>
 	<Style x:Key="RateRateItemBaseStyle" TargetType="hc:RateItem">
 		<Setter Property="Focusable" Value="False" />
-		<Setter Property="Margin" Value="{Binding ItemMargin,RelativeSource={RelativeSource  AncestorType=hc:Rate}}" />
-		<Setter Property="Width" Value="{Binding ItemWidth,RelativeSource={RelativeSource  AncestorType=hc:Rate}}" />
-		<Setter Property="Height" Value="{Binding ItemHeight,RelativeSource={RelativeSource  AncestorType=hc:Rate}}" />
-		<Setter Property="AllowHalf" Value="{Binding AllowHalf,RelativeSource={RelativeSource  AncestorType=hc:Rate}}" />
-		<Setter Property="AllowClear" Value="{Binding AllowClear,RelativeSource={RelativeSource  AncestorType=hc:Rate}}" />
-		<Setter Property="Icon" Value="{Binding Icon,RelativeSource={RelativeSource  AncestorType=hc:Rate}}" />
-		<Setter Property="IsReadOnly" Value="{Binding IsReadOnly,RelativeSource={RelativeSource  AncestorType=hc:Rate}}" />
-		<Setter Property="Background" Value="{Binding Background,RelativeSource={RelativeSource  AncestorType=hc:Rate}}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:RateItem">
@@ -10486,7 +10477,7 @@
 							</Grid.ColumnDefinitions>
 							<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 							<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-							<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+							<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 						</Grid>
 					</Border>
 					<ControlTemplate.Triggers>
@@ -10536,7 +10527,7 @@
 					</Grid.ColumnDefinitions>
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox x:Name="PART_TextBox" CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -10584,7 +10575,7 @@
 					</Grid.ColumnDefinitions>
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox x:Name="PART_TextBox" CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -10656,7 +10647,7 @@
 					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="2,6,7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox x:Name="PART_TextBox" CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -10731,7 +10722,7 @@
 					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
 					<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="2,6,7,6" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
 					<hc:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
-					<Popup TextElement.FontSize="12" Grid.Column="0" VerticalOffset="1" x:Name="PART_Popup" PopupAnimation="Fade" Placement="Bottom" PlacementTarget="{Binding ElementName=PART_TextBox}" StaysOpen="False" />
+					<Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
 				</Grid>
 			</Border>
 		</Grid>
@@ -11276,12 +11267,15 @@
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
 		<Setter Property="hc:TitleElement.Background" Value="{DynamicResource TitleBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Margin" Value="8,0,8,8" />
 		<Setter Property="ShowConfirmButton" Value="True" />
+		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:CalendarWithClock">
-					<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+					<hc:SimplePanel>
+						<Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Effect="{StaticResource EffectShadow2}" />
 						<Grid>
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto" />
@@ -11292,28 +11286,31 @@
 								<RowDefinition />
 								<RowDefinition Height="Auto" />
 							</Grid.RowDefinitions>
-							<Border Grid.ColumnSpan="2" Grid.Row="0" Height="50" VerticalAlignment="Top" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" />
+							<Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusSplitConverter}, ConverterParameter='1,1,0,0'}" Grid.ColumnSpan="2" Grid.Row="0" Height="50" VerticalAlignment="Top" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" />
 							<ContentPresenter Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" x:Name="PART_CalendarPresenter" />
 							<ContentPresenter Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" x:Name="PART_ClockPresenter" />
 							<Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{TemplateBinding ShowConfirmButton,Converter={StaticResource Boolean2VisibilityConverter}}" Name="PART_ButtonConfirm" Content="{ex:Lang Key={x:Static langs:LangKeys.Confirm}}" HorizontalAlignment="Center" Margin="0,0,0,19" Width="180" VerticalAlignment="Bottom" Style="{StaticResource ButtonPrimary}" />
 						</Grid>
-					</Border>
+					</hc:SimplePanel>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
 	</Style>
 	<Style TargetType="hc:PersianCalendarWithClock">
-		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="Focusable" Value="False" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
 		<Setter Property="hc:TitleElement.Background" Value="{DynamicResource TitleBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Margin" Value="8,0,8,8" />
 		<Setter Property="ShowConfirmButton" Value="True" />
+		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:PersianCalendarWithClock">
-					<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+					<hc:SimplePanel>
+						<Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Effect="{StaticResource EffectShadow2}" />
 						<Grid>
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="Auto" />
@@ -11324,12 +11321,12 @@
 								<RowDefinition />
 								<RowDefinition Height="Auto" />
 							</Grid.RowDefinitions>
-							<Border Grid.ColumnSpan="2" Grid.Row="0" Height="50" VerticalAlignment="Top" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" />
+							<Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusSplitConverter}, ConverterParameter='1,1,0,0'}" Grid.ColumnSpan="2" Grid.Row="0" Height="50" VerticalAlignment="Top" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" />
 							<ContentPresenter Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" x:Name="PART_CalendarPresenter" />
 							<ContentPresenter Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" x:Name="PART_ClockPresenter" />
 							<Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Visibility="{TemplateBinding ShowConfirmButton,Converter={StaticResource Boolean2VisibilityConverter}}" Name="PART_ButtonConfirm" Content="{TemplateBinding ConfirmButtonText}" HorizontalAlignment="Center" Margin="0,0,0,19" Width="180" VerticalAlignment="Bottom" Style="{StaticResource ButtonPrimary}" />
 						</Grid>
-					</Border>
+					</hc:SimplePanel>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -11685,7 +11682,8 @@
 		</Style.Triggers>
 	</Style>
 	<Style TargetType="hc:Clock">
-		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Margin" Value="8,0,8,8" />
 		<Setter Property="Focusable" Value="False" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
 		<Setter Property="Width" Value="210" />
@@ -11695,38 +11693,36 @@
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
 		<Setter Property="ClockRadioButtonStyle" Value="{StaticResource ClockRadioButtonStyle}" />
 		<Setter Property="hc:TitleElement.Background" Value="{DynamicResource TitleBrush}" />
+		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:Clock">
-					<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+					<hc:SimplePanel>
+						<Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Effect="{StaticResource EffectShadow2}" />
 						<Grid>
 							<Grid.RowDefinitions>
 								<RowDefinition Height="50" />
 								<RowDefinition />
 							</Grid.RowDefinitions>
-							<Border Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" Name="PART_BorderTitle">
-								<TextBlock x:Name="PART_TimeStr" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="White" />
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource CornerRadiusSplitConverter}, ConverterParameter='1,1,0,0'}" Grid.ColumnSpan="3" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" Name="PART_BorderTitle">
+								<TextBlock x:Name="PART_TimeStr" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="{DynamicResource TextIconBrush}" />
 							</Border>
-							<Border Grid.Row="1" Background="{TemplateBinding Background}">
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition />
-										<ColumnDefinition />
-										<ColumnDefinition />
-									</Grid.ColumnDefinitions>
-									<Canvas Grid.ColumnSpan="3" Margin="0,16,0,0" VerticalAlignment="Top" Name="PART_Canvas" Width="178" Height="178">
-										<Border Background="{DynamicResource SecondaryRegionBrush}" Width="178" Height="178" CornerRadius="89" />
-										<hc:CirclePanel Diameter="130" x:Name="PART_PanelNum" KeepVertical="True" Margin="24,24,0,0" OffsetAngle="-60" />
-										<Border Focusable="False" Name="PART_BorderClock" Background="{DynamicResource PrimaryBrush}" RenderTransformOrigin="0.5,1" Height="63" Width="2" Canvas.Left="88" Canvas.Top="26" />
-										<Ellipse Fill="White" Width="8" Height="8" StrokeThickness="2" Stroke="{DynamicResource PrimaryBrush}" Canvas.Top="85" Canvas.Left="85" />
-									</Canvas>
-									<hc:ClockRadioButton Background="{DynamicResource PrimaryBrush}" Grid.Column="0" x:Name="PART_ButtonAm" IsChecked="True" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="16,0,0,16" Content="{ex:Lang Key={x:Static langs:LangKeys.Am}}" Style="{StaticResource ClockRadioButtonStyle}" />
-									<hc:ClockRadioButton Background="{DynamicResource PrimaryBrush}" Grid.Column="2" x:Name="PART_ButtonPm" Height="30" Width="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,16,16" Content="{ex:Lang Key={x:Static langs:LangKeys.Pm}}" Style="{StaticResource ClockRadioButtonStyle}" />
-									<Button Grid.Column="1" Visibility="{TemplateBinding ShowConfirmButton,Converter={StaticResource Boolean2VisibilityConverter}}" Name="PART_ButtonConfirm" Content="{ex:Lang Key={x:Static langs:LangKeys.Confirm}}" Foreground="{DynamicResource PrimaryBrush}" HorizontalAlignment="Center" Margin="0,0,0,19" Height="24" Width="60" VerticalAlignment="Bottom" Background="Transparent" Style="{StaticResource ButtonCustom}" />
-								</Grid>
-							</Border>
+							<Canvas Grid.Row="1" Grid.ColumnSpan="3" Margin="0,16,0,0" VerticalAlignment="Top" Name="PART_Canvas" Width="178" Height="178">
+								<Border Background="{DynamicResource SecondaryRegionBrush}" Width="178" Height="178" CornerRadius="89" />
+								<hc:CirclePanel Diameter="130" x:Name="PART_PanelNum" KeepVertical="True" Margin="24,24,0,0" OffsetAngle="-60" />
+								<Border Focusable="False" Name="PART_BorderClock" Background="{DynamicResource PrimaryBrush}" RenderTransformOrigin="0.5,1" Height="63" Width="2" Canvas.Left="88" Canvas.Top="26" />
+								<Ellipse Fill="White" Width="8" Height="8" StrokeThickness="2" Stroke="{DynamicResource PrimaryBrush}" Canvas.Top="85" Canvas.Left="85" />
+							</Canvas>
+							<hc:ClockRadioButton Grid.Row="1" Background="{DynamicResource PrimaryBrush}" Grid.Column="0" x:Name="PART_ButtonAm" IsChecked="True" Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="16,0,0,16" Content="{ex:Lang Key={x:Static langs:LangKeys.Am}}" Style="{StaticResource ClockRadioButtonStyle}" />
+							<hc:ClockRadioButton Grid.Row="1" Background="{DynamicResource PrimaryBrush}" Grid.Column="2" x:Name="PART_ButtonPm" Height="30" Width="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,16,16" Content="{ex:Lang Key={x:Static langs:LangKeys.Pm}}" Style="{StaticResource ClockRadioButtonStyle}" />
+							<Button Grid.Row="1" Grid.Column="1" Visibility="{TemplateBinding ShowConfirmButton,Converter={StaticResource Boolean2VisibilityConverter}}" Name="PART_ButtonConfirm" Content="{ex:Lang Key={x:Static langs:LangKeys.Confirm}}" Foreground="{DynamicResource PrimaryBrush}" HorizontalAlignment="Center" Margin="0,0,0,19" Height="24" Width="60" VerticalAlignment="Bottom" Background="Transparent" Style="{StaticResource ButtonCustom}" />
 						</Grid>
-					</Border>
+					</hc:SimplePanel>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -11788,9 +11784,9 @@
 								<RowDefinition />
 								<RowDefinition Height="Auto" />
 							</Grid.RowDefinitions>
-							<ListBox x:Name="PART_HourList" Style="{StaticResource ClockListBoxStyle}" />
-							<ListBox Grid.Row="0" Grid.Column="1" x:Name="PART_MinuteList" Style="{StaticResource ClockListBoxStyle}" BorderThickness="1,0" />
-							<ListBox Grid.Row="0" Grid.Column="2" x:Name="PART_SecondList" Style="{StaticResource ClockListBoxStyle}" />
+							<ListBox hc:BorderElement.CornerRadius="0" x:Name="PART_HourList" Style="{StaticResource ClockListBoxStyle}" />
+							<ListBox hc:BorderElement.CornerRadius="0" Grid.Row="0" Grid.Column="1" x:Name="PART_MinuteList" Style="{StaticResource ClockListBoxStyle}" BorderThickness="1,0" />
+							<ListBox hc:BorderElement.CornerRadius="0" Grid.Row="0" Grid.Column="2" x:Name="PART_SecondList" Style="{StaticResource ClockListBoxStyle}" />
 							<Border VerticalAlignment="Bottom" Visibility="{Binding Visibility,ElementName=PART_ButtonConfirm}" Height="1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="{DynamicResource BorderBrush}" />
 							<Button Margin="0,10" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Visibility="{TemplateBinding ShowConfirmButton,Converter={StaticResource Boolean2VisibilityConverter}}" Name="PART_ButtonConfirm" Content="{ex:Lang Key={x:Static langs:LangKeys.Confirm}}" Foreground="{DynamicResource PrimaryBrush}" HorizontalAlignment="Center" Background="Transparent" Style="{StaticResource ButtonCustom}" />
 						</Grid>
