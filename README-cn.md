@@ -28,13 +28,6 @@
 
 ## 面向中国
 
-### 加入讨论
-
-| | 西江月群 | 定风波群 | 广寒秋群 |
-|-|:-:|:-:|:-:|
-| 群号码 | [![qq-group](https://img.shields.io/badge/qq-714704041-red.svg)](//shang.qq.com/wpa/qunwpa?idkey=a571e5553c9d41e49c4f22f3a8b2865451497a795ff281fedf3285def247efc1) | [![qq-group](https://img.shields.io/badge/qq-858784803-red.svg)](//shang.qq.com/wpa/qunwpa?idkey=5c18622a0f6ee07a6f33afa8cdb85b1f72ea50e878271dfcec919c76b55afee7) | 微信群 |
-| 二维码 | ![qq-group](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/qq_group_1.png) | ![qq-group](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/qq_group_2.png) | ![wechat-group](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/wechat_group.png) |
-
 ### 码云
 
 [https://gitee.com/handyorg/HandyControl/](https://gitee.com/handyorg/HandyControl/)
@@ -44,11 +37,17 @@
 [https://handyorg.github.io/handycontrol/](https://handyorg.github.io/handycontrol/)
 
 ### 赞助
-如果您觉得HandyControl还不错，并且刚好有些闲钱，那么可以选择以下两种方式来赞助（记得入群联系我们呀~~）：
 
-* [以HandyControl的名义为慈善事业做贡献](http://www.chinacharityfederation.org/ConfirmDonation/0.html?zhijie=3)  
+* [以HandyControl的名义为慈善事业做贡献（请联系我们上赞助墙）](http://www.chinacharityfederation.org/ConfirmDonation/0.html?zhijie=3)  
 
-* 为我们购买防脱洗发水  
+* 扫码入群 
+
+| | 西江月群 | 定风波群 |
+|-|:-:|:-:|
+| 群号码 | [![qq-group](https://img.shields.io/badge/qq-714704041-red.svg)](//shang.qq.com/wpa/qunwpa?idkey=a571e5553c9d41e49c4f22f3a8b2865451497a795ff281fedf3285def247efc1) | [![qq-group](https://img.shields.io/badge/qq-858784803-red.svg)](//shang.qq.com/wpa/qunwpa?idkey=5c18622a0f6ee07a6f33afa8cdb85b1f72ea50e878271dfcec919c76b55afee7) | 微信群 |
+| 二维码 | ![qq-group](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/qq_group_1.png) | ![qq-group](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/qq_group_2.png) |
+
+* 为我们购买防脱洗发水 （支付宝扫码）  
 ![qrcode](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/qrcode.png)
 
 ## 贡献者
@@ -104,6 +103,25 @@
 <a href="https://github.com/dspcjy" target="_blank"><img style="border-radius:50%!important" width="64px" alt="dspcjy" src="https://avatars3.githubusercontent.com/u/17764711?s=64&v=4"></a>
 <a href="https://github.com/yaronzz" target="_blank"><img style="border-radius:50%!important" width="64px" alt="yaronzz" src="https://avatars0.githubusercontent.com/u/15530958?s=64&v=4"></a>
 <a href="https://github.com/cuiliang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="cuiliang" src="https://avatars2.githubusercontent.com/u/1972649?s=64&v=4"></a>
+<a href="https://github.com/GenmTim" target="_blank"><img style="border-radius:50%!important" width="64px" alt="GenmTim" src="https://avatars.githubusercontent.com/u/69684108?s=64&v=4"></a>
+<a href="https://github.com/ms1094392787" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ms1094392787" src="https://avatars.githubusercontent.com/u/49998334?s=64&v=4"></a>
+<a href="https://gitee.com/ZJHome" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ZJHome" src="https://tvax2.sinaimg.cn/crop.0.0.1080.1080.180/69543af8ly8gf4iat3amdj20u00u0whg.jpg"></a>
+<a href="https://github.com/JeremyWu917" target="_blank"><img style="border-radius:50%!important" width="64px" alt="JeremyWu917" src="https://avatars.githubusercontent.com/u/54832272?s=64&v=4"></a>
+<a href="https://github.com/cagedh1" target="_blank"><img style="border-radius:50%!important" width="64px" alt="cagedh1" src="https://avatars.githubusercontent.com/u/48586139?s=64&v=4"></a>
+<a href="https://github.com/Yangf85" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Yangf85" src="https://avatars.githubusercontent.com/u/42733580?s=64&v=4"></a>
+<a href="https://github.com/hellozy320" target="_blank"><img style="border-radius:50%!important" width="64px" alt="hellozy320" src="https://avatars.githubusercontent.com/u/68945043?s=64&v=4"></a>
+<a href="https://github.com/inows" target="_blank"><img style="border-radius:50%!important" width="64px" alt="inows" src="https://avatars.githubusercontent.com/u/15324558?s=64&v=4"></a>
+<a href="https://github.com/oo-simbo" target="_blank"><img style="border-radius:50%!important" width="64px" alt="oo-simbo" src="https://avatars.githubusercontent.com/u/49231532?s=64&v=4"></a>
+<a href="https://github.com/775253959" target="_blank"><img style="border-radius:50%!important" width="64px" alt="775253959" src="https://avatars.githubusercontent.com/u/24452103?s=64&v=4"></a>
+<a href="https://github.com/IanXxu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="IanXxu" src="https://avatars.githubusercontent.com/u/19760451?s=64&v=4"></a>
+<a href="https://github.com/NightwishMeng" target="_blank"><img style="border-radius:50%!important" width="64px" alt="NightwishMeng" src="https://avatars.githubusercontent.com/u/32695316?s64&v=4"></a>
+<a href="https://github.com/tonghudan" target="_blank"><img style="border-radius:50%!important" width="64px" alt="tonghudan" src="https://avatars.githubusercontent.com/u/14705603?s=64&v=4"></a>
+<a href="https://github.com/Removable" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Removable" src="https://avatars.githubusercontent.com/u/7271713?s=64&v=4"></a>
+<a href="https://github.com/nicecodeclub" target="_blank"><img style="border-radius:50%!important" width="64px" alt="nicecodeclub" src="https://avatars.githubusercontent.com/u/12929071?s=64&v=4"></a>
+<a href="https://github.com/Jajison" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Jajison" src="https://avatars.githubusercontent.com/u/60476418?s=64&v=4"></a>
+<a href="https://github.com/xyghy13" target="_blank"><img style="border-radius:50%!important" width="64px" alt="xyghy13" src="https://avatars.githubusercontent.com/u/27751725?s=64&v=4"></a>
+<a href="https://github.com/icarousfff" target="_blank"><img style="border-radius:50%!important" width="64px" alt="icarousfff" src="https://avatars.githubusercontent.com/u/49859230?s=64&v=4"></a>
+<a href="https://github.com/qiang9420d" target="_blank"><img style="border-radius:50%!important" width="64px" alt="qiang9420d" src="https://avatars.githubusercontent.com/u/22925262?s=64&v=4"></a>
 
 ## 鸣谢
 
@@ -111,6 +129,14 @@
 [![JetBrains](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/resharper_logo.png)](https://www.jetbrains.com/?from=HandyControl)
 [![Cake](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/cake_logo.png)](https://cakebuild.net/)
 [![Gitter](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/gitter_logo.png)](https://gitter.im/)
+
+## 使用HandyControl的项目
+
+<a href="https://getquicker.net" target="_blank"><img width="70px" alt="quicker" src="https://files.getquicker.net/_sitefiles/quicker_round_128.png"></a>
+<a href="https://www.phpenv.cn" target="_blank"><img width="70px" alt="phpenv" src="https://www.phpenv.cn/usr/themes/phpenv/img/logo.png"></a>
+<a href="https://atmb.top" target="_blank"><img width="70px" alt="AutumnBox" src="https://atmb.top/images/icon.png"></a>
+
+if your project is not listed here, let us know! 😀
 
 ## 用法
 
@@ -140,7 +166,7 @@ Step 4: Enjoy coding
 | [VS2019](https://marketplace.visualstudio.com/items?itemName=HandyOrg.handycontrolforvs2019) |
 | ------------- |
 
-## Stargazers over time
+## Star趋势
 
 [![Stargazers over time](https://starchart.cc/HandyOrg/HandyControl.svg)](https://starchart.cc/HandyOrg/HandyControl)
 
@@ -172,7 +198,7 @@ Step 4: Enjoy coding
 
 ![PropertyGrid](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/PropertyGrid.png)
 
-## History publication
+## 历史发布
 
 ### Screenshot
 
@@ -537,7 +563,3 @@ Step 4: Enjoy coding
 ### Brush
 
 ![Brush](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/Brush.png)
-
-## Switching configuration
-
-![Switching configuration](https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/SwitchConfig.png)
