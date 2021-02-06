@@ -133,14 +133,16 @@ Step 1: Add a reference to HandyControls or search for HandyControls on the nuge
 
 Step 2: Add code in App.xaml as follows:
 ```XML
-<Application.Resources>
+<Application xmlns:hc="https://handyorg.github.io/handycontrol">
+  <Application.Resources>
     <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
-            <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-</Application.Resources>
+             <hc:ThemeResources/>
+             <hc:Theme/>
+         </ResourceDictionary.MergedDictionaries>
+     </ResourceDictionary>
+  </Application.Resources>
+</Application>
 ```
 
 Step 3: Add NameSpace:
