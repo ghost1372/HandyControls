@@ -1,4 +1,4 @@
-﻿using HandyControl.Tools;
+﻿using HandyControl.Themes;
 using System.Windows;
 using System.Windows.Media;
 namespace $safeprojectname$
@@ -22,9 +22,9 @@ namespace $safeprojectname$
 
         internal void UpdateAccent(Brush accent)
         {
-            if (ThemeManager.Current.ActualAccentColor != accent)
+            if (ThemeManager.Current.AccentColor != accent)
             {
-                ThemeManager.Current.ActualAccentColor = accent;
+                ThemeManager.Current.AccentColor = accent;
             }
         }
     }

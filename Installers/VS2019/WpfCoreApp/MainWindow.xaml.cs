@@ -1,4 +1,5 @@
-﻿using HandyControl.Tools;
+﻿using HandyControl.Themes;
+using HandyControl.Tools;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
