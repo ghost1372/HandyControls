@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
 	  <TargetFramework>net5.0-windows</TargetFramework>
@@ -7,7 +7,7 @@
     <RootNamespace>$safeprojectname$</RootNamespace>
     <Version>1.0.0.0</Version>
     <Configurations>Debug;Release</Configurations>
-    <Copyright>Copyright © $username$ 2018-2020</Copyright>
+    <Copyright>Copyright © $username$ 2018-2021</Copyright>
     <FileVersion>1.0.0.0</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <LangVersion>latest</LangVersion>
@@ -19,13 +19,6 @@
     <DefineConstants>TRACE;Core</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HandyControls" Version="3.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
-    </Page>
+    <PackageReference Include="HandyControls" Version="3.1.0" />
   </ItemGroup>
 </Project>
