@@ -247,6 +247,7 @@ namespace HandyControl.Themes
             if (d is FrameworkElement ctl)
             {
                 ctl.Resources["PrimaryBrush"] = e.NewValue;
+                ctl.Resources["DarkPrimaryBrush"] = e.NewValue;
             }
         }
 
@@ -276,6 +277,7 @@ namespace HandyControl.Themes
         private void applyAccentColor(object Value)
         {
             Application.Current.Resources["PrimaryBrush"] = Value;
+            Application.Current.Resources["DarkPrimaryBrush"] = Value;
         }
 
         #endregion
