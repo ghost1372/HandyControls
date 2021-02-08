@@ -58,9 +58,7 @@ namespace HandyControl.Themes
             {
                 if (ThemeManager.Current.ApplicationTheme != value)
                 {
-                    ThemeManager.Current.SetCurrentValue(
-                        ThemeManager.ApplicationThemeProperty, value);
-
+                    ThemeManager.Current.SetCurrentValue(ThemeManager.ApplicationThemeProperty, value);
                     if (DesignMode.DesignModeEnabled)
                     {
                         UpdateDesignTimeThemeDictionary();
@@ -79,9 +77,8 @@ namespace HandyControl.Themes
             {
                 if (ThemeManager.Current.AccentColor != value)
                 {
-                    ThemeManager.Current.SetCurrentValue(
-                        ThemeManager.AccentColorProperty, value);
-
+                    ThemeManager.Current.SetCurrentValue(ThemeManager.AccentColorProperty, value);
+                    ThemeManager.Current.DefaultAccentColor = value;
                     if (DesignMode.DesignModeEnabled)
                     {
                         UpdateDesignTimeSystemColors();
@@ -114,15 +111,11 @@ namespace HandyControl.Themes
             get => _usingSystemTheme;
             set
             {
+                _usingSystemTheme = value;
                 if (ThemeManager.Current.UsingSystemTheme != value)
                 {
                     ThemeManager.Current.UsingSystemTheme = value;
-                    if (value)
-                    {
-                        ThemeManager.Current.initSystemTheme();
-                    }
                 }
-                _usingSystemTheme = value;
             }
         }
 

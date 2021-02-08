@@ -49,23 +49,45 @@ namespace HandyControl.Themes
         }
 
         #region SystemTheme
-
+        internal Brush DefaultAccentColor;
         private const string RegistryThemePath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string RegSysMode = "SystemUsesLightTheme";
         private ApplicationTheme _currenTheme;
         private Brush _currentAccent;
-        internal bool UsingSystemTheme = false;
-
-        public void initSystemTheme()
+        public bool _usingSystemTheme;
+        public bool UsingSystemTheme
         {
-            if (UsingSystemTheme)
+            get => _usingSystemTheme;
+            set
             {
-                _currenTheme = GetSystemTheme();
-                _currentAccent = GetAccentColorFromSystem();
-                AccentColor = _currentAccent;
-
-                SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
+                if (_usingSystemTheme != value)
+                {
+                    _usingSystemTheme = value;
+                    if (value)
+                    {
+                        initSystemTheme();
+                    }
+                    else
+                    {
+                        resetSystemTheme();
+                    }
+                }
             }
+        }
+        private void initSystemTheme()
+        {
+            _currenTheme = GetSystemTheme();
+            _currentAccent = GetAccentColorFromSystem();
+            AccentColor = _currentAccent;
+            ApplicationTheme = _currenTheme;
+            SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
+        }
+
+        private void resetSystemTheme()
+        {
+            AccentColor = DefaultAccentColor;
+            _currentAccent = DefaultAccentColor;
+            SystemEvents.UserPreferenceChanged -= SystemEvents_UserPreferenceChanged;
         }
 
         public class SystemTheme
