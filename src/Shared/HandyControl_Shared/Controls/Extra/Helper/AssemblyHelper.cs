@@ -1,34 +1,38 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 
 namespace HandyControl.Controls
 {
     public class AssemblyHelper
     {
-        public static Assembly GetCallingAssembly()
-        {
-            return Assembly.GetCallingAssembly();
-        }
         public static string GetCallingAssemblyName()
         {
-            return GetCallingAssembly().GetName().Name;
+            return Assembly.GetCallingAssembly().GetName().Name;
         }
-        public static Assembly GetExecutingAssembly()
+
+        public static Version GetCallingAssemblyVersion()
         {
-            return Assembly.GetExecutingAssembly();
+            return Assembly.GetCallingAssembly().GetName().Version;
         }
 
         public static string GetExecutingAssemblyName()
         {
-            return GetExecutingAssembly().GetName().Name;
-        }
-        public static Assembly GetEntryAssembly()
-        {
-            return Assembly.GetEntryAssembly();
+            return Assembly.GetExecutingAssembly().GetName().Name;
         }
 
+        public static Version GetExecutingAssemblyVersion()
+        {
+            return Assembly.GetExecutingAssembly().GetName().Version;
+        }
+       
         public static string GetEntryAssemblyName()
         {
-            return GetEntryAssembly().GetName().Name;
+            return Assembly.GetEntryAssembly().GetName().Name;
+        }
+
+        public static Version GetEntryAssemblyVersion()
+        {
+            return Assembly.GetEntryAssembly().GetName().Version;
         }
     }
 }

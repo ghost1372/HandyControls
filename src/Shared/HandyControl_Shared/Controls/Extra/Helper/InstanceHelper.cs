@@ -19,7 +19,7 @@ namespace HandyControl.Controls
         /// <returns></returns>
         public static bool IsSingleInstance(bool ShowErrorMessage = true, string ErrorMessage = "Another instance of the app is running")
         {
-            var guid = CryptographyHelper.GenerateMD5(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+            var guid = CryptographyHelper.GenerateMD5(AssemblyHelper.GetExecutingAssemblyName());
             mutex = new Mutex(true, "{" + $"{guid}" + "}");
             if (mutex.WaitOne(TimeSpan.Zero, true))
             {
