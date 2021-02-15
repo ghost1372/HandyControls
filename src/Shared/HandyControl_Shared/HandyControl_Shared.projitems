@@ -222,6 +222,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Media\Effects\EffectBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Media\Effects\GrayScaleEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\AccentColorSet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ColorPaletteResources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\DesignMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\IntellisenseResourcesBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\Markup\DynamicColorExtension.cs" />
