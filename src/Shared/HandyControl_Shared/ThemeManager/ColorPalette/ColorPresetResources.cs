@@ -12,11 +12,13 @@ namespace HandyControl.Themes
 
         public ColorPresetResources()
         {
+
+#if !NET40
             WeakEventManager<PresetManager, EventArgs>.AddHandler(
                 PresetManager.Current,
                 nameof(PresetManager.ColorPresetChanged),
                 OnCurrentPresetChanged);
-
+#endif
             ApplyCurrentPreset();
         }
 
