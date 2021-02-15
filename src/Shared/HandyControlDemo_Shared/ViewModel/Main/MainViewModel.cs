@@ -13,6 +13,7 @@ using HandyControlDemo.Properties.Langs;
 using HandyControlDemo.Service;
 using HandyControlDemo.Tools;
 using HandyControlDemo.UserControl;
+using AssemblyHelper = HandyControlDemo.Tools.AssemblyHelper;
 
 namespace HandyControlDemo.ViewModel
 {

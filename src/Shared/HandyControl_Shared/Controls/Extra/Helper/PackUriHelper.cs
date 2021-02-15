@@ -4,9 +4,9 @@ namespace HandyControl.Controls
 {
     public static class PackUriHelper
     {
-        public static Uri GetAbsoluteUri(string Namespace, string path)
+        public static Uri GetAbsoluteUri(string AssemblyName, string path)
         {
-            return new Uri($"pack://application:,,,/{Namespace};component/{path}");
+            return new Uri($"pack://application:,,,/{AssemblyName};component/{path}");
         }
 
         internal static Uri GetAbsoluteUri(string Path)

@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\ITruncator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\TruncateFrom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\Truncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\AssemblyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\GenericCompare.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\GlobalDataHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\CryptographyHelper.cs" />
@@ -222,7 +223,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Media\Effects\EffectBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Media\Effects\GrayScaleEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\AccentColorSet.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ColorPaletteResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\BindablePropertyBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ColorPalette\ColorPaletteResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ColorPalette\ColorPresetResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\ColorPalette\PresetManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\DesignMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\IntellisenseResourcesBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ThemeManager\Markup\DynamicColorExtension.cs" />

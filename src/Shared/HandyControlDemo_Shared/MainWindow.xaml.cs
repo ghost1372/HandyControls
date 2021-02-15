@@ -9,6 +9,7 @@ using HandyControlDemo.Data;
 using HandyControlDemo.Tools;
 using HandyControlDemo.UserControl;
 using HandyControlDemo.ViewModel;
+using AssemblyHelper = HandyControlDemo.Tools.AssemblyHelper;
 
 namespace HandyControlDemo
 {
