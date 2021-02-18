@@ -31,6 +31,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\TruncateFrom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Extension\Truncation\Truncator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\AssemblyHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\DispatcherHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\GenericCompare.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\GlobalDataHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\CryptographyHelper.cs" />
