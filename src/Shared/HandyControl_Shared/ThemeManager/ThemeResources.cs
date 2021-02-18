@@ -6,7 +6,6 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using HandyControl.Data;
-using HandyControl.Controls;
 using HandyControl.Tools.Extension;
 
 namespace HandyControl.Themes
@@ -79,10 +78,6 @@ namespace HandyControl.Themes
                 {
                     ThemeManager.Current.SetCurrentValue(ThemeManager.AccentColorProperty, value);
                     ThemeManager.Current.DefaultAccentColor = value;
-                    if (DesignMode.DesignModeEnabled)
-                    {
-                        UpdateDesignTimeSystemColors();
-                    }
                 }
             }
         }
@@ -130,21 +125,7 @@ namespace HandyControl.Themes
         private void DesignTimeInit()
         {
             Debug.Assert(DesignMode.DesignModeEnabled);
-            UpdateDesignTimeSystemColors();
             UpdateDesignTimeThemeDictionary();
-        }
-
-        private void UpdateDesignTimeSystemColors()
-        {
-            Debug.Assert(DesignMode.DesignModeEnabled);
-
-            if (IsInitializePending)
-            {
-                return;
-            }
-
-            var colors = GetDesignTimeSystemColors();
-            MergedDictionaries.InsertOrReplace(0, colors);
         }
 
         private void UpdateDesignTimeThemeDictionary()
@@ -173,14 +154,8 @@ namespace HandyControl.Themes
             {
                 MergedDictionaries.RemoveIfNotNull(_lightResources);
                 MergedDictionaries.RemoveIfNotNull(_darkResources);
-                MergedDictionaries.Insert(1, themeDictionary);
+                MergedDictionaries.Insert(0, themeDictionary);
             }
-        }
-
-        private ResourceDictionary GetDesignTimeSystemColors()
-        {
-            Debug.Assert(DesignMode.DesignModeEnabled);
-            return new ResourceDictionary {Source = PackUriHelper.GetAbsoluteUri("Themes/Basic/Colors/Light.xaml")};
         }
 
         #endregion
