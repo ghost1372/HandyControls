@@ -13,14 +13,17 @@ namespace HandyControl.Controls
 
         public static void RunOnUIThread(this DispatcherObject d, Action action)
         {
-            var dispatcher = d.Dispatcher;
-            if (dispatcher.CheckAccess())
+            var dispatcher = d?.Dispatcher;
+            if (dispatcher!=null)
             {
-                action();
-            }
-            else
-            {
-                dispatcher.BeginInvoke(action);
+                if (dispatcher.CheckAccess())
+                {
+                    action();
+                }
+                else
+                {
+                    dispatcher.BeginInvoke(action);
+                }
             }
         }
     }

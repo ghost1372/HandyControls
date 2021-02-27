@@ -38,6 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Attach\ListBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InstanceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\InternetHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\OSVersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\PackUriHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Extra\Helper\Registry\HKEYType.cs" />
