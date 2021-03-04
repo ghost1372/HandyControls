@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace HandyControl.Tools.Extension
 {
-    public static class MergedDictionariesExtensions
+    public static class MergedDictionariesExtension
     {
         public static void AddIfNotNull(this Collection<ResourceDictionary> mergedDictionaries, ResourceDictionary item)
         {

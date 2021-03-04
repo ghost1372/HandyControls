@@ -27,10 +27,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\IDelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\SyncDelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\CheckTreeView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ApplicationExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DateTimeExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DictionaryExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\CollectionViewExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\EnumeratorWithIndex.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Extensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\MergedDictionariesExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\MergedDictionariesExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\IStringTransformer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\To.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\ToLowerCase.cs" />
@@ -43,6 +45,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\ITruncator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\TruncateFrom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\Truncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ListExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\CollectionExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\StringExtension!1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ApplicationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\DispatcherHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\GenericCompare.cs" />
