@@ -37,18 +37,13 @@ namespace HandyControl.Tools
             }
         }
 
-        public static void BringWindowToFront(IntPtr hWnd = null)
+        public static void BringWindowToFront()
         {
-            if (hWnd == null)
-            {
-                var currentProcess = Process.GetCurrentProcess();
-                var processes = Process.GetProcessesByName(currentProcess.ProcessName);
-                var process = processes.FirstOrDefault(p => p.Id != currentProcess.Id);
-                if (process == null) return;
-                hWnd = process.MainWindowHandle;
-            }
-            
-            InteropMethods.SetForegroundWindow(hWnd);
+            var currentProcess = Process.GetCurrentProcess();
+            var processes = Process.GetProcessesByName(currentProcess.ProcessName);
+            var process = processes.FirstOrDefault(p => p.Id != currentProcess.Id);
+            if (process == null) return;
+            InteropMethods.SetForegroundWindow(process.MainWindowHandle);
         }
 
         /// <summary>
