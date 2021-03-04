@@ -1,4 +1,4 @@
-﻿#if !NET40
+﻿#if NETCOREAPP
 namespace HandyControl.Tools
 {
     internal static class PendingEvent

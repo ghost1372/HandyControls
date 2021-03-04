@@ -1,4 +1,4 @@
-﻿#if !NET40
+﻿#if NETCOREAPP
 using System.Collections.Specialized;
 using System.ComponentModel;
 

@@ -1,4 +1,4 @@
-﻿#if !NET40
+﻿#if NETCOREAPP
 using System.Runtime.InteropServices;
 
 namespace HandyControl.Tools

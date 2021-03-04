@@ -1,4 +1,4 @@
-﻿#if !NET40
+﻿#if !(NET40 || NET45)
 using System;
 using System.Windows.Threading;
 

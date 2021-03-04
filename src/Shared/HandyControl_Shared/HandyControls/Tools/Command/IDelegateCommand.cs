@@ -1,5 +1,4 @@
-﻿#if !NET40
-
+﻿#if !(NET40 || NET45)
 using System.Windows.Input;
 
 namespace HandyControl.Tools
