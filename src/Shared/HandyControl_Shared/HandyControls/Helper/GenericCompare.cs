@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public class GenericCompare<T> : IEqualityComparer<T> where T : class
     {

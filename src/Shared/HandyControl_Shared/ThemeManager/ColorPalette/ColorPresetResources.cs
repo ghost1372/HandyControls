@@ -2,7 +2,7 @@
 
 using System;
 using System.Windows;
-using HandyControl.Controls;
+using HandyControl.Tools;
 
 namespace HandyControl.Themes
 {

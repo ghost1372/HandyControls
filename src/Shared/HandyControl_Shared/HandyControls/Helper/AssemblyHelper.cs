@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public class AssemblyHelper
     {

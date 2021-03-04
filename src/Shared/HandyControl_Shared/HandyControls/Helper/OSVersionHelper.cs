@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using HandyControl.Tools.Interop;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public static class OSVersionHelper
     {

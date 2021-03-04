@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using HandyControl.Tools.Interop;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public class CryptographyHelper
     {

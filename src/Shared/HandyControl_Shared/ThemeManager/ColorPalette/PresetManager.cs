@@ -1,8 +1,7 @@
 ﻿// http://github.com/kinnara/ModernWpf
 
 using System;
-using HandyControl.Tools;
-
+using HandyControl.Controls;
 namespace HandyControl.Themes
 {
     public class PresetManager : BindablePropertyBase

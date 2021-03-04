@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Threading;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public static class DispatcherHelper
     {

@@ -15,7 +15,7 @@ using System.Web.Script.Serialization;
 using System.Threading.Tasks;
 using HandyControl.Data;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public class UpdateHelper
     {

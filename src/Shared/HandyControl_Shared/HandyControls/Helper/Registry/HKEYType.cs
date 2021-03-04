@@ -1,4 +1,4 @@
-﻿namespace HandyControl.Controls
+﻿namespace HandyControl.Tools
 {
     public enum HKEYType
     {

@@ -1,4 +1,4 @@
-﻿namespace HandyControl.Controls.SplashWindow
+﻿namespace HandyControl.Controls
 {
     public interface ISplashWindow
     {

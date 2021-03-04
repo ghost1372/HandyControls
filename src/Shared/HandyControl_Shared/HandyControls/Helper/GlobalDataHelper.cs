@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public abstract class GlobalDataHelper<T> where T : GlobalDataHelper<T>, new()
     {

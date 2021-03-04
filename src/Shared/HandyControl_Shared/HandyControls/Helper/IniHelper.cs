@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using HandyControl.Tools.Interop;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public class InIHelper
     {

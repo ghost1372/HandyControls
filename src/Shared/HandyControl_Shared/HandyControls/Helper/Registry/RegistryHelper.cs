@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public class RegistryHelper
     {

@@ -1,7 +1,7 @@
 ﻿// http://github.com/kinnara/ModernWpf
 
 using System.Windows;
-using HandyControl.Controls;
+using HandyControl.Tools;
 
 namespace HandyControl.Themes
 {

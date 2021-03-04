@@ -1,11 +1,12 @@
-﻿using HandyControl.Tools.Interop;
+﻿using HandyControl.Controls;
+using HandyControl.Tools.Interop;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Principal;
 using System.Threading;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public class InstanceHelper
     {

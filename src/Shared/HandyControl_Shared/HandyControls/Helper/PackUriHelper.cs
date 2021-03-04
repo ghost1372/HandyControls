@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public static class PackUriHelper
     {

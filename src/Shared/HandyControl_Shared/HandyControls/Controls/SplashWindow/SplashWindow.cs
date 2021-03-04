@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Threading;
 
-namespace HandyControl.Controls.SplashWindow
+namespace HandyControl.Controls
 {
     public class SplashWindow : HandyControl.Controls.Window, ISplashWindow, INotifyPropertyChanged
     {
