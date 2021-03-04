@@ -1,4 +1,6 @@
-﻿#if NETCOREAPP
+﻿// https://github.com/meziantou/Meziantou.Framework
+
+#if NETCOREAPP
 using System.Runtime.InteropServices;
 
 namespace HandyControl.Tools

@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\TreeViewAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumDescriptionTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\RangeObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafeObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\Internals\DispatchedObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\Internals\EventArgsCache.cs" />
@@ -20,7 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\Internals\PendingEvent.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\Internals\PendingEventType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\Internals\PendingEvent`1.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\IReadOnlyObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\Internals\IReadOnlyObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\AsyncDelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\DelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\IDelegateCommand.cs" />

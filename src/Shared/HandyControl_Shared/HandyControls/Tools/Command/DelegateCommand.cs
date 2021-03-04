@@ -1,4 +1,6 @@
-﻿#if !(NET40 || NET45 || NET451 || NET452)
+﻿// https://github.com/meziantou/Meziantou.Framework
+
+#if !(NET40 || NET45 || NET451 || NET452)
 using System;
 using System.Threading.Tasks;
 
