@@ -61,11 +61,11 @@ namespace HandyControl.Tools
                     break;
                 case HKEYType.LocalMachine:
                     key = Registry.LocalMachine;
-                    InstanceHelper.IsAdministrator();
+                    ApplicationHelper.IsAdministrator();
                     break;
                 case HKEYType.ClassesRoot:
                     key = Registry.ClassesRoot;
-                    InstanceHelper.IsAdministrator();
+                    ApplicationHelper.IsAdministrator();
                     break;
             }
             return key;

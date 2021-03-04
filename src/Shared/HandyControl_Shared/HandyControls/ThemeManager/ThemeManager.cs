@@ -678,7 +678,7 @@ namespace HandyControl.Themes
 
         private static Uri GetDefaultSource(string theme)
         {
-            return PackUriHelper.GetAbsoluteUri($"Themes/Basic/Colors/{theme}.xaml");
+            return ApplicationHelper.GetAbsoluteUri($"Themes/Basic/Colors/{theme}.xaml");
         }
 
         internal void Initialize()

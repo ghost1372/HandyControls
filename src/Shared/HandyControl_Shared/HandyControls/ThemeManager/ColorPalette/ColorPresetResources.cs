@@ -49,7 +49,7 @@ namespace HandyControl.Themes
             var currentPreset = PresetManager.Current.ColorPreset;
             if (currentPreset !=null)
             {
-                var source = PackUriHelper.GetAbsoluteUri(currentPreset.AssemblyName, $"{currentPreset.ColorPreset}/{TargetTheme}.xaml");
+                var source = ApplicationHelper.GetAbsoluteUri(currentPreset.AssemblyName, $"{currentPreset.ColorPreset}/{TargetTheme}.xaml");
                 var rd = new ResourceDictionary { Source = source };
                 MergedDictionaries.Add(rd);
             }

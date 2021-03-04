@@ -43,16 +43,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\ITruncator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\TruncateFrom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\Truncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ApplicationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\DispatcherHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\GenericCompare.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\GlobalDataHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\CryptographyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\ListBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\InIHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\InstanceHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\InternetHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\OSVersionHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\PackUriHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Registry\HKEYType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Registry\RegistryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\UpdateHelper.cs" />

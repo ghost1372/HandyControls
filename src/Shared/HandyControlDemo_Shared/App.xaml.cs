@@ -65,7 +65,7 @@ namespace HandyControlDemo
                 base.OnStartup(e);
             
                 UpdateRegistry();
-                InstanceHelper.IsSingleInstance();
+                ApplicationHelper.IsSingleInstance();
 
                 ShutdownMode = ShutdownMode.OnMainWindowClose;
                 GlobalData.Init();
@@ -100,7 +100,7 @@ namespace HandyControlDemo
 
             var demoResources = new ResourceDictionary
             {
-                Source = PackUriHelper.GetAbsoluteUri("HandyControlDemo",
+                Source = ApplicationHelper.GetAbsoluteUri("HandyControlDemo",
                     $"/Resources/Themes/Basic/Colors/{theme.ToString()}.xaml")
             };
 

@@ -1,14 +1,17 @@
-﻿using HandyControl.Tools.Interop;
-using System;
+﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime;
+using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Threading;
+using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
 {
-    public class InstanceHelper
+    public class ApplicationHelper
     {
         internal static Mutex mutex;
 
@@ -55,5 +58,43 @@ namespace HandyControl.Tools
                 .IsInRole(WindowsBuiltInRole.Administrator))
                 throw new UnauthorizedAccessException();
         }
+
+        [DllImport(InteropValues.ExternDll.WinInet)]
+        private static extern bool InternetGetConnectedState(out int Description, int ReservedValue);
+        public static bool IsConnectedToInternet()
+        {
+            return InternetGetConnectedState(out int Desc, 0);
+        }
+
+        public static Uri GetAbsoluteUri(string AssemblyName, string path)
+        {
+            return new Uri($"pack://application:,,,/{AssemblyName};component/{path}");
+        }
+
+        internal static Uri GetAbsoluteUri(string Path)
+        {
+            return new Uri($"pack://application:,,,/HandyControl;component/{Path}");
+        }
+
+#if !NET40
+        /// <summary>
+        /// Faster application execution at startup by caching
+        /// </summary>
+        /// <param name="CachePath">Cache Path</param>
+        public static void StartProfileOptimization(string CachePath = null)
+        {
+            if (string.IsNullOrEmpty(CachePath))
+            {
+                CachePath = $"{AppDomain.CurrentDomain.BaseDirectory}Cache";
+            }
+            if (!Directory.Exists(CachePath))
+            {
+                Directory.CreateDirectory(CachePath);
+            }
+            ProfileOptimization.SetProfileRoot(CachePath);
+            ProfileOptimization.StartProfile("Profile");
+        }
+#endif
     }
 }
+
