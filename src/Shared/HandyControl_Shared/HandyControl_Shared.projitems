@@ -42,7 +42,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\ITruncator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\TruncateFrom.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\Truncator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\AssemblyHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\DispatcherHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\GenericCompare.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\GlobalDataHelper.cs" />

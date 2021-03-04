@@ -1,8 +1,8 @@
-﻿using HandyControl.Controls;
-using HandyControl.Tools.Interop;
+﻿using HandyControl.Tools.Interop;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Security.Principal;
 using System.Threading;
 
@@ -10,18 +10,20 @@ namespace HandyControl.Tools
 {
     public class InstanceHelper
     {
-        static Mutex mutex;
+        internal static Mutex mutex;
 
         /// <summary>
-        /// check only one instance is running 
+        /// Check that only one instance of the program runs
         /// </summary>
-        /// <param name="ShowErrorMessage"></param>
-        /// <param name="ErrorMessage"></param>
+        /// <param name="AssemblyName"></param>
         /// <returns></returns>
-        public static bool IsSingleInstance(bool ShowErrorMessage = true, string ErrorMessage = "Another instance of the app is running")
+        public static bool IsSingleInstance(string AssemblyName = null)
         {
-            var guid = CryptographyHelper.GenerateMD5(AssemblyHelper.GetExecutingAssemblyName());
-            mutex = new Mutex(true, "{" + $"{guid}" + "}");
+            if (string.IsNullOrEmpty(AssemblyName))
+            {
+                AssemblyName = Assembly.GetCallingAssembly().GetName().Name;
+            }
+            mutex = new Mutex(true, AssemblyName);
             if (mutex.WaitOne(TimeSpan.Zero, true))
             {
                 mutex.ReleaseMutex();
@@ -29,25 +31,29 @@ namespace HandyControl.Tools
             }
             else
             {
-                if (ShowErrorMessage)
-                {
-                    MessageBox.Error(ErrorMessage);
-                }
                 BringWindowToFront();
                 Environment.Exit(0);
                 return false;
             }
         }
 
-        private static void BringWindowToFront()
+        public static void BringWindowToFront(IntPtr hWnd = null)
         {
-            var currentProcess = Process.GetCurrentProcess();
-            var processes = Process.GetProcessesByName(currentProcess.ProcessName);
-            var process = processes.FirstOrDefault(p => p.Id != currentProcess.Id);
-            if (process == null) return;
-            InteropMethods.SetForegroundWindow(process.MainWindowHandle);
+            if (hWnd == null)
+            {
+                var currentProcess = Process.GetCurrentProcess();
+                var processes = Process.GetProcessesByName(currentProcess.ProcessName);
+                var process = processes.FirstOrDefault(p => p.Id != currentProcess.Id);
+                if (process == null) return;
+                hWnd = process.MainWindowHandle;
+            }
+            
+            InteropMethods.SetForegroundWindow(hWnd);
         }
 
+        /// <summary>
+        /// Check if Running Application runs with admin access or not
+        /// </summary>
         public static void IsAdministrator()
         {
             if (!(new WindowsPrincipal(WindowsIdentity.GetCurrent()))
