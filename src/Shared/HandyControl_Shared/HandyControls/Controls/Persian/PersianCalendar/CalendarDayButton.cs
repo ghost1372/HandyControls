@@ -353,11 +353,6 @@ namespace Microsoft.Windows.Controls.Primitives
 
         #region Private Methods
 
-        /// <summary>
-        /// Common PropertyChangedCallback for dependency properties that trigger visual state changes
-        /// </summary>
-        /// <param name="dObject"></param>
-        /// <param name="e"></param>
         private static void OnVisualStatePropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             CalendarDayButton dayButton = sender as CalendarDayButton;

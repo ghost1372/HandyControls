@@ -203,6 +203,7 @@ namespace HandyControl.Controls
         /// </summary>
         /// <param name="element">The element that is potentially a child of the specified parent.</param>
         /// <param name="parent">The element that is potentially a parent of the specified element.</param>
+        /// <param name="recurseIntoPopup"></param>
         public static bool IsDescendantOf(DependencyObject element, DependencyObject parent, bool recurseIntoPopup)
         {
             while (element != null)

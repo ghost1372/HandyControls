@@ -3,16 +3,13 @@ using System.Windows.Controls;
 
 namespace HandyControl.Controls
 {
-    /// <summary>
-    /// A control featuring a range of loading indicating animations.
-    /// https://github.com/zeluisping/LoadingIndicators.WPF
-    /// </summary>
+
+    // A control featuring a range of loading indicating animations.
+    // https://github.com/zeluisping/LoadingIndicators.WPF
+
     [TemplatePart(Name = "Border", Type = typeof(Border))]
     public class LoadingIndicator : Control
     {
-        /// <summary>
-        /// Identifies the <see cref="LoadingIndicators.WPF.LoadingIndicator.SpeedRatio"/> dependency property.
-        /// </summary>
         public static readonly DependencyProperty SpeedRatioProperty =
             DependencyProperty.Register("SpeedRatio", typeof(double), typeof(LoadingIndicator), new PropertyMetadata(1d, (o, e) => {
                 LoadingIndicator li = (LoadingIndicator)o;
@@ -37,9 +34,6 @@ namespace HandyControl.Controls
                 }
             }));
 
-        /// <summary>
-        /// Identifies the <see cref="LoadingIndicators.WPF.LoadingIndicator.IsActive"/> dependency property.
-        /// </summary>
         public static readonly DependencyProperty IsActiveProperty =
             DependencyProperty.Register("IsActive", typeof(bool), typeof(LoadingIndicator), new PropertyMetadata(true, (o, e) => {
                 LoadingIndicator li = (LoadingIndicator)o;
@@ -127,9 +121,6 @@ namespace HandyControl.Controls
             }
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LoadingIndicators.WPF.LoadingIndicator"/> class.
-        /// </summary>
         public LoadingIndicator()
         {
         }
