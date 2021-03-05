@@ -234,6 +234,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\DoubleRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\IValueRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\IfExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\MultiBindingExtensionBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\ObjectExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\CloseWindowCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\OpenLinkCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\StartScreenshotCommand.cs" />
