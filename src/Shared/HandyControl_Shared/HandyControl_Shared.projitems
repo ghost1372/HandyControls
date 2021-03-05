@@ -22,16 +22,26 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\PendingEventType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\PendingEvent`1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\IReadOnlyObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\AsyncCommand!1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\AsyncCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\AsyncCommandBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\CancelAsyncCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\CommandBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\IAsyncCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\ManualResetAsyncCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\NotifyTaskCompletion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\SimpleRelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\EnumerableExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedo\ModuloArithmetic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedo\RingBuffer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedoList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedoObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedo\UndoRedoRingBuffer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\AsyncDelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\AsyncDelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\DelegateCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\IDelegateCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\SyncDelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\IDelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\SyncDelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\CheckTreeView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ApplicationExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DateTimeExtension.cs" />
@@ -1067,6 +1077,7 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Data\Info\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\" />
+    <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\" />
   </ItemGroup>
