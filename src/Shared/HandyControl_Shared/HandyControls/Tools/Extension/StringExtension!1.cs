@@ -1,6 +1,6 @@
-﻿using HandyControl.Controls;
-using System;
+﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace HandyControl.Tools.Extension
 {
@@ -105,5 +105,15 @@ namespace HandyControl.Tools.Extension
 
             return truncator.Truncate(input, length, truncationString, from);
         }
+
+        /// <summary>
+        ///     Converts this <see cref="string"/> from one encoding to another.
+        /// </summary>
+        /// <param name="value">The input <see cref="string"/>.</param>
+        /// <param name="from">The input encoding.</param>
+        /// <param name="to">The output encoding.</param>
+        /// <returns>A new <see cref="string"/> with its data converted to <paramref name="to"/>.</returns>
+        public static string ChangeEncoding(this string value, Encoding from, Encoding to) => to.GetString(value.GetBytes(from));
+        public static byte[] GetBytes(this string value, Encoding? encoding = null) => (encoding ?? Encoding.Default).GetBytes(value);
     }
 }
