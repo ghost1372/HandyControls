@@ -72,8 +72,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\ListBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\InIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\OSVersionHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Registry\HKEYType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Registry\RegistryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\RegistryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\UpdateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoCompletingMaskEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoSelectBehavior.cs" />
