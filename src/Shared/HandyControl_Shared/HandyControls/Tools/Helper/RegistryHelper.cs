@@ -44,7 +44,7 @@ namespace HandyControl.Tools
         /// <param name="Folder"></param>
         /// <param name="Location"></param>
         /// <returns></returns>
-        public static T GetKey<T>(string Key, string Folder, RegistryKey Location = null)
+        public static T GetValue<T>(string Key, string Folder, RegistryKey Location = null)
         {
             if (Location == null)
             {
