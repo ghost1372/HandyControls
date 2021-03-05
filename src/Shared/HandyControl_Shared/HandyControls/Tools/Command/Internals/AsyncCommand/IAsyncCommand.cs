@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace HandyControl.Tools
 {
-    internal interface IAsyncCommand : ICommand
+    public interface IAsyncCommand : ICommand
     {
         Task ExecuteAsync(object parameter);
     }

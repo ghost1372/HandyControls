@@ -10,9 +10,9 @@ namespace HandyControl.Tools
     /// <summary>
     /// This is the named return result, Command.xxxx can call the following properties
     /// <TextBlock Text="{Binding Mycommand7.Execution.Result}"/>
-    /// <Button Command = "{Binding Mycommand7}" CommandParameter="111222">测试</Button>
-    /// <Button Command = "{Binding Mycommand7.CancelCommand}" > 取消 </ Button >
-    /// <Button Command="{Binding Mycommand7.ManualResetAsyncCommand}">暂停</Button>
+    /// <Button Command = "{Binding Mycommand7}" CommandParameter="111222">test</Button>
+    /// <Button Command = "{Binding Mycommand7.CancelCommand}" > cancel </ Button >
+    /// <Button Command="{Binding Mycommand7.ManualResetAsyncCommand}">timeout</Button>
     /// <TextBlock Text = "{Binding Mycommand7.IsSuspend}" />
     /// </summary>
     public sealed class NotifyTaskCompletion<TResult> : INotifyPropertyChanged
