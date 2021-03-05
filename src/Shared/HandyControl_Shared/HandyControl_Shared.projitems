@@ -233,6 +233,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\DoubleRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\IValueRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\DebugLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\DefaultLoggerFormatter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\ILoggerFormatter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Handlers\DebugLoggerHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Handlers\FileLoggerHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\ILoggerHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\ILoggerHandlerManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\LogMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\LogPublisher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\IfExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\MultiBindingExtensionBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\ObjectExtension.cs" />
@@ -1081,6 +1091,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\" />
+    <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\" />
   </ItemGroup>
   <ItemGroup>
