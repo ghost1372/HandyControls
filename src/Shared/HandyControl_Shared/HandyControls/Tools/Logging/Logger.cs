@@ -13,7 +13,6 @@ namespace HandyControl.Tools
         private static readonly object Sync = new object();
         private static Level _defaultLevel = Level.Info;
         private static bool _isTurned = true;
-        private static bool _isTurnedDebug = true;
 
         public enum Level
         {
@@ -174,7 +173,7 @@ namespace HandyControl.Tools
 
         private static LogMessage GetLogMessage(Level level, string message, string callingClass, string callingMethod, int lineNumber)
         {
-            if (!_isTurned || (!_isTurnedDebug && level == Level.Debug))
+            if (!_isTurned)
                 return null;
 
             var currentDateTime = DateTime.Now;
@@ -209,16 +208,6 @@ namespace HandyControl.Tools
         public static void Off()
         {
             _isTurned = false;
-        }
-
-        public static void DebugOn()
-        {
-            _isTurnedDebug = true;
-        }
-
-        public static void DebugOff()
-        {
-            _isTurnedDebug = false;
         }
 
         public static IEnumerable<LogMessage> Messages
