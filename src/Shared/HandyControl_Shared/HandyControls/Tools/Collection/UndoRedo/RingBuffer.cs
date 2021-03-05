@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 namespace HandyControl.Tools
 {
-    ///<summary>Ring buffer.</summary>
-    ///<seealso cref="https://en.wikipedia.org/wiki/Circular_buffer">Circular buffer (circular queue, cyclic buffer or ring buffer) - Wikipedia</seealso>
     internal class RingBuffer<TElement> : IEnumerable<TElement>
     {
         protected const int defaultSize = ModuloArithmetic.DefaultDivisor;

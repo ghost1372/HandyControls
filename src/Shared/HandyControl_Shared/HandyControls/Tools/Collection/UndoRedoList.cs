@@ -1,4 +1,5 @@
-﻿// https://github.com/Fujiwo/Shos.UndoRedoList
+﻿#if !(NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462)
+// https://github.com/Fujiwo/Shos.UndoRedoList
 
 using System;
 using System.Collections;
@@ -287,3 +288,4 @@ namespace HandyControl.Controls
         { }
     }
 }
+#endif

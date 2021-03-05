@@ -6,7 +6,6 @@ using HandyControl.Tools.Extension;
 
 namespace HandyControl.Tools.Extension
 {
-    /// <summary>Extension methods for IEnumerable<TElement>.</summary>
     public static class EnumerableExtensions
     {
         public static void ForEach<TElement>(this IEnumerable<TElement> @this, Action<TElement> action)

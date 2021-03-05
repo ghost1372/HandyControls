@@ -4,8 +4,6 @@ using System;
 
 namespace HandyControl.Tools
 {
-    ///<summary>Modular arithmetic.</summary>
-    ///<seealso cref="https://en.wikipedia.org/wiki/Modular_arithmetic">Modular arithmetic - Wikipedia</seealso>
     internal struct ModuloArithmetic : IEquatable<ModuloArithmetic>
     {
         public const int DefaultDivisor = 100;
