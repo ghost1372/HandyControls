@@ -16,9 +16,11 @@
             System.Diagnostics.Debug.WriteLine(_loggerFormatter.ApplyFormat(logMessage));
         }
 
+#if !NET40
         public void PublishAsync(LogMessage logMessage)
         {
             System.Diagnostics.Debug.WriteLine(_loggerFormatter.ApplyFormat(logMessage));
         }
+#endif
     }
 }

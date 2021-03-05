@@ -38,6 +38,7 @@ namespace HandyControl.Tools
             }
         }
 
+#if !NET40
         public async void PublishAsync(LogMessage logMessage)
         {
             CheckDirectory();
@@ -45,6 +46,7 @@ namespace HandyControl.Tools
             using (var writer = new StreamWriter(File.Open(Path.Combine(_directory, _fileName), FileMode.Append)))
                 await writer.WriteLineAsync(_loggerFormatter.ApplyFormat(logMessage));
         }
+#endif
 
         private void CheckDirectory()
         {

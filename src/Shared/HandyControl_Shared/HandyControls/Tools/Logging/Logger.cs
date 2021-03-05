@@ -9,7 +9,6 @@ namespace HandyControl.Tools
     public static class Logger
     {
         private static readonly LogPublisher LogPublisher;
-        private static readonly DebugLogger DebugLogger;
 
         private static readonly object Sync = new object();
         private static Level _defaultLevel = Level.Info;
@@ -32,7 +31,6 @@ namespace HandyControl.Tools
             lock (Sync)
             {
                 LogPublisher = new LogPublisher();
-                DebugLogger = new DebugLogger();
             }
         }
 
@@ -61,30 +59,15 @@ namespace HandyControl.Tools
             Log("There is no message");
         }
 
+#if !NET40
         public static void LogAsync()
         {
             LogAsync("There is no message");
         }
 
-        public static void Log(string message)
-        {
-            Log(_defaultLevel, message);
-        }
-
         public static void LogAsync(string message)
         {
             LogAsync(_defaultLevel, message);
-        }
-
-        public static void Log(Level level, string message)
-        {
-            var stackFrame = FindStackFrame();
-            var methodBase = GetCallingMethodBase(stackFrame);
-            var callingMethod = methodBase.Name;
-            var callingClass = methodBase.ReflectedType.Name;
-            var lineNumber = stackFrame.GetFileLineNumber();
-
-            Log(level, message, callingClass, callingMethod, lineNumber);
         }
 
         public static void LogAsync(Level level, string message)
@@ -98,21 +81,9 @@ namespace HandyControl.Tools
             LogAsync(level, message, callingClass, callingMethod, lineNumber);
         }
 
-        public static void Log(Exception exception)
-        {
-            Log(Level.Error, exception.Message);
-        }
-
         public static void LogAsync(Exception exception)
         {
             LogAsync(Level.Error, exception.Message);
-        }
-
-        public static void Log<TClass>(Exception exception) where TClass : class
-        {
-            var message = string.Format("Log exception -> Message: {0}\nStackTrace: {1}", exception.Message,
-                                        exception.StackTrace);
-            Log<TClass>(Level.Error, message);
         }
 
         public static void LogAsync<TClass>(Exception exception) where TClass : class
@@ -122,25 +93,9 @@ namespace HandyControl.Tools
             LogAsync<TClass>(Level.Error, message);
         }
 
-        public static void Log<TClass>(string message) where TClass : class
-        {
-            Log<TClass>(_defaultLevel, message);
-        }
-
         public static void LogAsync<TClass>(string message) where TClass : class
         {
             LogAsync<TClass>(_defaultLevel, message);
-        }
-
-        public static void Log<TClass>(Level level, string message) where TClass : class
-        {
-            var stackFrame = FindStackFrame();
-            var methodBase = GetCallingMethodBase(stackFrame);
-            var callingMethod = methodBase.Name;
-            var callingClass = typeof(TClass).Name;
-            var lineNumber = stackFrame.GetFileLineNumber();
-
-            Log(level, message, callingClass, callingMethod, lineNumber);
         }
 
         public static void LogAsync<TClass>(Level level, string message) where TClass : class
@@ -154,21 +109,66 @@ namespace HandyControl.Tools
             LogAsync(level, message, callingClass, callingMethod, lineNumber);
         }
 
-        private static void Log(Level level, string message, string callingClass, string callingMethod, int lineNumber)
-        {
-            var logMessage = GetLogMessage(level, message, callingClass, callingMethod, lineNumber);
-            if (logMessage != null)
-            {
-                LogPublisher.Publish(logMessage);
-            }
-        }
-
         private static void LogAsync(Level level, string message, string callingClass, string callingMethod, int lineNumber)
         {
             var logMessage = GetLogMessage(level, message, callingClass, callingMethod, lineNumber);
             if (logMessage != null)
             {
                 LogPublisher.PublishAsync(logMessage);
+            }
+        }
+#endif
+
+        public static void Log(string message)
+        {
+            Log(_defaultLevel, message);
+        }
+
+        public static void Log(Level level, string message)
+        {
+            var stackFrame = FindStackFrame();
+            var methodBase = GetCallingMethodBase(stackFrame);
+            var callingMethod = methodBase.Name;
+            var callingClass = methodBase.ReflectedType.Name;
+            var lineNumber = stackFrame.GetFileLineNumber();
+
+            Log(level, message, callingClass, callingMethod, lineNumber);
+        }
+
+        public static void Log(Exception exception)
+        {
+            Log(Level.Error, exception.Message);
+        }
+
+        public static void Log<TClass>(Exception exception) where TClass : class
+        {
+            var message = string.Format("Log exception -> Message: {0}\nStackTrace: {1}", exception.Message,
+                                        exception.StackTrace);
+            Log<TClass>(Level.Error, message);
+        }
+
+        public static void Log<TClass>(string message) where TClass : class
+        {
+            Log<TClass>(_defaultLevel, message);
+        }
+
+        public static void Log<TClass>(Level level, string message) where TClass : class
+        {
+            var stackFrame = FindStackFrame();
+            var methodBase = GetCallingMethodBase(stackFrame);
+            var callingMethod = methodBase.Name;
+            var callingClass = typeof(TClass).Name;
+            var lineNumber = stackFrame.GetFileLineNumber();
+
+            Log(level, message, callingClass, callingMethod, lineNumber);
+        }
+
+        private static void Log(Level level, string message, string callingClass, string callingMethod, int lineNumber)
+        {
+            var logMessage = GetLogMessage(level, message, callingClass, callingMethod, lineNumber);
+            if (logMessage != null)
+            {
+                LogPublisher.Publish(logMessage);
             }
         }
 
@@ -224,11 +224,6 @@ namespace HandyControl.Tools
         public static IEnumerable<LogMessage> Messages
         {
             get { return LogPublisher.Messages; }
-        }
-
-        public static DebugLogger Debug
-        {
-            get { return DebugLogger; }
         }
 
         public static bool StoreLogMessages

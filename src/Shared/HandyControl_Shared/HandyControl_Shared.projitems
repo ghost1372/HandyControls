@@ -233,7 +233,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\DoubleRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\IValueRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\DebugLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\DefaultLoggerFormatter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\ILoggerFormatter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Handlers\DebugLoggerHandler.cs" />

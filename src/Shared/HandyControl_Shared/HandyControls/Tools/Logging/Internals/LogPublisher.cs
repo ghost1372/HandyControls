@@ -14,11 +14,13 @@ namespace HandyControl.Tools
                 Handler.Publish (logMessage);
         }
 
+#if !NET40
         public void PublishAsync(LogMessage logMessage)
         {
             if (Filter(logMessage))
                 Handler.PublishAsync(logMessage);
         }
+#endif
     }
 
     internal class LogPublisher : ILoggerHandlerManager
@@ -48,6 +50,7 @@ namespace HandyControl.Tools
                 loggerHandler.Publish(logMessage);
         }
 
+#if !NET40
         public void PublishAsync(LogMessage logMessage)
         {
             if (StoreLogMessages)
@@ -55,6 +58,7 @@ namespace HandyControl.Tools
             foreach (var loggerHandler in _loggerHandlers)
                 loggerHandler.PublishAsync(logMessage);
         }
+#endif
 
         public ILoggerHandlerManager AddHandler(ILoggerHandler loggerHandler)
         {
