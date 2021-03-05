@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public partial class PersianDateTime : IConvertible
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using HandyControl.Tools.Extension;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
 	public class ConvertList
 	{

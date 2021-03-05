@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public partial class PersianDateTime
     {

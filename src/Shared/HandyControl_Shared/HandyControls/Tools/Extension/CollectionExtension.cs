@@ -6,7 +6,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Data;
 namespace HandyControl.Tools.Extension
 {
     public static class CollectionExtension
@@ -132,18 +131,6 @@ namespace HandyControl.Tools.Extension
         /// This Extension Help you to Easily implement search, sort, and group operations
         /// </summary>
         /// <typeparam name="TSource"></typeparam>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static CollectionViewExtension<TSource> ShapeView<TSource>(this IEnumerable<TSource> source)
-        {
-            var view = CollectionViewSource.GetDefaultView(source);
-            return new CollectionViewExtension<TSource>(view);
-        }
-
-        /// <summary>
-        /// This Extension Help you to Easily implement search, sort, and group operations
-        /// </summary>
-        /// <typeparam name="TSource"></typeparam>
         /// <param name="view"></param>
         /// <returns></returns>
         public static CollectionViewExtension<TSource> Shape<TSource>(this ICollectionView view)
@@ -161,17 +148,6 @@ namespace HandyControl.Tools.Extension
         {
             Action<T> addMethod = collection.Add;
             Application.Current.Dispatcher.BeginInvoke(addMethod, item);
-        }
-
-        /// <summary>
-        /// This Extension Help you to access item index in foreach loop
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="enumerable"></param>
-        /// <returns></returns>
-        public static IEnumerable<EnumeratorWithIndex<T>> GetEnumeratorWithIndex<T>(this IEnumerable<T> enumerable)
-        {
-            return enumerable.Select(EnumeratorWithIndex<T>.Create);
         }
     }
 }
