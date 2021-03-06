@@ -123,6 +123,31 @@ namespace HandyControl.Tools
             Log(_defaultLevel, message);
         }
 
+        public static void Error(string message)
+        {
+            Log(Level.Error, message);
+        }
+
+        public static void Debug(string message)
+        {
+            Log(Level.Debug, message);
+        }
+
+        public static void Fine(string message)
+        {
+            Log(Level.Fine, message);
+        }
+
+        public static void Info(string message)
+        {
+            Log(Level.Info, message);
+        }
+
+        public static void Warning(string message)
+        {
+            Log(Level.Warning, message);
+        }
+
         public static void Log(Level level, string message)
         {
             var stackFrame = FindStackFrame();

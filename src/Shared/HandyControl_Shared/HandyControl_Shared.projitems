@@ -13,7 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\TreeViewAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumDescriptionTypeConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\RangeObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\OptimizedObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafeObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\DispatchedObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\EventArgsCache.cs" />

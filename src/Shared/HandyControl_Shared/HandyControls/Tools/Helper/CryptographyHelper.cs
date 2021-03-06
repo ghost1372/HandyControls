@@ -9,9 +9,6 @@ namespace HandyControl.Tools
 {
     public class CryptographyHelper
     {
-        [DllImport(InteropValues.ExternDll.Kernel32, EntryPoint = "RtlZeroMemory")]
-        public static extern bool ZeroMemory(IntPtr Destination, int Length);
-
         public static string GenerateMD5(string input)
         {
             using MD5 md5 = MD5.Create();

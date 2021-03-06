@@ -12,12 +12,12 @@ namespace HandyControl.Controls
 	/// Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed. 
 	/// </summary> 
 	/// <typeparam name="T"></typeparam> 
-    public class RangeObservableCollection<T> : ObservableCollection<T>
+    public class OptimizedObservableCollection<T> : ObservableCollection<T>
     {
         /// <summary> 
         /// Initializes a new instance of the System.Collections.ObjectModel.ObservableCollection(Of T) class. 
         /// </summary> 
-        public RangeObservableCollection()
+        public OptimizedObservableCollection()
             : base()
         {
         }
@@ -27,7 +27,7 @@ namespace HandyControl.Controls
         /// </summary> 
         /// <param name="collection">collection: The collection from which the elements are copied.</param> 
         /// <exception cref="System.ArgumentNullException">The collection parameter cannot be null.</exception> 
-        public RangeObservableCollection(IEnumerable<T> collection)
+        public OptimizedObservableCollection(IEnumerable<T> collection)
             : base(collection)
         {
         }
