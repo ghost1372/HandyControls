@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" ?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="16adb6c8-d74c-451c-9c7e-a93ef604d0b9" Version="3.1.0.0" Language="en-US" Publisher="Mahdi Hosseini" />
+        <Identity Id="16adb6c8-d74c-451c-9c7e-a93ef604d0b9" Version="3.2.0.0" Language="en-US" Publisher="Mahdi Hosseini" />
         <DisplayName>HandyControls for VS2019</DisplayName>
         <Description xml:space="preserve">Contains some simple and commonly used WPF controls based on HandyControl 
 This VSIX Project will help people initialize a HandyControls project.</Description>

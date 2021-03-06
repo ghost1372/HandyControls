@@ -12,6 +12,7 @@ namespace $safeprojectname$
         {
             InitializeComponent();
         }
+
         #region Change Theme
         private void ButtonConfig_OnClick(object sender, RoutedEventArgs e) => PopupConfig.IsOpen = true;
 

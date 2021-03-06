@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HandyControls" Version="3.1.0"/>
+    <PackageReference Include="HandyControls" Version="3.2.0"/>
     <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
