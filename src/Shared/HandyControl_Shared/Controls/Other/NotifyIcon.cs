@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControl.Tools.Interop;
 
@@ -130,6 +131,24 @@ namespace HandyControl.Controls
                 Interval = TimeSpan.FromMilliseconds(200)
             };
             _dispatcherTimerPos.Tick += DispatcherTimerPos_Tick;
+
+            ThemeManager.Current.ActualApplicationThemeChanged += ActualApplicationThemeChanged;
+        }
+
+        // Fix for https://github.com/HandyOrg/HandyControl/issues/700
+        private void ActualApplicationThemeChanged(ThemeManager sender, object args)
+        {
+            if (ContextMenu != null)
+            {
+                if (sender.ApplicationTheme == ApplicationTheme.Light)
+                {
+                    ThemeManager.SetRequestedTheme(ContextMenu, ElementTheme.Light);
+                }
+                else
+                {
+                    ThemeManager.SetRequestedTheme(ContextMenu, ElementTheme.Dark);
+                }
+            }
         }
 
         public static void Register(string token, NotifyIcon notifyIcon)
