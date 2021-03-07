@@ -705,14 +705,7 @@ namespace HandyControl.Themes
 
         public ElementTheme GetElementTheme(ApplicationTheme? theme)
         {
-            if (theme == Themes.ApplicationTheme.Light)
-            {
-                return ElementTheme.Light;
-            }
-            else
-            {
-                return ElementTheme.Dark;
-            }
+            return theme == Themes.ApplicationTheme.Dark ? ElementTheme.Dark : ElementTheme.Light;
         }
 
         private class Data : INotifyPropertyChanged
