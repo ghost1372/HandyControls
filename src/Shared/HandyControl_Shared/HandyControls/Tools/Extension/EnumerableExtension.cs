@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Data;
-using HandyControl.Tools.Extension;
 
 namespace HandyControl.Tools.Extension
 {
@@ -22,17 +21,6 @@ namespace HandyControl.Tools.Extension
 
             for (var index = list.Count - 1; index >= 0; index--)
                 action(list[index]);
-        }
-
-        /// <summary>
-        /// This Extension Help you to access item index in foreach loop
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="enumerable"></param>
-        /// <returns></returns>
-        public static IEnumerable<EnumeratorWithIndex<T>> GetEnumeratorWithIndex<T>(this IEnumerable<T> enumerable)
-        {
-            return enumerable.Select(EnumeratorWithIndex<T>.Create);
         }
 
         /// <summary>

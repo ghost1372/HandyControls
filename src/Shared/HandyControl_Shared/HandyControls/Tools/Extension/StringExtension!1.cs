@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -114,6 +115,23 @@ namespace HandyControl.Tools.Extension
         /// <param name="to">The output encoding.</param>
         /// <returns>A new <see cref="string"/> with its data converted to <paramref name="to"/>.</returns>
         public static string ChangeEncoding(this string value, Encoding from, Encoding to) => to.GetString(value.GetBytes(from));
+
         public static byte[] GetBytes(this string value, Encoding? encoding = null) => (encoding ?? Encoding.Default).GetBytes(value);
+
+        public static DirectoryInfo ToDirectoryInfo(this string value)
+        {
+            return new DirectoryInfo(value);
+        }
+
+        public static FileInfo ToFileInfo(this string value)
+        {
+            return new FileInfo(value);
+        }
+
+        public static bool IsNullOrEmpty(this string value)
+        {
+            return string.IsNullOrEmpty(value);
+        }
+
     }
 }
