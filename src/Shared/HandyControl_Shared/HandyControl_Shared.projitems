@@ -47,7 +47,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DateTimeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DictionaryExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\CollectionViewExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\EnumeratorWithIndex.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\MergedDictionariesExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\IStringTransformer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\To.cs" />
