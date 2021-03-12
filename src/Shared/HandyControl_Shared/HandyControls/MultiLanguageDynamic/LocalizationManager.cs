@@ -1,4 +1,5 @@
 ﻿using System;
+using HandyControl.Data;
 
 namespace HandyControl.Controls
 
@@ -8,22 +9,19 @@ namespace HandyControl.Controls
     /// </summary>
     public class LocalizationManager
     {
-        private LocalizationManager()
-        {
-
-        }
+        private LocalizationManager() { }
 
         private static LocalizationManager _localizationManager;
 
         public static LocalizationManager Instance => _localizationManager ?? (_localizationManager = new LocalizationManager());
 
-        public event EventHandler CultureChanged;
+        public event EventHandler<FunctionEventArgs<string>> CultureChanged;
 
         public ILocalizationProvider LocalizationProvider { get; set; }
 
-        internal void OnCultureChanged()
+        internal void OnCultureChanged(string culture)
         {
-            CultureChanged?.Invoke(this, EventArgs.Empty);
+            CultureChanged?.Invoke(this, new FunctionEventArgs<string>(culture));
         }
 
         public object Localize(string key)
