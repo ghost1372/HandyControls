@@ -1,16 +1,40 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
 {
     public class CryptographyHelper
     {
+        public static bool VerifyMD5(string hash, string input)
+        {
+            if (string.IsNullOrEmpty(hash))
+                throw new ArgumentNullException(nameof(hash));
+
+            if (string.IsNullOrEmpty(input))
+                throw new ArgumentNullException(nameof(input));
+
+            input = GenerateMD5(input);
+            return hash.Equals(input);
+        }
+
+        public static bool VerifySHA256(string hash, string input)
+        {
+            if (string.IsNullOrEmpty(hash))
+                throw new ArgumentNullException(nameof(hash));
+
+            if (string.IsNullOrEmpty(input))
+                throw new ArgumentNullException(nameof(input));
+
+            input = GenerateSHA256(input);
+            return hash.Equals(input);
+        }
         public static string GenerateMD5(string input)
         {
+            if (string.IsNullOrEmpty(input))
+                throw new ArgumentNullException(nameof(input));
+
             using MD5 md5 = MD5.Create();
             byte[] inputBytes = System.Text.Encoding.UTF8.GetBytes(input);
             byte[] hashBytes = md5.ComputeHash(inputBytes);
@@ -30,6 +54,9 @@ namespace HandyControl.Tools
         /// <returns></returns>
         public static string GenerateSHA256(string input)
         {
+            if (string.IsNullOrEmpty(input))
+                throw new ArgumentNullException(nameof(input));
+
             var crypt = new SHA256Managed();
             var hash = new StringBuilder();
             byte[] crypto = crypt.ComputeHash(Encoding.UTF8.GetBytes(input));
@@ -47,6 +74,9 @@ namespace HandyControl.Tools
         /// <returns></returns>
         public static string GenerateSHA256ForFile(string FilePath)
         {
+            if (string.IsNullOrEmpty(FilePath))
+                throw new ArgumentNullException(nameof(FilePath));
+
             return BytesToString(GetHashSha256(FilePath));
         }
 
@@ -68,8 +98,8 @@ namespace HandyControl.Tools
         }
 
         // Rfc2898DeriveBytes constants:
-        public static readonly byte[] salt = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }; // Must be at least eight bytes.  MAKE THIS SALTIER!
-        public static readonly int iterations = 1042; // Recommendation is >= 1000.
+        internal static readonly byte[] salt = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }; // Must be at least eight bytes.  MAKE THIS SALTIER!
+        internal static readonly int iterations = 1042; // Recommendation is >= 1000.
 
         /// <summary>Decrypt a file.</summary>
         /// <remarks>NB: "Padding is invalid and cannot be removed." is the Universal CryptoServices error.  Make sure the password, salt and iterations are correct before getting nervous.</remarks>
@@ -78,6 +108,15 @@ namespace HandyControl.Tools
         /// <param name="password">The password for the decryption.</param>
         public static void DecryptFileAES(string sourceFilename, string destinationFilename, string password)
         {
+            if (string.IsNullOrEmpty(sourceFilename))
+                throw new ArgumentNullException(nameof(sourceFilename));
+
+            if (string.IsNullOrEmpty(destinationFilename))
+                throw new ArgumentNullException(nameof(destinationFilename));
+
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException(nameof(password));
+
             AesManaged aes = new AesManaged();
             aes.BlockSize = aes.LegalBlockSizes[0].MaxSize;
             aes.KeySize = aes.LegalKeySizes[0].MaxSize;
@@ -110,6 +149,15 @@ namespace HandyControl.Tools
         /// <param name="password">The password for the encryption.</param>
         public static void EncryptFileAES(string sourceFilename, string destinationFilename, string password)
         {
+            if (string.IsNullOrEmpty(sourceFilename))
+                throw new ArgumentNullException(nameof(sourceFilename));
+
+            if (string.IsNullOrEmpty(destinationFilename))
+                throw new ArgumentNullException(nameof(destinationFilename));
+
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException(nameof(password));
+
             AesManaged aes = new AesManaged();
             aes.BlockSize = aes.LegalBlockSizes[0].MaxSize;
             aes.KeySize = aes.LegalKeySizes[0].MaxSize;
@@ -128,6 +176,12 @@ namespace HandyControl.Tools
 
         public static string EncryptTextAES(string input, string password)
         {
+            if (string.IsNullOrEmpty(input))
+                throw new ArgumentNullException(nameof(input));
+
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException(nameof(password));
+
             RijndaelManaged objrij = new RijndaelManaged
             {
                 Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7, KeySize = 0x80, BlockSize = 0x80
@@ -154,6 +208,12 @@ namespace HandyControl.Tools
 
         public static string DecryptTextAES(string EncryptedText, string password)
         {
+            if (string.IsNullOrEmpty(EncryptedText))
+                throw new ArgumentNullException(nameof(EncryptedText));
+
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException(nameof(password));
+
             RijndaelManaged objrij = new RijndaelManaged
             {
                 Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7, KeySize = 0x80, BlockSize = 0x80
@@ -172,6 +232,5 @@ namespace HandyControl.Tools
             byte[] TextByte = objrij.CreateDecryptor().TransformFinalBlock(encryptedTextByte, 0, encryptedTextByte.Length);
             return Encoding.UTF8.GetString(TextByte);  //it will return readable string
         }
-
     }
 }
