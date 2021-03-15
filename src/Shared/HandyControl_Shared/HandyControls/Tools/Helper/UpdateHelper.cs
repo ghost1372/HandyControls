@@ -70,8 +70,13 @@ namespace HandyControl.Tools
                     {
                         currentVersion = Assembly.GetEntryAssembly().GetName().Version;
                     }
-                    var newVersion = GetAsVersionInfo(result.TagName);
-                    var oldVersion = GetAsVersionInfo(currentVersion.ToString());
+                    var newVersionInfo = GetAsVersionInfo(result.TagName);
+                    int major = currentVersion.Major == -1 ? 0 : currentVersion.Major;
+                    int minor = currentVersion.Minor == -1 ? 0 : currentVersion.Minor;
+                    int build = currentVersion.Build == -1 ? 0 : currentVersion.Build;
+                    int revision = currentVersion.Revision == -1 ? 0 : currentVersion.Revision;
+
+                    var currentVersionInfo = new SystemVersionInfo(major, minor, build, revision);
 
                     return new ReleaseInfo
                     {
@@ -83,7 +88,7 @@ namespace HandyControl.Tools
                         TagName = result.TagName,
                         ApiUrl = result?.ApiUrl,
                         ReleaseUrl = result?.ReleaseUrl,
-                        IsExistNewVersion = newVersion > oldVersion
+                        IsExistNewVersion = newVersionInfo > currentVersionInfo
                     };
                 }
             }
@@ -121,8 +126,13 @@ namespace HandyControl.Tools
                     currentVersion = Assembly.GetEntryAssembly().GetName().Version;
                 }
 
-                var newVersion = GetAsVersionInfo(result.TagName);
-                var oldVersion = GetAsVersionInfo(currentVersion.ToString());
+                var newVersionInfo = GetAsVersionInfo(result.TagName);
+                int major = currentVersion.Major == -1 ? 0 : currentVersion.Major;
+                int minor = currentVersion.Minor == -1 ? 0 : currentVersion.Minor;
+                int build = currentVersion.Build == -1 ? 0 : currentVersion.Build;
+                int revision = currentVersion.Revision == -1 ? 0 : currentVersion.Revision;
+
+                var currentVersionInfo = new SystemVersionInfo(major, minor, build, revision);
 
                 return new ReleaseInfo
                 {
@@ -134,7 +144,7 @@ namespace HandyControl.Tools
                     TagName = result.TagName,
                     ApiUrl = result?.ApiUrl,
                     ReleaseUrl = result?.ReleaseUrl,
-                    IsExistNewVersion = newVersion > oldVersion
+                    IsExistNewVersion = newVersionInfo > currentVersionInfo
                 };
             }
 
