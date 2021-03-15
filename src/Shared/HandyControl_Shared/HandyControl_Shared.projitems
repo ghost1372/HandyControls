@@ -74,6 +74,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\InIHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\OSVersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\RegistryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\ReleaseInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\UpdateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoCompletingMaskEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoSelectBehavior.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\DoubleRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\IValueRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\DataContractJavaScriptConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\DefaultLoggerFormatter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\ILoggerFormatter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Handlers\DebugLoggerHandler.cs" />
