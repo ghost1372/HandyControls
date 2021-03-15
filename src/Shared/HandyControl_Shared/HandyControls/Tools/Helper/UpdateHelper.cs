@@ -24,12 +24,14 @@ namespace HandyControl.Tools
         {
             var nums = GetVersionNumbers(version).Split('.').Select(int.Parse).ToList();
 
-            if (nums.Count <= 3)
-            {
+            if (nums.Count <= 1)
+                return new SystemVersionInfo(nums[0], 0, 0, 0);
+            else if (nums.Count <= 2)
+                return new SystemVersionInfo(nums[0], nums[1], 0, 0);
+            else if (nums.Count <= 3)
                 return new SystemVersionInfo(nums[0], nums[1], nums[2], 0);
-            }
-
-            return new SystemVersionInfo(nums[0], nums[1], nums[2], nums[3]);
+            else
+                return new SystemVersionInfo(nums[0], nums[1], nums[2], nums[3]);
         }
 
         private static string GetVersionNumbers(string version)
@@ -38,7 +40,7 @@ namespace HandyControl.Tools
             return new string(version.Where(c => allowedChars.Contains(c)).ToArray());
         }
 
-        public static ReleaseInfo CheckUpdate(string username, string repository)
+        public static ReleaseInfo CheckUpdate(string username, string repository, Version currentVersion = null)
         {
             if (string.IsNullOrEmpty(username))
                 throw new ArgumentNullException(nameof(username));
@@ -64,8 +66,12 @@ namespace HandyControl.Tools
 #endif
                 if (result != null)
                 {
+                    if (currentVersion == null)
+                    {
+                        currentVersion = Assembly.GetEntryAssembly().GetName().Version;
+                    }
                     var newVersion = GetAsVersionInfo(result.TagName);
-                    var oldVersion = GetAsVersionInfo(Assembly.GetEntryAssembly().GetName().Version?.ToString());
+                    var oldVersion = GetAsVersionInfo(currentVersion.ToString());
 
                     return new ReleaseInfo
                     {
@@ -85,7 +91,7 @@ namespace HandyControl.Tools
             return new ReleaseInfo();
         }
 
-        public static async Task<ReleaseInfo> CheckUpdateAsync(string username, string repository)
+        public static async Task<ReleaseInfo> CheckUpdateAsync(string username, string repository, Version currentVersion = null)
         {
             if (string.IsNullOrEmpty(username))
                 throw new ArgumentNullException(nameof(username));
@@ -110,8 +116,13 @@ namespace HandyControl.Tools
 #endif
             if (result != null)
             {
+                if (currentVersion == null)
+                {
+                    currentVersion = Assembly.GetEntryAssembly().GetName().Version;
+                }
+
                 var newVersion = GetAsVersionInfo(result.TagName);
-                var oldVersion = GetAsVersionInfo(Assembly.GetEntryAssembly().GetName().Version?.ToString());
+                var oldVersion = GetAsVersionInfo(currentVersion.ToString());
 
                 return new ReleaseInfo
                 {
