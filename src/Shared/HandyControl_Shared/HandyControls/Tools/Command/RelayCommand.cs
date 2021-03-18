@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     public class RelayCommand<T> : CommandBase
     {

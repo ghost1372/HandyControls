@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
-using HandyControl.Tools;
+using HandyControl.Tools.Command;
 
 namespace HandyControl.Controls
 {

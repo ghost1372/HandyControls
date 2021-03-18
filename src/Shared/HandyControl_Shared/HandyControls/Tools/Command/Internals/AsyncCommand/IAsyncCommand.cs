@@ -3,7 +3,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     public interface IAsyncCommand : ICommand
     {

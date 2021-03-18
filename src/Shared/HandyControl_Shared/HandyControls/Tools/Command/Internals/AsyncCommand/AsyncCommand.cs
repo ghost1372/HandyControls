@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     public class AsyncCommand<TResult> : AsyncCommandBase, INotifyPropertyChanged
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     public class SimpleRelayCommand : ICommand
     {

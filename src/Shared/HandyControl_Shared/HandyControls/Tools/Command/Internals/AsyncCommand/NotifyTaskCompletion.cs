@@ -5,7 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     /// <summary>
     /// This is the named return result, Command.xxxx can call the following properties

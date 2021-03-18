@@ -4,7 +4,7 @@
 using System;
 using System.Windows.Threading;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     internal sealed class SyncDelegateCommand : IDelegateCommand
     {

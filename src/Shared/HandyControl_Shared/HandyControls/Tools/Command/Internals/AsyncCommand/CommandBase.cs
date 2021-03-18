@@ -3,7 +3,7 @@
 using System;
 using System.Windows.Input;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     public abstract class CommandBase : ICommand
     {

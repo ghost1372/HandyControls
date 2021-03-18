@@ -35,7 +35,7 @@
       <DependentUpon>LangProvider.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition="!$(TargetFramework.StartsWith('netcore')) And !$(TargetFramework.StartsWith('net5.0-'))">
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Net.Http" />

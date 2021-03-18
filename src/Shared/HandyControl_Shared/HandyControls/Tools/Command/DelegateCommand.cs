@@ -4,7 +4,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     public static class DelegateCommand
     {

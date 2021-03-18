@@ -4,7 +4,7 @@ using System;
 using System.Threading;
 using System.Windows.Input;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     internal sealed class CancelAsyncCommand : ICommand
     {

@@ -4,7 +4,7 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     internal sealed class AsyncDelegateCommand : IDelegateCommand
     {

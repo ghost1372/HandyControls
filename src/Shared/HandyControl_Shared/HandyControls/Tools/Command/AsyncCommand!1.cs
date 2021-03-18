@@ -5,7 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Command
 {
     /// <summary>
     /// To use the method, the first delegate is t, and T is the parameter, otherwise it is the return type. Pause checkpoint: manual.WaitOne() == true is no pause
