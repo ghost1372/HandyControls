@@ -15,7 +15,6 @@ using HandyControl.Tools;
 using HandyControlDemo.Data;
 using HandyControlDemo.Tools;
 using Microsoft.Win32;
-
 namespace HandyControlDemo.ViewModel
 {
     public class ChatBoxViewModel : ViewModelBase
@@ -52,8 +51,8 @@ namespace HandyControlDemo.ViewModel
 
         public ObservableCollection<ChatInfoModel> ChatInfos { get; set; } = new ObservableCollection<ChatInfoModel>();
 
-        public RelayCommand<KeyEventArgs> SendStringCmd => new Lazy<RelayCommand<KeyEventArgs>>(() =>
-            new RelayCommand<KeyEventArgs>(SendString)).Value;
+        public GalaSoft.MvvmLight.Command.RelayCommand<KeyEventArgs> SendStringCmd => new Lazy<GalaSoft.MvvmLight.Command.RelayCommand<KeyEventArgs>>(() =>
+            new GalaSoft.MvvmLight.Command.RelayCommand<KeyEventArgs>(SendString)).Value;
 
         private void SendString(KeyEventArgs e)
         {
@@ -73,8 +72,8 @@ namespace HandyControlDemo.ViewModel
             }
         }
 
-        public RelayCommand<RoutedEventArgs> ReadMessageCmd => new Lazy<RelayCommand<RoutedEventArgs>>(() =>
-            new RelayCommand<RoutedEventArgs>(ReadMessage)).Value;
+        public GalaSoft.MvvmLight.Command.RelayCommand<RoutedEventArgs> ReadMessageCmd => new Lazy<GalaSoft.MvvmLight.Command.RelayCommand<RoutedEventArgs>>(() =>
+            new GalaSoft.MvvmLight.Command.RelayCommand<RoutedEventArgs>(ReadMessage)).Value;
 
         private void ReadMessage(RoutedEventArgs e)
         {
@@ -95,8 +94,8 @@ namespace HandyControlDemo.ViewModel
             }
         }
 
-        public RelayCommand StartRecordCmd => new Lazy<RelayCommand>(() =>
-            new RelayCommand(StartRecord)).Value;
+        public GalaSoft.MvvmLight.Command.RelayCommand StartRecordCmd => new Lazy<GalaSoft.MvvmLight.Command.RelayCommand>(() =>
+            new GalaSoft.MvvmLight.Command.RelayCommand(StartRecord)).Value;
 
         private void StartRecord()
         {
@@ -111,8 +110,8 @@ namespace HandyControlDemo.ViewModel
             _stopwatch.Start();
         }
 
-        public RelayCommand StopRecordCmd => new Lazy<RelayCommand>(() =>
-            new RelayCommand(StopRecord)).Value;
+        public GalaSoft.MvvmLight.Command.RelayCommand StopRecordCmd => new Lazy<GalaSoft.MvvmLight.Command.RelayCommand>(() =>
+            new GalaSoft.MvvmLight.Command.RelayCommand(StopRecord)).Value;
 
         private void StopRecord()
         {
@@ -149,8 +148,8 @@ namespace HandyControlDemo.ViewModel
             Messenger.Default.Send(info, MessageToken.SendChatMessage);
         }
 
-        public RelayCommand OpenImageCmd => new Lazy<RelayCommand>(() =>
-            new RelayCommand(OpenImage)).Value;
+        public GalaSoft.MvvmLight.Command.RelayCommand OpenImageCmd => new Lazy<GalaSoft.MvvmLight.Command.RelayCommand>(() =>
+            new GalaSoft.MvvmLight.Command.RelayCommand(OpenImage)).Value;
 
         private void OpenImage()
         {
