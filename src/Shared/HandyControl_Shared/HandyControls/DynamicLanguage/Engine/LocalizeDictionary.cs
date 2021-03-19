@@ -469,7 +469,7 @@ namespace HandyControl.Tools.DynamicLanguage
         /// </summary>
         private LocalizeDictionary()
         {
-            DefaultProvider = LocalizationProvider.Instance;
+            DefaultProvider = ResxLocalizationProvider.Instance;
             SetCultureCommand = new CultureInfoDelegateCommand(SetCulture);
         }
 
@@ -888,7 +888,7 @@ namespace HandyControl.Tools.DynamicLanguage
         /// </returns>
         public bool ResourceKeyExists(string resourceAssembly, string resourceDictionary, string resourceKey, CultureInfo cultureToUse)
         {
-            var provider = LocalizationProvider.Instance;
+            var provider = ResxLocalizationProvider.Instance;
 
             return ResourceKeyExists(resourceAssembly + ":" + resourceDictionary + ":" + resourceKey, cultureToUse, provider);
         }

@@ -28,7 +28,7 @@ namespace HandyControl.Tools.DynamicLanguage
     /// <summary>
     /// The base for RESX file providers.
     /// </summary>
-    public abstract class LocalizationProviderBase : DependencyObject, ILocalizationProvider
+    public abstract class ResxLocalizationProviderBase : DependencyObject, ILocalizationProvider
     {
         #region Variables
         /// <summary>

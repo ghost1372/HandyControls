@@ -39,8 +39,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\IInheritingLocalizationProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\ILocalizationProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\InheritingLocalizationProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\LocalizationProvider.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\LocalizationProviderBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\ResxLocalizationProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\ResxLocalizationProviderBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\ParentChangedNotifierHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Providers\ProviderEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\TypeConverters\DefaultConverter.cs" />

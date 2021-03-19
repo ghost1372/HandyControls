@@ -19,7 +19,7 @@ namespace HandyControl.Tools.DynamicLanguage
     /// <summary>
     /// A singleton RESX provider that uses inheriting attached properties.
     /// </summary>
-    public class InheritingLocalizationProvider : LocalizationProviderBase, IInheritingLocalizationProvider
+    public class InheritingLocalizationProvider : ResxLocalizationProviderBase, IInheritingLocalizationProvider
     {
         #region Dependency Properties
         /// <summary>
@@ -113,7 +113,7 @@ namespace HandyControl.Tools.DynamicLanguage
         private static readonly object InstanceLock = new object();
 
         /// <summary>
-        /// Gets the <see cref="LocalizationProvider"/> singleton.
+        /// Gets the <see cref="ResxLocalizationProvider"/> singleton.
         /// </summary>
         public static InheritingLocalizationProvider Instance
         {

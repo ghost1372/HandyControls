@@ -23,7 +23,7 @@ using System.ComponentModel;
     /// <summary>
     /// A singleton RESX provider that uses attached properties and the Parent property to iterate through the visual tree.
     /// </summary>
-    public class LocalizationProvider : LocalizationProviderBase
+    public class ResxLocalizationProvider : ResxLocalizationProviderBase
     {
         #region Dependency Properties
         /// <summary>
@@ -33,7 +33,7 @@ using System.ComponentModel;
                 DependencyProperty.RegisterAttached(
                 "DefaultDictionary",
                 typeof(string),
-                typeof(LocalizationProvider),
+                typeof(ResxLocalizationProvider),
                 new PropertyMetadata(null, DefaultDictionaryChanged));
 
         /// <summary>
@@ -43,7 +43,7 @@ using System.ComponentModel;
             DependencyProperty.RegisterAttached(
                 "DefaultAssembly",
                 typeof(string),
-                typeof(LocalizationProvider),
+                typeof(ResxLocalizationProvider),
                 new PropertyMetadata(null, DefaultAssemblyChanged));
 
         /// <summary>
@@ -53,7 +53,7 @@ using System.ComponentModel;
             DependencyProperty.RegisterAttached(
                 "IgnoreCase",
                 typeof(bool),
-                typeof(LocalizationProvider),
+                typeof(ResxLocalizationProvider),
                 new PropertyMetadata(true, IgnoreCaseChanged));
         #endregion
 
@@ -180,7 +180,7 @@ using System.ComponentModel;
         /// <summary>
         /// The instance of the singleton.
         /// </summary>
-        private static LocalizationProvider _instance;
+        private static ResxLocalizationProvider _instance;
 
         /// <summary>
         /// Lock object for the creation of the singleton instance.
@@ -188,9 +188,9 @@ using System.ComponentModel;
         private static readonly object InstanceLock = new object();
 
         /// <summary>
-        /// Gets the <see cref="LocalizationProvider"/> singleton.
+        /// Gets the <see cref="ResxLocalizationProvider"/> singleton.
         /// </summary>
-        public static LocalizationProvider Instance
+        public static ResxLocalizationProvider Instance
         {
             get
             {
@@ -199,7 +199,7 @@ using System.ComponentModel;
                     lock (InstanceLock)
                     {
                         if (_instance == null)
-                            _instance = new LocalizationProvider();
+                            _instance = new ResxLocalizationProvider();
                     }
                 }
 
@@ -227,7 +227,7 @@ using System.ComponentModel;
         /// <summary>
         /// The singleton constructor.
         /// </summary>
-        protected LocalizationProvider()
+        protected ResxLocalizationProvider()
         {
             ResourceManagerList = new Dictionary<string, ResourceManager>();
             AvailableCultures = new ObservableCollection<CultureInfo> { CultureInfo.InvariantCulture };
