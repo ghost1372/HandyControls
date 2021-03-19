@@ -7,14 +7,6 @@ using System.Threading.Tasks;
 
 namespace HandyControl.Tools.Command
 {
-    /// <summary>
-    /// This is the named return result, Command.xxxx can call the following properties
-    /// <TextBlock Text="{Binding Mycommand7.Execution.Result}"/>
-    /// <Button Command = "{Binding Mycommand7}" CommandParameter="111222">test</Button>
-    /// <Button Command = "{Binding Mycommand7.CancelCommand}" > cancel </ Button >
-    /// <Button Command="{Binding Mycommand7.ManualResetAsyncCommand}">timeout</Button>
-    /// <TextBlock Text = "{Binding Mycommand7.IsSuspend}" />
-    /// </summary>
     public sealed class NotifyTaskCompletion<TResult> : INotifyPropertyChanged
     {
         public NotifyTaskCompletion(Task<TResult> task)

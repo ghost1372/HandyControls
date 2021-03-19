@@ -17,7 +17,7 @@ namespace HandyControl.Tools.DynamicLanguage
     using System.Globalization;
     using System.IO;
     using System.Linq;
-#if !(NETCOREAPP || NET40)
+#if !NETCOREAPP
     using System.Management;
 #endif
     using System.Reflection;
@@ -244,7 +244,7 @@ namespace HandyControl.Tools.DynamicLanguage
         {
             if (ExecutablePaths.ContainsKey(processId))
                 return ExecutablePaths[processId];
-#if !(NETCOREAPP || NET40)
+#if !NETCOREAPP
             const string wmiQueryString = "SELECT ProcessId, ExecutablePath, CommandLine FROM Win32_Process";
             using (var searcher = new ManagementObjectSearcher(wmiQueryString))
             using (var results = searcher.Get())

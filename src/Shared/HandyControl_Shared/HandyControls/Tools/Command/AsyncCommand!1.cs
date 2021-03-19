@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace HandyControl.Tools.Command
 {
     /// <summary>
-    /// To use the method, the first delegate is t, and T is the parameter, otherwise it is the return type. Pause checkpoint: manual.WaitOne() == true is no pause
-    /// public IAsyncCommand Mycommand8 => mycommand8 ??= AsyncCommand.Create<string>(async (t, token, manual) => { await Task.Delay(100); });
+    /// To use the method, the first delegate is t, and T is the parameter, otherwise it is the return type.Pause checkpoint: manual.WaitOne() == true is no pause
     /// </summary>
     public static class AsyncCommand
     {

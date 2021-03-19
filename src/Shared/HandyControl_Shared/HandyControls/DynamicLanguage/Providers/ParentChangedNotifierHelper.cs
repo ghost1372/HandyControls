@@ -15,21 +15,8 @@ namespace HandyControl.Tools.DynamicLanguage
     using System.Windows.Media.Media3D;
     #endregion
 
-    /// <summary>
-    /// Extension methods for <see cref="DependencyObject"/> in conjunction with the <see cref="XAMLMarkupExtensions.Base.ParentChangedNotifier"/>.
-    /// </summary>
     internal static class ParentChangedNotifierHelper
     {
-        /// <summary>
-        /// Tries to get a value that is stored somewhere in the visual tree above this <see cref="DependencyObject"/>.
-        /// <para>If this is not available, it will register a <see cref="XAMLMarkupExtensions.Base.ParentChangedNotifier"/> on the last element.</para>
-        /// </summary>
-        /// <typeparam name="T">The return type.</typeparam>
-        /// <param name="target">The <see cref="DependencyObject"/>.</param>
-        /// <param name="getFunction">The function that gets the value from a <see cref="DependencyObject"/>.</param>
-        /// <param name="parentChangedAction">The notification action on the change event of the Parent property.</param>
-        /// <param name="parentNotifiers">A dictionary of already registered notifiers.</param>
-        /// <returns>The value, if possible.</returns>
         public static T GetValueOrRegisterParentNotifier<T>(
             this DependencyObject target,
             Func<DependencyObject, T> getFunction,
@@ -122,13 +109,6 @@ namespace HandyControl.Tools.DynamicLanguage
             return ret;
         }
 
-        /// <summary>
-        /// Tries to get a value that is stored somewhere in the visual tree above this <see cref="DependencyObject"/>.
-        /// </summary>
-        /// <typeparam name="T">The return type.</typeparam>
-        /// <param name="target">The <see cref="DependencyObject"/>.</param>
-        /// <param name="getFunction">The function that gets the value from a <see cref="DependencyObject"/>.</param>
-        /// <returns>The value, if possible.</returns>
         public static T GetValue<T>(this DependencyObject target, Func<DependencyObject, T> getFunction)
         {
             var ret = default(T);
@@ -176,16 +156,6 @@ namespace HandyControl.Tools.DynamicLanguage
             return ret;
         }
 
-        /// <summary>
-        /// Tries to get a value from a <see cref="DependencyProperty"/> that is stored somewhere in the visual tree above this <see cref="DependencyObject"/>.
-        /// If this is not available, it will register a <see cref="XAMLMarkupExtensions.Base.ParentChangedNotifier"/> on the last element.
-        /// </summary>
-        /// <typeparam name="T">The return type.</typeparam>
-        /// <param name="target">The <see cref="DependencyObject"/>.</param>
-        /// <param name="property">A <see cref="DependencyProperty"/> that will be read out.</param>
-        /// <param name="parentChangedAction">The notification action on the change event of the Parent property.</param>
-        /// <param name="parentNotifiers">A dictionary of already registered notifiers.</param>
-        /// <returns>The value, if possible.</returns>
         public static T GetValueOrRegisterParentNotifier<T>(
             this DependencyObject target,
             DependencyProperty property,
@@ -195,12 +165,6 @@ namespace HandyControl.Tools.DynamicLanguage
             return target.GetValueOrRegisterParentNotifier(depObj => depObj.GetValueSync<T>(property), parentChangedAction, parentNotifiers);
         }
 
-        /// <summary>
-        /// Gets the parent in the visual or logical tree.
-        /// </summary>
-        /// <param name="depObj">The dependency object.</param>
-        /// <param name="isVisualTree">True for visual tree, false for logical tree.</param>
-        /// <returns>The parent, if available.</returns>
         public static DependencyObject GetParent(this DependencyObject depObj, bool isVisualTree)
         {
             if (depObj.CheckAccess())

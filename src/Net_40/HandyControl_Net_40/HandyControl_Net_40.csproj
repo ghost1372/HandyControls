@@ -197,6 +197,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Management" />
+  </ItemGroup>
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="..\..\Shared\HandyControl_Shared\Themes\XamlCombine.exe ..\..\Shared\HandyControl_Shared\Themes\Theme_40.txt ..\..\..\Net_40\HandyControl_Net_40\Themes\Theme.xaml" />
   </Target>

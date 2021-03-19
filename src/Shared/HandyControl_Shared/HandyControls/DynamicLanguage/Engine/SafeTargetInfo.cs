@@ -12,9 +12,6 @@ namespace HandyControl.Tools.DynamicLanguage
     using System;
     #endregion
 
-    /// <summary>
-    /// An extension to the <see cref="T:XAMLMarkupExtensions.Base.TargetInfo" /> class with WeakReference instead of direct object linking.
-    /// </summary>
     public class SafeTargetInfo : TargetInfo
     {
         /// <summary>
@@ -35,11 +32,6 @@ namespace HandyControl.Tools.DynamicLanguage
             TargetObjectReference = new WeakReference(targetObject);
         }
 
-        /// <summary>
-        /// Creates a new <see cref="SafeTargetInfo"/> based on a <see cref="XAMLMarkupExtensions.Base.TargetInfo"/> template.
-        /// </summary>
-        /// <param name="targetInfo">The target information.</param>
-        /// <returns>A new instance with safe references.</returns>
         public static SafeTargetInfo FromTargetInfo(TargetInfo targetInfo)
         {
             return new SafeTargetInfo(targetInfo.TargetObject, targetInfo.TargetProperty, targetInfo.TargetPropertyType, targetInfo.TargetPropertyIndex);
