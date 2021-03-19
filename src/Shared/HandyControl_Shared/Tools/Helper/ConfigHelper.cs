@@ -9,6 +9,7 @@ using System.Windows.Markup;
 using System.Windows.Navigation;
 using HandyControl.Data;
 using HandyControl.Properties.Langs;
+using HandyControl.Tools.DynamicLanguage;
 using Timeline = System.Windows.Media.Animation.Timeline;
 namespace HandyControl.Tools
 {
@@ -41,7 +42,7 @@ namespace HandyControl.Tools
             LangProvider.Culture = new CultureInfo(lang);
             Application.Current.Dispatcher.Thread.CurrentUICulture = new CultureInfo(lang);
             Lang = XmlLanguage.GetLanguage(lang);
-            HandyControl.Controls.LocalizationManager.Instance.OnCultureChanged(lang);
+            LocalizeDictionary.Instance.Culture = new CultureInfo(lang);
         }
 
         public void SetConfig(HandyControlConfig config)
