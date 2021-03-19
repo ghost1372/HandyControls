@@ -824,6 +824,36 @@ namespace HandyControl.Tools.DynamicLanguage
         }
 
         /// <summary>
+        /// Get the localized object using the given key and culture.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
+        public object GetLocalizedObject(string key, CultureInfo culture = null)
+        {
+            if (culture == null)
+            {
+                culture = Culture;
+            }
+            return GetLocalizedObject(key, this, culture, DefaultProvider);
+        }
+
+        /// <summary>
+        /// Get the localized string using the given key and culture.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
+        public string GetLocalizedString(string key, CultureInfo culture = null)
+        {
+            if (culture == null)
+            {
+                culture = Culture;
+            }
+            return GetLocalizedObject(key, this, culture, DefaultProvider).ToString();
+        }
+
+        /// <summary>
         /// Uses the key and target to build a fully qualified resource key (Assembly, Dictionary, Key)
         /// </summary>
         /// <param name="key">Key used as a base to find the full key</param>
