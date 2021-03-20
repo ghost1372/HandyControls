@@ -7,20 +7,6 @@ namespace HandyControl.Tools.Extension
     public static class StringExtension1
     {
         /// <summary>
-        /// Generate MD5 Hash 
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string GenerateMD5(this string input) => CryptographyHelper.GenerateMD5(input);
-
-        /// <summary>
-        /// Generate SHA256 Hash
-        /// </summary>
-        /// <param name="input"></param>
-        /// <returns></returns>
-        public static string GenerateSHA256(this string input) => CryptographyHelper.GenerateSHA256(input);
-
-        /// <summary>
         /// Enable quick and more natural string.Format calls
         /// </summary>
         /// <param name="input"></param>

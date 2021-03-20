@@ -24,7 +24,6 @@ namespace HandyControl.Tools
             input = GenerateMD5(input);
             return hash.Equals(input);
         }
-
         public static bool VerifySHA256(string hash, string input)
         {
             if (string.IsNullOrEmpty(hash))
@@ -105,6 +104,12 @@ namespace HandyControl.Tools
         #endregion
 
         #region String Encryption
+        /// <summary>
+        /// Encrypt string with AES
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static string EncryptStringAES(string input, string password)
         {
             if (string.IsNullOrEmpty(input))
@@ -137,6 +142,12 @@ namespace HandyControl.Tools
             return Convert.ToBase64String(objtransform.TransformFinalBlock(textDataByte, 0, textDataByte.Length));
         }
 
+        /// <summary>
+        /// Decrypt string with AES
+        /// </summary>
+        /// <param name="encryptedString"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static string DecryptStringAES(string encryptedString, string password)
         {
             if (string.IsNullOrEmpty(encryptedString))
@@ -164,23 +175,45 @@ namespace HandyControl.Tools
             return Encoding.UTF8.GetString(TextByte);  //it will return readable string
         }
 
+        /// <summary>
+        /// Encrypt string with Base64
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static string EncryptStringBase64(string input)
         {
             var btArray = Encoding.UTF8.GetBytes(input);
             return Convert.ToBase64String(btArray, 0, btArray.Length);
         }
 
+        /// <summary>
+        /// Decrypt string with Base64
+        /// </summary>
+        /// <param name="encryptedString"></param>
+        /// <returns></returns>
         public static string DecryptStringBase64(string encryptedString)
         {
             var btArray = Convert.FromBase64String(encryptedString);
             return Encoding.UTF8.GetString(btArray);
         }
 
+        /// <summary>
+        /// Encrypt string with RSA
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="publicKey"></param>
+        /// <returns></returns>
         public static string EncryptStringRSA(string input, string publicKey)
         {
             return Convert.ToBase64String(EncryptDataRSA(Encoding.UTF8.GetBytes(input), publicKey));
         }
 
+        /// <summary>
+        /// Decrypt string with RSA
+        /// </summary>
+        /// <param name="encryptedString"></param>
+        /// <param name="privateKey"></param>
+        /// <returns></returns>
         public static string DecryptStringRSA(string encryptedString, string privateKey)
         {
             return Encoding.UTF8.GetString(DecryptDataRSA(Convert.FromBase64String(encryptedString), privateKey));
