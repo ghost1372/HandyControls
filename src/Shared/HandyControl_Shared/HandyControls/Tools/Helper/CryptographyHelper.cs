@@ -170,42 +170,27 @@ namespace HandyControl.Tools
             return Convert.ToBase64String(btArray, 0, btArray.Length);
         }
 
-        public static string DecryptStringBase64(string input)
+        public static string DecryptStringBase64(string encryptedString)
         {
-            var btArray = Convert.FromBase64String(input);
+            var btArray = Convert.FromBase64String(encryptedString);
             return Encoding.UTF8.GetString(btArray);
         }
 
         public static string EncryptStringRSA(string input, string publicKey)
         {
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-            rsa.FromXmlString(publicKey);
-
-            byte[] byteText = Encoding.UTF8.GetBytes(input);
-            byte[] byteEntry = rsa.Encrypt(byteText, false);
-
-            return Convert.ToBase64String(byteEntry);
+            return Convert.ToBase64String(EncryptDataRSA(Encoding.UTF8.GetBytes(input), publicKey));
         }
 
         public static string DecryptStringRSA(string encryptedString, string privateKey)
         {
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-            rsa.FromXmlString(privateKey);
-
-            byte[] byteEntry = Convert.FromBase64String(encryptedString);
-            byte[] byteText = rsa.Decrypt(byteEntry, false);
-
-            return Encoding.UTF8.GetString(byteText);
+            return Encoding.UTF8.GetString(DecryptDataRSA(Convert.FromBase64String(encryptedString), privateKey));
         }
         #endregion
 
         #region File Encryption
-        /// <summary>Decrypt a file.</summary>
-        /// <remarks>NB: "Padding is invalid and cannot be removed." is the Universal CryptoServices error.  Make sure the password, salt and iterations are correct before getting nervous.</remarks>
-        /// <param name="sourceFilename">The full path and name of the file to be decrypted.</param>
-        /// <param name="destinationFilename">The full path and name of the file to be output.</param>
-        /// <param name="password">The password for the decryption.</param>
-        public static void DecryptFileAES(string sourceFilename, string destinationFilename, string password)
+
+        #region AES
+        internal static CryptoStream DecryptAES(string sourceFilename, string destinationFilename, string password)
         {
             if (string.IsNullOrEmpty(sourceFilename))
                 throw new ArgumentNullException(nameof(sourceFilename));
@@ -228,6 +213,37 @@ namespace HandyControl.Tools
 
             using FileStream destination = new FileStream(destinationFilename, FileMode.CreateNew, FileAccess.Write, FileShare.None);
             using CryptoStream cryptoStream = new CryptoStream(destination, transform, CryptoStreamMode.Write);
+            return cryptoStream;
+        }
+
+        /// <summary>Decrypt a file async.</summary>
+        /// <param name="sourceFilename">The full path and name of the file to be decrypted.</param>
+        /// <param name="destinationFilename">The full path and name of the file to be output.</param>
+        /// <param name="password">The password for the decryption.</param>
+        public static async void DecryptFileAESAsync(string sourceFilename, string destinationFilename, string password)
+        {
+            var cryptoStream = DecryptAES(sourceFilename, destinationFilename, password);
+            try
+            {
+                using FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
+                await source.CopyToAsync(cryptoStream);
+            }
+            catch (CryptographicException exception)
+            {
+                if (exception.Message == "Padding is invalid and cannot be removed.")
+                    throw new ApplicationException("Universal Microsoft Cryptographic Exception (Not to be believed!)", exception);
+                else
+                    throw;
+            }
+        }
+
+        /// <summary>Decrypt a file.</summary>
+        /// <param name="sourceFilename">The full path and name of the file to be decrypted.</param>
+        /// <param name="destinationFilename">The full path and name of the file to be output.</param>
+        /// <param name="password">The password for the decryption.</param>
+        public static void DecryptFileAES(string sourceFilename, string destinationFilename, string password)
+        {
+            var cryptoStream = DecryptAES(sourceFilename, destinationFilename, password);
             try
             {
                 using FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -242,11 +258,7 @@ namespace HandyControl.Tools
             }
         }
 
-        /// <summary>Encrypt a file.</summary>
-        /// <param name="sourceFilename">The full path and name of the file to be encrypted.</param>
-        /// <param name="destinationFilename">The full path and name of the file to be output.</param>
-        /// <param name="password">The password for the encryption.</param>
-        public static void EncryptFileAES(string sourceFilename, string destinationFilename, string password)
+        internal static CryptoStream EncryptAES(string sourceFilename, string destinationFilename, string password)
         {
             if (string.IsNullOrEmpty(sourceFilename))
                 throw new ArgumentNullException(nameof(sourceFilename));
@@ -269,17 +281,40 @@ namespace HandyControl.Tools
 
             using FileStream destination = new FileStream(destinationFilename, FileMode.CreateNew, FileAccess.Write, FileShare.None);
             using CryptoStream cryptoStream = new CryptoStream(destination, transform, CryptoStreamMode.Write);
+            return cryptoStream;
+        }
+
+        /// <summary>Encrypt a file async.</summary>
+        /// <param name="sourceFilename">The full path and name of the file to be encrypted.</param>
+        /// <param name="destinationFilename">The full path and name of the file to be output.</param>
+        /// <param name="password">The password for the encryption.</param>
+        public static async void EncryptFileAESAsync(string sourceFilename, string destinationFilename, string password)
+        {
+            var cryptoStream = EncryptAES(sourceFilename, destinationFilename, password);
+            using FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
+            await source.CopyToAsync(cryptoStream);
+        }
+
+        /// <summary>Encrypt a file.</summary>
+        /// <param name="sourceFilename">The full path and name of the file to be encrypted.</param>
+        /// <param name="destinationFilename">The full path and name of the file to be output.</param>
+        /// <param name="password">The password for the encryption.</param>
+        public static void EncryptFileAES(string sourceFilename, string destinationFilename, string password)
+        {
+            var cryptoStream = EncryptAES(sourceFilename, destinationFilename, password);
             using FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
             source.CopyTo(cryptoStream);
         }
+        #endregion
 
+        #region RSA
         /// <summary>
         /// Encrypt a file Asymmetric
         /// </summary>
         /// <param name="data"></param>
         /// <param name="publicKey"></param>
         /// <returns></returns>
-        public static byte[] EncryptFileRSA(byte[] data, string publicKey)
+        public static byte[] EncryptDataRSA(byte[] data, string publicKey)
         {
             using (var asymmetricProvider = new RSACryptoServiceProvider())
             {
@@ -294,7 +329,7 @@ namespace HandyControl.Tools
         /// <param name="data"></param>
         /// <param name="privateKey"></param>
         /// <returns></returns>
-        public static byte[] DecryptFileRSA(byte[] data, string privateKey)
+        public static byte[] DecryptDataRSA(byte[] data, string privateKey)
         {
             using (var asymmetricProvider = new RSACryptoServiceProvider())
             {
@@ -306,12 +341,12 @@ namespace HandyControl.Tools
         }
 
         /// <summary>
-        /// Hybrid File Encryption
+        /// Encrypt a File async.
         /// </summary>
         /// <param name="inputFilePath"></param>
         /// <param name="outputFilePath"></param>
         /// <param name="publicKey"></param>
-        public static void EncryptFileHybridRSA(string inputFilePath, string outputFilePath, string publicKey)
+        public static async void EncryptFileRSAAsync(string inputFilePath, string outputFilePath, string publicKey)
         {
             using (var symmetricCypher = new AesManaged())
             {
@@ -328,7 +363,47 @@ namespace HandyControl.Tools
                 var buf = new byte[key.Length + iv.Length];
                 Array.Copy(key, buf, key.Length);
                 Array.Copy(iv, 0, buf, key.Length, iv.Length);
-                buf = EncryptFileRSA(buf, publicKey);
+                buf = EncryptDataRSA(buf, publicKey);
+
+                var bufLen = BitConverter.GetBytes(buf.Length);
+
+                // Symmetrically encrypt the data and write it to the file, along with the encrypted key and iv
+                using (var cypherKey = symmetricCypher.CreateEncryptor(key, iv))
+                using (var fsIn = new FileStream(inputFilePath, FileMode.Open))
+                using (var fsOut = new FileStream(outputFilePath, FileMode.Create))
+                using (var cs = new CryptoStream(fsOut, cypherKey, CryptoStreamMode.Write))
+                {
+                    await fsOut.WriteAsync(bufLen, 0, bufLen.Length);
+                    await fsOut.WriteAsync(buf, 0, buf.Length);
+                    await fsIn.CopyToAsync(cs);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Encrypt a File.
+        /// </summary>
+        /// <param name="inputFilePath"></param>
+        /// <param name="outputFilePath"></param>
+        /// <param name="publicKey"></param>
+        public static void EncryptFileRSA(string inputFilePath, string outputFilePath, string publicKey)
+        {
+            using (var symmetricCypher = new AesManaged())
+            {
+                // Generate random key and IV for symmetric encryption
+                var key = new byte[symmetricCypher.KeySize / 8];
+                var iv = new byte[symmetricCypher.BlockSize / 8];
+                using (var rng = new RNGCryptoServiceProvider())
+                {
+                    rng.GetBytes(key);
+                    rng.GetBytes(iv);
+                }
+
+                // Encrypt the symmetric key and IV
+                var buf = new byte[key.Length + iv.Length];
+                Array.Copy(key, buf, key.Length);
+                Array.Copy(iv, 0, buf, key.Length, iv.Length);
+                buf = EncryptDataRSA(buf, publicKey);
 
                 var bufLen = BitConverter.GetBytes(buf.Length);
 
@@ -346,12 +421,48 @@ namespace HandyControl.Tools
         }
 
         /// <summary>
-        /// Hybrid File Decription
+        /// Decrypt a File async.
         /// </summary>
         /// <param name="inputFilePath"></param>
         /// <param name="outputFilePath"></param>
         /// <param name="privateKey"></param>
-        public static void DecryptFileHybridRSA(string inputFilePath, string outputFilePath, string privateKey)
+        public static async void DecryptFileRSAAsync(string inputFilePath, string outputFilePath, string privateKey)
+        {
+            using (var symmetricCypher = new AesManaged())
+            using (var fsIn = new FileStream(inputFilePath, FileMode.Open))
+            {
+                // Determine the length of the encrypted key and IV
+                var buf = new byte[sizeof(int)];
+                await fsIn.ReadAsync(buf, 0, buf.Length);
+                var bufLen = BitConverter.ToInt32(buf, 0);
+
+                // Read the encrypted key and IV data from the file and decrypt using the asymmetric algorithm
+                buf = new byte[bufLen];
+                await fsIn.ReadAsync(buf, 0, buf.Length);
+                buf = DecryptDataRSA(buf, privateKey);
+
+                var key = new byte[symmetricCypher.KeySize / 8];
+                var iv = new byte[symmetricCypher.BlockSize / 8];
+                Array.Copy(buf, key, key.Length);
+                Array.Copy(buf, key.Length, iv, 0, iv.Length);
+
+                // Decript the file data using the symmetric algorithm
+                using (var cypherKey = symmetricCypher.CreateDecryptor(key, iv))
+                using (var fsOut = new FileStream(outputFilePath, FileMode.Create))
+                using (var cs = new CryptoStream(fsOut, cypherKey, CryptoStreamMode.Write))
+                {
+                    await fsIn.CopyToAsync(cs);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Decrypt a File.
+        /// </summary>
+        /// <param name="inputFilePath"></param>
+        /// <param name="outputFilePath"></param>
+        /// <param name="privateKey"></param>
+        public static void DecryptFileRSA(string inputFilePath, string outputFilePath, string privateKey)
         {
             using (var symmetricCypher = new AesManaged())
             using (var fsIn = new FileStream(inputFilePath, FileMode.Open))
@@ -364,7 +475,7 @@ namespace HandyControl.Tools
                 // Read the encrypted key and IV data from the file and decrypt using the asymmetric algorithm
                 buf = new byte[bufLen];
                 fsIn.Read(buf, 0, buf.Length);
-                buf = DecryptFileRSA(buf, privateKey);
+                buf = DecryptDataRSA(buf, privateKey);
 
                 var key = new byte[symmetricCypher.KeySize / 8];
                 var iv = new byte[symmetricCypher.BlockSize / 8];
@@ -382,6 +493,8 @@ namespace HandyControl.Tools
         }
         #endregion
 
+        #endregion
+
         #region RSA Key
 
         public class RSAKey
@@ -392,12 +505,15 @@ namespace HandyControl.Tools
 
         /// <summary>
         /// This method generates RSA public and private keys
+        /// KeySize is measured in bits. 1024 is the default, 2048 is better, 4096 is more robust but takes a fair bit longer to generate.
         /// </summary>
         /// <returns></returns>
-        public static RSAKey GenerateRSAKey()
+        public static RSAKey GenerateRSAKey(int keySize = 1024)
         {
-            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
-            return new RSAKey { PublicKey = rsa.ToXmlString(false), PrivateKey = rsa.ToXmlString(true) };
+            using (var rsa = new RSACryptoServiceProvider(keySize))
+            {
+                return new RSAKey { PublicKey = rsa.ToXmlString(false), PrivateKey = rsa.ToXmlString(true) };
+            }
         }
 
         /// <summary>
@@ -483,7 +599,6 @@ namespace HandyControl.Tools
                 }
             }
         }
-
         
         public static void ExportPublicAndPrivateKeyToFile(string publicKeyPath, string privateKeyPath, RSAKey rsaKey, string password, string symmetricSalt = null)
         {
