@@ -7,6 +7,12 @@ namespace HandyControl.Tools
 {
     public class CryptographyHelper
     {
+        private static readonly SHA256 Sha256 = SHA256.Create();
+        // Rfc2898DeriveBytes constants:
+        internal static readonly byte[] salt = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }; // Must be at least eight bytes.  MAKE THIS SALTIER!
+        internal static readonly int iterations = 1042; // Recommendation is >= 1000.
+
+        #region Hash
         public static bool VerifyMD5(string hash, string input)
         {
             if (string.IsNullOrEmpty(hash))
@@ -72,7 +78,7 @@ namespace HandyControl.Tools
         /// </summary>
         /// <param name="FilePath"></param>
         /// <returns></returns>
-        public static string GenerateSHA256ForFile(string FilePath)
+        public static string GenerateSHA256FromFile(string FilePath)
         {
             if (string.IsNullOrEmpty(FilePath))
                 throw new ArgumentNullException(nameof(FilePath));
@@ -80,12 +86,12 @@ namespace HandyControl.Tools
             return BytesToString(GetHashSha256(FilePath));
         }
 
-        private static readonly SHA256 Sha256 = SHA256.Create();
         private static byte[] GetHashSha256(string filename)
         {
             using FileStream stream = File.OpenRead(filename);
             return Sha256.ComputeHash(stream);
         }
+
         private static string BytesToString(byte[] bytes)
         {
             string result = "";
@@ -96,11 +102,104 @@ namespace HandyControl.Tools
 
             return result;
         }
+        #endregion
 
-        // Rfc2898DeriveBytes constants:
-        internal static readonly byte[] salt = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 }; // Must be at least eight bytes.  MAKE THIS SALTIER!
-        internal static readonly int iterations = 1042; // Recommendation is >= 1000.
+        #region String Encryption
+        public static string EncryptStringAES(string input, string password)
+        {
+            if (string.IsNullOrEmpty(input))
+                throw new ArgumentNullException(nameof(input));
 
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException(nameof(password));
+
+            RijndaelManaged objrij = new RijndaelManaged
+            {
+                Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7, KeySize = 0x80, BlockSize = 0x80
+            };
+
+            //set the symmetric key that is used for encryption & decryption.
+            byte[] passBytes = Encoding.UTF8.GetBytes(password);
+            //set the initialization vector (IV) for the symmetric algorithm
+            byte[] EncryptionkeyBytes = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+            int len = passBytes.Length;
+            if (len > EncryptionkeyBytes.Length)
+            {
+                len = EncryptionkeyBytes.Length;
+            }
+            Array.Copy(passBytes, EncryptionkeyBytes, len);
+            objrij.Key = EncryptionkeyBytes;
+            objrij.IV = EncryptionkeyBytes;
+            //Creates symmetric AES object with the current key and initialization vector IV.
+            ICryptoTransform objtransform = objrij.CreateEncryptor();
+            byte[] textDataByte = Encoding.UTF8.GetBytes(input);
+            //Final transform the test string.
+            return Convert.ToBase64String(objtransform.TransformFinalBlock(textDataByte, 0, textDataByte.Length));
+        }
+
+        public static string DecryptStringAES(string encryptedString, string password)
+        {
+            if (string.IsNullOrEmpty(encryptedString))
+                throw new ArgumentNullException(nameof(encryptedString));
+
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException(nameof(password));
+
+            RijndaelManaged objrij = new RijndaelManaged
+            {
+                Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7, KeySize = 0x80, BlockSize = 0x80
+            };
+            byte[] encryptedTextByte = Convert.FromBase64String(encryptedString);
+            byte[] passBytes = Encoding.UTF8.GetBytes(password);
+            byte[] EncryptionkeyBytes = new byte[0x10];
+            int len = passBytes.Length;
+            if (len > EncryptionkeyBytes.Length)
+            {
+                len = EncryptionkeyBytes.Length;
+            }
+            Array.Copy(passBytes, EncryptionkeyBytes, len);
+            objrij.Key = EncryptionkeyBytes;
+            objrij.IV = EncryptionkeyBytes;
+            byte[] TextByte = objrij.CreateDecryptor().TransformFinalBlock(encryptedTextByte, 0, encryptedTextByte.Length);
+            return Encoding.UTF8.GetString(TextByte);  //it will return readable string
+        }
+
+        public static string EncryptStringBase64(string input)
+        {
+            var btArray = Encoding.UTF8.GetBytes(input);
+            return Convert.ToBase64String(btArray, 0, btArray.Length);
+        }
+
+        public static string DecryptStringBase64(string input)
+        {
+            var btArray = Convert.FromBase64String(input);
+            return Encoding.UTF8.GetString(btArray);
+        }
+
+        public static string EncryptStringRSA(string input, string publicKey)
+        {
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+            rsa.FromXmlString(publicKey);
+
+            byte[] byteText = Encoding.UTF8.GetBytes(input);
+            byte[] byteEntry = rsa.Encrypt(byteText, false);
+
+            return Convert.ToBase64String(byteEntry);
+        }
+
+        public static string DecryptStringRSA(string encryptedString, string privateKey)
+        {
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+            rsa.FromXmlString(privateKey);
+
+            byte[] byteEntry = Convert.FromBase64String(encryptedString);
+            byte[] byteText = rsa.Decrypt(byteEntry, false);
+
+            return Encoding.UTF8.GetString(byteText);
+        }
+        #endregion
+
+        #region File Encryption
         /// <summary>Decrypt a file.</summary>
         /// <remarks>NB: "Padding is invalid and cannot be removed." is the Universal CryptoServices error.  Make sure the password, salt and iterations are correct before getting nervous.</remarks>
         /// <param name="sourceFilename">The full path and name of the file to be decrypted.</param>
@@ -174,63 +273,216 @@ namespace HandyControl.Tools
             source.CopyTo(cryptoStream);
         }
 
-        public static string EncryptTextAES(string input, string password)
+        /// <summary>
+        /// Encrypt a file Asymmetric
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="publicKey"></param>
+        /// <returns></returns>
+        public static byte[] EncryptFileRSA(byte[] data, string publicKey)
         {
-            if (string.IsNullOrEmpty(input))
-                throw new ArgumentNullException(nameof(input));
-
-            if (string.IsNullOrEmpty(password))
-                throw new ArgumentNullException(nameof(password));
-
-            RijndaelManaged objrij = new RijndaelManaged
+            using (var asymmetricProvider = new RSACryptoServiceProvider())
             {
-                Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7, KeySize = 0x80, BlockSize = 0x80
-            };
-           
-            //set the symmetric key that is used for encryption & decryption.
-            byte[] passBytes = Encoding.UTF8.GetBytes(password);
-            //set the initialization vector (IV) for the symmetric algorithm
-            byte[] EncryptionkeyBytes = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-            int len = passBytes.Length;
-            if (len > EncryptionkeyBytes.Length)
-            {
-                len = EncryptionkeyBytes.Length;
+                asymmetricProvider.FromXmlString(publicKey);
+                return asymmetricProvider.Encrypt(data, true);
             }
-            Array.Copy(passBytes, EncryptionkeyBytes, len);
-            objrij.Key = EncryptionkeyBytes;
-            objrij.IV = EncryptionkeyBytes;
-            //Creates symmetric AES object with the current key and initialization vector IV.
-            ICryptoTransform objtransform = objrij.CreateEncryptor();
-            byte[] textDataByte = Encoding.UTF8.GetBytes(input);
-            //Final transform the test string.
-            return Convert.ToBase64String(objtransform.TransformFinalBlock(textDataByte, 0, textDataByte.Length));
         }
 
-        public static string DecryptTextAES(string EncryptedText, string password)
+        /// <summary>
+        /// Decrypt a file Asymmetric
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="privateKey"></param>
+        /// <returns></returns>
+        public static byte[] DecryptFileRSA(byte[] data, string privateKey)
         {
-            if (string.IsNullOrEmpty(EncryptedText))
-                throw new ArgumentNullException(nameof(EncryptedText));
-
-            if (string.IsNullOrEmpty(password))
-                throw new ArgumentNullException(nameof(password));
-
-            RijndaelManaged objrij = new RijndaelManaged
+            using (var asymmetricProvider = new RSACryptoServiceProvider())
             {
-                Mode = CipherMode.CBC, Padding = PaddingMode.PKCS7, KeySize = 0x80, BlockSize = 0x80
-            };
-            byte[] encryptedTextByte = Convert.FromBase64String(EncryptedText);
-            byte[] passBytes = Encoding.UTF8.GetBytes(password);
-            byte[] EncryptionkeyBytes = new byte[0x10];
-            int len = passBytes.Length;
-            if (len > EncryptionkeyBytes.Length)
-            {
-                len = EncryptionkeyBytes.Length;
+                asymmetricProvider.FromXmlString(privateKey);
+                if (asymmetricProvider.PublicOnly)
+                    throw new Exception("The key provided is a public key and does not contain the private key elements required for decryption");
+                return asymmetricProvider.Decrypt(data, true);
             }
-            Array.Copy(passBytes, EncryptionkeyBytes, len);
-            objrij.Key = EncryptionkeyBytes;
-            objrij.IV = EncryptionkeyBytes;
-            byte[] TextByte = objrij.CreateDecryptor().TransformFinalBlock(encryptedTextByte, 0, encryptedTextByte.Length);
-            return Encoding.UTF8.GetString(TextByte);  //it will return readable string
         }
+
+        /// <summary>
+        /// Hybrid File Encryption
+        /// </summary>
+        /// <param name="inputFilePath"></param>
+        /// <param name="outputFilePath"></param>
+        /// <param name="publicKey"></param>
+        public static void EncryptFileHybridRSA(string inputFilePath, string outputFilePath, string publicKey)
+        {
+            using (var symmetricCypher = new AesManaged())
+            {
+                // Generate random key and IV for symmetric encryption
+                var key = new byte[symmetricCypher.KeySize / 8];
+                var iv = new byte[symmetricCypher.BlockSize / 8];
+                using (var rng = new RNGCryptoServiceProvider())
+                {
+                    rng.GetBytes(key);
+                    rng.GetBytes(iv);
+                }
+
+                // Encrypt the symmetric key and IV
+                var buf = new byte[key.Length + iv.Length];
+                Array.Copy(key, buf, key.Length);
+                Array.Copy(iv, 0, buf, key.Length, iv.Length);
+                buf = EncryptFileRSA(buf, publicKey);
+
+                var bufLen = BitConverter.GetBytes(buf.Length);
+
+                // Symmetrically encrypt the data and write it to the file, along with the encrypted key and iv
+                using (var cypherKey = symmetricCypher.CreateEncryptor(key, iv))
+                using (var fsIn = new FileStream(inputFilePath, FileMode.Open))
+                using (var fsOut = new FileStream(outputFilePath, FileMode.Create))
+                using (var cs = new CryptoStream(fsOut, cypherKey, CryptoStreamMode.Write))
+                {
+                    fsOut.Write(bufLen, 0, bufLen.Length);
+                    fsOut.Write(buf, 0, buf.Length);
+                    fsIn.CopyTo(cs);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Hybrid File Decription
+        /// </summary>
+        /// <param name="inputFilePath"></param>
+        /// <param name="outputFilePath"></param>
+        /// <param name="privateKey"></param>
+        public static void DecryptFileHybridRSA(string inputFilePath, string outputFilePath, string privateKey)
+        {
+            using (var symmetricCypher = new AesManaged())
+            using (var fsIn = new FileStream(inputFilePath, FileMode.Open))
+            {
+                // Determine the length of the encrypted key and IV
+                var buf = new byte[sizeof(int)];
+                fsIn.Read(buf, 0, buf.Length);
+                var bufLen = BitConverter.ToInt32(buf, 0);
+
+                // Read the encrypted key and IV data from the file and decrypt using the asymmetric algorithm
+                buf = new byte[bufLen];
+                fsIn.Read(buf, 0, buf.Length);
+                buf = DecryptFileRSA(buf, privateKey);
+
+                var key = new byte[symmetricCypher.KeySize / 8];
+                var iv = new byte[symmetricCypher.BlockSize / 8];
+                Array.Copy(buf, key, key.Length);
+                Array.Copy(buf, key.Length, iv, 0, iv.Length);
+
+                // Decript the file data using the symmetric algorithm
+                using (var cypherKey = symmetricCypher.CreateDecryptor(key, iv))
+                using (var fsOut = new FileStream(outputFilePath, FileMode.Create))
+                using (var cs = new CryptoStream(fsOut, cypherKey, CryptoStreamMode.Write))
+                {
+                    fsIn.CopyTo(cs);
+                }
+            }
+        }
+        #endregion
+
+        #region RSA Key
+
+        public class RSAKey
+        {
+            public string PublicKey { get; set; }
+            public string PrivateKey { get; set; }
+        }
+
+        /// <summary>
+        /// This method generates RSA public and private keys
+        /// </summary>
+        /// <returns></returns>
+        public static RSAKey GetRSAKey()
+        {
+            RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
+            return new RSAKey { PublicKey = rsa.ToXmlString(false), PrivateKey = rsa.ToXmlString(true) };
+        }
+
+        /// <summary>
+        /// Write PublicKey To File
+        /// </summary>
+        /// <param name="publicKeyFilePath"></param>
+        /// <param name="publicKey"></param>
+        public static void WritePublicKey(string publicKeyFilePath, string publicKey)
+        {
+            File.WriteAllText(publicKeyFilePath, publicKey);
+        }
+
+        /// <summary>
+        /// Read PublicKey from File
+        /// </summary>
+        /// <param name="publicKeyFilePath"></param>
+        /// <returns></returns>
+        public static string ReadPublicKey(string publicKeyFilePath)
+        {
+            return File.ReadAllText(publicKeyFilePath);
+        }
+
+        /// <summary>
+        /// Read PrivateKey from File
+        /// </summary>
+        /// <param name="privateKeyFilePath"></param>
+        /// <param name="password"></param>
+        /// <param name="symmetricSalt"></param>
+        /// <returns></returns>
+        public static string ReadPrivateKey(string privateKeyFilePath, string password, string symmetricSalt = null)
+        {
+            if (string.IsNullOrEmpty(symmetricSalt))
+            {
+                symmetricSalt = "HandyControls";
+            }
+
+            var salt = Encoding.UTF8.GetBytes(symmetricSalt);
+            var cypherText = File.ReadAllBytes(privateKeyFilePath);
+
+            using (var cypher = new AesManaged())
+            {
+                var pdb = new Rfc2898DeriveBytes(password, salt);
+                var key = pdb.GetBytes(cypher.KeySize / 8);
+                var iv = pdb.GetBytes(cypher.BlockSize / 8);
+
+                using (var decryptor = cypher.CreateDecryptor(key, iv))
+                using (var msDecrypt = new MemoryStream(cypherText))
+                using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                using (var srDecrypt = new StreamReader(csDecrypt))
+                {
+                    return srDecrypt.ReadToEnd();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Write PrivateKey To File
+        /// </summary>
+        /// <param name="privateKeyFilePath"></param>
+        /// <param name="privateKey"></param>
+        /// <param name="password"></param>
+        /// <param name="symmetricSalt"></param>
+        public static void WritePrivateKey(string privateKeyFilePath, string privateKey, string password, string symmetricSalt = null)
+        {
+            if (string.IsNullOrEmpty(symmetricSalt))
+            {
+                symmetricSalt = "HandyControls";
+            }
+
+            var salt = Encoding.UTF8.GetBytes(symmetricSalt);
+            using (var cypher = new AesManaged())
+            {
+                var pdb = new Rfc2898DeriveBytes(password, salt);
+                var key = pdb.GetBytes(cypher.KeySize / 8);
+                var iv = pdb.GetBytes(cypher.BlockSize / 8);
+
+                using (var encryptor = cypher.CreateEncryptor(key, iv))
+                using (var fsEncrypt = new FileStream(privateKeyFilePath, FileMode.Create))
+                using (var csEncrypt = new CryptoStream(fsEncrypt, encryptor, CryptoStreamMode.Write))
+                using (var swEncrypt = new StreamWriter(csEncrypt))
+                {
+                    swEncrypt.Write(privateKey);
+                }
+            }
+        }
+        #endregion
     }
 }
