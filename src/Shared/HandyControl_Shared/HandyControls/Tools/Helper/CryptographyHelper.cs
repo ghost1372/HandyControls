@@ -394,40 +394,40 @@ namespace HandyControl.Tools
         /// This method generates RSA public and private keys
         /// </summary>
         /// <returns></returns>
-        public static RSAKey GetRSAKey()
+        public static RSAKey GenerateRSAKey()
         {
             RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
             return new RSAKey { PublicKey = rsa.ToXmlString(false), PrivateKey = rsa.ToXmlString(true) };
         }
 
         /// <summary>
-        /// Write PublicKey To File
+        /// Export PublicKey To File
         /// </summary>
-        /// <param name="publicKeyFilePath"></param>
+        /// <param name="path"></param>
         /// <param name="publicKey"></param>
-        public static void WritePublicKey(string publicKeyFilePath, string publicKey)
+        public static void ExportPublicKeyToFile(string path, string publicKey)
         {
-            File.WriteAllText(publicKeyFilePath, publicKey);
+            File.WriteAllText(path, publicKey);
         }
 
         /// <summary>
         /// Read PublicKey from File
         /// </summary>
-        /// <param name="publicKeyFilePath"></param>
+        /// <param name="path"></param>
         /// <returns></returns>
-        public static string ReadPublicKey(string publicKeyFilePath)
+        public static string ReadPublicKey(string path)
         {
-            return File.ReadAllText(publicKeyFilePath);
+            return File.ReadAllText(path);
         }
 
         /// <summary>
-        /// Read PrivateKey from File
+        /// Export PrivateKey To File
         /// </summary>
-        /// <param name="privateKeyFilePath"></param>
+        /// <param name="path"></param>
+        /// <param name="privateKey"></param>
         /// <param name="password"></param>
         /// <param name="symmetricSalt"></param>
-        /// <returns></returns>
-        public static string ReadPrivateKey(string privateKeyFilePath, string password, string symmetricSalt = null)
+        public static void ExportPrivateKeyToFile(string path, string privateKey, string password, string symmetricSalt = null)
         {
             if (string.IsNullOrEmpty(symmetricSalt))
             {
@@ -435,7 +435,38 @@ namespace HandyControl.Tools
             }
 
             var salt = Encoding.UTF8.GetBytes(symmetricSalt);
-            var cypherText = File.ReadAllBytes(privateKeyFilePath);
+            using (var cypher = new AesManaged())
+            {
+                var pdb = new Rfc2898DeriveBytes(password, salt);
+                var key = pdb.GetBytes(cypher.KeySize / 8);
+                var iv = pdb.GetBytes(cypher.BlockSize / 8);
+
+                using (var encryptor = cypher.CreateEncryptor(key, iv))
+                using (var fsEncrypt = new FileStream(path, FileMode.Create))
+                using (var csEncrypt = new CryptoStream(fsEncrypt, encryptor, CryptoStreamMode.Write))
+                using (var swEncrypt = new StreamWriter(csEncrypt))
+                {
+                    swEncrypt.Write(privateKey);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Read PrivateKey from File
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="password"></param>
+        /// <param name="symmetricSalt"></param>
+        /// <returns></returns>
+        public static string ReadPrivateKey(string path, string password, string symmetricSalt = null)
+        {
+            if (string.IsNullOrEmpty(symmetricSalt))
+            {
+                symmetricSalt = "HandyControls";
+            }
+
+            var salt = Encoding.UTF8.GetBytes(symmetricSalt);
+            var cypherText = File.ReadAllBytes(path);
 
             using (var cypher = new AesManaged())
             {
@@ -453,36 +484,20 @@ namespace HandyControl.Tools
             }
         }
 
-        /// <summary>
-        /// Write PrivateKey To File
-        /// </summary>
-        /// <param name="privateKeyFilePath"></param>
-        /// <param name="privateKey"></param>
-        /// <param name="password"></param>
-        /// <param name="symmetricSalt"></param>
-        public static void WritePrivateKey(string privateKeyFilePath, string privateKey, string password, string symmetricSalt = null)
+        
+        public static void ExportPublicAndPrivateKeyToFile(string publicKeyPath, string privateKeyPath, RSAKey rsaKey, string password, string symmetricSalt = null)
         {
-            if (string.IsNullOrEmpty(symmetricSalt))
-            {
-                symmetricSalt = "HandyControls";
-            }
-
-            var salt = Encoding.UTF8.GetBytes(symmetricSalt);
-            using (var cypher = new AesManaged())
-            {
-                var pdb = new Rfc2898DeriveBytes(password, salt);
-                var key = pdb.GetBytes(cypher.KeySize / 8);
-                var iv = pdb.GetBytes(cypher.BlockSize / 8);
-
-                using (var encryptor = cypher.CreateEncryptor(key, iv))
-                using (var fsEncrypt = new FileStream(privateKeyFilePath, FileMode.Create))
-                using (var csEncrypt = new CryptoStream(fsEncrypt, encryptor, CryptoStreamMode.Write))
-                using (var swEncrypt = new StreamWriter(csEncrypt))
-                {
-                    swEncrypt.Write(privateKey);
-                }
-            }
+            ExportPublicKeyToFile(publicKeyPath, rsaKey.PublicKey);
+            ExportPrivateKeyToFile(privateKeyPath, rsaKey.PrivateKey, password, symmetricSalt);
         }
+
+        public static RSAKey ReadPublicAndPrivateKey(string publicKeyPath, string privateKeyPath, string password, string symmetricSalt = null)
+        {
+            var pub = ReadPublicKey(publicKeyPath);
+            var priv = ReadPrivateKey(privateKeyPath, password, symmetricSalt);
+            return new RSAKey { PublicKey = pub, PrivateKey = priv };
+        }
+
         #endregion
     }
 }
