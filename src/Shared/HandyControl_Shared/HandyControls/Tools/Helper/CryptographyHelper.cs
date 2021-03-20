@@ -249,6 +249,7 @@ namespace HandyControl.Tools
             return cryptoStream;
         }
 
+#if !NET40
         /// <summary>Decrypt a file async.</summary>
         /// <param name="sourceFilename">The full path and name of the file to be decrypted.</param>
         /// <param name="destinationFilename">The full path and name of the file to be output.</param>
@@ -269,7 +270,7 @@ namespace HandyControl.Tools
                     throw;
             }
         }
-
+#endif
         /// <summary>Decrypt a file.</summary>
         /// <param name="sourceFilename">The full path and name of the file to be decrypted.</param>
         /// <param name="destinationFilename">The full path and name of the file to be output.</param>
@@ -317,6 +318,7 @@ namespace HandyControl.Tools
             return cryptoStream;
         }
 
+#if !NET40
         /// <summary>Encrypt a file async.</summary>
         /// <param name="sourceFilename">The full path and name of the file to be encrypted.</param>
         /// <param name="destinationFilename">The full path and name of the file to be output.</param>
@@ -327,6 +329,7 @@ namespace HandyControl.Tools
             using FileStream source = new FileStream(sourceFilename, FileMode.Open, FileAccess.Read, FileShare.Read);
             await source.CopyToAsync(cryptoStream);
         }
+#endif
 
         /// <summary>Encrypt a file.</summary>
         /// <param name="sourceFilename">The full path and name of the file to be encrypted.</param>
@@ -372,7 +375,7 @@ namespace HandyControl.Tools
                 return asymmetricProvider.Decrypt(data, true);
             }
         }
-
+#if !NET40
         /// <summary>
         /// Encrypt a File async.
         /// </summary>
@@ -412,6 +415,7 @@ namespace HandyControl.Tools
                 }
             }
         }
+#endif
 
         /// <summary>
         /// Encrypt a File.
@@ -453,6 +457,7 @@ namespace HandyControl.Tools
             }
         }
 
+#if !NET40
         /// <summary>
         /// Decrypt a File async.
         /// </summary>
@@ -488,6 +493,7 @@ namespace HandyControl.Tools
                 }
             }
         }
+#endif
 
         /// <summary>
         /// Decrypt a File.

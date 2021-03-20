@@ -69,6 +69,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\NotifyTaskCompletion.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\RelayCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\SimpleRelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\CryptographyExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\EnumerableExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedo\ModuloArithmetic.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedo\RingBuffer.cs" />
