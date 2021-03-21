@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\TreeViewAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumDescriptionTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\LocalizedDescriptionAttribute.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Base\BindingValueProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Base\DependencyObjectHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\Base\EndpointReachedEventArgs.cs" />
