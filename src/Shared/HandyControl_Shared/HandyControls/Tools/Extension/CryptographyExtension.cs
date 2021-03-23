@@ -58,7 +58,7 @@
         /// Decrypt string with RSA
         /// </summary>
         /// <param name="input"></param>
-        /// <param name="publicKey"></param>
+        /// <param name="privateKey"></param>
         /// <returns></returns>
         public static string DecryptStringRSA(this string input, string privateKey) => CryptographyHelper.DecryptStringRSA(input, privateKey);
 
