@@ -1,5 +1,5 @@
 <p align="center">
-    <img align="center" src="https://gitee.com/handyorg/HandyOrgResource/raw/master/HandyControl/Resources/Cover.png">
+    <img align="center" src="https://raw.githubusercontent.com/handyorg/HandyOrgResource/master/HandyControl/Resources/Cover.png">
 </p>
 
 <p align="center">
@@ -12,17 +12,11 @@
     <a href="https://github.com/ghost1372/HandyControls/actions?query=workflow%3Abuild">
         <img alt="Github-build-status" src="https://github.com/ghost1372/HandyControls/workflows/build/badge.svg"></img>
     </a>
-    <a href="https://gitter.im/HandyControls/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
-        <img alt="Join the chat at https://gitter.im/HandyControls/community" src="https://badges.gitter.im/HandyControls/community.svg"></img>
-    </a> 
     <a href="https://www.nuget.org/packages/HandyControls">
         <img alt="Nuget" src="https://img.shields.io/nuget/dt/handycontrols"></img>
     </a> 
     <a href="https://ghost1372.github.io">
         <img alt="Document" src="https://img.shields.io/badge/Document-Updated-success"></img>
-    </a> 
-    <a href="https://github.com/handyorg/HandyControl/issues">
-        <img alt="Issues" src="https://img.shields.io/github/issues/handyorg/handycontrol?color=orange&label=Issues"></img>
     </a> 
 </p>
 
@@ -152,7 +146,7 @@ Step 4: Enjoy coding
 
 ## VSIX packages for Visual Studio
 
-| [VS2019](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.HandyControls) |
+| [HandyControls](https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.HandyControls) |
 | ------------- |
 
 ## Stargazers over time
