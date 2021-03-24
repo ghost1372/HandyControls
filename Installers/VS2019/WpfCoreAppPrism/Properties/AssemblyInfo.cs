@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mahdi Hosseini")]
 [assembly: AssemblyProduct("WpfCoreAppPrism")]
-[assembly: AssemblyCopyright("Copyright © Mahdi Hosseini 2020")]
+[assembly: AssemblyCopyright("Copyright © Mahdi Hosseini 2018-2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

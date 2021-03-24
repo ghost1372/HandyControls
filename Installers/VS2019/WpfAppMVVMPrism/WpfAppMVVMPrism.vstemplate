@@ -6,7 +6,6 @@
     <Icon>icon.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>4.5</RequiredFrameworkVersion>
-    <TemplateID>feb74271-5261-4730-9af2-8fa899f989ce</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>
     <DefaultName>HandyControlProject</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>

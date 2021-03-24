@@ -7,7 +7,7 @@
     <RootNamespace>$safeprojectname$</RootNamespace>
     <Version>1.0.0.0</Version>
     <Configurations>Debug;Release</Configurations>
-    <Copyright>Copyright © $username$ 2018-2021</Copyright>
+    <Copyright>Copyright © $username$ $year$</Copyright>
     <FileVersion>1.0.0.0</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <LangVersion>latest</LangVersion>

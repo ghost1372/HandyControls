@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppMVVMPrism", "WpfAppMV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCoreAppPrism", "WpfCoreAppPrism\WpfCoreAppPrism.csproj", "{DC81E129-BF4F-4BF1-A552-C3CD86905F1B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project Templates", "Project Templates", "{5DF2541E-AA3A-404D-8205-EB708BC77ABA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{83C70EB1-3A3F-4812-B86C-C7D1936699EB} = {5DF2541E-AA3A-404D-8205-EB708BC77ABA}
+		{2F6E9FB8-F579-40CF-A151-57F281F08E1B} = {5DF2541E-AA3A-404D-8205-EB708BC77ABA}
+		{30D2CC18-10F6-4C29-BEBE-9ED13FF77B14} = {5DF2541E-AA3A-404D-8205-EB708BC77ABA}
+		{DC81E129-BF4F-4BF1-A552-C3CD86905F1B} = {5DF2541E-AA3A-404D-8205-EB708BC77ABA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7F567D2-5FA3-4E17-A8A8-CDAFC217BFF5}
