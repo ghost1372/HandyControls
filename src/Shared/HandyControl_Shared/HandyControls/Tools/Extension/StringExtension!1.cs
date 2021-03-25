@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Windows.Media;
+
 namespace HandyControl.Tools.Extension
 {
     public static class StringExtension1
@@ -116,6 +118,16 @@ namespace HandyControl.Tools.Extension
         public static bool IsNullOrEmpty(this string value)
         {
             return string.IsNullOrEmpty(value);
+        }
+
+        /// <summary>
+        /// Creates a Color from a XAML color string.
+        /// </summary>
+        /// <param name="colorString"></param>
+        /// <returns></returns>
+        public static Color ToColor(this string colorString)
+        {
+            return ApplicationHelper.GetColorFromString(colorString);
         }
     }
 }
