@@ -14,8 +14,6 @@ namespace HandyControl.Controls
     {
         private bool _cursorIsSetted;
 
-        private Cursor _dropperCursor;
-
         private readonly ColorPicker _colorPicker;
 
         Window window;
@@ -76,17 +74,7 @@ namespace HandyControl.Controls
         {
             if (isShow)
             {
-                if (_dropperCursor == null)
-                {
-                    var info = Application.GetResourceStream(new Uri("pack://application:,,,/HandyControl;Component/Resources/dropper.cur"));
-                    if (info != null)
-                    {
-                        _dropperCursor = new Cursor(info.Stream);
-                    }
-                }
-
-                if (_dropperCursor == null) return;
-
+                Mouse.OverrideCursor = Cursors.Cross;
                 MouseHook.Start();
                 MouseHook.StatusChanged += MouseHook_StatusChanged;
             }
@@ -139,7 +127,7 @@ namespace HandyControl.Controls
 
                 if (!_cursorIsSetted)
                 {
-                    Mouse.OverrideCursor = _dropperCursor;
+                    Mouse.OverrideCursor = Cursors.Cross;
                     _cursorIsSetted = true;
                 }
             }
