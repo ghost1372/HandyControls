@@ -5,32 +5,32 @@ using System.Runtime.InteropServices;
 
 namespace HandyControl.Tools.Interop
 {
-    internal static class HandleCollector
+    public static class HandleCollector
     {
         private static HandleType[] HandleTypes;
         private static int HandleTypeCount;
 
         private static readonly object HandleMutex = new object();
 
-        internal static IntPtr Add(IntPtr handle, int type)
+        public static IntPtr Add(IntPtr handle, int type)
         {
             HandleTypes[type - 1].Add();
             return handle;
         }
 
         [System.Security.SecuritySafeCritical]
-        internal static SafeHandle Add(SafeHandle handle, int type)
+        public static SafeHandle Add(SafeHandle handle, int type)
         {
             HandleTypes[type - 1].Add();
             return handle;
         }
 
-        internal static void Add(int type)
+        public static void Add(int type)
         {
             HandleTypes[type - 1].Add();
         }
 
-        internal static int RegisterType(string typeName, int expense, int initialThreshold)
+        public static int RegisterType(string typeName, int expense, int initialThreshold)
         {
             lock (HandleMutex)
             {
@@ -49,39 +49,39 @@ namespace HandyControl.Tools.Interop
             }
         }
 
-        internal static IntPtr Remove(IntPtr handle, int type)
+        public static IntPtr Remove(IntPtr handle, int type)
         {
             HandleTypes[type - 1].Remove();
             return handle;
         }
 
         [System.Security.SecuritySafeCritical]
-        internal static SafeHandle Remove(SafeHandle handle, int type)
+        public static SafeHandle Remove(SafeHandle handle, int type)
         {
             HandleTypes[type - 1].Remove();
             return handle;
         }
 
-        internal static void Remove(int type)
+        public static void Remove(int type)
         {
             HandleTypes[type - 1].Remove();
         }
 
-        private class HandleType
+        public class HandleType
         {
             private readonly int _initialThreshHold;
             private int _threshHold;
             private int _handleCount;
             private readonly int _deltaPercent;
 
-            internal HandleType(int expense, int initialThreshHold)
+            public HandleType(int expense, int initialThreshHold)
             {
                 _initialThreshHold = initialThreshHold;
                 _threshHold = initialThreshHold;
                 _deltaPercent = 100 - expense;
             }
 
-            internal void Add()
+            public void Add()
             {
                 lock (this)
                 {
@@ -100,7 +100,7 @@ namespace HandyControl.Tools.Interop
                 System.Threading.Thread.Sleep(sleep);
             }
 
-            private bool NeedCollection()
+            public bool NeedCollection()
             {
 
                 if (_handleCount > _threshHold)
@@ -118,7 +118,7 @@ namespace HandyControl.Tools.Interop
                 return false;
             }
 
-            internal void Remove()
+            public void Remove()
             {
                 lock (this)
                 {

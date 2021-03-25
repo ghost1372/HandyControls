@@ -6,7 +6,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
 {
-    internal class MouseHook
+    public class MouseHook
     {
         public static event EventHandler<MouseHookEventArgs> StatusChanged;
 

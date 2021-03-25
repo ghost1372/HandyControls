@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace HandyControl.Tools.Interop
 {
-    internal class InteropValues
+    public class InteropValues
     {
-        internal static class ExternDll
+        public static class ExternDll
         {
             public const string
                 User32 = "user32.dll",
@@ -22,16 +22,16 @@ namespace HandyControl.Tools.Interop
                 WinInet = "wininet.dll";
         }
 
-        internal delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
+        public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
 
-        internal delegate IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+        public delegate IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
 
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);
+        public delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);
 
-        internal delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+        public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
-        internal const int
+        public const int
             BITSPIXEL = 12,
             PLANES = 14,
             BI_RGB = 0,
@@ -96,7 +96,7 @@ namespace HandyControl.Tools.Interop
             MONITOR_DEFAULTTONEAREST = 0x00000002;
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        internal class NOTIFYICONDATA
+        public class NOTIFYICONDATA
         {
             public int cbSize = Marshal.SizeOf(typeof(NOTIFYICONDATA));
             public IntPtr hWnd;
@@ -117,7 +117,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        internal struct TBBUTTON
+        public struct TBBUTTON
         {
             public int iBitmap;
             public int idCommand;
@@ -127,7 +127,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [Flags]
-        internal enum AllocationType
+        public enum AllocationType
         {
             Commit = 0x1000,
             Reserve = 0x2000,
@@ -141,7 +141,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [Flags]
-        internal enum MemoryProtection
+        public enum MemoryProtection
         {
             Execute = 0x10,
             ExecuteRead = 0x20,
@@ -157,7 +157,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct TRAYDATA
+        public struct TRAYDATA
         {
             public IntPtr hwnd;
             public uint uID;
@@ -168,14 +168,59 @@ namespace HandyControl.Tools.Interop
         }
 
         [Flags]
-        internal enum FreeType
+        public enum FreeType
         {
             Decommit = 0x4000,
             Release = 0x8000,
         }
 
+        public enum ShowWindowCommands : int
+        {
+            Hide = 0,
+            Normal = 1,
+            ShowMinimized = 2,
+            Maximize = 3, // is this the right value?
+            ShowMaximized = 3,
+            ShowNoActivate = 4,
+            Show = 5,
+            Minimize = 6,
+            ShowMinNoActive = 7,
+            ShowNA = 8,
+            Restore = 9,
+            ShowDefault = 10,
+            ForceMinimize = 11
+        }
+
+        public enum MouseEvent : int
+        {
+            LEFT_DOWN = 0x02,
+            LEFT_UP = 0x04,
+            RIGHT_DOWN = 0x08,
+            RIGHT_UP = 0x10,
+        }
+
+        [Flags()]
+        public enum SetWindowPosFlags : uint
+        {
+            SynchronousWindowPosition = 0x4000,
+            DeferErase = 0x2000,
+            DrawFrame = 0x0020,
+            FrameChanged = 0x0020,
+            HideWindow = 0x0080,
+            DoNotActivate = 0x0010,
+            DoNotCopyBits = 0x0100,
+            IgnoreMove = 0x0002,
+            DoNotChangeOwnerZOrder = 0x0200,
+            DoNotRedraw = 0x0008,
+            DoNotReposition = 0x0200,
+            DoNotSendChangingEvent = 0x0400,
+            IgnoreResize = 0x0001,
+            IgnoreZOrder = 0x0004,
+            ShowWindow = 0x0040,
+        }
+
         [StructLayout(LayoutKind.Sequential)]
-        internal struct POINT
+        public struct POINT
         {
             public int X;
             public int Y;
@@ -185,16 +230,26 @@ namespace HandyControl.Tools.Interop
                 X = x;
                 Y = y;
             }
+
+            public static implicit operator System.Drawing.Point(POINT p)
+            {
+                return new System.Drawing.Point(p.X, p.Y);
+            }
+
+            public static implicit operator POINT(System.Drawing.Point p)
+            {
+                return new POINT(p.X, p.Y);
+            }
         }
 
-        internal enum HookType
+        public enum HookType
         {
             WH_KEYBOARD_LL = 13,
             WH_MOUSE_LL = 14
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct MOUSEHOOKSTRUCT
+        public struct MOUSEHOOKSTRUCT
         {
             public POINT pt;
             public IntPtr hwnd;
@@ -203,7 +258,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [Flags]
-        internal enum ProcessAccess
+        public enum ProcessAccess
         {
             AllAccess = CreateThread | DuplicateHandle | QueryInformation | SetInformation | Terminate | VMOperation | VMRead | VMWrite | Synchronize,
             CreateThread = 0x2,
@@ -218,7 +273,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        internal struct RECT
+        public struct RECT
         {
             public int Left;
             public int Top;
@@ -257,7 +312,7 @@ namespace HandyControl.Tools.Interop
             }
         }
 
-        internal struct BLENDFUNCTION
+        public struct BLENDFUNCTION
         {
             public byte BlendOp;
             public byte BlendFlags;
@@ -265,13 +320,13 @@ namespace HandyControl.Tools.Interop
             public byte AlphaFormat;
         }
 
-        internal enum GWL
+        public enum GWL
         {
             STYLE = -16,
             EXSTYLE = -20
         }
 
-        internal enum GWLP
+        public enum GWLP
         {
             WNDPROC = -4,
             HINSTANCE = -6,
@@ -280,23 +335,23 @@ namespace HandyControl.Tools.Interop
             ID = -12
         }
 
-        internal struct BITMAPINFOHEADER
+        public struct BITMAPINFOHEADER
         {
-            internal uint biSize;
-            internal int biWidth;
-            internal int biHeight;
-            internal ushort biPlanes;
-            internal ushort biBitCount;
-            internal uint biCompression;
-            internal uint biSizeImage;
-            internal int biXPelsPerMeter;
-            internal int biYPelsPerMeter;
-            internal uint biClrUsed;
-            internal uint biClrImportant;
+            public uint biSize;
+            public int biWidth;
+            public int biHeight;
+            public ushort biPlanes;
+            public ushort biBitCount;
+            public uint biCompression;
+            public uint biSizeImage;
+            public int biXPelsPerMeter;
+            public int biYPelsPerMeter;
+            public uint biClrUsed;
+            public uint biClrImportant;
         }
 
         [Flags]
-        internal enum RedrawWindowFlags : uint
+        public enum RedrawWindowFlags : uint
         {
             Invalidate = 1u,
             InternalPaint = 2u,
@@ -313,7 +368,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal class WINDOWPOS
+        public class WINDOWPOS
         {
             public IntPtr hwnd;
             public IntPtr hwndInsertAfter;
@@ -325,7 +380,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal class WINDOWPLACEMENT
+        public class WINDOWPLACEMENT
         {
             public int length = Marshal.SizeOf(typeof(WINDOWPLACEMENT));
             public int flags;
@@ -335,8 +390,29 @@ namespace HandyControl.Tools.Interop
             public RECT rcNormalPosition;
         }
 
+        [Serializable]
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WINDOWPLACEMENT2
+        {
+            public int Length;
+            public int Flags;
+            public ShowWindowCommands ShowCmd;
+            public POINT MinPosition;
+            public POINT MaxPosition;
+            public RECT NormalPosition;
+            public static WINDOWPLACEMENT2 Default
+            {
+                get
+                {
+                    WINDOWPLACEMENT2 result = new WINDOWPLACEMENT2();
+                    result.Length = Marshal.SizeOf(result);
+                    return result;
+                }
+            }
+        }
+
         [StructLayout(LayoutKind.Sequential, Pack = 4)]
-        internal struct SIZE
+        public struct SIZE
         {
             [ComAliasName("Microsoft.VisualStudio.OLE.Interop.LONG")]
             public int cx;
@@ -344,7 +420,7 @@ namespace HandyControl.Tools.Interop
             public int cy;
         }
 
-        internal struct MONITORINFO
+        public struct MONITORINFO
         {
             public uint cbSize;
             public RECT rcMonitor;
@@ -352,7 +428,7 @@ namespace HandyControl.Tools.Interop
             public uint dwFlags;
         }
 
-        internal enum SM
+        public enum SM
         {
             CXSCREEN = 0,
             CYSCREEN = 1,
@@ -440,7 +516,7 @@ namespace HandyControl.Tools.Interop
             REMOTECONTROL = 0x2001
         }
 
-        internal enum CacheSlot
+        public enum CacheSlot
         {
             DpiX,
 
@@ -575,16 +651,16 @@ namespace HandyControl.Tools.Interop
             NumSlots
         }
 
-        internal static class Win32Constant
+        public static class Win32Constant
         {
-            internal const int MAX_PATH = 260;
-            internal const int INFOTIPSIZE = 1024;
-            internal const int TRUE = 1;
-            internal const int FALSE = 0;
+            public const int MAX_PATH = 260;
+            public const int INFOTIPSIZE = 1024;
+            public const int TRUE = 1;
+            public const int FALSE = 0;
         }
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-        internal struct WNDCLASS
+        public struct WNDCLASS
         {
             public uint style;
             public Delegate lpfnWndProc;
@@ -601,7 +677,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-        internal class WNDCLASS4ICON
+        public class WNDCLASS4ICON
         {
             public int style;
             public WndProc lpfnWndProc;
@@ -616,7 +692,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 2)]
-        internal struct BITMAPINFO
+        public struct BITMAPINFO
         {
             public int biSize;
 
@@ -663,7 +739,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal class ICONINFO
+        public class ICONINFO
         {
             public bool fIcon = false;
             public int xHotspot = 0;
@@ -672,20 +748,20 @@ namespace HandyControl.Tools.Interop
             public BitmapHandle hbmColor = null;
         }
 
-        internal enum WINDOWCOMPOSITIONATTRIB
+        public enum WINDOWCOMPOSITIONATTRIB
         {
             WCA_ACCENT_POLICY = 19
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct WINCOMPATTRDATA
+        public struct WINCOMPATTRDATA
         {
             public WINDOWCOMPOSITIONATTRIB Attribute;
             public IntPtr Data;
             public int DataSize;
         }
 
-        internal enum ACCENTSTATE
+        public enum ACCENTSTATE
         {
             ACCENT_DISABLED = 0,
             ACCENT_ENABLE_GRADIENT = 1,
@@ -696,7 +772,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct ACCENTPOLICY
+        public struct ACCENTPOLICY
         {
             public ACCENTSTATE AccentState;
             public int AccentFlags;
@@ -705,7 +781,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [ComImport, Guid("0000000C-0000-0000-C000-000000000046"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        internal interface IStream
+        public interface IStream
         {
             int Read([In] IntPtr buf, [In] int len);
 
@@ -734,7 +810,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [SuppressMessage("ReSharper", "InconsistentNaming")]
-        internal class StreamConsts
+        public class StreamConsts
         {
             public const int LOCK_WRITE = 0x1;
             public const int LOCK_EXCLUSIVE = 0x2;
@@ -752,7 +828,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 8)]
-        internal class ImageCodecInfoPrivate
+        public class ImageCodecInfoPrivate
         {
             [MarshalAs(UnmanagedType.Struct)]
             public Guid Clsid;
@@ -774,14 +850,14 @@ namespace HandyControl.Tools.Interop
             public IntPtr SigMask = IntPtr.Zero;
         }
 
-        internal class ComStreamFromDataStream : IStream
+        public class ComStreamFromDataStream : IStream
         {
             protected Stream DataStream;
 
             // to support seeking ahead of the stream length...
             private long _virtualPosition = -1;
 
-            internal ComStreamFromDataStream(Stream dataStream)
+            public ComStreamFromDataStream(Stream dataStream)
             {
                 this.DataStream = dataStream ?? throw new ArgumentNullException(nameof(dataStream));
             }
@@ -943,7 +1019,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal class MINMAXINFO
+        public class MINMAXINFO
         {
             public POINT ptReserved;
             public POINT ptMaxSize;
@@ -953,7 +1029,7 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct APPBARDATA
+        public struct APPBARDATA
         {
             public int cbSize;
             public IntPtr hWnd;
@@ -964,16 +1040,16 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct RTL_OSVERSIONINFOEX
+        public struct RTL_OSVERSIONINFOEX
         {
-            internal uint dwOSVersionInfoSize;
-            internal uint dwMajorVersion;
-            internal uint dwMinorVersion;
-            internal uint dwBuildNumber;
-            internal uint dwRevision;
-            internal uint dwPlatformId;
+            public uint dwOSVersionInfoSize;
+            public uint dwMajorVersion;
+            public uint dwMinorVersion;
+            public uint dwBuildNumber;
+            public uint dwRevision;
+            public uint dwPlatformId;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
-            internal string szCSDVersion;
+            public string szCSDVersion;
         }
 
         [Flags]

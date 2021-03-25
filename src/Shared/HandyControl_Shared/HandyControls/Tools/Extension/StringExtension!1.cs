@@ -120,6 +120,7 @@ namespace HandyControl.Tools.Extension
             return string.IsNullOrEmpty(value);
         }
 
+#if !NET40
         /// <summary>
         /// Creates a Color from a XAML color string.
         /// </summary>
@@ -129,5 +130,6 @@ namespace HandyControl.Tools.Extension
         {
             return ApplicationHelper.GetColorFromString(colorString);
         }
+#endif
     }
 }
