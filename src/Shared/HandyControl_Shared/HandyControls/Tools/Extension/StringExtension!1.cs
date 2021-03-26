@@ -128,7 +128,7 @@ namespace HandyControl.Tools.Extension
         /// <returns></returns>
         public static Color ToColor(this string colorString)
         {
-            return ApplicationHelper.GetColorFromString(colorString);
+            return ColorHelper.GetColorFromString(colorString);
         }
 #endif
     }

@@ -110,7 +110,7 @@ namespace HandyControl.Controls
             var brush = new SolidColorBrush(GetColorAt(e.Point.X, e.Point.Y));
             _colorPicker.SelectedBrush = brush;
             rect.Fill = brush;
-            txtHex.Text = ApplicationHelper.GetHexFromBrush(brush).ToUpper();
+            txtHex.Text = ColorHelper.GetHexFromBrush(brush).ToUpper();
             MoveWindowNextToMouse();
             if (e.MessageType == MouseHookMessageType.LeftButtonDown)
             {

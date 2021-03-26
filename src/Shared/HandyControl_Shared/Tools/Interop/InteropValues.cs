@@ -19,7 +19,8 @@ namespace HandyControl.Tools.Interop
                 Shell32 = "shell32.dll",
                 MsImg = "msimg32.dll",
                 NTdll = "ntdll.dll",
-                WinInet = "wininet.dll";
+                WinInet = "wininet.dll",
+                UxTheme = "uxtheme.dll";
         }
 
         public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
