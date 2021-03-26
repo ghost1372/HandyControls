@@ -501,6 +501,24 @@ namespace HandyControl.Tools.Interop
         [DllImport(Interop.InteropValues.ExternDll.User32, CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall, EntryPoint = "mouse_event")]
         public static extern void MouseEvent(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
 
+        [DllImport(InteropValues.ExternDll.NTdll)]
+        public static extern int RtlGetVersion(out InteropValues.RTL_OSVERSIONINFOEX lpVersionInformation);
+
+        [DllImport("uxtheme.dll", EntryPoint = "#98", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
+        public static extern UInt32 GetImmersiveUserColorSetPreference(Boolean forceCheckRegistry, Boolean skipCheckOnFail);
+
+        [DllImport("uxtheme.dll", EntryPoint = "#94", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
+        public static extern UInt32 GetImmersiveColorSetCount();
+
+        [DllImport("uxtheme.dll", EntryPoint = "#95", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
+        public static extern UInt32 GetImmersiveColorFromColorSetEx(UInt32 immersiveColorSet, UInt32 immersiveColorType,
+            Boolean ignoreHighContrast, UInt32 highContrastCacheMode);
+
+        [DllImport("uxtheme.dll", EntryPoint = "#96", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
+        public static extern UInt32 GetImmersiveColorTypeFromName(IntPtr name);
+
+        [DllImport("uxtheme.dll", EntryPoint = "#100", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
+        public static extern IntPtr GetImmersiveColorNamedTypeByIndex(UInt32 index);
         #endregion
 
         // Define the callback delegate's type.
@@ -800,25 +818,6 @@ namespace HandyControl.Tools.Interop
             [DllImport(InteropValues.ExternDll.GdiPlus, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode)]
             [ResourceExposure(ResourceScope.None)]
             public static extern int GdipSaveImageToStream(HandleRef image, InteropValues.IStream stream, ref Guid classId, HandleRef encoderParams);
-
-            [DllImport(InteropValues.ExternDll.NTdll)]
-            public static extern int RtlGetVersion(out InteropValues.RTL_OSVERSIONINFOEX lpVersionInformation);
-
-            [DllImport("uxtheme.dll", EntryPoint = "#98", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
-            public static extern UInt32 GetImmersiveUserColorSetPreference(Boolean forceCheckRegistry, Boolean skipCheckOnFail);
-
-            [DllImport("uxtheme.dll", EntryPoint = "#94", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
-            public static extern UInt32 GetImmersiveColorSetCount();
-
-            [DllImport("uxtheme.dll", EntryPoint = "#95", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
-            public static extern UInt32 GetImmersiveColorFromColorSetEx(UInt32 immersiveColorSet, UInt32 immersiveColorType,
-                Boolean ignoreHighContrast, UInt32 highContrastCacheMode);
-
-            [DllImport("uxtheme.dll", EntryPoint = "#96", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
-            public static extern UInt32 GetImmersiveColorTypeFromName(IntPtr name);
-
-            [DllImport("uxtheme.dll", EntryPoint = "#100", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Auto)]
-            public static extern IntPtr GetImmersiveColorNamedTypeByIndex(UInt32 index);
 
         }
     }

@@ -6,7 +6,7 @@ using HandyControl.Data;
 namespace HandyControl.Controls
 {
     /// <summary>
-    ///     切换块
+    ///     Switch block
     /// </summary>
     public class ToggleBlock : Control
     {

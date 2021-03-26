@@ -15,7 +15,7 @@ namespace HandyControl.Themes
             {
                 if (_allSets == null)
                 {
-                    UInt32 colorSetCount = InteropMethods.Gdip.GetImmersiveColorSetCount();
+                    UInt32 colorSetCount = InteropMethods.GetImmersiveColorSetCount();
 
                     List<AccentColorSet> colorSets = new List<AccentColorSet>();
                     for (UInt32 i = 0; i < colorSetCount; i++)
@@ -38,7 +38,7 @@ namespace HandyControl.Themes
         {
             get
             {
-                UInt32 activeSet = InteropMethods.Gdip.GetImmersiveUserColorSetPreference(false, false);
+                UInt32 activeSet = InteropMethods.GetImmersiveUserColorSetPreference(false, false);
                 ActiveSet = AllSets[Math.Min(activeSet, AllSets.Length - 1)];
                 return _activeSet;
             }
@@ -63,7 +63,7 @@ namespace HandyControl.Themes
                 try
                 {
                     name = Marshal.StringToHGlobalUni("Immersive" + colorName);
-                    colorType = InteropMethods.Gdip.GetImmersiveColorTypeFromName(name);
+                    colorType = InteropMethods.GetImmersiveColorTypeFromName(name);
                     if (colorType == 0xFFFFFFFF) throw new InvalidOperationException();
                 }
                 finally
@@ -83,7 +83,7 @@ namespace HandyControl.Themes
         {
             get
             {
-                UInt32 nativeColor = InteropMethods.Gdip.GetImmersiveColorFromColorSetEx(this._colorSet, colorType, false, 0);
+                UInt32 nativeColor = InteropMethods.GetImmersiveColorFromColorSetEx(this._colorSet, colorType, false, 0);
                 //if (nativeColor == 0)
                 //    throw new InvalidOperationException();
                 return Color.FromArgb(
@@ -114,7 +114,7 @@ namespace HandyControl.Themes
             List<String> allColorNames = new List<String>();
             for (UInt32 i = 0; i < 0xFFF; i++)
             {
-                IntPtr typeNamePtr = InteropMethods.Gdip.GetImmersiveColorNamedTypeByIndex(i);
+                IntPtr typeNamePtr = InteropMethods.GetImmersiveColorNamedTypeByIndex(i);
                 if (typeNamePtr != IntPtr.Zero)
                 {
                     IntPtr typeName = (IntPtr) Marshal.PtrToStructure(typeNamePtr, typeof(IntPtr));
