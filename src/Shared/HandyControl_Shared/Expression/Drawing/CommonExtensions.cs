@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace HandyControl.Expression.Drawing
 {
-    internal static class CommonExtensions
+    public static class CommonExtensions
     {
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> newItems)
         {

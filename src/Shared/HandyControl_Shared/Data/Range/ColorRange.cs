@@ -4,7 +4,7 @@
 namespace HandyControl.Data
 {
     /// <summary>
-    ///     颜色范围
+    ///     Color range
     /// </summary>
     public class ColorRange : IValueRange<Color>
     {
@@ -33,12 +33,12 @@ namespace HandyControl.Data
         }
 
         /// <summary>
-        ///     颜色差值
+        ///     Color difference
         /// </summary>
         private readonly int[] _subColorArr = new int[4];
 
         /// <summary>
-        ///     更新
+        ///     Update
         /// </summary>
         private void Update()
         {
@@ -49,9 +49,9 @@ namespace HandyControl.Data
         }
 
         /// <summary>
-        ///     获取指定比例处的颜色
+        ///     Get the color at the specified ratio
         /// </summary>
-        /// <param name="range">范围（0-1）</param>
+        /// <param name="range">range（0-1）</param>
         /// <returns></returns>
         public Color GetColor(double range)
         {

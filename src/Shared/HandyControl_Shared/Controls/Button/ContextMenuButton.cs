@@ -4,7 +4,7 @@
 namespace HandyControl.Controls
 {
     /// <summary>
-    ///     带上下文菜单的按钮
+    ///     Button with context menu
     /// </summary>
     public class ContextMenuButton : Button
     {

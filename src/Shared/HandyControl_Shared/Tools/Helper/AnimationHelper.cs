@@ -9,12 +9,12 @@ using HandyControl.Tools.Extension;
 namespace HandyControl.Tools
 {
     /// <summary>
-    ///     包含一些常用的动画辅助方法
+    ///     Contains some commonly used animation aids
     /// </summary>
     public class AnimationHelper
     {
         /// <summary>
-        ///     创建一个Thickness动画
+        ///     Create a Thickness animation
         /// </summary>
         /// <param name="thickness"></param>
         /// <param name="milliseconds"></param>
@@ -28,7 +28,7 @@ namespace HandyControl.Tools
         }
 
         /// <summary>
-        ///     创建一个Double动画
+        ///     Create a Double animation
         /// </summary>
         /// <param name="toValue"></param>
         /// <param name="milliseconds"></param>

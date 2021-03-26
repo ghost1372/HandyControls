@@ -5,7 +5,7 @@ using System.Windows.Controls.Primitives;
 namespace HandyControl.Controls
 {
     /// <summary>
-    ///     带上下文菜单的切换按钮
+    ///     Toggle button with context menu
     /// </summary>
     public class ContextMenuToggleButton : ToggleButton
     {

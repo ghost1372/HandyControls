@@ -200,7 +200,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     更新内容视图
+        ///     Update content view
         /// </summary>
         private void UpdateCoverViewContent(bool isOpen)
         {
@@ -227,7 +227,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     更新内容视图位置
+        ///     Update content view position
         /// </summary>
         private void UpdateCoverViewContentPosition()
         {
@@ -363,7 +363,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     生成序号
+        ///     Generate index number
         /// </summary>
         private void GenerateIndex()
         {

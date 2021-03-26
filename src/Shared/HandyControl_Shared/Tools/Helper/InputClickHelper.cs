@@ -17,11 +17,11 @@ namespace HandyControl.Tools
         private static InputInfo GetInputInfo(DependencyObject element) => (InputInfo) element.GetValue(InputInfoProperty);
 
         /// <summary>
-        ///     将 MouseDown MouseMove MouseUp 封装为点击事件
+        ///     Encapsulate MouseDown MouseMove MouseUp as a click event
         /// </summary>
-        /// <param name="element">要被附加的元素</param>
-        /// <param name="clickEventHandler">点击的事件</param>
-        /// <param name="dragStarted">因为拖动而结束点击时触发</param>
+        /// <param name="element">Element to be attached</param>
+        /// <param name="clickEventHandler">Clicked event</param>
+        /// <param name="dragStarted">Triggered when the click ends due to dragging</param>
         public static void AttachMouseDownMoveUpToClick(UIElement element, EventHandler clickEventHandler,
             EventHandler dragStarted = null)
         {
@@ -41,11 +41,11 @@ namespace HandyControl.Tools
         }
 
         /// <summary>
-        ///     去掉对 <paramref name="element" /> 的点击时间的监听
+        ///     Remove right <paramref name="element" /> Monitoring of click time
         /// </summary>
         /// <param name="element"></param>
-        /// <param name="clickEventHandler">点击的事件</param>
-        /// <param name="dragStarted">因为拖动而结束点击时触发的事件</param>
+        /// <param name="clickEventHandler">Clicked event</param>
+        /// <param name="dragStarted">Event triggered when the click ends due to dragging</param>
         public static void DetachMouseDownMoveUpToClick(UIElement element, EventHandler clickEventHandler,
             EventHandler dragStarted = null)
         {

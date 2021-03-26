@@ -15,7 +15,7 @@ namespace HandyControl.Tools
     public static class WindowHelper
     {
         /// <summary>
-        ///     获取当前应用中处于激活的一个窗口
+        ///     Get the active window in the current application
         /// </summary>
         /// <returns></returns>
         public static Window GetActiveWindow() => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
@@ -155,12 +155,12 @@ namespace HandyControl.Tools
         public static HwndSource GetHwndSource(this Window window) => HwndSource.FromHwnd(window.GetHandle());
 
         /// <summary>
-        ///     让窗口激活作为前台最上层窗口
+        ///     Make the window active as the topmost window in the foreground
         /// </summary>
         /// <param name="window"></param>
         public static void SetWindowToForeground(Window window)
         {
-            // [WPF 让窗口激活作为前台最上层窗口的方法 - lindexi - 博客园](https://www.cnblogs.com/lindexi/p/12749671.html)
+            // [WPF Make the window active as the uppermost window in the foreground - lindexi - Blog](https://www.cnblogs.com/lindexi/p/12749671.html)
             var interopHelper = new WindowInteropHelper(window);
             var thisWindowThreadId = InteropMethods.GetWindowThreadProcessId(interopHelper.Handle, out _);
             var currentForegroundWindow = InteropMethods.GetForegroundWindow();

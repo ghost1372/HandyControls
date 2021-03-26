@@ -156,23 +156,23 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     数据验证委托
+        ///     Data verification commission
         /// </summary>
         public Func<string, OperationResult<bool>> VerifyFunc { get; set; }
 
         /// <summary>
-        ///     数据搜索委托
+        ///     Data search commission
         /// </summary>
         public Func<ItemCollection, object, IEnumerable<object>> SearchFunc { get; set; }
 
         /// <summary>
-        ///     数据是否错误
+        ///     Is the data wrong
         /// </summary>
         public static readonly DependencyProperty IsErrorProperty = DependencyProperty.Register(
             "IsError", typeof(bool), typeof(ComboBox), new PropertyMetadata(ValueBoxes.FalseBox));
 
         /// <summary>
-        ///     数据是否错误
+        ///     Is the data wrong
         /// </summary>
         public bool IsError
         {
@@ -328,7 +328,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     验证数据
+        ///     verify the data
         /// </summary>
         /// <returns></returns>
         public virtual bool VerifyData()

@@ -5,19 +5,19 @@ using System.Windows;
 namespace HandyControl.Tools
 {
     /// <summary>
-    ///     资源帮助类
+    ///     Resource help class
     /// </summary>
     public class ResourceHelper
     {
         /// <summary>
-        ///     获取字符串
+        ///     Get string
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         public static string GetString(string key) => Application.Current.TryFindResource(key) as string;
 
         /// <summary>
-        ///     获取字符串
+        ///     Get string
         /// </summary>
         /// <param name="separator"></param>
         /// <param name="keyArr"></param>
@@ -26,14 +26,14 @@ namespace HandyControl.Tools
             string.Join(separator, keyArr.Select(key => Application.Current.TryFindResource(key) as string).ToList());
 
         /// <summary>
-        ///     获取字符串
+        ///     Get string
         /// </summary>
         /// <param name="keyArr"></param>
         /// <returns></returns>
         public static List<string> GetStringList(params string[] keyArr) => keyArr.Select(key => Application.Current.TryFindResource(key) as string).ToList();
 
         /// <summary>
-        ///     获取资源
+        ///     Access to resources
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>

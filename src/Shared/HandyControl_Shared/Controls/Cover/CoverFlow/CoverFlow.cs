@@ -13,7 +13,7 @@ using HandyControl.Tools.Extension;
 namespace HandyControl.Controls
 {
     /// <summary>
-    ///     封面流
+    ///     Cover flow
     /// </summary>
     [TemplatePart(Name = ElementViewport3D, Type = typeof(Viewport3D))]
     [TemplatePart(Name = ElementCamera, Type = typeof(ProjectionCamera))]
@@ -27,12 +27,12 @@ namespace HandyControl.Controls
         private const string ElementVisualParent = "PART_VisualParent";
 
         /// <summary>
-        ///     最大显示数量的一半
+        ///     Half of the maximum display quantity
         /// </summary>
         private const int MaxShowCountHalf = 3;
 
         /// <summary>
-        ///     页码
+        ///     page number
         /// </summary>
         public static readonly DependencyProperty PageIndexProperty = DependencyProperty.Register(
             "PageIndex", typeof(int), typeof(CoverFlow),
@@ -61,55 +61,55 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     是否循环
+        ///     Whether to loop
         /// </summary>
         public static readonly DependencyProperty LoopProperty = DependencyProperty.Register(
             "Loop", typeof(bool), typeof(CoverFlow), new PropertyMetadata(ValueBoxes.FalseBox));
 
         /// <summary>
-        ///     存储所有的内容
+        ///     Store all content
         /// </summary>
         private readonly Dictionary<int, object> _contentDic = new Dictionary<int, object>();
 
         /// <summary>
-        ///     当前在显示范围内的项
+        ///     Items currently in the display range
         /// </summary>
         private readonly Dictionary<int, CoverFlowItem> _itemShowDic = new Dictionary<int, CoverFlowItem>();
 
         /// <summary>
-        ///     相机
+        ///     camera
         /// </summary>
         private ProjectionCamera _camera;
 
         private Point3DAnimation _point3DAnimation;
 
         /// <summary>
-        ///     3d画布
+        ///     3d canvas
         /// </summary>
         private Viewport3D _viewport3D;
 
         /// <summary>
-        ///     项容器
+        ///     Item container
         /// </summary>
         private ModelVisual3D _visualParent;
 
         /// <summary>
-        ///     显示范围内第一个项的编号
+        ///     Display the number of the first item in the range
         /// </summary>
         private int _firstShowIndex;
 
         /// <summary>
-        ///     显示范围内最后一个项的编号
+        ///     Display the number of the last item in the range
         /// </summary>
         private int _lastShowIndex;
 
         /// <summary>
-        ///     跳转编号
+        ///     Jump number
         /// </summary>
         private int _jumpToIndex = -1;
 
         /// <summary>
-        ///     页码
+        ///     page number
         /// </summary>
         public int PageIndex
         {
@@ -118,7 +118,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     是否循环
+        ///     Whether to loop
         /// </summary>
         public bool Loop
         {
@@ -158,7 +158,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     批量添加资源
+        ///     Add resources in bulk
         /// </summary>
         /// <param name="contentList"></param>
         public void AddRange(IEnumerable<object> contentList)
@@ -170,19 +170,19 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     添加一项资源
+        ///     Add a resource
         /// </summary>
         /// <param name="uriString"></param>
         public void Add(string uriString) => _contentDic.Add(_contentDic.Count, new Uri(uriString));
 
         /// <summary>
-        ///     添加一项资源
+        ///     Add a resource
         /// </summary>
         /// <param name="uri"></param>
         public void Add(Uri uri) => _contentDic.Add(_contentDic.Count, uri);
 
         /// <summary>
-        ///     跳转
+        ///     Jump
         /// </summary>
         public void JumpTo(int index) => _jumpToIndex = index;
 
@@ -205,7 +205,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     删除指定位置的项
+        ///     Delete the item at the specified location
         /// </summary>
         /// <param name="pos"></param>
         private void Remove(int pos)
@@ -232,7 +232,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     更新项的位置
+        ///     Update item location
         /// </summary>
         /// <param name="newIndex"></param>
         private void UpdateIndex(int newIndex)
@@ -257,7 +257,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     更新显示范围
+        ///     Update display range
         /// </summary>
         private void UpdateShowRange()
         {

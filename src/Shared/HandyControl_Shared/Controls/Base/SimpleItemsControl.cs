@@ -10,7 +10,7 @@ using HandyControl.Data;
 namespace HandyControl.Controls
 {
     /// <summary>
-    ///     ItemsControl的轻量级版本
+    ///     Lightweight version of ItemsControl
     /// </summary>
     [DefaultProperty("Items")]
     [ContentProperty("Items")]

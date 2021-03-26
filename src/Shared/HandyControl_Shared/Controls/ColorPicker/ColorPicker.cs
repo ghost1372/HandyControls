@@ -14,7 +14,7 @@ using HandyControl.Tools.Extension;
 namespace HandyControl.Controls
 {
     /// <summary>
-    ///     颜色拾取器
+    ///     Color picker
     /// </summary>
     [TemplatePart(Name = ElementBorderColor, Type = typeof(Border))]
     [TemplatePart(Name = ElementBorderPicker, Type = typeof(Border))]
@@ -65,42 +65,42 @@ namespace HandyControl.Controls
         private bool _disposed;
 
         /// <summary>
-        ///     当前显示的颜色类型
+        ///     The type of color currently displayed
         /// </summary>
         private int _colorType;
 
         /// <summary>
-        ///     是否已经加载控件
+        ///     Whether the control has been loaded
         /// </summary>
         private bool _isLoaded;
 
         /// <summary>
-        ///     是否需要更新小球位置
+        ///     Do you need to update the ball position
         /// </summary>
         private bool _isNeedUpdatePicker = true;
 
         /// <summary>
-        ///     是否在拖动小球
+        ///     Whether you are dragging the ball
         /// </summary>
         private bool _isOnDragging;
 
         /// <summary>
-        ///     是否需要更新信息
+        ///     Need to update information
         /// </summary>
         private bool IsNeedUpdateInfo { get; set; } = true;
 
         /// <summary>
-        ///     颜色选取面板宽度
+        ///     Color selection panel width
         /// </summary>
         private const double ColorPanelWidth = 230;
 
         /// <summary>
-        ///     颜色选取面板高度
+        ///     Color selection panel height
         /// </summary>
         private const double ColorPanelHeight = 122;
 
         /// <summary>
-        ///     预设的颜色（一共18个，两行）
+        ///     Preset colors (a total of 18, two rows)
         /// </summary>
         private readonly List<string> _colorPresetList = new List<string>
         {
@@ -126,7 +126,7 @@ namespace HandyControl.Controls
         };
 
         /// <summary>
-        ///     颜色范围集合
+        ///     Color range collection
         /// </summary>
         private readonly List<ColorRange> _colorRangeList = new List<ColorRange>
         {
@@ -163,7 +163,7 @@ namespace HandyControl.Controls
         };
 
         /// <summary>
-        ///     颜色分隔集合
+        ///     Color separated collection
         /// </summary>
         private readonly List<Color> _colorSeparateList = new List<Color>
         {
@@ -190,14 +190,14 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     颜色改变事件
+        ///     Color change event
         /// </summary>
         public static readonly RoutedEvent ConfirmedEvent =
             EventManager.RegisterRoutedEvent("Confirmed", RoutingStrategy.Bubble,
                 typeof(EventHandler<FunctionEventArgs<Color>>), typeof(ColorPicker));
 
         /// <summary>
-        ///     颜色改变事件
+        ///     Color change event
         /// </summary>
         public event EventHandler<FunctionEventArgs<Color>> Confirmed
         {
@@ -206,14 +206,14 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     取消事件
+        ///     Cancel event
         /// </summary>
         public static readonly RoutedEvent CanceledEvent =
             EventManager.RegisterRoutedEvent("Canceled", RoutingStrategy.Bubble,
                 typeof(EventHandler), typeof(ColorPicker));
 
         /// <summary>
-        ///     取消事件
+        ///     Cancel event
         /// </summary>
         public event EventHandler Canceled
         {
@@ -286,7 +286,7 @@ namespace HandyControl.Controls
                 }));
 
         /// <summary>
-        ///     当前选中的颜色
+        ///     Currently selected color
         /// </summary>
         public SolidColorBrush SelectedBrush
         {
@@ -327,7 +327,7 @@ namespace HandyControl.Controls
         #endregion Properties
 
         /// <summary>
-        ///     当前显示的颜色类型
+        ///     The type of color currently displayed
         /// </summary>
         private int ColorType
         {
@@ -447,7 +447,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     初始化
+        ///     initialization
         /// </summary>
         private void Init()
         {
@@ -461,7 +461,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     创建颜色按钮
+        ///     Create color buttons
         /// </summary>
         /// <returns></returns>
         private Button CreateColorButton(string colorStr)
@@ -492,7 +492,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     内部更新
+        ///     Internal update
         /// </summary>
         private void UpdateStatus(Color color)
         {
@@ -631,7 +631,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     拖动时更新颜色
+        ///     Update color while dragging
         /// </summary>
         private void UpdateColorWhenDrag(Point p)
         {

@@ -6,7 +6,7 @@ namespace HandyControl.Controls
     public class PasswordBoxAttach
     {
         /// <summary>
-        ///     密码长度
+        ///     PasswordLength
         /// </summary>
         public static readonly DependencyProperty PasswordLengthProperty = DependencyProperty.RegisterAttached(
             "PasswordLength", typeof(int), typeof(PasswordBoxAttach), new PropertyMetadata(ValueBoxes.Int0Box));
@@ -16,7 +16,7 @@ namespace HandyControl.Controls
         public static int GetPasswordLength(DependencyObject element) => (int) element.GetValue(PasswordLengthProperty);
 
         /// <summary>
-        ///     是否监测
+        ///     IsMonitoring
         /// </summary>
         public static readonly DependencyProperty IsMonitoringProperty = DependencyProperty.RegisterAttached(
             "IsMonitoring", typeof(bool), typeof(PasswordBoxAttach), new FrameworkPropertyMetadata(ValueBoxes.FalseBox, FrameworkPropertyMetadataOptions.Inherits, OnIsMonitoringChanged));

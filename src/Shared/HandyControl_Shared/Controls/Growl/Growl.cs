@@ -15,7 +15,7 @@ using HandyControl.Tools.Extension;
 namespace HandyControl.Controls
 {
     /// <summary>
-    ///     消息提醒
+    ///     message notification
     /// </summary>
     [TemplatePart(Name = ElementPanelMore, Type = typeof(Panel))]
     [TemplatePart(Name = ElementGridMain, Type = typeof(Grid))]
@@ -47,12 +47,12 @@ namespace HandyControl.Controls
         private int _waitTime = 6;
 
         /// <summary>
-        ///     计数
+        ///     count
         /// </summary>
         private int _tickCount;
 
         /// <summary>
-        ///     关闭计时器
+        ///     Turn off timer
         /// </summary>
         private DispatcherTimer _timerClose;
 
@@ -148,7 +148,7 @@ namespace HandyControl.Controls
         private Func<bool, bool> ActionBeforeClose { get; set; }
 
         /// <summary>
-        ///     消息容器
+        ///     Message container
         /// </summary>
         public static Panel GrowlPanel { get; set; }
 
@@ -271,7 +271,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     开始计时器
+        ///     Start timer
         /// </summary>
         private void StartTimer()
         {
@@ -294,7 +294,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     消息容器
+        ///     Message container
         /// </summary>
         /// <param name="panel"></param>
         private static void SetGrowlPanel(Panel panel)
@@ -399,7 +399,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     显示信息
+        ///     Display information
         /// </summary>
         /// <param name="growlInfo"></param>
         private static void Show(GrowlInfo growlInfo)
@@ -555,7 +555,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     成功
+        ///     success
         /// </summary>
         /// <param name="message"></param>
         /// <param name="token"></param>
@@ -566,7 +566,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     成功
+        ///     Success
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void Success(GrowlInfo growlInfo)
@@ -576,7 +576,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     成功
+        ///     Success Global
         /// </summary>
         /// <param name="message"></param>
         public static void SuccessGlobal(string message) => SuccessGlobal(new GrowlInfo
@@ -585,7 +585,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     成功
+        ///     Success Global
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void SuccessGlobal(GrowlInfo growlInfo)
@@ -595,7 +595,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     消息
+        ///     Info
         /// </summary>
         /// <param name="message"></param>
         /// <param name="token"></param>
@@ -606,7 +606,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     消息
+        ///     Info
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void Info(GrowlInfo growlInfo)
@@ -616,7 +616,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     消息
+        ///     Info Global
         /// </summary>
         /// <param name="message"></param>
         public static void InfoGlobal(string message) => InfoGlobal(new GrowlInfo
@@ -625,7 +625,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     消息
+        ///     Info Global
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void InfoGlobal(GrowlInfo growlInfo)
@@ -635,7 +635,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     警告
+        ///     Warning
         /// </summary>
         /// <param name="message"></param>
         /// <param name="token"></param>
@@ -646,7 +646,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     警告
+        ///     Warning
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void Warning(GrowlInfo growlInfo)
@@ -656,7 +656,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     警告
+        ///     Warning Global
         /// </summary>
         /// <param name="message"></param>
         public static void WarningGlobal(string message) => WarningGlobal(new GrowlInfo
@@ -665,7 +665,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     警告
+        ///     Warning Global
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void WarningGlobal(GrowlInfo growlInfo)
@@ -675,7 +675,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     错误
+        ///     Error
         /// </summary>
         /// <param name="message"></param>
         /// <param name="token"></param>
@@ -686,7 +686,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     错误
+        ///     Error
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void Error(GrowlInfo growlInfo)
@@ -696,7 +696,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     错误
+        ///     Error Global
         /// </summary>
         /// <param name="message"></param>
         public static void ErrorGlobal(string message) => ErrorGlobal(new GrowlInfo
@@ -705,7 +705,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     错误
+        ///     Error Global
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void ErrorGlobal(GrowlInfo growlInfo)
@@ -715,7 +715,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     严重
+        ///     Fatal
         /// </summary>
         /// <param name="message"></param>
         /// <param name="token"></param>
@@ -726,7 +726,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     严重
+        ///     Fatal
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void Fatal(GrowlInfo growlInfo)
@@ -736,7 +736,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     严重
+        ///     Fatal Global
         /// </summary>
         /// <param name="message"></param>
         public static void FatalGlobal(string message) => FatalGlobal(new GrowlInfo
@@ -745,7 +745,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     严重
+        ///     Fatal Global
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void FatalGlobal(GrowlInfo growlInfo)
@@ -755,7 +755,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     询问
+        ///     Ask
         /// </summary>
         /// <param name="message"></param>
         /// <param name="actionBeforeClose"></param>
@@ -768,7 +768,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     询问
+        ///     Ask
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void Ask(GrowlInfo growlInfo)
@@ -778,7 +778,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     询问
+        ///     Ask Global
         /// </summary>
         /// <param name="message"></param>
         /// <param name="actionBeforeClose"></param>
@@ -789,7 +789,7 @@ namespace HandyControl.Controls
         });
 
         /// <summary>
-        ///     询问
+        ///     Ask Global
         /// </summary>
         /// <param name="growlInfo"></param>
         public static void AskGlobal(GrowlInfo growlInfo)
@@ -801,7 +801,7 @@ namespace HandyControl.Controls
         private void ButtonClose_OnClick(object sender, RoutedEventArgs e) => Close();
 
         /// <summary>
-        ///     关闭
+        ///     Close
         /// </summary>
         private void Close(bool invokeActionBeforeClose = false, bool invokeParam = true)
         {
@@ -831,7 +831,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     清除
+        ///     Clear
         /// </summary>
         /// <param name="token"></param>
         public static void Clear(string token = "")
@@ -850,7 +850,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     清除
+        ///     Clear
         /// </summary>
         /// <param name="panel"></param>
         private static void Clear(Panel panel)
@@ -865,7 +865,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     清除
+        ///     Clear Global
         /// </summary>
         public static void ClearGlobal()
         {

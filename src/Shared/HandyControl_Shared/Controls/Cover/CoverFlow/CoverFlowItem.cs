@@ -43,7 +43,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     创建网格形状
+        ///     Create a grid shape
         /// </summary>
         /// <param name="p0"></param>
         /// <param name="p1"></param>
@@ -99,7 +99,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     创建内容形状
+        ///     Create content shape
         /// </summary>
         /// <returns></returns>
         private Geometry3D CreateItemGeometry()
@@ -122,7 +122,7 @@ namespace HandyControl.Controls
         private double GetZByPos(int index) => Index == index ? 1 : 0;
 
         /// <summary>
-        ///     移动
+        ///     mobile
         /// </summary>
         internal void Move(int currentIndex)
         {
@@ -135,7 +135,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     命中测试
+        ///     Hit test
         /// </summary>
         /// <param name="mesh"></param>
         /// <returns></returns>

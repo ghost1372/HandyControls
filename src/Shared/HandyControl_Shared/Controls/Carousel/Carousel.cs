@@ -17,7 +17,7 @@ using HandyControl.Tools;
 namespace HandyControl.Controls
 {
     /// <summary>
-    ///     轮播控件
+    ///     Carousel controls
     /// </summary>
     [DefaultProperty("Items")]
     [ContentProperty("Items")]
@@ -156,7 +156,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     是否自动跳转
+        ///     Whether to automatically jump
         /// </summary>
         public bool AutoRun
         {
@@ -165,7 +165,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     跳转时间间隔
+        ///     Jump interval
         /// </summary>
         public TimeSpan Interval
         {
@@ -174,7 +174,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     页码
+        ///     page number
         /// </summary>
         public int PageIndex
         {
@@ -194,7 +194,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     计时器开关
+        ///     Timer switch
         /// </summary>
         private void TimerSwitch(bool run)
         {
@@ -223,7 +223,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     更新页按钮
+        ///     Update page button
         /// </summary>
         public void UpdatePageButtons(int index = -1)
         {
@@ -264,7 +264,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     更新项的位置
+        ///     Update item location
         /// </summary>
         private void UpdateItemsPosition()
         {

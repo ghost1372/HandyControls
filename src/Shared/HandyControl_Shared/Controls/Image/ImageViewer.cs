@@ -37,7 +37,7 @@ namespace HandyControl.Controls
         private const string ElementImageMain = "PART_ImageMain";
 
         /// <summary>
-        ///     缩放比间隔
+        ///     Zoom interval
         /// </summary>
         private const double ScaleInternal = 0.2;
 
@@ -46,7 +46,7 @@ namespace HandyControl.Controls
         #region Data
 
         /// <summary>
-        ///     图片保存对话框
+        ///     Picture save dialog
         /// </summary>
         private static readonly SaveFileDialog SaveFileDialog = new SaveFileDialog
         {
@@ -178,7 +178,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     带一个图片Uri的构造函数
+        ///     Constructor with a picture Uri
         /// </summary>
         /// <param name="uri"></param>
         public ImageViewer(Uri uri) : this()
@@ -200,7 +200,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     带一个图片路径的构造函数
+        ///     Constructor with an image path
         /// </summary>
         /// <param name="path"></param>
         public ImageViewer(string path) : this(new Uri(path))
@@ -233,13 +233,13 @@ namespace HandyControl.Controls
             "ImgSize", typeof(long), typeof(ImageViewer), new PropertyMetadata(-1L));
 
         /// <summary>
-        ///     是否显示全屏按钮
+        ///     Whether to show the full screen button
         /// </summary>
         internal static readonly DependencyProperty ShowFullScreenButtonProperty = DependencyProperty.Register(
             "ShowFullScreenButton", typeof(bool), typeof(ImageViewer), new PropertyMetadata(ValueBoxes.FalseBox));
 
         /// <summary>
-        ///     关闭按钮是否显示中
+        ///     Whether the close button is showing
         /// </summary>
         internal static readonly DependencyProperty ShowCloseButtonProperty = DependencyProperty.Register(
             "ShowCloseButton", typeof(bool), typeof(ImageViewer), new PropertyMetadata(ValueBoxes.FalseBox));
@@ -305,7 +305,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     是否显示全屏按钮
+        ///     Whether to show the full screen button
         /// </summary>
         internal bool ShowFullScreenButton
         {

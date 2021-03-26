@@ -6,14 +6,14 @@ using HandyControl.Controls;
 namespace HandyControl.Tools
 {
     /// <summary>
-    ///     该类可以为可视化元素提供单开的功能
+    ///     This class can provide single-open functions for visual elements
     /// </summary>
     public class SingleOpenHelper
     {
         private static readonly Dictionary<string, ISingleOpen> OpenDic = new Dictionary<string, ISingleOpen>();
 
         /// <summary>
-        ///     根据指定的类型创建实例
+        ///     Create an instance based on the specified type
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
