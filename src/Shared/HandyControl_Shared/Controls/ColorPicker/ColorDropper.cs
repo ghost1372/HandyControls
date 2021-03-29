@@ -22,7 +22,6 @@ namespace HandyControl.Controls
         public ColorDropper(ColorPicker colorPicker)
         {
             _colorPicker = colorPicker;
-            DrawPreviewWindow();
         }
 
         private void DrawPreviewWindow()
@@ -42,9 +41,9 @@ namespace HandyControl.Controls
             Border border = new Border
             {
                 BorderThickness = new Thickness(1),
-                BorderBrush = Brushes.Black,
+                BorderBrush = ResourceHelper.GetResource<Brush>(ResourceToken.BorderBrush),
                 Background = ResourceHelper.GetResource<Brush>(ResourceToken.SecondaryRegionBrush),
-                CornerRadius = new CornerRadius(4)
+                CornerRadius = new CornerRadius(6)
             };
 
             rect = new Rectangle
@@ -77,6 +76,8 @@ namespace HandyControl.Controls
                 Mouse.OverrideCursor = Cursors.Cross;
                 MouseHook.Start();
                 MouseHook.StatusChanged += MouseHook_StatusChanged;
+                DrawPreviewWindow();
+                MoveWindowNextToMouse();
             }
             else
             {
@@ -84,6 +85,7 @@ namespace HandyControl.Controls
                 MouseHook.Stop();
                 MouseHook.StatusChanged -= MouseHook_StatusChanged;
                 ColorPicker.IsCheckedToggleButtonDropper(false);
+                window?.Close();
             }
         }
 
