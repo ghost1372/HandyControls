@@ -100,6 +100,14 @@ namespace HandyControl.Controls
                         }
                         _isItemSelected = false;
                     }
+
+                    if (!item.HasItems)
+                    {
+                        RaiseEvent(new FunctionEventArgs<object>(SelectionChangedEvent, this)
+                        {
+                            Info = e.OriginalSource
+                        });
+                    }
                 }
             }
         }
