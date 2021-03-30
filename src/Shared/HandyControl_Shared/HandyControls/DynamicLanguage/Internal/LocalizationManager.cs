@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
+using System.Windows.Markup;
 
 namespace HandyControl.Tools
 {
@@ -52,7 +53,14 @@ namespace HandyControl.Tools
 
         public static void ChangeCulture(CultureInfo cultureInfo)
         {
-            Application.Current.SetCurrentUICulture(cultureInfo);
+            if (Application.Current.MainWindow != null)
+            {
+                Application.Current.MainWindow.Language = XmlLanguage.GetLanguage(cultureInfo.Name);
+            }
+            else
+            {
+                Application.Current.SetCurrentUICulture(cultureInfo);
+            }
         }
 
         public static string Localize(string key, CultureInfo cultureInfo = null, string fallBackValue = null, string stringFormat = null)
