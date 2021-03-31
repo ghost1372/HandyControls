@@ -54,7 +54,7 @@ namespace HandyControl.Themes
         private const string RegSysMode = "SystemUsesLightTheme";
         private ApplicationTheme _currenTheme;
         private Brush _currentAccent;
-        public bool _usingSystemTheme;
+        private bool _usingSystemTheme;
         public bool UsingSystemTheme
         {
             get => _usingSystemTheme;
