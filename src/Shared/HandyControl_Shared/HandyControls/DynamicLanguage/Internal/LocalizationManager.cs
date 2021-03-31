@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿// https://github.com/MartinKuschnik/Goji
+
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;

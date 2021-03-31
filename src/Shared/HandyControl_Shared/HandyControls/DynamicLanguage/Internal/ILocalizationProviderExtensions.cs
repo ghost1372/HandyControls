@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿// https://github.com/MartinKuschnik/Goji
+
+using System.ComponentModel;
 using System.Globalization;
 
 namespace HandyControl.Tools

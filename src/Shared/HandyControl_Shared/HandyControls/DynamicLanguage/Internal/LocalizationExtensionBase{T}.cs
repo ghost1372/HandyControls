@@ -1,4 +1,6 @@
-﻿using System;
+﻿// https://github.com/MartinKuschnik/Goji
+
+using System;
 using System.ComponentModel;
 using System.Windows.Markup;
 

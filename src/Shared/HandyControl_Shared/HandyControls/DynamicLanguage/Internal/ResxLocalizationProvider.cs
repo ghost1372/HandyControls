@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿// https://github.com/MartinKuschnik/Goji
+
+using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;

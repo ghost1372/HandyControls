@@ -1,4 +1,6 @@
-﻿using System;
+﻿// https://github.com/MartinKuschnik/Goji
+
+using System;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
