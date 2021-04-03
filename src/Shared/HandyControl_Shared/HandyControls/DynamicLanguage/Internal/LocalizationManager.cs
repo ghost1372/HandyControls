@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Markup;
-
 namespace HandyControl.Tools
 {
     public static class LocalizationManager
@@ -43,14 +42,6 @@ namespace HandyControl.Tools
             WeakDependencyPropertyEventBus events = d.GetValue(LocalizationPropertyChangedEventsProperty) as WeakDependencyPropertyEventBus;
 
             events.NotifySubscribers(d, args);
-        }
-
-        internal static void AddResxProvider(string BaseName, ResxLocalizationProvider resxLocalizationProvider)
-        {
-            if (!AvailableResxProvider.ContainsKey(BaseName))
-            {
-                AvailableResxProvider.Add(BaseName, resxLocalizationProvider);
-            }
         }
 
         public static void ChangeCulture(CultureInfo cultureInfo)

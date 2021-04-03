@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
+using HandyControl.Tools.Extension;
 
 namespace HandyControl.Tools
 {
@@ -34,7 +35,7 @@ namespace HandyControl.Tools
                     var assemblyName = provider.Substring(0, provider.IndexOf(";"));
                     string path = provider.ToString().Replace(";", ".");
                     var resxProvider = new ResxLocalizationProvider(path, Assembly.Load(assemblyName));
-                    LocalizationManager.AddResxProvider(path, resxProvider);
+                    LocalizationManager.AvailableResxProvider.AddIfNotExists(path, resxProvider);
                     return resxProvider;
                 }
                 else
