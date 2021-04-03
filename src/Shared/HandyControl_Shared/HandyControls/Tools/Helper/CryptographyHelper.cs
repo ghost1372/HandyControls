@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HandyControl.Tools
 {
-    public class CryptographyHelper
+    public static class CryptographyHelper
     {
         private static readonly SHA256 Sha256 = SHA256.Create();
         // Rfc2898DeriveBytes constants:

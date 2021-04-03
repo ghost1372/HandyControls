@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Reflection;
 namespace HandyControl.Tools
 {
-    public class ColorHelper
+    public static class ColorHelper
     {
         private const int Win32RedShift = 0;
         private const int Win32GreenShift = 8;

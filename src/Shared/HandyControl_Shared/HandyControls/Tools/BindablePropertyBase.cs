@@ -1,6 +1,4 @@
-﻿// http://github.com/kinnara/ModernWpf
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;

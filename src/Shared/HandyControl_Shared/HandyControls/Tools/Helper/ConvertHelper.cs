@@ -4,7 +4,7 @@ using System.Windows.Media.Imaging;
 
 namespace HandyControl.Tools
 {
-    public class ConvertHelper
+    public static class ConvertHelper
     {
         public static BitmapImage BytesToBitmapImage(byte[] bytes)
         {

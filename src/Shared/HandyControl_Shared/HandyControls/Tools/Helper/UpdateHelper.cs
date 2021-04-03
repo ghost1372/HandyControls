@@ -17,7 +17,7 @@ using HandyControl.Tools.Extension;
 
 namespace HandyControl.Tools
 {
-    public class UpdateHelper
+    public static class UpdateHelper
     {
         private const string GITHUB_API = "https://api.github.com/repos/{0}/{1}/releases/latest";
         private static SystemVersionInfo GetAsVersionInfo(string version)

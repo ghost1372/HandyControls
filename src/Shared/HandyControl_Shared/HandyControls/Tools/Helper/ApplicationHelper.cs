@@ -10,7 +10,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
 {
-    public class ApplicationHelper
+    public static class ApplicationHelper
     {
         internal static Mutex mutex;
 

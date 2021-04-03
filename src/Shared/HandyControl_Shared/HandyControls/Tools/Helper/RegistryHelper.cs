@@ -2,7 +2,7 @@
 using System;
 namespace HandyControl.Tools
 {
-    public class RegistryHelper
+    public static class RegistryHelper
     {
         /// <summary>
         /// Add Or Update Value

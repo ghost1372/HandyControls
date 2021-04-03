@@ -6,7 +6,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
 {
-    public class InIHelper
+    public static class InIHelper
     {
         internal static string Pathx = Environment.CurrentDirectory + @"\config.ini";
 
