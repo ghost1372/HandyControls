@@ -41,7 +41,7 @@ namespace HandyControl.Tools
             LangProvider.Culture = new CultureInfo(lang);
             Application.Current.Dispatcher.Thread.CurrentUICulture = new CultureInfo(lang);
             Lang = XmlLanguage.GetLanguage(lang);
-            LocalizationManager.ChangeCulture(new CultureInfo(lang));
+            LocalizationManager.Instance.OnCultureChanged(new CultureInfo(lang));
         }
 
         public void SetConfig(HandyControlConfig config)

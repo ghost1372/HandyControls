@@ -1,34 +1,39 @@
-﻿// https://github.com/MartinKuschnik/Goji
-
-using System.Diagnostics;
+﻿using HandyControl.Tools.Extension;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
 
 namespace HandyControl.Tools
 {
-    public sealed class ResxLocalizationProvider : ILocalizationProvider
+    /// <summary>
+    /// Implementing a localized string provider through application resources
+    /// </summary>
+    public class ResxLocalizationProvider : ILocalizationProvider
     {
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+
         private readonly ResourceManager resourceManager;
 
         public ResxLocalizationProvider(string baseName, Assembly assembly)
         {
             this.resourceManager = new ResourceManager(baseName, assembly);
+            LocalizationManager.AvailableResourceManager.AddIfNotExists(baseName, resourceManager);
 
             try
             {
+                // we only do this call to validate the given baseName
                 this.resourceManager.GetString(string.Empty);
             }
             catch (MissingManifestResourceException)
             {
+                // this exception is thrown if the path is completely wrong
+                // let's improve the exception message a bit
                 throw new MissingManifestResourceException(string.Format("Could not find any resources. Make sure \"{0}.resources\" was correctly embedded or linked into assembly \"{1}\" at compile time, or that all the satellite assemblies required are loadable and fully signed.", baseName, assembly.GetName().Name));
             }
         }
-
-        public string Localize(string key, CultureInfo culture)
-        {
-            return this.resourceManager.GetString(key, culture);
+        
+        public object Localize(string key, CultureInfo cultureInfo)
+{
+            return this.resourceManager.GetString(key, cultureInfo);
         }
     }
 }
