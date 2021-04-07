@@ -10,7 +10,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
 {
-    public static class ApplicationHelper
+    public static partial class ApplicationHelper
     {
         internal static Mutex mutex;
 
@@ -39,6 +39,9 @@ namespace HandyControl.Tools
             }
         }
 
+        /// <summary>
+        /// Bring MainWindow To Front
+        /// </summary>
         public static void BringWindowToFront()
         {
             var currentProcess = Process.GetCurrentProcess();
@@ -66,6 +69,12 @@ namespace HandyControl.Tools
             return InteropMethods.InternetGetConnectedState(out int Desc, 0);
         }
 
+        /// <summary>
+        /// Get AbsoluteUri like pack://application:,,,/WpfApp;component/Style.xaml
+        /// </summary>
+        /// <param name="AssemblyName">Project Name</param>
+        /// <param name="path">xaml file path</param>
+        /// <returns>pack://application:,,,/{AssemblyName};component/{path}</returns>
         public static Uri GetAbsoluteUri(string AssemblyName, string path)
         {
             return new Uri($"pack://application:,,,/{AssemblyName};component/{path}");
@@ -95,89 +104,6 @@ namespace HandyControl.Tools
             ProfileOptimization.StartProfile("Profile");
         }
 #endif
-
-        /// <summary>
-        /// Register Context Menu in Windows Directory 
-        /// </summary>
-        /// <param name="ContextMenuName"></param>
-        /// <param name="Command"></param>
-        /// <param name="IconFilePath">Icon Should be in *.ico format</param>
-        public static void RegisterToWindowsDirectoryContextMenu(string ContextMenuName, string Command, string IconFilePath = null)
-        {
-            string _DirectoryShell = $@"SOFTWARE\Classes\directory\shell\{ContextMenuName}\command\";
-            string _Icon = $@"SOFTWARE\Classes\directory\shell\{ContextMenuName}\";
-            RegistryHelper.AddOrUpdateKey("", _DirectoryShell, Command);
-            if (!string.IsNullOrEmpty(IconFilePath))
-            {
-                RegistryHelper.AddOrUpdateKey("Icon", _Icon, IconFilePath);
-            }
-        }
-
-        /// <summary>
-        /// UnRegister Context Menu from Windows Directory
-        /// </summary>
-        /// <param name="ContextMenuName"></param>
-        public static bool UnRegisterFromWindowsDirectoryContextMenu(string ContextMenuName)
-        {
-            string _RemovePath = $@"SOFTWARE\Classes\directory\shell\";
-            return RegistryHelper.DeleteSubKeyTree(ContextMenuName, _RemovePath);
-        }
-
-        /// <summary>
-        /// Register Context Menu in Windows File 
-        /// </summary>
-        /// <param name="ContextMenuName"></param>
-        /// <param name="Command"></param>
-        /// <param name="IconFilePath">Icon Should be in *.ico format</param>
-        public static void RegisterToWindowsFileContextMenu(string ContextMenuName,string Command, string IconFilePath = null)
-        {
-            string _FileShell = $@"SOFTWARE\Classes\*\shell\{ContextMenuName}\command\";
-            string _Icon = $@"SOFTWARE\Classes\*\shell\{ContextMenuName}\";
-
-            RegistryHelper.AddOrUpdateKey("", _FileShell, Command);
-            if (!string.IsNullOrEmpty(IconFilePath))
-            {
-                RegistryHelper.AddOrUpdateKey("Icon", _Icon, IconFilePath);
-            }
-        }
-
-        /// <summary>
-        /// UnRegister Context Menu from Windows File
-        /// </summary>
-        /// <param name="ContextMenuName"></param>
-        public static bool UnRegisterFromWindowsFileContextMenu(string ContextMenuName)
-        {
-            var _RemovePath = @"SOFTWARE\Classes\*\shell\";
-            return RegistryHelper.DeleteSubKeyTree(ContextMenuName, _RemovePath);
-        }
-
-        /// <summary>
-        /// Register Context Menu in Windows Background 
-        /// </summary>
-        /// <param name="ContextMenuName"></param>
-        /// <param name="Command"></param>
-        /// <param name="IconFilePath">Icon Should be in *.ico format</param>
-        public static void RegisterToWindowsBackgroundContextMenu(string ContextMenuName, string Command, string IconFilePath = null)
-        {
-            string _DirectoryShell = $@"SOFTWARE\Classes\directory\background\shell\{ContextMenuName}\command\";
-            string _Icon = $@"SOFTWARE\Classes\directory\background\shell\{ContextMenuName}\";
-
-            RegistryHelper.AddOrUpdateKey("", _DirectoryShell, Command);
-            if (!string.IsNullOrEmpty(IconFilePath))
-            {
-                RegistryHelper.AddOrUpdateKey("Icon", _Icon, IconFilePath);
-            }
-        }
-
-        /// <summary>
-        /// UnRegister Context Menu from Windows Background
-        /// </summary>
-        /// <param name="ContextMenuName"></param>
-        public static bool UnRegisterFromWindowsBackgroundContextMenu(string ContextMenuName)
-        {
-            string _RemovePath = $@"SOFTWARE\Classes\directory\background\shell\";
-            return RegistryHelper.DeleteSubKeyTree(ContextMenuName, _RemovePath);
-        }
     }
 }
 

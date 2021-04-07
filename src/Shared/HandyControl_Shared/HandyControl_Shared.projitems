@@ -78,6 +78,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\StringExtension!1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\VisualTree.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ApplicationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ApplicationHelper.Registry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ConvertHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\DispatcherHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\GenericCompare.cs" />

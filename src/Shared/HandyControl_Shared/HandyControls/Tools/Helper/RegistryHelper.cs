@@ -6,7 +6,7 @@ namespace HandyControl.Tools
     public static class RegistryHelper
     {
         /// <summary>
-        /// Add Or Update Value
+        /// Add Or Update Key
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="Key"></param>
@@ -40,7 +40,7 @@ namespace HandyControl.Tools
         }
 
         /// <summary>
-        /// Get Value
+        /// Get Value from Key
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="Key"></param>
@@ -81,7 +81,7 @@ namespace HandyControl.Tools
         }
 
         /// <summary>
-        /// Delete Value
+        /// Delete Key
         /// </summary>
         /// <param name="Key"></param>
         /// <param name="Folder"></param>
@@ -133,6 +133,13 @@ namespace HandyControl.Tools
             return false;
         }
 
+        /// <summary>
+        /// Delete a Key and any childs recursively
+        /// </summary>
+        /// <param name="SubKey"></param>
+        /// <param name="Folder"></param>
+        /// <param name="Location"></param>
+        /// <returns></returns>
         public static bool DeleteSubKeyTree(string SubKey, string Folder, RegistryKey Location = null)
         {
             try
