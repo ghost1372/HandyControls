@@ -101,10 +101,16 @@ namespace HandyControl.Tools
         /// </summary>
         /// <param name="ContextMenuName"></param>
         /// <param name="Command"></param>
-        public static void RegisterToWindowsDirectoryContextMenu(string ContextMenuName, string Command)
+        /// <param name="IconFilePath">Icon Should be in *.ico format</param>
+        public static void RegisterToWindowsDirectoryContextMenu(string ContextMenuName, string Command, string IconFilePath = null)
         {
             string _DirectoryShell = $@"SOFTWARE\Classes\directory\shell\{ContextMenuName}\command\";
+            string _Icon = $@"SOFTWARE\Classes\directory\shell\{ContextMenuName}\";
             RegistryHelper.AddOrUpdateKey("", _DirectoryShell, Command);
+            if (!string.IsNullOrEmpty(IconFilePath))
+            {
+                RegistryHelper.AddOrUpdateKey("Icon", _Icon, IconFilePath);
+            }
         }
 
         /// <summary>
@@ -122,10 +128,17 @@ namespace HandyControl.Tools
         /// </summary>
         /// <param name="ContextMenuName"></param>
         /// <param name="Command"></param>
-        public static void RegisterToWindowsFileContextMenu(string ContextMenuName,string Command)
+        /// <param name="IconFilePath">Icon Should be in *.ico format</param>
+        public static void RegisterToWindowsFileContextMenu(string ContextMenuName,string Command, string IconFilePath = null)
         {
             string _FileShell = $@"SOFTWARE\Classes\*\shell\{ContextMenuName}\command\";
+            string _Icon = $@"SOFTWARE\Classes\*\shell\{ContextMenuName}\";
+
             RegistryHelper.AddOrUpdateKey("", _FileShell, Command);
+            if (!string.IsNullOrEmpty(IconFilePath))
+            {
+                RegistryHelper.AddOrUpdateKey("Icon", _Icon, IconFilePath);
+            }
         }
 
         /// <summary>
@@ -143,10 +156,17 @@ namespace HandyControl.Tools
         /// </summary>
         /// <param name="ContextMenuName"></param>
         /// <param name="Command"></param>
-        public static void RegisterToWindowsBackgroundContextMenu(string ContextMenuName, string Command)
+        /// <param name="IconFilePath">Icon Should be in *.ico format</param>
+        public static void RegisterToWindowsBackgroundContextMenu(string ContextMenuName, string Command, string IconFilePath = null)
         {
             string _DirectoryShell = $@"SOFTWARE\Classes\directory\background\shell\{ContextMenuName}\command\";
+            string _Icon = $@"SOFTWARE\Classes\directory\background\shell\{ContextMenuName}\";
+
             RegistryHelper.AddOrUpdateKey("", _DirectoryShell, Command);
+            if (!string.IsNullOrEmpty(IconFilePath))
+            {
+                RegistryHelper.AddOrUpdateKey("Icon", _Icon, IconFilePath);
+            }
         }
 
         /// <summary>
