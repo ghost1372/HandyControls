@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+
 namespace HandyControl.Tools
 {
     public static class RegistryHelper
@@ -26,9 +27,11 @@ namespace HandyControl.Tools
 
             try
             {
-                RegistryKey rgkey = Location.CreateSubKey(Folder);
-                rgkey?.SetValue(Key, Value);
-                rgkey?.Close();
+                using (RegistryKey key = Location.CreateSubKey(Folder))
+                {
+                    key?.SetValue(Key, Value);
+                    key?.Close();
+                }
             }
             catch (UnauthorizedAccessException)
             {
@@ -58,19 +61,23 @@ namespace HandyControl.Tools
 
             try
             {
-                RegistryKey rgkey = Location.OpenSubKey(Folder);
-                if (rgkey != null)
+                using (RegistryKey key = Location.OpenSubKey(Folder))
                 {
-                    var result = (T)Convert.ChangeType(rgkey.GetValue(Key), typeof(T));
-                    return result;
+                    if (key == null)
+                    {
+                        return default(T);
+                    }
+                    else
+                    {
+                        var result = (T) Convert.ChangeType(key.GetValue(Key), typeof(T));
+                        return result;
+                    }
                 }
-
             }
             catch (UnauthorizedAccessException)
             {
                 throw new UnauthorizedAccessException();
             }
-            return default(T);
         }
 
         /// <summary>
@@ -80,34 +87,39 @@ namespace HandyControl.Tools
         /// <param name="Folder"></param>
         /// <param name="Location"></param>
         /// <param name="IsDeleteSubKey"></param>
-        public static void DeleteKey(string Key, string Folder, RegistryKey Location = null, bool IsDeleteSubKey = false)
+        /// <returns></returns>
+        public static bool DeleteKey(string Key, string Folder, RegistryKey Location = null, bool IsDeleteSubKey = false)
         {
-            if (Location == null)
-            {
-                Location = Registry.CurrentUser;
-            }
-
-            if (Location == Registry.LocalMachine)
-            {
-                Folder = $@"SOFTWARE\{Folder}";
-            }
-
             try
             {
-                RegistryKey rgkey = Location.OpenSubKey(Folder, true);
-
-                if (rgkey != null)
+                if (Location == null)
                 {
-                    if (IsDeleteSubKey)
+                    Location = Registry.CurrentUser;
+                }
+
+                if (Location == Registry.LocalMachine)
+                {
+                    Folder = $@"SOFTWARE\{Folder}";
+                }
+
+                using (RegistryKey key = Location.OpenSubKey(Folder, true))
+                {
+                    if (key == null)
                     {
-                        Location.DeleteSubKey(Folder);
+                        return false;
                     }
                     else
                     {
-                        if (rgkey.GetValue(Key) != null)
+                        if (IsDeleteSubKey)
                         {
-                            rgkey.DeleteValue(Key);
-                            rgkey.Close();
+                            Location.DeleteSubKey(Folder, true);
+                            return true;
+
+                        }
+                        else
+                        {
+                            key.DeleteValue(Key);
+                            return true;
                         }
                     }
                 }
@@ -116,34 +128,45 @@ namespace HandyControl.Tools
             {
                 throw new UnauthorizedAccessException();
             }
+            catch (ArgumentException) { }
+
+            return false;
         }
 
-        public static void DeleteSubKeyTree(string SubKey, string Folder, RegistryKey Location = null)
+        public static bool DeleteSubKeyTree(string SubKey, string Folder, RegistryKey Location = null)
         {
-            if (Location == null)
-            {
-                Location = Registry.CurrentUser;
-            }
-
-            if (Location == Registry.LocalMachine)
-            {
-                Folder = $@"SOFTWARE\{Folder}";
-            }
-
             try
             {
-                RegistryKey rgkey = Location.OpenSubKey(Folder, true);
-
-                if (rgkey != null)
+                if (Location == null)
                 {
-                    rgkey.DeleteSubKeyTree(SubKey);
+                    Location = Registry.CurrentUser;
+                }
+
+                if (Location == Registry.LocalMachine)
+                {
+                    Folder = $@"SOFTWARE\{Folder}";
+                }
+
+                using (RegistryKey key = Location.OpenSubKey(Folder, true))
+                {
+                    if (key == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        key.DeleteSubKeyTree(SubKey, true);
+                        return true;
+                    }
                 }
             }
             catch (UnauthorizedAccessException)
             {
                 throw new UnauthorizedAccessException();
             }
-        }
+            catch (ArgumentException) { }
 
+            return false;
+        }
     }
 }

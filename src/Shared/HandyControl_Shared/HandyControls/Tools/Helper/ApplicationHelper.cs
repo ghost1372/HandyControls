@@ -97,47 +97,67 @@ namespace HandyControl.Tools
 #endif
 
         /// <summary>
-        /// Register Context Menu in Windows Directory Shell 
+        /// Register Context Menu in Windows Directory 
         /// </summary>
         /// <param name="ContextMenuName"></param>
         /// <param name="Command"></param>
-        public static void RegisterToWindowsDirectoryShellContextMenu(string ContextMenuName, string Command)
+        public static void RegisterToWindowsDirectoryContextMenu(string ContextMenuName, string Command)
         {
             string _DirectoryShell = $@"SOFTWARE\Classes\directory\shell\{ContextMenuName}\command\";
             RegistryHelper.AddOrUpdateKey("", _DirectoryShell, Command);
         }
 
         /// <summary>
-        /// UnRegister Context Menu from Windows Directory Shell
+        /// UnRegister Context Menu from Windows Directory
         /// </summary>
         /// <param name="ContextMenuName"></param>
-        public static void UnRegisterFromWindowsDirectoryShellContextMenu(string ContextMenuName)
+        public static bool UnRegisterFromWindowsDirectoryContextMenu(string ContextMenuName)
         {
             string _RemovePath = $@"SOFTWARE\Classes\directory\shell\";
-            RegistryHelper.DeleteSubKeyTree(ContextMenuName, _RemovePath);
+            return RegistryHelper.DeleteSubKeyTree(ContextMenuName, _RemovePath);
         }
 
         /// <summary>
-        /// Register Context Menu in Windows File Shell 
+        /// Register Context Menu in Windows File 
         /// </summary>
         /// <param name="ContextMenuName"></param>
         /// <param name="Command"></param>
-        public static void RegisterToWindowsFileShellContextMenu(string ContextMenuName,string Command)
+        public static void RegisterToWindowsFileContextMenu(string ContextMenuName,string Command)
         {
             string _FileShell = $@"SOFTWARE\Classes\*\shell\{ContextMenuName}\command\";
             RegistryHelper.AddOrUpdateKey("", _FileShell, Command);
         }
 
         /// <summary>
-        /// UnRegister Context Menu from Windows File Shell
+        /// UnRegister Context Menu from Windows File
         /// </summary>
         /// <param name="ContextMenuName"></param>
-        public static void UnRegisterFromWindowsFileShellContextMenu(string ContextMenuName)
+        public static bool UnRegisterFromWindowsFileContextMenu(string ContextMenuName)
         {
             var _RemovePath = @"SOFTWARE\Classes\*\shell\";
-            RegistryHelper.DeleteSubKeyTree(ContextMenuName, _RemovePath);
+            return RegistryHelper.DeleteSubKeyTree(ContextMenuName, _RemovePath);
         }
 
+        /// <summary>
+        /// Register Context Menu in Windows Background 
+        /// </summary>
+        /// <param name="ContextMenuName"></param>
+        /// <param name="Command"></param>
+        public static void RegisterToWindowsBackgroundContextMenu(string ContextMenuName, string Command)
+        {
+            string _DirectoryShell = $@"SOFTWARE\Classes\directory\background\shell\{ContextMenuName}\command\";
+            RegistryHelper.AddOrUpdateKey("", _DirectoryShell, Command);
+        }
+
+        /// <summary>
+        /// UnRegister Context Menu from Windows Background
+        /// </summary>
+        /// <param name="ContextMenuName"></param>
+        public static bool UnRegisterFromWindowsBackgroundContextMenu(string ContextMenuName)
+        {
+            string _RemovePath = $@"SOFTWARE\Classes\directory\background\shell\";
+            return RegistryHelper.DeleteSubKeyTree(ContextMenuName, _RemovePath);
+        }
     }
 }
 
