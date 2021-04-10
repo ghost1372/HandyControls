@@ -12,6 +12,9 @@
     <a href="https://github.com/ghost1372/HandyControls/actions?query=workflow%3Abuild">
         <img alt="Github-build-status" src="https://github.com/ghost1372/HandyControls/workflows/build/badge.svg"></img>
     </a>
+    <a href="https://www.myget.org/feed/handycontrols/package/nuget/HandyControls">
+        <img alt="myget-version" src="https://img.shields.io/myget/handycontrols/v/handycontrols?color=orange&label=myget"></img>
+    </a> 
     <a href="https://www.nuget.org/packages/HandyControls">
         <img alt="Nuget" src="https://img.shields.io/nuget/dt/handycontrols"></img>
     </a> 
