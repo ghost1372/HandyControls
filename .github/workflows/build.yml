@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - develop
+  
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   build:
@@ -11,17 +15,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
-        
-      - name: setup nuget.exe
-        uses: NuGet/setup-nuget@v1.0.5
       
       - name: build
         shell: pwsh
         run: |
           cd build
           .\build.ps1
-          nuget pack build-for-myget.nuspec -version 3.3.4-beta${env:GITHUB_RUN_NUMBER}
-          $nupkgName = @(gci *.nupkg)[0].Name
-          $mygetSourcePath = "https://www.myget.org/F/handycontrols"
-          nuget setApiKey ${{ secrets.NIGHTLYBUILD }} -Source $mygetSourcePath
-          nuget push $nupkgName -Source $mygetSourcePath
