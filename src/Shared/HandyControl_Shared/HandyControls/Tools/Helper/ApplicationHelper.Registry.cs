@@ -43,12 +43,12 @@ namespace HandyControl.Tools
         /// <param name="ContextMenuName"></param>
         /// <param name="CascadeContextMenuName"></param>
         /// <param name="Command"></param>
-        /// <param name="IconPath"></param>
-        /// <param name="CascadeContextMenuIconPath"></param>
-        public static void RegisterCascadeContextMenuToDirectory(string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeContextMenuIconPath = null)
+        /// <param name="IconPath">Icon Should be in *.ico format</param>
+        /// <param name="CascadeIconPath">Icon Should be in *.ico format</param>
+        public static void RegisterCascadeContextMenuToDirectory(string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeIconPath = null)
         {
             string Folder = $@"Directory\Shell\{ContextMenuName}";
-            RegisterCascade(Folder, ContextMenuName, CascadeContextMenuName, Command, IconPath, CascadeContextMenuIconPath);
+            RegisterCascade(Folder, ContextMenuName, CascadeContextMenuName, Command, IconPath, CascadeIconPath);
         }
 
         /// <summary>
@@ -106,12 +106,12 @@ namespace HandyControl.Tools
         /// <param name="ContextMenuName"></param>
         /// <param name="CascadeContextMenuName"></param>
         /// <param name="Command"></param>
-        /// <param name="IconPath"></param>
-        /// <param name="CascadeContextMenuIconPath"></param>
-        public static void RegisterCascadeContextMenuToFile(string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeContextMenuIconPath = null)
+        /// <param name="IconPath">Icon Should be in *.ico format</param>
+        /// <param name="CascadeIconPath">Icon Should be in *.ico format</param>
+        public static void RegisterCascadeContextMenuToFile(string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeIconPath = null)
         {
             string Folder = $@"*\Shell\{ContextMenuName}";
-            RegisterCascade(Folder, ContextMenuName, CascadeContextMenuName, Command, IconPath, CascadeContextMenuIconPath);
+            RegisterCascade(Folder, ContextMenuName, CascadeContextMenuName, Command, IconPath, CascadeIconPath);
         }
 
         /// <summary>
@@ -168,12 +168,12 @@ namespace HandyControl.Tools
         /// <param name="ContextMenuName"></param>
         /// <param name="CascadeContextMenuName"></param>
         /// <param name="Command"></param>
-        /// <param name="IconPath"></param>
-        /// <param name="CascadeContextMenuIconPath"></param>
-        public static void RegisterCascadeContextMenuToBackground(string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeContextMenuIconPath = null)
+        /// <param name="IconPath">Icon Should be in *.ico format</param>
+        /// <param name="CascadeIconPath">Icon Should be in *.ico format</param>
+        public static void RegisterCascadeContextMenuToBackground(string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeIconPath = null)
         {
             string Folder = $@"Directory\Background\Shell\{ContextMenuName}";
-            RegisterCascade(Folder, ContextMenuName, CascadeContextMenuName, Command, IconPath, CascadeContextMenuIconPath);
+            RegisterCascade(Folder, ContextMenuName, CascadeContextMenuName, Command, IconPath, CascadeIconPath);
         }
 
         /// <summary>
@@ -234,12 +234,12 @@ namespace HandyControl.Tools
         /// <param name="ContextMenuName"></param>
         /// <param name="CascadeContextMenuName"></param>
         /// <param name="Command"></param>
-        /// <param name="IconPath"></param>
-        /// <param name="CascadeContextMenuIconPath"></param>
-        public static void RegisterCascadeContextMenuToDrive(string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeContextMenuIconPath = null)
+        /// <param name="IconPath">Icon Should be in *.ico format</param>
+        /// <param name="CascadeIconPath">Icon Should be in *.ico format</param>
+        public static void RegisterCascadeContextMenuToDrive(string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeIconPath = null)
         {
             string Folder = $@"Drive\Shell\{ContextMenuName}";
-            RegisterCascade(Folder, ContextMenuName, CascadeContextMenuName, Command, IconPath, CascadeContextMenuIconPath);
+            RegisterCascade(Folder, ContextMenuName, CascadeContextMenuName, Command, IconPath, CascadeIconPath);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace HandyControl.Tools
 
         #endregion
 
-        private static void RegisterCascade(string Folder, string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeContextMenuIconPath = null)
+        private static void RegisterCascade(string Folder, string ContextMenuName, string CascadeContextMenuName, string Command, string IconPath = null, string CascadeIconPath = null)
         {
             RegistryHelper.AddOrUpdateKey(string.Empty, Folder, string.Empty, Registry.ClassesRoot);
             RegistryHelper.AddOrUpdateKey("MUIVerb", Folder, ContextMenuName, Registry.ClassesRoot);
@@ -272,9 +272,9 @@ namespace HandyControl.Tools
                 RegistryHelper.AddOrUpdateKey("Icon", Folder, IconPath, Registry.ClassesRoot);
             }
 
-            if (!string.IsNullOrEmpty(CascadeContextMenuIconPath))
+            if (!string.IsNullOrEmpty(CascadeIconPath))
             {
-                RegistryHelper.AddOrUpdateKey("Icon", $@"{Folder}\shell\{CascadeContextMenuName}", CascadeContextMenuIconPath, Registry.ClassesRoot);
+                RegistryHelper.AddOrUpdateKey("Icon", $@"{Folder}\shell\{CascadeContextMenuName}", CascadeIconPath, Registry.ClassesRoot);
             }
         }
 
