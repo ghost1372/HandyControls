@@ -15,8 +15,8 @@ jobs:
         run: |
           cd build
           .\build.ps1
-          nuget pack build-for-myget.nuspec
+          nuget pack build-for-myget.nuspec -version 3.3.5-beta${env:GITHUB_RUN_NUMBER}
           $nupkgName = @(gci *.nupkg)[0].Name
-          $mygetSourcePath = "https://www.myget.org/F/handycontrol"
-          nuget setApiKey ${{ secrets.MYGETTOKEN }} -Source $mygetSourcePath
+          $mygetSourcePath = "https://www.myget.org/F/handycontrols"
+          nuget setApiKey ${{ secrets.NIGHTLYBUILD }} -Source $mygetSourcePath
           nuget push $nupkgName -Source $mygetSourcePath
