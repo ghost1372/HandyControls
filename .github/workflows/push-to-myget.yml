@@ -1,3 +1,5 @@
+name: Push To MYGET
+
 on: workflow_dispatch
 
 jobs:
