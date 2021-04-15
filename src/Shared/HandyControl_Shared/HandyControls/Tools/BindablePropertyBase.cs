@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace HandyControl.Controls
+namespace HandyControl.Tools
 {
     public abstract class BindablePropertyBase : INotifyPropertyChanged
     {

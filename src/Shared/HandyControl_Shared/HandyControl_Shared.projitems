@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\LocalizationManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\ResxLocalizationProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\TranslationProviderTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\BindingProxy.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\OptimizedObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafeObservableCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\DispatchedObservableCollection.cs" />
