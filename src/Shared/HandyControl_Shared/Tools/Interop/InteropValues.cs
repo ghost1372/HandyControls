@@ -94,7 +94,8 @@ namespace HandyControl.Tools.Interop
             SC_MAXIMIZE = 0xF030,
             SC_RESTORE = 0xF120,
             SRCCOPY = 0x00CC0020,
-            MONITOR_DEFAULTTONEAREST = 0x00000002;
+            MONITOR_DEFAULTTONEAREST = 0x00000002,
+            WM_COPYDATA = 0x004A;
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         public class NOTIFYICONDATA
@@ -1139,6 +1140,14 @@ namespace HandyControl.Tools.Interop
             ///     Displays the window.
             /// </summary>
             SWP_SHOWWINDOW = 0x0040
+        }
+
+        public struct COPYDATASTRUCT
+        {
+            public IntPtr dwData;
+            public int cbData;
+            [MarshalAs(UnmanagedType.LPStr)]
+            public string lpData;
         }
     }
 }

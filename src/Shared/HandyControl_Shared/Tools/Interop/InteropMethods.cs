@@ -41,6 +41,9 @@ namespace HandyControl.Tools.Interop
         [DllImport(InteropValues.ExternDll.User32, CharSet = CharSet.Auto)]
         public static extern uint SendMessage(IntPtr hWnd, uint Msg, uint wParam, IntPtr lParam);
 
+        [DllImport(InteropValues.ExternDll.User32)]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, ref InteropValues.COPYDATASTRUCT lParam);
+
         [DllImport(InteropValues.ExternDll.User32, SetLastError = true, CharSet = CharSet.Auto)]
         public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
 
