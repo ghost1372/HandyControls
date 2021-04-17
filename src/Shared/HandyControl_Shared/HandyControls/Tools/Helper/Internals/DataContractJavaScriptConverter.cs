@@ -14,7 +14,7 @@ namespace HandyControl.Tools
         private static readonly List<Type> _supportedTypes = new List<Type>();
         static DataContractJavaScriptConverter()
         {
-            foreach (Type type in Assembly.GetExecutingAssembly().DefinedTypes)
+            foreach (Type type in Assembly.GetEntryAssembly().DefinedTypes)
             {
                 if (Attribute.IsDefined(type, typeof(DataContractAttribute)))
                 {

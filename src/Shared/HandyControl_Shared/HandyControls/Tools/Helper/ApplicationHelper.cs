@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime;
 using System.Security.Principal;
 using System.Threading;
@@ -12,7 +11,8 @@ namespace HandyControl.Tools
 {
     public static partial class ApplicationHelper
     {
-        internal static Mutex mutex;
+        private static readonly int MAX_PATH = 255;
+        private static Mutex mutex;
 
         /// <summary>
         /// Check that only one instance of the program runs
@@ -23,7 +23,7 @@ namespace HandyControl.Tools
         {
             if (string.IsNullOrEmpty(AssemblyName))
             {
-                AssemblyName = Assembly.GetCallingAssembly().GetName().Name;
+                AssemblyName = Path.GetFileNameWithoutExtension(GetExecutablePathNative());
             }
             mutex = new Mutex(true, AssemblyName);
             if (mutex.WaitOne(TimeSpan.Zero, true))
@@ -34,7 +34,6 @@ namespace HandyControl.Tools
             else
             {
                 BringWindowToFront();
-                Environment.Exit(0);
                 return false;
             }
         }
@@ -104,6 +103,53 @@ namespace HandyControl.Tools
             ProfileOptimization.StartProfile("Profile");
         }
 #endif
+
+        /// <summary>
+        /// Close the application and start a new instance immediately
+        /// </summary>
+        /// <param name="restartAsAdministrator"></param>
+        public static void Restart(bool restartAsAdministrator = false)
+        {
+            ProcessStartInfo processStartInfo = new ProcessStartInfo(GetExecutablePathNative());
+
+            if (restartAsAdministrator)
+            {
+                processStartInfo.UseShellExecute = true;
+                processStartInfo.Verb = "runas";
+            }
+
+            Process.Start(processStartInfo);
+            Environment.Exit(0);
+        }
+
+        /// <summary>
+        /// Assembly Based Method to Get the path of the executable file, this method work in .Net Framework and .Net Core in Portable and Publish Mode
+        /// </summary>
+        /// <returns></returns>
+        public static string GetExecutablePath()
+        {
+#if NET5_0
+            return GetExecutablePathNative();
+#else
+            var path = Assembly.GetEntryAssembly().Location;
+            if (Path.GetExtension(path).Equals(".dll"))
+            {
+                path = path.Replace(".dll", ".exe");
+            }
+            return path;
+#endif
+        }
+
+        /// <summary>
+        /// Native Method to Get the path of the executable file, this method work in .Net Framework and .Net Core in Portable and Publish Mode
+        /// </summary>
+        /// <returns></returns>
+        public static string GetExecutablePathNative()
+        {
+            var sb = new System.Text.StringBuilder(MAX_PATH);
+            InteropMethods.GetModuleFileName(IntPtr.Zero, sb, MAX_PATH);
+            return sb.ToString();
+        }
     }
 }
 

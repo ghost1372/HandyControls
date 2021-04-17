@@ -523,6 +523,14 @@ namespace HandyControl.Tools.Interop
         [DllImport(InteropValues.ExternDll.WinInet)]
         public static extern bool InternetGetConnectedState(out int Description, int ReservedValue);
 
+        [DllImport(InteropValues.ExternDll.Kernel32)]
+        public static extern uint GetModuleFileName(IntPtr hModule, StringBuilder lpFilename, int nSize);
+
+        [DllImport(InteropValues.ExternDll.Kernel32, CharSet = CharSet.Unicode)]
+        public static extern long WritePrivateProfileString(string Section, string Key, string Value, string FilePath);
+
+        [DllImport(InteropValues.ExternDll.Kernel32, CharSet = CharSet.Unicode)]
+        public static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
         #endregion
 
         // Define the callback delegate's type.

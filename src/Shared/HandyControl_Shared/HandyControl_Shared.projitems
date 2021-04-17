@@ -56,7 +56,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\IDelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\SyncDelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\CheckTreeView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ApplicationExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DateTimeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DictionaryExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\CollectionViewExtension.cs" />
