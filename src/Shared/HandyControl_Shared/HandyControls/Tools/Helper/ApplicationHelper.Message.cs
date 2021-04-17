@@ -7,8 +7,6 @@ namespace HandyControl.Tools
 {
     public static partial class ApplicationHelper
     {
-        private static Action<string> hwndAction;
-
         /// <summary>
         /// Send Message to Another Application
         /// </summary>
@@ -41,22 +39,20 @@ namespace HandyControl.Tools
             HwndSource hWndSource;
             WindowInteropHelper wih = new WindowInteropHelper(window);
             hWndSource = HwndSource.FromHwnd(wih.Handle);
-            hwndAction = action;
-            hWndSource.AddHook(hwndSourceHook);
-        }
-
-        private static IntPtr hwndSourceHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            switch (msg)
+            HwndSourceHook eventHandler = (IntPtr hwnd, int msg, IntPtr param, IntPtr lParam, ref bool handled) =>
             {
-                case InteropValues.WM_COPYDATA:
-                    {
-                        InteropValues.COPYDATASTRUCT dataStruct = (InteropValues.COPYDATASTRUCT) Marshal.PtrToStructure(lParam, typeof(InteropValues.COPYDATASTRUCT));
-                        hwndAction.Invoke(dataStruct.lpData);
-                        break;
-                    }
-            }
-            return IntPtr.Zero;
+                switch (msg)
+                {
+                    case InteropValues.WM_COPYDATA:
+                        {
+                            InteropValues.COPYDATASTRUCT dataStruct = (InteropValues.COPYDATASTRUCT) Marshal.PtrToStructure(lParam, typeof(InteropValues.COPYDATASTRUCT));
+                            action.Invoke(dataStruct.lpData);
+                            break;
+                        }
+                }
+                return IntPtr.Zero;
+            };
+            hWndSource.AddHook(eventHandler);
         }
     }
 }
