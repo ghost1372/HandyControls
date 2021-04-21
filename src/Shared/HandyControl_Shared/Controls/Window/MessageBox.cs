@@ -51,6 +51,8 @@ namespace HandyControl.Controls
 
         private bool _showNo;
 
+        private IntPtr _lastActiveWindowIntPtr;
+        
         #region Button Text
         public static readonly DependencyProperty CancelContentProperty = DependencyProperty.Register(
            "CancelContent", typeof(string), typeof(MessageBox), new PropertyMetadata(Properties.Langs.Lang.Cancel));
@@ -165,6 +167,16 @@ namespace HandyControl.Controls
             }
 
             base.OnSourceInitialized(e);
+
+            _lastActiveWindowIntPtr = InteropMethods.GetForegroundWindow();
+            Activate();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            InteropMethods.SetForegroundWindow(_lastActiveWindowIntPtr);
+
+            base.OnClosed(e);
         }
 
         public override void OnApplyTemplate()
