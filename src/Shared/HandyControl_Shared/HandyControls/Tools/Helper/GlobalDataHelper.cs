@@ -1,39 +1,121 @@
 ﻿#if NETCOREAPP
 using System.IO;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace HandyControl.Tools
 {
-    public abstract class GlobalDataHelper<T> where T : GlobalDataHelper<T>, new()
+    public abstract class GlobalDataHelper
     {
-        public static T Config { get; set; }
-        private static string _filename { get; set; }
+        private const string FileVersionKey = "FileVersion";
 
-        /// <summary>
-        /// This function will load settings object.
-        /// </summary>
-        /// <param name="FileName">config file location with filename</param>
-        public static void Init(string FileName = "AppConfig.json")
+        [JsonIgnore]
+        public abstract string FileName { get; set; }
+
+        [JsonIgnore]
+        public abstract JsonSerializerOptions JsonSerializerOptions { get; set; }
+
+        [JsonIgnore]
+        public abstract int FileVersion { get; set; }
+
+        public GlobalDataHelper()
         {
-            _filename = FileName;
-            if (File.Exists(FileName))
+            if (string.IsNullOrEmpty(FileName))
             {
-                string json = File.ReadAllText(FileName);
-
-                Config = (string.IsNullOrEmpty(json) ? new T() : JsonSerializer.Deserialize<T>(json)) ?? new T();
+                FileName = "AppConfig.json";
             }
-            else
+            if (FileVersion != 0)
             {
-                Config = new T();
+                if (!FileVersion.Equals(RegistryHelper.GetValue<int>(FileVersionKey, Path.GetFileNameWithoutExtension(ApplicationHelper.GetExecutablePathNative()))))
+                {
+                    if (File.Exists(FileName))
+                    {
+                        File.Delete(FileName);
+                    }
+                    RegistryHelper.AddOrUpdateKey(FileVersionKey, Path.GetFileNameWithoutExtension(ApplicationHelper.GetExecutablePathNative()), FileVersion);
+                }
+            }
+        }
+        public static T Load<T>() where T : GlobalDataHelper, new()
+        {
+            T result = new T();
+            result = JsonFile.Load<T>(result.FileName) ?? result;
+            return result;
+        }
+        public async static Task<T> LoadAsync<T>() where T : GlobalDataHelper, new()
+        {
+            T result = new T();
+            result = await JsonFile.LoadAsync<T>(result.FileName) ?? result;
+            return result;
+        }
+        public void Save()
+        {
+            JsonFile.Save(FileName, this, JsonSerializerOptions);
+        }
+        public async Task SaveAsync()
+        {
+            await JsonFile.SaveAsync(FileName, this, JsonSerializerOptions);
+        }
+    }
+    public static class JsonFile
+    {
+        public static void Save<T>(string fileName, T @object, JsonSerializerOptions options = null)
+        {
+            using (StreamWriter writer = File.CreateText(fileName))
+            {
+                if (options == null)
+                {
+                    options = new JsonSerializerOptions();
+                    options.WriteIndented = true;
+                    options.IgnoreNullValues = true;
+                }
+                options.Converters.Add(new PolymorphicJsonConverter<T>());
+                string json = JsonSerializer.Serialize(@object, options);
+                writer.Write(json);
             }
         }
 
-        public static void Save()
+        public async static Task SaveAsync<T>(string fileName, T @object, JsonSerializerOptions options = null)
         {
-            JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true, IgnoreNullValues = true };
+            if (options == null)
+            {
+                options = new JsonSerializerOptions();
+                options.WriteIndented = true;
+                options.IgnoreNullValues = true;
+            }
+            options.Converters.Add(new PolymorphicJsonConverter<T>());
+            using FileStream createStream = File.Create(fileName);
+            await JsonSerializer.SerializeAsync(createStream, @object, options);
+        }
 
-            string json = JsonSerializer.Serialize(Config, options);
-            File.WriteAllText(_filename, json);
+        public static T Load<T>(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                using (StreamReader reader = File.OpenText(fileName))
+                {
+                    string json = reader.ReadToEnd();
+                    return JsonSerializer.Deserialize<T>(json);
+                }
+            }
+            else
+            {
+                return default(T);
+            }
+        }
+
+        public async static Task<T> LoadAsync<T>(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                using FileStream openStream = File.OpenRead(fileName);
+                return await JsonSerializer.DeserializeAsync<T>(openStream);
+            }
+            else
+            {
+                return default(T);
+            }
         }
     }
 }
