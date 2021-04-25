@@ -244,6 +244,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Range\IValueRange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\DataContractJavaScriptConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\XmlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\DefaultLoggerFormatter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\ILoggerFormatter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Handlers\DebugLoggerHandler.cs" />

@@ -58,7 +58,7 @@ namespace HandyControl.Tools
             await JsonFile.SaveAsync(FileName, this, JsonSerializerOptions);
         }
     }
-    public static class JsonFile
+    internal static class JsonFile
     {
         public static void Save<T>(string fileName, T @object, JsonSerializerOptions options = null)
         {
