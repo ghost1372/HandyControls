@@ -13,7 +13,7 @@ namespace HandyControl.Tools
 {
     internal sealed class DispatchedObservableCollection<T> : ObservableCollectionBase<T>, IReadOnlyObservableCollection<T>, IList<T>, IList
     {
-        private readonly ConcurrentQueue<PendingEvent<T>> _pendingEvents = new ConcurrentQueue<PendingEvent<T>>();
+        private readonly ConcurrentQueue<PendingEvent<T>> _pendingEvents = new();
         private readonly ThreadSafeObservableCollection<T> _collection;
         private readonly Dispatcher _dispatcher;
 
@@ -30,7 +30,8 @@ namespace HandyControl.Tools
         {
             if (!IsOnDispatcherThread())
             {
-                throw new InvalidOperationException("The collection must be accessed from the dispatcher thread only. Current thread ID: " + Thread.CurrentThread.ManagedThreadId.ToString(CultureInfo.InvariantCulture));
+                var currentThreadId = Environment.CurrentManagedThreadId;
+                throw new InvalidOperationException("The collection must be accessed from the dispatcher thread only. Current thread ID: " + currentThreadId.ToString(CultureInfo.InvariantCulture));
             }
         }
 
@@ -56,7 +57,7 @@ namespace HandyControl.Tools
             get
             {
                 AssertIsOnDispatcherThread();
-                return ((ICollection<T>)_collection).IsReadOnly;
+                return ((ICollection<T>) _collection).IsReadOnly;
             }
         }
 
@@ -74,7 +75,7 @@ namespace HandyControl.Tools
             get
             {
                 AssertIsOnDispatcherThread();
-                return ((ICollection)Items).SyncRoot;
+                return ((ICollection) Items).SyncRoot;
             }
         }
 
@@ -83,7 +84,7 @@ namespace HandyControl.Tools
             get
             {
                 AssertIsOnDispatcherThread();
-                return ((ICollection)Items).IsSynchronized;
+                return ((ICollection) Items).IsSynchronized;
             }
         }
 
@@ -92,7 +93,7 @@ namespace HandyControl.Tools
             get
             {
                 AssertIsOnDispatcherThread();
-                return ((IList)Items).IsReadOnly;
+                return ((IList) Items).IsReadOnly;
             }
         }
 
@@ -101,7 +102,7 @@ namespace HandyControl.Tools
             get
             {
                 AssertIsOnDispatcherThread();
-                return ((IList)Items).IsFixedSize;
+                return ((IList) Items).IsFixedSize;
             }
         }
 
@@ -118,7 +119,7 @@ namespace HandyControl.Tools
                 // it will immediatly modify both collections as we are on the dispatcher thread
                 AssertType(value, nameof(value));
                 AssertIsOnDispatcherThread();
-                _collection[index] = (T)value!;
+                _collection[index] = (T) value!;
             }
         }
 
@@ -216,7 +217,7 @@ namespace HandyControl.Tools
                 if (!_isDispatcherPending)
                 {
                     _isDispatcherPending = true;
-                    _dispatcher.BeginInvoke((Action)ProcessPendingEvents);
+                    _dispatcher.BeginInvoke((Action) ProcessPendingEvents);
                 }
 
                 return;
@@ -301,7 +302,7 @@ namespace HandyControl.Tools
 
         void ICollection.CopyTo(Array array, int index)
         {
-            ((ICollection)Items).CopyTo(array, index);
+            ((ICollection) Items).CopyTo(array, index);
         }
 
         int IList.Add(object? value)
@@ -309,7 +310,7 @@ namespace HandyControl.Tools
             // it will immediatly modify both collections as we are on the dispatcher thread
             AssertType(value, nameof(value));
             AssertIsOnDispatcherThread();
-            return ((IList)_collection).Add(value);
+            return ((IList) _collection).Add(value);
         }
 
         bool IList.Contains(object? value)
@@ -317,14 +318,14 @@ namespace HandyControl.Tools
             // it will immediatly modify both collections as we are on the dispatcher thread
             AssertType(value, nameof(value));
             AssertIsOnDispatcherThread();
-            return ((IList)_collection).Contains(value);
+            return ((IList) _collection).Contains(value);
         }
 
         void IList.Clear()
         {
             // it will immediatly modify both collections as we are on the dispatcher thread
             AssertIsOnDispatcherThread();
-            ((IList)_collection).Clear();
+            ((IList) _collection).Clear();
         }
 
         int IList.IndexOf(object? value)
@@ -332,7 +333,7 @@ namespace HandyControl.Tools
             // it will immediatly modify both collections as we are on the dispatcher thread
             AssertType(value, nameof(value));
             AssertIsOnDispatcherThread();
-            return Items.IndexOf((T)value!);
+            return Items.IndexOf((T) value!);
         }
 
         void IList.Insert(int index, object? value)
@@ -340,7 +341,7 @@ namespace HandyControl.Tools
             // it will immediatly modify both collections as we are on the dispatcher thread
             AssertType(value, nameof(value));
             AssertIsOnDispatcherThread();
-            ((IList)_collection).Insert(index, value);
+            ((IList) _collection).Insert(index, value);
         }
 
         void IList.Remove(object? value)
@@ -348,14 +349,14 @@ namespace HandyControl.Tools
             // it will immediatly modify both collections as we are on the dispatcher thread
             AssertType(value, nameof(value));
             AssertIsOnDispatcherThread();
-            ((IList)_collection).Remove(value);
+            ((IList) _collection).Remove(value);
         }
 
         void IList.RemoveAt(int index)
         {
             // it will immediatly modify both collections as we are on the dispatcher thread
             AssertIsOnDispatcherThread();
-            ((IList)_collection).RemoveAt(index);
+            ((IList) _collection).RemoveAt(index);
         }
     }
 }
