@@ -6,10 +6,17 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using HandyControl.Expression.Drawing;
+
 namespace HandyControl.Tools.Extension
 {
     public static class CollectionExtension
     {
+        public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> newItems)
+        {
+            CommonExtensions.AddRange(collection, newItems);
+        } 
+
         /// <summary>
         /// Clones the observable collection.
         /// </summary>
@@ -147,7 +154,7 @@ namespace HandyControl.Tools.Extension
         public static void AddOnUI<T>(this ICollection<T> collection, T item)
         {
             Action<T> addMethod = collection.Add;
-            Application.Current.Dispatcher.BeginInvoke(addMethod, item);
+            Application.Current.Dispatcher.Invoke(addMethod, item);
         }
     }
 }
