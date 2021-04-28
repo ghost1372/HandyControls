@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>HandyControl Application</Name>
-	<Description>A project template for creating a HandyControl WPF App with .Net Core</Description>
+    <Name>HandyControl App (.Net)</Name>
+	<Description>A project template for creating a HandyControl WPF App with .Net</Description>
 	<Icon>icon.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <CreateNewFolder>true</CreateNewFolder>
