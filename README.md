@@ -27,7 +27,6 @@
 <p align="center">
 	<b>🙌 Use <a href="https://blockchain.com/btc/payment_request?address=19cmmVkh4ZsEdrcumbRMvQXmCFfw8nAbX5&amount=0.00041825&message=Buy a cup of tea">donations</a> to help support <b>your</b> project! 🙌</b>
 </p>
-
 <br>
 
 # Welcome to HandyControl
@@ -121,6 +120,11 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 <a href="https://atmb.top" target="_blank"><img width="70px" alt="AutumnBox" src="https://atmb.top/images/icon.png"></a>
 
 if your project is not listed here, let us know! 😀
+
+
+## Documentation
+
+[https://ghost1372.github.io/handycontrol/](https://ghost1372.github.io/handycontrol/)
 
 ## Usage
 
