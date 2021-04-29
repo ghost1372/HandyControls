@@ -255,8 +255,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\LogMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\LogPublisher.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\IfExtension.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\MultiBindingExtensionBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\ObjectExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\Internals\MultiBindingExtensionBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ObjectExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\UpdatableMarkupExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\CloseWindowCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\OpenLinkCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\Commands\StartScreenshotCommand.cs" />
@@ -1109,6 +1110,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\" />
+    <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\Internals\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\" />
   </ItemGroup>
   <ItemGroup>

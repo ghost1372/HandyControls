@@ -1,12 +1,10 @@
-﻿// https://github.com/DingpingZhang/WpfExtensions
+﻿using System;
 
-using System;
-
-namespace HandyControl.Tools
+namespace HandyControl.Tools.Extension
 {
-    internal static class ObjectExtensions
+    public static class ObjectExtension
     {
-        internal static T CastTo<T>(this object value)
+        public static T CastTo<T>(this object value)
         {
             return typeof(T).IsValueType && value != null
                 ? (T) Convert.ChangeType(value, typeof(T))
