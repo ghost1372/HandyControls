@@ -349,22 +349,22 @@ namespace HandyControl.Controls
 
         private static void ShowGlobal(GrowlInfo growlInfo)
         {
-            if (GrowlWindow == null)
-            {
-                GrowlWindow = new GrowlWindow();
-                GrowlWindow.Show();
-                InitGrowlPanel(GrowlWindow.GrowlPanel);
-                GrowlWindow.Init();
-            }
-
-            GrowlWindow.Show(true);
-
             Application.Current.Dispatcher?.Invoke(
 #if NET40
                 new Action(
 #endif
                     () =>
                     {
+                        if (GrowlWindow == null)
+                        {
+                            GrowlWindow = new GrowlWindow();
+                            GrowlWindow.Show();
+                            InitGrowlPanel(GrowlWindow.GrowlPanel);
+                            GrowlWindow.Init();
+                        }
+
+                        GrowlWindow.Show(true);
+                        
                         var showDateTime = growlInfo.ShowDateTime;
                         var time = DateTime.Now;
                         if (growlInfo.ShowPersianDateTime)
