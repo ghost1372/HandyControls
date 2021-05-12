@@ -62,6 +62,15 @@ namespace HandyControl.Controls
             set => SetValue(CaretBrushProperty, value);
         }
 
+        public static readonly DependencyProperty ConfirmButtonTextProperty =
+           PersianCalendarWithClock.ConfirmButtonTextProperty.AddOwner(typeof(PersianDateTimePicker));
+
+        public string ConfirmButtonText
+        {
+            get { return (string) GetValue(ConfirmButtonTextProperty); }
+            set { SetValue(ConfirmButtonTextProperty, value); }
+        }
+
         #region Constants
 
         private const string ElementRoot = "PART_Root";
@@ -457,6 +466,13 @@ namespace HandyControl.Controls
             {
                 ShowConfirmButton = true
             };
+
+            _calendarWithClock.SetBinding(PersianCalendarWithClock.ConfirmButtonTextProperty, new Binding
+            {
+                Path = new PropertyPath("ConfirmButtonText"),
+                Source = this
+            });
+
             _calendarWithClock.SelectedDateTimeChanged += CalendarWithClock_SelectedDateTimeChanged;
             _calendarWithClock.Confirmed += CalendarWithClock_Confirmed;
         }

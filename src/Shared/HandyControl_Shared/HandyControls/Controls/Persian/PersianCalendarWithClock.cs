@@ -1,5 +1,6 @@
 ﻿
 using HandyControl.Data;
+using HandyControl.Properties.Langs;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -100,7 +101,7 @@ namespace HandyControl.Controls
             "SelectedDateTime", typeof(DateTime?), typeof(PersianCalendarWithClock), new PropertyMetadata(default(DateTime?), OnSelectedDateTimeChanged));
 
         public static readonly DependencyProperty ConfirmButtonTextProperty = DependencyProperty.Register(
-         "ConfirmButtonText", typeof(string), typeof(PersianCalendarWithClock), new PropertyMetadata("Confirm"));
+         "ConfirmButtonText", typeof(string), typeof(PersianCalendarWithClock), new PropertyMetadata(Lang.Confirm));
 
         public string ConfirmButtonText
         {
