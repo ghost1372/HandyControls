@@ -60,6 +60,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DictionaryExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\CollectionViewExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\EnumeratorWithIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\ICulturedStringTransformer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\MergedDictionariesExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\IStringTransformer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\To.cs" />
@@ -1108,7 +1109,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Data\Info\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\" />
-    <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\" />
     <Folder Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\Internals\" />
     <Folder Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\" />
