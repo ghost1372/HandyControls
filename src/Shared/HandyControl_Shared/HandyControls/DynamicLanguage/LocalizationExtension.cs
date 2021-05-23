@@ -122,12 +122,15 @@ namespace HandyControl.Tools
             // if provider is null again, mybe we are in usercontrol so we can use mainwindow provider
             if (ctlProvider == null)
             {
-                object localValue = Application.Current.MainWindow.ReadLocalValue(LocalizationManager.ProviderProperty);
-                if (localValue != DependencyProperty.UnsetValue)
+                if (Application.Current.MainWindow != null)
                 {
-                    if (localValue is ILocalizationProvider provider)
+                    object localValue = Application.Current.MainWindow.ReadLocalValue(LocalizationManager.ProviderProperty);
+                    if (localValue != DependencyProperty.UnsetValue)
                     {
-                        ctlProvider = provider;
+                        if (localValue is ILocalizationProvider provider)
+                        {
+                            ctlProvider = provider;
+                        }
                     }
                 }
             }
