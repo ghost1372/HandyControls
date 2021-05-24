@@ -1190,9 +1190,19 @@ namespace HandyControl.Controls
                 year += 1300;
             }
 
+            var lastDay = GetDaysInMonth(year, month);
+            if (day > lastDay)
+            {
+                day = lastDay;
+            }
+
             return new System.Globalization.PersianCalendar().ToDateTime(year, month, day, 0, 0, 0, 0);
         }
-
+        private int GetDaysInMonth(int year, int month)
+        {
+            System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
+            return pc.GetDaysInMonth(year, month);
+        }
         private bool ProcessDatePickerKey(KeyEventArgs e)
         {
             switch (e.Key)
