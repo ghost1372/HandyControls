@@ -460,7 +460,7 @@ namespace HandyControl.Controls
                         {
                             // GrowlPanel is null, we create it automatically
                             GrowlPanel ??= CreateDefaultPanel();
-                            GrowlPanel.Children.Insert(0, ctl);
+                            GrowlPanel?.Children.Insert(0, ctl);
                         }
                     }
 #if NET40
@@ -471,15 +471,6 @@ namespace HandyControl.Controls
 
         private static Panel CreateDefaultPanel()
         {
-            var panel = new StackPanel
-            {
-                HorizontalAlignment = HorizontalAlignment.Right,
-                Margin = new Thickness(10)
-            };
-
-            InitGrowlPanel(panel);
-            SetIsCreatedAutomatically(panel, true);
-
             FrameworkElement element = WindowHelper.GetActiveWindow();
             var decorator = VisualHelper.GetChild<AdornerDecorator>(element);
 
@@ -488,16 +479,35 @@ namespace HandyControl.Controls
                 var layer = decorator.AdornerLayer;
                 if (layer != null)
                 {
+                    var panel = new StackPanel
+                    {
+                        VerticalAlignment = VerticalAlignment.Top
+                    };
+
+                    InitGrowlPanel(panel);
+                    SetIsCreatedAutomatically(panel, true);
+
+                    var scrollViewer = new ScrollViewer
+                    {
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        VerticalScrollBarVisibility = ScrollBarVisibility.Hidden,
+                        IsInertiaEnabled = true,
+                        IsPenetrating = true,
+                        Content = panel
+                    };
+
                     var container = new AdornerContainer(layer)
                     {
-                        Child = panel
+                        Child = scrollViewer
                     };
 
                     layer.Add(container);
+
+                    return panel;
                 }
             }
 
-            return panel;
+            return null;
         }
 
         private static void RemoveDefaultPanel(Panel panel)
