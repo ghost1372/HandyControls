@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using System.Windows;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControl.Tools.Interop;
@@ -7,6 +8,23 @@ namespace HandyControl.Controls
 {
     public class BlurWindow : Window
     {
+        internal static BlurWindow Instance;
+
+        public static readonly DependencyProperty FORCE_ENABLE_ACRYLIC_BLURProperty = DependencyProperty.Register(
+                "FORCE_ENABLE_ACRYLIC_BLUR", typeof(bool), typeof(BlurWindow),
+                new PropertyMetadata(ValueBoxes.FalseBox));
+
+        public bool FORCE_ENABLE_ACRYLIC_BLUR
+        {
+            get => (bool) GetValue(FORCE_ENABLE_ACRYLIC_BLURProperty);
+            set => SetValue(FORCE_ENABLE_ACRYLIC_BLURProperty, ValueBoxes.BooleanBox(value));
+        }
+
+        public BlurWindow()
+        {
+            Instance = this;
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -25,7 +43,9 @@ namespace HandyControl.Controls
 
             if (versionInfo >= SystemVersionInfo.Windows10_1903)
             {
-                accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_BLURBEHIND;
+                accentPolicy.AccentState = Instance.FORCE_ENABLE_ACRYLIC_BLUR
+                    ? InteropValues.ACCENTSTATE.ACCENT_ENABLE_ACRYLICBLURBEHIND
+                    : InteropValues.ACCENTSTATE.ACCENT_ENABLE_BLURBEHIND;
             }
             else if (versionInfo >= SystemVersionInfo.Windows10_1809)
             {
