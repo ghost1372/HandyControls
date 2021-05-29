@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-using System;
-using System.Linq;
+﻿using System;
 using System.Windows;
 
 namespace HandyControl.Tools
@@ -11,7 +9,7 @@ namespace HandyControl.Tools
     public class ResourceHelper
     {
         /// <summary>
-        ///     获取资源
+        ///     Get Resource
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -34,5 +32,10 @@ namespace HandyControl.Tools
 
             return default;
         }
+
+        public static ResourceDictionary GetTheme() => new Lazy<ResourceDictionary>(() => new ResourceDictionary
+        {
+            Source = ApplicationHelper.GetAbsoluteUri("Themes/Theme.xaml")
+        }).Value;
     }
 }
