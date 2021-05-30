@@ -2,6 +2,7 @@
 using System.Windows;
 using HandyControl.Data;
 using HandyControl.Tools;
+using HandyControl.Tools.Helper;
 using HandyControl.Tools.Interop;
 
 namespace HandyControl.Controls

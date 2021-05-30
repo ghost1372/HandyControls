@@ -534,6 +534,11 @@ namespace HandyControl.Tools.Interop
 
         [DllImport(InteropValues.ExternDll.Kernel32, CharSet = CharSet.Unicode)]
         public static extern int GetPrivateProfileString(string Section, string Key, string Default, StringBuilder RetVal, int Size, string FilePath);
+
+        [SecurityCritical]
+        [DllImport(InteropValues.ExternDll.DwmApi, EntryPoint = "DwmGetColorizationColor", PreserveSig = true)]
+        public static extern int DwmGetColorizationColor(out uint pcrColorization, out bool pfOpaqueBlend);
+
         #endregion
 
         // Define the callback delegate's type.

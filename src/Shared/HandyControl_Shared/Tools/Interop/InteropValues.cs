@@ -21,6 +21,7 @@ namespace HandyControl.Tools.Interop
                 NTdll = "ntdll.dll",
                 WinInet = "wininet.dll",
                 UxTheme = "uxtheme.dll";
+                DwmApi = "dwmapi.dll";
         }
 
         public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
