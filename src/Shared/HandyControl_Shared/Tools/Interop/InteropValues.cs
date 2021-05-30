@@ -20,7 +20,7 @@ namespace HandyControl.Tools.Interop
                 MsImg = "msimg32.dll",
                 NTdll = "ntdll.dll",
                 WinInet = "wininet.dll",
-                UxTheme = "uxtheme.dll";
+                UxTheme = "uxtheme.dll",
                 DwmApi = "dwmapi.dll";
         }
 
