@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Microsoft.Windows.Controls
 {
@@ -48,49 +49,75 @@ namespace Microsoft.Windows.Controls
             return format;
         }
 
-        public static System.Globalization.DateTimeFormatInfo GetDateTimeFormatInfo()
+        public static DateTimeFormatInfo GetDateTimeFormatInfo()
         {
-            System.Globalization.DateTimeFormatInfo dtFormat = new System.Globalization.DateTimeFormatInfo()
-            {
-                AbbreviatedDayNames = new string[] { "ی", "د", "س", "چ", "پ", "ج", "ش" },
-                AbbreviatedMonthGenitiveNames = new string[] { 
-                        "فروردین", "اردیبهشت", "خرداد",
-                        "تیر", "مرداد", "شهریور",
-                        "مهر", "آبان", "آذر",
-                        "دی", "بهمن", "اسفند", "" },
-                AbbreviatedMonthNames = new string[] {
-                        "فروردین", "اردیبهشت", "خرداد",
-                        "تیر", "مرداد", "شهریور",
-                        "مهر", "آبان", "آذر",
-                        "دی", "بهمن", "اسفند", "" },
-                AMDesignator = "صبح",
-                CalendarWeekRule = System.Globalization.CalendarWeekRule.FirstDay,
-                DateSeparator = "/",
-                DayNames = new string[] { "یکشنبه", "دوشنبه", "سه‌شنبه", "چهار‌شنبه", "پنجشنبه", "جمعه", "شنبه" },
-                FirstDayOfWeek = DayOfWeek.Saturday,
-                FullDateTimePattern = "dddd dd MMMM yyyy",
-                LongDatePattern = "dd MMMM yyyy",
-                LongTimePattern = "hh:mm:ss TT",
-                MonthDayPattern = "dd MMMM",
-                MonthGenitiveNames = new string[] { 
-                        "فروردین", "اردیبهشت", "خرداد",
-                        "تیر", "مرداد", "شهریور",
-                        "مهر", "آبان", "آذر",
-                        "دی", "بهمن", "اسفند", "" },
-                MonthNames = new string[] {
-                        "فروردین", "اردیبهشت", "خرداد",
-                        "تیر", "مرداد", "شهریور",
-                        "مهر", "آبان", "آذر",
-                        "دی", "بهمن", "اسفند", "" },
-                PMDesignator = "عصر",
-                ShortDatePattern = "dd/MM/yy",
-                ShortestDayNames = new string[] { "ی", "د", "س", "چ", "پ", "ج", "ش" },
-                ShortTimePattern = "HH:mm",
-                TimeSeparator = ":",
-                YearMonthPattern = "MMMM yyyy",
-            };
+            var info = CultureInfo.CurrentCulture;
+            DateTimeFormatInfo dtFormat = new DateTimeFormatInfo();
+            dtFormat.CalendarWeekRule = CalendarWeekRule.FirstDay;
+            dtFormat.DateSeparator = "/";
+            dtFormat.FirstDayOfWeek = DayOfWeek.Saturday;
+            dtFormat.FullDateTimePattern = "dddd dd MMMM yyyy";
+            dtFormat.LongDatePattern = "dd MMMM yyyy";
+            dtFormat.LongTimePattern = "hh:mm:ss TT";
+            dtFormat.MonthDayPattern = "dd MMMM";
+            dtFormat.ShortDatePattern = "dd/MM/yy";
+            dtFormat.ShortTimePattern = "HH:mm";
+            dtFormat.TimeSeparator = ":";
+            dtFormat.YearMonthPattern = "MMMM yyyy";
+            dtFormat.AMDesignator = "صبح";
+            dtFormat.PMDesignator = "عصر";
+            dtFormat.DayNames = new string[] { "یکشنبه", "دوشنبه", "سه‌شنبه", "چهار‌شنبه", "پنجشنبه", "جمعه", "شنبه" };
+            dtFormat.AbbreviatedDayNames = new string[] { "ی", "د", "س", "چ", "پ", "ج", "ش" };
+            dtFormat.ShortestDayNames = new string[] { "ی", "د", "س", "چ", "پ", "ج", "ش" };
 
-            return dtFormat;
+            if (info.Name == "fa-AF" || info.Name == "ps-AF" || info.Name == "prs-AF")
+            {
+                dtFormat.AbbreviatedMonthGenitiveNames = new string[] {
+                        "حمل", "ثور", "جوزا",
+                        "سرطان", "اسد", "سنبله",
+                        "میزان", "عقرب", "قوس",
+                        "جدی", "دلو", "حوت", "" };
+                dtFormat.AbbreviatedMonthNames = new string[] {
+                        "حمل", "ثور", "جوزا",
+                        "سرطان", "اسد", "سنبله",
+                        "میزان", "عقرب", "قوس",
+                        "جدی", "دلو", "حوت", "" }; 
+                dtFormat.MonthGenitiveNames = new string[] {
+                        "حمل", "ثور", "جوزا",
+                        "سرطان", "اسد", "سنبله",
+                        "میزان", "عقرب", "قوس",
+                        "جدی", "دلو", "حوت", "" };
+                dtFormat.MonthNames = new string[] {
+                        "حمل", "ثور", "جوزا",
+                        "سرطان", "اسد", "سنبله",
+                        "میزان", "عقرب", "قوس",
+                        "جدی", "دلو", "حوت", "" };
+                return dtFormat;
+            }
+            else
+            {
+                dtFormat.AbbreviatedMonthGenitiveNames = new string[] {
+                        "فروردین", "اردیبهشت", "خرداد",
+                        "تیر", "مرداد", "شهریور",
+                        "مهر", "آبان", "آذر",
+                        "دی", "بهمن", "اسفند", "" };
+                dtFormat.AbbreviatedMonthNames = new string[] {
+                        "فروردین", "اردیبهشت", "خرداد",
+                        "تیر", "مرداد", "شهریور",
+                        "مهر", "آبان", "آذر",
+                        "دی", "بهمن", "اسفند", "" };
+                dtFormat.MonthGenitiveNames = new string[] {
+                        "فروردین", "اردیبهشت", "خرداد",
+                        "تیر", "مرداد", "شهریور",
+                        "مهر", "آبان", "آذر",
+                        "دی", "بهمن", "اسفند", "" };
+                dtFormat.MonthNames = new string[] {
+                        "فروردین", "اردیبهشت", "خرداد",
+                        "تیر", "مرداد", "شهریور",
+                        "مهر", "آبان", "آذر",
+                        "دی", "بهمن", "اسفند", "" };
+                return dtFormat;
+            }
         }
     }
 }
