@@ -275,7 +275,7 @@ namespace HandyControl.Controls
             {
                 for (var i = 0; i < Items.Count; i++)
                 {
-                    if (!(ItemContainerGenerator.ContainerFromIndex(i) is TabItem item)) return;
+                    if (ItemContainerGenerator.ContainerFromIndex(i) is not TabItem item) return;
                     item.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
                     item.TabPanel = HeaderPanel;
                 }
@@ -360,7 +360,7 @@ namespace HandyControl.Controls
                 _buttonOverflow.Menu.Items.Clear();
                 for (var i = 0; i < Items.Count; i++)
                 {
-                    if (!(ItemContainerGenerator.ContainerFromIndex(i) is TabItem item)) continue;
+                    if (ItemContainerGenerator.ContainerFromIndex(i) is not TabItem item) continue;
 
                     var menuItem = new MenuItem
                     {
@@ -389,14 +389,10 @@ namespace HandyControl.Controls
                         {
                             list.Remove(actualItem);
                             list.Insert(0, actualItem);
-                            if (IsAnimationEnabled)
-                            {
-                                HeaderPanel.SetValue(TabPanel.FluidMoveDurationPropertyKey, new Duration(TimeSpan.FromMilliseconds(200)));
-                            }
-                            else
-                            {
-                                HeaderPanel.SetValue(TabPanel.FluidMoveDurationPropertyKey, new Duration(TimeSpan.FromMilliseconds(0)));
-                            }
+                            HeaderPanel.SetValue(TabPanel.FluidMoveDurationPropertyKey,
+                                IsAnimationEnabled
+                                    ? new Duration(TimeSpan.FromMilliseconds(200))
+                                    : new Duration(TimeSpan.FromMilliseconds(0)));
                             HeaderPanel.ForceUpdate = true;
                             HeaderPanel.Measure(new Size(HeaderPanel.DesiredSize.Width, ActualHeight));
                             HeaderPanel.ForceUpdate = false;
@@ -435,7 +431,7 @@ namespace HandyControl.Controls
                 {
                     var argsClosing = new CancelRoutedEventArgs(TabItem.ClosingEvent, item);
 
-                    if (!(ItemContainerGenerator.ContainerFromItem(item) is TabItem tabItem)) continue;
+                    if (ItemContainerGenerator.ContainerFromItem(item) is not TabItem tabItem) continue;
 
                     tabItem.RaiseEvent(argsClosing);
                     if (argsClosing.Cancel) return;

@@ -9,9 +9,8 @@ namespace HandyControl.Tools
 {
     public class SystemMenuHook
     {
+        private static readonly Dictionary<int, HwndSource> DataDic = new();
         private static ContextMenu context = null;
-        private static readonly Dictionary<int, HwndSource> DataDic = new Dictionary<int, HwndSource>();
-
         public static event Action<int> Click;
 
         public static void SetCustomContextMenu(Window window, ContextMenu contextMenu)

@@ -33,9 +33,20 @@ namespace HandyControl.Tools
             return default;
         }
 
-        public static ResourceDictionary GetTheme() => new Lazy<ResourceDictionary>(() => new ResourceDictionary
+        private static ResourceDictionary HcTheme;
+
+        /// <summary>
+        ///     get HandyControl theme
+        /// </summary>
+        /// <returns></returns>
+        public static ResourceDictionary GetTheme()
         {
-            Source = ApplicationHelper.GetAbsoluteUri("Themes/Theme.xaml")
-        }).Value;
+            HcTheme ??= new ResourceDictionary
+            {
+                Source = ApplicationHelper.GetAbsoluteUri("Themes/Theme.xaml")
+            };
+
+            return HcTheme;
+        }
     }
 }

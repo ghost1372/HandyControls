@@ -10,7 +10,7 @@ namespace HandyControl.Tools
     /// </summary>
     public class SingleOpenHelper
     {
-        private static readonly Dictionary<string, ISingleOpen> OpenDic = new Dictionary<string, ISingleOpen>();
+        private static readonly Dictionary<string, ISingleOpen> OpenDic = new();
 
         /// <summary>
         ///     Create an instance based on the specified type

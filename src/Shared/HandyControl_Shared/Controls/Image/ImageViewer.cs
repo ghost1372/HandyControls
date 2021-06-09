@@ -48,7 +48,7 @@ namespace HandyControl.Controls
         /// <summary>
         ///     Picture save dialog
         /// </summary>
-        private static readonly SaveFileDialog SaveFileDialog = new SaveFileDialog
+        private static readonly SaveFileDialog SaveFileDialog = new()
         {
             Filter = $"{Lang.PngImg}|*.png"
         };

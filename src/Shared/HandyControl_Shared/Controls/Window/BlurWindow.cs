@@ -60,7 +60,7 @@ namespace HandyControl.Controls
                 accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_TRANSPARENTGRADIENT;
             }
 
-            accentPolicy.GradientColor = ResourceHelper.GetResourceInternal<uint>(ResourceToken.BlurGradientValue);
+            accentPolicy.GradientColor = ResourceHelper.GetResource<uint>(ResourceToken.BlurGradientValue);
 
             var accentPtr = Marshal.AllocHGlobal(accentPolicySize);
             Marshal.StructureToPtr(accentPolicy, accentPtr, false);
