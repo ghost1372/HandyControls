@@ -337,7 +337,7 @@ namespace HandyControl.Controls
                 }
             };
 
-            PanelElement.SetFluidMoveBehavior(panel, ResourceHelper.GetResourceInternal<FluidMoveBehavior>(ResourceToken.BehaviorXY400));
+            PanelElement.SetFluidMoveBehavior(panel, ResourceHelper.GetResource<FluidMoveBehavior>(ResourceToken.BehaviorXY400));
         }
 
         private void Update()
@@ -390,8 +390,8 @@ namespace HandyControl.Controls
                         {
                             Message = growlInfo.Message,
                             Time = time,
-                            Icon = ResourceHelper.GetResourceInternal<Geometry>(growlInfo.IconKey),
-                            IconBrush = ResourceHelper.GetResourceInternal<Brush>(growlInfo.IconBrushKey),
+                            Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey),
+                            IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey),
                             _showCloseButton = growlInfo.ShowCloseButton,
                             ActionBeforeClose = growlInfo.ActionBeforeClose,
                             _staysOpen = growlInfo.StaysOpen,
@@ -436,8 +436,8 @@ namespace HandyControl.Controls
                         {
                             Message = growlInfo.Message,
                             Time = time,
-                            Icon = ResourceHelper.GetResourceInternal<Geometry>(growlInfo.IconKey),
-                            IconBrush = ResourceHelper.GetResourceInternal<Brush>(growlInfo.IconBrushKey),
+                            Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey),
+                            IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey),
                             _showCloseButton = growlInfo.ShowCloseButton,
                             ActionBeforeClose = growlInfo.ActionBeforeClose,
                             _staysOpen = growlInfo.StaysOpen,
