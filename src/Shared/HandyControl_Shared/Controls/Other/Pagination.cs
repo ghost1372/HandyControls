@@ -385,7 +385,7 @@ namespace HandyControl.Controls
         {
             return new()
             {
-                Style = ResourceHelper.GetResourceInternal<Style>(ResourceToken.PaginationButtonStyle),
+                Style = ResourceHelper.GetResource<Style>(ResourceToken.PaginationButtonStyle),
                 Content = page.ToString()
             };
         }

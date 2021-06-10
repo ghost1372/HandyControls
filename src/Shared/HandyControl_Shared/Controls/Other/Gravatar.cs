@@ -45,7 +45,7 @@ namespace HandyControl.Controls
                 {
                     Stretch = Stretch.UniformToFill
                 }
-                : ResourceHelper.GetResourceInternal<Brush>("SecondaryRegionBrush");
+                : ResourceHelper.GetResource<Brush>("SecondaryRegionBrush");
         }
 
         public ImageSource Source

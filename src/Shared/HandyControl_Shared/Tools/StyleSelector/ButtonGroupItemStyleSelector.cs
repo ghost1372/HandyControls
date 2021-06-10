@@ -11,26 +11,26 @@ namespace HandyControl.Tools
     {
         private static readonly Dictionary<string, Style> StyleDict = new()
         {
-            [ResourceToken.RadioGroupItemSingle] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.RadioGroupItemSingle),
-            [ResourceToken.RadioGroupItemHorizontalFirst] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.RadioGroupItemHorizontalFirst),
-            [ResourceToken.RadioGroupItemHorizontalLast] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.RadioGroupItemHorizontalLast),
-            [ResourceToken.RadioGroupItemVerticalFirst] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.RadioGroupItemVerticalFirst),
-            [ResourceToken.RadioGroupItemVerticalLast] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.RadioGroupItemVerticalLast),
-            [ResourceToken.RadioGroupItemDefault] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.RadioGroupItemDefault),
+            [ResourceToken.RadioGroupItemSingle] = ResourceHelper.GetResource<Style>(ResourceToken.RadioGroupItemSingle),
+            [ResourceToken.RadioGroupItemHorizontalFirst] = ResourceHelper.GetResource<Style>(ResourceToken.RadioGroupItemHorizontalFirst),
+            [ResourceToken.RadioGroupItemHorizontalLast] = ResourceHelper.GetResource<Style>(ResourceToken.RadioGroupItemHorizontalLast),
+            [ResourceToken.RadioGroupItemVerticalFirst] = ResourceHelper.GetResource<Style>(ResourceToken.RadioGroupItemVerticalFirst),
+            [ResourceToken.RadioGroupItemVerticalLast] = ResourceHelper.GetResource<Style>(ResourceToken.RadioGroupItemVerticalLast),
+            [ResourceToken.RadioGroupItemDefault] = ResourceHelper.GetResource<Style>(ResourceToken.RadioGroupItemDefault),
 
-            [ResourceToken.ButtonGroupItemSingle] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ButtonGroupItemSingle),
-            [ResourceToken.ButtonGroupItemHorizontalFirst] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ButtonGroupItemHorizontalFirst),
-            [ResourceToken.ButtonGroupItemHorizontalLast] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ButtonGroupItemHorizontalLast),
-            [ResourceToken.ButtonGroupItemVerticalFirst] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ButtonGroupItemVerticalFirst),
-            [ResourceToken.ButtonGroupItemVerticalLast] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ButtonGroupItemVerticalLast),
-            [ResourceToken.ButtonGroupItemDefault] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ButtonGroupItemDefault),
+            [ResourceToken.ButtonGroupItemSingle] = ResourceHelper.GetResource<Style>(ResourceToken.ButtonGroupItemSingle),
+            [ResourceToken.ButtonGroupItemHorizontalFirst] = ResourceHelper.GetResource<Style>(ResourceToken.ButtonGroupItemHorizontalFirst),
+            [ResourceToken.ButtonGroupItemHorizontalLast] = ResourceHelper.GetResource<Style>(ResourceToken.ButtonGroupItemHorizontalLast),
+            [ResourceToken.ButtonGroupItemVerticalFirst] = ResourceHelper.GetResource<Style>(ResourceToken.ButtonGroupItemVerticalFirst),
+            [ResourceToken.ButtonGroupItemVerticalLast] = ResourceHelper.GetResource<Style>(ResourceToken.ButtonGroupItemVerticalLast),
+            [ResourceToken.ButtonGroupItemDefault] = ResourceHelper.GetResource<Style>(ResourceToken.ButtonGroupItemDefault),
 
-            [ResourceToken.ToggleButtonGroupItemSingle] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ToggleButtonGroupItemSingle),
-            [ResourceToken.ToggleButtonGroupItemHorizontalFirst] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ToggleButtonGroupItemHorizontalFirst),
-            [ResourceToken.ToggleButtonGroupItemHorizontalLast] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ToggleButtonGroupItemHorizontalLast),
-            [ResourceToken.ToggleButtonGroupItemVerticalFirst] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ToggleButtonGroupItemVerticalFirst),
-            [ResourceToken.ToggleButtonGroupItemVerticalLast] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ToggleButtonGroupItemVerticalLast),
-            [ResourceToken.ToggleButtonGroupItemDefault] = ResourceHelper.GetResourceInternal<Style>(ResourceToken.ToggleButtonGroupItemDefault)
+            [ResourceToken.ToggleButtonGroupItemSingle] = ResourceHelper.GetResource<Style>(ResourceToken.ToggleButtonGroupItemSingle),
+            [ResourceToken.ToggleButtonGroupItemHorizontalFirst] = ResourceHelper.GetResource<Style>(ResourceToken.ToggleButtonGroupItemHorizontalFirst),
+            [ResourceToken.ToggleButtonGroupItemHorizontalLast] = ResourceHelper.GetResource<Style>(ResourceToken.ToggleButtonGroupItemHorizontalLast),
+            [ResourceToken.ToggleButtonGroupItemVerticalFirst] = ResourceHelper.GetResource<Style>(ResourceToken.ToggleButtonGroupItemVerticalFirst),
+            [ResourceToken.ToggleButtonGroupItemVerticalLast] = ResourceHelper.GetResource<Style>(ResourceToken.ToggleButtonGroupItemVerticalLast),
+            [ResourceToken.ToggleButtonGroupItemDefault] = ResourceHelper.GetResource<Style>(ResourceToken.ToggleButtonGroupItemDefault)
         };
 
         public override Style SelectStyle(object item, DependencyObject container)
