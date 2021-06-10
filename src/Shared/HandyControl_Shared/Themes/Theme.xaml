@@ -5351,6 +5351,11 @@
 						</Trigger>
 						<Trigger Property="hc:MenuAttach.IsEnabledAnimation" Value="false">
 							<Setter TargetName="anim" Property="TransitionMode" Value="Custom" />
+							<Setter TargetName="anim" Property="TransitionStoryboard">
+								<Setter.Value>
+									<Storyboard />
+								</Setter.Value>
+							</Setter>
 						</Trigger>
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
