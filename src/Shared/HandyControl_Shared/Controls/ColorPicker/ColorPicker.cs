@@ -706,8 +706,6 @@ namespace HandyControl.Controls
                {
                    Info = SelectedBrush.Color
                });
-
-            RaiseEvent(new RoutedEventArgs(CanceledEvent));
         }
 
         private void ButtonCancel_OnClick(object sender, RoutedEventArgs e) => RaiseEvent(new RoutedEventArgs(CanceledEvent));
