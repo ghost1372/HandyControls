@@ -61,6 +61,7 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 <a href="https://github.com/cuiliang" target="_blank"><img style="border-radius:50%!important" width="64px" alt="cuiliang" src="https://avatars2.githubusercontent.com/u/1972649?s=64&v=4"></a>
 <a href="https://github.com/lwqwag" target="_blank"><img style="border-radius:50%!important" width="64px" alt="lwqwag" src="https://avatars3.githubusercontent.com/u/29883542?s=64&v=4"></a>
 <a href="https://github.com/Epacik" target="_blank"><img style="border-radius:50%!important" width="64px" alt="Epacik" src="https://avatars.githubusercontent.com/u/23077337?s=64&v=4"></a>
+<a href="https://github.com/ChoKaPeek" target="_blank"><img style="border-radius:50%!important" width="64px" alt="ChoKaPeek" src="https://avatars.githubusercontent.com/u/16904907?s=64&v=4"></a>
 
 ## Backers
 
