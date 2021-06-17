@@ -19,7 +19,7 @@
     <DefineConstants>TRACE;Core</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HandyControls" Version="3.3.5" />
-    <PackageReference Include="Prism.DryIoc" Version="8.0.0.1909" />
+    <PackageReference Include="HandyControls" Version="3.3.6" />
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
   </ItemGroup>
 </Project>
