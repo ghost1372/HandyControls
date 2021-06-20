@@ -155,6 +155,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SpeedoMeter\Converter\SpeedConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SpeedoMeter\Converter\ValueToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SpeedoMeter\SpeedoMeter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\ScrollViewerAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\TextBlockAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Base\AdornerElement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Block\FloatingBlock.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Other\Watermark.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\AxleCanvas.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\FlexPanel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\ElementGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleStackPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\UniformSpacingPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\ImagePropertyEditor.cs" />
