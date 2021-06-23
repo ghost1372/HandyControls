@@ -703,9 +703,9 @@ namespace HandyControl.Controls
         private void ButtonConfirm_OnClick(object sender, RoutedEventArgs e)
         {
             RaiseEvent(new FunctionEventArgs<Color>(ConfirmedEvent, this)
-               {
-                   Info = SelectedBrush.Color
-               });
+            {
+                Info = SelectedBrush.Color
+            });
         }
 
         private void ButtonCancel_OnClick(object sender, RoutedEventArgs e) => RaiseEvent(new RoutedEventArgs(CanceledEvent));
