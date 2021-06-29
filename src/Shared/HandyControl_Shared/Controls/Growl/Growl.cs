@@ -390,8 +390,8 @@ namespace HandyControl.Controls
                         {
                             Message = growlInfo.Message,
                             Time = time,
-                            Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey),
-                            IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey),
+                            Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey) ?? growlInfo.Icon,
+                            IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey) ?? growlInfo.IconBrush,
                             _showCloseButton = growlInfo.ShowCloseButton,
                             ActionBeforeClose = growlInfo.ActionBeforeClose,
                             _staysOpen = growlInfo.StaysOpen,
@@ -436,8 +436,8 @@ namespace HandyControl.Controls
                         {
                             Message = growlInfo.Message,
                             Time = time,
-                            Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey),
-                            IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey),
+                            Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey) ?? growlInfo.Icon,
+                            IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey) ?? growlInfo.IconBrush,
                             _showCloseButton = growlInfo.ShowCloseButton,
                             ActionBeforeClose = growlInfo.ActionBeforeClose,
                             _staysOpen = growlInfo.StaysOpen,
