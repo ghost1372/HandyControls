@@ -72,7 +72,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="6,0,0,0"/>
-        <Setter Property="MinWidth" Value="36"/>
+        <Setter Property="Width" Value="36"/>
         <Setter Property="Height" Value="22"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -135,7 +135,7 @@
                         <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Border Height="22" Width="36" x:Name="backBorder" Background="{DynamicResource BorderBrush}" CornerRadius="11"/>
                             <Border Grid.Column="0" Height="22" Width="36" Opacity="0" x:Name="lightBorder" Background="{DynamicResource PrimaryBrush}" CornerRadius="11" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
@@ -155,7 +155,7 @@
                                     </Border.RenderTransform>
                                 </Border>
                             </hc:SimplePanel>
-                            <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Content}" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            <ContentPresenter x:Name="contentPresenter" Visibility="Collapsed" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Grid>
                     </Viewbox>
                     <ControlTemplate.Triggers>

@@ -210,33 +210,6 @@ namespace HandyControl.Controls
             set => SetValue(ShowScrollButtonProperty, ValueBoxes.BooleanBox(value));
         }
 
-        #region WinUI Style Property
-        public bool UsingWinUIStyle
-        {
-            get { return (bool)GetValue(UsingWinUIStyleProperty); }
-            set { SetValue(UsingWinUIStyleProperty, value); }
-        }
-
-        public static readonly DependencyProperty UsingWinUIStyleProperty =
-            DependencyProperty.Register("UsingWinUIStyle", typeof(bool), typeof(TabControl), new PropertyMetadata(ValueBoxes.FalseBox));
-
-        public enum IndicatorMode
-        {
-            Top,
-            Bottom
-        }
-
-        public IndicatorMode IndicatorDisplayMode
-        {
-            get { return (IndicatorMode)GetValue(IndicatorDisplayModeProperty); }
-            set { SetValue(IndicatorDisplayModeProperty, value); }
-        }
-
-        public static readonly DependencyProperty IndicatorDisplayModeProperty =
-            DependencyProperty.Register("IndicatorDisplayMode", typeof(IndicatorMode), typeof(TabControl), new PropertyMetadata(IndicatorMode.Top));
-
-        #endregion
-
         /// <summary>
         ///     可见的标签数量
         /// </summary>

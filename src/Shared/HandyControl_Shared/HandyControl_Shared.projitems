@@ -1093,46 +1093,36 @@
     <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Empty.xaml">
       <SubType>Designer</SubType>
     </None>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\CommonBaseStyles.xaml">
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\ModernListBoxBaseStyles.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\PersianDatePickerBaseStyle.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\PersianDatePickerBaseStyle.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\PersianDateTimePickerBaseStyle.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\PersianDateTimePickerBaseStyle.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianCalendarWithClock.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianCalendarWithClock.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\CommonStyles.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\CommonStyles.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\LoadingIndicator.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\LoadingIndicator.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianCalendar.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianCalendar.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianDatePicker.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianDatePicker.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianDateTimePicker.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianDateTimePicker.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Slider.xaml">
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Slider.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    </None>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Theme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
