@@ -17,7 +17,7 @@ jobs:
         run: |
           cd build
           .\build.ps1
-          nuget pack build-for-myget.nuspec -version 3.3.7-beta.${env:GITHUB_RUN_NUMBER}
+          nuget pack build-for-myget.nuspec -version 3.3.8-beta.${env:GITHUB_RUN_NUMBER}
           $nupkgName = @(gci *.nupkg)[0].Name
           $mygetSourcePath = "https://www.myget.org/F/handycontrols"
           nuget setApiKey ${{ secrets.NIGHTLYBUILD }} -Source $mygetSourcePath
