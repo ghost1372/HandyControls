@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives"
                     xmlns:hc="clr-namespace:HandyControl.Controls"
-                    xmlns:tools="clr-namespace:HandyControl.Tools"
                     xmlns:themes="clr-namespace:HandyControl.Themes">
 
     <ResourceDictionary.MergedDictionaries>
@@ -15,8 +14,8 @@
         <Setter Property="MinWidth" Value="10"/>
         <Setter Property="MinHeight" Value="10"/>
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="60"/>
+        <Setter Property="Height" Value="35"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -244,7 +243,7 @@
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
-        <Setter Property="Language" Value="{Binding Lang,Source={x:Static tools:ConfigHelper.Instance}}"/>
+        <Setter Property="FlowDirection" Value="RightToLeft"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Margin" Value="8,0,8,8"/>
         <Setter Property="CalendarDayButtonStyle" Value="{StaticResource CalendarDayButtonStylePersian}"/>
