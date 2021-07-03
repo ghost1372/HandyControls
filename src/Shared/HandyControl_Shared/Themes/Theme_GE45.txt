@@ -1,6 +1,7 @@
 ﻿# --------------------------------------
 Lang.xaml
 # --------------------------------------
+Basic\Brushes.xaml
 Basic\Converters.xaml
 Basic\Effects.xaml
 Basic\Fonts.xaml
@@ -118,12 +119,10 @@ Styles\Base\WatermarkBaseStyle.xaml
 # --------------------------------------
 Styles\Badge.xaml
 Styles\CalendarWithClock.xaml
-Styles\BusyIndicator.xaml
 Styles\Card.xaml
 Styles\Carousel.xaml
 Styles\ChatBubble.xaml
 Styles\CheckComboBox.xaml
-Styles\CheckTreeView.xaml
 Styles\Clock.xaml
 Styles\Col.xaml
 Styles\ColorPicker.xaml
@@ -172,7 +171,6 @@ Styles\Shield.xaml
 Styles\SideMenu.xaml
 Styles\SimpleItemsControl.xaml
 Styles\SplitButton.xaml
-Styles\SpeedoMeter.xaml
 Styles\Sprite.xaml
 Styles\StatusBar.xaml
 Styles\StepBar.xaml
@@ -185,3 +183,24 @@ Styles\Transfer.xaml
 Styles\TransitioningContentControl.xaml
 Styles\TreeView.xaml
 Styles\Watermark.xaml
+
+
+
+
+
+
+
+# --------------------------------------
+Styles\Base\HandyControls\CommonBaseStyles.xaml
+Styles\Base\HandyControls\PersianDatePickerBaseStyle.xaml
+Styles\Base\HandyControls\PersianDateTimePickerBaseStyle.xaml
+# --------------------------------------
+Styles\HandyControls\BusyIndicator.xaml
+Styles\HandyControls\PersianCalendarWithClock.xaml
+Styles\HandyControls\CheckTreeView.xaml
+Styles\HandyControls\CommonStyles.xaml
+Styles\HandyControls\LoadingIndicator.xaml
+Styles\HandyControls\PersianCalendar.xaml
+Styles\HandyControls\PersianDatePicker.xaml
+Styles\HandyControls\PersianDateTimePicker.xaml
+Styles\HandyControls\SpeedoMeter.xaml

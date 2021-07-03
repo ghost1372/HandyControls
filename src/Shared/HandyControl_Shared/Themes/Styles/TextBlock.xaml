@@ -26,9 +26,6 @@
     <Style x:Key="TextBlockDefaultSuccess" BasedOn="{StaticResource TextBlockBaseStyle}" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource SuccessBrush}"/>
     </Style>
-     <Style x:Key="TextBlockDefaultViolet" BasedOn="{StaticResource TextBlockBaseStyle}" TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource VioletBrush}"/>
-    </Style>
     <Style x:Key="TextBlockDefaultSecLight" BasedOn="{StaticResource TextBlockBaseStyle}" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}"/>
     </Style>

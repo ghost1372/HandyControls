@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="clr-namespace:HandyControl.Controls">
+    
     <Style TargetType="hc:CheckTreeView">
         <Setter Property="hc:TreeViewAttach.IsCheckTreeView" Value="True"/>
         <Setter Property="ItemContainerStyle" Value="{DynamicResource TreeViewItemBaseStyle}"/>

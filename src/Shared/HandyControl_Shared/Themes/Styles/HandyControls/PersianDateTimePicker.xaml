@@ -7,10 +7,8 @@
         <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Base/DateTimePickerBaseStyle.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style BasedOn="{StaticResource DateTimePickerBaseStyle}" TargetType="hc:DateTimePicker"/>
-
-    <Style x:Key="DateTimePickerExtend" BasedOn="{StaticResource DateTimePickerExtendBaseStyle}" TargetType="hc:DateTimePicker"/>
-
-    <Style x:Key="DateTimePickerPlus" BasedOn="{StaticResource DateTimePickerPlusBaseStyle}" TargetType="hc:DateTimePicker"/>
+    <Style BasedOn="{StaticResource DateTimePickerBaseStylePersian}" TargetType="hc:PersianDateTimePicker"/>
+    <Style x:Key="DateTimePickerExtendPersian" BasedOn="{StaticResource DateTimePickerExtendBaseStylePersian}" TargetType="hc:PersianDateTimePicker"/>
+    <Style x:Key="DateTimePickerPlusPersian" BasedOn="{StaticResource DateTimePickerPlusBaseStylePersian}" TargetType="hc:PersianDateTimePicker"/>
 
 </ResourceDictionary>

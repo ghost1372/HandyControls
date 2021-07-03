@@ -20,19 +20,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="SplitButtonDefault" BasedOn="{StaticResource SplitButtonBaseStyle}" TargetType="hc:SplitButton">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}"/>
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource BorderBrush}"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
     <Style x:Key="SplitButtonPrimary"  BasedOn="{StaticResource SplitButtonBaseStyle}" TargetType="hc:SplitButton">
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
     </Style>
@@ -51,10 +38,6 @@
 
     <Style x:Key="SplitButtonDanger"  BasedOn="{StaticResource SplitButtonBaseStyle}" TargetType="hc:SplitButton">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
-    </Style>
-    
-    <Style x:Key="SplitButtonViolet"  BasedOn="{StaticResource SplitButtonBaseStyle}" TargetType="hc:SplitButton">
-        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
     </Style>
 
 </ResourceDictionary>

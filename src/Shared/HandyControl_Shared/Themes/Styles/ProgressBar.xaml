@@ -27,15 +27,7 @@
     <Style x:Key="ProgressBarDanger" BasedOn="{StaticResource ProgressBarBaseStyle}" TargetType="ProgressBar">
         <Setter Property="Foreground" Value="{DynamicResource DangerBrush}"/>
     </Style>
-    
-    <Style x:Key="ProgressBarDefault" BasedOn="{StaticResource ProgressBarBaseStyle}" TargetType="ProgressBar">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
-    </Style>
-    
-    <Style x:Key="ProgressBarViolet" BasedOn="{StaticResource ProgressBarBaseStyle}" TargetType="ProgressBar">
-        <Setter Property="Foreground" Value="{DynamicResource VioletBrush}"/>
-    </Style>
-    
+
     <Style x:Key="ProgressBarPrimaryStripe" BasedOn="{StaticResource ProgressBarStripeBaseStyle}" TargetType="ProgressBar">
         <Setter Property="Foreground">
             <Setter.Value>
@@ -186,36 +178,6 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ProgressBarVioletStripe" BasedOn="{StaticResource ProgressBarStripeBaseStyle}" TargetType="ProgressBar">
-        <Setter Property="Foreground">
-            <Setter.Value>
-                <DrawingBrush Viewport="0,0,20,32" TileMode="Tile" ViewportUnits="Absolute" Stretch="None">
-                    <DrawingBrush.Transform>
-                        <TransformGroup>
-                            <RotateTransform Angle="20"/>
-                            <TranslateTransform x:Name="MyTransform" X="0"/>
-                        </TransformGroup>
-                    </DrawingBrush.Transform>
-                    <DrawingBrush.Drawing>
-                        <GeometryDrawing>
-                            <GeometryDrawing.Brush>
-                                <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
-                                    <GradientStop Color="{DynamicResource DarkVioletColor}" Offset="0"/>
-                                    <GradientStop Color="{DynamicResource DarkVioletColor}" Offset="0.5"/>
-                                    <GradientStop Color="White" Offset="0.5"/>
-                                    <GradientStop Color="White" Offset="1"/>
-                                </LinearGradientBrush>
-                            </GeometryDrawing.Brush>
-                            <GeometryDrawing.Geometry>
-                                <RectangleGeometry Rect="0,0,20,32"/>
-                            </GeometryDrawing.Geometry>
-                        </GeometryDrawing>
-                    </DrawingBrush.Drawing>
-                </DrawingBrush>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style BasedOn="{StaticResource ProgressBarCircleBaseStyle}" TargetType="hc:CircleProgressBar">
         <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
     </Style>
@@ -236,14 +198,6 @@
         <Setter Property="Foreground" Value="{DynamicResource DangerBrush}"/>
     </Style>
 
-    <Style x:Key="ProgressBarDefaultCircle" BasedOn="{StaticResource ProgressBarCircleBaseStyle}" TargetType="hc:CircleProgressBar">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
-    </Style>
-
-    <Style x:Key="ProgressBarVioletCircle" BasedOn="{StaticResource ProgressBarCircleBaseStyle}" TargetType="hc:CircleProgressBar">
-        <Setter Property="Foreground" Value="{DynamicResource VioletBrush}"/>
-    </Style>
-
     <Style BasedOn="{StaticResource ProgressBarWaveBaseStyle}" TargetType="hc:WaveProgressBar">
         <Setter Property="WaveFill" Value="{DynamicResource DarkPrimaryBrush}"/>
     </Style>
@@ -262,14 +216,6 @@
 
     <Style x:Key="ProgressBarDangerWave" BasedOn="{StaticResource ProgressBarWaveBaseStyle}" TargetType="hc:WaveProgressBar">
         <Setter Property="WaveFill" Value="{DynamicResource DarkDangerBrush}"/>
-    </Style>
-
-    <Style x:Key="ProgressBarDefaultWave" BasedOn="{StaticResource ProgressBarWaveBaseStyle}" TargetType="hc:WaveProgressBar">
-        <Setter Property="WaveFill" Value="{DynamicResource DarkPrimaryBrush}"/>
-    </Style>
-
-    <Style x:Key="ProgressBarVioletWave" BasedOn="{StaticResource ProgressBarWaveBaseStyle}" TargetType="hc:WaveProgressBar">
-        <Setter Property="WaveFill" Value="{DynamicResource DarkVioletBrush}"/>
     </Style>
 
     <Style x:Key="ProgressBarFlat" TargetType="ProgressBar">

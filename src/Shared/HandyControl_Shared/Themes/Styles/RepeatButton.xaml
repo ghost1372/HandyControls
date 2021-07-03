@@ -45,11 +45,6 @@
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
     
-    <Style x:Key="RepeatButtonViolet" BasedOn="{StaticResource RepeatButtonBaseStyle}" TargetType="RepeatButton">
-        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
-    </Style>
-    
-
     <!--endregion-->
 
     <!--region RepeatButtonIcon-->

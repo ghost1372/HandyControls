@@ -407,13 +407,11 @@
 
         #region Style
         #region Badge
-            public const string BadgeDefault = nameof(BadgeDefault);
             public const string BadgePrimary = nameof(BadgePrimary);
             public const string BadgeSuccess = nameof(BadgeSuccess);
             public const string BadgeInfo = nameof(BadgeInfo);
             public const string BadgeWarning = nameof(BadgeWarning);
             public const string BadgeDanger = nameof(BadgeDanger);
-            public const string BadgeViolet = nameof(BadgeViolet);
         #endregion
         #region Button
             public const string ButtonDefault = nameof(ButtonDefault);
@@ -422,7 +420,6 @@
             public const string ButtonInfo = nameof(ButtonInfo);
             public const string ButtonWarning = nameof(ButtonWarning);
             public const string ButtonDanger = nameof(ButtonDanger);
-            public const string ButtonViolet = nameof(ButtonViolet);
             public const string ButtonIcon = nameof(ButtonIcon);
         #endregion
         #region RepeatButton
@@ -432,7 +429,6 @@
             public const string RepeatButtonInfo = nameof(RepeatButtonInfo);
             public const string RepeatButtonWarning = nameof(RepeatButtonWarning);
             public const string RepeatButtonDanger = nameof(RepeatButtonDanger);
-            public const string RepeatButtonViolet = nameof(RepeatButtonViolet);
             public const string RepeatButtonIcon = nameof(RepeatButtonIcon);
         #endregion
         #region ToggleButton
@@ -442,14 +438,12 @@
             public const string ToggleButtonInfo = nameof(ToggleButtonInfo);
             public const string ToggleButtonWarning = nameof(ToggleButtonWarning);
             public const string ToggleButtonDanger = nameof(ToggleButtonDanger);
-            public const string ToggleButtonViolet = nameof(ToggleButtonViolet);
             public const string ToggleButtonIcon = nameof(ToggleButtonIcon);
             public const string ToggleButtonIconPrimary = nameof(ToggleButtonIconPrimary);
             public const string ToggleButtonIconSuccess = nameof(ToggleButtonIconSuccess);
             public const string ToggleButtonIconInfo = nameof(ToggleButtonIconInfo);
             public const string ToggleButtonIconWarning = nameof(ToggleButtonIconWarning);
             public const string ToggleButtonIconDanger = nameof(ToggleButtonIconDanger);
-            public const string ToggleButtonIconViolet = nameof(ToggleButtonIconViolet);
             public const string ToggleButtonIconTransparent = nameof(ToggleButtonIconTransparent);
             public const string ToggleButtonSwitch = nameof(ToggleButtonSwitch);
             public const string ToggleButtonFlip = nameof(ToggleButtonFlip);
@@ -460,16 +454,13 @@
             public const string ToggleButtonLoadingInfo = nameof(ToggleButtonLoadingInfo);
             public const string ToggleButtonLoadingWarning = nameof(ToggleButtonLoadingWarning);
             public const string ToggleButtonLoadingDanger = nameof(ToggleButtonLoadingDanger);
-            public const string ToggleButtonLoadingViolet = nameof(ToggleButtonLoadingViolet);
         #endregion
         #region Label
-        public const string LabelDefault = nameof(LabelDefault);
             public const string LabelPrimary = nameof(LabelPrimary);
             public const string LabelSuccess = nameof(LabelSuccess);
             public const string LabelInfo = nameof(LabelInfo);
             public const string LabelWarning = nameof(LabelWarning);
             public const string LabelDanger = nameof(LabelDanger);
-            public const string LabelViolet = nameof(LabelViolet);
         #endregion
         #endregion
     }

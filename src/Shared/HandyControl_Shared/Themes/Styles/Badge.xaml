@@ -11,10 +11,6 @@
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
     </Style>
 
-    <Style x:Key="BadgeDefault" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="hc:Badge">
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
-    </Style>
-
     <Style x:Key="BadgePrimary" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="hc:Badge">
         <Setter Property="Background" Value="{DynamicResource PrimaryBrush}"/>
     </Style>
@@ -33,10 +29,6 @@
 
     <Style x:Key="BadgeDanger" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="hc:Badge">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
-    </Style>
-    
-    <Style x:Key="BadgeViolet" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="hc:Badge">
-        <Setter Property="Background" Value="{DynamicResource VioletBrush}"/>
     </Style>
     
 </ResourceDictionary>
