@@ -16,11 +16,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    <ContextMenu x:Key="TextBoxContextMenu" Style="{StaticResource ContextMenuBaseStyle}">
-        <MenuItem Command="ApplicationCommands.Copy" />
-        <MenuItem Command="ApplicationCommands.Cut" />
-        <MenuItem Command="ApplicationCommands.Paste" />
-    </ContextMenu>
-
+    
 </ResourceDictionary>

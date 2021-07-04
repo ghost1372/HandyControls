@@ -2,6 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="clr-namespace:HandyControl.Controls">
 
+    <ContextMenu x:Key="TextBoxContextMenu" Style="{StaticResource ContextMenuBaseStyle}">
+        <MenuItem Command="ApplicationCommands.Copy" />
+        <MenuItem Command="ApplicationCommands.Cut" />
+        <MenuItem Command="ApplicationCommands.Paste" />
+    </ContextMenu>
+    
     <Style x:Key="ListBoxModernStyle" BasedOn="{StaticResource ListBoxModernBaseStyle}" TargetType="ListBox"/>
     <Style x:Key="ListBoxTransparentStyle" BasedOn="{StaticResource ListBoxBaseTransparentStyle}" TargetType="ListBox"/>
     <Style x:Key="ListBoxItemNewStyle" BasedOn="{StaticResource ListBoxItemBaseNewStyle}" TargetType="ListBoxItem"/>

@@ -47,8 +47,8 @@ namespace HandyControlDemo.UserControl
                 if (tag.Equals(GlobalData.Config.Theme)) return;
                 GlobalData.Config.Theme = tag;
                 GlobalData.Save();
-                ((App) Application.Current).UpdateSkin(skinType);
-                Messenger.Default.Send(skinType, MessageToken.SkinUpdated);
+                ((App) Application.Current).UpdateSkin(tag);
+                Messenger.Default.Send(tag, MessageToken.SkinUpdated);
             }
         }
 

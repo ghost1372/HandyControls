@@ -2,14 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:primitives="clr-namespace:Microsoft.Windows.Controls.Primitives"
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
-                    xmlns:hc="clr-namespace:HandyControl.Controls"
-                    xmlns:themes="clr-namespace:HandyControl.Themes">
+                    xmlns:hc="clr-namespace:HandyControl.Controls">
 
-    <ResourceDictionary.MergedDictionaries>
-        <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Basic/Converters.xaml"/>
-        <themes:SharedResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Styles/Calendar.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
-    
     <Style TargetType="DatePickerTextBox" BasedOn="{StaticResource DatePickerTextBoxStyle}">
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
     </Style>
