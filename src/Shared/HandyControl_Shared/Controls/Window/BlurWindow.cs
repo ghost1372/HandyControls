@@ -1,5 +1,4 @@
-using System.Windows;
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 using HandyControl.Data;
 using HandyControl.Tools;
@@ -11,7 +10,9 @@ namespace HandyControl.Controls
     {
         protected override void OnSourceInitialized(EventArgs e)
         {
-            var versionInfo = OSVersionHelper.GetOSVersion();
+            var version = OSVersionHelper.GetOSVersion();
+            var versionInfo = new SystemVersionInfo(version.Major, version.Minor, version.Build);
+
             if (versionInfo >= SystemVersionInfo.Windows10_1903)
             {
                 this.GetHwndSource()?.AddHook(HwndSourceHook);
