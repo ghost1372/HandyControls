@@ -1,5 +1,6 @@
-﻿using System.Runtime.InteropServices;
 using System.Windows;
+using System;
+using System.Runtime.InteropServices;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControl.Tools.Interop;
@@ -8,30 +9,39 @@ namespace HandyControl.Controls
 {
     public class BlurWindow : Window
     {
-        internal static BlurWindow Instance;
-
-        public static readonly DependencyProperty FORCE_ENABLE_ACRYLIC_BLURProperty = DependencyProperty.Register(
-                "FORCE_ENABLE_ACRYLIC_BLUR", typeof(bool), typeof(BlurWindow),
-                new PropertyMetadata(ValueBoxes.FalseBox));
-
-        public bool FORCE_ENABLE_ACRYLIC_BLUR
+        protected override void OnSourceInitialized(EventArgs e)
         {
-            get => (bool) GetValue(FORCE_ENABLE_ACRYLIC_BLURProperty);
-            set => SetValue(FORCE_ENABLE_ACRYLIC_BLURProperty, ValueBoxes.BooleanBox(value));
+            var versionInfo = OSVersionHelper.GetOSVersion();
+            if (versionInfo >= SystemVersionInfo.Windows10_1903)
+            {
+                this.GetHwndSource()?.AddHook(HwndSourceHook);
+            }
+
+            base.OnSourceInitialized(e);
         }
 
-        public BlurWindow()
+        private IntPtr HwndSourceHook(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)
         {
-            Instance = this;
+            switch (msg)
+            {
+                case InteropValues.WM_ENTERSIZEMOVE:
+                    EnableBlur(this, false);
+                    break;
+                case InteropValues.WM_EXITSIZEMOVE:
+                    EnableBlur(this, true);
+                    break;
+            }
+
+            return IntPtr.Zero;
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            EnableBlur(this);
+            EnableBlur(this, true);
         }
 
-        internal static void EnableBlur(Window window)
+        private static void EnableBlur(Window window, bool isEnabled)
         {
             var version = OSVersionHelper.GetOSVersion();
             var versionInfo = new SystemVersionInfo(version.Major, version.Minor, version.Build);
@@ -41,23 +51,24 @@ namespace HandyControl.Controls
 
             accentPolicy.AccentFlags = 2;
 
-            if (versionInfo >= SystemVersionInfo.Windows10_1903)
+            if (isEnabled)
             {
-                accentPolicy.AccentState = Instance.FORCE_ENABLE_ACRYLIC_BLUR
-                    ? InteropValues.ACCENTSTATE.ACCENT_ENABLE_ACRYLICBLURBEHIND
-                    : InteropValues.ACCENTSTATE.ACCENT_ENABLE_BLURBEHIND;
-            }
-            else if (versionInfo >= SystemVersionInfo.Windows10_1809)
-            {
-                accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_ACRYLICBLURBEHIND;
-            }
-            else if (versionInfo >= SystemVersionInfo.Windows10)
-            {
-                accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_BLURBEHIND;
+                if (versionInfo >= SystemVersionInfo.Windows10_1809)
+                {
+                    accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_ACRYLICBLURBEHIND;
+                }
+                else if (versionInfo >= SystemVersionInfo.Windows10)
+                {
+                    accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_BLURBEHIND;
+                }
+                else
+                {
+                    accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_TRANSPARENTGRADIENT;
+                }
             }
             else
             {
-                accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_TRANSPARENTGRADIENT;
+                accentPolicy.AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_BLURBEHIND;
             }
 
             accentPolicy.GradientColor = ResourceHelper.GetResource<uint>(ResourceToken.BlurGradientValue);
