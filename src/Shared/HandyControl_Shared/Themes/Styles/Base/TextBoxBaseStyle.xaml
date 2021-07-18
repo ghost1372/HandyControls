@@ -5,33 +5,19 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <Style x:Key="WatermarkTextBoxBaseStyle" TargetType="hc:WatermarkTextBox">
-        <Setter Property="Background" Value="{x:Null}" />
-        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="CaretBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
-        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
-        <Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="CaretBrush" Value="{Binding Foreground,RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
+        <Setter Property="Padding" Value="{StaticResource DefaultInputPadding}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="hc:WatermarkTextBox">
                     <hc:SimplePanel x:Name="WatermarkContent">
-                        <TextBlock
-                            x:Name="PART_Watermark"
-                            Margin="{TemplateBinding Padding}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Foreground="{DynamicResource ThirdlyTextBrush}"
-                            Text="{TemplateBinding Watermark}"
-                            Visibility="{TemplateBinding Text,
-                                                         Converter={StaticResource String2VisibilityReConverter}}" />
-                        <ScrollViewer
-                            x:Name="PART_ContentHost"
-                            Margin="-2,0,-1,0"
-                            Padding="{TemplateBinding Padding}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Focusable="false"
-                            HorizontalScrollBarVisibility="Hidden"
-                            VerticalScrollBarVisibility="Hidden" />
+                        <TextBlock Text="{TemplateBinding Watermark}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="{DynamicResource ThirdlyTextBrush}" Margin="{TemplateBinding Padding}" x:Name="PART_Watermark" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}"/>
+                        <ScrollViewer Padding="{TemplateBinding Padding}" Margin="-2,0,-1,0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                     </hc:SimplePanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -55,35 +41,21 @@
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
-        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border
-                        x:Name="border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}"
-                        SnapsToDevicePixels="True">
-                        <ScrollViewer
-                            x:Name="PART_ContentHost"
-                            Margin="-2,0,-1,0"
-                            Padding="{TemplateBinding Padding}"
-                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                            Focusable="false"
-                            HorizontalScrollBarVisibility="Hidden"
-                            VerticalScrollBarVisibility="Hidden" />
+                    <Border x:Name="border" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer Padding="{TemplateBinding Padding}" Margin="-2,0,-1,0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                            <Setter Property="Opacity" TargetName="border" Value="0.4"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}"/>
                         </Trigger>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -94,8 +66,8 @@
     <ControlTemplate x:Key="TextBoxExtendTopTemplate" TargetType="TextBox">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}"/>
             </Grid.RowDefinitions>
             <DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
                 <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}"/>
@@ -107,24 +79,24 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="border" Property="Opacity" Value="0.4" />
-                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.4" />
-                <Setter TargetName="Placeholder" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" TargetName="border" Value="0.4"/>
+                <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4"/>
+                <Setter Property="Opacity" TargetName="Placeholder" Value="0.4"/>
             </Trigger>
-            <Trigger SourceName="PART_ContentHost" Property="IsMouseOver" Value="true">
-                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+            <Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
-                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="TextBoxExtendLeftTemplate" TargetType="TextBox">
-        <Grid Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+        <Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
-                <ColumnDefinition />
+                <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding Path=(hc:TitleElement.VerticalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,7,6,7">
                 <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}"/>
@@ -136,28 +108,25 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="border" Property="Opacity" Value="0.4" />
-                <Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.4" />
-                <Setter TargetName="Placeholder" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" TargetName="border" Value="0.4"/>
+                <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4"/>
+                <Setter Property="Opacity" TargetName="Placeholder" Value="0.4"/>
             </Trigger>
-            <Trigger SourceName="PART_ContentHost" Property="IsMouseOver" Value="true">
-                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+            <Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
-                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style
-        x:Key="TextBoxExtendBaseStyle"
-        BasedOn="{StaticResource TextBoxBaseStyle}"
-        TargetType="TextBox">
-        <Setter Property="hc:InfoElement.Symbol" Value="●" />
-        <Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
-        <Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
-        <Setter Property="Height" Value="Auto" />
-        <Setter Property="Template" Value="{StaticResource TextBoxExtendTopTemplate}" />
+    <Style x:Key="TextBoxExtendBaseStyle" BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox">
+        <Setter Property="hc:InfoElement.Symbol" Value="●"/>
+        <Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}"/>
+        <Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Template" Value="{StaticResource TextBoxExtendTopTemplate}"/>
         <Style.Triggers>
             <Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
                 <Setter Property="Template" Value="{StaticResource TextBoxExtendLeftTemplate}"/>
@@ -169,24 +138,16 @@
     <ControlTemplate x:Key="TextBoxPlusTopTemplate" TargetType="hc:TextBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,-18"
-                    Duration="0:0:.2" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2"/>
             </Storyboard>
             <Storyboard x:Key="StoryboardHidden">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,4"
-                    Duration="0:0:0" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0"/>
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}"/>
             </Grid.RowDefinitions>
             <TextBlock FontSize="12" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}" Grid.Row="1"/>
             <DockPanel LastChildFill="True" Grid.Row="0" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
@@ -196,65 +157,39 @@
             <Border Grid.Row="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                 <Grid SnapsToDevicePixels="true">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock
-                        Margin="{TemplateBinding Padding}"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        Style="{StaticResource TextBlockDefaultThiLight}"
-                        Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
-                        Visibility="{TemplateBinding Text,
-                                                     Converter={StaticResource String2VisibilityReConverter}}" />
-                    <ScrollViewer
-                        x:Name="PART_ContentHost"
-                        Grid.Column="0"
-                        Margin="-2,0,-1,0"
-                        Padding="{TemplateBinding Padding}"
-                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                        Focusable="false"
-                        HorizontalScrollBarVisibility="Hidden"
-                        VerticalScrollBarVisibility="Hidden" />
-                    <Button
-                        Name="ButtonClear"
-                        Grid.Column="1"
-                        Width="16"
-                        Height="{x:Static system:Double.NaN}"
-                        Margin="0,0,7,0"
-                        Padding="0,6"
-                        hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"
-                        Command="interactivity:ControlCommands.Clear"
-                        Foreground="{Binding BorderBrush, ElementName=templateRoot}"
-                        Style="{StaticResource ButtonIcon}"
-                        Visibility="Collapsed" />
+                    <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}"/>
+                    <ScrollViewer Margin="-2,0,-1,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    <Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Margin="0,0,7,0" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}"/>
                 </Grid>
             </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="templateRoot" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" TargetName="templateRoot" Value="0.4"/>
             </Trigger>
-            <Trigger SourceName="templateRoot" Property="IsMouseOver" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+            <Trigger Property="IsMouseOver" Value="true" SourceName="templateRoot">
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="templateRoot" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <Trigger Property="IsFocused" Value="true">
-                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsError" Value="true">
-                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}"/>
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}"/>
                 </Trigger.EnterActions>
                 <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}"/>
                 </Trigger.ExitActions>
             </Trigger>
         </ControlTemplate.Triggers>
@@ -263,24 +198,16 @@
     <ControlTemplate x:Key="TextBoxPlusLeftTemplate" TargetType="hc:TextBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,-18"
-                    Duration="0:0:.2" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2"/>
             </Storyboard>
             <Storyboard x:Key="StoryboardHidden">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,4"
-                    Duration="0:0:0" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0"/>
             </Storyboard>
         </ControlTemplate.Resources>
-        <Grid Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+        <Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
-                <ColumnDefinition />
+                <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock FontSize="12" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}" Grid.Column="1"/>
             <DockPanel LastChildFill="True"  Grid.Column="0" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding Path=(hc:TitleElement.VerticalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,7,6,7">
@@ -290,65 +217,39 @@
             <Border Grid.Column="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                 <Grid SnapsToDevicePixels="true">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock
-                        Margin="{TemplateBinding Padding}"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        Style="{StaticResource TextBlockDefaultThiLight}"
-                        Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}"
-                        Visibility="{TemplateBinding Text,
-                                                     Converter={StaticResource String2VisibilityReConverter}}" />
-                    <ScrollViewer
-                        x:Name="PART_ContentHost"
-                        Grid.Column="0"
-                        Margin="-2,0,-1,0"
-                        Padding="{TemplateBinding Padding}"
-                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                        Focusable="false"
-                        HorizontalScrollBarVisibility="Hidden"
-                        VerticalScrollBarVisibility="Hidden" />
-                    <Button
-                        Name="ButtonClear"
-                        Grid.Column="1"
-                        Width="16"
-                        Height="{x:Static system:Double.NaN}"
-                        Margin="0,0,7,0"
-                        Padding="0,6"
-                        hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"
-                        Command="interactivity:ControlCommands.Clear"
-                        Foreground="{Binding BorderBrush, ElementName=templateRoot}"
-                        Style="{StaticResource ButtonIcon}"
-                        Visibility="Collapsed" />
+                    <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}"/>
+                    <ScrollViewer Grid.Column="0" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    <Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Margin="0,0,7,0" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}"/>
                 </Grid>
             </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="templateRoot" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" TargetName="templateRoot" Value="0.4"/>
             </Trigger>
-            <Trigger SourceName="templateRoot" Property="IsMouseOver" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+            <Trigger Property="IsMouseOver" Value="true" SourceName="templateRoot">
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="templateRoot" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <Trigger Property="IsFocused" Value="true">
-                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsError" Value="true">
-                <Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}"/>
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}"/>
                 </Trigger.EnterActions>
                 <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}"/>
                 </Trigger.ExitActions>
             </Trigger>
         </ControlTemplate.Triggers>

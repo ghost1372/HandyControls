@@ -4,12 +4,12 @@
                     xmlns:interactivity="clr-namespace:HandyControl.Interactivity"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <!--  下拉框切换按钮  -->
+    <!--下拉框切换按钮-->
     <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="IsTabStop" Value="false" />
-        <Setter Property="Focusable" Value="false" />
-        <Setter Property="ClickMode" Value="Press" />
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -20,10 +20,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="arrow" Property="Data" Value="{StaticResource UpGeometry}" />
+                            <Setter Property="Data" TargetName="arrow" Value="{StaticResource UpGeometry}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value=".4" />
+                            <Setter Property="Opacity" Value=".4"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -31,20 +31,20 @@
         </Setter>
     </Style>
 
-    <!--  含有水印的下拉框切换按钮（用于扩展样式中）  -->
+    <!--含有水印的下拉框切换按钮（用于扩展样式中）-->
     <Style x:Key="ComboBoxWatermarkToggleButton" TargetType="ToggleButton">
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}" />
-        <Setter Property="IsTabStop" Value="false" />
-        <Setter Property="Focusable" Value="false" />
-        <Setter Property="ClickMode" Value="Press" />
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Foreground" Value="{DynamicResource ThirdlyTextBrush}"/>
+        <Setter Property="IsTabStop" Value="false"/>
+        <Setter Property="Focusable" Value="false"/>
+        <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
                         </Grid.ColumnDefinitions>
                         <Border Grid.ColumnSpan="2" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true"/>
                         <Path Grid.Column="1" x:Name="arrow" Data="{StaticResource DownGeometry}" Stretch="Uniform" Fill="{TemplateBinding BorderBrush}" HorizontalAlignment="Center" Margin="7" VerticalAlignment="Center"/>
@@ -54,10 +54,10 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="arrow" Property="Data" Value="{StaticResource UpGeometry}" />
+                            <Setter Property="Data" TargetName="arrow" Value="{StaticResource UpGeometry}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value=".4" />
+                            <Setter Property="Opacity" Value=".4"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -65,12 +65,12 @@
         </Setter>
     </Style>
 
-    <!--  默认下拉框模板  -->
+    <!--默认下拉框模板-->
     <ControlTemplate x:Key="ComboBoxTemplate" TargetType="ComboBox">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="30" />
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <Popup x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
                 <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="8,0,8,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
@@ -86,32 +86,14 @@
                     </hc:ToggleBlock>
                 </Border>
             </Popup>
-            <ToggleButton
-                x:Name="toggleButton"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Background="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                Style="{StaticResource ComboBoxToggleButton}" />
+            <ToggleButton Grid.Column="0" x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{Binding Background,RelativeSource={RelativeSource TemplatedParent}}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
             <Border Grid.Column="0" Margin="1,0">
-                <ContentPresenter
-                    x:Name="contentPresenter"
-                    Margin="{TemplateBinding Padding}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    Content="{TemplateBinding SelectionBoxItem}"
-                    ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
-                    ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                    ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                    IsHitTestVisible="false"
-                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                <ContentPresenter Margin="{TemplateBinding Padding}" x:Name="contentPresenter" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -123,31 +105,31 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_Popup" Property="IsOpen" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsOpen" Value="false" SourceName="PART_Popup"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!--  标题在顶部的下拉框模板  -->
+    <!--标题在顶部的下拉框模板-->
     <ControlTemplate x:Key="ComboBoxTopTemplate" TargetType="ComboBox">
         <Grid>
             <Grid.RowDefinitions>
@@ -155,8 +137,8 @@
                 <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="30" />
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.ColumnSpan="2" LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
                 <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}"/>
@@ -183,7 +165,7 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -195,32 +177,32 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_Popup" Property="IsOpen" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsOpen" Value="false" SourceName="PART_Popup"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="contentPresenter"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!--  标题在左侧的下拉框模板  -->
+    <!--标题在左侧的下拉框模板-->
     <ControlTemplate x:Key="ComboBoxLeftTemplate" TargetType="ComboBox">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
             <Grid.ColumnDefinitions>
@@ -248,22 +230,12 @@
             </Popup>
             <ToggleButton Grid.Column="1" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" Content="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxWatermarkToggleButton}"/>
             <Border Grid.Column="1" Margin="1,0">
-                <ContentPresenter
-                    x:Name="contentPresenter"
-                    Margin="{TemplateBinding Padding}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    Content="{TemplateBinding SelectionBoxItem}"
-                    ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
-                    ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                    ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                    IsHitTestVisible="false"
-                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                <ContentPresenter Margin="{TemplateBinding Padding}" x:Name="contentPresenter" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -275,63 +247,56 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_Popup" Property="IsOpen" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsOpen" Value="false" SourceName="PART_Popup"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="contentPresenter"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!--  可编辑下拉框中的输入框  -->
+    <!--可编辑下拉框中的输入框-->
     <Style x:Key="ComboBoxEditableTextBox" TargetType="TextBox">
-        <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="AllowDrop" Value="true" />
-        <Setter Property="MinWidth" Value="0" />
-        <Setter Property="MinHeight" Value="0" />
-        <Setter Property="Padding" Value="{StaticResource DefaultControlPadding}" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="MinWidth" Value="0"/>
+        <Setter Property="MinHeight" Value="0"/>
+        <Setter Property="Padding" Value="{StaticResource DefaultControlPadding}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <ScrollViewer
-                        x:Name="PART_ContentHost"
-                        Padding="{TemplateBinding Padding}"
-                        Background="Transparent"
-                        Focusable="false"
-                        HorizontalScrollBarVisibility="Hidden"
-                        VerticalScrollBarVisibility="Hidden" />
+                    <ScrollViewer Padding="{TemplateBinding Padding}" x:Name="PART_ContentHost" Background="Transparent" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <!--  默认可编辑下拉框模板  -->
+    <!--默认可编辑下拉框模板-->
     <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="ComboBox">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="30" />
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <Popup x:Name="PART_Popup" PlacementTarget="{Binding ElementName=toggleButton}" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
                 <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="8,0,8,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
@@ -347,29 +312,14 @@
                     </hc:ToggleBlock>
                 </Border>
             </Popup>
-            <ToggleButton
-                x:Name="toggleButton"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                Background="{TemplateBinding Background}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                Style="{StaticResource ComboBoxToggleButton}" />
+            <ToggleButton Grid.Column="0" x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxToggleButton}"/>
             <Border Grid.Column="0" Margin="-1,1">
-                <TextBox
-                    x:Name="PART_EditableTextBox"
-                    Padding="{TemplateBinding Padding}"
-                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                    Background="{TemplateBinding Background}"
-                    IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}"
-                    Style="{StaticResource ComboBoxEditableTextBox}" />
+                <TextBox x:Name="PART_EditableTextBox" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxEditableTextBox}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -381,31 +331,31 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <Trigger Property="IsMouseOver" Value="true" SourceName="PART_EditableTextBox">
                 <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_EditableTextBox" Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsFocused" Value="True" SourceName="PART_EditableTextBox">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!--  标题在顶部的可编辑下拉框模板  -->
+    <!--标题在顶部的可编辑下拉框模板-->
     <ControlTemplate x:Key="ComboBoxEditableTopTemplate" TargetType="ComboBox">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
             <Grid.RowDefinitions>
@@ -413,8 +363,8 @@
                 <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="30" />
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.ColumnSpan="2" LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
                 <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}"/>
@@ -441,7 +391,7 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -453,32 +403,32 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <Trigger Property="IsMouseOver" Value="true" SourceName="PART_EditableTextBox">
                 <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_EditableTextBox" Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsFocused" Value="True" SourceName="PART_EditableTextBox">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="border"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!--  标题在左侧的可编辑下拉框模板  -->
+    <!--标题在左侧的可编辑下拉框模板-->
     <ControlTemplate x:Key="ComboBoxEditableLeftTemplate" TargetType="ComboBox">
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
             <Grid.ColumnDefinitions>
@@ -511,7 +461,7 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -523,73 +473,64 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_EditableTextBox" Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsFocused" Value="True" SourceName="PART_EditableTextBox">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="border"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <!--  下拉项基样式  -->
+    <!--下拉项基样式-->
     <Style x:Key="ComboBoxItemBaseStyle" TargetType="ComboBoxItem">
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Padding" Value="{StaticResource DefaultControlPadding}" />
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Padding" Value="{StaticResource DefaultControlPadding}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBoxItem">
-                    <Border
-                        x:Name="Bd"
-                        Padding="{TemplateBinding Padding}"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="true">
-                        <ContentPresenter
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="False" />
-                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsSelected" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource SecondaryRegionBrush}"/>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="IsSelected" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Bd" Property="Background" Value="{DynamicResource PrimaryBrush}" />
-                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource PrimaryBrush}"/>
+                            <Setter Property="Foreground" Value="White"/>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -597,7 +538,7 @@
         </Setter>
     </Style>
 
-    <!--  下拉框基样式  -->
+    <!--下拉框基样式-->
     <Style x:Key="ComboBoxBaseStyle" TargetType="ComboBox">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Background" Value="{DynamicResource RegionBrush}"/>
@@ -618,8 +559,8 @@
         <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
         <Style.Triggers>
             <Trigger Property="IsEditable" Value="true">
-                <Setter Property="IsTabStop" Value="false" />
-                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
+                <Setter Property="IsTabStop" Value="false"/>
+                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -637,21 +578,21 @@
                     <Condition Property="IsEditable" Value="False"/>
                     <Condition Property="hc:InfoElement.TitlePlacement" Value="Left"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Template" Value="{StaticResource ComboBoxLeftTemplate}" />
+                <Setter Property="Template" Value="{StaticResource ComboBoxLeftTemplate}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEditable" Value="True"/>
                     <Condition Property="hc:InfoElement.TitlePlacement" Value="Top"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTopTemplate}" />
+                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTopTemplate}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEditable" Value="True"/>
                     <Condition Property="hc:InfoElement.TitlePlacement" Value="Left"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Template" Value="{StaticResource ComboBoxEditableLeftTemplate}" />
+                <Setter Property="Template" Value="{StaticResource ComboBoxEditableLeftTemplate}"/>
             </MultiTrigger>
         </Style.Triggers>
     </Style>
@@ -660,28 +601,20 @@
     <ControlTemplate x:Key="ComboBoxPlusTopTemplate" TargetType="hc:ComboBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,-18"
-                    Duration="0:0:.2" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2"/>
             </Storyboard>
             <Storyboard x:Key="StoryboardHidden">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,4"
-                    Duration="0:0:0" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0"/>
             </Storyboard>
         </ControlTemplate.Resources>
-        <Grid>
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" MinWidth="30" />
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto" MinWidth="30"/>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.ColumnSpan="2" LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
                 <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}"/>
@@ -710,7 +643,7 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -722,57 +655,57 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_Popup" Property="IsOpen" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsOpen" Value="false" SourceName="PART_Popup"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_Popup" Property="IsOpen" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="IsOpen" Value="false" SourceName="PART_Popup"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsError" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}"/>
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}"/>
                 </Trigger.EnterActions>
                 <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}"/>
                 </Trigger.ExitActions>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="contentPresenter"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -781,18 +714,10 @@
     <ControlTemplate x:Key="ComboBoxPlusLeftTemplate" TargetType="hc:ComboBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,-18"
-                    Duration="0:0:.2" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2"/>
             </Storyboard>
             <Storyboard x:Key="StoryboardHidden">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,4"
-                    Duration="0:0:0" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0"/>
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
@@ -822,23 +747,13 @@
             <TextBlock Grid.Column="1" Grid.ColumnSpan="2" FontSize="12" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}"/>
             <ToggleButton Grid.Column="1" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" Content="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" x:Name="toggleButton" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="2" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ComboBoxWatermarkToggleButton}"/>
             <Border Grid.Column="1" Margin="1,0">
-                <ContentPresenter
-                    x:Name="contentPresenter"
-                    Margin="{TemplateBinding Padding}"
-                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                    Content="{TemplateBinding SelectionBoxItem}"
-                    ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
-                    ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                    ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                    IsHitTestVisible="false"
-                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                <ContentPresenter Margin="{TemplateBinding Padding}" x:Name="contentPresenter" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Content="{TemplateBinding SelectionBoxItem}" ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="false" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
             <Button Command="interactivity:ControlCommands.Clear" Margin="0,0,26,0" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="2" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{TemplateBinding BorderBrush}"/>
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -850,57 +765,57 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_Popup" Property="IsOpen" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsOpen" Value="false" SourceName="PART_Popup"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_Popup" Property="IsOpen" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="IsOpen" Value="false" SourceName="PART_Popup"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_Popup" Property="IsOpen" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <Trigger Property="IsError" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}"/>
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}"/>
                 </Trigger.EnterActions>
                 <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}"/>
                 </Trigger.ExitActions>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="contentPresenter" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="contentPresenter"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -909,18 +824,10 @@
     <ControlTemplate x:Key="ComboBoxPlusEditableTopTemplate" TargetType="hc:ComboBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,-18"
-                    Duration="0:0:.2" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2"/>
             </Storyboard>
             <Storyboard x:Key="StoryboardHidden">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,4"
-                    Duration="0:0:0" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0"/>
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
@@ -929,8 +836,8 @@
                 <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" MinWidth="30" />
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto" MinWidth="30"/>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.ColumnSpan="2" LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
                 <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}"/>
@@ -959,7 +866,7 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -971,75 +878,75 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="true" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="true" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_EditableTextBox" Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsFocused" Value="True" SourceName="PART_EditableTextBox">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <Trigger Property="IsError" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}"/>
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}"/>
                 </Trigger.EnterActions>
                 <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}"/>
                 </Trigger.ExitActions>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="border"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -1047,18 +954,10 @@
     <ControlTemplate x:Key="ComboBoxPlusEditableTopAutoCompleteTemplate" TargetType="hc:ComboBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,-18"
-                    Duration="0:0:.2" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2"/>
             </Storyboard>
             <Storyboard x:Key="StoryboardHidden">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,4"
-                    Duration="0:0:0" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0"/>
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
@@ -1067,8 +966,8 @@
                 <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" MinWidth="30" />
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto" MinWidth="30"/>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.ColumnSpan="2" LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
                 <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}"/>
@@ -1111,8 +1010,8 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
-                <Setter TargetName="dropDownBorder_AutoComplete" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
+                <Setter Property="Height" TargetName="dropDownBorder_AutoComplete" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -1128,75 +1027,75 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="true" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="true" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_EditableTextBox" Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsFocused" Value="True" SourceName="PART_EditableTextBox">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <Trigger Property="IsError" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}"/>
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}"/>
                 </Trigger.EnterActions>
                 <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}"/>
                 </Trigger.ExitActions>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="border"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -1205,18 +1104,10 @@
     <ControlTemplate x:Key="ComboBoxPlusEditableLeftTemplate" TargetType="hc:ComboBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,-18"
-                    Duration="0:0:.2" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2"/>
             </Storyboard>
             <Storyboard x:Key="StoryboardHidden">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,4"
-                    Duration="0:0:0" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0"/>
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
@@ -1252,7 +1143,7 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -1264,75 +1155,75 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="true" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="true" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_EditableTextBox" Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsFocused" Value="True" SourceName="PART_EditableTextBox">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <Trigger Property="IsError" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}"/>
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}"/>
                 </Trigger.EnterActions>
                 <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}"/>
                 </Trigger.ExitActions>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="border"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -1340,18 +1231,10 @@
     <ControlTemplate x:Key="ComboBoxPlusEditableLeftAutoCompleteTemplate" TargetType="hc:ComboBox">
         <ControlTemplate.Resources>
             <Storyboard x:Key="StoryboardShow">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,-18"
-                    Duration="0:0:.2" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2"/>
             </Storyboard>
             <Storyboard x:Key="StoryboardHidden">
-                <ThicknessAnimation
-                    Storyboard.TargetName="TextBlockError"
-                    Storyboard.TargetProperty="Margin"
-                    To="9,0,0,4"
-                    Duration="0:0:0" />
+                <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0"/>
             </Storyboard>
         </ControlTemplate.Resources>
         <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
@@ -1401,8 +1284,8 @@
         </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="HasItems" Value="false">
-                <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
-                <Setter TargetName="dropDownBorder_AutoComplete" Property="Height" Value="95" />
+                <Setter Property="Height" TargetName="dropDownBorder" Value="95"/>
+                <Setter Property="Height" TargetName="dropDownBorder_AutoComplete" Value="95"/>
             </Trigger>
             <Trigger Property="hc:DropDownElement.ConsistentWidth" Value="True">
                 <Setter Property="MaxWidth" TargetName="dropDownBorder" Value="{Binding ActualWidth, ElementName=toggleButton}"/>
@@ -1418,75 +1301,75 @@
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition Property="IsGrouping" Value="true" />
-                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false" />
+                    <Condition Property="IsGrouping" Value="true"/>
+                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
+                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="false" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="IsFocused" Value="false" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition SourceName="PART_EditableTextBox" Property="IsFocused" Value="true" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="IsFocused" Value="true" SourceName="PART_EditableTextBox"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </MultiTrigger>
-            <Trigger SourceName="PART_EditableTextBox" Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsFocused" Value="True" SourceName="PART_EditableTextBox">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}"/>
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="toggleButton" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="toggleButton"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="border" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="border"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
-                    <Condition SourceName="ButtonClear" Property="IsMouseOver" Value="true" />
-                    <Condition Property="ShowClearButton" Value="True" />
+                    <Condition Property="IsMouseOver" Value="true" SourceName="ButtonClear"/>
+                    <Condition Property="ShowClearButton" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+                <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear"/>
             </MultiTrigger>
             <Trigger Property="IsError" Value="true">
-                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}"/>
                 <Trigger.EnterActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardShow}"/>
                 </Trigger.EnterActions>
                 <Trigger.ExitActions>
-                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+                    <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}"/>
                 </Trigger.ExitActions>
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
-                <Setter TargetName="toggleButton" Property="Opacity" Value="0.4" />
-                <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                <Setter Property="Opacity" Value="0.4" TargetName="toggleButton"/>
+                <Setter Property="Opacity" Value="0.4" TargetName="border"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -1501,14 +1384,14 @@
                     <Condition Property="IsEditable" Value="False"/>
                     <Condition Property="hc:InfoElement.TitlePlacement" Value="Left"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Template" Value="{StaticResource ComboBoxPlusLeftTemplate}" />
+                <Setter Property="Template" Value="{StaticResource ComboBoxPlusLeftTemplate}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEditable" Value="True"/>
                     <Condition Property="hc:InfoElement.TitlePlacement" Value="Top"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Template" Value="{StaticResource ComboBoxPlusEditableTopTemplate}" />
+                <Setter Property="Template" Value="{StaticResource ComboBoxPlusEditableTopTemplate}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -1516,14 +1399,14 @@
                     <Condition Property="hc:InfoElement.TitlePlacement" Value="Top"/>
                     <Condition Property="AutoComplete" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Template" Value="{StaticResource ComboBoxPlusEditableTopAutoCompleteTemplate}" />
+                <Setter Property="Template" Value="{StaticResource ComboBoxPlusEditableTopAutoCompleteTemplate}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsEditable" Value="True"/>
                     <Condition Property="hc:InfoElement.TitlePlacement" Value="Left"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Template" Value="{StaticResource ComboBoxPlusEditableLeftTemplate}" />
+                <Setter Property="Template" Value="{StaticResource ComboBoxPlusEditableLeftTemplate}"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -1531,7 +1414,7 @@
                     <Condition Property="hc:InfoElement.TitlePlacement" Value="Left"/>
                     <Condition Property="AutoComplete" Value="True"/>
                 </MultiTrigger.Conditions>
-                <Setter Property="Template" Value="{StaticResource ComboBoxPlusEditableLeftAutoCompleteTemplate}" />
+                <Setter Property="Template" Value="{StaticResource ComboBoxPlusEditableLeftAutoCompleteTemplate}"/>
             </MultiTrigger>
         </Style.Triggers>
     </Style>

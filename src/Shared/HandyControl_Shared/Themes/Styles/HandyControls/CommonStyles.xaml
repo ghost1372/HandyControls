@@ -179,4 +179,12 @@
         <Setter Property="Background" Value="Transparent"/>
     </Style>
 
+    <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}">
+        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
+    </Style>
+
+    <Style TargetType="TextBox" BasedOn="{StaticResource ComboBoxEditableTextBox}">
+        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
+    </Style>
+    
 </ResourceDictionary>

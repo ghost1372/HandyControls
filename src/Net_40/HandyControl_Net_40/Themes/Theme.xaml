@@ -1518,7 +1518,7 @@
 	<ControlTemplate x:Key="PreviewSliderHorizontal" TargetType="hc:PreviewSlider">
 		<hc:SimplePanel>
 			<Border x:Name="TrackBackground" Background="{TemplateBinding Background}" Height="2" VerticalAlignment="center" Margin="9,0" />
-			<Track Margin="9,0" x:Name="PART_Track">
+			<Track VerticalAlignment="center" Margin="9,0" x:Name="PART_Track">
 				<Track.DecreaseRepeatButton>
 					<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Background="{DynamicResource PrimaryBrush}" Style="{StaticResource PreviewSliderRepeatButtonHorizontalStyle}" />
 				</Track.DecreaseRepeatButton>
@@ -1534,7 +1534,7 @@
 	<ControlTemplate x:Key="PreviewSliderVertical" TargetType="hc:PreviewSlider">
 		<hc:SimplePanel>
 			<Border x:Name="TrackBackground" Background="{TemplateBinding Background}" Width="2" HorizontalAlignment="center" Margin="0,9" />
-			<Track Margin="0,9" x:Name="PART_Track">
+			<Track HorizontalAlignment="center" Margin="0,9" x:Name="PART_Track">
 				<Track.DecreaseRepeatButton>
 					<RepeatButton Command="{x:Static Slider.DecreaseLarge}" Background="{DynamicResource PrimaryBrush}" Style="{StaticResource PreviewSliderRepeatButtonVerticalStyle}" />
 				</Track.DecreaseRepeatButton>
@@ -4971,6 +4971,7 @@
 		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
 		<Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Style.Triggers>
 			<Trigger Property="IsEditable" Value="true">
 				<Setter Property="IsTabStop" Value="false" />
@@ -5734,6 +5735,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="ComboBoxPlusBaseStyle" BasedOn="{StaticResource ComboBoxExtendBaseStyle}" TargetType="hc:ComboBox">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource ComboBoxPlusTopTemplate}" />
 		<Style.Triggers>
 			<MultiTrigger>
@@ -5997,16 +5999,54 @@
 		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
-		<Setter Property="CaretBrush" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}" />
+		<Setter Property="CaretBrush" Value="{Binding Foreground,RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:WatermarkTextBox">
 					<hc:SimplePanel x:Name="WatermarkContent">
-						<TextBlock x:Name="PART_Watermark" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="{DynamicResource ThirdlyTextBrush}" Text="{TemplateBinding Watermark}" Visibility="{TemplateBinding Text,&#xD;&#xA;                                                         Converter={StaticResource String2VisibilityReConverter}}" />
-						<ScrollViewer x:Name="PART_ContentHost" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+						<TextBlock Text="{TemplateBinding Watermark}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Foreground="{DynamicResource ThirdlyTextBrush}" Margin="{TemplateBinding Padding}" x:Name="PART_Watermark" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" />
+						<ScrollViewer Padding="{TemplateBinding Padding}" Margin="-2,0,-1,0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
 					</hc:SimplePanel>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="TextBoxBaseStyle" TargetType="TextBox">
+		<Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
+		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
+		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+		<Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="AllowDrop" Value="true" />
+		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
+		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="TextBox">
+					<Border x:Name="border" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+						<ScrollViewer Padding="{TemplateBinding Padding}" Margin="-2,0,-1,0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Opacity" TargetName="border" Value="0.4" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
+						</Trigger>
+						<Trigger Property="IsFocused" Value="true">
+							<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -6015,7 +6055,7 @@
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
-				<RowDefinition Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
+				<RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
 			</Grid.RowDefinitions>
 			<DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
 				<ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
@@ -6027,22 +6067,22 @@
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsEnabled" Value="false">
-				<Setter TargetName="border" Property="Opacity" Value="0.4" />
-				<Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.4" />
-				<Setter TargetName="Placeholder" Property="Opacity" Value="0.4" />
+				<Setter Property="Opacity" TargetName="border" Value="0.4" />
+				<Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4" />
+				<Setter Property="Opacity" TargetName="Placeholder" Value="0.4" />
 			</Trigger>
-			<Trigger SourceName="PART_ContentHost" Property="IsMouseOver" Value="true">
-				<Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+			<Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
+				<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
 			</Trigger>
 			<Trigger Property="IsFocused" Value="true">
-				<Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+				<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<ControlTemplate x:Key="TextBoxExtendLeftTemplate" TargetType="TextBox">
-		<Grid Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+		<Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
+				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding Path=(hc:TitleElement.VerticalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,7,6,7">
@@ -6055,18 +6095,31 @@
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsEnabled" Value="false">
-				<Setter TargetName="border" Property="Opacity" Value="0.4" />
-				<Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.4" />
-				<Setter TargetName="Placeholder" Property="Opacity" Value="0.4" />
+				<Setter Property="Opacity" TargetName="border" Value="0.4" />
+				<Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4" />
+				<Setter Property="Opacity" TargetName="Placeholder" Value="0.4" />
 			</Trigger>
-			<Trigger SourceName="PART_ContentHost" Property="IsMouseOver" Value="true">
-				<Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+			<Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
+				<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
 			</Trigger>
 			<Trigger Property="IsFocused" Value="true">
-				<Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+				<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
+	<Style x:Key="TextBoxExtendBaseStyle" BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox">
+		<Setter Property="hc:InfoElement.Symbol" Value="●" />
+		<Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
+		<Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
+		<Setter Property="Height" Value="Auto" />
+		<Setter Property="Template" Value="{StaticResource TextBoxExtendTopTemplate}" />
+		<Style.Triggers>
+			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+				<Setter Property="Template" Value="{StaticResource TextBoxExtendLeftTemplate}" />
+				<Setter Property="Width" Value="Auto" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 	<ControlTemplate x:Key="TextBoxPlusTopTemplate" TargetType="hc:TextBox">
 		<ControlTemplate.Resources>
 			<Storyboard x:Key="StoryboardShow">
@@ -6079,7 +6132,7 @@
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
-				<RowDefinition Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
+				<RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
 			</Grid.RowDefinitions>
 			<TextBlock FontSize="12" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}" Grid.Row="1" />
 			<DockPanel LastChildFill="True" Grid.Row="0" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
@@ -6092,31 +6145,31 @@
 						<ColumnDefinition Width="*" />
 						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
-					<TextBlock Margin="{TemplateBinding Padding}" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{TemplateBinding Text,&#xD;&#xA;                                                     Converter={StaticResource String2VisibilityReConverter}}" />
-					<ScrollViewer x:Name="PART_ContentHost" Grid.Column="0" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
-					<Button Name="ButtonClear" Grid.Column="1" Width="16" Height="{x:Static system:Double.NaN}" Margin="0,0,7,0" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Command="interactivity:ControlCommands.Clear" Foreground="{Binding BorderBrush, ElementName=templateRoot}" Style="{StaticResource ButtonIcon}" Visibility="Collapsed" />
+					<TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" />
+					<ScrollViewer Margin="-2,0,-1,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Margin="0,0,7,0" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
 				</Grid>
 			</Border>
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsEnabled" Value="false">
-				<Setter TargetName="templateRoot" Property="Opacity" Value="0.4" />
+				<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
 			</Trigger>
-			<Trigger SourceName="templateRoot" Property="IsMouseOver" Value="true">
+			<Trigger Property="IsMouseOver" Value="true" SourceName="templateRoot">
 				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
 			</Trigger>
 			<MultiTrigger>
 				<MultiTrigger.Conditions>
-					<Condition SourceName="templateRoot" Property="IsMouseOver" Value="true" />
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
 					<Condition Property="ShowClearButton" Value="True" />
 				</MultiTrigger.Conditions>
-				<Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+				<Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
 			</MultiTrigger>
 			<Trigger Property="IsFocused" Value="true">
-				<Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
 			</Trigger>
 			<Trigger Property="IsError" Value="true">
-				<Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}" />
 				<Trigger.EnterActions>
 					<BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
 				</Trigger.EnterActions>
@@ -6135,9 +6188,9 @@
 				<ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
 			</Storyboard>
 		</ControlTemplate.Resources>
-		<Grid Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+		<Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
+				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<TextBlock FontSize="12" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}" Grid.Column="1" />
@@ -6151,31 +6204,31 @@
 						<ColumnDefinition Width="*" />
 						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
-					<TextBlock Margin="{TemplateBinding Padding}" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" Visibility="{TemplateBinding Text,&#xD;&#xA;                                                     Converter={StaticResource String2VisibilityReConverter}}" />
-					<ScrollViewer x:Name="PART_ContentHost" Grid.Column="0" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
-					<Button Name="ButtonClear" Grid.Column="1" Width="16" Height="{x:Static system:Double.NaN}" Margin="0,0,7,0" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Command="interactivity:ControlCommands.Clear" Foreground="{Binding BorderBrush, ElementName=templateRoot}" Style="{StaticResource ButtonIcon}" Visibility="Collapsed" />
+					<TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" />
+					<ScrollViewer Grid.Column="0" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+					<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Margin="0,0,7,0" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,6" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
 				</Grid>
 			</Border>
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="IsEnabled" Value="false">
-				<Setter TargetName="templateRoot" Property="Opacity" Value="0.4" />
+				<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
 			</Trigger>
-			<Trigger SourceName="templateRoot" Property="IsMouseOver" Value="true">
+			<Trigger Property="IsMouseOver" Value="true" SourceName="templateRoot">
 				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
 			</Trigger>
 			<MultiTrigger>
 				<MultiTrigger.Conditions>
-					<Condition SourceName="templateRoot" Property="IsMouseOver" Value="true" />
+					<Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
 					<Condition Property="ShowClearButton" Value="True" />
 				</MultiTrigger.Conditions>
-				<Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+				<Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
 			</MultiTrigger>
 			<Trigger Property="IsFocused" Value="true">
-				<Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
 			</Trigger>
 			<Trigger Property="IsError" Value="true">
-				<Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+				<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}" />
 				<Trigger.EnterActions>
 					<BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
 				</Trigger.EnterActions>
@@ -6185,6 +6238,45 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
+	<Style x:Key="TextBoxPlusBaseStyle" BasedOn="{StaticResource TextBoxExtendBaseStyle}" TargetType="hc:TextBox">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
+		<Setter Property="Template" Value="{StaticResource TextBoxPlusTopTemplate}" />
+		<Style.Triggers>
+			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+				<Setter Property="Template" Value="{StaticResource TextBoxPlusLeftTemplate}" />
+				<Setter Property="Width" Value="Auto" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
+	<Style x:Key="SearchBarBaseStyle" BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="hc:SearchBar">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="hc:SearchBar">
+					<Border x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition />
+								<ColumnDefinition Width="30" />
+							</Grid.ColumnDefinitions>
+							<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Search" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource SearchGeometry}" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
+							<ScrollViewer Margin="-2,0" Grid.Row="0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+						</Trigger>
+						<Trigger Property="IsFocused" Value="true">
+							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 	<ControlTemplate x:Key="SearchBarExtendTopTemplate" TargetType="hc:SearchBar">
 		<Grid>
 			<Grid.RowDefinitions>
@@ -6253,6 +6345,19 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
+	<Style x:Key="SearchBarExtendBaseStyle" BasedOn="{StaticResource SearchBarBaseStyle}" TargetType="hc:SearchBar">
+		<Setter Property="Height" Value="Auto" />
+		<Setter Property="hc:InfoElement.Symbol" Value="●" />
+		<Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
+		<Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
+		<Setter Property="Template" Value="{StaticResource SearchBarExtendTopTemplate}" />
+		<Style.Triggers>
+			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+				<Setter Property="Template" Value="{StaticResource SearchBarExtendLeftTemplate}" />
+				<Setter Property="Width" Value="Auto" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 	<ControlTemplate x:Key="SearchBarPlusTopTemplate" TargetType="hc:SearchBar">
 		<ControlTemplate.Resources>
 			<Storyboard x:Key="StoryboardShow">
@@ -6375,12 +6480,28 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
+	<Style x:Key="SearchBarPlusBaseStyle" BasedOn="{StaticResource SearchBarExtendBaseStyle}" TargetType="hc:SearchBar">
+		<Setter Property="Template" Value="{StaticResource SearchBarPlusTopTemplate}" />
+		<Style.Triggers>
+			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+				<Setter Property="Template" Value="{StaticResource SearchBarPlusLeftTemplate}" />
+				<Setter Property="Width" Value="Auto" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 	<Style BasedOn="{StaticResource TagBaseStyle}" TargetType="hc:Tag" />
 	<Style BasedOn="{StaticResource TagContainerBaseStyle}" TargetType="hc:TagContainer" />
+	<Style BasedOn="{StaticResource SearchBarBaseStyle}" TargetType="hc:SearchBar" />
+	<Style x:Key="SearchBarExtend" BasedOn="{StaticResource SearchBarExtendBaseStyle}" TargetType="hc:SearchBar" />
+	<Style x:Key="SearchBarPlus" BasedOn="{StaticResource SearchBarPlusBaseStyle}" TargetType="hc:SearchBar" />
 	<Style BasedOn="{StaticResource ComboBoxBaseStyle}" TargetType="ComboBox" />
 	<Style x:Key="ComboBoxExtend" BasedOn="{StaticResource ComboBoxExtendBaseStyle}" TargetType="ComboBox" />
 	<Style BasedOn="{StaticResource ComboBoxPlusBaseStyle}" TargetType="hc:ComboBox" />
 	<Style BasedOn="{StaticResource WatermarkTextBoxBaseStyle}" TargetType="hc:WatermarkTextBox" />
+	<Style BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox" />
+	<Style x:Key="TextBoxExtend" BasedOn="{StaticResource TextBoxExtendBaseStyle}" TargetType="TextBox" />
+	<Style BasedOn="{StaticResource TextBoxPlusBaseStyle}" TargetType="hc:TextBox" />
+	<Style BasedOn="{StaticResource TextBoxPlusBaseStyle}" TargetType="hc:MaskedTextBox" />
 	<Style BasedOn="{StaticResource MenuItemBaseStyle}" TargetType="MenuItem" />
 	<Style BasedOn="{StaticResource MenuBaseStyle}" TargetType="Menu" />
 	<ControlTemplate x:Key="BadgeTextTemplate" TargetType="hc:Badge">
@@ -6796,6 +6917,7 @@
 		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
 		<Setter Property="Template" Value="{StaticResource CheckComboBoxTemplate}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 	</Style>
 	<ControlTemplate x:Key="CheckComboBoxExtendTopTemplate" TargetType="hc:CheckComboBox">
 		<Grid>
@@ -7152,6 +7274,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="CheckComboBoxPlusBaseStyle" BasedOn="{StaticResource CheckComboBoxExtendBaseStyle}" TargetType="hc:CheckComboBox">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource CheckComboBoxPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -7435,6 +7558,7 @@
 		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="DatePicker">
@@ -7738,6 +7862,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="DatePickerPlusBaseStyle" BasedOn="{StaticResource DatePickerExtendBaseStyle}" TargetType="hc:DatePicker">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="Template" Value="{StaticResource DatePickerPlusTopTemplate}" />
 		<Style.Triggers>
@@ -7757,6 +7882,7 @@
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:DateTimePicker">
@@ -8060,6 +8186,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="DateTimePickerPlusBaseStyle" BasedOn="{StaticResource DateTimePickerExtendBaseStyle}" TargetType="hc:DateTimePicker">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource DateTimePickerPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -8851,6 +8978,7 @@
 		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:NumericUpDown">
@@ -9109,6 +9237,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="NumericUpDownPlusBaseStyle" BasedOn="{StaticResource NumericUpDownExtendBaseStyle}" TargetType="hc:NumericUpDown">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource NumericUpDownPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -9327,6 +9456,8 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="PasswordBoxPlusBaseStyle" TargetType="hc:PasswordBox">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
 		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
@@ -9520,6 +9651,44 @@
 							<ItemsPresenter Margin="{TemplateBinding Padding}" />
 						</Border>
 					</Expander>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="PropertyGridBaseStyle" TargetType="hc:PropertyGrid">
+		<Setter Property="MaxTitleWidth" Value="200" />
+		<Setter Property="MinTitleWidth" Value="120" />
+		<Setter Property="Focusable" Value="False" />
+		<Setter Property="Padding" Value="10" />
+		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="hc:PropertyGrid">
+					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+						<Grid Margin="{TemplateBinding Padding}">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto" />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<DockPanel LastChildFill="True" Margin="0,0,0,6">
+								<hc:ButtonGroup Margin="0,0,6,0" Visibility="{Binding ShowSortButton,RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" Style="{StaticResource ButtonGroupSolid}">
+									<RadioButton Command="interactivity:ControlCommands.SortByCategory" IsChecked="True">
+										<Rectangle Width="16" Height="16" Fill="{StaticResource SortByCategoryDrawingBrush}" />
+									</RadioButton>
+									<RadioButton Command="interactivity:ControlCommands.SortByName">
+										<Rectangle Width="16" Height="16" Fill="{StaticResource SortByNameDrawingBrush}" />
+									</RadioButton>
+								</hc:ButtonGroup>
+								<hc:SearchBar x:Name="PART_SearchBar" IsRealTime="True" ShowClearButton="True" Style="{StaticResource SearchBarPlus}" />
+							</DockPanel>
+							<hc:PropertyItemsControl Grid.Row="1" x:Name="PART_ItemsControl" Style="{StaticResource PropertyItemsControlBaseStyle}">
+								<hc:PropertyItemsControl.GroupStyle>
+									<GroupStyle ContainerStyle="{StaticResource PropertyGroupItemBaseStyle}" />
+								</hc:PropertyItemsControl.GroupStyle>
+							</hc:PropertyItemsControl>
+						</Grid>
+					</Border>
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
@@ -10212,6 +10381,7 @@
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:TimePicker">
@@ -10515,6 +10685,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="TimePickerPlusBaseStyle" BasedOn="{StaticResource TimePickerExtendBaseStyle}" TargetType="hc:TimePicker">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource TimePickerPlusTopTemplate}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -10542,6 +10713,7 @@
 	<Style x:Key="{x:Static ToolBar.CheckBoxStyleKey}" BasedOn="{StaticResource CheckBoxBaseStyle}" TargetType="CheckBox" />
 	<Style x:Key="{x:Static ToolBar.RadioButtonStyleKey}" BasedOn="{StaticResource RadioButtonBaseStyle}" TargetType="RadioButton" />
 	<Style x:Key="{x:Static ToolBar.ComboBoxStyleKey}" BasedOn="{StaticResource ComboBoxBaseStyle}" TargetType="ComboBox" />
+	<Style x:Key="{x:Static ToolBar.TextBoxStyleKey}" BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox" />
 	<Style x:Key="{x:Static ToolBar.MenuStyleKey}" BasedOn="{StaticResource MenuBaseStyle}" TargetType="Menu" />
 	<Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" BasedOn="{StaticResource ToggleButtonBaseStyle}" TargetType="ToggleButton">
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
@@ -11451,6 +11623,98 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style TargetType="DataGrid">
+		<Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="GridLinesVisibility" Value="None" />
+		<Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
+		<Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+		<Setter Property="ScrollViewer.PanningMode" Value="Both" />
+		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+		<Setter Property="EnableRowVirtualization" Value="True" />
+		<Setter Property="CanUserAddRows" Value="False" />
+		<Setter Property="CanUserDeleteRows" Value="False" />
+		<Setter Property="CanUserReorderColumns" Value="False" />
+		<Setter Property="CanUserResizeRows" Value="False" />
+		<Setter Property="ColumnHeaderStyle" Value="{StaticResource DataGridColumnHeaderStyle}" />
+		<Setter Property="RowHeaderStyle" Value="{StaticResource DataGridRowHeaderStyle}" />
+		<Setter Property="RowStyle" Value="{StaticResource DataGridRowStyle}" />
+		<Setter Property="CellStyle" Value="{StaticResource DataGridCellStyle}" />
+		<Setter Property="Padding" Value="6" />
+		<Setter Property="ColumnWidth" Value="*" />
+		<Setter Property="hc:DataGridAttach.TextColumnStyle" Value="{StaticResource DataGridTextColumnStyle}" />
+		<Setter Property="hc:DataGridAttach.EditingTextColumnStyle" Value="{StaticResource TextBoxBaseStyle}" />
+		<Setter Property="hc:DataGridAttach.ComboBoxColumnStyle" Value="{StaticResource TextBlockComboBoxStyle}" />
+		<Setter Property="hc:DataGridAttach.EditingComboBoxColumnStyle" Value="{StaticResource ComboBoxBaseStyle}" />
+		<Setter Property="hc:DataGridAttach.CheckBoxColumnStyle" Value="{StaticResource CheckBoxBaseStyle}" />
+		<Setter Property="hc:DataGridAttach.EditingCheckBoxColumnStyle" Value="{StaticResource CheckBoxBaseStyle}" />
+		<Setter Property="hc:DataGridAttach.ApplyDefaultStyle" Value="True" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="DataGrid">
+					<ControlTemplate.Resources>
+						<Storyboard x:Key="Storyboard1">
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_VerticalScrollBar">
+								<EasingDoubleKeyFrame KeyTime="0:0:.2" Value=".8" />
+							</DoubleAnimationUsingKeyFrames>
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_HorizontalScrollBar">
+								<EasingDoubleKeyFrame KeyTime="0:0:.2" Value=".8" />
+							</DoubleAnimationUsingKeyFrames>
+						</Storyboard>
+						<Storyboard x:Key="Storyboard2">
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_VerticalScrollBar">
+								<EasingDoubleKeyFrame KeyTime="0:0:.2" Value="0" />
+							</DoubleAnimationUsingKeyFrames>
+							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_HorizontalScrollBar">
+								<EasingDoubleKeyFrame KeyTime="0:0:.2" Value="0" />
+							</DoubleAnimationUsingKeyFrames>
+						</Storyboard>
+					</ControlTemplate.Resources>
+					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+						<ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
+							<ScrollViewer.Template>
+								<ControlTemplate TargetType="ScrollViewer">
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto" />
+											<ColumnDefinition Width="*" />
+											<ColumnDefinition Width="Auto" />
+										</Grid.ColumnDefinitions>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="Auto" />
+											<RowDefinition Height="*" />
+										</Grid.RowDefinitions>
+										<Button Command="{x:Static DataGrid.SelectAllCommand}" Margin="0,0,0,6" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource DoubleMinConverter}}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource AllGeometry}" Foreground="{DynamicResource PrimaryBrush}" />
+										<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
+										<hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource AncestorType=DataGrid},Mode=OneWay}" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+											<hc:ToggleBlock.CheckedContent>
+												<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" />
+											</hc:ToggleBlock.CheckedContent>
+											<hc:ToggleBlock.UnCheckedContent>
+												<hc:Empty />
+											</hc:ToggleBlock.UnCheckedContent>
+										</hc:ToggleBlock>
+										<ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Grid.Row="1" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" />
+										<ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_HorizontalScrollBar" Grid.Column="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" />
+									</Grid>
+									<ControlTemplate.Triggers>
+										<EventTrigger RoutedEvent="MouseEnter">
+											<BeginStoryboard Storyboard="{StaticResource Storyboard1}" />
+										</EventTrigger>
+										<EventTrigger RoutedEvent="MouseLeave">
+											<BeginStoryboard Storyboard="{StaticResource Storyboard2}" />
+										</EventTrigger>
+									</ControlTemplate.Triggers>
+								</ControlTemplate>
+							</ScrollViewer.Template>
+							<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+						</ScrollViewer>
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 	<Style BasedOn="{StaticResource DatePickerBaseStyle}" TargetType="DatePicker" />
 	<Style x:Key="DatePickerExtend" BasedOn="{StaticResource DatePickerExtendBaseStyle}" TargetType="DatePicker" />
 	<Style BasedOn="{StaticResource DatePickerPlusBaseStyle}" TargetType="hc:DatePicker" />
@@ -12009,6 +12273,7 @@
 	<Style x:Key="ProgressButtonDanger" BasedOn="{StaticResource ProgressButtonBaseStyle}" TargetType="hc:ProgressButton">
 		<Setter Property="Background" Value="{DynamicResource DangerBrush}" />
 	</Style>
+	<Style BasedOn="{StaticResource PropertyGridBaseStyle}" TargetType="hc:PropertyGrid" />
 	<Style x:Key="ComboBoxItemCapsuleBaseStyle" BasedOn="{x:Null}" TargetType="ComboBoxItem">
 		<Setter Property="MinWidth" Value="40" />
 		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
@@ -12633,6 +12898,7 @@
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:PersianDateTimePicker">
@@ -12936,6 +13202,7 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<Style x:Key="DateTimePickerPlusBaseStylePersian" BasedOn="{StaticResource DateTimePickerExtendBaseStylePersian}" TargetType="hc:PersianDateTimePicker">
+		<Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
 		<Setter Property="Template" Value="{StaticResource DateTimePickerPlusTopTemplatePersian}" />
 		<Style.Triggers>
 			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
@@ -15474,124 +15741,6 @@
 	</Style>
 	<Style BasedOn="{StaticResource RangeSliderBaseStyle}" TargetType="hc:RangeSlider" />
 	<Style BasedOn="{StaticResource SliderBaseStyle}" TargetType="Slider" />
-	<Style x:Key="TextBoxBaseStyle" TargetType="TextBox">
-		<Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
-		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
-		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
-		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
-		<Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
-		<Setter Property="HorizontalContentAlignment" Value="Left" />
-		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
-		<Setter Property="AllowDrop" Value="true" />
-		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
-		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
-		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="TextBox">
-					<Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
-						<ScrollViewer x:Name="PART_ContentHost" Margin="-2,0,-1,0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter TargetName="border" Property="Opacity" Value="0.4" />
-						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
-						</Trigger>
-						<Trigger Property="IsFocused" Value="true">
-							<Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style x:Key="TextBoxExtendBaseStyle" BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox">
-		<Setter Property="hc:InfoElement.Symbol" Value="●" />
-		<Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
-		<Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
-		<Setter Property="Height" Value="Auto" />
-		<Setter Property="Template" Value="{StaticResource TextBoxExtendTopTemplate}" />
-		<Style.Triggers>
-			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
-				<Setter Property="Template" Value="{StaticResource TextBoxExtendLeftTemplate}" />
-				<Setter Property="Width" Value="Auto" />
-			</Trigger>
-		</Style.Triggers>
-	</Style>
-	<Style x:Key="TextBoxPlusBaseStyle" BasedOn="{StaticResource TextBoxExtendBaseStyle}" TargetType="hc:TextBox">
-		<Setter Property="Template" Value="{StaticResource TextBoxPlusTopTemplate}" />
-		<Style.Triggers>
-			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
-				<Setter Property="Template" Value="{StaticResource TextBoxPlusLeftTemplate}" />
-				<Setter Property="Width" Value="Auto" />
-			</Trigger>
-		</Style.Triggers>
-	</Style>
-	<Style x:Key="SearchBarBaseStyle" BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="hc:SearchBar">
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="hc:SearchBar">
-					<Border x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-						<Grid>
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition />
-								<ColumnDefinition Width="30" />
-							</Grid.ColumnDefinitions>
-							<Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Search" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource SearchGeometry}" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0" />
-							<ScrollViewer Margin="-2,0" Grid.Row="0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
-						</Grid>
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
-						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
-						</Trigger>
-						<Trigger Property="IsFocused" Value="true">
-							<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style x:Key="SearchBarExtendBaseStyle" BasedOn="{StaticResource SearchBarBaseStyle}" TargetType="hc:SearchBar">
-		<Setter Property="Height" Value="Auto" />
-		<Setter Property="hc:InfoElement.Symbol" Value="●" />
-		<Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
-		<Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
-		<Setter Property="Template" Value="{StaticResource SearchBarExtendTopTemplate}" />
-		<Style.Triggers>
-			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
-				<Setter Property="Template" Value="{StaticResource SearchBarExtendLeftTemplate}" />
-				<Setter Property="Width" Value="Auto" />
-			</Trigger>
-		</Style.Triggers>
-	</Style>
-	<Style x:Key="SearchBarPlusBaseStyle" BasedOn="{StaticResource SearchBarExtendBaseStyle}" TargetType="hc:SearchBar">
-		<Setter Property="Template" Value="{StaticResource SearchBarPlusTopTemplate}" />
-		<Style.Triggers>
-			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
-				<Setter Property="Template" Value="{StaticResource SearchBarPlusLeftTemplate}" />
-				<Setter Property="Width" Value="Auto" />
-			</Trigger>
-		</Style.Triggers>
-	</Style>
-	<Style BasedOn="{StaticResource SearchBarBaseStyle}" TargetType="hc:SearchBar" />
-	<Style x:Key="SearchBarExtend" BasedOn="{StaticResource SearchBarExtendBaseStyle}" TargetType="hc:SearchBar" />
-	<Style x:Key="SearchBarPlus" BasedOn="{StaticResource SearchBarPlusBaseStyle}" TargetType="hc:SearchBar" />
-	<Style BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox" />
-	<Style x:Key="TextBoxExtend" BasedOn="{StaticResource TextBoxExtendBaseStyle}" TargetType="TextBox" />
-	<Style BasedOn="{StaticResource TextBoxPlusBaseStyle}" TargetType="hc:TextBox" />
-	<Style BasedOn="{StaticResource TextBoxPlusBaseStyle}" TargetType="hc:MaskedTextBox" />
 	<Style x:Key="PasswordBoxBaseStyle" TargetType="PasswordBox">
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
@@ -15608,6 +15757,7 @@
 		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
 		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
 		<Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
 		<Setter Property="Template">
 			<Setter.Value>
@@ -15644,140 +15794,8 @@
 			</Trigger>
 		</Style.Triggers>
 	</Style>
-	<Style x:Key="PropertyGridBaseStyle" TargetType="hc:PropertyGrid">
-		<Setter Property="MaxTitleWidth" Value="200" />
-		<Setter Property="MinTitleWidth" Value="120" />
-		<Setter Property="Focusable" Value="False" />
-		<Setter Property="Padding" Value="10" />
-		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="hc:PropertyGrid">
-					<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-						<Grid Margin="{TemplateBinding Padding}">
-							<Grid.RowDefinitions>
-								<RowDefinition Height="Auto" />
-								<RowDefinition />
-							</Grid.RowDefinitions>
-							<DockPanel LastChildFill="True" Margin="0,0,0,6">
-								<hc:ButtonGroup Margin="0,0,6,0" Visibility="{Binding ShowSortButton,RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Boolean2VisibilityConverter}}" Style="{StaticResource ButtonGroupSolid}">
-									<RadioButton Command="interactivity:ControlCommands.SortByCategory" IsChecked="True">
-										<Rectangle Width="16" Height="16" Fill="{StaticResource SortByCategoryDrawingBrush}" />
-									</RadioButton>
-									<RadioButton Command="interactivity:ControlCommands.SortByName">
-										<Rectangle Width="16" Height="16" Fill="{StaticResource SortByNameDrawingBrush}" />
-									</RadioButton>
-								</hc:ButtonGroup>
-								<hc:SearchBar x:Name="PART_SearchBar" IsRealTime="True" ShowClearButton="True" Style="{StaticResource SearchBarPlus}" />
-							</DockPanel>
-							<hc:PropertyItemsControl Grid.Row="1" x:Name="PART_ItemsControl" Style="{StaticResource PropertyItemsControlBaseStyle}">
-								<hc:PropertyItemsControl.GroupStyle>
-									<GroupStyle ContainerStyle="{StaticResource PropertyGroupItemBaseStyle}" />
-								</hc:PropertyItemsControl.GroupStyle>
-							</hc:PropertyItemsControl>
-						</Grid>
-					</Border>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style x:Key="{x:Static ToolBar.TextBoxStyleKey}" BasedOn="{StaticResource TextBoxBaseStyle}" TargetType="TextBox" />
-	<Style TargetType="DataGrid">
-		<Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
-		<Setter Property="BorderThickness" Value="0" />
-		<Setter Property="GridLinesVisibility" Value="None" />
-		<Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected" />
-		<Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-		<Setter Property="ScrollViewer.PanningMode" Value="Both" />
-		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-		<Setter Property="EnableRowVirtualization" Value="True" />
-		<Setter Property="CanUserAddRows" Value="False" />
-		<Setter Property="CanUserDeleteRows" Value="False" />
-		<Setter Property="CanUserReorderColumns" Value="False" />
-		<Setter Property="CanUserResizeRows" Value="False" />
-		<Setter Property="ColumnHeaderStyle" Value="{StaticResource DataGridColumnHeaderStyle}" />
-		<Setter Property="RowHeaderStyle" Value="{StaticResource DataGridRowHeaderStyle}" />
-		<Setter Property="RowStyle" Value="{StaticResource DataGridRowStyle}" />
-		<Setter Property="CellStyle" Value="{StaticResource DataGridCellStyle}" />
-		<Setter Property="Padding" Value="6" />
-		<Setter Property="ColumnWidth" Value="*" />
-		<Setter Property="hc:DataGridAttach.TextColumnStyle" Value="{StaticResource DataGridTextColumnStyle}" />
-		<Setter Property="hc:DataGridAttach.EditingTextColumnStyle" Value="{StaticResource TextBoxBaseStyle}" />
-		<Setter Property="hc:DataGridAttach.ComboBoxColumnStyle" Value="{StaticResource TextBlockComboBoxStyle}" />
-		<Setter Property="hc:DataGridAttach.EditingComboBoxColumnStyle" Value="{StaticResource ComboBoxBaseStyle}" />
-		<Setter Property="hc:DataGridAttach.CheckBoxColumnStyle" Value="{StaticResource CheckBoxBaseStyle}" />
-		<Setter Property="hc:DataGridAttach.EditingCheckBoxColumnStyle" Value="{StaticResource CheckBoxBaseStyle}" />
-		<Setter Property="hc:DataGridAttach.ApplyDefaultStyle" Value="True" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="DataGrid">
-					<ControlTemplate.Resources>
-						<Storyboard x:Key="Storyboard1">
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_VerticalScrollBar">
-								<EasingDoubleKeyFrame KeyTime="0:0:.2" Value=".8" />
-							</DoubleAnimationUsingKeyFrames>
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_HorizontalScrollBar">
-								<EasingDoubleKeyFrame KeyTime="0:0:.2" Value=".8" />
-							</DoubleAnimationUsingKeyFrames>
-						</Storyboard>
-						<Storyboard x:Key="Storyboard2">
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_VerticalScrollBar">
-								<EasingDoubleKeyFrame KeyTime="0:0:.2" Value="0" />
-							</DoubleAnimationUsingKeyFrames>
-							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_HorizontalScrollBar">
-								<EasingDoubleKeyFrame KeyTime="0:0:.2" Value="0" />
-							</DoubleAnimationUsingKeyFrames>
-						</Storyboard>
-					</ControlTemplate.Resources>
-					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
-						<hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-							<hc:ToggleBlock.CheckedContent>
-								<ScrollViewer x:Name="DG_ScrollViewer" Focusable="false">
-									<ScrollViewer.Template>
-										<ControlTemplate TargetType="ScrollViewer">
-											<Grid>
-												<Grid.ColumnDefinitions>
-													<ColumnDefinition Width="Auto" />
-													<ColumnDefinition Width="*" />
-													<ColumnDefinition Width="Auto" />
-												</Grid.ColumnDefinitions>
-												<Grid.RowDefinitions>
-													<RowDefinition Height="Auto" />
-													<RowDefinition Height="*" />
-												</Grid.RowDefinitions>
-												<ToggleButton Margin="0,0,0,6" hc:DataGridAttach.CurrentDataGrid="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type DataGrid}}}" hc:DataGridAttach.IsSelectAll="{Binding IsChecked,RelativeSource={RelativeSource Self}}" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType=DataGrid},Converter={StaticResource DoubleMinConverter}}" hc:IconSwitchElement.Geometry="{StaticResource AllGeometry}" hc:IconSwitchElement.GeometrySelected="{StaticResource AllGeometry}" Foreground="{DynamicResource PrimaryBrush}" Style="{StaticResource ToggleButtonIconTransparent}" />
-												<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="1" Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType=DataGrid}}" />
-												<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
-												<ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Grid.Row="1" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" />
-												<ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_HorizontalScrollBar" Grid.Column="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="1" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" />
-											</Grid>
-											<ControlTemplate.Triggers>
-												<EventTrigger RoutedEvent="MouseEnter">
-													<BeginStoryboard Storyboard="{StaticResource Storyboard1}" />
-												</EventTrigger>
-												<EventTrigger RoutedEvent="MouseLeave">
-													<BeginStoryboard Storyboard="{StaticResource Storyboard2}" />
-												</EventTrigger>
-											</ControlTemplate.Triggers>
-										</ControlTemplate>
-									</ScrollViewer.Template>
-									<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-								</ScrollViewer>
-							</hc:ToggleBlock.CheckedContent>
-							<hc:ToggleBlock.UnCheckedContent>
-								<hc:Empty />
-							</hc:ToggleBlock.UnCheckedContent>
-						</hc:ToggleBlock>
-					</Border>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
 	<Style BasedOn="{StaticResource PasswordBoxBaseStyle}" TargetType="PasswordBox" />
 	<Style x:Key="PasswordBoxExtend" BasedOn="{StaticResource PasswordBoxExtendBaseStyle}" TargetType="PasswordBox" />
-	<Style BasedOn="{StaticResource PropertyGridBaseStyle}" TargetType="hc:PropertyGrid" />
 	<Style TargetType="DatePickerTextBox" BasedOn="{StaticResource DatePickerTextBoxStyle}">
 		<Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
 	</Style>
