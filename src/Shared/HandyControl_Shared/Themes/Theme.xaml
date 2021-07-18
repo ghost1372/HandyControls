@@ -5871,31 +5871,31 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="MenuItem">
-					<Border x:Name="Bd" MinWidth="240" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
-						<hc:TransitioningContentControl x:Name="anim" TransitionMode="{Binding Path=(hc:MenuAttach.AnimationMode), RelativeSource={RelativeSource TemplatedParent}}">
+					<hc:TransitioningContentControl x:Name="anim" TransitionMode="{Binding Path=(hc:MenuAttach.AnimationMode), RelativeSource={RelativeSource TemplatedParent}}">
+						<Border x:Name="Bd" MinWidth="240" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
 							<Grid x:Name="Grid" Margin="{TemplateBinding Padding}">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="26" />
 									<ColumnDefinition Width="*" />
 									<ColumnDefinition Width="30" />
-									<ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGTColumnGroup" />
+									<ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto" />
 									<ColumnDefinition Width="20" />
 								</Grid.ColumnDefinitions>
-								<ContentPresenter x:Name="Icon" Width="16" Height="16" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" ContentSource="Icon" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-								<Border x:Name="GlyphPanel" Grid.Column="0" Width="16" Height="16" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" CornerRadius="2" IsHitTestVisible="False" Visibility="Hidden">
-									<Path Width="12" Height="12" Data="{StaticResource CheckedGeometry}" Stretch="Uniform" Stroke="{DynamicResource TextIconBrush}" StrokeThickness="2" UseLayoutRounding="True" />
+								<ContentPresenter Margin="0,0,10,0" x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Right" Height="16" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16" />
+								<Border Margin="0,0,10,0" IsHitTestVisible="False" Grid.Column="0" x:Name="GlyphPanel" CornerRadius="2" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" HorizontalAlignment="Right" Height="16" Visibility="Hidden" VerticalAlignment="Center" Width="16">
+									<Path UseLayoutRounding="True" Width="12" Height="12" Data="{StaticResource CheckedGeometry}" StrokeThickness="2" Stretch="Uniform" Stroke="{DynamicResource TextIconBrush}" />
 								</Border>
-								<ContentPresenter x:Name="ContentPresenter" Grid.Column="1" Margin="0,3" ContentSource="Header" ContentTemplate="{TemplateBinding HeaderTemplate}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-								<TextBlock x:Name="InputGestureText" Grid.Column="3" Margin="0,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{TemplateBinding InputGestureText}" />
+								<ContentPresenter Grid.Column="1" x:Name="ContentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentSource="Header" Margin="0,3" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+								<TextBlock x:Name="InputGestureText" Margin="0,0,10,0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{TemplateBinding InputGestureText}" />
 							</Grid>
-						</hc:TransitioningContentControl>
-					</Border>
+						</Border>
+					</hc:TransitioningContentControl>
 					<ControlTemplate.Triggers>
 						<Trigger Property="IsChecked" Value="True">
-							<Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
+							<Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible" />
 						</Trigger>
 						<Trigger Property="Icon" Value="{x:Null}">
-							<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+							<Setter Property="Visibility" TargetName="Icon" Value="Collapsed" />
 						</Trigger>
 						<Trigger Property="hc:MenuAttach.IsEnabledAnimation" Value="false">
 							<Setter TargetName="anim" Property="TransitionMode" Value="Custom" />
@@ -5915,8 +5915,8 @@
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="MenuItem">
-							<Border x:Name="templateRoot" MinWidth="44" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" SnapsToDevicePixels="True">
-								<Grid Margin="{TemplateBinding Padding}" VerticalAlignment="Center">
+							<Border MinWidth="44" x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+								<Grid VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
 									<Grid.ColumnDefinitions>
 										<ColumnDefinition Width="Auto" />
 										<ColumnDefinition Width="Auto" />
@@ -5940,20 +5940,20 @@
 							</Border>
 							<ControlTemplate.Triggers>
 								<Trigger Property="Icon" Value="{x:Null}">
-									<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+									<Setter Property="Visibility" TargetName="Icon" Value="Collapsed" />
 								</Trigger>
 								<Trigger Property="IsChecked" Value="True">
-									<Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
-									<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+									<Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible" />
+									<Setter Property="Visibility" TargetName="Icon" Value="Collapsed" />
 								</Trigger>
 								<Trigger Property="IsHighlighted" Value="True">
 									<Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource SecondaryRegionBrush}" />
 									<Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}" />
 								</Trigger>
 								<Trigger Property="IsSubmenuOpen" Value="True">
-									<Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
-									<Setter TargetName="templateRoot" Property="Background" Value="{DynamicResource RegionBrush}" />
-									<Setter TargetName="menuHeaderContainer" Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+									<Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource BorderBrush}" />
+									<Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource RegionBrush}" />
+									<Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}" />
 								</Trigger>
 							</ControlTemplate.Triggers>
 						</ControlTemplate>
@@ -5965,7 +5965,7 @@
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="MenuItem">
-							<Border x:Name="templateRoot" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" SnapsToDevicePixels="True">
+							<Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
 								<Grid Margin="{TemplateBinding Padding}">
 									<Grid.ColumnDefinitions>
 										<ColumnDefinition Width="Auto" />
@@ -5975,32 +5975,32 @@
 									<Border Margin="0,0,10,0" IsHitTestVisible="False" Grid.Column="0" x:Name="GlyphPanel" CornerRadius="2" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" HorizontalAlignment="Right" Height="16" Visibility="Collapsed" VerticalAlignment="Center" Width="16">
 										<Path UseLayoutRounding="True" Width="12" Height="12" Data="{StaticResource CheckedGeometry}" StrokeThickness="2" Stretch="Uniform" Stroke="{DynamicResource TextIconBrush}" />
 									</Border>
-									<ContentPresenter x:Name="menuHeaderContainer" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" ContentSource="Header" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentTemplate="{TemplateBinding HeaderTemplate}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+									<ContentPresenter x:Name="menuHeaderContainer" ContentTemplate="{TemplateBinding HeaderTemplate}" Grid.Column="1" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" HorizontalAlignment="Left" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
 								</Grid>
 							</Border>
 							<ControlTemplate.Triggers>
 								<Trigger Property="Icon" Value="{x:Null}">
-									<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+									<Setter Property="Visibility" TargetName="Icon" Value="Collapsed" />
 								</Trigger>
 								<Trigger Property="IsChecked" Value="True">
-									<Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
-									<Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+									<Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible" />
+									<Setter Property="Visibility" TargetName="Icon" Value="Collapsed" />
 								</Trigger>
 								<Trigger Property="IsHighlighted" Value="True">
 									<Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource SecondaryRegionBrush}" />
 									<Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}" />
 								</Trigger>
 								<Trigger Property="IsSubmenuOpen" Value="True">
-									<Setter TargetName="templateRoot" Property="Background" Value="White" />
-									<Setter TargetName="menuHeaderContainer" Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+									<Setter Property="Background" TargetName="templateRoot" Value="White" />
+									<Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}" />
 								</Trigger>
 								<MultiTrigger>
 									<MultiTrigger.Conditions>
 										<Condition Property="IsHighlighted" Value="True" />
 										<Condition Property="IsEnabled" Value="False" />
 									</MultiTrigger.Conditions>
-									<Setter TargetName="templateRoot" Property="Background" Value="#0A000000" />
-									<Setter TargetName="templateRoot" Property="BorderBrush" Value="#21000000" />
+									<Setter Property="Background" TargetName="templateRoot" Value="#0A000000" />
+									<Setter Property="BorderBrush" TargetName="templateRoot" Value="#21000000" />
 								</MultiTrigger>
 							</ControlTemplate.Triggers>
 						</ControlTemplate>
@@ -6013,8 +6013,8 @@
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="MenuItem">
-							<Border x:Name="Bd" MinWidth="240" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-								<hc:TransitioningContentControl x:Name="anim" TransitionMode="{Binding Path=(hc:MenuAttach.AnimationMode), RelativeSource={RelativeSource TemplatedParent}}">
+							<hc:TransitioningContentControl x:Name="anim" TransitionMode="{Binding Path=(hc:MenuAttach.AnimationMode), RelativeSource={RelativeSource TemplatedParent}}">
+								<Border x:Name="Bd" MinWidth="240" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
 									<Grid x:Name="Grid" Margin="{TemplateBinding Padding}">
 										<Grid.ColumnDefinitions>
 											<ColumnDefinition Width="26" />
@@ -6037,14 +6037,19 @@
 											</Border>
 										</Popup>
 									</Grid>
-								</hc:TransitioningContentControl>
-							</Border>
+								</Border>
+							</hc:TransitioningContentControl>
 							<ControlTemplate.Triggers>
 								<Trigger Property="IsChecked" Value="True">
-									<Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
+									<Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible" />
 								</Trigger>
 								<Trigger Property="hc:MenuAttach.IsEnabledAnimation" Value="false">
 									<Setter TargetName="anim" Property="TransitionMode" Value="Custom" />
+									<Setter TargetName="anim" Property="TransitionStoryboard">
+										<Setter.Value>
+											<Storyboard />
+										</Setter.Value>
+									</Setter>
 								</Trigger>
 							</ControlTemplate.Triggers>
 						</ControlTemplate>
@@ -6070,7 +6075,7 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="Menu">
-					<Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
 						<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 					</Border>
 				</ControlTemplate>
@@ -9364,11 +9369,49 @@
 			</Trigger>
 		</Style.Triggers>
 	</Style>
+	<Style x:Key="PasswordBoxBaseStyle" TargetType="PasswordBox">
+		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+		<Setter Property="PasswordChar" Value="●" />
+		<Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+		<Setter Property="HorizontalContentAlignment" Value="Left" />
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+		<Setter Property="AllowDrop" Value="true" />
+		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
+		<Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
+		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="PasswordBox">
+					<Border x:Name="border" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+						<ScrollViewer Margin="-2,0" Padding="{TemplateBinding Padding}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Opacity" TargetName="border" Value="0.4" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
+						</Trigger>
+						<Trigger Property="IsFocused" Value="true">
+							<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
 	<ControlTemplate x:Key="PasswordBoxExtendTopTemplate" TargetType="PasswordBox">
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
-				<RowDefinition Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
+				<RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
 			</Grid.RowDefinitions>
 			<DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
 				<ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
@@ -9380,14 +9423,14 @@
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="hc:PasswordBoxAttach.PasswordLength" Value="0">
-				<Setter TargetName="placeholder" Property="Visibility" Value="Visible" />
+				<Setter Property="Visibility" TargetName="placeholder" Value="Visible" />
 			</Trigger>
 			<Trigger Property="IsEnabled" Value="false">
-				<Setter TargetName="border" Property="Opacity" Value="0.4" />
-				<Setter TargetName="placeholder" Property="Opacity" Value="0.4" />
-				<Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.4" />
+				<Setter Property="Opacity" Value="0.4" TargetName="border" />
+				<Setter Property="Opacity" Value="0.4" TargetName="placeholder" />
+				<Setter Property="Opacity" Value="0.4" TargetName="PART_ContentHost" />
 			</Trigger>
-			<Trigger SourceName="PART_ContentHost" Property="IsMouseOver" Value="true">
+			<Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
 				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
 			</Trigger>
 			<Trigger Property="IsFocused" Value="true">
@@ -9396,9 +9439,9 @@
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
 	<ControlTemplate x:Key="PasswordBoxExtendLeftTemplate" TargetType="PasswordBox">
-		<Grid Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+		<Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
+				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding Path=(hc:TitleElement.VerticalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,7,6,7">
@@ -9411,14 +9454,14 @@
 		</Grid>
 		<ControlTemplate.Triggers>
 			<Trigger Property="hc:PasswordBoxAttach.PasswordLength" Value="0">
-				<Setter TargetName="placeholder" Property="Visibility" Value="Visible" />
+				<Setter Property="Visibility" TargetName="placeholder" Value="Visible" />
 			</Trigger>
 			<Trigger Property="IsEnabled" Value="false">
-				<Setter TargetName="border" Property="Opacity" Value="0.4" />
-				<Setter TargetName="placeholder" Property="Opacity" Value="0.4" />
-				<Setter TargetName="PART_ContentHost" Property="Opacity" Value="0.4" />
+				<Setter Property="Opacity" Value="0.4" TargetName="border" />
+				<Setter Property="Opacity" Value="0.4" TargetName="placeholder" />
+				<Setter Property="Opacity" Value="0.4" TargetName="PART_ContentHost" />
 			</Trigger>
-			<Trigger SourceName="PART_ContentHost" Property="IsMouseOver" Value="true">
+			<Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
 				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
 			</Trigger>
 			<Trigger Property="IsFocused" Value="true">
@@ -9426,6 +9469,20 @@
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
+	<Style x:Key="PasswordBoxExtendBaseStyle" BasedOn="{StaticResource PasswordBoxBaseStyle}" TargetType="PasswordBox">
+		<Setter Property="Height" Value="Auto" />
+		<Setter Property="hc:InfoElement.Symbol" Value="●" />
+		<Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
+		<Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
+		<Setter Property="hc:PasswordBoxAttach.IsMonitoring" Value="True" />
+		<Setter Property="Template" Value="{StaticResource PasswordBoxExtendTopTemplate}" />
+		<Style.Triggers>
+			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+				<Setter Property="Template" Value="{StaticResource PasswordBoxExtendLeftTemplate}" />
+				<Setter Property="Width" Value="Auto" />
+			</Trigger>
+		</Style.Triggers>
+	</Style>
 	<Style x:Key="PasswordBoxPlusInternalStyle" TargetType="PasswordBox">
 		<Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -9439,12 +9496,12 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="PasswordBox">
 					<hc:SimplePanel>
-						<TextBlock x:Name="placeholder" Margin="2,-1" Padding="{TemplateBinding Padding}" HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder), RelativeSource={RelativeSource TemplatedParent}}" Visibility="Collapsed" />
-						<ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+						<TextBlock Margin="2,-1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="{TemplateBinding Padding}" x:Name="placeholder" Visibility="Collapsed" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" />
+						<ScrollViewer Padding="{TemplateBinding Padding}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
 					</hc:SimplePanel>
 					<ControlTemplate.Triggers>
 						<Trigger Property="hc:PasswordBoxAttach.PasswordLength" Value="0">
-							<Setter TargetName="placeholder" Property="Visibility" Value="Visible" />
+							<Setter Property="Visibility" TargetName="placeholder" Value="Visible" />
 						</Trigger>
 						<Trigger Property="IsEnabled" Value="false">
 							<Setter Property="Opacity" Value="0.4" />
@@ -9466,7 +9523,7 @@
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
-				<RowDefinition Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource Double2GridLengthConverter}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}" />
+				<RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition />
@@ -9488,10 +9545,10 @@
 			<Trigger Property="IsMouseOver" Value="true">
 				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
 			</Trigger>
-			<Trigger SourceName="PART_PasswordBox" Property="IsFocused" Value="true">
+			<Trigger Property="IsFocused" Value="true" SourceName="PART_PasswordBox">
 				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
 			</Trigger>
-			<Trigger SourceName="PART_TextBox" Property="IsFocused" Value="true">
+			<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
 				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
 			</Trigger>
 			<MultiTrigger>
@@ -9499,7 +9556,7 @@
 					<Condition Property="IsMouseOver" Value="true" />
 					<Condition Property="ShowClearButton" Value="True" />
 				</MultiTrigger.Conditions>
-				<Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+				<Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
 			</MultiTrigger>
 			<Trigger Property="IsError" Value="true">
 				<Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
@@ -9511,7 +9568,7 @@
 				</Trigger.ExitActions>
 			</Trigger>
 			<Trigger Property="ShowEyeButton" Value="true">
-				<Setter TargetName="ButtonClear" Property="Margin" Value="0" />
+				<Setter Property="Margin" Value="0" TargetName="ButtonClear" />
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
@@ -9524,9 +9581,9 @@
 				<ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
 			</Storyboard>
 		</ControlTemplate.Resources>
-		<Grid Height="{Binding Path=(hc:InfoElement.ContentHeight), RelativeSource={RelativeSource TemplatedParent}}" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight), RelativeSource={RelativeSource TemplatedParent}}">
+		<Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth), RelativeSource={RelativeSource TemplatedParent}}" />
+				<ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
 				<ColumnDefinition />
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="Auto" />
@@ -9546,10 +9603,10 @@
 			<Trigger Property="IsMouseOver" Value="true">
 				<Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
 			</Trigger>
-			<Trigger SourceName="PART_PasswordBox" Property="IsFocused" Value="true">
+			<Trigger Property="IsFocused" Value="true" SourceName="PART_PasswordBox">
 				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
 			</Trigger>
-			<Trigger SourceName="PART_TextBox" Property="IsFocused" Value="true">
+			<Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
 				<Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
 			</Trigger>
 			<MultiTrigger>
@@ -9557,7 +9614,7 @@
 					<Condition Property="IsMouseOver" Value="true" />
 					<Condition Property="ShowClearButton" Value="True" />
 				</MultiTrigger.Conditions>
-				<Setter TargetName="ButtonClear" Property="Visibility" Value="Visible" />
+				<Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
 			</MultiTrigger>
 			<Trigger Property="IsError" Value="true">
 				<Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
@@ -9569,7 +9626,7 @@
 				</Trigger.ExitActions>
 			</Trigger>
 			<Trigger Property="ShowEyeButton" Value="true">
-				<Setter TargetName="ButtonClear" Property="Margin" Value="0" />
+				<Setter Property="Margin" Value="0" TargetName="ButtonClear" />
 			</Trigger>
 		</ControlTemplate.Triggers>
 	</ControlTemplate>
@@ -12339,6 +12396,8 @@
 			</Setter.Value>
 		</Setter>
 	</Style>
+	<Style BasedOn="{StaticResource PasswordBoxBaseStyle}" TargetType="PasswordBox" />
+	<Style x:Key="PasswordBoxExtend" BasedOn="{StaticResource PasswordBoxExtendBaseStyle}" TargetType="PasswordBox" />
 	<Style BasedOn="{StaticResource PasswordBoxPlusBaseStyle}" TargetType="hc:PasswordBox" />
 	<Style BasedOn="{StaticResource PinBoxBaseStyle}" TargetType="hc:PinBox" />
 	<Style BasedOn="{StaticResource PoptipBaseStyle}" TargetType="hc:Poptip" />
@@ -15896,61 +15955,6 @@
 	</Style>
 	<Style BasedOn="{StaticResource RangeSliderBaseStyle}" TargetType="hc:RangeSlider" />
 	<Style BasedOn="{StaticResource SliderBaseStyle}" TargetType="Slider" />
-	<Style x:Key="PasswordBoxBaseStyle" TargetType="PasswordBox">
-		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
-		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
-		<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
-		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
-		<Setter Property="PasswordChar" Value="●" />
-		<Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
-		<Setter Property="HorizontalContentAlignment" Value="Left" />
-		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
-		<Setter Property="AllowDrop" Value="true" />
-		<Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
-		<Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
-		<Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
-		<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-		<Setter Property="VerticalContentAlignment" Value="Center" />
-		<Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
-		<Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
-		<Setter Property="Template">
-			<Setter.Value>
-				<ControlTemplate TargetType="PasswordBox">
-					<Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius), RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
-						<ScrollViewer x:Name="PART_ContentHost" Margin="-2,0" Padding="{TemplateBinding Padding}" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
-					</Border>
-					<ControlTemplate.Triggers>
-						<Trigger Property="IsEnabled" Value="false">
-							<Setter TargetName="border" Property="Opacity" Value="0.4" />
-						</Trigger>
-						<Trigger Property="IsMouseOver" Value="true">
-							<Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
-						</Trigger>
-						<Trigger Property="IsFocused" Value="true">
-							<Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
-						</Trigger>
-					</ControlTemplate.Triggers>
-				</ControlTemplate>
-			</Setter.Value>
-		</Setter>
-	</Style>
-	<Style x:Key="PasswordBoxExtendBaseStyle" BasedOn="{StaticResource PasswordBoxBaseStyle}" TargetType="PasswordBox">
-		<Setter Property="Height" Value="Auto" />
-		<Setter Property="hc:InfoElement.Symbol" Value="●" />
-		<Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
-		<Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
-		<Setter Property="hc:PasswordBoxAttach.IsMonitoring" Value="True" />
-		<Setter Property="Template" Value="{StaticResource PasswordBoxExtendTopTemplate}" />
-		<Style.Triggers>
-			<Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
-				<Setter Property="Template" Value="{StaticResource PasswordBoxExtendLeftTemplate}" />
-				<Setter Property="Width" Value="Auto" />
-			</Trigger>
-		</Style.Triggers>
-	</Style>
-	<Style BasedOn="{StaticResource PasswordBoxBaseStyle}" TargetType="PasswordBox" />
-	<Style x:Key="PasswordBoxExtend" BasedOn="{StaticResource PasswordBoxExtendBaseStyle}" TargetType="PasswordBox" />
 	<Style TargetType="DatePickerTextBox" BasedOn="{StaticResource DatePickerTextBoxStyle}">
 		<Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
 	</Style>

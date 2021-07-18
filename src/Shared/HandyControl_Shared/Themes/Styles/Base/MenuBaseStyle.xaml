@@ -13,77 +13,31 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="MenuItem">
-                    <Border
-                        x:Name="Bd"
-                        MinWidth="240"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="True">
-                        <hc:TransitioningContentControl x:Name="anim" TransitionMode="{Binding Path=(hc:MenuAttach.AnimationMode), RelativeSource={RelativeSource TemplatedParent}}">
+                    <hc:TransitioningContentControl x:Name="anim" TransitionMode="{Binding Path=(hc:MenuAttach.AnimationMode), RelativeSource={RelativeSource TemplatedParent}}">
+                        <Border x:Name="Bd" MinWidth="240" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <Grid x:Name="Grid" Margin="{TemplateBinding Padding}">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="26" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="30" />
-                                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemIGTColumnGroup" />
-                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="26"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
+                                    <ColumnDefinition Width="20"/>
                                 </Grid.ColumnDefinitions>
-                                <ContentPresenter
-                                    x:Name="Icon"
-                                    Width="16"
-                                    Height="16"
-                                    Margin="0,0,10,0"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center"
-                                    ContentSource="Icon"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                <Border
-                                    x:Name="GlyphPanel"
-                                    Grid.Column="0"
-                                    Width="16"
-                                    Height="16"
-                                    Margin="0,0,10,0"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center"
-                                    Background="{DynamicResource PrimaryBrush}"
-                                    ClipToBounds="False"
-                                    CornerRadius="2"
-                                    IsHitTestVisible="False"
-                                    Visibility="Hidden">
-                                    <Path
-                                        Width="12"
-                                        Height="12"
-                                        Data="{StaticResource CheckedGeometry}"
-                                        Stretch="Uniform"
-                                        Stroke="{DynamicResource TextIconBrush}"
-                                        StrokeThickness="2"
-                                        UseLayoutRounding="True" />
+                                <ContentPresenter Margin="0,0,10,0" x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Right" Height="16" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
+                                <Border Margin="0,0,10,0" IsHitTestVisible="False" Grid.Column="0" x:Name="GlyphPanel" CornerRadius="2" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" HorizontalAlignment="Right" Height="16" Visibility="Hidden" VerticalAlignment="Center" Width="16">
+                                    <Path UseLayoutRounding="True" Width="12" Height="12" Data="{StaticResource CheckedGeometry}" StrokeThickness="2" Stretch="Uniform" Stroke="{DynamicResource TextIconBrush}"/>
                                 </Border>
-                                <ContentPresenter
-                                    x:Name="ContentPresenter"
-                                    Grid.Column="1"
-                                    Margin="0,3"
-                                    ContentSource="Header"
-                                    ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                    RecognizesAccessKey="True"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                <TextBlock
-                                    x:Name="InputGestureText"
-                                    Grid.Column="3"
-                                    Margin="0,0,10,0"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center"
-                                    Text="{TemplateBinding InputGestureText}" />
+                                <ContentPresenter Grid.Column="1" x:Name="ContentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentSource="Header" Margin="0,3" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                <TextBlock x:Name="InputGestureText" Margin="0,0,10,0" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{TemplateBinding InputGestureText}"/>
                             </Grid>
-                        </hc:TransitioningContentControl>
-                    </Border>
+                        </Border>
+                    </hc:TransitioningContentControl>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
+                            <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="Icon" Value="{x:Null}">
-                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="hc:MenuAttach.IsEnabledAnimation" Value="false">
                             <Setter TargetName="anim" Property="TransitionMode" Value="Custom" />
@@ -99,21 +53,15 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="Role" Value="TopLevelHeader">
-                <Setter Property="Margin" Value="0" />
+                <Setter Property="Margin" Value="0"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="MenuItem">
-                            <Border
-                                x:Name="templateRoot"
-                                MinWidth="44"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1,1,1,0"
-                                SnapsToDevicePixels="True">
-                                <Grid Margin="{TemplateBinding Padding}" VerticalAlignment="Center">
+                            <Border MinWidth="44" x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <Grid VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <ContentPresenter Margin="0,0,10,0" x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Right" Height="16" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
                                     <Border Margin="0,0,10,0" Grid.Column="0" x:Name="GlyphPanel" CornerRadius="2" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" HorizontalAlignment="Right" Height="16" Visibility="Collapsed" VerticalAlignment="Center" Width="16">
@@ -134,20 +82,20 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="Icon" Value="{x:Null}">
-                                    <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
                                 </Trigger>
                                 <Trigger Property="IsChecked" Value="True">
-                                    <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
-                                    <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                                    <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
                                 </Trigger>
                                 <Trigger Property="IsHighlighted" Value="True">
                                     <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource SecondaryRegionBrush}"/>
                                     <Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsSubmenuOpen" Value="True">
-                                    <Setter TargetName="templateRoot" Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
-                                    <Setter TargetName="templateRoot" Property="Background" Value="{DynamicResource RegionBrush}" />
-                                    <Setter TargetName="menuHeaderContainer" Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource BorderBrush}"/>
+                                    <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource RegionBrush}"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -155,60 +103,46 @@
                 </Setter>
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
-                <Setter Property="Margin" Value="0" />
+                <Setter Property="Margin" Value="0"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="MenuItem">
-                            <Border
-                                x:Name="templateRoot"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1,1,1,0"
-                                SnapsToDevicePixels="True">
+                            <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                                 <Grid Margin="{TemplateBinding Padding}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
                                     <ContentPresenter Margin="0,0,10,0" x:Name="Icon" HorizontalAlignment="Left" ContentSource="Icon" Height="16" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
                                     <Border Margin="0,0,10,0" IsHitTestVisible="False" Grid.Column="0" x:Name="GlyphPanel" CornerRadius="2" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" HorizontalAlignment="Right" Height="16" Visibility="Collapsed" VerticalAlignment="Center" Width="16">
                                         <Path UseLayoutRounding="True" Width="12" Height="12" Data="{StaticResource CheckedGeometry}" StrokeThickness="2" Stretch="Uniform" Stroke="{DynamicResource TextIconBrush}"/>
                                     </Border>
-                                    <ContentPresenter
-                                        x:Name="menuHeaderContainer"
-                                        Grid.Column="1"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center"
-                                        ContentSource="Header"
-                                        ContentStringFormat="{TemplateBinding HeaderStringFormat}"
-                                        ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                        RecognizesAccessKey="True"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    <ContentPresenter x:Name="menuHeaderContainer" ContentTemplate="{TemplateBinding HeaderTemplate}" Grid.Column="1" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" HorizontalAlignment="Left" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center"/>
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="Icon" Value="{x:Null}">
-                                    <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
                                 </Trigger>
                                 <Trigger Property="IsChecked" Value="True">
-                                    <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
-                                    <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                                    <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
                                 </Trigger>
                                 <Trigger Property="IsHighlighted" Value="True">
                                     <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource SecondaryRegionBrush}"/>
                                     <Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsSubmenuOpen" Value="True">
-                                    <Setter TargetName="templateRoot" Property="Background" Value="White" />
-                                    <Setter TargetName="menuHeaderContainer" Property="TextElement.Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                                    <Setter Property="Background" TargetName="templateRoot" Value="White"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="menuHeaderContainer" Value="{DynamicResource PrimaryTextBrush}"/>
                                 </Trigger>
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
-                                        <Condition Property="IsHighlighted" Value="True" />
-                                        <Condition Property="IsEnabled" Value="False" />
+                                        <Condition Property="IsHighlighted" Value="True"/>
+                                        <Condition Property="IsEnabled" Value="False"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter TargetName="templateRoot" Property="Background" Value="#0A000000" />
-                                    <Setter TargetName="templateRoot" Property="BorderBrush" Value="#21000000" />
+                                    <Setter Property="Background" TargetName="templateRoot" Value="#0A000000"/>
+                                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="#21000000"/>
                                 </MultiTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -216,13 +150,13 @@
                 </Setter>
             </Trigger>
             <Trigger Property="Role" Value="SubmenuHeader">
-                <Setter Property="DockPanel.Dock" Value="Top" />
-                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+                <Setter Property="DockPanel.Dock" Value="Top"/>
+                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="MenuItem">
-                            <Border x:Name="Bd" MinWidth="240" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-                                <hc:TransitioningContentControl x:Name="anim" TransitionMode="{Binding Path=(hc:MenuAttach.AnimationMode), RelativeSource={RelativeSource TemplatedParent}}">
+                            <hc:TransitioningContentControl x:Name="anim" TransitionMode="{Binding Path=(hc:MenuAttach.AnimationMode), RelativeSource={RelativeSource TemplatedParent}}">
+                                <Border x:Name="Bd" MinWidth="240" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                                     <Grid x:Name="Grid" Margin="{TemplateBinding Padding}">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="26"/>
@@ -245,14 +179,19 @@
                                             </Border>
                                         </Popup>
                                     </Grid>
-                                </hc:TransitioningContentControl>
-                            </Border>
+                                </Border>
+                            </hc:TransitioningContentControl>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsChecked" Value="True">
-                                    <Setter TargetName="GlyphPanel" Property="Visibility" Value="Visible" />
+                                    <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
                                 </Trigger>
                                 <Trigger Property="hc:MenuAttach.IsEnabledAnimation" Value="false">
-                                    <Setter TargetName="anim" Property="TransitionMode" Value="Custom" />
+                                    <Setter TargetName="anim" Property="TransitionMode" Value="Custom"/>
+                                    <Setter TargetName="anim" Property="TransitionStoryboard">
+                                        <Setter.Value>
+                                            <Storyboard/>
+                                        </Setter.Value>
+                                    </Setter>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -263,7 +202,7 @@
                 <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" Value=".4" />
+                <Setter Property="Opacity" Value=".4"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -279,13 +218,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Menu">
-                    <Border
-                        Padding="{TemplateBinding Padding}"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        SnapsToDevicePixels="true">
-                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

@@ -186,5 +186,9 @@
     <Style TargetType="TextBox" BasedOn="{StaticResource ComboBoxEditableTextBox}">
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
     </Style>
+
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource PasswordBoxBaseStyle}">
+        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
+    </Style>
     
 </ResourceDictionary>

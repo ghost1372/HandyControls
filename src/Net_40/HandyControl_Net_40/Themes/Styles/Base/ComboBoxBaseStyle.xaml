@@ -3,7 +3,7 @@
                     xmlns:hc="clr-namespace:HandyControl.Controls"
                     xmlns:interactivity="clr-namespace:HandyControl.Interactivity"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
-    
+
     <!--下拉框切换按钮-->
     <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
