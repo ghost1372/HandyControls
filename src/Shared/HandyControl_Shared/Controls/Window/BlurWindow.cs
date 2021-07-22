@@ -10,6 +10,7 @@ namespace HandyControl.Controls
     {
         protected override void OnSourceInitialized(EventArgs e)
         {
+            base.OnSourceInitialized(e);
             var version = OSVersionHelper.GetOSVersion();
             var versionInfo = new SystemVersionInfo(version.Major, version.Minor, version.Build);
 
@@ -17,8 +18,6 @@ namespace HandyControl.Controls
             {
                 this.GetHwndSource()?.AddHook(HwndSourceHook);
             }
-
-            base.OnSourceInitialized(e);
         }
 
         private IntPtr HwndSourceHook(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)
