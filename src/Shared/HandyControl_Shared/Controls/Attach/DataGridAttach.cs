@@ -337,6 +337,15 @@ namespace HandyControl.Controls
         public static bool GetCanUnselectAllWithBlankArea(DependencyObject element)
             => (bool) element.GetValue(CanUnselectAllWithBlankAreaProperty);
 
+        public static readonly DependencyProperty ShowSelectAllButtonProperty = DependencyProperty.RegisterAttached(
+            "ShowSelectAllButton", typeof(bool), typeof(DataGridAttach), new PropertyMetadata(ValueBoxes.TrueBox));
+
+        public static void SetShowSelectAllButton(DependencyObject element, bool value)
+            => element.SetValue(ShowSelectAllButtonProperty, value);
+
+        public static bool GetShowSelectAllButton(DependencyObject element)
+            => (bool) element.GetValue(ShowSelectAllButtonProperty);
+
         #region HandyControls
         internal static readonly DependencyProperty IsSelectAllProperty =
             DependencyProperty.RegisterAttached("IsSelectAll", typeof(bool), typeof(DataGridAttach), new PropertyMetadata(false,
@@ -383,13 +392,5 @@ namespace HandyControl.Controls
             obj.SetValue(CurrentDataGridProperty, value);
         }
         #endregion
-        public static readonly DependencyProperty ShowSelectAllButtonProperty = DependencyProperty.RegisterAttached(
-            "ShowSelectAllButton", typeof(bool), typeof(DataGridAttach), new PropertyMetadata(ValueBoxes.TrueBox));
-
-        public static void SetShowSelectAllButton(DependencyObject element, bool value)
-            => element.SetValue(ShowSelectAllButtonProperty, value);
-
-        public static bool GetShowSelectAllButton(DependencyObject element)
-            => (bool) element.GetValue(ShowSelectAllButtonProperty);
     }
 }
