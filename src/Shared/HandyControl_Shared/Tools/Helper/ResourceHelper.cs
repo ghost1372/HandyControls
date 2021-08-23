@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace HandyControl.Tools
 {
@@ -8,6 +7,8 @@ namespace HandyControl.Tools
     /// </summary>
     public class ResourceHelper
     {
+        private static ResourceDictionary _theme;
+
         /// <summary>
         ///     Get Resource
         /// </summary>
@@ -36,9 +37,14 @@ namespace HandyControl.Tools
         /// <summary>
         ///     get HandyControl theme
         /// </summary>
-        public static ResourceDictionary GetTheme() => new()
+        public static ResourceDictionary GetTheme() => _theme ??= GetStandaloneTheme();
+
+        public static ResourceDictionary GetStandaloneTheme()
         {
-            Source = ApplicationHelper.GetAbsoluteUri("Themes/Theme.xaml")
-        };
+            return new()
+            {
+                Source = ApplicationHelper.GetAbsoluteUri("Themes/Theme.xaml")
+            };
+        }
     }
 }
