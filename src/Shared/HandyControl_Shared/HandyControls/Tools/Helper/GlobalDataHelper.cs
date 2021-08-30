@@ -25,6 +25,11 @@ namespace HandyControl.Tools
             {
                 FileName = "AppConfig.json";
             }
+            else
+            {
+                CreateDirectory(FileName);
+            }
+
             if (FileVersion != 0)
             {
                 if (!FileVersion.Equals(RegistryHelper.GetValue<int>(FileVersionKey, Path.GetFileNameWithoutExtension(ApplicationHelper.GetExecutablePathNative()))))
@@ -56,6 +61,15 @@ namespace HandyControl.Tools
         public async Task SaveAsync()
         {
             await JsonFile.SaveAsync(FileName, this, JsonSerializerOptions);
+        }
+
+        public void CreateDirectory(string path)
+        {
+            var dir = Path.GetDirectoryName(path);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
         }
     }
     internal static class JsonFile
