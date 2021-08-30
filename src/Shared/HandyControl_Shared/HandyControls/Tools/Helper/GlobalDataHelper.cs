@@ -96,7 +96,14 @@ namespace HandyControl.Tools
                 using (StreamReader reader = File.OpenText(fileName))
                 {
                     string json = reader.ReadToEnd();
-                    return JsonSerializer.Deserialize<T>(json);
+                    if (!string.IsNullOrEmpty(json))
+                    {
+                        return JsonSerializer.Deserialize<T>(json);
+                    }
+                    else
+                    {
+                        return default(T);
+                    }
                 }
             }
             else
@@ -110,7 +117,14 @@ namespace HandyControl.Tools
             if (File.Exists(fileName))
             {
                 using FileStream openStream = File.OpenRead(fileName);
-                return await JsonSerializer.DeserializeAsync<T>(openStream);
+                if (openStream.Length > 0)
+                {
+                    return await JsonSerializer.DeserializeAsync<T>(openStream);
+                }
+                else
+                {
+                    return default(T);
+                }
             }
             else
             {
