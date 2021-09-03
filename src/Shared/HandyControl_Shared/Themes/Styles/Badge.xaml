@@ -25,4 +25,5 @@
     <Style x:Key="BadgeDanger" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="hc:Badge">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
+
 </ResourceDictionary>

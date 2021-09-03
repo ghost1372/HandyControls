@@ -59,7 +59,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
     <Style x:Key="CalendarDayButtonStyle" BasedOn="{StaticResource BaseStyle}" TargetType="CalendarDayButton">
         <Setter Property="MinWidth" Value="10"/>
         <Setter Property="MinHeight" Value="10"/>
@@ -256,5 +256,5 @@
     </Style>
 
     <Style TargetType="Calendar" BasedOn="{StaticResource CalendarBaseStyle}"/>
-    
+
 </ResourceDictionary>

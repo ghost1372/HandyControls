@@ -38,7 +38,7 @@
     <Style x:Key="RepeatButtonDanger" BasedOn="{StaticResource RepeatButtonBaseStyle}" TargetType="RepeatButton">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
-    
+
     <!--endregion-->
 
     <!--region RepeatButtonIcon-->

@@ -18,7 +18,6 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBoxBase">
@@ -27,13 +26,13 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                            <Setter Property="Opacity" TargetName="border" Value="0.4"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}"/>
                         </Trigger>
                         <Trigger Property="IsFocused" Value="true">
-                            <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+                            <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -41,13 +40,10 @@
         </Setter>
     </Style>
 
-    <Style
-        x:Key="RichTextBoxBaseStyle"
-        BasedOn="{StaticResource TextBoxBaseBaseStyle}"
-        TargetType="RichTextBox">
-        <Setter Property="MinWidth" Value="10" />
+    <Style x:Key="RichTextBoxBaseStyle" BasedOn="{StaticResource TextBoxBaseBaseStyle}" TargetType="RichTextBox">
+        <Setter Property="MinWidth" Value="10"/>
     </Style>
 
-    <Style BasedOn="{StaticResource RichTextBoxBaseStyle}" TargetType="RichTextBox" />
+    <Style BasedOn="{StaticResource RichTextBoxBaseStyle}" TargetType="RichTextBox"/>
 
 </ResourceDictionary>

@@ -25,4 +25,5 @@
     <Style x:Key="LabelDanger" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
         <Setter Property="Background" Value="{DynamicResource DangerBrush}"/>
     </Style>
+
 </ResourceDictionary>
