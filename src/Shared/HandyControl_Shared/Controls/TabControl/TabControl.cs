@@ -96,7 +96,7 @@ namespace HandyControl.Controls
         public bool ShowCloseButton
         {
             get => (bool) GetValue(ShowCloseButtonProperty);
-            set => SetValue(ShowCloseButtonProperty, value);
+            set => SetValue(ShowCloseButtonProperty, ValueBoxes.BooleanBox(value));
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace HandyControl.Controls
         public bool ShowContextMenu
         {
             get => (bool) GetValue(ShowContextMenuProperty);
-            set => SetValue(ShowContextMenuProperty, value);
+            set => SetValue(ShowContextMenuProperty, ValueBoxes.BooleanBox(value));
         }
 
         /// <summary>
