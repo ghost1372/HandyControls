@@ -87,6 +87,13 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
     </ProjectReference>
+    <ProjectReference Include="..\WpfAppMVVMStylet\WpfAppMVVMStylet.csproj">
+      <Project>{808EAEE5-3A92-4BDB-8ED3-2651837FCA5B}</Project>
+      <Name>WpfAppMVVMStylet</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
     <ProjectReference Include="..\WpfApp\WpfApp.csproj">
       <Project>{83C70EB1-3A3F-4812-B86C-C7D1936699EB}</Project>
       <Name>WpfApp</Name>
@@ -97,6 +104,13 @@
     <ProjectReference Include="..\WpfCoreAppPrism\WpfCoreAppPrism.csproj">
       <Project>{DC81E129-BF4F-4BF1-A552-C3CD86905F1B}</Project>
       <Name>WpfCoreAppPrism</Name>
+      <VSIXSubPath>ProjectTemplates</VSIXSubPath>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
+    </ProjectReference>
+    <ProjectReference Include="..\WpfCoreAppStylet\WpfCoreAppStylet.csproj">
+      <Project>{5B2B8B67-EF20-470C-ADCC-97A5AFF1EBFC}</Project>
+      <Name>WpfCoreAppStylet</Name>
       <VSIXSubPath>ProjectTemplates</VSIXSubPath>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <IncludeOutputGroupsInVSIX>TemplateProjectOutputGroup%3b</IncludeOutputGroupsInVSIX>
