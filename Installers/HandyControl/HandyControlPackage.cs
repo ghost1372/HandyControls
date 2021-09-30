@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Shell;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
-namespace HandyControl_VS2019
+namespace HandyControl
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
@@ -24,13 +24,13 @@ namespace HandyControl_VS2019
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [Guid(PackageGuidString)]
-    public sealed class HandyControl_VS2019Package : AsyncPackage
+    [Guid(HandyControlPackage.PackageGuidString)]
+    public sealed class HandyControlPackage : AsyncPackage
     {
         /// <summary>
-        /// HandyControl_VS2019Package GUID string.
+        /// HandyControlPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "157ef242-83b5-47d0-8f2f-e21dc8308151";
+        public const string PackageGuidString = "ddca19e9-1d03-485b-ab0b-20dcc91242c8";
 
         #region Package Members
 
