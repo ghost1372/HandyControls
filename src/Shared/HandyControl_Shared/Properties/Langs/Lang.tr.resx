@@ -229,15 +229,15 @@
     <value>Lütfen bekle...</value>
   </data>
   <data name="Jump" xml:space="preserve">
-    <value>Atlama</value>
+    <value>Zıpla</value>
   </data>
   <data name="Miscellaneous" xml:space="preserve">
     <value>Çeşitli</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>All</value>
+    <value>Hepsi</value>
   </data>
   <data name="NoData" xml:space="preserve">
-    <value>No Data</value>
+    <value>Veri yok</value>
   </data>
 </root>
