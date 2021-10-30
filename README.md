@@ -175,6 +175,10 @@ Step 4: Enjoy coding
 
 ## Latest examples
 
+### WinUI Mica Material
+
+![image](https://user-images.githubusercontent.com/9213496/139542436-037f0233-e8c6-4c04-9e16-4d50035ed0b3.png)
+
 ### AutoCompleteTextBox
 
 ![AutoCompleteTextBox](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/AutoCompleteTextBox.gif)
