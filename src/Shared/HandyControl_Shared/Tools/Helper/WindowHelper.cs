@@ -12,7 +12,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
 {
-    public static class WindowHelper
+    public static partial class WindowHelper
     {
         /// <summary>
         ///     Get the active window in the current application

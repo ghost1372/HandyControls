@@ -3,13 +3,16 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
 using HandyControl.Tools.Interop;
+using HandyControl.Themes;
 #if NET40
 using Microsoft.Windows.Shell;
+using Standard;
 #else
 using System.Windows.Shell;
 #endif
@@ -66,6 +69,8 @@ namespace HandyControl.Controls
                 UseAeroCaptionButtons = false
             };
 #endif
+            InitMica();
+
             BindingOperations.SetBinding(chrome, WindowChrome.CaptionHeightProperty,
                 new Binding(NonClientAreaHeightProperty.Name) { Source = this });
             WindowChrome.SetWindowChrome(this, chrome);
@@ -265,6 +270,8 @@ namespace HandyControl.Controls
         {
             base.OnSourceInitialized(e);
             this.GetHwndSource()?.AddHook(HwndSourceHook);
+            this.windowHandle = new WindowInteropHelper(this).EnsureHandle();
+            UpdateWindowEffect(this);
         }
 
         protected override void OnStateChanged(EventArgs e)
@@ -281,6 +288,7 @@ namespace HandyControl.Controls
                 BorderThickness = _actualBorderThickness;
                 NonClientAreaHeight = _tempNonClientAreaHeight;
             }
+            UpdateWindowEffect(this);
         }
 
         protected void OnLoaded(RoutedEventArgs args)
@@ -482,6 +490,78 @@ namespace HandyControl.Controls
 
         #endregion
 
+        #endregion
+
+        #region Mica
+
+        private IntPtr windowHandle;
+
+        public static readonly DependencyProperty ApplyBackdropMaterialProperty = DependencyProperty.Register(
+            "ApplyBackdropMaterial", typeof(bool), typeof(Window),
+            new PropertyMetadata(ValueBoxes.FalseBox, OnApplyBackdropMaterialChanged));
+
+        public bool ApplyBackdropMaterial
+        {
+            get => (bool) GetValue(ApplyBackdropMaterialProperty);
+            set => SetValue(ApplyBackdropMaterialProperty, ValueBoxes.BooleanBox(value));
+        }
+
+        private static void OnApplyBackdropMaterialChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var ctl = (Window) d;
+            ctl.InitMica();
+        }
+
+        private void InitMica()
+        {
+            if (ApplyBackdropMaterial && OSVersionHelper.IsWindows11_OrGreater)
+            {
+                this.Background = Brushes.Transparent;
+                WindowStyle = WindowStyle.None;
+                NonClientAreaBackground = Brushes.Transparent;
+                ThemeManager.Current.ActualApplicationThemeChanged += ActualApplicationThemeChanged;
+            }
+        }
+        private void ActualApplicationThemeChanged(ThemeManager sender, object args)
+        {
+            if (windowHandle != null)
+            {
+                if (sender.ApplicationTheme == ApplicationTheme.Light)
+                {
+                    WindowHelper.EnableMicaEffect(windowHandle, false);
+                }
+                else
+                {
+                    WindowHelper.EnableMicaEffect(windowHandle, true);
+                }
+            }
+        }
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+            UpdateWindowEffect(this);
+        }
+
+        protected override void OnDeactivated(EventArgs e)
+        {
+            base.OnDeactivated(e);
+            UpdateWindowEffect(this);
+        }
+
+        public void UpdateWindowEffect(Window window)
+        {
+            if (ApplyBackdropMaterial && OSVersionHelper.IsWindows11_OrGreater)
+            {
+                UpdateWindowEffect(new WindowInteropHelper(window).EnsureHandle());
+            }
+        }
+
+        public void UpdateWindowEffect(IntPtr windowHandle)
+        {
+            var isDark = ThemeManager.Current.ApplicationTheme == ApplicationTheme.Dark;
+            WindowHelper.EnableMicaEffect(windowHandle, isDark);
+        }
+        
         #endregion
     }
 }

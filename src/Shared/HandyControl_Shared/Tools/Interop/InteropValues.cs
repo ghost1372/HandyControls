@@ -33,6 +33,34 @@ namespace HandyControl.Tools.Interop
 
         public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
+        public enum DWMWINDOWATTRIBUTE : int
+        {
+            USE_IMMERSIVE_DARK_MODE = 20,
+            MICA_EFFECT = 1029
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        public struct MARGINS
+        {
+            public MARGINS(int left, int top, int right, int bottom)
+            {
+                this.Left = left;
+                this.Top = top;
+                this.Right = right;
+                this.Bottom = bottom;
+            }
+
+            /// <summary>Width of left border that retains its size.</summary>
+            public int Left;
+
+            /// <summary>Width of right border that retains its size.</summary>
+            public int Right;
+
+            /// <summary>Height of top border that retains its size.</summary>
+            public int Top;
+
+            /// <summary>Height of bottom border that retains its size.</summary>
+            public int Bottom;
+        }
         public const int
             BITSPIXEL = 12,
             PLANES = 14,

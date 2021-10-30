@@ -539,6 +539,29 @@ namespace HandyControl.Tools.Interop
         [DllImport(InteropValues.ExternDll.DwmApi, EntryPoint = "DwmGetColorizationColor", PreserveSig = true)]
         public static extern int DwmGetColorizationColor(out uint pcrColorization, out bool pfOpaqueBlend);
 
+        [DllImport(InteropValues.ExternDll.DwmApi)]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, InteropValues.DWMWINDOWATTRIBUTE attr, ref int attrValue, int attrSize);
+
+        [DllImport(InteropValues.ExternDll.DwmApi)]
+        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref InteropValues.MARGINS pMarInset);
+
+        public static bool SetWindowAttributeValue(IntPtr hWnd, InteropValues.DWMWINDOWATTRIBUTE attribute, int attributeValue)
+        {
+            return SetWindowAttribute(hWnd, attribute, ref attributeValue);
+        }
+
+        public static bool SetWindowAttribute(IntPtr hWnd, InteropValues.DWMWINDOWATTRIBUTE attribute, ref int attributeValue)
+        {
+            var result = DwmSetWindowAttribute(hWnd, attribute, ref attributeValue, sizeof(int));
+            return result == 0;
+        }
+
+        public static bool WindowExtendIntoClientArea(IntPtr hWnd, InteropValues.MARGINS margins)
+        {
+            // Extend frame on the bottom of client area
+            var result = DwmExtendFrameIntoClientArea(hWnd, ref margins);
+            return result == 0;
+        }
         #endregion
 
         // Define the callback delegate's type.
