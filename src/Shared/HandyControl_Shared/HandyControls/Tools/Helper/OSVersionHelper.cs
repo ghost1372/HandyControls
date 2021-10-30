@@ -8,7 +8,7 @@ namespace HandyControl.Tools
     {
         private static readonly Version _osVersion = GetOSVersion();
 
-                /// <summary>
+        /// <summary>
         /// Windows NT
         /// </summary>
         public static bool IsWindowsNT { get; } = Environment.OSVersion.Platform == PlatformID.Win32NT;
@@ -162,6 +162,26 @@ namespace HandyControl.Tools
         /// Windows 10 20H2 Version 2009 Build 19042 Or Greater (October 2020 Update)
         /// </summary>
         public static bool IsWindows10_2009_OrGreater { get; } = IsWindowsNT && _osVersion >= new Version(10, 0, 19042);
+
+        /// <summary>
+        /// Windows 10 21H1 Build 19043
+        /// </summary>
+        public static bool IsWindows10_21H1 { get; } = IsWindowsNT && _osVersion >= new Version(10, 0, 19043);
+
+        /// <summary>
+        /// Windows 10 21H1 Build 19043 Or Greater (May 2021 Update)
+        /// </summary>
+        public static bool IsWindows10_21H1_OrGreater { get; } = IsWindowsNT && _osVersion >= new Version(10, 0, 19043);
+
+        /// <summary>
+        ///     Windows 11
+        /// </summary>
+        public static bool IsWindows11 { get; } = IsWindowsNT && _osVersion == new Version(10, 0, 22000);
+
+        /// <summary>
+        ///     Windows 11 Or Greater
+        /// </summary>
+        public static bool IsWindows11_OrGreater { get; } = IsWindowsNT && _osVersion >= new Version(10, 0, 22000);
 
         public static Version GetOSVersion()
         {
