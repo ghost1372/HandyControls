@@ -18,7 +18,7 @@ namespace HandyControl.Themes
             MergedDictionaries.Add(ControlsResources);
         }
 
-        internal static ResourceDictionary ControlsResources
+        public static ResourceDictionary ControlsResources
         {
             get
             {

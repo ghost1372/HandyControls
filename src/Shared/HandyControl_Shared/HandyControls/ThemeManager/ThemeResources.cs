@@ -14,8 +14,8 @@ namespace HandyControl.Themes
     {
         private static ThemeResources _current;
 
-        private ResourceDictionary _lightResources;
-        private ResourceDictionary _darkResources;
+        public ResourceDictionary _lightResources;
+        public ResourceDictionary _darkResources;
 
         private bool _canBeAccessedAcrossThreads;
         private bool _usingSystemTheme;
@@ -280,7 +280,7 @@ namespace HandyControl.Themes
             }
         }
 
-        internal ResourceDictionary GetThemeDictionary(string key)
+        public ResourceDictionary GetThemeDictionary(string key)
         {
             switch (key)
             {
@@ -295,7 +295,7 @@ namespace HandyControl.Themes
             }
         }
 
-        internal ResourceDictionary TryGetThemeDictionary(string key)
+        public ResourceDictionary TryGetThemeDictionary(string key)
         {
             return key switch
             {
