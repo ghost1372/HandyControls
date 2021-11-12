@@ -83,6 +83,7 @@ namespace HandyControl.Tools.Interop
             WM_GETMINMAXINFO = 0x0024,
             WM_WINDOWPOSCHANGING = 0x0046,
             WM_WINDOWPOSCHANGED = 0x0047,
+            WM_CREATE = 0x0001,
             WM_SETICON = 0x0080,
             WM_NCCREATE = 0x0081,
             WM_NCDESTROY = 0x0082,
