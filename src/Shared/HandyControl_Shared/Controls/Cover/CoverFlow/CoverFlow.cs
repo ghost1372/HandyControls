@@ -104,17 +104,12 @@ namespace HandyControl.Controls
         private int _lastShowIndex;
 
         /// <summary>
-        ///     Jump number
-        /// </summary>
-        private int _jumpToIndex = -1;
-
-        /// <summary>
-        ///     page number
+        ///     页码
         /// </summary>
         public int PageIndex
         {
             get => (int) GetValue(PageIndexProperty);
-            internal set => SetValue(PageIndexProperty, value);
+            set => SetValue(PageIndexProperty, value);
         }
 
         /// <summary>
@@ -147,11 +142,6 @@ namespace HandyControl.Controls
             _visualParent = GetTemplateChild(ElementVisualParent) as ModelVisual3D;
 
             UpdateShowRange();
-            if (_jumpToIndex > 0)
-            {
-                PageIndex = _jumpToIndex;
-                _jumpToIndex = -1;
-            }
 
             _point3DAnimation = new Point3DAnimation(new Point3D(CoverFlowItem.Interval * PageIndex, _camera.Position.Y, _camera.Position.Z), new Duration(TimeSpan.FromMilliseconds(200)));
             _camera.BeginAnimation(ProjectionCamera.PositionProperty, _point3DAnimation);
@@ -181,10 +171,9 @@ namespace HandyControl.Controls
         /// <param name="uri"></param>
         public void Add(Uri uri) => _contentDic.Add(_contentDic.Count, uri);
 
-        /// <summary>
-        ///     Jump
-        /// </summary>
-        public void JumpTo(int index) => _jumpToIndex = index;
+        public void Next() => PageIndex++;
+
+        public void Prev() => PageIndex--;
 
         protected override void OnMouseWheel(MouseWheelEventArgs e)
         {
@@ -237,6 +226,11 @@ namespace HandyControl.Controls
         /// <param name="newIndex"></param>
         private void UpdateIndex(int newIndex)
         {
+            if (!IsLoaded)
+            {
+                return;
+            }
+
             UpdateShowRange();
             _itemShowDic.Do(item =>
             {
