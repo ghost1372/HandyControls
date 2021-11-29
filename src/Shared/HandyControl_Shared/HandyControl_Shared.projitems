@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumDescriptionTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\LocalizedDescriptionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Window!.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\BaseLocalizationListener.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\BindingLocalizationConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\BindingLocalizationListener.cs" />

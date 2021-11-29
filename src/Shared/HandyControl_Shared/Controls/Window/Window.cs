@@ -9,7 +9,6 @@ using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
 using HandyControl.Tools.Interop;
-using HandyControl.Themes;
 #if NET40
 using Microsoft.Windows.Shell;
 using Standard;
@@ -20,7 +19,7 @@ using System.Windows.Shell;
 namespace HandyControl.Controls
 {
     [TemplatePart(Name = ElementNonClientArea, Type = typeof(UIElement))]
-    public class Window : System.Windows.Window
+    public partial class Window : System.Windows.Window
     {
         #region fields
 
@@ -239,16 +238,7 @@ namespace HandyControl.Controls
             get => (bool) GetValue(ShowIconProperty);
             set => SetValue(ShowIconProperty, value);
         }
-
-        public static readonly DependencyProperty ExtendViewIntoNonClientAreaProperty = DependencyProperty.Register(
-                "ExtendViewIntoNonClientArea", typeof(bool), typeof(Window),
-                new PropertyMetadata(ValueBoxes.FalseBox));
-                
-        public bool ExtendViewIntoNonClientArea
-        {
-            get => (bool) GetValue(ExtendViewIntoNonClientAreaProperty);
-            set => SetValue(ExtendViewIntoNonClientAreaProperty, ValueBoxes.BooleanBox(value));
-        }        
+     
         #endregion
 
         #region methods
@@ -490,78 +480,6 @@ namespace HandyControl.Controls
 
         #endregion
 
-        #endregion
-
-        #region Mica
-
-        private IntPtr windowHandle;
-
-        public static readonly DependencyProperty ApplyBackdropMaterialProperty = DependencyProperty.Register(
-            "ApplyBackdropMaterial", typeof(bool), typeof(Window),
-            new PropertyMetadata(ValueBoxes.FalseBox, OnApplyBackdropMaterialChanged));
-
-        public bool ApplyBackdropMaterial
-        {
-            get => (bool) GetValue(ApplyBackdropMaterialProperty);
-            set => SetValue(ApplyBackdropMaterialProperty, ValueBoxes.BooleanBox(value));
-        }
-
-        private static void OnApplyBackdropMaterialChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var ctl = (Window) d;
-            ctl.InitMica();
-        }
-
-        private void InitMica()
-        {
-            if (ApplyBackdropMaterial && OSVersionHelper.IsWindows11_OrGreater)
-            {
-                this.Background = Brushes.Transparent;
-                WindowStyle = WindowStyle.None;
-                NonClientAreaBackground = Brushes.Transparent;
-                ThemeManager.Current.ActualApplicationThemeChanged += ActualApplicationThemeChanged;
-            }
-        }
-        private void ActualApplicationThemeChanged(ThemeManager sender, object args)
-        {
-            if (windowHandle != null)
-            {
-                if (sender.ApplicationTheme == ApplicationTheme.Light)
-                {
-                    WindowHelper.EnableMicaEffect(windowHandle, false);
-                }
-                else
-                {
-                    WindowHelper.EnableMicaEffect(windowHandle, true);
-                }
-            }
-        }
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
-            UpdateWindowEffect(this);
-        }
-
-        protected override void OnDeactivated(EventArgs e)
-        {
-            base.OnDeactivated(e);
-            UpdateWindowEffect(this);
-        }
-
-        public void UpdateWindowEffect(Window window)
-        {
-            if (ApplyBackdropMaterial && OSVersionHelper.IsWindows11_OrGreater)
-            {
-                UpdateWindowEffect(new WindowInteropHelper(window).EnsureHandle());
-            }
-        }
-
-        public void UpdateWindowEffect(IntPtr windowHandle)
-        {
-            var isDark = ThemeManager.Current.ApplicationTheme == ApplicationTheme.Dark;
-            WindowHelper.EnableMicaEffect(windowHandle, isDark);
-        }
-        
         #endregion
     }
 }
