@@ -174,12 +174,12 @@ namespace HandyControl.Tools
         public static bool IsWindows10_21H1_OrGreater { get; } = IsWindowsNT && _osVersion >= new Version(10, 0, 19043);
 
         /// <summary>
-        ///     Windows 11
+        ///     Windows 11 Build 22000
         /// </summary>
         public static bool IsWindows11 { get; } = IsWindowsNT && _osVersion == new Version(10, 0, 22000);
 
         /// <summary>
-        ///     Windows 11 Or Greater
+        ///     Windows 11 Build 22000 Or Greater
         /// </summary>
         public static bool IsWindows11_OrGreater { get; } = IsWindowsNT && _osVersion >= new Version(10, 0, 22000);
 

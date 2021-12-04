@@ -390,15 +390,7 @@ namespace HandyControl.Controls
                         if (OSVersionHelper.IsWindows11_OrGreater)
                         {
                             int y = lparam.ToInt32() >> 16;
-                            Button _button;
-                            if (WindowState == WindowState.Maximized)
-                            {
-                                _button = _ButtonRestore;
-                            }
-                            else
-                            {
-                                _button = _ButtonMax;
-                            }
+                            var _button = WindowState == WindowState.Maximized ? _ButtonRestore : _ButtonMax;
                             var rect = new Rect(_button.PointToScreen(
                                 new Point()),
                                 new Size(_button.Width * DPI_SCALE, _button.Height * DPI_SCALE));
@@ -424,15 +416,7 @@ namespace HandyControl.Controls
                     {
                         int x = lparam.ToInt32() & 0xffff;
                         int y = lparam.ToInt32() >> 16;
-                        Button _button;
-                        if (WindowState == WindowState.Maximized)
-                        {
-                            _button = _ButtonRestore;
-                        }
-                        else
-                        {
-                            _button = _ButtonMax;
-                        }
+                        var _button = WindowState == WindowState.Maximized ? _ButtonRestore : _ButtonMax;
                         var rect = new Rect(_button.PointToScreen(
                             new Point()),
                             new Size(_button.Width * DPI_SCALE, _button.Height * DPI_SCALE));
