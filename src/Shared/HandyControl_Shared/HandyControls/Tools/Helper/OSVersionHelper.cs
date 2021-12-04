@@ -186,6 +186,9 @@ namespace HandyControl.Tools
         public static Version GetOSVersion()
         {
             var osv = new InteropValues.RTL_OSVERSIONINFOEX();
+#if (NET40 || NET45)
+            osv.dwOSVersionInfoSize = (uint) Marshal.SizeOf(osv);
+#endif
             InteropMethods.RtlGetVersion(out osv);
             return new Version((int) osv.dwMajorVersion, (int) osv.dwMinorVersion, (int) osv.dwBuildNumber, (int) osv.dwRevision);
         }
