@@ -1078,7 +1078,7 @@ namespace HandyControl.Tools.Interop
         [StructLayout(LayoutKind.Sequential)]
         public struct RTL_OSVERSIONINFOEX
         {
-            public uint dwOSVersionInfoSize;
+            public readonly uint  dwOSVersionInfoSize { get; init; } = (uint)Marshal.SizeOf<RTL_OSVERSIONINFOEX>();
             public uint dwMajorVersion;
             public uint dwMinorVersion;
             public uint dwBuildNumber;
