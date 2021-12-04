@@ -1078,11 +1078,10 @@ namespace HandyControl.Tools.Interop
         [StructLayout(LayoutKind.Sequential)]
         public struct RTL_OSVERSIONINFOEX
         {
-#if (NET40 || NET45)
-
-            public uint dwOSVersionInfoSize;
+#if NET5_0_OR_GREATER
+            public readonly uint dwOSVersionInfoSize { get; init; } = (uint) Marshal.SizeOf<RTL_OSVERSIONINFOEX>();
 #else
-            public readonly uint dwOSVersionInfoSize { get; init; } = (uint)Marshal.SizeOf<RTL_OSVERSIONINFOEX>();
+            public uint dwOSVersionInfoSize;
 #endif
             public uint dwMajorVersion;
             public uint dwMinorVersion;
