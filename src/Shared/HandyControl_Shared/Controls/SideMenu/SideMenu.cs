@@ -96,6 +96,12 @@ namespace HandyControl.Controls
                     {
                         if (AutoSelect)
                         {
+                            if (_selectedItem != null)
+                            {
+                                _selectedItem.IsSelected = false;
+                                _selectedItem = null;
+                            }
+
                             _selectedHeader.SelectDefaultItem();
                         }
                         _isItemSelected = false;
