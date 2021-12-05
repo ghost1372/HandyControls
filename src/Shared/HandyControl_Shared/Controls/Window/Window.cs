@@ -388,7 +388,7 @@ namespace HandyControl.Controls
                         if (OSVersionHelper.IsWindows11_OrGreater)
                         {
                             int y = lparam.ToInt32() >> 16;
-                            var DPI_SCALE = ApplicationHelper.GetDpiScale().X;
+                            var DPI_SCALE = DpiHelper.LogicalToDeviceUnitsScalingFactorX;
                             var _button = WindowState == WindowState.Maximized ? _ButtonRestore : _ButtonMax;
                             var rect = new Rect(_button.PointToScreen(
                                 new Point()),
@@ -415,7 +415,7 @@ namespace HandyControl.Controls
                     {
                         int x = lparam.ToInt32() & 0xffff;
                         int y = lparam.ToInt32() >> 16;
-                        var DPI_SCALE = ApplicationHelper.GetDpiScale().X;
+                        var DPI_SCALE = DpiHelper.LogicalToDeviceUnitsScalingFactorX;
                         var _button = WindowState == WindowState.Maximized ? _ButtonRestore : _ButtonMax;
                         var rect = new Rect(_button.PointToScreen(
                             new Point()),

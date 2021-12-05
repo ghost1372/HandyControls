@@ -152,32 +152,6 @@ namespace HandyControl.Tools
             InteropMethods.GetModuleFileName(IntPtr.Zero, sb, MAX_PATH);
             return sb.ToString();
         }
-
-        /// <summary>
-        /// Get DPI for current display
-        /// </summary>
-        /// <returns></returns>
-        public static Point GetDpi()
-        {
-            var hDc = InteropMethods.GetDC(IntPtr.Zero);
-            const int LOGPIXELSX = 88;
-            const int LOGPIXELSY = 90;
-            var dpiX = InteropMethods.GetDeviceCaps(hDc, LOGPIXELSX);
-            var dpiY = InteropMethods.GetDeviceCaps(hDc, LOGPIXELSY);
-
-            InteropMethods.ReleaseDC(IntPtr.Zero, hDc);
-            return new Point(dpiX, dpiY);
-        }
-
-        /// <summary>
-        /// Get DPI Scale for current display
-        /// </summary>
-        /// <returns></returns>
-        public static Point GetDpiScale()
-        {
-            var dpi = GetDpi();
-            return new Point(dpi.X / 96, dpi.Y / 96);
-        }
     }
 }
 
