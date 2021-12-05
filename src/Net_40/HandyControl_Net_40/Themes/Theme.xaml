@@ -4533,6 +4533,16 @@
 							<Setter Property="ShowTitle" Value="False" />
 							<Setter Property="NonClientAreaBackground" Value="Transparent" />
 						</Trigger>
+						<Trigger Property="ShowCloseButton" Value="False">
+							<Setter TargetName="ButtonClose" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="ShowMinButton" Value="False">
+							<Setter TargetName="ButtonMin" Property="Visibility" Value="Collapsed" />
+						</Trigger>
+						<Trigger Property="ShowMaxButton" Value="False">
+							<Setter TargetName="ButtonMax" Property="Visibility" Value="Collapsed" />
+							<Setter TargetName="ButtonRestore" Property="Visibility" Value="Collapsed" />
+						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
 								<Condition Property="ResizeMode" Value="CanResizeWithGrip" />
