@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HandyControls" Version="3.3.8"/>
+    <PackageReference Include="HandyControls" Version="3.3.9"/>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
