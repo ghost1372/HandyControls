@@ -3,6 +3,7 @@ using HandyControl.Themes;
 using HandyControl.Tools;
 using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 
@@ -122,6 +123,14 @@ namespace HandyControl.Controls
             get => (bool) GetValue(ShowCloseButtonProperty);
             set => SetValue(ShowCloseButtonProperty, ValueBoxes.BooleanBox(value));
         }
+        #endregion
+
+        #region SnapLayout
+        private const int HTMAXBUTTON = 9;
+        private const string ButtonMax = "ButtonMax";
+        private const string ButtonRestore = "ButtonRestore";
+        private Button _ButtonMax;
+        private Button _ButtonRestore;
         #endregion
     }
 }

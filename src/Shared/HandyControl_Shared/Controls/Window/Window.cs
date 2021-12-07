@@ -45,13 +45,6 @@ namespace HandyControl.Controls
 
         private UIElement _nonClientArea;
 
-        #region SnapLayout
-        private const int HTMAXBUTTON = 9;
-        private const string ButtonMax = "ButtonMax";
-        private const string ButtonRestore = "ButtonRestore";
-        private Button _ButtonMax;
-        private Button _ButtonRestore;
-        #endregion
         #endregion
 
         #region ctor
@@ -73,6 +66,7 @@ namespace HandyControl.Controls
             var chrome = new WindowChrome
             {
                 CornerRadius = new CornerRadius(),
+                ResizeBorderThickness = new Thickness(8),
                 GlassFrameThickness = new Thickness(0, 0, 0, 1),
                 UseAeroCaptionButtons = false
             };
