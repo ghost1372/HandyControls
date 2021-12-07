@@ -241,7 +241,6 @@ namespace HandyControl.Controls
             get => (bool) GetValue(ShowIconProperty);
             set => SetValue(ShowIconProperty, value);
         }
-     
         #endregion
 
         #region methods
@@ -373,7 +372,7 @@ namespace HandyControl.Controls
                     WmGetMinMaxInfo(hwnd, lparam);
                     Padding = WindowState == WindowState.Maximized ? WindowHelper.WindowMaximizedPadding : _commonPadding;
                     break;
-        #region SnapLayout
+                #region SnapLayout
                 case InteropValues.WM_NCHITTEST:
                     try
                     {
@@ -421,10 +420,35 @@ namespace HandyControl.Controls
                         }
                     }
                     break;
+                #endregion
+                #region System Command
+                case InteropValues.WM_SYSCOMMAND:
+                    if (!ShowMaxButton)
+                    {
+                        if ((int) wparam == InteropValues.SC_MAXIMIZE || (int) wparam == InteropValues.SC_RESTORE)
+                        {
+                            handled = true;
+                        }
+                    }
+                    if (!ShowMinButton)
+                    {
+                        if ((int) wparam == InteropValues.SC_MINIMIZE)
+                        {
+                            handled = true;
+                        }
+                    }
+                    if (!ShowCloseButton)
+                    {
+                        if ((int) wparam == InteropValues.SC_CLOSE)
+                        {
+                            handled = true;
+                        }
+                    }
+                    break;
+                #endregion
                 default:
                     handled = false;
                     break;
-        #endregion
             }
 
             return IntPtr.Zero;
