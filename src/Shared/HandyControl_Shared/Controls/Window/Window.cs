@@ -378,7 +378,7 @@ namespace HandyControl.Controls
                     try
                     {
                         int x = lparam.ToInt32() & 0xffff;
-                        if (OSVersionHelper.IsWindows11_OrGreater)
+                        if (OSVersionHelper.IsWindows11_OrGreater && ShowNonClientArea && ShowMaxButton)
                         {
                             int y = lparam.ToInt32() >> 16;
                             var DPI_SCALE = DpiHelper.LogicalToDeviceUnitsScalingFactorX;
@@ -404,7 +404,7 @@ namespace HandyControl.Controls
                     }
                     break;
                 case InteropValues.WM_NCLBUTTONDOWN:
-                    if (OSVersionHelper.IsWindows11_OrGreater)
+                    if (OSVersionHelper.IsWindows11_OrGreater && ShowNonClientArea && ShowMaxButton)
                     {
                         int x = lparam.ToInt32() & 0xffff;
                         int y = lparam.ToInt32() >> 16;
