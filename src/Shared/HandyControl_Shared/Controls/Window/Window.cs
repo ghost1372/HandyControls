@@ -445,6 +445,12 @@ namespace HandyControl.Controls
                         }
                     }
                     break;
+                case InteropValues.WM_NCLBUTTONDBLCLK:
+                    if (!ShowMaxButton)
+                    {
+                        handled = true;
+                    }
+                    break;
                 #endregion
                 default:
                     handled = false;

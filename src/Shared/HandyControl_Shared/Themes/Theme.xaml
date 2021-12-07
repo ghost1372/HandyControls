@@ -4544,6 +4544,14 @@
 						</Trigger>
 						<MultiTrigger>
 							<MultiTrigger.Conditions>
+								<Condition Property="ShowCloseButton" Value="False" />
+								<Condition Property="ShowMaxButton" Value="False" />
+								<Condition Property="ShowMinButton" Value="False" />
+							</MultiTrigger.Conditions>
+							<Setter TargetName="ButtonClose" Property="Visibility" Value="Hidden" />
+						</MultiTrigger>
+						<MultiTrigger>
+							<MultiTrigger.Conditions>
 								<Condition Property="ResizeMode" Value="CanResizeWithGrip" />
 								<Condition Property="WindowState" Value="Normal" />
 							</MultiTrigger.Conditions>
