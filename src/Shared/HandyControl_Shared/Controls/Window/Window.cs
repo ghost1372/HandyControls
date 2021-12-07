@@ -202,7 +202,7 @@ namespace HandyControl.Controls
 
         public static readonly DependencyProperty NonClientAreaHeightProperty = DependencyProperty.Register(
             "NonClientAreaHeight", typeof(double), typeof(Window),
-            new PropertyMetadata(22.0));
+            new PropertyMetadata(SystemParameters.WindowCaptionHeight));
 
         public double NonClientAreaHeight
         {
