@@ -71,7 +71,6 @@ namespace HandyControl.Controls
                 UseAeroCaptionButtons = false
             };
 #endif
-            InitMica();
 
             BindingOperations.SetBinding(chrome, WindowChrome.CaptionHeightProperty,
                 new Binding(NonClientAreaHeightProperty.Name) { Source = this });
@@ -265,7 +264,6 @@ namespace HandyControl.Controls
             base.OnSourceInitialized(e);
             this.GetHwndSource()?.AddHook(HwndSourceHook);
             this.windowHandle = new WindowInteropHelper(this).EnsureHandle();
-            UpdateWindowEffect(this);
         }
 
         protected override void OnStateChanged(EventArgs e)
@@ -282,7 +280,6 @@ namespace HandyControl.Controls
                 BorderThickness = _actualBorderThickness;
                 NonClientAreaHeight = _tempNonClientAreaHeight;
             }
-            UpdateWindowEffect(this);
         }
 
         protected void OnLoaded(RoutedEventArgs args)

@@ -1,11 +1,10 @@
 ﻿using HandyControl.Data;
-using HandyControl.Themes;
 using HandyControl.Tools;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Shell;
 
 namespace HandyControl.Controls
 {
@@ -45,52 +44,32 @@ namespace HandyControl.Controls
         {
             if (ApplyBackdropMaterial && OSVersionHelper.IsWindows11_OrGreater)
             {
-                this.Background = Brushes.Transparent;
-                WindowStyle = WindowStyle.None;
+#if NET40
+            var chrome = new WindowChrome
+            {
+                CornerRadius = new CornerRadius(),
+                GlassFrameThickness = new Thickness(-1)
+            };
+#else
+                var chrome = new WindowChrome
+                {
+                    CornerRadius = new CornerRadius(),
+                    ResizeBorderThickness = new Thickness(8),
+                    GlassFrameThickness = new Thickness(-1),
+                    NonClientFrameEdges = NonClientFrameEdges.None,
+                    UseAeroCaptionButtons = false
+                };
+#endif
+                WindowChrome.SetWindowChrome(this, chrome);
                 NonClientAreaBackground = Brushes.Transparent;
-                ThemeManager.Current.ActualApplicationThemeChanged += ActualApplicationThemeChanged;
+                MicaHelper.Apply(this);
             }
-        }
-        private void ActualApplicationThemeChanged(ThemeManager sender, object args)
-        {
-            if (windowHandle != null)
+            else
             {
-                if (sender.ApplicationTheme == ApplicationTheme.Light)
-                {
-                    WindowHelper.EnableMicaEffect(windowHandle, false);
-                }
-                else
-                {
-                    WindowHelper.EnableMicaEffect(windowHandle, true);
-                }
+                MicaHelper.Remove();
             }
         }
-        protected override void OnActivated(EventArgs e)
-        {
-            base.OnActivated(e);
-            UpdateWindowEffect(this);
-        }
-
-        protected override void OnDeactivated(EventArgs e)
-        {
-            base.OnDeactivated(e);
-            UpdateWindowEffect(this);
-        }
-
-        public void UpdateWindowEffect(Window window)
-        {
-            if (ApplyBackdropMaterial && OSVersionHelper.IsWindows11_OrGreater)
-            {
-                UpdateWindowEffect(new WindowInteropHelper(window).EnsureHandle());
-            }
-        }
-
-        public void UpdateWindowEffect(IntPtr windowHandle)
-        {
-            var isDark = ThemeManager.Current.ApplicationTheme == ApplicationTheme.Dark;
-            WindowHelper.EnableMicaEffect(windowHandle, isDark);
-        }
-
+        
         #endregion
 
         #region Show/Hide NonClientArea Buttons
