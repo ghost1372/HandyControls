@@ -20,6 +20,7 @@ namespace HandyControl.Tools
 
         private static readonly List<IntPtr> Containers = new List<IntPtr>() { };
 
+        private static IntPtr _windowHandle;
         /// <summary>
         /// Static singleton identifier determining whether the Mica effect has been applied.
         /// </summary>
@@ -71,9 +72,16 @@ namespace HandyControl.Tools
 
             window.Background = Brushes.Transparent;
 
-            //_windowHandle = new WindowInteropHelper(this).Handle;
+            _windowHandle = new WindowInteropHelper(window).Handle;
 
             PresentationSource.FromVisual(window)!.ContentRendered += OnContentRendered;
+            ThemeManager.Current.SystemThemeChanged += Current_SystemThemeChanged;
+        }
+
+        private static void Current_SystemThemeChanged(object sender, Data.FunctionEventArgs<ThemeManager.SystemTheme> e)
+        {
+            var isDark = !WindowHelper.DetermineIfInLightThemeMode();
+            ApplyMicaEffect(_windowHandle, isDark);
         }
 
         private static void OnContentRendered(object sender, EventArgs e)

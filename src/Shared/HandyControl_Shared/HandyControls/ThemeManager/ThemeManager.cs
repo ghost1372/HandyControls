@@ -33,6 +33,7 @@ namespace HandyControl.Themes
         public ThemeManager()
         {
             _data = new Data(this);
+            SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         }
 
         static ThemeManager()
@@ -80,14 +81,12 @@ namespace HandyControl.Themes
             _currentAccent = GetAccentColorFromSystem();
             AccentColor = _currentAccent;
             ApplicationTheme = _currenTheme;
-            SystemEvents.UserPreferenceChanged += SystemEvents_UserPreferenceChanged;
         }
 
         private void resetSystemTheme()
         {
             AccentColor = DefaultAccentColor;
             _currentAccent = DefaultAccentColor;
-            SystemEvents.UserPreferenceChanged -= SystemEvents_UserPreferenceChanged;
         }
 
         public class SystemTheme
@@ -126,8 +125,7 @@ namespace HandyControl.Themes
         }
 
         public event EventHandler<FunctionEventArgs<SystemTheme>> SystemThemeChanged;
-
-        protected virtual void OnSystemThemeChanged(SystemTheme theme)
+        public virtual void OnSystemThemeChanged(SystemTheme theme)
         {
             EventHandler<FunctionEventArgs<SystemTheme>> handler = SystemThemeChanged;
             handler?.Invoke(this, new FunctionEventArgs<SystemTheme>(theme));
@@ -138,7 +136,7 @@ namespace HandyControl.Themes
             switch (e.Category)
             {
                 case UserPreferenceCategory.General:
-                    if (UsingSystemTheme)
+                    DispatcherHelper.RunOnMainThread(() =>
                     {
                         var changedTheme = GetSystemTheme();
                         var changedAccent = GetAccentColorFromSystem();
@@ -146,22 +144,20 @@ namespace HandyControl.Themes
                         {
                             _currenTheme = changedTheme;
                             _currentAccent = changedAccent;
-                            DispatcherHelper.RunOnMainThread(() =>
+
+                            if (UsingSystemTheme || MicaHelper.IsMicaEffectApplied)
                             {
                                 ApplicationTheme = changedTheme;
                                 AccentColor = changedAccent;
-                            });
-                            OnSystemThemeChanged(new SystemTheme()
+                            }
+                            var systemTheme = new SystemTheme()
                             {
                                 AccentBrush = changedAccent, CurrentTheme = changedTheme
-                            });
-                            ThemeResources.Current.OnSystemThemeChanged(new SystemTheme()
-                            {
-                                AccentBrush = changedAccent, CurrentTheme = changedTheme
-                            });
+                            };
+                            OnSystemThemeChanged(systemTheme);
+                            ThemeResources.Current.OnSystemThemeChanged(systemTheme);
                         }
-                    }
-
+                    });
                     break;
             }
         }
