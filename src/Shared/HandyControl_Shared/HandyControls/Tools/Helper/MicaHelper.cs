@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Media;
+using HandyControl.Themes;
 using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
@@ -78,7 +79,7 @@ namespace HandyControl.Tools
         private static void OnContentRendered(object sender, EventArgs e)
         {
             var isDark = !WindowHelper.DetermineIfInLightThemeMode();
-
+            ThemeManager.Current.ApplicationTheme = isDark ? ApplicationTheme.Dark : ApplicationTheme.Light;
             ApplyMicaEffect(((HwndSource) sender).Handle, isDark);
         }
 
