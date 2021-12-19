@@ -13,16 +13,16 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@master
-        
-      - name: Install .NET 60
-        uses: actions/setup-dotnet@v1
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@master
         with:
-          dotnet-version: '6.0'
-          include-prerelease: True
-          
-      - name: build
+          dotnet-version: '6.0.x'
+          include-prerelease: true
+      
+      - name: Build
         shell: pwsh
         run: |
           cd build
