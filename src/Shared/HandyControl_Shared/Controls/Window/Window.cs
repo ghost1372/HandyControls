@@ -6,7 +6,6 @@ using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
 using HandyControl.Data;
 using HandyControl.Tools;
@@ -263,7 +262,6 @@ namespace HandyControl.Controls
         {
             base.OnSourceInitialized(e);
             this.GetHwndSource()?.AddHook(HwndSourceHook);
-            this.windowHandle = new WindowInteropHelper(this).EnsureHandle();
         }
 
         protected override void OnStateChanged(EventArgs e)

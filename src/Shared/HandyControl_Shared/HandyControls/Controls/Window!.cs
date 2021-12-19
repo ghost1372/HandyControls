@@ -1,11 +1,13 @@
-﻿using HandyControl.Data;
-using HandyControl.Tools;
-using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using HandyControl.Data;
+using HandyControl.Tools;
+#if NET40
+using Microsoft.Windows.Shell;
+#else
 using System.Windows.Shell;
-
+#endif
 namespace HandyControl.Controls
 {
     public partial class Window
@@ -21,8 +23,6 @@ namespace HandyControl.Controls
         }
 
         #region Mica
-
-        private IntPtr windowHandle;
 
         public static readonly DependencyProperty ApplyBackdropMaterialProperty = DependencyProperty.Register(
             "ApplyBackdropMaterial", typeof(bool), typeof(Window),
@@ -45,11 +45,12 @@ namespace HandyControl.Controls
             if (ApplyBackdropMaterial && OSVersionHelper.IsWindows11_OrGreater)
             {
 #if NET40
-            var chrome = new WindowChrome
-            {
-                CornerRadius = new CornerRadius(),
-                GlassFrameThickness = new Thickness(-1)
-            };
+                var chrome = new WindowChrome
+                {
+                    CornerRadius = new CornerRadius(),
+                    GlassFrameThickness = new Thickness(-1),
+                    ResizeBorderThickness = new Thickness(8)
+                };
 #else
                 var chrome = new WindowChrome
                 {
@@ -62,11 +63,11 @@ namespace HandyControl.Controls
 #endif
                 WindowChrome.SetWindowChrome(this, chrome);
                 NonClientAreaBackground = Brushes.Transparent;
-                MicaHelper.Apply(this);
+                MicaHelper.ApplyMicaEffect(this);
             }
             else
             {
-                MicaHelper.Remove();
+                MicaHelper.RemoveMicaEffect();
             }
         }
         

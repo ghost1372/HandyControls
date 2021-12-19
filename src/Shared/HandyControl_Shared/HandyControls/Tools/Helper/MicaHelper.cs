@@ -22,13 +22,13 @@ namespace HandyControl.Tools
         /// <summary>
         /// Static singleton identifier determining whether the Mica effect has been applied.
         /// </summary>
-        public static bool IsApplied { get; set; } = false;
+        public static bool IsMicaEffectApplied { get; set; } = false;
 
         /// <summary>
         /// Applies a Mica effect when the <see cref="Window"/> is loaded.
         /// </summary>
         /// <param name="window">Active instance of <see cref="Window"/>.</param>
-        public static void Apply(object window)
+        public static void ApplyMicaEffect(object window)
         {
             var decWindow = window as Window;
 
@@ -43,14 +43,14 @@ namespace HandyControl.Tools
         /// <summary>
         /// Tries to remove the Mica effect from all defined pointers.
         /// </summary>
-        public static void Remove()
+        public static void RemoveMicaEffect()
         {
             if (Containers == null || Containers.Count < 1)
             {
                 return;
             }
 
-            Containers.ForEach(RemoveMicaAttribute);
+            Containers.ForEach(RemoveMicaEffect);
             Containers.Clear();
         }
 
@@ -79,10 +79,10 @@ namespace HandyControl.Tools
         {
             var isDark = !WindowHelper.DetermineIfInLightThemeMode();
 
-            SetMicaAttribute(((HwndSource) sender).Handle, isDark);
+            ApplyMicaEffect(((HwndSource) sender).Handle, isDark);
         }
 
-        private static void SetMicaAttribute(IntPtr handle, bool isDark)
+        public static void ApplyMicaEffect(IntPtr handle, bool isDark)
         {
             if (handle == IntPtr.Zero)
             {
@@ -119,10 +119,10 @@ namespace HandyControl.Tools
 
             Containers.Add(handle);
 
-            IsApplied = true;
+            IsMicaEffectApplied = true;
         }
 
-        private static void RemoveMicaAttribute(IntPtr handle)
+        public static void RemoveMicaEffect(IntPtr handle)
         {
             if (handle == IntPtr.Zero)
             {
