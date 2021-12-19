@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControl.Tools.Interop;
 
@@ -18,6 +19,12 @@ namespace HandyControl.Controls
             {
                 this.GetHwndSource()?.AddHook(HwndSourceHook);
             }
+            ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(ThemeManager sender, object args)
+        {
+            EnableBlur(this, true);
         }
 
         private IntPtr HwndSourceHook(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)

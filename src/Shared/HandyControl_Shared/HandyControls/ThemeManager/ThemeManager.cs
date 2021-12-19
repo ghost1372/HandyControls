@@ -146,12 +146,19 @@ namespace HandyControl.Themes
                         {
                             _currenTheme = changedTheme;
                             _currentAccent = changedAccent;
-                            ApplicationTheme = changedTheme;
-                            AccentColor = changedAccent;
+                            DispatcherHelper.RunOnMainThread(() =>
+                            {
+                                ApplicationTheme = changedTheme;
+                                AccentColor = changedAccent;
+                            });
                             OnSystemThemeChanged(new SystemTheme()
-                                {AccentBrush = changedAccent, CurrentTheme = changedTheme});
+                            {
+                                AccentBrush = changedAccent, CurrentTheme = changedTheme
+                            });
                             ThemeResources.Current.OnSystemThemeChanged(new SystemTheme()
-                                {AccentBrush = changedAccent, CurrentTheme = changedTheme});
+                            {
+                                AccentBrush = changedAccent, CurrentTheme = changedTheme
+                            });
                         }
                     }
 
@@ -664,7 +671,7 @@ namespace HandyControl.Themes
         {
             if (!_defaultThemeDictionaries.TryGetValue(key, out ResourceDictionary dictionary))
             {
-                dictionary = new ResourceDictionary {Source = GetDefaultSource(key)};
+                dictionary = new ResourceDictionary { Source = GetDefaultSource(key) };
                 _defaultThemeDictionaries[key] = dictionary;
             }
 

@@ -1,0 +1,139 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
+using HandyControl.Tools.Interop;
+
+namespace HandyControl.Tools
+{
+    /// <summary>
+    /// Contains static handlers for applying background Mica effects from Windows 11.
+    /// </summary>
+    public static class MicaHelper
+    {
+        private static int _pvTrueAttribute = 0x01;
+
+        private static int _pvFalseAttribute = 0x00;
+
+        private static readonly List<IntPtr> Containers = new List<IntPtr>() { };
+
+        /// <summary>
+        /// Static singleton identifier determining whether the Mica effect has been applied.
+        /// </summary>
+        public static bool IsApplied { get; set; } = false;
+
+        /// <summary>
+        /// Applies a Mica effect when the <see cref="Window"/> is loaded.
+        /// </summary>
+        /// <param name="window">Active instance of <see cref="Window"/>.</param>
+        public static void Apply(object window)
+        {
+            var decWindow = window as Window;
+
+            if (decWindow == null)
+            {
+                throw new Exception("Only Window controls can have the Mica effect applied.");
+            }
+
+            decWindow.Loaded += OnWindowLoaded;
+        }
+
+        /// <summary>
+        /// Tries to remove the Mica effect from all defined pointers.
+        /// </summary>
+        public static void Remove()
+        {
+            if (Containers == null || Containers.Count < 1)
+            {
+                return;
+            }
+
+            Containers.ForEach(RemoveMicaAttribute);
+            Containers.Clear();
+        }
+
+        /// <summary>
+        /// Event handler triggered after the window is loaded that applies the <see cref="Mica"/> effect.
+        /// </summary>
+        /// <param name="sender">The window whose background is to be set.</param>
+        /// <param name="e"><see cref="RoutedEventArgs"/></param>
+        public static void OnWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            var window = sender as Window;
+
+            if (window == null)
+            {
+                throw new Exception("Only windows can have the Mica effect applied.");
+            }
+
+            window.Background = Brushes.Transparent;
+
+            //_windowHandle = new WindowInteropHelper(this).Handle;
+
+            PresentationSource.FromVisual(window)!.ContentRendered += OnContentRendered;
+        }
+
+        private static void OnContentRendered(object sender, EventArgs e)
+        {
+            var isDark = !WindowHelper.DetermineIfInLightThemeMode();
+
+            SetMicaAttribute(((HwndSource) sender).Handle, isDark);
+        }
+
+        private static void SetMicaAttribute(IntPtr handle, bool isDark)
+        {
+            if (handle == IntPtr.Zero)
+            {
+                return;
+            }
+
+            // Hide default TitleBar
+            // https://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window
+            try
+            {
+                InteropMethods.SetWindowLong(handle, -16, InteropMethods.GetWindowLong(handle, -16) & ~0x80000);
+            }
+            catch (Exception e)
+            {
+#if DEBUG
+                Console.WriteLine(e);
+#endif
+            }
+
+            if (isDark)
+            {
+                InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.USE_IMMERSIVE_DARK_MODE, ref _pvTrueAttribute,
+                    Marshal.SizeOf(typeof(int)));
+            }
+            else
+            {
+                InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.USE_IMMERSIVE_DARK_MODE, ref _pvFalseAttribute,
+                    Marshal.SizeOf(typeof(int)));
+            }
+
+            InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.MICA_EFFECT, ref _pvTrueAttribute,
+                Marshal.SizeOf(typeof(int)));
+
+
+            Containers.Add(handle);
+
+            IsApplied = true;
+        }
+
+        private static void RemoveMicaAttribute(IntPtr handle)
+        {
+            if (handle == IntPtr.Zero)
+            {
+                return;
+            }
+
+            InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.USE_IMMERSIVE_DARK_MODE, ref _pvFalseAttribute,
+                Marshal.SizeOf(typeof(int)));
+
+            InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.MICA_EFFECT, ref _pvFalseAttribute,
+                Marshal.SizeOf(typeof(int)));
+        }
+    }
+}
