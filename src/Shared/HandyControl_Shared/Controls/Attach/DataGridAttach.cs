@@ -354,18 +354,21 @@ namespace HandyControl.Controls
                     var dg = GetCurrentDataGrid(o);
                     ToggleButton tg = o as ToggleButton;
 
-                    if (dg.SelectedItems.Count < 2)
+                    if (dg.SelectionMode != DataGridSelectionMode.Single)
                     {
-                        tg.IsChecked = true;
-                    }
+                        if (dg.SelectedItems.Count < 2)
+                        {
+                            tg.IsChecked = true;
+                        }
 
-                    if (tg.IsChecked == true)
-                    {
-                        dg.SelectAll();
-                    }
-                    else
-                    {
-                        dg.UnselectAll();
+                        if (tg.IsChecked == true)
+                        {
+                            dg.SelectAll();
+                        }
+                        else
+                        {
+                            dg.UnselectAll();
+                        }
                     }
 
                 }));
