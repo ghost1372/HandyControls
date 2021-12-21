@@ -67,6 +67,8 @@ namespace HandyControl.Tools.Interop
             BI_RGB = 0,
             DIB_RGB_COLORS = 0,
             E_FAIL = unchecked((int) 0x80004005),
+            HWND_TOP = 0,
+            GWL_STYLE = -16,
             NIF_MESSAGE = 0x00000001,
             NIF_ICON = 0x00000002,
             NIF_TIP = 0x00000004,
@@ -129,8 +131,8 @@ namespace HandyControl.Tools.Interop
             SC_MAXIMIZE = 0xF030,
             SC_RESTORE = 0xF120,
             SRCCOPY = 0x00CC0020,
-            MONITOR_DEFAULTTONEAREST = 0x00000002,
-            WM_COPYDATA = 0x004A;
+            MONITOR_DEFAULTTOPRIMARY = 0x00000001,
+            MONITOR_DEFAULTTONEAREST = 0x00000002;
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
         public class NOTIFYICONDATA
@@ -347,6 +349,38 @@ namespace HandyControl.Tools.Interop
                 get => Right - Left;
                 set => Right = Left + value;
             }
+
+            public bool Equals(RECT other)
+            {
+                return Left == other.Left && Right == other.Right && Top == other.Top && Bottom == other.Bottom;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is RECT rectangle && Equals(rectangle);
+            }
+
+            public static bool operator ==(RECT left, RECT right)
+            {
+                return left.Equals(right);
+            }
+
+            public static bool operator !=(RECT left, RECT right)
+            {
+                return !(left == right);
+            }
+
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    var hashCode = Left;
+                    hashCode = (hashCode * 397) ^ Top;
+                    hashCode = (hashCode * 397) ^ Right;
+                    hashCode = (hashCode * 397) ^ Bottom;
+                    return hashCode;
+                }
+            }
         }
 
         public struct BLENDFUNCTION
@@ -417,11 +451,11 @@ namespace HandyControl.Tools.Interop
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        public class WINDOWPLACEMENT
+        public struct WINDOWPLACEMENT
         {
             public int length = Marshal.SizeOf(typeof(WINDOWPLACEMENT));
             public int flags;
-            public int showCmd;
+            public SW showCmd;
             public POINT ptMinPosition;
             public POINT ptMaxPosition;
             public RECT rcNormalPosition;
@@ -1181,12 +1215,80 @@ namespace HandyControl.Tools.Interop
             SWP_SHOWWINDOW = 0x0040
         }
 
-        public struct COPYDATASTRUCT
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WindowPosition
         {
-            public IntPtr dwData;
-            public int cbData;
-            [MarshalAs(UnmanagedType.LPStr)]
-            public string lpData;
+            public IntPtr Hwnd;
+            public IntPtr HwndZOrderInsertAfter;
+            public int X;
+            public int Y;
+            public int Width;
+            public int Height;
+            public WindowPositionFlags Flags;
+        }
+
+        [Flags]
+        public enum DwmWindowAttribute : uint
+        {
+            DWMWA_NCRENDERING_ENABLED = 1,
+            DWMWA_NCRENDERING_POLICY,
+            DWMWA_TRANSITIONS_FORCEDISABLED,
+            DWMWA_ALLOW_NCPAINT,
+            DWMWA_CAPTION_BUTTON_BOUNDS,
+            DWMWA_NONCLIENT_RTL_LAYOUT,
+            DWMWA_FORCE_ICONIC_REPRESENTATION,
+            DWMWA_FLIP3D_POLICY,
+            DWMWA_EXTENDED_FRAME_BOUNDS,
+            DWMWA_HAS_ICONIC_BITMAP,
+            DWMWA_DISALLOW_PEEK,
+            DWMWA_EXCLUDED_FROM_PEEK,
+            DWMWA_LAST
+        }
+
+        [Flags]
+        public enum WindowStyles
+        {
+            /// <summary>
+            ///     The window is initially maximized.
+            /// </summary>
+            WS_MAXIMIZE = 0x01000000,
+
+            /// <summary>
+            ///     The window has a maximize button. Cannot be combined with the WS_EX_CONTEXTHELP style. The WS_SYSMENU style must
+            ///     also be specified.
+            /// </summary>
+            WS_MAXIMIZEBOX = 0x00010000,
+
+            /// <summary>
+            ///     The window is initially minimized. Same as the WS_ICONIC style.
+            /// </summary>
+            WS_MINIMIZE = 0x20000000,
+
+            /// <summary>
+            ///     The window has a sizing border. Same as the WS_SIZEBOX style.
+            /// </summary>
+            WS_THICKFRAME = 0x00040000,
+        }
+
+        /// <summary>
+        /// ShowWindow options
+        /// </summary>
+        public enum SW
+        {
+            HIDE = 0,
+            SHOWNORMAL = 1,
+            NORMAL = 1,
+            SHOWMINIMIZED = 2,
+            SHOWMAXIMIZED = 3,
+            MAXIMIZE = 3,
+            SHOWNOACTIVATE = 4,
+            SHOW = 5,
+            MINIMIZE = 6,
+            SHOWMINNOACTIVE = 7,
+            SHOWNA = 8,
+            RESTORE = 9,
+            SHOWDEFAULT = 10,
+            FORCEMINIMIZE = 11,
         }
     }
 }

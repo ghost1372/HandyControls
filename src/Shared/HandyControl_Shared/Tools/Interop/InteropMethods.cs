@@ -76,7 +76,7 @@ namespace HandyControl.Tools.Interop
             string lpszWindow);
 
         [DllImport(InteropValues.ExternDll.User32)]
-        public static extern int GetWindowRect(IntPtr hwnd, out InteropValues.RECT lpRect);
+        public static extern bool GetWindowRect(IntPtr hwnd, out InteropValues.RECT lpRect);
 
         [DllImport(InteropValues.ExternDll.User32, CharSet = CharSet.Auto)]
         public static extern bool GetCursorPos(out InteropValues.POINT pt);
@@ -384,14 +384,9 @@ namespace HandyControl.Tools.Interop
 
         public static int GetWindowLong(IntPtr hWnd, InteropValues.GWL nIndex) => GetWindowLong(hWnd, (int) nIndex);
 
-        public static IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong)
-        {
-            if (IntPtr.Size == 4)
-            {
-                return SetWindowLongPtr32(hWnd, nIndex, dwNewLong);
-            }
-            return SetWindowLongPtr64(hWnd, nIndex, dwNewLong);
-        }
+        public static IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong) => IntPtr.Size == 4
+            ? SetWindowLongPtr32(hWnd, nIndex, dwNewLong)
+            : SetWindowLongPtr64(hWnd, nIndex, dwNewLong);
 
         [DllImport(InteropValues.ExternDll.User32, CharSet = CharSet.Auto, EntryPoint = "SetWindowLong")]
         public static extern IntPtr SetWindowLongPtr32(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
@@ -452,6 +447,10 @@ namespace HandyControl.Tools.Interop
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool GetMonitorInfo(IntPtr hMonitor, ref InteropValues.MONITORINFO monitorInfo);
 
+        [DllImport(InteropValues.ExternDll.User32, ExactSpelling = true)]
+        [ResourceExposure(ResourceScope.None)]
+        public static extern IntPtr MonitorFromRect(ref InteropValues.RECT rect, int flags);
+
         [DllImport(InteropValues.ExternDll.Gdi32, SetLastError = true)]
         public static extern IntPtr CreateDIBSection(IntPtr hdc, ref InteropValues.BITMAPINFO pbmi, uint iUsage, out IntPtr ppvBits, IntPtr hSection, uint dwOffset);
 
@@ -473,6 +472,9 @@ namespace HandyControl.Tools.Interop
         [DllImport(InteropValues.ExternDll.User32)]
         [ResourceExposure(ResourceScope.None)]
         public static extern bool EnableWindow(IntPtr hWnd, bool enable);
+
+        [DllImport(InteropValues.ExternDll.User32)]
+        public static extern bool ShowWindow(IntPtr hwnd, InteropValues.SW nCmdShow);
 
         [ReflectionPermission(SecurityAction.Assert, Unrestricted = true), SecurityPermission(SecurityAction.Assert, Flags = SecurityPermissionFlag.UnmanagedCode)]
         public static object PtrToStructure(IntPtr lparam, Type cls) => Marshal.PtrToStructure(lparam, cls);
@@ -541,6 +543,23 @@ namespace HandyControl.Tools.Interop
 
         [DllImport(InteropValues.ExternDll.DwmApi)]
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, InteropValues.DWMWINDOWATTRIBUTE attr, ref int attrValue, int attrSize);
+
+        [DllImport(InteropValues.ExternDll.DwmApi, ExactSpelling = true, SetLastError = true)]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, InteropValues.DwmWindowAttribute dwAttribute,
+            in int pvAttribute, uint cbAttribute);
+
+        [DllImport(InteropValues.ExternDll.User32, EntryPoint = "GetWindowLong")]
+        public static extern IntPtr GetWindowLongPtr32(IntPtr hWnd, int nIndex);
+
+        [DllImport(InteropValues.ExternDll.User32, EntryPoint = "GetWindowLongPtr")]
+        public static extern IntPtr GetWindowLongPtr64(IntPtr hWnd, int nIndex);
+
+        public static IntPtr GetWindowLongPtr(IntPtr hWnd, int nIndex) =>
+            IntPtr.Size == 8 ? GetWindowLongPtr64(hWnd, nIndex) : GetWindowLongPtr32(hWnd, nIndex);
+
+        [DllImport(InteropValues.ExternDll.User32, ExactSpelling = true, CharSet = CharSet.Auto)]
+        [ResourceExposure(ResourceScope.None)]
+        public static extern bool SetWindowPlacement(IntPtr hWnd, [In] ref InteropValues.WINDOWPLACEMENT placement);
 
         [DllImport(InteropValues.ExternDll.DwmApi)]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref InteropValues.MARGINS pMarInset);
