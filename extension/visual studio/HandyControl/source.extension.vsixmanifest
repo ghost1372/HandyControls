@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="16adb6c8-d74c-451c-9c7e-a93ef604d0b9" Version="3.3.9.0" Language="en-US" Publisher="Mahdi Hosseini" />
+        <DisplayName>HandyControl</DisplayName>
+        <Description xml:space="preserve">Contains some simple and commonly used WPF controls based on HandyControl 
+This VSIX Project will help people initialize a HandyControls project.</Description>
+        <MoreInfo>https://ghost1372.github.io/handycontrol</MoreInfo>
+        <License>License.txt</License>
+        <GettingStartedGuide>https://ghost1372.github.io/handycontrol/quick_start</GettingStartedGuide>
+        <ReleaseNotes>https://github.com/ghost1372/HandyControls/releases</ReleaseNotes>
+        <Icon>icon_100_100.png</Icon>
+        <PreviewImage>icon_300_300.png</PreviewImage>
+        <Tags>WPF C# Control handycontrol dark theme light drawer sidemenu blurwindow badge</Tags>
+    </Metadata>
+    <Installation>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0, 17.0)"/>
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0, 17.0)"/>
+        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[15.0, 17.0)"/>
+
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.0,)" />
+    </Dependencies>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,18.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WpfApp" d:TargetPath="|WpfApp;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WpfAppMVVMPrism" d:TargetPath="|WpfAppMVVMPrism;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WpfAppMVVMStylet" d:TargetPath="|WpfAppMVVMStylet;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WpfCoreApp" d:TargetPath="|WpfCoreApp;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WpfCoreAppPrism" d:TargetPath="|WpfCoreAppPrism;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+        <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="Project" d:ProjectName="WpfCoreAppStylet" d:TargetPath="|WpfCoreAppStylet;TemplateProjectOutputGroup|" Path="ProjectTemplates" d:VsixSubPath="ProjectTemplates" />
+    </Assets>
+</PackageManifest>
