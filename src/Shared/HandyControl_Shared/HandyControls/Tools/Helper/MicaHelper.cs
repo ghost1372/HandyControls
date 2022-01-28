@@ -21,6 +21,9 @@ namespace HandyControl.Tools
         private static readonly List<IntPtr> Containers = new List<IntPtr>() { };
 
         private static IntPtr _windowHandle;
+
+        private static Window _window;
+
         /// <summary>
         /// Static singleton identifier determining whether the Mica effect has been applied.
         /// </summary>
@@ -64,7 +67,7 @@ namespace HandyControl.Tools
         public static void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
             var window = sender as Window;
-
+            _window = window;
             if (window == null)
             {
                 throw new Exception("Only windows can have the Mica effect applied.");
@@ -102,7 +105,15 @@ namespace HandyControl.Tools
             // https://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window
             try
             {
-                InteropMethods.SetWindowLong(handle, -16, InteropMethods.GetWindowLong(handle, -16) & ~0x80000);
+                if (_window != null && _window.ResizeMode == ResizeMode.NoResize)
+                {
+
+
+                }
+                else
+                {
+                    InteropMethods.SetWindowLong(handle, -16, InteropMethods.GetWindowLong(handle, -16) & ~0x80000);
+                }
             }
             catch (Exception e)
             {
