@@ -95,6 +95,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\OSVersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\RegistryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\ReleaseInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\TaskbarHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\UpdateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoCompletingMaskEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoSelectBehavior.cs" />

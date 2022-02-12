@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Runtime;
 using System.Security.Principal;
 using System.Threading;
-using System.Windows;
 using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools
