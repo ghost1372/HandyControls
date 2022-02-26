@@ -310,7 +310,7 @@ namespace HandyControl.Tools.Interop
 
         public static InteropValues.WINDOWPLACEMENT GetWindowPlacement(IntPtr hwnd)
         {
-            InteropValues.WINDOWPLACEMENT wINDOWPLACEMENT = new InteropValues.WINDOWPLACEMENT();
+            InteropValues.WINDOWPLACEMENT wINDOWPLACEMENT = InteropValues.WINDOWPLACEMENT.Default;
             if (GetWindowPlacement(hwnd, wINDOWPLACEMENT))
             {
                 return wINDOWPLACEMENT;

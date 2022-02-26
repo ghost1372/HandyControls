@@ -454,12 +454,25 @@ namespace HandyControl.Tools.Interop
         [StructLayout(LayoutKind.Sequential)]
         public struct WINDOWPLACEMENT
         {
-            public int length = Marshal.SizeOf(typeof(WINDOWPLACEMENT));
+            public int length;
             public int flags;
             public SW showCmd;
             public POINT ptMinPosition;
             public POINT ptMaxPosition;
             public RECT rcNormalPosition;
+
+            /// <summary>
+            /// Gets the default (empty) value.
+            /// </summary>
+            public static WINDOWPLACEMENT Default
+            {
+                get
+                {
+                    WINDOWPLACEMENT result = new WINDOWPLACEMENT();
+                    result.length = Marshal.SizeOf(result);
+                    return result;
+                }
+            }
         }
 
         [Serializable]
