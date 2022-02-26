@@ -37,6 +37,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
         <Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}"/>
         <Setter Property="Padding" Value="{StaticResource DefaultInputPadding}"/>
+        <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,8,6,8"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
@@ -48,7 +49,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="30"/>
                             </Grid.ColumnDefinitions>
-                            <Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource CalendarGeometry}" x:Name="PART_Button"  Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>
+                            <Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Width="16" Padding="0" hc:IconElement.Geometry="{StaticResource CalendarGeometry}" x:Name="PART_Button"  Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>
                             <primitives:DatePickerTextBox Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource DatePickerTextBoxStylePersian}"/>
                             <Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False"/>
                         </Grid>
@@ -99,7 +100,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
-                    <Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource CalendarGeometry}" x:Name="PART_Button"  Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>
+                    <Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Width="16" Padding="0" hc:IconElement.Geometry="{StaticResource CalendarGeometry}" x:Name="PART_Button"  Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>
                     <primitives:DatePickerTextBox x:Name="PART_TextBox" Padding="{TemplateBinding Padding}" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource DatePickerTextBoxStylePersian}"/>
                     <Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False"/>
                 </Grid>
@@ -138,7 +139,7 @@
                 <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding Path=(hc:TitleElement.VerticalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,7,6,7">
+            <DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding Path=(hc:TitleElement.VerticalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{Binding Path=(hc:TitleElement.MarginOnTheLeft),RelativeSource={RelativeSource TemplatedParent}}">
                 <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}"/>
                 <TextBlock hc:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}"/>
             </DockPanel>
@@ -148,7 +149,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
-                    <Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Padding="7,6" hc:IconElement.Geometry="{StaticResource CalendarGeometry}" x:Name="PART_Button"  Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>
+                    <Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Width="16" Padding="0" hc:IconElement.Geometry="{StaticResource CalendarGeometry}" x:Name="PART_Button"  Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>
                     <primitives:DatePickerTextBox x:Name="PART_TextBox" Padding="{TemplateBinding Padding}" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Style="{StaticResource DatePickerTextBoxStylePersian}"/>
                     <Popup Grid.Column="0" VerticalOffset="4" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False"/>
                 </Grid>
