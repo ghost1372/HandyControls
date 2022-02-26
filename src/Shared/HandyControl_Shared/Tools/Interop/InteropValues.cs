@@ -1128,6 +1128,15 @@ namespace HandyControl.Tools.Interop
         public struct RTL_OSVERSIONINFOEX
         {
 #if NET5_0_OR_GREATER
+            public RTL_OSVERSIONINFOEX(uint dwMajorVersion, uint dwMinorVersion, uint dwBuildNumber, uint dwRevision, uint dwPlatformId, string szCSDVersion) : this()
+            {
+                this.dwMajorVersion = dwMajorVersion;
+                this.dwMinorVersion = dwMinorVersion;
+                this.dwBuildNumber = dwBuildNumber;
+                this.dwRevision = dwRevision;
+                this.dwPlatformId = dwPlatformId;
+                this.szCSDVersion = szCSDVersion;
+            }
             public readonly uint dwOSVersionInfoSize { get; init; } = (uint) Marshal.SizeOf<RTL_OSVERSIONINFOEX>();
 #else
             public uint dwOSVersionInfoSize;
