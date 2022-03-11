@@ -8,7 +8,7 @@ using HandyControl.Tools;
 
 namespace HandyControl.Controls
 {
-    public class CoverView : RegularItemsControl
+    public partial class CoverView : RegularItemsControl
     {
         private readonly CoverViewContent _viewContent;
 
@@ -35,11 +35,9 @@ namespace HandyControl.Controls
             {
                 if (e.OriginalSource is CoverViewItem item)
                 {
-                    item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
-                    _selectedItem = item;
-                    if (_viewContent != null)
+                    if (_selectedItem == null)
                     {
-                        item.IsSelected = true;
+                        item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
                         _selectedItem = item;
                         if (_viewContent != null)
                         {
@@ -53,8 +51,8 @@ namespace HandyControl.Controls
 
                     if (!Equals(_selectedItem, item))
                     {
-                        _selectedItem.IsSelected = false;
-                        item.IsSelected = true;
+                        _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
+                        item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
                         _selectedItem = item;
                         if (_viewContent != null)
                         {
@@ -65,29 +63,15 @@ namespace HandyControl.Controls
                         return;
                     }
 
-                if (!Equals(_selectedItem, item))
-                {
-                    _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
-                    item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
-                    _selectedItem = item;
                     if (_viewContent != null)
                     {
                         _viewContent.Content = null;
                         _viewContent.ContentTemplate = null;
                         UpdateCoverViewContent(false);
                     }
-                    _selectedItem.IsSelected = false;
+                    _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
                     _selectedItem = null;
                 }
-
-                if (_viewContent != null)
-                {
-                    _viewContent.Content = null;
-                    _viewContent.ContentTemplate = null;
-                    UpdateCoverViewContent(false);
-                }
-                _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
-                _selectedItem = null;
             }
         }
 
@@ -123,19 +107,6 @@ namespace HandyControl.Controls
             get => (Style) GetValue(CoverViewContentStyleProperty);
             set => SetValue(CoverViewContentStyleProperty, value);
         }
-
-
-
-        public bool ShowContent
-        {
-            get { return (bool)GetValue(ShowContentProperty); }
-            set { SetValue(ShowContentProperty, value); }
-        }
-
-        public static readonly DependencyProperty ShowContentProperty =
-            DependencyProperty.Register("ShowContent", typeof(bool), typeof(CoverView), new PropertyMetadata(true));
-
-
 
         internal static readonly DependencyProperty GroupsProperty = DependencyProperty.Register(
             "Groups", typeof(int), typeof(CoverView),
@@ -215,7 +186,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     Update content view
+        ///     更新内容视图
         /// </summary>
         private void UpdateCoverViewContent(bool isOpen)
         {
@@ -242,7 +213,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     Update content view position
+        ///     更新内容视图位置
         /// </summary>
         private void UpdateCoverViewContentPosition()
         {
@@ -384,7 +355,7 @@ namespace HandyControl.Controls
         }
 
         /// <summary>
-        ///     Generate index number
+        ///     生成序号
         /// </summary>
         private void GenerateIndex()
         {
