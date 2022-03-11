@@ -469,6 +469,7 @@
 	<Style x:Key="ToggleBlockBaseStyle" TargetType="hc:ToggleBlock">
 		<Setter Property="VerticalContentAlignment" Value="Center" />
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
+		<Setter Property="Focusable" Value="False" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:ToggleBlock">
@@ -7865,7 +7866,7 @@
 							<RowDefinition Height="16" />
 							<RowDefinition />
 						</Grid.RowDefinitions>
-						<Border x:Name="PART_Triangle" Visibility="Visible" Grid.Row="0" Width="30" Height="30" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.RowSpan="2">
+						<Border x:Name="PART_Triangle" Visibility="Visible" Grid.Row="0" Width="30" Height="30" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.RowSpan="2">
 							<Border.RenderTransform>
 								<TransformGroup>
 									<TranslateTransform X="5" Y="5" />
@@ -7897,9 +7898,7 @@
 			<Setter.Value>
 				<ControlTemplate TargetType="hc:CoverView">
 					<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-						<ScrollViewer>
-							<WrapPanel x:Name="PART_Panel" />
-						</ScrollViewer>
+						<WrapPanel x:Name="PART_Panel" />
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>
@@ -9223,11 +9222,11 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="ListBox">
-					<Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+					<Border x:Name="Bd" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
 						<hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
 							<hc:ToggleBlock.CheckedContent>
-								<hc:ScrollViewer Focusable="false">
-									<ItemsPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+								<hc:ScrollViewer IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" CanContentScroll="false" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+									<ItemsPresenter />
 								</hc:ScrollViewer>
 							</hc:ToggleBlock.CheckedContent>
 							<hc:ToggleBlock.UnCheckedContent>
@@ -9990,7 +9989,6 @@
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="VerticalAlignment" Value="Top" />
 		<Setter Property="BorderThickness" Value="1" />
-		<Setter Property="Offset" Value="6" />
 		<Setter Property="Background" Value="{DynamicResource RegionBrush}" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
 		<Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
@@ -11743,10 +11741,10 @@
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate TargetType="TreeView">
-					<Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+					<Border x:Name="Bd" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
 						<hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
 							<hc:ToggleBlock.CheckedContent>
-								<hc:ScrollViewer x:Name="_tv_scrollviewer_" IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" Template="{StaticResource ScrollViewerBaseControlTemplate}" Background="{TemplateBinding Background}" CanContentScroll="false" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+								<hc:ScrollViewer IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" CanContentScroll="false" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
 									<ItemsPresenter />
 								</hc:ScrollViewer>
 							</hc:ToggleBlock.CheckedContent>
@@ -12628,8 +12626,6 @@
 	<Style TargetType="hc:ImageViewer">
 		<Setter Property="Focusable" Value="False" />
 		<Setter Property="Background" Value="Transparent" />
-		<Setter Property="MinWidth" Value="400" />
-		<Setter Property="MinHeight" Value="250" />
 		<Setter Property="BorderThickness" Value="1" />
 		<Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
 		<Setter Property="Template">
@@ -12659,23 +12655,23 @@
 									</Border>
 								</Canvas>
 							</Border>
-							<Border UseLayoutRounding="True" Name="PART_BorderBottom" Opacity="0" CornerRadius="4,4,0,0" Grid.Row="1" HorizontalAlignment="Center" Background="{DynamicResource DarkOpacityBrush}">
+							<Border UseLayoutRounding="True" Name="PART_BorderBottom" Visibility="{TemplateBinding ShowToolBar, Converter={StaticResource Boolean2VisibilityConverter}}" Opacity="0" CornerRadius="4,4,0,0" Grid.Row="1" HorizontalAlignment="Center" Background="{DynamicResource DarkOpacityBrush}">
 								<StackPanel Margin="30,10" VerticalAlignment="Center" Orientation="Horizontal">
-									<Button Command="interactivity:ControlCommands.Save" Margin="6,0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource SaveGeometry}" Padding="3" />
-									<Button Command="interactivity:ControlCommands.Open" Margin="6,0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource WindowsGeometry}" Padding="3" />
+									<Button Command="interactivity:ControlCommands.Save" Margin="6,0" Foreground="{DynamicResource TextIconBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource SaveGeometry}" Padding="3" />
+									<Button Command="interactivity:ControlCommands.Open" Margin="6,0" Foreground="{DynamicResource TextIconBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource WindowsGeometry}" Padding="3" />
 									<Border Margin="10,2" Background="White" Style="{StaticResource BorderVerticallySplitter}" />
-									<Button Command="interactivity:ControlCommands.Reduce" Margin="6,0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource ReduceGeometry}" Padding="3" />
+									<Button Command="interactivity:ControlCommands.Reduce" Margin="6,0" Foreground="{DynamicResource TextIconBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource ReduceGeometry}" Padding="3" />
 									<TextBlock Margin="6,0" Text="{TemplateBinding ScaleStr}" Style="{StaticResource TextBlockSubTitle}" Foreground="{DynamicResource TextIconBrush}" />
-									<Button Command="interactivity:ControlCommands.Enlarge" Margin="6,0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource EnlargeGeometry}" Padding="3" />
-									<Button Command="interactivity:ControlCommands.Restore" Background="Transparent" Margin="6,0" Style="{StaticResource ButtonCustom}" Foreground="White">
+									<Button Command="interactivity:ControlCommands.Enlarge" Margin="6,0" Foreground="{DynamicResource TextIconBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource EnlargeGeometry}" Padding="3" />
+									<Button Command="interactivity:ControlCommands.Restore" Background="Transparent" Margin="6,0" Style="{StaticResource ButtonCustom}" Foreground="{DynamicResource TextIconBrush}">
 										<Border BorderThickness="1" BorderBrush="White" Padding="2">
 											<TextBlock Text="1:1" />
 										</Border>
 									</Button>
 									<Border Margin="10,2" Background="White" Style="{StaticResource BorderVerticallySplitter}" />
-									<Button Command="interactivity:ControlCommands.RotateLeft" CommandParameter="" Margin="6,0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource RotateLeftGeometry}" Padding="3" />
-									<Button Command="interactivity:ControlCommands.RotateRight" Margin="6,0,0,0" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource RotateRightGeometry}" Padding="3" />
-									<ToggleButton Visibility="{TemplateBinding ShowFullScreenButton,Converter={StaticResource Boolean2VisibilityConverter}}" Foreground="{DynamicResource TextIconBrush}" IsChecked="{Binding IsFullScreen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Margin="12,0,6,0" Style="{StaticResource ToggleButtonIconTransparent}" hc:IconSwitchElement.Geometry="{StaticResource FullScreenGeometry}" hc:IconSwitchElement.GeometrySelected="{StaticResource FullScreenReturnGeometry}" Padding="3" />
+									<Button Command="interactivity:ControlCommands.RotateLeft" CommandParameter="" Margin="6,0" Foreground="{DynamicResource TextIconBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource RotateLeftGeometry}" Padding="3" />
+									<Button Command="interactivity:ControlCommands.RotateRight" Margin="6,0,0,0" Foreground="{DynamicResource TextIconBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource RotateRightGeometry}" Padding="3" />
+									<ToggleButton Visibility="{TemplateBinding ShowFullScreenButton, Converter={StaticResource Boolean2VisibilityConverter}}" Foreground="{DynamicResource TextIconBrush}" IsChecked="{Binding IsFullScreen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Margin="12,0,6,0" Style="{StaticResource ToggleButtonIconTransparent}" hc:IconSwitchElement.Geometry="{StaticResource FullScreenGeometry}" hc:IconSwitchElement.GeometrySelected="{StaticResource FullScreenReturnGeometry}" Padding="3" />
 								</StackPanel>
 							</Border>
 						</Grid>

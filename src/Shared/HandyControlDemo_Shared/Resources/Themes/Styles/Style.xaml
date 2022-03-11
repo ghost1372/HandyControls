@@ -55,12 +55,8 @@
         <Setter Property="Background" Value="Transparent"/>
     </Style>
 
-    <Style
-        x:Key="ListBoxItemTransparent"
-        BasedOn="{StaticResource ListBoxItemBaseStyle}"
-        TargetType="ListBoxItem">
-        <Setter Property="Visibility" Value="{Binding IsVisible, Converter={StaticResource Boolean2VisibilityConverter}}"/>
-        <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
+    <Style x:Key="ListBoxItemTransparent" BasedOn="{StaticResource ListBoxItemBaseStyle}" TargetType="ListBoxItem">
+        <Setter Property="Visibility" Value="{Binding IsVisible,Converter={StaticResource Boolean2VisibilityConverter}}"/>
         <Setter Property="Background" Value="Transparent"/>
     </Style>
 
@@ -135,10 +131,8 @@
         </Style.Triggers>
     </Style>
 
-    <Style
-        x:Key="ListBoxTransparent"
-        BasedOn="{StaticResource ListBoxBaseStyle}"
-        TargetType="ListBox">
+    <Style x:Key="ListBoxTransparent" BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox">
+        <Setter Property="hc:BorderElement.CornerRadius" Value="4"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemTransparent}"/>
     </Style>

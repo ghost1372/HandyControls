@@ -35,7 +35,9 @@ namespace HandyControl.Controls
             {
                 if (e.OriginalSource is CoverViewItem item)
                 {
-                    if (_selectedItem == null)
+                    item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
+                    _selectedItem = item;
+                    if (_viewContent != null)
                     {
                         item.IsSelected = true;
                         _selectedItem = item;
@@ -63,6 +65,11 @@ namespace HandyControl.Controls
                         return;
                     }
 
+                if (!Equals(_selectedItem, item))
+                {
+                    _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
+                    item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
+                    _selectedItem = item;
                     if (_viewContent != null)
                     {
                         _viewContent.Content = null;
@@ -73,6 +80,14 @@ namespace HandyControl.Controls
                     _selectedItem = null;
                 }
 
+                if (_viewContent != null)
+                {
+                    _viewContent.Content = null;
+                    _viewContent.ContentTemplate = null;
+                    UpdateCoverViewContent(false);
+                }
+                _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
+                _selectedItem = null;
             }
         }
 
@@ -235,6 +250,12 @@ namespace HandyControl.Controls
             {
                 ItemsHost.Children.Remove(_viewContent);
             }
+
+            if (_selectedItem == null)
+            {
+                return;
+            }
+
             var total = _entryDic.Count + 1;
             var totalRow = total / Groups + (total % Groups > 0 ? 1 : 0);
             if (total <= Groups)
