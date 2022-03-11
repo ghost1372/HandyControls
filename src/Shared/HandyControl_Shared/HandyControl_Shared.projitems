@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\MenuAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\TreeViewAttach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\CoverView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Behavior\TaskbarRebuildBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumDescriptionTypeConverter.cs" />

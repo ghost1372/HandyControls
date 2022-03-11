@@ -13673,10 +13673,11 @@
 		<Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxModernItemBaseStyle}" />
 	</Style>
 	<Style x:Key="ListBoxItemBaseTransparent" BasedOn="{StaticResource ListBoxItemBaseStyle}" TargetType="ListBoxItem">
-		<Setter Property="hc:BorderElement.CornerRadius" Value="4" />
+		<Setter Property="Visibility" Value="{Binding IsVisible,Converter={StaticResource Boolean2VisibilityConverter}}" />
 		<Setter Property="Background" Value="Transparent" />
 	</Style>
 	<Style x:Key="ListBoxBaseTransparentStyle" BasedOn="{StaticResource ListBoxBaseStyle}" TargetType="ListBox">
+		<Setter Property="hc:BorderElement.CornerRadius" Value="4" />
 		<Setter Property="Background" Value="Transparent" />
 		<Setter Property="ItemContainerStyle" Value="{StaticResource ListBoxItemBaseTransparent}" />
 	</Style>
