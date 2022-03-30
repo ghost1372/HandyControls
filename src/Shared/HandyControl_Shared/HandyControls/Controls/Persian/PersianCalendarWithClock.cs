@@ -1,12 +1,11 @@
-﻿
-using HandyControl.Data;
-using HandyControl.Properties.Langs;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using HandyControl.Data;
+using HandyControl.Properties.Langs;
 using Calendar = HandyControl.Controls.PersianCalendar;
 
 namespace HandyControl.Controls;
@@ -67,11 +66,7 @@ public class PersianCalendarWithClock : Control
         InitCalendarAndClock();
         Loaded += (s, e) =>
         {
-            if (_isLoaded)
-            {
-                return;
-            }
-
+            if (_isLoaded) return;
             _isLoaded = true;
             DisplayDateTime = SelectedDateTime ?? DateTime.Now;
         };
@@ -84,7 +79,7 @@ public class PersianCalendarWithClock : Control
 
     public string DateTimeFormat
     {
-        get => (string)GetValue(DateTimeFormatProperty);
+        get => (string) GetValue(DateTimeFormatProperty);
         set => SetValue(DateTimeFormatProperty, value);
     }
 
@@ -93,26 +88,17 @@ public class PersianCalendarWithClock : Control
 
     public bool ShowConfirmButton
     {
-        get => (bool)GetValue(ShowConfirmButtonProperty);
-        set => SetValue(ShowConfirmButtonProperty, value);
+        get => (bool) GetValue(ShowConfirmButtonProperty);
+        set => SetValue(ShowConfirmButtonProperty, ValueBoxes.BooleanBox(value));
     }
 
     public static readonly DependencyProperty SelectedDateTimeProperty = DependencyProperty.Register(
         "SelectedDateTime", typeof(DateTime?), typeof(PersianCalendarWithClock), new PropertyMetadata(default(DateTime?), OnSelectedDateTimeChanged));
 
-    public static readonly DependencyProperty ConfirmButtonTextProperty = DependencyProperty.Register(
-     "ConfirmButtonText", typeof(string), typeof(PersianCalendarWithClock), new PropertyMetadata(Lang.Confirm));
-
-    public string ConfirmButtonText
-    {
-        get => (string)GetValue(ConfirmButtonTextProperty);
-        set => SetValue(ConfirmButtonTextProperty, value);
-    }
-
     private static void OnSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        PersianCalendarWithClock ctl = (PersianCalendarWithClock)d;
-        DateTime? v = (DateTime?)e.NewValue;
+        var ctl = (PersianCalendarWithClock) d;
+        var v = (DateTime?) e.NewValue;
         ctl.OnSelectedDateTimeChanged(new FunctionEventArgs<DateTime?>(SelectedDateTimeChangedEvent, ctl)
         {
             Info = v
@@ -121,7 +107,7 @@ public class PersianCalendarWithClock : Control
 
     public DateTime? SelectedDateTime
     {
-        get => (DateTime?)GetValue(SelectedDateTimeProperty);
+        get => (DateTime?) GetValue(SelectedDateTimeProperty);
         set => SetValue(SelectedDateTimeProperty, value);
     }
 
@@ -130,13 +116,9 @@ public class PersianCalendarWithClock : Control
 
     private static void OnDisplayDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        PersianCalendarWithClock ctl = (PersianCalendarWithClock)d;
-        if (ctl.IsHandlerSuspended(DisplayDateTimeProperty))
-        {
-            return;
-        }
-
-        DateTime v = (DateTime)e.NewValue;
+        var ctl = (PersianCalendarWithClock) d;
+        if (ctl.IsHandlerSuspended(DisplayDateTimeProperty)) return;
+        var v = (DateTime) e.NewValue;
         ctl._clock.SelectedTime = v;
         ctl._calendar.SelectedDate = v;
         ctl._calendar.DisplayDate = v;
@@ -145,10 +127,18 @@ public class PersianCalendarWithClock : Control
 
     public DateTime DisplayDateTime
     {
-        get => (DateTime)GetValue(DisplayDateTimeProperty);
+        get => (DateTime) GetValue(DisplayDateTimeProperty);
         set => SetValue(DisplayDateTimeProperty, value);
     }
 
+    public static readonly DependencyProperty ConfirmButtonTextProperty = DependencyProperty.Register(
+     "ConfirmButtonText", typeof(string), typeof(PersianCalendarWithClock), new PropertyMetadata(Lang.Confirm));
+
+    public string ConfirmButtonText
+    {
+        get => (string) GetValue(ConfirmButtonTextProperty);
+        set => SetValue(ConfirmButtonTextProperty, value);
+    }
     #endregion
 
     #region Public Methods
@@ -178,14 +168,11 @@ public class PersianCalendarWithClock : Control
 
     #region Protected Methods
 
-    protected virtual void OnSelectedDateTimeChanged(FunctionEventArgs<DateTime?> e)
-    {
-        RaiseEvent(e);
-    }
+    protected virtual void OnSelectedDateTimeChanged(FunctionEventArgs<DateTime?> e) => RaiseEvent(e);
 
     protected virtual void OnDisplayDateTimeChanged(FunctionEventArgs<DateTime> e)
     {
-        EventHandler<FunctionEventArgs<DateTime>> handler = DisplayDateTimeChanged;
+        var handler = DisplayDateTimeChanged;
         handler?.Invoke(this, e);
     }
 
@@ -197,11 +184,7 @@ public class PersianCalendarWithClock : Control
     {
         if (value)
         {
-            if (_isHandlerSuspended == null)
-            {
-                _isHandlerSuspended = new Dictionary<DependencyProperty, bool>(2);
-            }
-
+            _isHandlerSuspended ??= new Dictionary<DependencyProperty, bool>(2);
             _isHandlerSuspended[property] = true;
         }
         else
@@ -230,10 +213,7 @@ public class PersianCalendarWithClock : Control
 
     private void CheckNull()
     {
-        if (_buttonConfirm == null || _clockPresenter == null || _calendarPresenter == null)
-        {
-            throw new Exception();
-        }
+        if (_buttonConfirm == null || _clockPresenter == null || _calendarPresenter == null) throw new Exception();
     }
 
     private void ButtonConfirm_OnClick(object sender, RoutedEventArgs e)
@@ -268,19 +248,16 @@ public class PersianCalendarWithClock : Control
         UpdateDisplayTime();
     }
 
-    private void Clock_DisplayTimeChanged(object sender, FunctionEventArgs<DateTime> e)
-    {
-        UpdateDisplayTime();
-    }
+    private void Clock_DisplayTimeChanged(object sender, FunctionEventArgs<DateTime> e) => UpdateDisplayTime();
 
     private void UpdateDisplayTime()
     {
         if (_calendar.SelectedDate != null)
         {
-            DateTime date = _calendar.SelectedDate.Value;
-            DateTime time = _clock.DisplayTime;
+            var date = _calendar.SelectedDate.Value;
+            var time = _clock.DisplayTime;
 
-            DateTime result = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+            var result = new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
             SetValueNoCallback(DisplayDateTimeProperty, result);
         }
     }

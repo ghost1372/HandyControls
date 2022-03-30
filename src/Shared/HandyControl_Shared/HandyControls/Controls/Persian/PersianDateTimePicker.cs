@@ -22,55 +22,6 @@ namespace HandyControl.Controls;
 [TemplatePart(Name = ElementPopup, Type = typeof(Popup))]
 public class PersianDateTimePicker : Control, IDataInput
 {
-    public static readonly DependencyProperty SelectionBrushProperty =
-        TextBoxBase.SelectionBrushProperty.AddOwner(typeof(PersianDateTimePicker));
-
-    public Brush SelectionBrush
-    {
-        get => (Brush)GetValue(SelectionBrushProperty);
-        set => SetValue(SelectionBrushProperty, value);
-    }
-
-#if !(NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471 || NET472)
-
-    public static readonly DependencyProperty SelectionTextBrushProperty =
-        TextBoxBase.SelectionTextBrushProperty.AddOwner(typeof(PersianDateTimePicker));
-
-    public Brush SelectionTextBrush
-    {
-        get => (Brush)GetValue(SelectionTextBrushProperty);
-        set => SetValue(SelectionTextBrushProperty, value);
-    }
-
-#endif
-
-    public static readonly DependencyProperty SelectionOpacityProperty =
-        TextBoxBase.SelectionOpacityProperty.AddOwner(typeof(PersianDateTimePicker));
-
-    public double SelectionOpacity
-    {
-        get => (double)GetValue(SelectionOpacityProperty);
-        set => SetValue(SelectionOpacityProperty, value);
-    }
-
-    public static readonly DependencyProperty CaretBrushProperty =
-        TextBoxBase.CaretBrushProperty.AddOwner(typeof(PersianDateTimePicker));
-
-    public Brush CaretBrush
-    {
-        get => (Brush)GetValue(CaretBrushProperty);
-        set => SetValue(CaretBrushProperty, value);
-    }
-
-    public static readonly DependencyProperty ConfirmButtonTextProperty =
-       PersianCalendarWithClock.ConfirmButtonTextProperty.AddOwner(typeof(PersianDateTimePicker));
-
-    public string ConfirmButtonText
-    {
-        get { return (string) GetValue(ConfirmButtonTextProperty); }
-        set { SetValue(ConfirmButtonTextProperty, value); }
-    }
-
     #region Constants
 
     private const string ElementRoot = "PART_Root";
@@ -125,7 +76,7 @@ public class PersianDateTimePicker : Control, IDataInput
     {
         EventManager.RegisterClassHandler(typeof(PersianDateTimePicker), GotFocusEvent, new RoutedEventHandler(OnGotFocus));
         KeyboardNavigation.TabNavigationProperty.OverrideMetadata(typeof(PersianDateTimePicker), new FrameworkPropertyMetadata(KeyboardNavigationMode.Once));
-        KeyboardNavigation.IsTabStopProperty.OverrideMetadata(typeof(PersianDateTimePicker), new FrameworkPropertyMetadata(false));
+        KeyboardNavigation.IsTabStopProperty.OverrideMetadata(typeof(PersianDateTimePicker), new FrameworkPropertyMetadata(ValueBoxes.FalseBox));
     }
 
     public PersianDateTimePicker()
@@ -164,8 +115,8 @@ public class PersianDateTimePicker : Control, IDataInput
 
     private static object CoerceDisplayDateTime(DependencyObject d, object value)
     {
-        var dp = (PersianDateTimePicker)d;
-        dp._calendarWithClock.DisplayDateTime = (DateTime)value;
+        var dp = (PersianDateTimePicker) d;
+        dp._calendarWithClock.DisplayDateTime = (DateTime) value;
 
         return dp._calendarWithClock.DisplayDateTime;
     }
@@ -179,13 +130,19 @@ public class PersianDateTimePicker : Control, IDataInput
     public static readonly DependencyProperty IsDropDownOpenProperty = DependencyProperty.Register(
         "IsDropDownOpen", typeof(bool), typeof(PersianDateTimePicker), new FrameworkPropertyMetadata(ValueBoxes.FalseBox, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnIsDropDownOpenChanged, OnCoerceIsDropDownOpen));
 
-    private static object OnCoerceIsDropDownOpen(DependencyObject d, object baseValue) => d is PersianDateTimePicker dp && !dp.IsEnabled ? false : baseValue;
+    private static object OnCoerceIsDropDownOpen(DependencyObject d, object baseValue) =>
+        d is PersianDateTimePicker
+        {
+            IsEnabled: false
+        }
+            ? false
+            : baseValue;
 
     private static void OnIsDropDownOpenChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var dp = d as PersianDateTimePicker;
 
-        var newValue = (bool)e.NewValue;
+        var newValue = (bool) e.NewValue;
         if (dp?._popup != null && dp._popup.IsOpen != newValue)
         {
             dp._popup.IsOpen = newValue;
@@ -193,7 +150,7 @@ public class PersianDateTimePicker : Control, IDataInput
             {
                 dp._originalSelectedDateTime = dp.SelectedDateTime;
 
-                dp.Dispatcher.BeginInvoke(DispatcherPriority.Input, (Action)delegate
+                dp.Dispatcher.BeginInvoke(DispatcherPriority.Input, (Action) delegate
                 {
                     dp._calendarWithClock.Focus();
                 });
@@ -204,7 +161,7 @@ public class PersianDateTimePicker : Control, IDataInput
     public bool IsDropDownOpen
     {
         get => (bool) GetValue(IsDropDownOpenProperty);
-        set => SetValue(IsDropDownOpenProperty, value);
+        set => SetValue(IsDropDownOpenProperty, ValueBoxes.BooleanBox(value));
     }
 
     public static readonly DependencyProperty SelectedDateTimeProperty = DependencyProperty.Register(
@@ -212,14 +169,14 @@ public class PersianDateTimePicker : Control, IDataInput
 
     private static object CoerceSelectedDateTime(DependencyObject d, object value)
     {
-        var dp = (PersianDateTimePicker)d;
-        dp._calendarWithClock.SelectedDateTime = (DateTime?)value;
+        var dp = (PersianDateTimePicker) d;
+        dp._calendarWithClock.SelectedDateTime = (DateTime?) value;
         return dp._calendarWithClock.SelectedDateTime;
     }
 
     private static void OnSelectedDateTimeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        if (!(d is PersianDateTimePicker dp)) return;
+        if (d is not PersianDateTimePicker dp) return;
 
         if (dp.SelectedDateTime.HasValue)
         {
@@ -289,7 +246,7 @@ public class PersianDateTimePicker : Control, IDataInput
     public bool IsError
     {
         get => (bool) GetValue(IsErrorProperty);
-        set => SetValue(IsErrorProperty, value);
+        set => SetValue(IsErrorProperty, ValueBoxes.BooleanBox(value));
     }
 
     public static readonly DependencyProperty ErrorStrProperty = DependencyProperty.Register(
@@ -316,9 +273,57 @@ public class PersianDateTimePicker : Control, IDataInput
     public bool ShowClearButton
     {
         get => (bool) GetValue(ShowClearButtonProperty);
-        set => SetValue(ShowClearButtonProperty, value);
+        set => SetValue(ShowClearButtonProperty, ValueBoxes.BooleanBox(value));
     }
 
+    public static readonly DependencyProperty SelectionBrushProperty =
+        TextBoxBase.SelectionBrushProperty.AddOwner(typeof(PersianDateTimePicker));
+
+    public Brush SelectionBrush
+    {
+        get => (Brush) GetValue(SelectionBrushProperty);
+        set => SetValue(SelectionBrushProperty, value);
+    }
+
+#if !(NET40 || NET45 || NET451 || NET452 || NET46 || NET461 || NET462 || NET47 || NET471 || NET472)
+
+    public static readonly DependencyProperty SelectionTextBrushProperty =
+        TextBoxBase.SelectionTextBrushProperty.AddOwner(typeof(PersianDateTimePicker));
+
+    public Brush SelectionTextBrush
+    {
+        get => (Brush) GetValue(SelectionTextBrushProperty);
+        set => SetValue(SelectionTextBrushProperty, value);
+    }
+
+#endif
+
+    public static readonly DependencyProperty SelectionOpacityProperty =
+        TextBoxBase.SelectionOpacityProperty.AddOwner(typeof(PersianDateTimePicker));
+
+    public double SelectionOpacity
+    {
+        get => (double) GetValue(SelectionOpacityProperty);
+        set => SetValue(SelectionOpacityProperty, value);
+    }
+
+    public static readonly DependencyProperty CaretBrushProperty =
+        TextBoxBase.CaretBrushProperty.AddOwner(typeof(PersianDateTimePicker));
+
+    public Brush CaretBrush
+    {
+        get => (Brush) GetValue(CaretBrushProperty);
+        set => SetValue(CaretBrushProperty, value);
+    }
+
+    public static readonly DependencyProperty ConfirmButtonTextProperty =
+       PersianCalendarWithClock.ConfirmButtonTextProperty.AddOwner(typeof(PersianDateTimePicker));
+
+    public string ConfirmButtonText
+    {
+        get { return (string) GetValue(ConfirmButtonTextProperty); }
+        set { SetValue(ConfirmButtonTextProperty, value); }
+    }
     #endregion
 
     #region Public Methods
@@ -369,6 +374,7 @@ public class PersianDateTimePicker : Control, IDataInput
         _dropDownButton.MouseLeave += DropDownButton_MouseLeave;
 
         var selectedDateTime = SelectedDateTime;
+
         if (_textBox != null)
         {
             if (selectedDateTime == null)
@@ -492,13 +498,6 @@ public class PersianDateTimePicker : Control, IDataInput
         {
             ShowConfirmButton = true
         };
-
-        _calendarWithClock.SetBinding(PersianCalendarWithClock.ConfirmButtonTextProperty, new Binding
-        {
-            Path = new PropertyPath("ConfirmButtonText"),
-            Source = this
-        });
-
         _calendarWithClock.SelectedDateTimeChanged += CalendarWithClock_SelectedDateTimeChanged;
         _calendarWithClock.Confirmed += CalendarWithClock_Confirmed;
     }
@@ -516,11 +515,7 @@ public class PersianDateTimePicker : Control, IDataInput
     {
         if (value)
         {
-            if (_isHandlerSuspended == null)
-            {
-                _isHandlerSuspended = new Dictionary<DependencyProperty, bool>(2);
-            }
-
+            _isHandlerSuspended ??= new Dictionary<DependencyProperty, bool>(2);
             _isHandlerSuspended[property] = true;
         }
         else
@@ -598,7 +593,7 @@ public class PersianDateTimePicker : Control, IDataInput
 
     private void PopupPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        if (sender is Popup popup && !popup.StaysOpen)
+        if (sender is Popup { StaysOpen: false })
         {
             if (_dropDownButton?.InputHitTest(e.GetPosition(_dropDownButton)) != null)
             {
@@ -690,7 +685,7 @@ public class PersianDateTimePicker : Control, IDataInput
 
         if (d != null)
         {
-            SafeSetText(DateTimeToString((DateTime)d));
+            SafeSetText(DateTimeToString((DateTime) d));
             return d;
         }
 
@@ -714,6 +709,11 @@ public class PersianDateTimePicker : Control, IDataInput
 
                 if (SelectedDateTime != null)
                 {
+                    if (SelectedDateTime != DisplayDateTime)
+                    {
+                        SetCurrentValue(DisplayDateTimeProperty, SelectedDateTime);
+                    }
+
                     var selectedTime = DateTimeToString(SelectedDateTime.Value);
 
                     if (string.Compare(selectedTime, s, StringComparison.Ordinal) == 0)
@@ -747,25 +747,11 @@ public class PersianDateTimePicker : Control, IDataInput
         }
     }
 
-    private string DateTimeToString(DateTime d) 
-    {
-        var data = d.ToString(DateTimeFormat);
-
-        //Fix for SelectedDateTime in xaml that double converted so we check if year start with 0 we fix date 
-        //Note: this fix work until year = 1599
-        if (data.StartsWith("0"))
-        {
-            var year = data.Substring(0, 4);
-            var month = data.Substring(5, 2);
-            var day = data.Substring(8, 2);
-            data = data.Replace(year, d.Year.ToString()).Replace(month,d.Month.ToString()).Replace(day, d.Day.ToString());
-        }
-        return data;
-    }
+    private string DateTimeToString(DateTime d) => d.ToString(DateTimeFormat);
 
     private static void OnGotFocus(object sender, RoutedEventArgs e)
     {
-        var picker = (PersianDateTimePicker)sender;
+        var picker = (PersianDateTimePicker) sender;
         if (!e.Handled && picker._textBox != null)
         {
             if (Equals(e.OriginalSource, picker))
