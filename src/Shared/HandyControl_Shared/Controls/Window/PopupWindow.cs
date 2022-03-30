@@ -187,7 +187,7 @@ public class PopupWindow : System.Windows.Window
             WindowStyle = WindowStyle.None,
             ContentStr = message,
             WindowStartupLocation = WindowStartupLocation.CenterScreen,
-            Background = ResourceHelper.GetResourceInternal<Brush>(ResourceToken.PrimaryBrush)
+            Background = ResourceHelper.GetResource<Brush>(ResourceToken.PrimaryBrush)
         };
         window.Show();
     }

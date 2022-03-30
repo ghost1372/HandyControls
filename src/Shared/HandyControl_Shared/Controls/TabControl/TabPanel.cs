@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools;
 
 namespace HandyControl.Controls;
@@ -165,14 +166,28 @@ public class TabPanel : Panel
         Loaded += (s, e) =>
         {
             if (_isLoaded) return;
-            ForceUpdate = true;
-            Measure(new Size(DesiredSize.Width, ActualHeight));
-            ForceUpdate = false;
-            foreach (var item in ItemDic.Values)
-            {
-                item.TabPanel = this;
-            }
+            UpdateMeasure();
             _isLoaded = true;
         };
+
+        ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+    }
+
+    public void UpdateMeasure()
+    {
+        ForceUpdate = true;
+        Measure(new Size(DesiredSize.Width, ActualHeight));
+        ForceUpdate = false;
+        foreach (var item in ItemDic.Values)
+        {
+            item.TabPanel = this;
+        }
+    }
+
+    // Fix https://github.com/ghost1372/HandyControls/issues/53
+    // This fix should come with OnThemeChanged of the TabControl.cs
+    private void OnThemeChanged(ThemeManager sender, object args)
+    {
+        UpdateMeasure();
     }
 }

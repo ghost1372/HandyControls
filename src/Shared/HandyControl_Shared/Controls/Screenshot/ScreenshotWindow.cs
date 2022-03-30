@@ -188,7 +188,7 @@ public class ScreenshotWindow : System.Windows.Window
 
     public ScreenshotWindow(Screenshot screenshot)
     {
-        Style = ResourceHelper.GetResourceInternal<Style>(ResourceToken.Window4ScreenshotStyle);
+        Style = ResourceHelper.GetResource<Style>(ResourceToken.Window4ScreenshotStyle);
         _screenshot = screenshot;
         DataContext = this;
 

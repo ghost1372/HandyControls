@@ -141,7 +141,7 @@ public class Tag : ContentControl
 
         if (Selectable)
         {
-            IsSelected = true;
+            IsSelected = !IsSelected;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 using HandyControl.Data;
 
 namespace HandyControl.Controls;
@@ -134,6 +135,23 @@ public class SideMenu : HeaderedSimpleItemsControl
     protected override DependencyObject GetContainerForItemOverride() => new SideMenuItem();
 
     protected override bool IsItemItsOwnContainerOverride(object item) => item is SideMenuItem;
+
+    public Brush SubSideBrush
+    {
+        get => (Brush)GetValue(SubSideBrushProperty);
+        set => SetValue(SubSideBrushProperty, value);
+    }
+    public static readonly DependencyProperty SubSideBrushProperty =
+        DependencyProperty.RegisterAttached("SubSideBrush", typeof(Brush), typeof(SideMenu), new FrameworkPropertyMetadata(default(Brushes), FrameworkPropertyMetadataOptions.Inherits));
+
+    public Brush SideBrush
+    {
+        get => (Brush)GetValue(SideBrushProperty);
+        set => SetValue(SideBrushProperty, value);
+    }
+    public static readonly DependencyProperty SideBrushProperty =
+        DependencyProperty.RegisterAttached("SideBrush", typeof(Brush), typeof(SideMenu), new FrameworkPropertyMetadata(default(Brushes), FrameworkPropertyMetadataOptions.Inherits));
+
 
     public static readonly DependencyProperty AutoSelectProperty = DependencyProperty.Register(
         "AutoSelect", typeof(bool), typeof(SideMenu), new PropertyMetadata(ValueBoxes.TrueBox));

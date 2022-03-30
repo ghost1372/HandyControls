@@ -56,18 +56,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\ElementGroup.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleStackPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\UniformSpacingPanel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\ImagePropertyEditor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\VerticalAlignmentPropertyEditor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\HorizontalAlignmentPropertyEditor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\EnumPropertyEditor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\ReadOnlyTextPropertyEditor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\TimePropertyEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\DatePropertyEditor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\SwitchPropertyEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\DateTimePropertyEditor.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\PropertyEditorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\EnumPropertyEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\HorizontalAlignmentPropertyEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\ImagePropertyEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\IntegerPropertyEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\NumberPropertyEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\PlainTextPropertyEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\PropertyEditorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\ReadOnlyTextPropertyEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\StringPropertyEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\SwitchPropertyEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\TimePropertyEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\VerticalAlignmentPropertyEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\PropertyGrid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\PropertyItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\PropertyItemsControl.cs" />
@@ -86,8 +88,188 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\HighlightTextBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\SimpleText.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\LinearLayout.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\TipPlacement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\ListBoxAttach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\MenuAttach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\TreeViewAttach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumBindingSourceExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumDescriptionTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\LocalizedDescriptionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\CheckTreeView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\CoverView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Loading\BusyIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Loading\LoadingIndicator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoCompletingMaskEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoSelectBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\AutoSelectTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\CachedTextInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\ChangeTypeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\InsertKeyModeEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\MaskedTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\MaskFormatEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\QueryMoveFocusEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\QueryTextFromValueEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\QueryValueFromTextEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\TreeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\MaskedTextBox\ValueRangeTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendarWithClock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\Automation\CalendarAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\Automation\CalendarButtonAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\Automation\CalendarDayButtonAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarBlackoutDatesCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarDateChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarDateRange.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarDateRangeChangingEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarDayButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarModeChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarSelectionChangedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\CalendarSelectionMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\DateTimeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\KeyboardHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\PersianCalendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\PersianCalendarHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\SelectedDatesCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianCalendar\VisualStates.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianDatePicker\Automation\DatePickerAutomationPeer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianDatePicker\DatePickerDateValidationErrorEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianDatePicker\DatePickerFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianDatePicker\DatePickerTextBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianDatePicker\PersianDatePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Persian\PersianDateTimePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SpeedoMeter\Converter\Positive2Nagative.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SpeedoMeter\Converter\SpeedConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SpeedoMeter\Converter\ValueToBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SpeedoMeter\SpeedoMeter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SplashWindow\ISplashWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\SplashWindow\SplashWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Controls\Window!.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\BaseLocalizationListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\BindingLocalizationConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\BindingLocalizationListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\CultureChangedEventManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\ILocalizationProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\KeyLocalizationListener.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\LocalizationExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\LocalizationManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\ResxLocalizationProvider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\DynamicLanguage\TranslationProviderTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\PersianDateUtil\PersianDateTime.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\PersianDateUtil\PersianDateTimeToString.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\PersianDateUtil\PersianUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\AccentColorSet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ColorPalette\ColorPaletteResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ColorPalette\ColorPresetResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ColorPalette\PresetManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\DesignMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\IntellisenseResourcesBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\Markup\DynamicColorExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\Markup\StaticColorExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\Markup\StaticResourceExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\Markup\ThemeResourceHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ResourceDictionaryEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ResourceDictionaryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\Theme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\TypedEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Behavior\TaskbarRebuildBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\BindablePropertyBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\BindingProxy.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\OptimizedObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafeObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\DispatchedObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\EventArgsCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\IReadOnlyObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\ObservableCollectionBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\PendingEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\PendingEventType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\ThreadSafe\PendingEvent`1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedoList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedoObservableCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedo\ModuloArithmetic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedo\RingBuffer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Collection\UndoRedo\UndoRedoRingBuffer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\AsyncCommand!1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\AsyncCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\AsyncCommandBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\CancelAsyncCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\CommandBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\IAsyncCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\ManualResetAsyncCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\AsyncCommand\NotifyTaskCompletion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\AsyncDelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\IDelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\Internals\DelegateCommand\SyncDelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Command\SimpleRelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Converter\ProgressBarWidthConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Converter\StringRepeatConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\CollectionExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\CryptographyExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DateTimeExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\DictionaryExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\EnumerableExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\CollectionViewExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\EnumeratorWithIndex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\ICulturedStringTransformer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\IStringTransformer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\To.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\ToLowerCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\ToSentenceCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\ToTitleCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Transformer\ToUpperCase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\FixedLengthTruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\FixedNumberOfCharactersTruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\FixedNumberOfWordsTruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\ITruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\TruncateFrom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\Internals\Truncation\Truncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ListExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\MergedDictionariesExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ObjectExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\StringExtension!1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\VisualTree.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ApplicationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ApplicationHelper.Message.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ApplicationHelper.Registry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ColorHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ConvertHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\CryptographyHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\DispatcherHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\GenericCompare.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\GlobalDataHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\IniHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\DataContractJavaScriptConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\PolymorphicJsonConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\ReleaseInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\MicaHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\OSVersionHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\RegistryHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\TaskbarHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\UpdateHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\WindowHelper!.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\XmlHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\DefaultLoggerFormatter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\ILoggerFormatter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Handlers\DebugLoggerHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Handlers\FileLoggerHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\ILoggerHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\ILoggerHandlerManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\LogMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\LogPublisher.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\IfExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\Internals\MultiBindingExtensionBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\UpdatableMarkupExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\EventToCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\IEventArgsConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interactivity\LaunchUriOrFileAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\MouseDragElementBehaviorEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\FullScreenHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Window\GlowWindow.cs" />
@@ -143,7 +325,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Media\Effects\EffectBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Media\Effects\GrayScaleEffect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Themes\SharedResourceDictionary.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Themes\Theme.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\BorderCircularClipConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\ColLayoutConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\CornerRadiusSplitConverter.cs" />
@@ -266,7 +447,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\IpType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\ResultType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\SideMenuItemRole.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\SkinType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\StepStatus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\TextType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\PlacementType.cs" />
@@ -316,7 +496,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\AnimationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ArithmeticHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\BindingHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ColorHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ConfigHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\DesignerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\DpiHelper.cs" />
@@ -326,7 +505,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ScreenHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SecurityHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SingleOpenHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\SystemHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\TextHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\TokenizerHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\TouchDragMoveWindowHelper.cs" />
@@ -386,18 +564,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="$(MSBuildThisFileDirectory)Themes\XamlCombine.exe" />
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Colors\Colors.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Colors\ColorsDark.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Colors\ColorsViolet.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <None Include="$(MSBuildThisFileDirectory)Themes\Basic\Converters.xaml">
       <SubType>Designer</SubType>
     </None>
@@ -419,18 +585,6 @@
     <None Include="$(MSBuildThisFileDirectory)Themes\Lang.xaml">
       <SubType>Designer</SubType>
     </None>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\SkinDark.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\SkinDefault.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\SkinViolet.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\CheckComboBoxBaseStyle.xaml">
       <SubType>Designer</SubType>
     </None>
@@ -902,6 +1056,66 @@
     <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Empty.xaml">
       <SubType>Designer</SubType>
     </None>
+    <Page Include="$(MSBuildThisFileDirectory)DesignTime\DesignTimeResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Colors\Dark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Basic\Colors\Light.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\ModernListBoxBaseStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\PersianDatePickerBaseStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\Base\HandyControls\PersianDateTimePickerBaseStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\BusyIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\CheckTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\CommonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\LoadingIndicator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianCalendar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianCalendarWithClock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianDatePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\PersianDateTimePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\SpeedoMeter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Themes\Theme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

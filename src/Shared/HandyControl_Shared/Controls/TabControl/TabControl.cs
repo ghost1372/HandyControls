@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools.Extension;
 
 namespace HandyControl.Controls;
@@ -213,6 +214,17 @@ public class TabControl : System.Windows.Controls.TabControl
     ///     可见的标签数量
     /// </summary>
     private int _itemShowCount;
+
+    public TabControl()
+    {
+        ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+    }
+
+    private void OnThemeChanged(ThemeManager sender, object args)
+    {
+        // Fix https://github.com/HandyOrg/HandyControl/issues/738
+        Items.Refresh();
+    }
 
     protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
     {

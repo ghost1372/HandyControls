@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools;
-using HandyControl.Tools.Helper;
 using HandyControl.Tools.Interop;
 
 namespace HandyControl.Controls;
@@ -12,12 +12,19 @@ public class BlurWindow : Window
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
+        var version = OSVersionHelper.GetOSVersion();
+        var versionInfo = new SystemVersionInfo(version.Major, version.Minor, version.Build);
 
-        var versionInfo = SystemHelper.GetSystemVersionInfo();
         if (versionInfo >= SystemVersionInfo.Windows10_1903)
         {
             this.GetHwndSource()?.AddHook(HwndSourceHook);
         }
+        ThemeManager.Current.ActualApplicationThemeChanged += OnThemeChanged;
+    }
+
+    private void OnThemeChanged(ThemeManager sender, object args)
+    {
+        EnableBlur(this, true);
     }
 
     private IntPtr HwndSourceHook(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam, ref bool handled)
@@ -43,7 +50,8 @@ public class BlurWindow : Window
 
     private static void EnableBlur(Window window, bool isEnabled)
     {
-        var versionInfo = SystemHelper.GetSystemVersionInfo();
+        var version = OSVersionHelper.GetOSVersion();
+        var versionInfo = new SystemVersionInfo(version.Major, version.Minor, version.Build);
 
         var accentPolicy = new InteropValues.ACCENTPOLICY();
         var accentPolicySize = Marshal.SizeOf(accentPolicy);
