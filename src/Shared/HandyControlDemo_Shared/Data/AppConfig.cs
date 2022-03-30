@@ -1,5 +1,5 @@
 ﻿using System;
-using HandyControl.Data;
+using HandyControl.Themes;
 
 namespace HandyControlDemo.Data;
 
@@ -9,5 +9,5 @@ internal class AppConfig
 
     public string Lang { get; set; } = "zh-cn";
 
-    public SkinType Skin { get; set; }
+    public ApplicationTheme Theme { get; set; }
 }

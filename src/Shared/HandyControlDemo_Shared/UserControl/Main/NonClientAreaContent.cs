@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using GalaSoft.MvvmLight.Messaging;
-using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControlDemo.Data;
 using HandyControlDemo.Properties.Langs;
@@ -40,18 +40,14 @@ public partial class NonClientAreaContent
 
     private void ButtonSkins_OnClick(object sender, RoutedEventArgs e)
     {
-        if (e.OriginalSource is Button { Tag: SkinType skinType })
+        if (e.OriginalSource is Button button && button.Tag is ApplicationTheme tag)
         {
             PopupConfig.IsOpen = false;
-            if (skinType.Equals(GlobalData.Config.Skin))
-            {
-                return;
-            }
-
-            GlobalData.Config.Skin = skinType;
+            if (tag.Equals(GlobalData.Config.Theme)) return;
+            GlobalData.Config.Theme = tag;
             GlobalData.Save();
-            ((App) Application.Current).UpdateSkin(skinType);
-            Messenger.Default.Send(skinType, MessageToken.SkinUpdated);
+            ((App) Application.Current).UpdateSkin(tag);
+            Messenger.Default.Send(tag, MessageToken.SkinUpdated);
         }
     }
 

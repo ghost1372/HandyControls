@@ -14,17 +14,17 @@
     <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
         <Menu Margin="10,0,0,0" Background="Transparent">
             <MenuItem Height="29" Header="{ex:Lang Key={x:Static langs:LangKeys.Repository}}">
-                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/NaBian/HandyControl" Header="GitHub">
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://github.com/ghost1372/HandyControls" Header="GitHub">
                     <MenuItem.Icon>
                         <Path Data="{StaticResource GithubGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://www.nuget.org/packages/HandyControl" Header="NuGet">
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://www.nuget.org/packages/HandyControls" Header="NuGet">
                     <MenuItem.Icon>
                         <Path Data="{StaticResource NugetGeometry}" Fill="#30a5dd" Stretch="Uniform"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://marketplace.visualstudio.com/items?itemName=HandyOrg.HandyControl" Header="{ex:Lang Key={x:Static langs:LangKeys.Vsix}}">
+                <MenuItem Command="hc:ControlCommands.OpenLink" CommandParameter="https://marketplace.visualstudio.com/items?itemName=MahdiHosseini.HandyControls" Header="{ex:Lang Key={x:Static langs:LangKeys.Vsix}}">
                     <MenuItem.Icon>
                         <Path Data="{StaticResource VisualStudioGeometry}" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform"/>
                     </MenuItem.Icon>
@@ -153,14 +153,11 @@
                 </hc:UniformSpacingPanel>
                 <hc:Divider LineStrokeDashArray="2,2" Orientation="Vertical" Margin="0,20" LineStrokeThickness="2"/>
                 <StackPanel Button.Click="ButtonSkins_OnClick"  Margin="10,10,10,10">
-                    <Button Tag="{x:Static hc:SkinType.Default}" Style="{StaticResource ButtonCustom}">
+                    <Button Tag="{x:Static hc:ApplicationTheme.Light}" Style="{StaticResource ButtonCustom}">
                         <Border Background="White" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
                     </Button>
-                    <Button Tag="{x:Static hc:SkinType.Dark}" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
+                    <Button Tag="{x:Static hc:ApplicationTheme.Dark}" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
                         <Border Background="Black" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
-                    </Button>
-                    <Button Tag="{x:Static hc:SkinType.Violet}" Style="{StaticResource ButtonCustom}" Margin="0,10,0,0">
-                        <Border Background="DarkViolet" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
                     </Button>
                 </StackPanel>
             </StackPanel>
