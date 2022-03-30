@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using GalaSoft.MvvmLight.Messaging;
-using HandyControl.Data;
+using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
 using HandyControlDemo.Data;
@@ -31,7 +31,7 @@ public partial class MainContent
         InitializeComponent();
 
         Messenger.Default.Register<bool>(this, MessageToken.FullSwitch, FullSwitch);
-        Messenger.Default.Register<SkinType>(this, MessageToken.SkinUpdated, SkinUpdated);
+        Messenger.Default.Register<ApplicationTheme>(this, MessageToken.SkinUpdated, SkinUpdated);
     }
 
     private void FullSwitch(bool isFull)
@@ -67,7 +67,7 @@ public partial class MainContent
         }
     }
 
-    private void SkinUpdated(SkinType skinType)
+    private void SkinUpdated(ApplicationTheme skinType)
     {
         if (!_drawerCodeUsed)
         {
@@ -81,12 +81,11 @@ public partial class MainContent
 
     private void InitTextEditor()
     {
-        HighlightingProvider.Register(SkinType.Default, HighlightingProvider.Default);
-        HighlightingProvider.Register(SkinType.Dark, new HighlightingProviderDark());
-        HighlightingProvider.Register(SkinType.Violet, HighlightingProvider.Default);
+        HighlightingProvider.Register(ApplicationTheme.Dark, new HighlightingProviderDark());
+        HighlightingProvider.Register(ApplicationTheme.Light, HighlightingProvider.Default);
 
         var textEditorCustomStyle = ResourceHelper.GetResource<Style>("TextEditorCustom");
-        var skinType = GlobalData.Config.Skin;
+        var skinType = GlobalData.Config.Theme;
 
         _textEditor = new Dictionary<string, TextEditor>
         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Xml;
-using HandyControl.Data;
+using HandyControl.Themes;
 using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 
@@ -14,17 +14,17 @@ internal class HighlightingProvider
 
     protected static readonly Lazy<IHighlightingDefinition> DefaultDefinition = new(() => HighlightingManager.Instance.GetDefinition("C#"));
 
-    private static readonly Dictionary<SkinType, HighlightingProvider> Providers = new();
+    private static readonly Dictionary<ApplicationTheme, HighlightingProvider> Providers = new();
 
     protected Dictionary<string, Lazy<IHighlightingDefinition>> Definition;
 
-    public static void Register(SkinType skinType, HighlightingProvider provider)
+    public static void Register(ApplicationTheme skinType, HighlightingProvider provider)
     {
         Providers[skinType] = provider ?? throw new ArgumentNullException(nameof(provider));
         provider.InitDefinitions();
     }
 
-    public static IHighlightingDefinition GetDefinition(SkinType skinType, string name)
+    public static IHighlightingDefinition GetDefinition(ApplicationTheme skinType, string name)
     {
         if (Providers.TryGetValue(skinType, out var provider))
         {
