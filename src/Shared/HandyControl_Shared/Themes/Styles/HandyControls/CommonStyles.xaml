@@ -190,7 +190,5 @@
     <Style TargetType="PasswordBox" BasedOn="{StaticResource PasswordBoxBaseStyle}">
         <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
     </Style>
-
-    <Style TargetType="hc:MaskedTextBox" BasedOn="{StaticResource TextBoxPlusBaseStyle}" />
     
 </ResourceDictionary>
