@@ -1,7 +1,6 @@
-﻿namespace HandyControl.Tools
+﻿namespace HandyControl.Tools;
+
+public interface ILoggerFormatter
 {
-    public interface ILoggerFormatter
-    {
-        string ApplyFormat(LogMessage logMessage);
-    }
+    string ApplyFormat(LogMessage logMessage);
 }

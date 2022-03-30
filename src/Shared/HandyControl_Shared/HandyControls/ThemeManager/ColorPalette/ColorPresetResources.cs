@@ -4,55 +4,54 @@ using System;
 using System.Windows;
 using HandyControl.Tools;
 
-namespace HandyControl.Themes
-{
-    public class ColorPresetResources : ResourceDictionary
-    {
-        private ApplicationTheme _targetTheme;
+namespace HandyControl.Themes;
 
-        public ColorPresetResources()
-        {
+public class ColorPresetResources : ResourceDictionary
+{
+    private ApplicationTheme _targetTheme;
+
+    public ColorPresetResources()
+    {
 
 #if !NET40
-            WeakEventManager<PresetManager, EventArgs>.AddHandler(
-                PresetManager.Current,
-                nameof(PresetManager.ColorPresetChanged),
-                OnCurrentPresetChanged);
+        WeakEventManager<PresetManager, EventArgs>.AddHandler(
+            PresetManager.Current,
+            nameof(PresetManager.ColorPresetChanged),
+            OnCurrentPresetChanged);
 #endif
-            ApplyCurrentPreset();
-        }
+        ApplyCurrentPreset();
+    }
 
-        public ApplicationTheme TargetTheme
+    public ApplicationTheme TargetTheme
+    {
+        get => _targetTheme;
+        set
         {
-            get => _targetTheme;
-            set
+            if (_targetTheme != value)
             {
-                if (_targetTheme != value)
-                {
-                    _targetTheme = value;
-                    ApplyCurrentPreset();
-                }
+                _targetTheme = value;
+                ApplyCurrentPreset();
             }
         }
+    }
 
-        private void OnCurrentPresetChanged(object sender, EventArgs e)
+    private void OnCurrentPresetChanged(object sender, EventArgs e)
+    {
+        ApplyCurrentPreset();
+    }
+    private void ApplyCurrentPreset()
+    {
+        if (MergedDictionaries.Count > 0)
         {
-            ApplyCurrentPreset();
+            MergedDictionaries.Clear();
         }
-        private void ApplyCurrentPreset()
-        {
-            if (MergedDictionaries.Count > 0)
-            {
-                MergedDictionaries.Clear();
-            }
 
-            var currentPreset = PresetManager.Current.ColorPreset;
-            if (currentPreset !=null)
-            {
-                var source = ApplicationHelper.GetAbsoluteUri(currentPreset.AssemblyName, $"{currentPreset.ColorPreset}/{TargetTheme}.xaml");
-                var rd = new ResourceDictionary { Source = source };
-                MergedDictionaries.Add(rd);
-            }
+        var currentPreset = PresetManager.Current.ColorPreset;
+        if (currentPreset !=null)
+        {
+            var source = ApplicationHelper.GetAbsoluteUri(currentPreset.AssemblyName, $"{currentPreset.ColorPreset}/{TargetTheme}.xaml");
+            var rd = new ResourceDictionary { Source = source };
+            MergedDictionaries.Add(rd);
         }
     }
 }

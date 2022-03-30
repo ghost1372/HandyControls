@@ -3,33 +3,32 @@
 using System.Windows;
 using HandyControl.Tools;
 
-namespace HandyControl.Themes
+namespace HandyControl.Themes;
+
+/// <summary>
+/// Default styles for controls.
+/// </summary>
+public class Theme : ResourceDictionary
 {
     /// <summary>
-    /// Default styles for controls.
+    /// Initializes a new instance of the Theme class.
     /// </summary>
-    public class Theme : ResourceDictionary
+    public Theme()
     {
-        /// <summary>
-        /// Initializes a new instance of the Theme class.
-        /// </summary>
-        public Theme()
-        {
-            MergedDictionaries.Add(ControlsResources);
-        }
-
-        public static ResourceDictionary ControlsResources
-        {
-            get
-            {
-                if (_controlsResources == null)
-                {
-                    _controlsResources = new ResourceDictionary { Source = ApplicationHelper.GetAbsoluteUri("Themes/Theme.xaml") };
-                }
-                return _controlsResources;
-            }
-        }
-
-        private static ResourceDictionary _controlsResources;
+        MergedDictionaries.Add(ControlsResources);
     }
+
+    public static ResourceDictionary ControlsResources
+    {
+        get
+        {
+            if (_controlsResources == null)
+            {
+                _controlsResources = new ResourceDictionary { Source = ApplicationHelper.GetAbsoluteUri("Themes/Theme.xaml") };
+            }
+            return _controlsResources;
+        }
+    }
+
+    private static ResourceDictionary _controlsResources;
 }

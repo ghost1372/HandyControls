@@ -6,21 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace HandyControl.Tools.Converter
+namespace HandyControl.Tools.Converter;
+
+public class ProgressBarWidthConverter : IMultiValueConverter
 {
-    public class ProgressBarWidthConverter : IMultiValueConverter
+    public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
     {
-        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
-        {
-            var contentWidth = (double)values[0];
-            var parentMinWidth = (double)values[1];
+        var contentWidth = (double)values[0];
+        var parentMinWidth = (double)values[1];
 
-            return Math.Max(contentWidth, parentMinWidth);
-        }
+        return Math.Max(contentWidth, parentMinWidth);
+    }
 
-        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+    public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
     }
 }

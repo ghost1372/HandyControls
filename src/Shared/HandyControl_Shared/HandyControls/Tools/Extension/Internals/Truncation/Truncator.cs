@@ -1,41 +1,40 @@
-﻿namespace HandyControl.Tools.Extension
+﻿namespace HandyControl.Tools.Extension;
+
+/// <summary>
+/// Gets a ITruncator
+/// </summary>
+public static class Truncator
 {
     /// <summary>
-    /// Gets a ITruncator
+    /// Fixed length truncator
     /// </summary>
-    public static class Truncator
+    public static ITruncator FixedLength
     {
-        /// <summary>
-        /// Fixed length truncator
-        /// </summary>
-        public static ITruncator FixedLength
+        get
         {
-            get
-            {
-                return new FixedLengthTruncator();
-            }
+            return new FixedLengthTruncator();
         }
+    }
 
-        /// <summary>
-        /// Fixed number of characters truncator
-        /// </summary>
-        public static ITruncator FixedNumberOfCharacters
+    /// <summary>
+    /// Fixed number of characters truncator
+    /// </summary>
+    public static ITruncator FixedNumberOfCharacters
+    {
+        get
         {
-            get
-            {
-                return new FixedNumberOfCharactersTruncator();
-            }
+            return new FixedNumberOfCharactersTruncator();
         }
+    }
 
-        /// <summary>
-        /// Fixed number of words truncator
-        /// </summary>
-        public static ITruncator FixedNumberOfWords
+    /// <summary>
+    /// Fixed number of words truncator
+    /// </summary>
+    public static ITruncator FixedNumberOfWords
+    {
+        get
         {
-            get
-            {
-                return new FixedNumberOfWordsTruncator();
-            }
+            return new FixedNumberOfWordsTruncator();
         }
     }
 }

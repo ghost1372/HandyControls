@@ -4,26 +4,25 @@
 //
 //---------------------------------------------------------------------------
 
-namespace Microsoft.Windows.Controls
+namespace Microsoft.Windows.Controls;
+
+/// <summary>
+/// Specifies values for the different modes of operation of a PersianCalendar. 
+/// </summary>
+public enum CalendarMode
 {
     /// <summary>
-    /// Specifies values for the different modes of operation of a PersianCalendar. 
+    /// The PersianCalendar displays a month at a time.
     /// </summary>
-    public enum CalendarMode
-    {
-        /// <summary>
-        /// The PersianCalendar displays a month at a time.
-        /// </summary>
-        Month = 0,
+    Month = 0,
 
-        /// <summary>
-        ///  The PersianCalendar displays a year at a time.
-        /// </summary>
-        Year = 1,
-        
-        /// <summary>
-        /// The PersianCalendar displays a decade at a time.
-        /// </summary>
-        Decade = 2,
-    }
+    /// <summary>
+    ///  The PersianCalendar displays a year at a time.
+    /// </summary>
+    Year = 1,
+    
+    /// <summary>
+    /// The PersianCalendar displays a decade at a time.
+    /// </summary>
+    Decade = 2,
 }

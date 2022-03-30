@@ -4,46 +4,45 @@
 using System;
 using System.Windows.Threading;
 
-namespace HandyControl.Tools.Command
+namespace HandyControl.Tools.Command;
+
+internal sealed class SyncDelegateCommand : IDelegateCommand
 {
-    internal sealed class SyncDelegateCommand : IDelegateCommand
+    private readonly Action<object?> _execute;
+    private readonly Func<object?, bool> _canExecute;
+    private readonly Dispatcher _dispatcher;
+
+    public event EventHandler? CanExecuteChanged;
+
+    public SyncDelegateCommand(Action<object?> execute, Func<object?, bool> canExecute)
     {
-        private readonly Action<object?> _execute;
-        private readonly Func<object?, bool> _canExecute;
-        private readonly Dispatcher _dispatcher;
+        _execute = execute;
+        _canExecute = canExecute;
+        _dispatcher = Dispatcher.CurrentDispatcher;
+    }
 
-        public event EventHandler? CanExecuteChanged;
+    public bool CanExecute(object? parameter)
+    {
+        return _canExecute.Invoke(parameter);
+    }
 
-        public SyncDelegateCommand(Action<object?> execute, Func<object?, bool> canExecute)
+    public void Execute(object? parameter)
+    {
+        _execute.Invoke(parameter);
+    }
+
+    public void RaiseCanExecuteChanged()
+    {
+        if (_dispatcher != null)
         {
-            _execute = execute;
-            _canExecute = canExecute;
-            _dispatcher = Dispatcher.CurrentDispatcher;
+            _dispatcher.Invoke(() => CanExecuteChanged?.Invoke(this, EventArgs.Empty));
         }
-
-        public bool CanExecute(object? parameter)
+        else
         {
-            return _canExecute.Invoke(parameter);
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
-
-        public void Execute(object? parameter)
-        {
-            _execute.Invoke(parameter);
-        }
-
-        public void RaiseCanExecuteChanged()
-        {
-            if (_dispatcher != null)
-            {
-                _dispatcher.Invoke(() => CanExecuteChanged?.Invoke(this, EventArgs.Empty));
-            }
-            else
-            {
-                CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-            }
-        }
-
     }
 
 }
+
 #endif

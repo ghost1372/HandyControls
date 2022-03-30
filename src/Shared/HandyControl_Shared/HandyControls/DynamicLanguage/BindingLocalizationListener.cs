@@ -1,31 +1,30 @@
 ﻿using System.Windows.Data;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools;
+
+/// <summary>
+/// Listener for a culture change when binding is localized
+/// </summary>
+public class BindingLocalizationListener : BaseLocalizationListener
 {
-    /// <summary>
-    /// Listener for a culture change when binding is localized
-    /// </summary>
-    public class BindingLocalizationListener : BaseLocalizationListener
+    private BindingExpressionBase BindingExpression { get; set; }
+
+    public void SetBinding(BindingExpressionBase bindingExpression)
     {
-        private BindingExpressionBase BindingExpression { get; set; }
+        BindingExpression = bindingExpression;
+    }
 
-        public void SetBinding(BindingExpressionBase bindingExpression)
+    protected override void OnCultureChanged()
+    {
+        try
         {
-            BindingExpression = bindingExpression;
+            // Updating the result of a binding expression
+            // In this case, the converter is called again for the new culture
+            BindingExpression?.UpdateTarget();
         }
-
-        protected override void OnCultureChanged()
+        catch
         {
-            try
-            {
-                // Updating the result of a binding expression
-                // In this case, the converter is called again for the new culture
-                BindingExpression?.UpdateTarget();
-            }
-            catch
-            {
-                // ignored
-            }
+            // ignored
         }
     }
 }

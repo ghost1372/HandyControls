@@ -3,10 +3,9 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace HandyControl.Tools.Command
+namespace HandyControl.Tools.Command;
+
+public interface IAsyncCommand : ICommand
 {
-    public interface IAsyncCommand : ICommand
-    {
-        Task ExecuteAsync(object parameter);
-    }
+    Task ExecuteAsync(object parameter);
 }

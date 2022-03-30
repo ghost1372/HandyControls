@@ -4,125 +4,124 @@ using System.Runtime.InteropServices;
 using System.Windows.Media;
 using HandyControl.Tools.Interop;
 
-namespace HandyControl.Themes
+namespace HandyControl.Themes;
+
+//https://github.com/Code-Inside/Samples/blob/master/2016/WpfGetWindows10AccentColor/WpfApplication1/MainWindow.xaml.cs
+internal class AccentColorSet
 {
-    //https://github.com/Code-Inside/Samples/blob/master/2016/WpfGetWindows10AccentColor/WpfApplication1/MainWindow.xaml.cs
-    internal class AccentColorSet
+    public static AccentColorSet[] AllSets
     {
-        public static AccentColorSet[] AllSets
+        get
         {
-            get
+            if (_allSets == null)
             {
-                if (_allSets == null)
+                UInt32 colorSetCount = InteropMethods.GetImmersiveColorSetCount();
+
+                List<AccentColorSet> colorSets = new List<AccentColorSet>();
+                for (UInt32 i = 0; i < colorSetCount; i++)
                 {
-                    UInt32 colorSetCount = InteropMethods.GetImmersiveColorSetCount();
-
-                    List<AccentColorSet> colorSets = new List<AccentColorSet>();
-                    for (UInt32 i = 0; i < colorSetCount; i++)
-                    {
-                        colorSets.Add(new AccentColorSet(i, false));
-                    }
-
-                    AllSets = colorSets.ToArray();
+                    colorSets.Add(new AccentColorSet(i, false));
                 }
 
-                return _allSets;
+                AllSets = colorSets.ToArray();
             }
-            private set
-            {
-                _allSets = value;
-            }
+
+            return _allSets;
         }
-
-        public static AccentColorSet ActiveSet
+        private set
         {
-            get
-            {
-                UInt32 activeSet = InteropMethods.GetImmersiveUserColorSetPreference(false, false);
-                ActiveSet = AllSets[Math.Min(activeSet, AllSets.Length - 1)];
-                return _activeSet;
-            }
-            private set
-            {
-                if (_activeSet != null) _activeSet.Active = false;
-
-                value.Active = true;
-                _activeSet = value;
-            }
+            _allSets = value;
         }
+    }
 
-        public Boolean Active { get; private set; }
-
-        public Color this[String colorName]
+    public static AccentColorSet ActiveSet
+    {
+        get
         {
-            get
-            {
-                IntPtr name = IntPtr.Zero;
-                UInt32 colorType;
+            UInt32 activeSet = InteropMethods.GetImmersiveUserColorSetPreference(false, false);
+            ActiveSet = AllSets[Math.Min(activeSet, AllSets.Length - 1)];
+            return _activeSet;
+        }
+        private set
+        {
+            if (_activeSet != null) _activeSet.Active = false;
 
-                try
+            value.Active = true;
+            _activeSet = value;
+        }
+    }
+
+    public Boolean Active { get; private set; }
+
+    public Color this[String colorName]
+    {
+        get
+        {
+            IntPtr name = IntPtr.Zero;
+            UInt32 colorType;
+
+            try
+            {
+                name = Marshal.StringToHGlobalUni("Immersive" + colorName);
+                colorType = InteropMethods.GetImmersiveColorTypeFromName(name);
+                if (colorType == 0xFFFFFFFF) throw new InvalidOperationException();
+            }
+            finally
+            {
+                if (name != IntPtr.Zero)
                 {
-                    name = Marshal.StringToHGlobalUni("Immersive" + colorName);
-                    colorType = InteropMethods.GetImmersiveColorTypeFromName(name);
-                    if (colorType == 0xFFFFFFFF) throw new InvalidOperationException();
-                }
-                finally
-                {
-                    if (name != IntPtr.Zero)
-                    {
-                        Marshal.FreeHGlobal(name);
-                        name = IntPtr.Zero;
-                    }
-                }
-
-                return this[colorType];
-            }
-        }
-
-        public Color this[UInt32 colorType]
-        {
-            get
-            {
-                UInt32 nativeColor = InteropMethods.GetImmersiveColorFromColorSetEx(this._colorSet, colorType, false, 0);
-                //if (nativeColor == 0)
-                //    throw new InvalidOperationException();
-                return Color.FromArgb(
-                    (Byte) ((0xFF000000 & nativeColor) >> 24),
-                    (Byte) ((0x000000FF & nativeColor) >> 0),
-                    (Byte) ((0x0000FF00 & nativeColor) >> 8),
-                    (Byte) ((0x00FF0000 & nativeColor) >> 16)
-                    );
-            }
-        }
-
-        AccentColorSet(UInt32 colorSet, Boolean active)
-        {
-            this._colorSet = colorSet;
-            this.Active = active;
-        }
-
-        static AccentColorSet[] _allSets;
-        static AccentColorSet _activeSet;
-
-        UInt32 _colorSet;
-
-        // HACK: GetAllColorNames collects the available color names by brute forcing the OS function.
-        //   Since there is currently no known way to retrieve all possible color names,
-        //   the method below just tries all indices from 0 to 0xFFF ignoring errors.
-        public List<String> GetAllColorNames()
-        {
-            List<String> allColorNames = new List<String>();
-            for (UInt32 i = 0; i < 0xFFF; i++)
-            {
-                IntPtr typeNamePtr = InteropMethods.GetImmersiveColorNamedTypeByIndex(i);
-                if (typeNamePtr != IntPtr.Zero)
-                {
-                    IntPtr typeName = (IntPtr) Marshal.PtrToStructure(typeNamePtr, typeof(IntPtr));
-                    allColorNames.Add(Marshal.PtrToStringUni(typeName));
+                    Marshal.FreeHGlobal(name);
+                    name = IntPtr.Zero;
                 }
             }
 
-            return allColorNames;
+            return this[colorType];
         }
+    }
+
+    public Color this[UInt32 colorType]
+    {
+        get
+        {
+            UInt32 nativeColor = InteropMethods.GetImmersiveColorFromColorSetEx(this._colorSet, colorType, false, 0);
+            //if (nativeColor == 0)
+            //    throw new InvalidOperationException();
+            return Color.FromArgb(
+                (Byte) ((0xFF000000 & nativeColor) >> 24),
+                (Byte) ((0x000000FF & nativeColor) >> 0),
+                (Byte) ((0x0000FF00 & nativeColor) >> 8),
+                (Byte) ((0x00FF0000 & nativeColor) >> 16)
+                );
+        }
+    }
+
+    AccentColorSet(UInt32 colorSet, Boolean active)
+    {
+        this._colorSet = colorSet;
+        this.Active = active;
+    }
+
+    static AccentColorSet[] _allSets;
+    static AccentColorSet _activeSet;
+
+    UInt32 _colorSet;
+
+    // HACK: GetAllColorNames collects the available color names by brute forcing the OS function.
+    //   Since there is currently no known way to retrieve all possible color names,
+    //   the method below just tries all indices from 0 to 0xFFF ignoring errors.
+    public List<String> GetAllColorNames()
+    {
+        List<String> allColorNames = new List<String>();
+        for (UInt32 i = 0; i < 0xFFF; i++)
+        {
+            IntPtr typeNamePtr = InteropMethods.GetImmersiveColorNamedTypeByIndex(i);
+            if (typeNamePtr != IntPtr.Zero)
+            {
+                IntPtr typeName = (IntPtr) Marshal.PtrToStructure(typeNamePtr, typeof(IntPtr));
+                allColorNames.Add(Marshal.PtrToStringUni(typeName));
+            }
+        }
+
+        return allColorNames;
     }
 }

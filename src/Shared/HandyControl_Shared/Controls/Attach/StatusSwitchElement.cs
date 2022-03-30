@@ -6,7 +6,7 @@ namespace HandyControl.Controls;
 public class StatusSwitchElement
 {
     /// <summary>
-    ///     选中时展示的元素
+    ///     Elements to be displayed when selected
     /// </summary>
     public static readonly DependencyProperty CheckedElementProperty = DependencyProperty.RegisterAttached(
         "CheckedElement", typeof(object), typeof(StatusSwitchElement), new PropertyMetadata(default(object)));
@@ -16,7 +16,7 @@ public class StatusSwitchElement
     public static object GetCheckedElement(DependencyObject element) => element.GetValue(CheckedElementProperty);
 
     /// <summary>
-    ///     是否隐藏元素
+    ///     Whether to hide the element
     /// </summary>
     public static readonly DependencyProperty HideUncheckedElementProperty = DependencyProperty.RegisterAttached(
         "HideUncheckedElement", typeof(bool), typeof(StatusSwitchElement), new PropertyMetadata(ValueBoxes.FalseBox));

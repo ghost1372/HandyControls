@@ -2,281 +2,280 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace HandyControl.Controls
+namespace HandyControl.Controls;
+
+public class AutoSelectTextBox : TextBox
 {
-    public class AutoSelectTextBox : TextBox
+    public AutoSelectTextBox()
     {
-        public AutoSelectTextBox()
+    }
+
+    #region AutoSelectBehavior PROPERTY
+    
+
+    public AutoSelectBehavior AutoSelectBehavior
+    {
+        get
         {
+            return (AutoSelectBehavior)GetValue(AutoSelectBehaviorProperty);
         }
-
-        #region AutoSelectBehavior PROPERTY
-        
-
-        public AutoSelectBehavior AutoSelectBehavior
+        set
         {
-            get
-            {
-                return (AutoSelectBehavior)GetValue(AutoSelectBehaviorProperty);
-            }
-            set
-            {
-                SetValue(AutoSelectBehaviorProperty, value);
-            }
+            SetValue(AutoSelectBehaviorProperty, value);
         }
+    }
 
-        public static readonly DependencyProperty AutoSelectBehaviorProperty =
-            DependencyProperty.Register("AutoSelectBehavior", typeof(AutoSelectBehavior), typeof(AutoSelectTextBox),
-          new UIPropertyMetadata(AutoSelectBehavior.Never));
+    public static readonly DependencyProperty AutoSelectBehaviorProperty =
+        DependencyProperty.Register("AutoSelectBehavior", typeof(AutoSelectBehavior), typeof(AutoSelectTextBox),
+      new UIPropertyMetadata(AutoSelectBehavior.Never));
 
-        #endregion AutoSelectBehavior PROPERTY
+    #endregion AutoSelectBehavior PROPERTY
 
-        #region AutoMoveFocus PROPERTY
+    #region AutoMoveFocus PROPERTY
 
-        public bool AutoMoveFocus
+    public bool AutoMoveFocus
+    {
+        get
         {
-            get
-            {
-                return (bool)GetValue(AutoMoveFocusProperty);
-            }
-            set
-            {
-                SetValue(AutoMoveFocusProperty, value);
-            }
+            return (bool)GetValue(AutoMoveFocusProperty);
         }
-
-        public static readonly DependencyProperty AutoMoveFocusProperty =
-            DependencyProperty.Register("AutoMoveFocus", typeof(bool), typeof(AutoSelectTextBox), new UIPropertyMetadata(false));
-
-        #endregion AutoMoveFocus PROPERTY
-
-        #region QueryMoveFocus EVENT
-
-        public static readonly RoutedEvent QueryMoveFocusEvent = EventManager.RegisterRoutedEvent("QueryMoveFocus",
-                                                                                                    RoutingStrategy.Bubble,
-                                                                                                    typeof(QueryMoveFocusEventHandler),
-                                                                                                    typeof(AutoSelectTextBox));
-        #endregion QueryMoveFocus EVENT
-
-        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        set
         {
-            if (!this.AutoMoveFocus)
-            {
-                base.OnPreviewKeyDown(e);
-                return;
-            }
+            SetValue(AutoMoveFocusProperty, value);
+        }
+    }
 
-            if ((e.Key == Key.Left)
-              && ((Keyboard.Modifiers == ModifierKeys.None)
-                || (Keyboard.Modifiers == ModifierKeys.Control)))
-            {
-                e.Handled = this.MoveFocusLeft();
-            }
+    public static readonly DependencyProperty AutoMoveFocusProperty =
+        DependencyProperty.Register("AutoMoveFocus", typeof(bool), typeof(AutoSelectTextBox), new UIPropertyMetadata(false));
 
-            if ((e.Key == Key.Right)
-              && ((Keyboard.Modifiers == ModifierKeys.None)
-                || (Keyboard.Modifiers == ModifierKeys.Control)))
-            {
-                e.Handled = this.MoveFocusRight();
-            }
+    #endregion AutoMoveFocus PROPERTY
 
-            if (((e.Key == Key.Up) || (e.Key == Key.PageUp))
-              && ((Keyboard.Modifiers == ModifierKeys.None)
-                || (Keyboard.Modifiers == ModifierKeys.Control)))
-            {
-                e.Handled = this.MoveFocusUp();
-            }
+    #region QueryMoveFocus EVENT
 
-            if (((e.Key == Key.Down) || (e.Key == Key.PageDown))
-             && ((Keyboard.Modifiers == ModifierKeys.None)
-               || (Keyboard.Modifiers == ModifierKeys.Control)))
-            {
-                e.Handled = this.MoveFocusDown();
-            }
+    public static readonly RoutedEvent QueryMoveFocusEvent = EventManager.RegisterRoutedEvent("QueryMoveFocus",
+                                                                                                RoutingStrategy.Bubble,
+                                                                                                typeof(QueryMoveFocusEventHandler),
+                                                                                                typeof(AutoSelectTextBox));
+    #endregion QueryMoveFocus EVENT
 
+    protected override void OnPreviewKeyDown(KeyEventArgs e)
+    {
+        if (!this.AutoMoveFocus)
+        {
             base.OnPreviewKeyDown(e);
+            return;
         }
 
-        protected override void OnPreviewGotKeyboardFocus(KeyboardFocusChangedEventArgs e)
+        if ((e.Key == Key.Left)
+          && ((Keyboard.Modifiers == ModifierKeys.None)
+            || (Keyboard.Modifiers == ModifierKeys.Control)))
         {
-            base.OnPreviewGotKeyboardFocus(e);
-
-            if (this.AutoSelectBehavior == AutoSelectBehavior.OnFocus)
-            {
-                // If the focus was not in one of our child ( or popup ), we select all the text.
-                if (!TreeHelper.IsDescendantOf(e.OldFocus as DependencyObject, this))
-                {
-                    this.SelectAll();
-                }
-            }
+            e.Handled = this.MoveFocusLeft();
         }
 
-        protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
+        if ((e.Key == Key.Right)
+          && ((Keyboard.Modifiers == ModifierKeys.None)
+            || (Keyboard.Modifiers == ModifierKeys.Control)))
         {
-            base.OnPreviewMouseLeftButtonDown(e);
-
-            if (this.AutoSelectBehavior == AutoSelectBehavior.Never)
-                return;
-
-            if (this.IsKeyboardFocusWithin == false)
-            {
-                this.Focus();
-                e.Handled = true;  //prevent from removing the selection
-            }
+            e.Handled = this.MoveFocusRight();
         }
 
-        protected override void OnTextChanged(TextChangedEventArgs e)
+        if (((e.Key == Key.Up) || (e.Key == Key.PageUp))
+          && ((Keyboard.Modifiers == ModifierKeys.None)
+            || (Keyboard.Modifiers == ModifierKeys.Control)))
         {
-            base.OnTextChanged(e);
-
-            if (!this.AutoMoveFocus)
-                return;
-
-            if ((this.Text.Length != 0)
-                && (this.Text.Length == this.MaxLength)
-                && (this.CaretIndex == this.MaxLength))
-            {
-                if (this.CanMoveFocus(FocusNavigationDirection.Right, true) == true)
-                {
-                    FocusNavigationDirection direction = (this.FlowDirection == FlowDirection.LeftToRight)
-                      ? FocusNavigationDirection.Right
-                      : FocusNavigationDirection.Left;
-
-                    this.MoveFocus(new TraversalRequest(direction));
-                }
-            }
+            e.Handled = this.MoveFocusUp();
         }
 
-
-        private bool CanMoveFocus(FocusNavigationDirection direction, bool reachedMax)
+        if (((e.Key == Key.Down) || (e.Key == Key.PageDown))
+         && ((Keyboard.Modifiers == ModifierKeys.None)
+           || (Keyboard.Modifiers == ModifierKeys.Control)))
         {
-            QueryMoveFocusEventArgs e = new QueryMoveFocusEventArgs(direction, reachedMax);
-            this.RaiseEvent(e);
-            return e.CanMoveFocus;
+            e.Handled = this.MoveFocusDown();
         }
 
-        private bool MoveFocusLeft()
-        {
-            if (this.FlowDirection == FlowDirection.LeftToRight)
-            {
-                //occurs only if the cursor is at the beginning of the text
-                if ((this.CaretIndex == 0) && (this.SelectionLength == 0))
-                {
-                    if (ComponentCommands.MoveFocusBack.CanExecute(null, this))
-                    {
-                        ComponentCommands.MoveFocusBack.Execute(null, this);
-                        return true;
-                    }
-                    else if (this.CanMoveFocus(FocusNavigationDirection.Left, false))
-                    {
-                        this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Left));
-                        return true;
-                    }
-                }
-            }
-            else
-            {
-                //occurs only if the cursor is at the end of the text
-                if ((this.CaretIndex == this.Text.Length) && (this.SelectionLength == 0))
-                {
-                    if (ComponentCommands.MoveFocusBack.CanExecute(null, this))
-                    {
-                        ComponentCommands.MoveFocusBack.Execute(null, this);
-                        return true;
-                    }
-                    else if (this.CanMoveFocus(FocusNavigationDirection.Left, false))
-                    {
-                        this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Left));
-                        return true;
-                    }
-                }
-            }
+        base.OnPreviewKeyDown(e);
+    }
 
-            return false;
+    protected override void OnPreviewGotKeyboardFocus(KeyboardFocusChangedEventArgs e)
+    {
+        base.OnPreviewGotKeyboardFocus(e);
+
+        if (this.AutoSelectBehavior == AutoSelectBehavior.OnFocus)
+        {
+            // If the focus was not in one of our child ( or popup ), we select all the text.
+            if (!TreeHelper.IsDescendantOf(e.OldFocus as DependencyObject, this))
+            {
+                this.SelectAll();
+            }
         }
+    }
 
-        private bool MoveFocusRight()
+    protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
+    {
+        base.OnPreviewMouseLeftButtonDown(e);
+
+        if (this.AutoSelectBehavior == AutoSelectBehavior.Never)
+            return;
+
+        if (this.IsKeyboardFocusWithin == false)
         {
-            if (this.FlowDirection == FlowDirection.LeftToRight)
-            {
-                //occurs only if the cursor is at the beginning of the text
-                if ((this.CaretIndex == this.Text.Length) && (this.SelectionLength == 0))
-                {
-                    if (ComponentCommands.MoveFocusForward.CanExecute(null, this))
-                    {
-                        ComponentCommands.MoveFocusForward.Execute(null, this);
-                        return true;
-                    }
-                    else if (this.CanMoveFocus(FocusNavigationDirection.Right, false))
-                    {
-                        this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Right));
-                        return true;
-                    }
-                }
-            }
-            else
-            {
-                //occurs only if the cursor is at the end of the text
-                if ((this.CaretIndex == 0) && (this.SelectionLength == 0))
-                {
-                    if (ComponentCommands.MoveFocusForward.CanExecute(null, this))
-                    {
-                        ComponentCommands.MoveFocusForward.Execute(null, this);
-                        return true;
-                    }
-                    else if (this.CanMoveFocus(FocusNavigationDirection.Right, false))
-                    {
-                        this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Right));
-                        return true;
-                    }
-                }
-            }
-
-            return false;
+            this.Focus();
+            e.Handled = true;  //prevent from removing the selection
         }
+    }
 
-        private bool MoveFocusUp()
+    protected override void OnTextChanged(TextChangedEventArgs e)
+    {
+        base.OnTextChanged(e);
+
+        if (!this.AutoMoveFocus)
+            return;
+
+        if ((this.Text.Length != 0)
+            && (this.Text.Length == this.MaxLength)
+            && (this.CaretIndex == this.MaxLength))
         {
-            int lineNumber = this.GetLineIndexFromCharacterIndex(this.SelectionStart);
-
-            //occurs only if the cursor is on the first line
-            if (lineNumber == 0)
+            if (this.CanMoveFocus(FocusNavigationDirection.Right, true) == true)
             {
-                if (ComponentCommands.MoveFocusUp.CanExecute(null, this))
+                FocusNavigationDirection direction = (this.FlowDirection == FlowDirection.LeftToRight)
+                  ? FocusNavigationDirection.Right
+                  : FocusNavigationDirection.Left;
+
+                this.MoveFocus(new TraversalRequest(direction));
+            }
+        }
+    }
+
+
+    private bool CanMoveFocus(FocusNavigationDirection direction, bool reachedMax)
+    {
+        QueryMoveFocusEventArgs e = new QueryMoveFocusEventArgs(direction, reachedMax);
+        this.RaiseEvent(e);
+        return e.CanMoveFocus;
+    }
+
+    private bool MoveFocusLeft()
+    {
+        if (this.FlowDirection == FlowDirection.LeftToRight)
+        {
+            //occurs only if the cursor is at the beginning of the text
+            if ((this.CaretIndex == 0) && (this.SelectionLength == 0))
+            {
+                if (ComponentCommands.MoveFocusBack.CanExecute(null, this))
                 {
-                    ComponentCommands.MoveFocusUp.Execute(null, this);
+                    ComponentCommands.MoveFocusBack.Execute(null, this);
                     return true;
                 }
-                else if (this.CanMoveFocus(FocusNavigationDirection.Up, false))
+                else if (this.CanMoveFocus(FocusNavigationDirection.Left, false))
                 {
-                    this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
+                    this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Left));
                     return true;
                 }
             }
-
-            return false;
         }
-
-        private bool MoveFocusDown()
+        else
         {
-            int lineNumber = this.GetLineIndexFromCharacterIndex(this.SelectionStart);
-
-            //occurs only if the cursor is on the first line
-            if (lineNumber == (this.LineCount - 1))
+            //occurs only if the cursor is at the end of the text
+            if ((this.CaretIndex == this.Text.Length) && (this.SelectionLength == 0))
             {
-                if (ComponentCommands.MoveFocusDown.CanExecute(null, this))
+                if (ComponentCommands.MoveFocusBack.CanExecute(null, this))
                 {
-                    ComponentCommands.MoveFocusDown.Execute(null, this);
+                    ComponentCommands.MoveFocusBack.Execute(null, this);
                     return true;
                 }
-                else if (this.CanMoveFocus(FocusNavigationDirection.Down, false))
+                else if (this.CanMoveFocus(FocusNavigationDirection.Left, false))
                 {
-                    this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
+                    this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Left));
                     return true;
                 }
             }
-
-            return false;
         }
+
+        return false;
+    }
+
+    private bool MoveFocusRight()
+    {
+        if (this.FlowDirection == FlowDirection.LeftToRight)
+        {
+            //occurs only if the cursor is at the beginning of the text
+            if ((this.CaretIndex == this.Text.Length) && (this.SelectionLength == 0))
+            {
+                if (ComponentCommands.MoveFocusForward.CanExecute(null, this))
+                {
+                    ComponentCommands.MoveFocusForward.Execute(null, this);
+                    return true;
+                }
+                else if (this.CanMoveFocus(FocusNavigationDirection.Right, false))
+                {
+                    this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Right));
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            //occurs only if the cursor is at the end of the text
+            if ((this.CaretIndex == 0) && (this.SelectionLength == 0))
+            {
+                if (ComponentCommands.MoveFocusForward.CanExecute(null, this))
+                {
+                    ComponentCommands.MoveFocusForward.Execute(null, this);
+                    return true;
+                }
+                else if (this.CanMoveFocus(FocusNavigationDirection.Right, false))
+                {
+                    this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Right));
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool MoveFocusUp()
+    {
+        int lineNumber = this.GetLineIndexFromCharacterIndex(this.SelectionStart);
+
+        //occurs only if the cursor is on the first line
+        if (lineNumber == 0)
+        {
+            if (ComponentCommands.MoveFocusUp.CanExecute(null, this))
+            {
+                ComponentCommands.MoveFocusUp.Execute(null, this);
+                return true;
+            }
+            else if (this.CanMoveFocus(FocusNavigationDirection.Up, false))
+            {
+                this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool MoveFocusDown()
+    {
+        int lineNumber = this.GetLineIndexFromCharacterIndex(this.SelectionStart);
+
+        //occurs only if the cursor is on the first line
+        if (lineNumber == (this.LineCount - 1))
+        {
+            if (ComponentCommands.MoveFocusDown.CanExecute(null, this))
+            {
+                ComponentCommands.MoveFocusDown.Execute(null, this);
+                return true;
+            }
+            else if (this.CanMoveFocus(FocusNavigationDirection.Down, false))
+            {
+                this.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
+                return true;
+            }
+        }
+
+        return false;
     }
 }

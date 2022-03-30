@@ -1,8 +1,7 @@
-﻿namespace HandyControl.Controls
+﻿namespace HandyControl.Controls;
+
+public interface ISplashWindow
 {
-    public interface ISplashWindow
-    {
-        void AddMessage(string message);
-        void LoadComplete();
-    }
+    void AddMessage(string message);
+    void LoadComplete();
 }

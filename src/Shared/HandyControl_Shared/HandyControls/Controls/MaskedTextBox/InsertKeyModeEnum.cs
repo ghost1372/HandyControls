@@ -14,12 +14,11 @@
 
   ***********************************************************************************/
 
-namespace HandyControl.Controls
+namespace HandyControl.Controls;
+
+public enum InsertKeyMode
 {
-  public enum InsertKeyMode
-  {
-    Default = 0,
-    Insert = 1,
-    Overwrite = 2
-  }
+Default = 0,
+Insert = 1,
+Overwrite = 2
 }

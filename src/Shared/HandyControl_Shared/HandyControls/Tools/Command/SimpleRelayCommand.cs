@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace HandyControl.Tools.Command
+namespace HandyControl.Tools.Command;
+
+public class SimpleRelayCommand : ICommand
 {
-    public class SimpleRelayCommand : ICommand
+    private Action _action;
+
+    public SimpleRelayCommand(Action action)
     {
-        private Action _action;
+        _action = action;
+    }
 
-        public SimpleRelayCommand(Action action)
-        {
-            _action = action;
-        }
+    public event EventHandler CanExecuteChanged;
 
-        public event EventHandler CanExecuteChanged;
+    public bool CanExecute(object parameter)
+    {
+        return true;
+    }
 
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public void Execute(object parameter)
-        {
-            _action();
-        }
+    public void Execute(object parameter)
+    {
+        _action();
     }
 }

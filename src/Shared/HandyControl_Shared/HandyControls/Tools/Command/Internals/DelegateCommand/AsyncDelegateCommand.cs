@@ -4,61 +4,60 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows.Threading;
-namespace HandyControl.Tools.Command
+namespace HandyControl.Tools.Command;
+
+internal sealed class AsyncDelegateCommand : IDelegateCommand
 {
-    internal sealed class AsyncDelegateCommand : IDelegateCommand
+    private readonly Func<object?, Task> _execute;
+    private readonly Func<object?, bool> _canExecute;
+    private readonly Dispatcher _dispatcher;
+    private bool _isExecuting;
+
+    public event EventHandler? CanExecuteChanged;
+
+    public AsyncDelegateCommand(Func<object?, Task> execute, Func<object?, bool> canExecute)
     {
-        private readonly Func<object?, Task> _execute;
-        private readonly Func<object?, bool> _canExecute;
-        private readonly Dispatcher _dispatcher;
-        private bool _isExecuting;
+        _execute = execute;
+        _canExecute = canExecute;
+        _dispatcher = Dispatcher.CurrentDispatcher;
+    }
 
-        public event EventHandler? CanExecuteChanged;
+    public bool CanExecute(object? parameter)
+    {
+        return !_isExecuting && _canExecute.Invoke(parameter);
+    }
 
-        public AsyncDelegateCommand(Func<object?, Task> execute, Func<object?, bool> canExecute)
+    public async void Execute(object? parameter)
+    {
+        if (_isExecuting)
+            return;
+
+        try
         {
-            _execute = execute;
-            _canExecute = canExecute;
-            _dispatcher = Dispatcher.CurrentDispatcher;
+            _isExecuting = true;
+            RaiseCanExecuteChanged();
+            await _execute.Invoke(parameter);
+        }
+        finally
+        {
+            _isExecuting = false;
+            RaiseCanExecuteChanged();
         }
 
-        public bool CanExecute(object? parameter)
-        {
-            return !_isExecuting && _canExecute.Invoke(parameter);
-        }
+    }
 
-        public async void Execute(object? parameter)
+    public void RaiseCanExecuteChanged()
+    {
+        var canExecuteChanged = CanExecuteChanged;
+        if (canExecuteChanged != null)
         {
-            if (_isExecuting)
-                return;
-
-            try
+            if (_dispatcher != null)
             {
-                _isExecuting = true;
-                RaiseCanExecuteChanged();
-                await _execute.Invoke(parameter);
+                _dispatcher.Invoke(() => canExecuteChanged.Invoke(this, EventArgs.Empty));
             }
-            finally
+            else
             {
-                _isExecuting = false;
-                RaiseCanExecuteChanged();
-            }
-
-        }
-
-        public void RaiseCanExecuteChanged()
-        {
-            var canExecuteChanged = CanExecuteChanged;
-            if (canExecuteChanged != null)
-            {
-                if (_dispatcher != null)
-                {
-                    _dispatcher.Invoke(() => canExecuteChanged.Invoke(this, EventArgs.Empty));
-                }
-                else
-                {
-                    canExecuteChanged.Invoke(this, EventArgs.Empty);
-                }
+                canExecuteChanged.Invoke(this, EventArgs.Empty);
             }
         }
     }

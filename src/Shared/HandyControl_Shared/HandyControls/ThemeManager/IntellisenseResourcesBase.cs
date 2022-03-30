@@ -4,36 +4,35 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace HandyControl.Themes
-{
-    public abstract class IntellisenseResourcesBase : ResourceDictionary, ISupportInitialize
-    {
-        protected IntellisenseResourcesBase()
-        {
-        }
+namespace HandyControl.Themes;
 
-        public new Uri Source
+public abstract class IntellisenseResourcesBase : ResourceDictionary, ISupportInitialize
+{
+    protected IntellisenseResourcesBase()
+    {
+    }
+
+    public new Uri Source
+    {
+        get => base.Source;
+        set
         {
-            get => base.Source;
-            set
+            if (DesignMode.DesignModeEnabled)
             {
-                if (DesignMode.DesignModeEnabled)
-                {
-                    base.Source = value;
-                }
+                base.Source = value;
             }
         }
+    }
 
-        public new void EndInit()
-        {
-            Clear();
-            MergedDictionaries.Clear();
-            base.EndInit();
-        }
+    public new void EndInit()
+    {
+        Clear();
+        MergedDictionaries.Clear();
+        base.EndInit();
+    }
 
-        void ISupportInitialize.EndInit()
-        {
-            EndInit();
-        }
+    void ISupportInitialize.EndInit()
+    {
+        EndInit();
     }
 }

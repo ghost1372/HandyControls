@@ -1,8 +1,7 @@
-﻿namespace HandyControl.Controls
+﻿namespace HandyControl.Controls;
+
+public enum AutoSelectBehavior
 {
-    public enum AutoSelectBehavior
-    {
-        Never,
-        OnFocus
-    }
+    Never,
+    OnFocus
 }

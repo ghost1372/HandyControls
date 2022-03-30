@@ -1,17 +1,16 @@
-﻿namespace HandyControl.Tools.Extension
+﻿namespace HandyControl.Tools.Extension;
+
+/// <summary>
+/// Truncation location for humanizer
+/// </summary>
+public enum TruncateFrom
 {
     /// <summary>
-    /// Truncation location for humanizer
+    /// Truncate letters from the left (start) of the string
     /// </summary>
-    public enum TruncateFrom
-    {
-        /// <summary>
-        /// Truncate letters from the left (start) of the string
-        /// </summary>
-        Left,
-        /// <summary>
-        /// Truncate letters from the right (end) of the string
-        /// </summary>
-        Right
-    }
+    Left,
+    /// <summary>
+    /// Truncate letters from the right (end) of the string
+    /// </summary>
+    Right
 }

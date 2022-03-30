@@ -1,19 +1,18 @@
 ﻿using System.Globalization;
 
-namespace HandyControl.Tools.Extension
+namespace HandyControl.Tools.Extension;
+
+internal class ToLowerCase : ICulturedStringTransformer
 {
-    internal class ToLowerCase : ICulturedStringTransformer
+    public string Transform(string input)
     {
-        public string Transform(string input)
-        {
-            return Transform(input, null);
-        }
+        return Transform(input, null);
+    }
 
-        public string Transform(string input, CultureInfo culture)
-        {
-            culture ??= CultureInfo.CurrentCulture;
+    public string Transform(string input, CultureInfo culture)
+    {
+        culture ??= CultureInfo.CurrentCulture;
 
-            return culture.TextInfo.ToLower(input);
-        }
+        return culture.TextInfo.ToLower(input);
     }
 }

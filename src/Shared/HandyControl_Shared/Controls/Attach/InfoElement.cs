@@ -6,7 +6,7 @@ namespace HandyControl.Controls;
 public class InfoElement : TitleElement
 {
     /// <summary>
-    ///     占位符
+    ///     Placeholder
     /// </summary>
     public static readonly DependencyProperty PlaceholderProperty = DependencyProperty.RegisterAttached(
         "Placeholder", typeof(string), typeof(InfoElement), new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.Inherits));
@@ -16,7 +16,7 @@ public class InfoElement : TitleElement
     public static string GetPlaceholder(DependencyObject element) => (string) element.GetValue(PlaceholderProperty);
 
     /// <summary>
-    ///     是否必填
+    ///     Necessary
     /// </summary>
     public static readonly DependencyProperty NecessaryProperty = DependencyProperty.RegisterAttached(
         "Necessary", typeof(bool), typeof(InfoElement), new FrameworkPropertyMetadata(ValueBoxes.FalseBox, FrameworkPropertyMetadataOptions.Inherits));
@@ -26,7 +26,7 @@ public class InfoElement : TitleElement
     public static bool GetNecessary(DependencyObject element) => (bool) element.GetValue(NecessaryProperty);
 
     /// <summary>
-    ///     标记
+    ///     Symbol
     /// </summary>
     public static readonly DependencyProperty SymbolProperty = DependencyProperty.RegisterAttached(
         "Symbol", typeof(string), typeof(InfoElement), new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.Inherits));
@@ -36,7 +36,7 @@ public class InfoElement : TitleElement
     public static string GetSymbol(DependencyObject element) => (string) element.GetValue(SymbolProperty);
 
     /// <summary>
-    ///     内容高度
+    ///     ContentHeight
     /// </summary>
     public static readonly DependencyProperty ContentHeightProperty = DependencyProperty.RegisterAttached(
         "ContentHeight", typeof(double), typeof(InfoElement), new FrameworkPropertyMetadata(30.0, FrameworkPropertyMetadataOptions.Inherits));
@@ -46,7 +46,7 @@ public class InfoElement : TitleElement
     public static double GetContentHeight(DependencyObject element) => (double) element.GetValue(ContentHeightProperty);
 
     /// <summary>
-    ///     最小内容高度
+    ///     MinContentHeight
     /// </summary>
     public static readonly DependencyProperty MinContentHeightProperty = DependencyProperty.RegisterAttached(
         "MinContentHeight", typeof(double), typeof(InfoElement), new PropertyMetadata(30.0));
@@ -58,7 +58,7 @@ public class InfoElement : TitleElement
         => (double) element.GetValue(MinContentHeightProperty);
 
     /// <summary>
-    ///     最大内容高度
+    ///     MaxContentHeight
     /// </summary>
     public static readonly DependencyProperty MaxContentHeightProperty = DependencyProperty.RegisterAttached(
         "MaxContentHeight", typeof(double), typeof(InfoElement), new PropertyMetadata(double.PositiveInfinity));
@@ -70,7 +70,7 @@ public class InfoElement : TitleElement
         => (double) element.GetValue(MaxContentHeightProperty);
 
     /// <summary>
-    ///     正则表达式
+    ///     RegexPattern
     /// </summary>
     public static readonly DependencyProperty RegexPatternProperty = DependencyProperty.RegisterAttached(
         "RegexPattern", typeof(string), typeof(InfoElement), new PropertyMetadata(default(string)));

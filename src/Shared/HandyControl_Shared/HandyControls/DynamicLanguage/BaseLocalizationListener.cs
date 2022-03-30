@@ -1,34 +1,33 @@
 ﻿using System;
 using System.Windows;
 
-namespace HandyControl.Tools
+namespace HandyControl.Tools;
+
+/// <summary>
+/// Base class for cultural change
+/// </summary>
+public abstract class BaseLocalizationListener : IWeakEventListener, IDisposable
 {
-    /// <summary>
-    /// Base class for cultural change
-    /// </summary>
-    public abstract class BaseLocalizationListener : IWeakEventListener, IDisposable
+    protected BaseLocalizationListener()
     {
-        protected BaseLocalizationListener()
-        {
-            CultureChangedEventManager.AddListener(LocalizationManager.Instance, this);
-        }
+        CultureChangedEventManager.AddListener(LocalizationManager.Instance, this);
+    }
 
-        public bool ReceiveWeakEvent(Type managerType, object sender, EventArgs e)
+    public bool ReceiveWeakEvent(Type managerType, object sender, EventArgs e)
+    {
+        if (managerType == typeof(CultureChangedEventManager))
         {
-            if (managerType == typeof(CultureChangedEventManager))
-            {
-                OnCultureChanged();
-                return true;
-            }
-            return false;
+            OnCultureChanged();
+            return true;
         }
+        return false;
+    }
 
-        protected abstract void OnCultureChanged();
+    protected abstract void OnCultureChanged();
 
-        public void Dispose()
-        {
-            CultureChangedEventManager.RemoveListener(LocalizationManager.Instance, this);
-            GC.SuppressFinalize(this);
-        }
+    public void Dispose()
+    {
+        CultureChangedEventManager.RemoveListener(LocalizationManager.Instance, this);
+        GC.SuppressFinalize(this);
     }
 }

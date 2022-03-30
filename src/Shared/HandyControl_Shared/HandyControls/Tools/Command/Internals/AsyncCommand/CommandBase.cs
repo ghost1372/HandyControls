@@ -3,34 +3,33 @@
 using System;
 using System.Windows.Input;
 
-namespace HandyControl.Tools.Command
+namespace HandyControl.Tools.Command;
+
+public abstract class CommandBase : ICommand
 {
-    public abstract class CommandBase : ICommand
+    public event EventHandler CanExecuteChanged
     {
-        public event EventHandler CanExecuteChanged
-        {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
-        }
+        add { CommandManager.RequerySuggested += value; }
+        remove { CommandManager.RequerySuggested -= value; }
+    }
 
-        public virtual bool CanExecute(object parameter)
-        {
-            return true;
-        }
+    public virtual bool CanExecute(object parameter)
+    {
+        return true;
+    }
 
-        public void Execute(object parameter)
-        {
-            if (CanExecute(parameter) == false)
-                return;
+    public void Execute(object parameter)
+    {
+        if (CanExecute(parameter) == false)
+            return;
 
-            OnExecute(parameter);
-        }
+        OnExecute(parameter);
+    }
 
-        protected abstract void OnExecute(object parameter);
+    protected abstract void OnExecute(object parameter);
 
-        protected void RaiseCanExecuteChanged()
-        {
-            CommandManager.InvalidateRequerySuggested();
-        }
+    protected void RaiseCanExecuteChanged()
+    {
+        CommandManager.InvalidateRequerySuggested();
     }
 }

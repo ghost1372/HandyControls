@@ -1,11 +1,10 @@
-﻿namespace HandyControl.Tools
+﻿namespace HandyControl.Tools;
+
+public interface ILoggerHandler
 {
-    public interface ILoggerHandler
-    {
-        void Publish(LogMessage logMessage);
+    void Publish(LogMessage logMessage);
 
 #if !NET40
-        void PublishAsync(LogMessage logMessage);
+    void PublishAsync(LogMessage logMessage);
 #endif
-    }
 }

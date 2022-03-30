@@ -8,63 +8,62 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace HandyControl.Themes
+namespace HandyControl.Themes;
+
+[TypeConverter(typeof(DynamicColorExtensionConverter))]
+public class DynamicColorExtension : DynamicResourceExtension
 {
-    [TypeConverter(typeof(DynamicColorExtensionConverter))]
-    public class DynamicColorExtension : DynamicResourceExtension
+    public DynamicColorExtension()
     {
-        public DynamicColorExtension()
-        {
-        }
-
-        public DynamicColorExtension(object resourceKey) : base(resourceKey)
-        {
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            object value = base.ProvideValue(serviceProvider);
-
-            if (serviceProvider?.GetService(typeof(IProvideValueTarget)) is IProvideValueTarget provideValueTarget)
-            {
-                if (provideValueTarget.TargetObject is SolidColorBrush solidColorBrush)
-                {
-                    ThemeResourceHelper.SetColorKey(solidColorBrush, ResourceKey);
-                }
-            }
-
-            return value;
-        }
     }
 
-    public class DynamicColorExtensionConverter : TypeConverter
+    public DynamicColorExtension(object resourceKey) : base(resourceKey)
     {
-        public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+    }
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        object value = base.ProvideValue(serviceProvider);
+
+        if (serviceProvider?.GetService(typeof(IProvideValueTarget)) is IProvideValueTarget provideValueTarget)
         {
-            if (destinationType == typeof(InstanceDescriptor))
+            if (provideValueTarget.TargetObject is SolidColorBrush solidColorBrush)
             {
-                return true;
+                ThemeResourceHelper.SetColorKey(solidColorBrush, ResourceKey);
             }
-            return base.CanConvertTo(context, destinationType);
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        return value;
+    }
+}
+
+public class DynamicColorExtensionConverter : TypeConverter
+{
+    public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+    {
+        if (destinationType == typeof(InstanceDescriptor))
         {
-            if (destinationType == typeof(InstanceDescriptor))
-            {
-                if (value == null)
-                    throw new ArgumentNullException(nameof(value));
-
-                DynamicColorExtension dynamicResource = value as DynamicColorExtension;
-
-                if (dynamicResource == null)
-
-                    throw new ArgumentException($"{value} must be of type {nameof(DynamicColorExtension)}", nameof(value));
-
-                return new InstanceDescriptor(typeof(DynamicColorExtension).GetConstructor(new Type[] { typeof(object) }),
-                    new object[] { dynamicResource.ResourceKey });
-            }
-            return base.ConvertTo(context, culture, value, destinationType);
+            return true;
         }
+        return base.CanConvertTo(context, destinationType);
+    }
+
+    public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+    {
+        if (destinationType == typeof(InstanceDescriptor))
+        {
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
+
+            DynamicColorExtension dynamicResource = value as DynamicColorExtension;
+
+            if (dynamicResource == null)
+
+                throw new ArgumentException($"{value} must be of type {nameof(DynamicColorExtension)}", nameof(value));
+
+            return new InstanceDescriptor(typeof(DynamicColorExtension).GetConstructor(new Type[] { typeof(object) }),
+                new object[] { dynamicResource.ResourceKey });
+        }
+        return base.ConvertTo(context, culture, value, destinationType);
     }
 }

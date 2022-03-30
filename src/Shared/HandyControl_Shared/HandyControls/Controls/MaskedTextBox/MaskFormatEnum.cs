@@ -14,13 +14,12 @@
 
   ***********************************************************************************/
 
-namespace HandyControl.Controls
+namespace HandyControl.Controls;
+
+public enum MaskFormat
 {
-  public enum MaskFormat
-  {
-    ExcludePromptAndLiterals,
-    IncludeLiterals,
-    IncludePrompt,
-    IncludePromptAndLiterals
-  }
+ExcludePromptAndLiterals,
+IncludeLiterals,
+IncludePrompt,
+IncludePromptAndLiterals
 }

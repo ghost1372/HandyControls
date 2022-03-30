@@ -2,28 +2,27 @@
 using System.Windows;
 using System.Windows.Threading;
 
-namespace HandyControl.Tools
-{
-    public static class DispatcherHelper
-    {
-        public static void RunOnMainThread(Action action)
-        {
-            RunOnUIThread(Application.Current, action);
-        }
+namespace HandyControl.Tools;
 
-        public static void RunOnUIThread(this DispatcherObject d, Action action)
+public static class DispatcherHelper
+{
+    public static void RunOnMainThread(Action action)
+    {
+        RunOnUIThread(Application.Current, action);
+    }
+
+    public static void RunOnUIThread(this DispatcherObject d, Action action)
+    {
+        var dispatcher = d?.Dispatcher;
+        if (dispatcher!=null)
         {
-            var dispatcher = d?.Dispatcher;
-            if (dispatcher!=null)
+            if (dispatcher.CheckAccess())
             {
-                if (dispatcher.CheckAccess())
-                {
-                    action();
-                }
-                else
-                {
-                    dispatcher.BeginInvoke(action);
-                }
+                action();
+            }
+            else
+            {
+                dispatcher.BeginInvoke(action);
             }
         }
     }

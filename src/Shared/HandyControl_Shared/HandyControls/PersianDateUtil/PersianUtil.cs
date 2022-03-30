@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using HandyControl.Tools.Extension;
 
-namespace HandyControl.Tools
-{
+namespace HandyControl.Tools;
+
 	public class ConvertList
 	{
 		public long Level { get; set; }
@@ -12,7 +12,7 @@ namespace HandyControl.Tools
 		{
 			this.Level = level;
 			this.Number = number;
-        }
+    }
 	}
 
 	public static class PersianUtil
@@ -42,7 +42,7 @@ namespace HandyControl.Tools
 			new ConvertList(21,10)
 		};
 
-        public static Int32 ConvertToInt(this string num) =>
+    public static Int32 ConvertToInt(this string num) =>
 			System.Convert.ToInt32(num.ConvertToEnglishDigit());
 		public static decimal ConvertToDecimal(this string num) =>
 			System.Convert.ToDecimal(num.ConvertToEnglishDigit());
@@ -194,5 +194,4 @@ namespace HandyControl.Tools
 		}
 
 	}
-}
 
