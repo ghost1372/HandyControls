@@ -68,6 +68,7 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 <a href="https://github.com/shaosu" target="_blank"><img style="border-radius:50%!important" width="64px" alt="shaosu" src="https://avatars.githubusercontent.com/u/12237247?s=64&v=4"></a>
 <a href="https://github.com/imba-tjd" target="_blank"><img style="border-radius:50%!important" width="64px" alt="imba-tjd" src="https://avatars.githubusercontent.com/u/24759802?s=64&v=4"></a>
 <a href="https://github.com/jhm-ciberman" target="_blank"><img style="border-radius:50%!important" width="64px" alt="jhm-ciberman" src="https://avatars.githubusercontent.com/u/7988351?s=64&v=4"></a>
+<a href="https://github.com/musashi-miyamoto" target="_blank"><img style="border-radius:50%!important" width="64px" alt="musashi-miyamoto" src="https://avatars.githubusercontent.com/u/44890163?s=64&v=4"></a>
 
 ## Backers
 
@@ -76,8 +77,8 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 <a href="https://github.com/IUpdatable" target="_blank"><img style="border-radius:50%!important" width="64px" alt="IUpdatable" src="https://avatars.githubusercontent.com/u/51181716?s=64&v=4"></a>
 <a href="https://github.com/maplewei" target="_blank"><img style="border-radius:50%!important" width="64px" alt="maplewei" src="https://avatars.githubusercontent.com/u/13778095?s=64&v=4"></a>
 <a href="https://github.com/sunshang-hl" target="_blank"><img style="border-radius:50%!important" width="64px" alt="sunshang-hl" src="https://avatars.githubusercontent.com/u/34593206?s=64&v=4"></a>
-<a href="https://github.com/yangkang326" target="_blank"><img style="border-radius:50%!important" width="64px" alt="yangkang326" src="https://avatars.githubusercontent.com/u/51224259?s=64&v=4"></a>	
-<a href="https://github.com/zmrbak" target="_blank"><img style="border-radius:50%!important" width="64px" alt="zmrbak" src="https://avatars.githubusercontent.com/u/7257543?s=64&v=4"></a>	
+<a href="https://github.com/yangkang326" target="_blank"><img style="border-radius:50%!important" width="64px" alt="yangkang326" src="https://avatars.githubusercontent.com/u/51224259?s=64&v=4"></a>
+<a href="https://github.com/zmrbak" target="_blank"><img style="border-radius:50%!important" width="64px" alt="zmrbak" src="https://avatars.githubusercontent.com/u/7257543?s=64&v=4"></a>
 <a href="https://github.com/AFei19911012" target="_blank"><img style="border-radius:50%!important" width="64px" alt="AFei19911012" src="https://avatars.githubusercontent.com/u/31465314?s=64&v=4"></a>
 <a href="https://github.com/wayne2006" target="_blank"><img style="border-radius:50%!important" width="64px" alt="wayne2006" src="https://avatars.githubusercontent.com/u/21210915?s=64&v=4"></a>
 <a href="https://github.com/towerDLH" target="_blank"><img style="border-radius:50%!important" width="64px" alt="towerDLH" src="https://avatars.githubusercontent.com/u/53053537?s=64&v=4"></a>
@@ -126,7 +127,7 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 
 <a href="https://getquicker.net" target="_blank"><img width="70px" alt="quicker" src="https://i0.hdslb.com/bfs/face/3765a3d0ce5da37e1aaa830d2eec6d3e0806a2d8.jpg@96w_96h_1c.webp"></a>
 <a href="https://www.phpenv.cn" target="_blank"><img width="70px" alt="phpenv" src="https://www.phpenv.cn/usr/themes/phpenv/img/logo.png"></a>
-<a href="https://atmb.top" target="_blank"><img width="70px" alt="AutumnBox" src="https://atmb.top/images/icon.png"></a>
+<a href="https://github.com/zsh2401/AutumnBox" target="_blank"><img width="70px" alt="AutumnBox" src="https://raw.githubusercontent.com/zsh2401/AutumnBox/master/src/AutumnBox.GUI/Resources/Icons/icon.ico"></a>
 
 if your project is not listed here, let us know! 😀
 
@@ -273,7 +274,7 @@ Step 4: Enjoy coding
 
 ### ImageBlock
 
-![ImageBlock](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/ImageBlock.gif)  
+![ImageBlock](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/ImageBlock.gif)
 
 ![ImageBlock](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/ImageBlock.png)
 
