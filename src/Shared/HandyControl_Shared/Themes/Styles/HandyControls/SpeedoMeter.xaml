@@ -1,0 +1,92 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shapes="clr-namespace:HandyControl.Expression.Shapes"
+    xmlns:hc="clr-namespace:HandyControl.Controls">
+
+    <Style TargetType="hc:SpeedoMeter">
+        <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="Height" Value="300" />
+        <Setter Property="Width" Value="300" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="hc:SpeedoMeter">
+                    <hc:SimplePanel>
+                        <shapes:Arc x:Name="arc" StartAngle="{Binding Angle, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25" EndAngle="{Binding Angle, RelativeSource={RelativeSource Mode=TemplatedParent}}" Stroke="{DynamicResource BorderBrush}"
+                                Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}"/>
+                        <shapes:Arc StartAngle="{Binding Angle, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource Positive2Nagative}}" Stretch="None" StrokeThickness="20" StrokeDashArray=".25"
+                                Width="{TemplateBinding ActualWidth}"
+                                Height="{TemplateBinding ActualHeight}">
+                            <shapes:Arc.EndAngle>
+                                <MultiBinding Converter="{StaticResource SpeedConverter}">
+                                    <Binding Path="Angle" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                    <Binding Path="Value" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                    <Binding Path="MaximumValue" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                </MultiBinding>
+
+                            </shapes:Arc.EndAngle>
+                            <shapes:Arc.Style>
+                                <Style TargetType="shapes:Arc">
+                                    <Setter Property="Stroke" Value="{Binding StrokeColor, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding StrokeColor, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="{x:Null}">
+                                            <Setter Property="Stroke">
+                                                <Setter.Value>
+                                                    <MultiBinding Converter="{StaticResource ValueToBrushConverter}">
+                                                        <Binding Path="Value" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                        <Binding Path="MaximumValue" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                    </MultiBinding>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </shapes:Arc.Style>
+                        </shapes:Arc>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Visibility="{Binding StatusVisibility, RelativeSource={RelativeSource Mode=TemplatedParent}}" Text="{Binding Path=Status, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Center" FontSize="{Binding StatusFontSize, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{Binding StatusColor, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding StatusColor, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="{x:Null}">
+                                                <Setter Property="Foreground">
+                                                    <Setter.Value>
+                                                        <MultiBinding Converter="{StaticResource ValueToBrushConverter}">
+                                                            <Binding Path="Value" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                            <Binding Path="MaximumValue" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                        </MultiBinding>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <TextBlock Visibility="{Binding ValueVisibility, RelativeSource={RelativeSource Mode=TemplatedParent}}" FontSize="{Binding ValueFontSize, RelativeSource={RelativeSource Mode=TemplatedParent}}" FontWeight="Bold" HorizontalAlignment="Center" Text="{Binding Path=Value, RelativeSource={RelativeSource TemplatedParent}}">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="{Binding ValueColor, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ValueColor, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="{x:Null}">
+                                                <Setter Property="Foreground">
+                                                    <Setter.Value>
+                                                        <MultiBinding Converter="{StaticResource ValueToBrushConverter}">
+                                                            <Binding Path="Value" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                            <Binding Path="MaximumValue" RelativeSource="{RelativeSource Mode=TemplatedParent}"/>
+                                                        </MultiBinding>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                    </hc:SimplePanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
