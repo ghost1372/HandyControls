@@ -8,7 +8,7 @@ using HandyControl.Tools;
 
 namespace HandyControl.Controls;
 
-public class CoverView : RegularItemsControl
+public partial class CoverView : RegularItemsControl
 {
     private readonly CoverViewContent _viewContent;
 
@@ -31,44 +31,47 @@ public class CoverView : RegularItemsControl
 
     private void CoverViewItem_OnSelected(object sender, RoutedEventArgs e)
     {
-        if (e.OriginalSource is CoverViewItem item)
+        if (ShowContent)
         {
-            if (_selectedItem == null)
+            if (e.OriginalSource is CoverViewItem item)
             {
-                item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
-                _selectedItem = item;
-                if (_viewContent != null)
+                if (_selectedItem == null)
                 {
-                    _viewContent.Content = item.Content;
-                    _viewContent.ContentTemplate = ItemTemplate;
-                    UpdateCoverViewContent(true);
+                    item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
+                    _selectedItem = item;
+                    if (_viewContent != null)
+                    {
+                        _viewContent.Content = item.Content;
+                        _viewContent.ContentTemplate = ItemTemplate;
+                        UpdateCoverViewContent(true);
+                    }
+
+                    return;
                 }
 
-                return;
-            }
+                if (!Equals(_selectedItem, item))
+                {
+                    _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
+                    item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
+                    _selectedItem = item;
+                    if (_viewContent != null)
+                    {
+                        _viewContent.Content = item.Content;
+                        UpdateCoverViewContent(true);
+                    }
 
-            if (!Equals(_selectedItem, item))
-            {
+                    return;
+                }
+
+                if (_viewContent != null)
+                {
+                    _viewContent.Content = null;
+                    _viewContent.ContentTemplate = null;
+                    UpdateCoverViewContent(false);
+                }
                 _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
-                item.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.TrueBox);
-                _selectedItem = item;
-                if (_viewContent != null)
-                {
-                    _viewContent.Content = item.Content;
-                    UpdateCoverViewContent(true);
-                }
-
-                return;
+                _selectedItem = null;
             }
-
-            if (_viewContent != null)
-            {
-                _viewContent.Content = null;
-                _viewContent.ContentTemplate = null;
-                UpdateCoverViewContent(false);
-            }
-            _selectedItem.SetCurrentValue(SelectableItem.IsSelectedProperty, ValueBoxes.FalseBox);
-            _selectedItem = null;
         }
     }
 

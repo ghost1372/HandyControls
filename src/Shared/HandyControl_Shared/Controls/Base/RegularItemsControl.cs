@@ -4,10 +4,10 @@ using HandyControl.Data;
 namespace HandyControl.Controls;
 
 /// <summary>
-///     规则ItemsControl
+///     Rule ItemsControl
 /// </summary>
 /// <remarks>
-///     该类的每一项都具有相同的大小和外边距
+///     Each item in this category has the same size and margin
 /// </remarks>
 public class RegularItemsControl : SimpleItemsControl
 {

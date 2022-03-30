@@ -32,7 +32,7 @@ public class TransitioningContentControl : ContentControl
 
     private void OnTransitionModeChanged(TransitionMode newValue)
     {
-        _storyboardBuildIn = ResourceHelper.GetResourceInternal<Storyboard>($"{newValue}Transition");
+        _storyboardBuildIn = ResourceHelper.GetResource<Storyboard>($"{newValue}Transition");
         StartTransition();
     }
 
@@ -77,7 +77,7 @@ public class TransitioningContentControl : ContentControl
         }
         else
         {
-            StoryboardBuildInDefault ??= ResourceHelper.GetResourceInternal<Storyboard>($"{default(TransitionMode)}Transition");
+            StoryboardBuildInDefault ??= ResourceHelper.GetResource<Storyboard>($"{default(TransitionMode)}Transition");
             StoryboardBuildInDefault?.Begin(_contentPresenter);
         }
     }

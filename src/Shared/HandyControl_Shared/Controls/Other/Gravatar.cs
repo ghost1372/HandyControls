@@ -46,7 +46,7 @@ public class Gravatar : ContentControl
             {
                 Stretch = Stretch.UniformToFill
             }
-            : ResourceHelper.GetResourceInternal<Brush>(ResourceToken.SecondaryRegionBrush);
+            : ResourceHelper.GetResource<Brush>(ResourceToken.SecondaryRegionBrush);
     }
 
     public ImageSource Source

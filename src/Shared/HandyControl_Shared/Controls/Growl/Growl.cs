@@ -16,7 +16,7 @@ using HandyControl.Tools.Extension;
 namespace HandyControl.Controls;
 
 /// <summary>
-///     消息提醒
+///     message notification
 /// </summary>
 [TemplatePart(Name = ElementPanelMore, Type = typeof(Panel))]
 [TemplatePart(Name = ElementGridMain, Type = typeof(Grid))]
@@ -50,12 +50,12 @@ public class Growl : Control
     private int _waitTime = 6;
 
     /// <summary>
-    ///     计数
+    ///     count
     /// </summary>
     private int _tickCount;
 
     /// <summary>
-    ///     关闭计时器
+    ///     Turn off timer
     /// </summary>
     private DispatcherTimer _timerClose;
 
@@ -151,7 +151,7 @@ public class Growl : Control
     private Func<bool, bool> ActionBeforeClose { get; set; }
 
     /// <summary>
-    ///     消息容器
+    ///     Message container
     /// </summary>
     public static Panel GrowlPanel { get; set; }
 
@@ -163,6 +163,9 @@ public class Growl : Control
 
     public static readonly DependencyProperty ShowDateTimeProperty = DependencyProperty.Register(
         "ShowDateTime", typeof(bool), typeof(Growl), new PropertyMetadata(ValueBoxes.TrueBox));
+
+    public static readonly DependencyProperty ShowPersianDateTimeProperty = DependencyProperty.Register(
+        "ShowPersianDateTime", typeof(bool), typeof(Growl), new PropertyMetadata(ValueBoxes.FalseBox));
 
     public static readonly DependencyProperty MessageProperty = DependencyProperty.Register(
         "Message", typeof(string), typeof(Growl), new PropertyMetadata(default(string)));
@@ -249,6 +252,12 @@ public class Growl : Control
         set => SetValue(ShowDateTimeProperty, ValueBoxes.BooleanBox(value));
     }
 
+    public bool ShowPersianDateTime
+    {
+        get => (bool)GetValue(ShowPersianDateTimeProperty);
+        set => SetValue(ShowPersianDateTimeProperty, ValueBoxes.BooleanBox(value));
+    }
+
     public string Message
     {
         get => (string) GetValue(MessageProperty);
@@ -274,7 +283,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     开始计时器
+    ///     Start timer
     /// </summary>
     private void StartTimer()
     {
@@ -300,7 +309,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     消息容器
+    ///     Message container
     /// </summary>
     /// <param name="panel"></param>
     private static void SetGrowlPanel(Panel panel)
@@ -331,7 +340,7 @@ public class Growl : Control
             }
         };
 
-        PanelElement.SetFluidMoveBehavior(panel, ResourceHelper.GetResourceInternal<FluidMoveBehavior>(ResourceToken.BehaviorXY400));
+        PanelElement.SetFluidMoveBehavior(panel, ResourceHelper.GetResource<FluidMoveBehavior>(ResourceToken.BehaviorXY400));
     }
 
     private void Update()
@@ -370,17 +379,27 @@ public class Growl : Control
                     }
 
                     GrowlWindow.Show(true);
+                    
+                    var showDateTime = growlInfo.ShowDateTime;
+                    var time = DateTime.Now;
+                    if (growlInfo.ShowPersianDateTime)
+                    {
+                        System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
+                        time = new DateTime(pc.GetYear(DateTime.Now), pc.GetMonth(DateTime.Now), pc.GetDayOfMonth(DateTime.Now), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Local);
+                        showDateTime = false;
+                    }
 
                     var ctl = new Growl
                     {
                         Message = growlInfo.Message,
-                        Time = DateTime.Now,
+                        Time = time,
                         Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey) ?? growlInfo.Icon,
                         IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey) ?? growlInfo.IconBrush,
                         _showCloseButton = growlInfo.ShowCloseButton,
                         ActionBeforeClose = growlInfo.ActionBeforeClose,
                         _staysOpen = growlInfo.StaysOpen,
-                        ShowDateTime = growlInfo.ShowDateTime,
+                        ShowDateTime = showDateTime,
+                        ShowPersianDateTime = growlInfo.ShowPersianDateTime,
                         ConfirmStr = growlInfo.ConfirmStr,
                         CancelStr = growlInfo.CancelStr,
                         Type = growlInfo.Type,
@@ -396,7 +415,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     显示信息
+    ///     Display information
     /// </summary>
     /// <param name="growlInfo"></param>
     private static void Show(GrowlInfo growlInfo)
@@ -407,16 +426,26 @@ public class Growl : Control
 #endif
                 () =>
                 {
+                    var showDateTime = growlInfo.ShowDateTime;
+                    var time = DateTime.Now;
+                    if (growlInfo.ShowPersianDateTime)
+                    {
+                        System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
+                        time = new DateTime(pc.GetYear(DateTime.Now), pc.GetMonth(DateTime.Now), pc.GetDayOfMonth(DateTime.Now),DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Local);
+                        showDateTime = false;
+                    }
+
                     var ctl = new Growl
                     {
                         Message = growlInfo.Message,
-                        Time = DateTime.Now,
+                        Time = time,
                         Icon = ResourceHelper.GetResource<Geometry>(growlInfo.IconKey) ?? growlInfo.Icon,
                         IconBrush = ResourceHelper.GetResource<Brush>(growlInfo.IconBrushKey) ?? growlInfo.IconBrush,
                         _showCloseButton = growlInfo.ShowCloseButton,
                         ActionBeforeClose = growlInfo.ActionBeforeClose,
                         _staysOpen = growlInfo.StaysOpen,
-                        ShowDateTime = growlInfo.ShowDateTime,
+                        ShowDateTime = showDateTime,
+                        ShowPersianDateTime = growlInfo.ShowPersianDateTime,
                         ConfirmStr = growlInfo.ConfirmStr,
                         CancelStr = growlInfo.CancelStr,
                         Type = growlInfo.Type,
@@ -591,7 +620,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     成功
+    ///     success
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -602,7 +631,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     成功
+    ///     Success
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Success(GrowlInfo growlInfo)
@@ -612,7 +641,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     成功
+    ///     Success Global
     /// </summary>
     /// <param name="message"></param>
     public static void SuccessGlobal(string message) => SuccessGlobal(new GrowlInfo
@@ -621,7 +650,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     成功
+    ///     Success Global
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void SuccessGlobal(GrowlInfo growlInfo)
@@ -631,7 +660,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     消息
+    ///     Info
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -642,7 +671,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     消息
+    ///     Info
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Info(GrowlInfo growlInfo)
@@ -652,7 +681,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     消息
+    ///     Info Global
     /// </summary>
     /// <param name="message"></param>
     public static void InfoGlobal(string message) => InfoGlobal(new GrowlInfo
@@ -661,7 +690,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     消息
+    ///     Info Global
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void InfoGlobal(GrowlInfo growlInfo)
@@ -671,7 +700,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     警告
+    ///     Warning
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -682,7 +711,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     警告
+    ///     Warning
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Warning(GrowlInfo growlInfo)
@@ -692,7 +721,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     警告
+    ///     Warning Global
     /// </summary>
     /// <param name="message"></param>
     public static void WarningGlobal(string message) => WarningGlobal(new GrowlInfo
@@ -701,7 +730,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     警告
+    ///     Warning Global
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void WarningGlobal(GrowlInfo growlInfo)
@@ -711,7 +740,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     错误
+    ///     Error
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -722,7 +751,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     错误
+    ///     Error
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Error(GrowlInfo growlInfo)
@@ -732,7 +761,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     错误
+    ///     Error Global
     /// </summary>
     /// <param name="message"></param>
     public static void ErrorGlobal(string message) => ErrorGlobal(new GrowlInfo
@@ -741,7 +770,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     错误
+    ///     Error Global
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void ErrorGlobal(GrowlInfo growlInfo)
@@ -751,7 +780,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     严重
+    ///     Fatal
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -762,7 +791,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     严重
+    ///     Fatal
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Fatal(GrowlInfo growlInfo)
@@ -772,7 +801,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     严重
+    ///     Fatal Global
     /// </summary>
     /// <param name="message"></param>
     public static void FatalGlobal(string message) => FatalGlobal(new GrowlInfo
@@ -781,7 +810,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     严重
+    ///     Fatal Global
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void FatalGlobal(GrowlInfo growlInfo)
@@ -791,7 +820,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     询问
+    ///     Ask
     /// </summary>
     /// <param name="message"></param>
     /// <param name="actionBeforeClose"></param>
@@ -804,7 +833,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     询问
+    ///     Ask
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Ask(GrowlInfo growlInfo)
@@ -814,7 +843,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     询问
+    ///     Ask Global
     /// </summary>
     /// <param name="message"></param>
     /// <param name="actionBeforeClose"></param>
@@ -825,7 +854,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     询问
+    ///     Ask Global
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void AskGlobal(GrowlInfo growlInfo)
@@ -837,7 +866,7 @@ public class Growl : Control
     private void ButtonClose_OnClick(object sender, RoutedEventArgs e) => Close(false);
 
     /// <summary>
-    ///     关闭
+    ///     Close
     /// </summary>
     private void Close(bool invokeParam)
     {
@@ -879,7 +908,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     清除
+    ///     Clear
     /// </summary>
     /// <param name="token"></param>
     public static void Clear(string token = "")
@@ -898,13 +927,13 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     清除
+    ///     Clear
     /// </summary>
     /// <param name="panel"></param>
     private static void Clear(Panel panel) => panel?.Children.Clear();
 
     /// <summary>
-    ///     清除
+    ///     Clear Global
     /// </summary>
     public static void ClearGlobal()
     {
