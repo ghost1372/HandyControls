@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:hc="clr-namespace:HandyControl.Controls">
 
-    <ContextMenu x:Key="TextBoxContextMenu" Style="{StaticResource ContextMenuBaseStyle}">
+    <ContextMenu x:Key="InputContextMenuStyle" Style="{StaticResource ContextMenuBaseStyle}">
         <MenuItem Command="ApplicationCommands.Copy" />
         <MenuItem Command="ApplicationCommands.Cut" />
         <MenuItem Command="ApplicationCommands.Paste" />
@@ -179,16 +179,4 @@
         <Setter Property="Background" Value="Transparent"/>
     </Style>
 
-    <Style TargetType="TextBox" BasedOn="{StaticResource TextBoxBaseStyle}">
-        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
-    </Style>
-
-    <Style TargetType="TextBox" BasedOn="{StaticResource ComboBoxEditableTextBox}">
-        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
-    </Style>
-
-    <Style TargetType="PasswordBox" BasedOn="{StaticResource PasswordBoxBaseStyle}">
-        <Setter Property="ContextMenu" Value="{StaticResource TextBoxContextMenu}" />
-    </Style>
-    
 </ResourceDictionary>
