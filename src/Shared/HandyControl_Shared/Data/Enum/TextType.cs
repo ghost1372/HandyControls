@@ -22,5 +22,7 @@ public enum TextType
     NDouble,
     Double,
     NnDouble,
-    NpDouble
+    NpDouble,
+    Persian,
+    IranNationalCode
 }

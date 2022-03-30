@@ -72,48 +72,55 @@ public class ResourceToken
 
     public const string DropperGeometry = nameof(DropperGeometry);
 
+    public const string CodeGeometry = nameof(CodeGeometry);
+
+    public const string WikiGeometry = nameof(WikiGeometry);
+
+    public const string DocGeometry = nameof(DocGeometry);
+
+    public const string VisualStudioGeometry = nameof(VisualStudioGeometry);
+
+    public const string ConfigGeometry = nameof(ConfigGeometry);
+
+    public const string NewGeometry = nameof(NewGeometry);
+
     public const string SuccessGeometry = nameof(SuccessGeometry);
-
     public const string InfoGeometry = nameof(InfoGeometry);
-
     public const string ErrorGeometry = nameof(ErrorGeometry);
-
     public const string WarningGeometry = nameof(WarningGeometry);
-
     public const string AskGeometry = nameof(AskGeometry);
-
     public const string FatalGeometry = nameof(FatalGeometry);
-
     #endregion
 
     #region Brush
 
     public const string PrimaryBrush = nameof(PrimaryBrush);
-
+    public const string LightPrimaryBrush = nameof(LightPrimaryBrush);
     public const string DarkPrimaryBrush = nameof(DarkPrimaryBrush);
 
     public const string SuccessBrush = nameof(SuccessBrush);
-
+    public const string LightSuccessBrush = nameof(LightSuccessBrush);
     public const string DarkSuccessBrush = nameof(DarkSuccessBrush);
 
     public const string InfoBrush = nameof(InfoBrush);
-
+    public const string LightInfoBrush = nameof(LightInfoBrush);
     public const string DarkInfoBrush = nameof(DarkInfoBrush);
 
     public const string DangerBrush = nameof(DangerBrush);
-
+    public const string LightDangerBrush = nameof(LightDangerBrush);
     public const string DarkDangerBrush = nameof(DarkDangerBrush);
 
     public const string WarningBrush = nameof(WarningBrush);
-
+    public const string LightWarningBrush = nameof(LightWarningBrush);
     public const string DarkWarningBrush = nameof(DarkWarningBrush);
 
-    public const string AccentBrush = nameof(AccentBrush);
+    public const string VioletBrush = nameof(VioletBrush);
+    public const string DarkVioletBrush = nameof(DarkVioletBrush);
 
+    public const string AccentBrush = nameof(AccentBrush);
     public const string DarkAccentBrush = nameof(DarkAccentBrush);
 
     public const string PrimaryTextBrush = nameof(PrimaryTextBrush);
-
     public const string SecondaryTextBrush = nameof(SecondaryTextBrush);
 
     public const string ThirdlyTextBrush = nameof(ThirdlyTextBrush);
@@ -143,6 +150,12 @@ public class ResourceToken
     public const string DarkMaskBrush = nameof(DarkMaskBrush);
 
     public const string DarkOpacityBrush = nameof(DarkOpacityBrush);
+
+    public const string MainContentBackgroundBrush = nameof(MainContentBackgroundBrush);
+
+    public const string MainContentForegroundBrush = nameof(MainContentForegroundBrush);
+    
+    public const string MainContentForegroundDrawingBrush = nameof(MainContentForegroundDrawingBrush);
 
     #endregion
 
@@ -194,6 +207,8 @@ public class ResourceToken
 
     public const string DoubleMinConverter = nameof(DoubleMinConverter);
 
+    public const string StringRepeatConverter = nameof(StringRepeatConverter);
+
     #endregion
 
     #region Effect
@@ -216,23 +231,37 @@ public class ResourceToken
 
     public const string PrimaryColor = nameof(PrimaryColor);
 
+    public const string LightPrimaryColor = nameof(LightPrimaryColor);
+
     public const string DarkPrimaryColor = nameof(DarkPrimaryColor);
 
     public const string DangerColor = nameof(DangerColor);
+
+    public const string LightDangerColor = nameof(LightDangerColor);
 
     public const string DarkDangerColor = nameof(DarkDangerColor);
 
     public const string WarningColor = nameof(WarningColor);
 
+    public const string LightWarningColor = nameof(LightWarningColor);
+
     public const string DarkWarningColor = nameof(DarkWarningColor);
 
     public const string InfoColor = nameof(InfoColor);
+
+    public const string LightInfoColor = nameof(LightInfoColor);
 
     public const string DarkInfoColor = nameof(DarkInfoColor);
 
     public const string SuccessColor = nameof(SuccessColor);
 
+    public const string LightSuccessColor = nameof(LightSuccessColor);
+
     public const string DarkSuccessColor = nameof(DarkSuccessColor);
+
+    public const string VioletColor = nameof(VioletColor);
+
+    public const string DarkVioletColor = nameof(DarkVioletColor);
 
     public const string PrimaryTextColor = nameof(PrimaryTextColor);
 
@@ -272,6 +301,11 @@ public class ResourceToken
 
     public const string DarkOpacityColor = nameof(DarkOpacityColor);
 
+    public const string ForthlyRegionColor = nameof(ForthlyRegionColor);
+
+    public const string MainContentForegroundColor = nameof(MainContentForegroundColor);
+    
+    public const string MainContentBackgroundColor = nameof(MainContentBackgroundColor);
     #endregion
 
     #region Behavior
@@ -289,7 +323,6 @@ public class ResourceToken
     public const string BehaviorY400 = nameof(BehaviorY400);
 
     #endregion
-
     #endregion
 
     #region Internal
@@ -370,5 +403,64 @@ public class ResourceToken
 
     internal const string ComboBoxItemCapsuleVerticalLast = nameof(ComboBoxItemCapsuleVerticalLast);
 
+    #endregion
+
+    #region Style
+    #region Badge
+        public const string BadgePrimary = nameof(BadgePrimary);
+        public const string BadgeSuccess = nameof(BadgeSuccess);
+        public const string BadgeInfo = nameof(BadgeInfo);
+        public const string BadgeWarning = nameof(BadgeWarning);
+        public const string BadgeDanger = nameof(BadgeDanger);
+    #endregion
+    #region Button
+        public const string ButtonDefault = nameof(ButtonDefault);
+        public const string ButtonPrimary = nameof(ButtonPrimary);
+        public const string ButtonSuccess = nameof(ButtonSuccess);
+        public const string ButtonInfo = nameof(ButtonInfo);
+        public const string ButtonWarning = nameof(ButtonWarning);
+        public const string ButtonDanger = nameof(ButtonDanger);
+        public const string ButtonIcon = nameof(ButtonIcon);
+    #endregion
+    #region RepeatButton
+    public const string RepeatButtonDefault = nameof(RepeatButtonDefault);
+        public const string RepeatButtonPrimary = nameof(RepeatButtonPrimary);
+        public const string RepeatButtonSuccess = nameof(RepeatButtonSuccess);
+        public const string RepeatButtonInfo = nameof(RepeatButtonInfo);
+        public const string RepeatButtonWarning = nameof(RepeatButtonWarning);
+        public const string RepeatButtonDanger = nameof(RepeatButtonDanger);
+        public const string RepeatButtonIcon = nameof(RepeatButtonIcon);
+    #endregion
+    #region ToggleButton
+        public const string ToggleButtonDefault = nameof(ToggleButtonDefault);
+        public const string ToggleButtonPrimary = nameof(ToggleButtonPrimary);
+        public const string ToggleButtonSuccess = nameof(ToggleButtonSuccess);
+        public const string ToggleButtonInfo = nameof(ToggleButtonInfo);
+        public const string ToggleButtonWarning = nameof(ToggleButtonWarning);
+        public const string ToggleButtonDanger = nameof(ToggleButtonDanger);
+        public const string ToggleButtonIcon = nameof(ToggleButtonIcon);
+        public const string ToggleButtonIconPrimary = nameof(ToggleButtonIconPrimary);
+        public const string ToggleButtonIconSuccess = nameof(ToggleButtonIconSuccess);
+        public const string ToggleButtonIconInfo = nameof(ToggleButtonIconInfo);
+        public const string ToggleButtonIconWarning = nameof(ToggleButtonIconWarning);
+        public const string ToggleButtonIconDanger = nameof(ToggleButtonIconDanger);
+        public const string ToggleButtonIconTransparent = nameof(ToggleButtonIconTransparent);
+        public const string ToggleButtonSwitch = nameof(ToggleButtonSwitch);
+        public const string ToggleButtonFlip = nameof(ToggleButtonFlip);
+        public const string ToggleButtonCustom = nameof(ToggleButtonCustom);
+        public const string ToggleButtonLoadingPrimary = nameof(ToggleButtonLoadingPrimary);
+        public const string ToggleButtonLoading = nameof(ToggleButtonLoading);
+        public const string ToggleButtonLoadingSuccess = nameof(ToggleButtonLoadingSuccess);
+        public const string ToggleButtonLoadingInfo = nameof(ToggleButtonLoadingInfo);
+        public const string ToggleButtonLoadingWarning = nameof(ToggleButtonLoadingWarning);
+        public const string ToggleButtonLoadingDanger = nameof(ToggleButtonLoadingDanger);
+    #endregion
+    #region Label
+        public const string LabelPrimary = nameof(LabelPrimary);
+        public const string LabelSuccess = nameof(LabelSuccess);
+        public const string LabelInfo = nameof(LabelInfo);
+        public const string LabelWarning = nameof(LabelWarning);
+        public const string LabelDanger = nameof(LabelDanger);
+    #endregion
     #endregion
 }
