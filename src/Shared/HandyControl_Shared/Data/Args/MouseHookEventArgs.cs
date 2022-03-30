@@ -3,7 +3,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Data;
 
-internal class MouseHookEventArgs : EventArgs
+public class MouseHookEventArgs : EventArgs
 {
     public MouseHookMessageType MessageType { get; set; }
 

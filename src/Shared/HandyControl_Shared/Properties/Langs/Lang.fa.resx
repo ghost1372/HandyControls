@@ -198,6 +198,9 @@
   <data name="No" xml:space="preserve">
     <value>خیر</value>
   </data>
+  <data name="BusyIndicatorLoading" xml:space="preserve">
+    <value>در حال بارگذاری...</value>
+  </data>
   <data name="ZoomIn" xml:space="preserve">
     <value>بزرگنمایی</value>
   </data>
@@ -226,15 +229,15 @@
     <value>Looks up a localized string similar to "{0}".</value>
   </data>
   <data name="Jump" xml:space="preserve">
-    <value>Jump</value>
+    <value>برو</value>
   </data>
   <data name="Miscellaneous" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>متفرقه</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>All</value>
+    <value>همه</value>
   </data>
   <data name="NoData" xml:space="preserve">
-    <value>No Data</value>
+    <value>اطلاعاتی موجود نیست</value>
   </data>
 </root>

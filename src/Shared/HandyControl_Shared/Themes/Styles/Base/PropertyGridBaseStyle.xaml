@@ -4,7 +4,7 @@
                     xmlns:hc="clr-namespace:HandyControl.Controls"
                     xmlns:interactivity="clr-namespace:HandyControl.Interactivity">
 
-    <DrawingBrush x:Key="SortByCategoryDrawingBrush" o:Freeze="True">
+    <!--<DrawingBrush x:Key="SortByCategoryDrawingBrush" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup o:Freeze="True">
                 <GeometryDrawing o:Freeze="True" Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
@@ -152,6 +152,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
 
 </ResourceDictionary>

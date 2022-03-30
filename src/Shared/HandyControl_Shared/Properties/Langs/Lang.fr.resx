@@ -198,6 +198,9 @@
   <data name="No" xml:space="preserve">
     <value>Non</value>
   </data>
+  <data name="BusyIndicatorLoading" xml:space="preserve">
+    <value>Please wait...</value>
+  </data>
   <data name="ZoomIn" xml:space="preserve">
     <value>Zoom in</value>
   </data>

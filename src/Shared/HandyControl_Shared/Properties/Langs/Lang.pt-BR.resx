@@ -237,4 +237,7 @@
   <data name="NoData" xml:space="preserve">
     <value>No Data</value>
   </data>
+  <data name="BusyIndicatorLoading" xml:space="preserve">
+    <value>Por favor, espere...</value>
+  </data>
 </root>
