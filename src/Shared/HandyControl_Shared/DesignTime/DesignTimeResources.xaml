@@ -1,7 +1,0 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/HandyControl;component/Themes/Basic/Colors/Light.xaml"/>
-        <ResourceDictionary Source="/HandyControl;component/Themes/Theme.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
-</ResourceDictionary>

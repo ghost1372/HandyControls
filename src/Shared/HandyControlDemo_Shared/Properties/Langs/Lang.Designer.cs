@@ -1632,15 +1632,6 @@ namespace HandyControlDemo.Properties.Langs
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to PersianToolkit.
-        /// </summary>
-        public static string PersianToolkit {
-            get {
-                return ResourceManager.GetString("PersianToolkit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to PIN码框.
         /// </summary>
         public static string PinBox

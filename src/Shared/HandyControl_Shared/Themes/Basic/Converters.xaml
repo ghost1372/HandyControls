@@ -2,10 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converter="clr-namespace:HandyControl.Tools.Converter">
 
-    <converter:StringRepeatConverter x:Key="StringRepeatConverter"/>
-    <converter:Positive2Nagative x:Key="Positive2Nagative"/>
-    <converter:SpeedConverter x:Key="SpeedConverter"/>
-    <converter:ValueToBrushConverter x:Key="ValueToBrushConverter"/>
     <converter:Boolean2BooleanReConverter x:Key="Boolean2BooleanReConverter"/>
     <converter:Boolean2VisibilityReConverter x:Key="Boolean2VisibilityReConverter"/>
     <converter:BooleanArr2VisibilityConverter x:Key="BooleanArr2VisibilityConverter"/>

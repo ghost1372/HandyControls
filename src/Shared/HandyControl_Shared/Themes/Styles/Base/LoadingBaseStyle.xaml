@@ -7,5 +7,5 @@
         <Setter Property="DotDiameter" Value="10"/>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryBrush}"/>
     </Style>
-
+    
 </ResourceDictionary>

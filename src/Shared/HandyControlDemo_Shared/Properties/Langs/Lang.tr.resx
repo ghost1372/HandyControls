@@ -364,7 +364,7 @@
     <value>Depo</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>E-Posta</value>
+    <value>E-posta</value>
   </data>
   <data name="Chatroom" xml:space="preserve">
     <value>Sohbet odası</value>
@@ -745,16 +745,13 @@
     <value>EkranGörüntüsü</value>
   </data>
   <data name="TextDialogInControl" xml:space="preserve">
-    <value>Metin İletişim Kutusu (Denetimde)</value>
+    <value>TextDialog(In control)</value>
   </data>
   <data name="LangComment" xml:space="preserve">
-    <value>"{0}" benzeri yerelleştirilmiş bir dize arar.</value>
-  </data>
-  <data name="PersianToolkit" xml:space="preserve">
-    <value>PersianAraçKiti</value>
+    <value>Looks up a localized string similar to "{0}".</value>
   </data>
   <data name="PropertyGrid" xml:space="preserve">
-    <value>ÖzellikIzgarası</value>
+    <value>PropertyGrid</value>
   </data>
   <data name="ImageSelector" xml:space="preserve">
     <value>ImageSelector</value>

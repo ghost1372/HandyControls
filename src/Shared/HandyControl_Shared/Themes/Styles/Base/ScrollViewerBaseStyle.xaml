@@ -79,7 +79,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
     <Style x:Key="ScrollBarBaseThumbHorizontal" TargetType="Thumb">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
@@ -391,7 +391,7 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-
+    
     <Style x:Key="ScrollViewerBaseStyle" TargetType="hc:ScrollViewer">
         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="Focusable" Value="False"/>

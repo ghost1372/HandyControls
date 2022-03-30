@@ -4,6 +4,6 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              Background="{DynamicResource RegionBrush}">
     <hc:TransitioningContentControl>
-        <Calendar/>
+        <Calendar Margin="32" SelectionMode="MultipleRange"/>
     </hc:TransitioningContentControl>
 </UserControl>

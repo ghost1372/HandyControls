@@ -237,7 +237,4 @@
   <data name="NoData" xml:space="preserve">
     <value>Nada para mostrar</value>
   </data>
-  <data name="BusyIndicatorLoading" xml:space="preserve">
-    <value>Please wait...</value>
-  </data>
 </root>

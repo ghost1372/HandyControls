@@ -6,7 +6,7 @@
     <Description>Contains some simple and commonly used WPF controls</Description>
     <PackageId>HandyControl</PackageId>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <NoWarn>0067;0649;1591;MSB3061;SYSLIB0003;SYSLIB0004;CS8632;MSB3245;MSB3243;CS8073;CS0108;CS0436;MSB3245;3243;3245;0436</NoWarn>
+    <NoWarn>0067;0649;1591;MSB3061;SYSLIB0003;SYSLIB0004</NoWarn>
     <MSBuildWarningsAsMessages>NETSDK1138</MSBuildWarningsAsMessages>
     <AssemblyOriginatorKeyFile>..\..\Shared\HandyControl_Shared\key.snk</AssemblyOriginatorKeyFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -32,12 +32,6 @@
       <DependentUpon>LangProvider.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup Condition="!$(TargetFramework.StartsWith('netcore')) And !$(TargetFramework.StartsWith('net5.0-'))">
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Management" />
-  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.tr.resx">
       <Link>Properties\Langs\Lang.tr.resx</Link>
@@ -56,6 +50,9 @@
     </EmbeddedResource>
       <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.fr.resx">
       <Link>Properties\Langs\Lang.fr.resx</Link>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.ja.resx">
+      <Link>Properties\Langs\Lang.ja.resx</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\Shared\HandyControl_Shared\Properties\Langs\Lang.ko-KR.resx">
       <Link>Properties\Langs\Lang.ko-KR.resx</Link>
@@ -86,6 +83,14 @@
     </Content>
   </ItemGroup>
   <Import Project="..\..\Shared\HandyControl_Shared\HandyControl_Shared.projitems" Label="Shared" />
+  <Import Project="..\..\Shared\Microsoft.Expression.Drawing\Microsoft.Expression.Drawing.projitems" Label="Shared" />
+  <Import Project="..\..\Shared\System.Windows.Interactivity\System.Windows.Interactivity.projitems" Label="Shared" />
+  <Import Project="..\..\Shared\Microsoft.Expression.Interactions\Microsoft.Expression.Interactions.projitems" Label="Shared" />
+  <ItemGroup>
+    <Resource Include="..\..\Shared\HandyControl_Shared\Resources\dropper.cur">
+      <Link>Resources\dropper.cur</Link>
+    </Resource>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="..\..\Shared\HandyControl_Shared\Resources\Effects\BrightnessEffect.ps">
       <Link>Resources\Effects\BrightnessEffect.ps</Link>

@@ -223,10 +223,7 @@
     <value>Bul</value>
   </data>
   <data name="LangComment" xml:space="preserve">
-    <value>"{0}" benzeri yerelleştirilmiş bir dize arar.</value>
-  </data>
-  <data name="BusyIndicatorLoading" xml:space="preserve">
-    <value>Lütfen bekle...</value>
+    <value>Looks up a localized string similar to "{0}".</value>
   </data>
   <data name="Jump" xml:space="preserve">
     <value>Zıpla</value>

@@ -792,9 +792,6 @@
   <data name="Success" xml:space="preserve">
     <value>Success</value>
   </data>
-  <data name="PersianToolkit" xml:space="preserve">
-    <value>PersianToolkit</value>
-  </data>
   <data name="Empty" xml:space="preserve">
     <value>Empty</value>
   </data>

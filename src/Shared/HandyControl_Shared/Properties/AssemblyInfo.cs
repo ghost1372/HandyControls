@@ -4,7 +4,6 @@
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Tools")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Tools.Converter")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Tools.Extension")]
-[assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Tools.Command")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Interactivity")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Expression.Shapes")]
 [assembly: XmlnsDefinition("https://handyorg.github.io/handycontrol", "HandyControl.Expression.Media")]

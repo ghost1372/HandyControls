@@ -92,15 +92,6 @@ namespace HandyControl.Properties.Langs
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Please wait....
-        /// </summary>
-        public static string BusyIndicatorLoading {
-            get {
-                return ResourceManager.GetString("BusyIndicatorLoading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 取消.
         /// </summary>
         public static string Cancel
@@ -110,6 +101,7 @@ namespace HandyControl.Properties.Langs
                 return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
+
         /// <summary>
         ///   Looks up a localized string similar to 清空.
         /// </summary>
