@@ -1,30 +1,31 @@
 ﻿using System.Windows;
 
-namespace HandyControl.Controls;
-
-public class NumberPropertyEditor : PropertyEditorBase
+namespace HandyControl.Controls
 {
-    public NumberPropertyEditor(double minimum, double maximum)
+    public class NumberPropertyEditor : PropertyEditorBase
     {
-        Minimum = minimum;
-        Maximum = maximum;
-    }
-
-    public double Minimum { get; set; }
-
-    public double Maximum { get; set; }
-
-    public override FrameworkElement CreateElement(PropertyItem propertyItem)
-    {
-        var numericUpDown = new NumericUpDown
+        public NumberPropertyEditor(double minimum, double maximum)
         {
-            IsReadOnly = propertyItem.IsReadOnly,
-            Minimum = Minimum,
-            Maximum = Maximum
-        };
+            Minimum = minimum;
+            Maximum = maximum;
+        }
 
-        numericUpDown.SetBinding(NumericUpDown.ValueProperty, CreateBinding(propertyItem));
+        public double Minimum { get; set; }
 
-        return numericUpDown;
+        public double Maximum { get; set; }
+
+        public override FrameworkElement CreateElement(PropertyItem propertyItem)
+        {
+            var numericUpDown = new NumericUpDown
+            {
+                IsReadOnly = propertyItem.IsReadOnly,
+                Minimum = Minimum,
+                Maximum = Maximum
+            };
+
+            numericUpDown.SetBinding(NumericUpDown.ValueProperty, CreateBinding(propertyItem));
+
+            return numericUpDown;
+        }
     }
 }

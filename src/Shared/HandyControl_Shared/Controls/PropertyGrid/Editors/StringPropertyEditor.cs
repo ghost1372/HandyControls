@@ -1,18 +1,19 @@
 ﻿using System.Windows;
 
-namespace HandyControl.Controls;
-
-public class PlainTextPropertyEditor : PropertyEditorBase
+namespace HandyControl.Controls
 {
-    public override FrameworkElement CreateElement(PropertyItem propertyItem)
+    public class PlainTextPropertyEditor : PropertyEditorBase
     {
-        var textbox = new System.Windows.Controls.TextBox
+        public override FrameworkElement CreateElement(PropertyItem propertyItem)
         {
-            IsReadOnly = propertyItem.IsReadOnly
-        };
+            var textbox = new System.Windows.Controls.TextBox
+            {
+                IsReadOnly = propertyItem.IsReadOnly
+            };
 
-        textbox.SetBinding(System.Windows.Controls.TextBox.TextProperty, CreateBinding(propertyItem));
+            textbox.SetBinding(System.Windows.Controls.TextBox.TextProperty, CreateBinding(propertyItem));
 
-        return textbox;
+            return textbox;
+        }
     }
 }
