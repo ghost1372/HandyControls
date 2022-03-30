@@ -6,7 +6,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools;
 
-internal static class DpiHelper
+public static class DpiHelper
 {
     private const double LogicalDpi = 96.0;
 

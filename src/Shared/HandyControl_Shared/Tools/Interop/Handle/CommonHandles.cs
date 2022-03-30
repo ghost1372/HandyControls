@@ -3,7 +3,7 @@
 namespace HandyControl.Tools.Interop;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
-internal static class CommonHandles
+public static class CommonHandles
 {
     public static readonly int Icon = HandleCollector.RegisterType(nameof(Icon), 20, 500);
 

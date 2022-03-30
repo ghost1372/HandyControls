@@ -3,7 +3,7 @@ using Microsoft.Win32.SafeHandles;
 
 namespace HandyControl.Tools.Interop;
 
-internal abstract class WpfSafeHandle : SafeHandleZeroOrMinusOneIsInvalid
+public abstract class WpfSafeHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     private readonly int _collectorId;
 

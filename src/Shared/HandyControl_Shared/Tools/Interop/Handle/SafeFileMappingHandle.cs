@@ -6,7 +6,7 @@ using Microsoft.Win32.SafeHandles;
 
 namespace HandyControl.Tools.Interop;
 
-internal sealed class SafeFileMappingHandle : SafeHandleZeroOrMinusOneIsInvalid
+public sealed class SafeFileMappingHandle : SafeHandleZeroOrMinusOneIsInvalid
 {
     [SecurityCritical]
     internal SafeFileMappingHandle(IntPtr handle) : base(false)

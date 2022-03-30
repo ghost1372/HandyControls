@@ -12,7 +12,7 @@ namespace HandyControl.Controls;
 /// 采用设置窗口位置和尺寸，确保盖住整个屏幕的方式来实现全屏
 /// 目前已知需要满足的条件是：窗口盖住整个屏幕、窗口没有WS_THICKFRAME样式、窗口不能有标题栏且最大化
 /// </summary>
-internal static class FullScreenHelper
+public static class FullScreenHelper
 {
     /// <summary>
     /// 用于记录窗口全屏前位置的附加属性

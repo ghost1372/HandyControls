@@ -12,7 +12,7 @@ namespace HandyControl.Tools;
 
 [SuppressMessage("ReSharper", "ArrangeRedundantParentheses")]
 [SuppressMessage("ReSharper", "IntVariableOverflowInUncheckedContext")]
-internal static class IconHelper
+public static class IconHelper
 {
     private static Size SmallIconSize;
 

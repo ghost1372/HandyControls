@@ -7,7 +7,7 @@ using System.Security;
 namespace HandyControl.Tools.Interop;
 
 [SuppressMessage("ReSharper", "UnusedMember.Local")]
-internal sealed class BitmapHandle : WpfSafeHandle
+public sealed class BitmapHandle : WpfSafeHandle
 {
     [SecurityCritical]
     private BitmapHandle() : this(true)

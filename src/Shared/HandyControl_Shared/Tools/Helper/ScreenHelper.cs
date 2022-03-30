@@ -6,7 +6,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Tools;
 
-internal class ScreenHelper
+public class ScreenHelper
 {
     internal static void FindMaximumSingleMonitorRectangle(Rect windowRect, out Rect screenSubRect, out Rect monitorRect)
     {

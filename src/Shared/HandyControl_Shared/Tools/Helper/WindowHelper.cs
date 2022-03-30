@@ -14,10 +14,10 @@ using Window = System.Windows.Window;
 
 namespace HandyControl.Tools;
 
-public static class WindowHelper
+public static partial class WindowHelper
 {
     /// <summary>
-    ///     获取当前应用中处于激活的一个窗口
+    ///     Get the active window in the current application
     /// </summary>
     /// <returns></returns>
     public static Window GetActiveWindow() => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
@@ -145,7 +145,7 @@ public static class WindowHelper
             InteropMethods.ReleaseDC(IntPtr.Zero, hdc);
             return WindowResizeBorderThickness.Add(new Thickness((autoHide ? -4 : 4) * scale));
 #else
-                return WindowResizeBorderThickness.Add(new Thickness(autoHide ? -4 : 4));
+            return WindowResizeBorderThickness.Add(new Thickness(autoHide ? -4 : 4));
 #endif
         }
     }
@@ -157,12 +157,12 @@ public static class WindowHelper
     public static HwndSource GetHwndSource(this Window window) => HwndSource.FromHwnd(window.GetHandle());
 
     /// <summary>
-    ///     让窗口激活作为前台最上层窗口
+    ///     Make the window active as the topmost window in the foreground
     /// </summary>
     /// <param name="window"></param>
     public static void SetWindowToForeground(Window window)
     {
-        // [WPF 让窗口激活作为前台最上层窗口的方法 - lindexi - 博客园](https://www.cnblogs.com/lindexi/p/12749671.html)
+        // [WPF Make the window active as the uppermost window in the foreground - lindexi - Blog](https://www.cnblogs.com/lindexi/p/12749671.html)
         var interopHelper = new WindowInteropHelper(window);
         var thisWindowThreadId = InteropMethods.GetWindowThreadProcessId(interopHelper.Handle, out _);
         var currentForegroundWindow = InteropMethods.GetForegroundWindow();
@@ -171,11 +171,11 @@ public static class WindowHelper
         // [c# - Bring a window to the front in WPF - Stack Overflow](https://stackoverflow.com/questions/257587/bring-a-window-to-the-front-in-wpf )
         // [SetForegroundWindow的正确用法 - 子坞 - 博客园](https://www.cnblogs.com/ziwuge/archive/2012/01/06/2315342.html )
         /*
-             1.得到窗口句柄FindWindow 
-            2.切换键盘输入焦点AttachThreadInput 
-            3.显示窗口ShowWindow(有些窗口被最小化/隐藏了) 
-            4.更改窗口的Z Order，SetWindowPos使之最上，为了不影响后续窗口的Z Order,改完之后，再还原 
-            5.最后SetForegroundWindow 
+           　　1.得到窗口句柄FindWindow 
+        　　　　2.切换键盘输入焦点AttachThreadInput 
+        　　　　3.显示窗口ShowWindow(有些窗口被最小化/隐藏了) 
+        　　　　4.更改窗口的Z Order，SetWindowPos使之最上，为了不影响后续窗口的Z Order,改完之后，再还原 
+        　　　　5.最后SetForegroundWindow 
          */
 
         InteropMethods.AttachThreadInput(currentForegroundWindowThreadId, thisWindowThreadId, true);

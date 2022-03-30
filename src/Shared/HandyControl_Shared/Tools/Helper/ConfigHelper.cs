@@ -6,23 +6,22 @@ using System.Runtime.CompilerServices;
 #endif
 using System.Windows;
 using System.Windows.Markup;
-using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using HandyControl.Data;
 using HandyControl.Properties.Langs;
-
+using Timeline = System.Windows.Media.Animation.Timeline;
 namespace HandyControl.Tools;
 
 public class ConfigHelper : INotifyPropertyChanged
 {
     private ConfigHelper()
     {
-
+        
     }
 
     public static ConfigHelper Instance = new Lazy<ConfigHelper>(() => new ConfigHelper()).Value;
 
-    private XmlLanguage _lang = XmlLanguage.GetLanguage("zh-cn");
+    private XmlLanguage _lang = XmlLanguage.GetLanguage("en");
 
     public XmlLanguage Lang
     {
@@ -42,6 +41,7 @@ public class ConfigHelper : INotifyPropertyChanged
         LangProvider.Culture = new CultureInfo(lang);
         Application.Current.Dispatcher.Thread.CurrentUICulture = new CultureInfo(lang);
         Lang = XmlLanguage.GetLanguage(lang);
+        LocalizationManager.Instance.OnCultureChanged(new CultureInfo(lang));
     }
 
     public void SetConfig(HandyControlConfig config)

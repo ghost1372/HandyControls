@@ -8,7 +8,7 @@ namespace HandyControl.Tools.Extension;
 public static class GeometryExtension
 {
     /// <summary>
-    ///     获取路径总长度
+    ///     Get the total length of the path
     /// </summary>
     /// <param name="geometry"></param>
     /// <returns></returns>
@@ -24,7 +24,7 @@ public static class GeometryExtension
     }
 
     /// <summary>
-    ///     获取路径总长度
+    ///     Get the total length of the path
     /// </summary>
     /// <param name="geometry"></param>
     /// <param name="size"></param>

@@ -5,19 +5,19 @@ using System.Windows.Media;
 namespace HandyControl.Tools.Extension;
 
 /// <summary>
-///     颜色扩展类
+///     Color extension class
 /// </summary>
 public static class ColorExtension
 {
     /// <summary>
-    ///     将颜色转换为10进制表示（rgb顺序颠倒）
+    ///     Convert color to decimal representation (rgb order is reversed)
     /// </summary>
     /// <param name="color"></param>
     /// <returns></returns>
     public static int ToInt32(this Color color) => color.R << 16 | color.G << 8 | color.B;
 
     /// <summary>
-    ///     将颜色转换为10进制表示（rgb顺序颠倒）
+    ///     Convert color to decimal representation (rgb order is reversed)
     /// </summary>
     /// <param name="color"></param>
     /// <returns></returns>

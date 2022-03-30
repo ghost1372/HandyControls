@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace HandyControl.Tools.Interop;
 
-internal class InteropValues
+public class InteropValues
 {
-    internal static class ExternDll
+    public static class ExternDll
     {
         public const string
             User32 = "user32.dll",
@@ -19,19 +19,49 @@ internal class InteropValues
             Shell32 = "shell32.dll",
             MsImg = "msimg32.dll",
             NTdll = "ntdll.dll",
+            WinInet = "wininet.dll",
+            UxTheme = "uxtheme.dll",
             DwmApi = "dwmapi.dll";
     }
 
-    internal delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
+    public delegate IntPtr HookProc(int code, IntPtr wParam, IntPtr lParam);
 
-    internal delegate IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+    public delegate IntPtr WndProc(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
 
     [return: MarshalAs(UnmanagedType.Bool)]
-    internal delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);
+    public delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);
 
-    internal delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+    public delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
 
-    internal const int
+    public enum DWMWINDOWATTRIBUTE : int
+    {
+        USE_IMMERSIVE_DARK_MODE = 20,
+        MICA_EFFECT = 1029
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct MARGINS
+    {
+        public MARGINS(int left, int top, int right, int bottom)
+        {
+            this.Left = left;
+            this.Top = top;
+            this.Right = right;
+            this.Bottom = bottom;
+        }
+
+        /// <summary>Width of left border that retains its size.</summary>
+        public int Left;
+
+        /// <summary>Width of right border that retains its size.</summary>
+        public int Right;
+
+        /// <summary>Height of top border that retains its size.</summary>
+        public int Top;
+
+        /// <summary>Height of bottom border that retains its size.</summary>
+        public int Bottom;
+    }
+    public const int
         BITSPIXEL = 12,
         PLANES = 14,
         BI_RGB = 0,
@@ -55,10 +85,13 @@ internal class InteropValues
         WM_GETMINMAXINFO = 0x0024,
         WM_WINDOWPOSCHANGING = 0x0046,
         WM_WINDOWPOSCHANGED = 0x0047,
+        WM_CREATE = 0x0001,
         WM_SETICON = 0x0080,
         WM_NCCREATE = 0x0081,
         WM_NCDESTROY = 0x0082,
         WM_NCHITTEST = 0x0084,
+        WM_NCLBUTTONDOWN = 0x00A1,
+        WM_NCLBUTTONDBLCLK = 0x00A3,
         WM_NCACTIVATE = 0x0086,
         WM_NCRBUTTONDOWN = 0x00A4,
         WM_NCRBUTTONUP = 0x00A5,
@@ -86,6 +119,7 @@ internal class InteropValues
         TB_GETBUTTON = WM_USER + 23,
         TB_BUTTONCOUNT = WM_USER + 24,
         TB_GETITEMRECT = WM_USER + 29,
+        HTCAPTION = 0x02,
         VERTRES = 10,
         DESKTOPVERTRES = 117,
         LOGPIXELSX = 88,
@@ -98,10 +132,11 @@ internal class InteropValues
         SC_RESTORE = 0xF120,
         SRCCOPY = 0x00CC0020,
         MONITOR_DEFAULTTOPRIMARY = 0x00000001,
-        MONITOR_DEFAULTTONEAREST = 0x00000002;
+        MONITOR_DEFAULTTONEAREST = 0x00000002,
+        WM_COPYDATA = 0x004A;
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    internal class NOTIFYICONDATA
+    public class NOTIFYICONDATA
     {
         public int cbSize = Marshal.SizeOf(typeof(NOTIFYICONDATA));
         public IntPtr hWnd;
@@ -122,7 +157,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    internal struct TBBUTTON
+    public struct TBBUTTON
     {
         public int iBitmap;
         public int idCommand;
@@ -132,7 +167,7 @@ internal class InteropValues
     }
 
     [Flags]
-    internal enum AllocationType
+    public enum AllocationType
     {
         Commit = 0x1000,
         Reserve = 0x2000,
@@ -146,7 +181,7 @@ internal class InteropValues
     }
 
     [Flags]
-    internal enum MemoryProtection
+    public enum MemoryProtection
     {
         Execute = 0x10,
         ExecuteRead = 0x20,
@@ -162,7 +197,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct TRAYDATA
+    public struct TRAYDATA
     {
         public IntPtr hwnd;
         public uint uID;
@@ -173,14 +208,59 @@ internal class InteropValues
     }
 
     [Flags]
-    internal enum FreeType
+    public enum FreeType
     {
         Decommit = 0x4000,
         Release = 0x8000,
     }
 
+    public enum ShowWindowCommands : int
+    {
+        Hide = 0,
+        Normal = 1,
+        ShowMinimized = 2,
+        Maximize = 3, // is this the right value?
+        ShowMaximized = 3,
+        ShowNoActivate = 4,
+        Show = 5,
+        Minimize = 6,
+        ShowMinNoActive = 7,
+        ShowNA = 8,
+        Restore = 9,
+        ShowDefault = 10,
+        ForceMinimize = 11
+    }
+
+    public enum MouseEvent : int
+    {
+        LEFT_DOWN = 0x02,
+        LEFT_UP = 0x04,
+        RIGHT_DOWN = 0x08,
+        RIGHT_UP = 0x10,
+    }
+
+    [Flags()]
+    public enum SetWindowPosFlags : uint
+    {
+        SynchronousWindowPosition = 0x4000,
+        DeferErase = 0x2000,
+        DrawFrame = 0x0020,
+        FrameChanged = 0x0020,
+        HideWindow = 0x0080,
+        DoNotActivate = 0x0010,
+        DoNotCopyBits = 0x0100,
+        IgnoreMove = 0x0002,
+        DoNotChangeOwnerZOrder = 0x0200,
+        DoNotRedraw = 0x0008,
+        DoNotReposition = 0x0200,
+        DoNotSendChangingEvent = 0x0400,
+        IgnoreResize = 0x0001,
+        IgnoreZOrder = 0x0004,
+        ShowWindow = 0x0040,
+    }
+
     [StructLayout(LayoutKind.Sequential)]
-    internal struct POINT
+    public struct POINT
     {
         public int X;
         public int Y;
@@ -190,16 +270,26 @@ internal class InteropValues
             X = x;
             Y = y;
         }
+
+        public static implicit operator System.Drawing.Point(POINT p)
+        {
+            return new System.Drawing.Point(p.X, p.Y);
+        }
+
+        public static implicit operator POINT(System.Drawing.Point p)
+        {
+            return new POINT(p.X, p.Y);
+        }
     }
 
-    internal enum HookType
+    public enum HookType
     {
         WH_KEYBOARD_LL = 13,
         WH_MOUSE_LL = 14
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct MOUSEHOOKSTRUCT
+    public struct MOUSEHOOKSTRUCT
     {
         public POINT pt;
         public IntPtr hwnd;
@@ -208,7 +298,7 @@ internal class InteropValues
     }
 
     [Flags]
-    internal enum ProcessAccess
+    public enum ProcessAccess
     {
         AllAccess = CreateThread | DuplicateHandle | QueryInformation | SetInformation | Terminate | VMOperation | VMRead | VMWrite | Synchronize,
         CreateThread = 0x2,
@@ -223,7 +313,7 @@ internal class InteropValues
     }
 
     [Serializable, StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    internal struct RECT
+    public struct RECT
     {
         public int Left;
         public int Top;
@@ -294,7 +384,7 @@ internal class InteropValues
         }
     }
 
-    internal struct BLENDFUNCTION
+    public struct BLENDFUNCTION
     {
         public byte BlendOp;
         public byte BlendFlags;
@@ -302,13 +392,13 @@ internal class InteropValues
         public byte AlphaFormat;
     }
 
-    internal enum GWL
+    public enum GWL
     {
         STYLE = -16,
         EXSTYLE = -20
     }
 
-    internal enum GWLP
+    public enum GWLP
     {
         WNDPROC = -4,
         HINSTANCE = -6,
@@ -317,23 +407,23 @@ internal class InteropValues
         ID = -12
     }
 
-    internal struct BITMAPINFOHEADER
+    public struct BITMAPINFOHEADER
     {
-        internal uint biSize;
-        internal int biWidth;
-        internal int biHeight;
-        internal ushort biPlanes;
-        internal ushort biBitCount;
-        internal uint biCompression;
-        internal uint biSizeImage;
-        internal int biXPelsPerMeter;
-        internal int biYPelsPerMeter;
-        internal uint biClrUsed;
-        internal uint biClrImportant;
+        public uint biSize;
+        public int biWidth;
+        public int biHeight;
+        public ushort biPlanes;
+        public ushort biBitCount;
+        public uint biCompression;
+        public uint biSizeImage;
+        public int biXPelsPerMeter;
+        public int biYPelsPerMeter;
+        public uint biClrUsed;
+        public uint biClrImportant;
     }
 
     [Flags]
-    internal enum RedrawWindowFlags : uint
+    public enum RedrawWindowFlags : uint
     {
         Invalidate = 1u,
         InternalPaint = 2u,
@@ -350,7 +440,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class WINDOWPOS
+    public class WINDOWPOS
     {
         public IntPtr hwnd;
         public IntPtr hwndInsertAfter;
@@ -362,7 +452,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct WINDOWPLACEMENT
+    public struct WINDOWPLACEMENT
     {
         public int length;
         public int flags;
@@ -385,8 +475,29 @@ internal class InteropValues
         }
     }
 
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct WINDOWPLACEMENT2
+    {
+        public int Length;
+        public int Flags;
+        public ShowWindowCommands ShowCmd;
+        public POINT MinPosition;
+        public POINT MaxPosition;
+        public RECT NormalPosition;
+        public static WINDOWPLACEMENT2 Default
+        {
+            get
+            {
+                WINDOWPLACEMENT2 result = new WINDOWPLACEMENT2();
+                result.Length = Marshal.SizeOf(result);
+                return result;
+            }
+        }
+    }
+
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
-    internal struct SIZE
+    public struct SIZE
     {
         [ComAliasName("Microsoft.VisualStudio.OLE.Interop.LONG")]
         public int cx;
@@ -394,7 +505,7 @@ internal class InteropValues
         public int cy;
     }
 
-    internal struct MONITORINFO
+    public struct MONITORINFO
     {
         public uint cbSize;
         public RECT rcMonitor;
@@ -402,7 +513,7 @@ internal class InteropValues
         public uint dwFlags;
     }
 
-    internal enum SM
+    public enum SM
     {
         CXSCREEN = 0,
         CYSCREEN = 1,
@@ -490,7 +601,7 @@ internal class InteropValues
         REMOTECONTROL = 0x2001
     }
 
-    internal enum CacheSlot
+    public enum CacheSlot
     {
         DpiX,
 
@@ -625,16 +736,16 @@ internal class InteropValues
         NumSlots
     }
 
-    internal static class Win32Constant
+    public static class Win32Constant
     {
-        internal const int MAX_PATH = 260;
-        internal const int INFOTIPSIZE = 1024;
-        internal const int TRUE = 1;
-        internal const int FALSE = 0;
+        public const int MAX_PATH = 260;
+        public const int INFOTIPSIZE = 1024;
+        public const int TRUE = 1;
+        public const int FALSE = 0;
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-    internal struct WNDCLASS
+    public struct WNDCLASS
     {
         public uint style;
         public Delegate lpfnWndProc;
@@ -651,7 +762,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    internal class WNDCLASS4ICON
+    public class WNDCLASS4ICON
     {
         public int style;
         public WndProc lpfnWndProc;
@@ -666,7 +777,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 2)]
-    internal struct BITMAPINFO
+    public struct BITMAPINFO
     {
         public int biSize;
 
@@ -713,7 +824,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class ICONINFO
+    public class ICONINFO
     {
         public bool fIcon = false;
         public int xHotspot = 0;
@@ -722,20 +833,20 @@ internal class InteropValues
         public BitmapHandle hbmColor = null;
     }
 
-    internal enum WINDOWCOMPOSITIONATTRIB
+    public enum WINDOWCOMPOSITIONATTRIB
     {
         WCA_ACCENT_POLICY = 19
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct WINCOMPATTRDATA
+    public struct WINCOMPATTRDATA
     {
         public WINDOWCOMPOSITIONATTRIB Attribute;
         public IntPtr Data;
         public int DataSize;
     }
 
-    internal enum ACCENTSTATE
+    public enum ACCENTSTATE
     {
         ACCENT_DISABLED = 0,
         ACCENT_ENABLE_GRADIENT = 1,
@@ -746,7 +857,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct ACCENTPOLICY
+    public struct ACCENTPOLICY
     {
         public ACCENTSTATE AccentState;
         public int AccentFlags;
@@ -755,7 +866,7 @@ internal class InteropValues
     }
 
     [ComImport, Guid("0000000C-0000-0000-C000-000000000046"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    internal interface IStream
+    public interface IStream
     {
         int Read([In] IntPtr buf, [In] int len);
 
@@ -784,7 +895,7 @@ internal class InteropValues
     }
 
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    internal class StreamConsts
+    public class StreamConsts
     {
         public const int LOCK_WRITE = 0x1;
         public const int LOCK_EXCLUSIVE = 0x2;
@@ -802,7 +913,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 8)]
-    internal class ImageCodecInfoPrivate
+    public class ImageCodecInfoPrivate
     {
         [MarshalAs(UnmanagedType.Struct)]
         public Guid Clsid;
@@ -824,14 +935,14 @@ internal class InteropValues
         public IntPtr SigMask = IntPtr.Zero;
     }
 
-    internal class ComStreamFromDataStream : IStream
+    public class ComStreamFromDataStream : IStream
     {
         protected Stream DataStream;
 
         // to support seeking ahead of the stream length...
         private long _virtualPosition = -1;
 
-        internal ComStreamFromDataStream(Stream dataStream)
+        public ComStreamFromDataStream(Stream dataStream)
         {
             this.DataStream = dataStream ?? throw new ArgumentNullException(nameof(dataStream));
         }
@@ -993,7 +1104,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal class MINMAXINFO
+    public class MINMAXINFO
     {
         public POINT ptReserved;
         public POINT ptMaxSize;
@@ -1003,7 +1114,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct APPBARDATA
+    public struct APPBARDATA
     {
         public int cbSize;
         public IntPtr hWnd;
@@ -1014,19 +1125,33 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct RTL_OSVERSIONINFOEX
+    public struct RTL_OSVERSIONINFOEX
     {
-        internal uint dwOSVersionInfoSize;
-        internal uint dwMajorVersion;
-        internal uint dwMinorVersion;
-        internal uint dwBuildNumber;
-        internal uint dwPlatformId;
+#if NET5_0_OR_GREATER
+        public RTL_OSVERSIONINFOEX(uint dwMajorVersion, uint dwMinorVersion, uint dwBuildNumber, uint dwRevision, uint dwPlatformId, string szCSDVersion) : this()
+        {
+            this.dwMajorVersion = dwMajorVersion;
+            this.dwMinorVersion = dwMinorVersion;
+            this.dwBuildNumber = dwBuildNumber;
+            this.dwRevision = dwRevision;
+            this.dwPlatformId = dwPlatformId;
+            this.szCSDVersion = szCSDVersion;
+        }
+        public readonly uint dwOSVersionInfoSize { get; init; } = (uint) Marshal.SizeOf<RTL_OSVERSIONINFOEX>();
+#else
+        public uint dwOSVersionInfoSize;
+#endif
+        public uint dwMajorVersion;
+        public uint dwMinorVersion;
+        public uint dwBuildNumber;
+        public uint dwRevision;
+        public uint dwPlatformId;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
-        internal string szCSDVersion;
+        public string szCSDVersion;
     }
 
     [Flags]
-    internal enum WindowPositionFlags
+    public enum WindowPositionFlags
     {
         /// <summary>
         ///     If the calling thread and the thread that owns the window are attached to different input queues, the system posts
@@ -1114,7 +1239,7 @@ internal class InteropValues
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct WindowPosition
+    public struct WindowPosition
     {
         public IntPtr Hwnd;
         public IntPtr HwndZOrderInsertAfter;
@@ -1126,7 +1251,7 @@ internal class InteropValues
     }
 
     [Flags]
-    internal enum DwmWindowAttribute : uint
+    public enum DwmWindowAttribute : uint
     {
         DWMWA_NCRENDERING_ENABLED = 1,
         DWMWA_NCRENDERING_POLICY,
@@ -1144,7 +1269,7 @@ internal class InteropValues
     }
 
     [Flags]
-    internal enum WindowStyles
+    public enum WindowStyles
     {
         /// <summary>
         ///     The window is initially maximized.
@@ -1171,7 +1296,7 @@ internal class InteropValues
     /// <summary>
     /// ShowWindow options
     /// </summary>
-    internal enum SW
+    public enum SW
     {
         HIDE = 0,
         SHOWNORMAL = 1,
@@ -1187,5 +1312,12 @@ internal class InteropValues
         RESTORE = 9,
         SHOWDEFAULT = 10,
         FORCEMINIMIZE = 11,
+    }
+    public struct COPYDATASTRUCT
+    {
+        public IntPtr dwData;
+        public int cbData;
+        [MarshalAs(UnmanagedType.LPStr)]
+        public string lpData;
     }
 }

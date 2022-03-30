@@ -4,7 +4,7 @@ using System.Security;
 
 namespace HandyControl.Tools.Interop;
 
-internal sealed class IconHandle : WpfSafeHandle
+public sealed class IconHandle : WpfSafeHandle
 {
     [SecurityCritical]
     private IconHandle() : base(true, CommonHandles.Icon)
