@@ -48,7 +48,7 @@ public class BlurWindow : Window
         EnableBlur(this, true);
     }
 
-    private static void EnableBlur(Window window, bool isEnabled)
+    public static void EnableBlur(Window window, bool isEnabled)
     {
         var version = OSVersionHelper.GetOSVersion();
         var versionInfo = new SystemVersionInfo(version.Major, version.Minor, version.Build);
@@ -90,7 +90,7 @@ public class BlurWindow : Window
             Data = accentPtr
         };
 
-        InteropMethods.Gdip.SetWindowCompositionAttribute(window.GetHandle(), ref data);
+        InteropMethods.SetWindowCompositionAttribute(window.GetHandle(), ref data);
 
         Marshal.FreeHGlobal(accentPtr);
     }

@@ -91,6 +91,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\ListBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\MenuAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\TreeViewAttach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\WindowAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumBindingSourceExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\EnumDescriptionTypeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\BindToEnum\LocalizedDescriptionAttribute.cs" />

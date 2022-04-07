@@ -3,11 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using HandyControl.Data;
 using HandyControl.Tools;
-#if NET40
-using Microsoft.Windows.Shell;
-#else
-using System.Windows.Shell;
-#endif
 namespace HandyControl.Controls;
 
 public partial class Window
@@ -24,53 +19,29 @@ public partial class Window
 
     #region Mica
 
-    public static readonly DependencyProperty ApplyBackdropMaterialProperty = DependencyProperty.Register(
-        "ApplyBackdropMaterial", typeof(bool), typeof(Window),
-        new PropertyMetadata(ValueBoxes.FalseBox, OnApplyBackdropMaterialChanged));
+    public static readonly DependencyProperty SystemBackdropTypeProperty = DependencyProperty.Register(
+        "SystemBackdropType", typeof(BackdropType), typeof(Window),
+        new PropertyMetadata(BackdropType.Auto, OnSystemBackdropTypeChanged));
 
-    public bool ApplyBackdropMaterial
+    public BackdropType SystemBackdropType
     {
-        get => (bool) GetValue(ApplyBackdropMaterialProperty);
-        set => SetValue(ApplyBackdropMaterialProperty, ValueBoxes.BooleanBox(value));
+        get => (BackdropType) GetValue(SystemBackdropTypeProperty);
+        set => SetValue(SystemBackdropTypeProperty, (BackdropType) value);
     }
 
-    private static void OnApplyBackdropMaterialChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    private static void OnSystemBackdropTypeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         var ctl = (Window) d;
-        ctl.InitMica();
+        ctl.InitMica((Window) d, (BackdropType) e.NewValue);
     }
 
-    private void InitMica()
+    private void InitMica(Window window, BackdropType backdropType)
     {
-        if (ApplyBackdropMaterial && OSVersionHelper.IsWindows11_OrGreater)
-        {
-#if NET40
-            var chrome = new WindowChrome
-            {
-                CornerRadius = new CornerRadius(),
-                GlassFrameThickness = new Thickness(-1),
-                ResizeBorderThickness = new Thickness(8)
-            };
-#else
-            var chrome = new WindowChrome
-            {
-                CornerRadius = new CornerRadius(),
-                ResizeBorderThickness = new Thickness(8),
-                GlassFrameThickness = new Thickness(-1),
-                NonClientFrameEdges = NonClientFrameEdges.None,
-                UseAeroCaptionButtons = false
-            };
-#endif
-            WindowChrome.SetWindowChrome(this, chrome);
-            NonClientAreaBackground = Brushes.Transparent;
-            MicaHelper.ApplyMicaEffect(this);
-        }
-        else
-        {
-            MicaHelper.RemoveMicaEffect();
-        }
+        NonClientAreaBackground = Brushes.Transparent;
+        Background = Brushes.Transparent;
+        window.Apply(backdropType);
     }
-    
+
     #endregion
 
     #region Show/Hide NonClientArea Buttons

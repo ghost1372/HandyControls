@@ -1,158 +1,449 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using HandyControl.Themes;
 using HandyControl.Tools.Interop;
+#if NET40
+using Microsoft.Windows.Shell;
+#else
+using System.Windows.Shell;
+#endif
 
 namespace HandyControl.Tools;
+
+public enum BackdropType
+{
+    Auto = 1,
+    Mica = 2,
+    Acrylic = 3,
+    Tabbed = 4,
+    Disable = 5
+}
 
 /// <summary>
 /// Contains static handlers for applying background Mica effects from Windows 11.
 /// </summary>
 public static class MicaHelper
 {
+    private static System.Windows.Window _window;
+
     private static int _pvTrueAttribute = 0x01;
 
     private static int _pvFalseAttribute = 0x00;
 
-    private static readonly List<IntPtr> Containers = new List<IntPtr>() { };
-
-    private static IntPtr _windowHandle;
-
-    private static Window _window;
-
     /// <summary>
-    /// Static singleton identifier determining whether the Mica effect has been applied.
+    /// Checks if the current <see cref="Windows"/> supports selected <see cref="BackgroundType"/>.
     /// </summary>
-    public static bool IsMicaEffectApplied { get; set; } = false;
-
-    /// <summary>
-    /// Applies a Mica effect when the <see cref="Window"/> is loaded.
-    /// </summary>
-    /// <param name="window">Active instance of <see cref="Window"/>.</param>
-    public static void ApplyMicaEffect(object window)
+    /// <param name="type">Background type to check.</param>
+    /// <returns><see langword="true"/> if <see cref="BackgroundType"/> is supported.</returns>
+    public static bool IsSupported(this BackdropType type)
     {
-        var decWindow = window as Window;
+        if (!OSVersionHelper.IsWindowsNT) { return false; }
 
-        if (decWindow == null)
+        return type switch
         {
-            throw new Exception("Only Window controls can have the Mica effect applied.");
-        }
-
-        decWindow.Loaded += OnWindowLoaded;
+            BackdropType.Auto => OSVersionHelper.OSVersion >= new Version(10, 0, 22523), // Insider with new API                
+            BackdropType.Tabbed => OSVersionHelper.OSVersion >= new Version(10, 0, 22523),
+            BackdropType.Mica => OSVersionHelper.OSVersion >= new Version(10, 0, 22000),
+            BackdropType.Acrylic => (OSVersionHelper.OSVersion >= new Version(6, 0) && OSVersionHelper.OSVersion < new Version(6, 3)) || (OSVersionHelper.OSVersion >= new Version(10, 0) && OSVersionHelper.OSVersion < new Version(10, 0, 22000)) || OSVersionHelper.OSVersion >= new Version(10, 0, 22523),
+            _ => false
+        };
     }
 
     /// <summary>
-    /// Tries to remove the Mica effect from all defined pointers.
+    /// Applies selected background effect to <see cref="Window"/> when is rendered.
     /// </summary>
-    public static void RemoveMicaEffect()
+    /// <param name="window">Window to apply effect.</param>
+    /// <param name="type">Background type.</param>
+    /// <param name="force">Skip the compatibility check.</param>
+    public static bool Apply(this System.Windows.Window window, BackdropType type, bool force = false)
     {
-        if (Containers == null || Containers.Count < 1)
-        {
-            return;
-        }
+        if (!force && (!IsSupported(type))) { return false; }
 
-        Containers.ForEach(RemoveMicaEffect);
-        Containers.Clear();
-    }
-
-    /// <summary>
-    /// Event handler triggered after the window is loaded that applies the <see cref="Mica"/> effect.
-    /// </summary>
-    /// <param name="sender">The window whose background is to be set.</param>
-    /// <param name="e"><see cref="RoutedEventArgs"/></param>
-    public static void OnWindowLoaded(object sender, RoutedEventArgs e)
-    {
-        var window = sender as Window;
+        var windowHandle = new WindowInteropHelper(window).EnsureHandle();
         _window = window;
-        if (window == null)
+
+        if (windowHandle == IntPtr.Zero) { return false; }
+
+        if (window is not HandyControl.Controls.Window)
         {
-            throw new Exception("Only windows can have the Mica effect applied.");
+            void SetStyle()
+            {
+                if (window.Style != null)
+                {
+                    foreach (Setter setter in window.Style.Setters)
+                    {
+                        if (setter.Property == Control.BackgroundProperty && setter.Value == Brushes.Transparent)
+                        {
+                            goto stylesetted;
+                        }
+                    }
+                    Style style = new Style
+                    {
+                        TargetType = typeof(Window),
+                        BasedOn = window.Style
+                    };
+                    style.Setters.Add(new Setter
+                    {
+                        Property = FrameworkElement.TagProperty,
+                        Value = true
+                    });
+                    style.Setters.Add(new Setter
+                    {
+                        Property = Control.BackgroundProperty,
+                        Value = Brushes.Transparent
+                    });
+                    window.Style = style;
+stylesetted:;
+                }
+                else
+                {
+                    Style style = new Style
+                    {
+                        TargetType = typeof(Window)
+                    };
+                    style.Setters.Add(new Setter
+                    {
+                        Property = FrameworkElement.TagProperty,
+                        Value = true
+                    });
+                    style.Setters.Add(new Setter
+                    {
+                        Property = Control.BackgroundProperty,
+                        Value = Brushes.Transparent
+                    });
+                    window.Style = style;
+                }
+            }
+
+            if (window.IsLoaded)
+            {
+                SetStyle();
+            }
+            else
+            {
+                window.Loaded += (sender, e) => SetStyle();
+            }
+        }
+        var chrome = GetWindowChrome();
+        WindowChrome.SetWindowChrome(window, chrome);
+        Apply(windowHandle, type);
+        
+        return true;
+    }
+
+    /// <summary>
+    /// Applies selected background effect to <c>hWnd</c> by it's pointer.
+    /// </summary>
+    /// <param name="handle">Pointer to the window handle.</param>
+    /// <param name="type">Background type.</param>
+    /// <param name="force">Skip the compatibility check.</param>
+    public static bool Apply(this IntPtr handle, BackdropType type, bool force = false)
+    {
+        if (!force && (!IsSupported(type))) { return false; }
+
+        if (handle == IntPtr.Zero) { return false; }
+
+        if (ThemeManager.Current.ActualApplicationTheme == ApplicationTheme.Dark) { ApplyDarkMode(handle); }
+
+        return type switch
+        {
+            BackdropType.Auto => TryApplyAuto(handle),
+            BackdropType.Mica => TryApplyMica(handle),
+            BackdropType.Acrylic => TryApplyAcrylic(handle),
+            BackdropType.Tabbed => TryApplyTabbed(handle),
+            _ => false
+        };
+    }
+
+    /// <summary>
+    /// Tries to remove background effects if they have been applied to the <see cref="Window"/>.
+    /// </summary>
+    /// <param name="window">The window from which the effect should be removed.</param>
+    public static void Remove(this System.Windows.Window window)
+    {
+        var windowHandle = new WindowInteropHelper(window).EnsureHandle();
+
+        if (windowHandle == IntPtr.Zero) return;
+
+        if (window is not HandyControl.Controls.Window)
+        {
+            if (window.Style != null)
+            {
+                foreach (Setter setter in window.Style.Setters)
+                {
+                    if (setter.Property == FrameworkElement.TagProperty && setter.Value is bool boolen && boolen)
+                    {
+                        if (window.Style.BasedOn != null)
+                        {
+                            window.Style = window.Style.BasedOn;
+                        }
+                        else
+                        {
+                            window.ClearValue(FrameworkElement.StyleProperty);
+                        }
+                    }
+                }
+            }
         }
 
-        window.Background = Brushes.Transparent;
-
-        _windowHandle = new WindowInteropHelper(window).Handle;
-
-        PresentationSource.FromVisual(window)!.ContentRendered += OnContentRendered;
-        ThemeManager.Current.SystemThemeChanged += Current_SystemThemeChanged;
+        Remove(windowHandle);
     }
 
-    private static void Current_SystemThemeChanged(object sender, Data.FunctionEventArgs<ThemeManager.SystemTheme> e)
+    /// <summary>
+    /// Tries to remove all effects if they have been applied to the <c>hWnd</c>.
+    /// </summary>
+    /// <param name="handle">Pointer to the window handle.</param>
+    public static void Remove(this IntPtr handle)
     {
-        var isDark = !WindowHelper.DetermineIfInLightThemeMode();
-        ApplyMicaEffect(_windowHandle, isDark);
+        if (handle == IntPtr.Zero) return;
+
+        int backdropPvAttribute = (int) InteropValues.DWMSBT.DWMSBT_DISABLE;
+
+        RemoveDarkMode(handle);
+
+        InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.DWMWA_MICA_EFFECT, ref _pvFalseAttribute,
+            Marshal.SizeOf(typeof(int)));
+
+        InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE,
+            ref backdropPvAttribute,
+            Marshal.SizeOf(typeof(int)));
     }
 
-    private static void OnContentRendered(object sender, EventArgs e)
+    /// <summary>
+    /// Tries to inform the operating system that this window uses dark mode.
+    /// </summary>
+    /// <param name="window">Window to apply effect.</param>
+    public static void ApplyDarkMode(this System.Windows.Window window)
     {
-        var isDark = !WindowHelper.DetermineIfInLightThemeMode();
-        ThemeManager.Current.ApplicationTheme = isDark ? ApplicationTheme.Dark : ApplicationTheme.Light;
-        ApplyMicaEffect(((HwndSource) sender).Handle, isDark);
+        var windowHandle = new WindowInteropHelper(window).EnsureHandle();
+
+        if (windowHandle == IntPtr.Zero) return;
+        ApplyDarkMode(windowHandle);
     }
 
-    public static void ApplyMicaEffect(IntPtr handle, bool isDark)
+    /// <summary>
+    /// Tries to inform the operating system that this <c>hWnd</c> uses dark mode.
+    /// </summary>
+    /// <param name="handle">Pointer to the window handle.</param>
+    public static void ApplyDarkMode(this IntPtr handle)
     {
-        if (handle == IntPtr.Zero)
+        if (handle == IntPtr.Zero) return;
+
+        var dwAttribute = InteropValues.DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE;
+
+        if (OSVersionHelper.OSVersion < new Version(10, 0, 18985))
         {
-            return;
+            dwAttribute = InteropValues.DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE_OLD;
         }
 
+        InteropMethods.DwmSetWindowAttribute(handle, dwAttribute,
+            ref _pvTrueAttribute,
+            Marshal.SizeOf(typeof(int)));
+    }
+
+    /// <summary>
+    /// Tries to clear the dark theme usage information.
+    /// </summary>
+    /// <param name="window">Window to remove effect.</param>
+    public static void RemoveDarkMode(this System.Windows.Window window)
+    {
+        var windowHandle = new WindowInteropHelper(window).EnsureHandle();
+
+        if (windowHandle == IntPtr.Zero) return;
+        RemoveDarkMode(windowHandle);
+    }
+
+    /// <summary>
+    /// Tries to clear the dark theme usage information.
+    /// </summary>
+    /// <param name="handle">Pointer to the window handle.</param>
+    public static void RemoveDarkMode(this IntPtr handle)
+    {
+        if (handle == IntPtr.Zero) { return; }
+
+        var dwAttribute = InteropValues.DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE;
+
+        if (OSVersionHelper.OSVersion < new Version(10, 0, 18985))
+        {
+            dwAttribute = InteropValues.DWMWINDOWATTRIBUTE.DWMWA_USE_IMMERSIVE_DARK_MODE_OLD;
+        }
+
+        InteropMethods.DwmSetWindowAttribute(handle, dwAttribute,
+            ref _pvFalseAttribute,
+            Marshal.SizeOf(typeof(int)));
+    }
+
+    /// <summary>
+    /// Tries to remove default TitleBar from <c>hWnd</c>.
+    /// </summary>
+    /// <param name="handle">Pointer to the window handle.</param>
+    /// <returns><see langowrd="false"/> is problem occurs.</returns>
+    public static bool RemoveTitleBar(this IntPtr handle)
+    {
         // Hide default TitleBar
         // https://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window
         try
         {
-            if (_window != null && _window.ResizeMode == ResizeMode.NoResize)
+            if (_window != null && _window is HandyControl.Controls.Window && _window.ResizeMode == ResizeMode.NoResize)
             {
-
-
+                return false;
             }
             else
             {
                 InteropMethods.SetWindowLong(handle, -16, InteropMethods.GetWindowLong(handle, -16) & ~0x80000);
+                return true;
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-#if DEBUG
-            Console.WriteLine(e);
-#endif
+            return false;
         }
-
-        if (isDark)
-        {
-            InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.USE_IMMERSIVE_DARK_MODE, ref _pvTrueAttribute,
-                Marshal.SizeOf(typeof(int)));
-        }
-        else
-        {
-            InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.USE_IMMERSIVE_DARK_MODE, ref _pvFalseAttribute,
-                Marshal.SizeOf(typeof(int)));
-        }
-
-        InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.MICA_EFFECT, ref _pvTrueAttribute,
-            Marshal.SizeOf(typeof(int)));
-
-
-        Containers.Add(handle);
-
-        IsMicaEffectApplied = true;
     }
 
-    public static void RemoveMicaEffect(IntPtr handle)
+    public static bool TryApplyAuto(this IntPtr handle)
     {
-        if (handle == IntPtr.Zero)
+        int backdropPvAttribute = (int) InteropValues.DWMSBT.DWMSBT_AUTO;
+
+        InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE,
+            ref backdropPvAttribute,
+            Marshal.SizeOf(typeof(int)));
+
+        return true;
+    }
+
+    public static bool TryApplyTabbed(this IntPtr handle)
+    {
+        int backdropPvAttribute = (int) InteropValues.DWMSBT.DWMSBT_TABBEDWINDOW;
+
+        InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE,
+            ref backdropPvAttribute,
+            Marshal.SizeOf(typeof(int)));
+
+        return true;
+    }
+
+    public static bool TryApplyMica(this IntPtr handle)
+    {
+        int backdropPvAttribute;
+
+        if (OSVersionHelper.OSVersion >= new Version(10, 0, 22523))
         {
-            return;
+            backdropPvAttribute = (int) InteropValues.DWMSBT.DWMSBT_MAINWINDOW;
+
+            InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE,
+                ref backdropPvAttribute,
+                Marshal.SizeOf(typeof(int)));
+
+            return true;
         }
 
-        InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.USE_IMMERSIVE_DARK_MODE, ref _pvFalseAttribute,
+        if (!RemoveTitleBar(handle)) { return false; }
+
+        backdropPvAttribute = _pvTrueAttribute;
+
+        InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.DWMWA_MICA_EFFECT,
+            ref backdropPvAttribute,
             Marshal.SizeOf(typeof(int)));
 
-        InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.MICA_EFFECT, ref _pvFalseAttribute,
-            Marshal.SizeOf(typeof(int)));
+        return true;
+    }
+
+    public static bool TryApplyAcrylic(this IntPtr handle)
+    {
+        if (OSVersionHelper.OSVersion >= new Version(10, 0, 22523))
+        {
+            int backdropPvAttribute = (int) InteropValues.DWMSBT.DWMSBT_TRANSIENTWINDOW;
+
+            InteropMethods.DwmSetWindowAttribute(handle, InteropValues.DWMWINDOWATTRIBUTE.DWMWA_SYSTEMBACKDROP_TYPE,
+                ref backdropPvAttribute,
+                Marshal.SizeOf(typeof(int)));
+
+            return true;
+        }
+
+        if (OSVersionHelper.OSVersion >= new Version(10, 0, 17763))
+        {
+            InteropValues.ACCENTPOLICY accentPolicy = new InteropValues.ACCENTPOLICY
+            {
+                AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_ACRYLICBLURBEHIND,
+                GradientColor = (0 << 24) | (0x990000 & 0xFFFFFF)
+            };
+
+            int accentStructSize = Marshal.SizeOf(accentPolicy);
+
+            IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accentPolicy, accentPtr, false);
+
+            InteropValues.WINCOMPATTRDATA data = new InteropValues.WINCOMPATTRDATA
+            {
+                Attribute = InteropValues.WINDOWCOMPOSITIONATTRIB.WCA_ACCENT_POLICY,
+                DataSize = accentStructSize,
+                Data = accentPtr
+            };
+
+            InteropMethods.SetWindowCompositionAttribute(handle, ref data);
+            Marshal.FreeHGlobal(accentPtr);
+
+            return true;
+        }
+
+        if (OSVersionHelper.OSVersion >= new Version(10, 0))
+        {
+            InteropValues.ACCENTPOLICY accentPolicy = new InteropValues.ACCENTPOLICY
+            {
+                AccentState = InteropValues.ACCENTSTATE.ACCENT_ENABLE_BLURBEHIND,
+            };
+
+            int accentStructSize = Marshal.SizeOf(accentPolicy);
+
+            IntPtr accentPtr = Marshal.AllocHGlobal(accentStructSize);
+            Marshal.StructureToPtr(accentPolicy, accentPtr, false);
+
+            InteropValues.WINCOMPATTRDATA data = new InteropValues.WINCOMPATTRDATA
+            {
+                Attribute = InteropValues.WINDOWCOMPOSITIONATTRIB.WCA_ACCENT_POLICY,
+                DataSize = accentStructSize,
+                Data = accentPtr
+            };
+
+            InteropMethods.SetWindowCompositionAttribute(handle, ref data);
+
+            Marshal.FreeHGlobal(accentPtr);
+
+            return true;
+        }
+
+        if (OSVersionHelper.OSVersion >= new Version(6, 0))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private static WindowChrome GetWindowChrome()
+    {
+#if NET40
+            var chrome = new WindowChrome
+            {
+                CornerRadius = new CornerRadius(),
+                GlassFrameThickness = new Thickness(-1),
+                ResizeBorderThickness = new Thickness(8)
+            };
+#else
+        var chrome = new WindowChrome
+        {
+            CornerRadius = new CornerRadius(),
+            ResizeBorderThickness = new Thickness(8),
+            GlassFrameThickness = new Thickness(-1),
+            NonClientFrameEdges = NonClientFrameEdges.None,
+            UseAeroCaptionButtons = false
+        };
+#endif
+        return chrome;
     }
 }
