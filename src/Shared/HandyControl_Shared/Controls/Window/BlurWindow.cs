@@ -48,7 +48,7 @@ public class BlurWindow : Window
         EnableBlur(this, true);
     }
 
-    internal static void EnableBlur(Window window, bool isEnabled)
+    public static void EnableBlur(Window window, bool isEnabled)
     {
         var version = OSVersionHelper.GetOSVersion();
         var versionInfo = new SystemVersionInfo(version.Major, version.Minor, version.Build);

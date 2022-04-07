@@ -304,7 +304,7 @@ stylesetted:;
         }
     }
 
-    private static bool TryApplyAuto(this IntPtr handle)
+    public static bool TryApplyAuto(this IntPtr handle)
     {
         int backdropPvAttribute = (int) InteropValues.DWMSBT.DWMSBT_AUTO;
 
@@ -315,7 +315,7 @@ stylesetted:;
         return true;
     }
 
-    private static bool TryApplyTabbed(this IntPtr handle)
+    public static bool TryApplyTabbed(this IntPtr handle)
     {
         int backdropPvAttribute = (int) InteropValues.DWMSBT.DWMSBT_TABBEDWINDOW;
 
@@ -326,7 +326,7 @@ stylesetted:;
         return true;
     }
 
-    private static bool TryApplyMica(this IntPtr handle)
+    public static bool TryApplyMica(this IntPtr handle)
     {
         int backdropPvAttribute;
 
@@ -352,7 +352,7 @@ stylesetted:;
         return true;
     }
 
-    private static bool TryApplyAcrylic(this IntPtr handle)
+    public static bool TryApplyAcrylic(this IntPtr handle)
     {
         if (OSVersionHelper.OSVersion >= new Version(10, 0, 22523))
         {
