@@ -8,7 +8,7 @@ using HandyControl.Tools.Interop;
 
 namespace HandyControl.Controls;
 
-public static class WindowAttach
+public static partial class WindowAttach
 {
     public static readonly DependencyProperty IsDragElementProperty = DependencyProperty.RegisterAttached(
         "IsDragElement", typeof(bool), typeof(WindowAttach), new PropertyMetadata(ValueBoxes.FalseBox, OnIsDragElementChanged));

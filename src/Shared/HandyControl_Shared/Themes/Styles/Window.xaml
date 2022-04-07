@@ -188,7 +188,7 @@
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="WindowStyle" Value="None"/>
-                                <Condition Property="ApplyBackdropMaterial" Value="False" />
+                                <Condition Property="SystemBackdropType" Value="Disable" />
                             </MultiTrigger.Conditions>
                             <Setter Property="ShowNonClientArea" Value="False"/>
                         </MultiTrigger>

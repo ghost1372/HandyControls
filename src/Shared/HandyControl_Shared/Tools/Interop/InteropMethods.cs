@@ -564,6 +564,9 @@ public class InteropMethods
     [DllImport(InteropValues.ExternDll.DwmApi)]
     public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref InteropValues.MARGINS pMarInset);
 
+    [DllImport(InteropValues.ExternDll.User32)]
+    public static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref InteropValues.WINCOMPATTRDATA data);
+
     public static bool SetWindowAttributeValue(IntPtr hWnd, InteropValues.DWMWINDOWATTRIBUTE attribute, int attributeValue)
     {
         return SetWindowAttribute(hWnd, attribute, ref attributeValue);
@@ -848,9 +851,6 @@ public class InteropMethods
         [DllImport(InteropValues.ExternDll.GdiPlus, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode)]
         [ResourceExposure(ResourceScope.None)]
         public static extern int GdipGetImageRawFormat(HandleRef image, ref Guid format);
-
-        [DllImport(InteropValues.ExternDll.User32)]
-        public static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref InteropValues.WINCOMPATTRDATA data);
 
         [DllImport(InteropValues.ExternDll.GdiPlus, SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode)]
         [ResourceExposure(ResourceScope.Machine)]

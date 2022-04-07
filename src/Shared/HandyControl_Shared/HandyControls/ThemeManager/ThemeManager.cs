@@ -145,7 +145,7 @@ namespace HandyControl.Themes
                             _currenTheme = changedTheme;
                             _currentAccent = changedAccent;
 
-                            if (UsingSystemTheme || MicaHelper.IsMicaEffectApplied)
+                            if (UsingSystemTheme)
                             {
                                 ApplicationTheme = changedTheme;
                                 AccentColor = changedAccent;
