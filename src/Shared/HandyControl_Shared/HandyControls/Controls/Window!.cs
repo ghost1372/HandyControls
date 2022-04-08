@@ -37,7 +37,15 @@ public partial class Window
 
     private void InitMica(Window window, BackdropType backdropType)
     {
-        NonClientAreaBackground = Brushes.Transparent;
+        if (backdropType == BackdropType.Disable)
+        {
+            SetResourceReference(NonClientAreaBackgroundProperty, "RegionBrush");
+        }
+        else
+        {
+            NonClientAreaBackground = Brushes.Transparent;
+        }
+
         Background = Brushes.Transparent;
         window.Apply(backdropType);
     }

@@ -6,6 +6,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using HandyControl.Themes;
 using HandyControl.Tools.Interop;
+using HandyControl.Data;
 #if NET40
 using Microsoft.Windows.Shell;
 #else
@@ -48,6 +49,7 @@ public static class MicaHelper
             BackdropType.Auto => OSVersionHelper.OSVersion >= new Version(10, 0, 22523), // Insider with new API                
             BackdropType.Tabbed => OSVersionHelper.OSVersion >= new Version(10, 0, 22523),
             BackdropType.Mica => OSVersionHelper.OSVersion >= new Version(10, 0, 22000),
+            BackdropType.Disable => true,
             BackdropType.Acrylic => (OSVersionHelper.OSVersion >= new Version(6, 0) && OSVersionHelper.OSVersion < new Version(6, 3)) || (OSVersionHelper.OSVersion >= new Version(10, 0) && OSVersionHelper.OSVersion < new Version(10, 0, 22000)) || OSVersionHelper.OSVersion >= new Version(10, 0, 22523),
             _ => false
         };
@@ -128,10 +130,8 @@ stylesetted:;
                 window.Loaded += (sender, e) => SetStyle();
             }
         }
-        var chrome = GetWindowChrome();
-        WindowChrome.SetWindowChrome(window, chrome);
+        SetWindowChrome(window, true);
         Apply(windowHandle, type);
-        
         return true;
     }
 
@@ -155,6 +155,7 @@ stylesetted:;
             BackdropType.Mica => TryApplyMica(handle),
             BackdropType.Acrylic => TryApplyAcrylic(handle),
             BackdropType.Tabbed => TryApplyTabbed(handle),
+            BackdropType.Disable => TryRemoveMica(handle),
             _ => false
         };
     }
@@ -188,6 +189,10 @@ stylesetted:;
                     }
                 }
             }
+        }
+        else
+        {
+            window.SetResourceReference(HandyControl.Controls.Window.BackgroundProperty, "SecondaryRegionBrush");
         }
 
         Remove(windowHandle);
@@ -425,25 +430,40 @@ stylesetted:;
         return false;
     }
 
-    private static WindowChrome GetWindowChrome()
+    public static bool TryRemoveMica(this IntPtr handle)
     {
-#if NET40
-            var chrome = new WindowChrome
-            {
-                CornerRadius = new CornerRadius(),
-                GlassFrameThickness = new Thickness(-1),
-                ResizeBorderThickness = new Thickness(4)
-            };
-#else
-        var chrome = new WindowChrome
-        {
-            CornerRadius = new CornerRadius(),
-            ResizeBorderThickness = new Thickness(4),
-            GlassFrameThickness = new Thickness(-1),
-            NonClientFrameEdges = NonClientFrameEdges.None,
-            UseAeroCaptionButtons = false
-        };
+        SetWindowChrome(_window, false);
+        Remove(_window);
+        return true;
+    }
+
+    public static WindowChrome GetWindowChrome(bool isMica)
+    {
+        var chrome = new WindowChrome();
+
+#if !NET40
+        chrome.NonClientFrameEdges = NonClientFrameEdges.None;
+        chrome.UseAeroCaptionButtons = false;
 #endif
+        chrome.CornerRadius = new CornerRadius();
+
+        if (isMica)
+        {
+            chrome.ResizeBorderThickness = new Thickness(4);
+            chrome.GlassFrameThickness = new Thickness(-1);
+        }
+        else
+        {
+            chrome.ResizeBorderThickness = new Thickness(8);
+            chrome.GlassFrameThickness = new Thickness(0,0,0,1);
+        }
+        
         return chrome;
+    }
+
+    public static void SetWindowChrome(System.Windows.Window window, bool isMica)
+    {
+        var chrome = GetWindowChrome(isMica);
+        WindowChrome.SetWindowChrome(window, chrome);
     }
 }
