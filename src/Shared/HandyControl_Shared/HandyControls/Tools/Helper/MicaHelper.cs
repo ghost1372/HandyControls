@@ -432,13 +432,13 @@ stylesetted:;
             {
                 CornerRadius = new CornerRadius(),
                 GlassFrameThickness = new Thickness(-1),
-                ResizeBorderThickness = new Thickness(8)
+                ResizeBorderThickness = new Thickness(4)
             };
 #else
         var chrome = new WindowChrome
         {
             CornerRadius = new CornerRadius(),
-            ResizeBorderThickness = new Thickness(8),
+            ResizeBorderThickness = new Thickness(4),
             GlassFrameThickness = new Thickness(-1),
             NonClientFrameEdges = NonClientFrameEdges.None,
             UseAeroCaptionButtons = false
