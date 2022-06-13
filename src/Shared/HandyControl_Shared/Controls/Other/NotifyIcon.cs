@@ -594,6 +594,7 @@ public class NotifyIcon : FrameworkElement, IDisposable
         {
             if (_messageWindowHandle == hWnd && Visibility == Visibility.Visible)
             {
+                UpdateIcon(false);
                 UpdateIcon(true);
             }
         }
