@@ -7,16 +7,6 @@ namespace HandyControl.Controls;
 
 public partial class Window
 {
-    public static readonly DependencyProperty ExtendViewIntoNonClientAreaProperty = DependencyProperty.Register(
-            "ExtendViewIntoNonClientArea", typeof(bool), typeof(Window),
-            new PropertyMetadata(ValueBoxes.FalseBox));
-
-    public bool ExtendViewIntoNonClientArea
-    {
-        get => (bool) GetValue(ExtendViewIntoNonClientAreaProperty);
-        set => SetValue(ExtendViewIntoNonClientAreaProperty, ValueBoxes.BooleanBox(value));
-    }
-
     #region Mica
 
     public static readonly DependencyProperty SystemBackdropTypeProperty = DependencyProperty.Register(
