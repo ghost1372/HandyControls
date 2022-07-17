@@ -3,7 +3,7 @@ using HandyControl.Data;
 
 namespace HandyControl.Controls;
 
-public class MenuAttach
+public partial class MenuAttach
 {
     public static readonly DependencyProperty PopupVerticalOffsetProperty = DependencyProperty.RegisterAttached(
         "PopupVerticalOffset", typeof(double), typeof(MenuAttach), new PropertyMetadata(ValueBoxes.Double0Box));

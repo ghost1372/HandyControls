@@ -3,7 +3,7 @@ using HandyControl.Data;
 
 namespace HandyControl.Controls;
 
-public class MenuAttach
+public partial class MenuAttach
 {
     public static readonly DependencyProperty AnimationModeProperty = DependencyProperty.RegisterAttached(
       "AnimationMode", typeof(TransitionMode), typeof(MenuAttach), new FrameworkPropertyMetadata(TransitionMode.Right2LeftWithFade, FrameworkPropertyMetadataOptions.Inherits));
