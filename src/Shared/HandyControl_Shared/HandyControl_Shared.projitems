@@ -559,7 +559,6 @@
     <None Include="$(MSBuildThisFileDirectory)Themes\Styles\Ribbon.xaml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="$(MSBuildThisFileDirectory)Themes\XamlCombine.exe" />
     <None Include="$(MSBuildThisFileDirectory)Themes\Basic\Converters.xaml">
       <SubType>Designer</SubType>
     </None>
@@ -1098,10 +1097,6 @@
     <None Include="$(MSBuildThisFileDirectory)Themes\Styles\HandyControls\SpeedoMeter.xaml">
       <SubType>Designer</SubType>
     </None>
-    <Page Include="$(MSBuildThisFileDirectory)Themes\Theme.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Resources\Effects\BrightnessEffect.fx" />
@@ -1188,9 +1183,5 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\HandyControl.Controls.Watermark.icon.bmp" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\HandyControl.Controls.WatermarkTextBox.icon.bmp" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Resources\Icons\HandyControl.Controls.WaveProgressBar.icon.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Themes\Theme_40.txt" />
-    <None Include="$(MSBuildThisFileDirectory)Themes\Theme_GE45.txt" />
   </ItemGroup>
 </Project>
