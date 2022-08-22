@@ -10,20 +10,20 @@ jobs:
         uses: actions/checkout@master
         
       - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@master
+        uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '7.0.x'
           include-prerelease: true
         
       - name: setup nuget.exe
-        uses: NuGet/setup-nuget@v1.0.5
+        uses: NuGet/setup-nuget@v1
       
       - name: build and push
         shell: pwsh
         run: |
           cd build
           .\build.ps1
-          nuget pack build-for-myget.nuspec -version 3.4.0-beta.${env:GITHUB_RUN_NUMBER}
+          nuget pack build-for-myget.nuspec -version 3.5.0-beta.${env:GITHUB_RUN_NUMBER}
           $nupkgName = @(gci *.nupkg)[0].Name
           $mygetSourcePath = "https://www.myget.org/F/handycontrols"
           nuget setApiKey ${{ secrets.NIGHTLYBUILD }} -Source $mygetSourcePath
