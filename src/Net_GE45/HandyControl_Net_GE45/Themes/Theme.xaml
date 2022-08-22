@@ -460,7 +460,7 @@ Source files:
       </Setter.Value>
     </Setter>
   </Style>
-  <Style x:Key="TextBlockComboBoxStyle" TargetType="ComboBox">
+  <Style x:Key="DataGridComboBoxColumnStyle" TargetType="ComboBox">
     <Setter Property="Focusable" Value="True" />
     <Setter Property="Template">
       <Setter.Value>
@@ -2366,6 +2366,122 @@ Source files:
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+  </Style>
+  <Style x:Key="DataGridEditingComboBoxColumnStyle" TargetType="ComboBox">
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+    <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBoxItemBaseStyle}" />
+    <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
+    <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
+    <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,8,6,8" />
+    <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+    <Style.Triggers>
+      <Trigger Property="IsEditable" Value="true">
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <Style x:Key="DataGridEditingTextColumnStyle" TargetType="TextBox">
+    <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,8,6,0" />
+    <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+    <Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
+    <Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="Validation.ErrorTemplate" Value="{StaticResource InputElementErrorTemplate}" />
+    <Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
+    <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+    <Setter Property="AllowDrop" Value="true" />
+    <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="TextBox">
+          <hc:SimplePanel x:Name="root">
+            <Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" />
+            <ScrollViewer Margin="-2,0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+          </hc:SimplePanel>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+              <Setter Property="Opacity" TargetName="root" Value="0.4" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+              <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="true">
+              <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <Trigger Property="Validation.HasError" Value="true">
+        <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <Style x:Key="DataGridEditingTextColumnStyle.Small" BasedOn="{StaticResource DataGridEditingTextColumnStyle}" TargetType="TextBox">
+    <Setter Property="MinHeight" Value="20" />
+    <Setter Property="Padding" Value="6,2,6,1" />
+    <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,8,6,0" />
+    <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="Validation.ErrorTemplate" Value="{StaticResource InputElementErrorTemplate}" />
+    <Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
+    <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+    <Setter Property="AllowDrop" Value="true" />
+    <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="TextBox">
+          <hc:SimplePanel x:Name="root">
+            <Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" />
+            <ScrollViewer Margin="-2,0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+          </hc:SimplePanel>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+              <Setter Property="Opacity" TargetName="root" Value="0.4" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="true">
+              <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+            </Trigger>
+            <Trigger Property="IsFocused" Value="true">
+              <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <Trigger Property="Validation.HasError" Value="true">
+        <Setter Property="BorderBrush" Value="{DynamicResource DangerBrush}" />
+      </Trigger>
+    </Style.Triggers>
   </Style>
   <Style x:Key="DatePickerTextBoxStyle" TargetType="DatePickerTextBox">
     <Setter Property="Foreground" Value="{Binding Foreground,RelativeSource={RelativeSource AncestorType=DatePicker}}" />
@@ -6356,24 +6472,66 @@ Source files:
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="ListView">
+          <ControlTemplate.Resources>
+            <Storyboard x:Key="Storyboard1">
+              <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_VerticalScrollBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:.2" Value=".8" />
+              </DoubleAnimationUsingKeyFrames>
+              <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_HorizontalScrollBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:.2" Value=".8" />
+              </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            <Storyboard x:Key="Storyboard2">
+              <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_VerticalScrollBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:.2" Value="0" />
+              </DoubleAnimationUsingKeyFrames>
+              <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_HorizontalScrollBar">
+                <EasingDoubleKeyFrame KeyTime="0:0:.2" Value="0" />
+              </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+          </ControlTemplate.Resources>
           <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
-            <Grid Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
-              <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-              </Grid.RowDefinitions>
-              <GridViewHeaderRowPresenter AllowsColumnReorder="{Binding View.AllowsColumnReorder, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderContainerStyle="{Binding View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderToolTip="{Binding View.ColumnHeaderToolTip, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderContextMenu="{Binding View.ColumnHeaderContextMenu, RelativeSource={RelativeSource TemplatedParent}}" ColumnHeaderTemplate="{Binding View.ColumnHeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}" Columns="{Binding View.Columns, RelativeSource={RelativeSource TemplatedParent}}" Margin="2,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-              <hc:ToggleBlock Grid.Row="1" IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                <hc:ToggleBlock.CheckedContent>
-                  <ScrollViewer>
-                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                  </ScrollViewer>
-                </hc:ToggleBlock.CheckedContent>
-                <hc:ToggleBlock.UnCheckedContent>
-                  <hc:Empty />
-                </hc:ToggleBlock.UnCheckedContent>
-              </hc:ToggleBlock>
-            </Grid>
+            <ScrollViewer Focusable="false">
+              <ScrollViewer.Template>
+                <ControlTemplate TargetType="ScrollViewer">
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*" />
+                      <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="Auto" />
+                      <RowDefinition Height="*" />
+                      <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.ColumnSpan="2">
+                      <ScrollViewer DockPanel.Dock="Top" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Focusable="false">
+                        <GridViewHeaderRowPresenter AllowsColumnReorder="{Binding View.AllowsColumnReorder, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderContainerStyle="{Binding View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderToolTip="{Binding View.ColumnHeaderToolTip, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderContextMenu="{Binding View.ColumnHeaderContextMenu, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderTemplate="{Binding View.ColumnHeaderTemplate, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderTemplateSelector="{Binding View.ColumnHeaderTemplateSelector, RelativeSource={RelativeSource AncestorType=ListView}}" Columns="{Binding View.Columns, RelativeSource={RelativeSource AncestorType=ListView}}" Margin="2,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                      </ScrollViewer>
+                    </DockPanel>
+                    <hc:ToggleBlock Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" IsChecked="{Binding HasItems,RelativeSource={RelativeSource AncestorType=ListView},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                      <hc:ToggleBlock.CheckedContent>
+                        <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" />
+                      </hc:ToggleBlock.CheckedContent>
+                      <hc:ToggleBlock.UnCheckedContent>
+                        <hc:Empty />
+                      </hc:ToggleBlock.UnCheckedContent>
+                    </hc:ToggleBlock>
+                    <ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_VerticalScrollBar" Grid.Column="1" Grid.Row="1" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" />
+                    <ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_HorizontalScrollBar" Grid.Row="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" VerticalAlignment="Bottom" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}" />
+                  </Grid>
+                  <ControlTemplate.Triggers>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                      <BeginStoryboard Storyboard="{StaticResource Storyboard1}" />
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                      <BeginStoryboard Storyboard="{StaticResource Storyboard2}" />
+                    </EventTrigger>
+                  </ControlTemplate.Triggers>
+                </ControlTemplate>
+              </ScrollViewer.Template>
+              <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            </ScrollViewer>
           </Border>
         </ControlTemplate>
       </Setter.Value>
@@ -7799,6 +7957,32 @@ Source files:
     <Style.Triggers>
       <Trigger Property="Orientation" Value="Vertical">
         <Setter Property="Template" Value="{StaticResource ColorPickerSliderVertical}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <Style x:Key="DataGridEditingComboBoxColumnStyle.Small" BasedOn="{StaticResource DataGridEditingComboBoxColumnStyle}" TargetType="ComboBox">
+    <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBoxItem.Small}" />
+    <Setter Property="MinHeight" Value="20" />
+    <Setter Property="Padding" Value="6,0" />
+    <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+    <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+    <Setter Property="ScrollViewer.PanningMode" Value="Both" />
+    <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+    <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,8,6,8" />
+    <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+    <Style.Triggers>
+      <Trigger Property="IsEditable" Value="true">
+        <Setter Property="IsTabStop" Value="false" />
+        <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
       </Trigger>
     </Style.Triggers>
   </Style>
@@ -16676,9 +16860,9 @@ Source files:
     <Setter Property="RowHeight" Value="44" />
     <Setter Property="ColumnHeaderHeight" Value="44" />
     <Setter Property="hc:DataGridAttach.TextColumnStyle" Value="{StaticResource DataGridTextColumnStyle}" />
-    <Setter Property="hc:DataGridAttach.EditingTextColumnStyle" Value="{StaticResource TextBoxBaseStyle}" />
-    <Setter Property="hc:DataGridAttach.ComboBoxColumnStyle" Value="{StaticResource TextBlockComboBoxStyle}" />
-    <Setter Property="hc:DataGridAttach.EditingComboBoxColumnStyle" Value="{StaticResource ComboBoxBaseStyle}" />
+    <Setter Property="hc:DataGridAttach.EditingTextColumnStyle" Value="{StaticResource DataGridEditingTextColumnStyle}" />
+    <Setter Property="hc:DataGridAttach.ComboBoxColumnStyle" Value="{StaticResource DataGridComboBoxColumnStyle}" />
+    <Setter Property="hc:DataGridAttach.EditingComboBoxColumnStyle" Value="{StaticResource DataGridEditingComboBoxColumnStyle}" />
     <Setter Property="hc:DataGridAttach.CheckBoxColumnStyle" Value="{StaticResource CheckBoxBaseStyle}" />
     <Setter Property="hc:DataGridAttach.EditingCheckBoxColumnStyle" Value="{StaticResource CheckBoxBaseStyle}" />
     <Setter Property="hc:DataGridAttach.ApplyDefaultStyle" Value="True" />
@@ -16773,6 +16957,8 @@ Source files:
     <Setter Property="ColumnHeaderStyle" Value="{StaticResource DataGridColumnHeaderStyle.Small}" />
     <Setter Property="RowHeight" Value="24" />
     <Setter Property="ColumnHeaderHeight" Value="20" />
+    <Setter Property="hc:DataGridAttach.EditingTextColumnStyle" Value="{StaticResource DataGridEditingTextColumnStyle.Small}" />
+    <Setter Property="hc:DataGridAttach.EditingComboBoxColumnStyle" Value="{StaticResource DataGridEditingComboBoxColumnStyle.Small}" />
   </Style>
   <Style BasedOn="{StaticResource DatePickerBaseStyle}" TargetType="DatePicker" />
   <Style x:Key="DatePicker.Small" BasedOn="{StaticResource DatePickerBaseStyle}" TargetType="DatePicker">
