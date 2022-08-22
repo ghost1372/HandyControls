@@ -176,7 +176,7 @@
       <TargetFile>$(TargetFile)</TargetFile>
       <Visible>False</Visible>
     </XAMLCombineItems>
-    <XAMLCombineItems Include="$(SharedPath)\Basic\*.xaml">
+    <XAMLCombineItems Include="$(SharedPath)\Basic\*.xaml" Exclude="$(SharedPath)\Basic\Brushes.xaml">
       <TargetFile>$(TargetFile)</TargetFile>
       <Visible>False</Visible>
     </XAMLCombineItems>
