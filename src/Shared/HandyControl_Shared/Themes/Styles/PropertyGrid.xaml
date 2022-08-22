@@ -4,7 +4,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib"
                     xmlns:tools="clr-namespace:HandyControl.Tools">
 
-    <!--<Style BasedOn="{StaticResource PropertyGridBaseStyle}" TargetType="hc:PropertyGrid"/>
+    <Style BasedOn="{StaticResource PropertyGridBaseStyle}" TargetType="hc:PropertyGrid"/>
 
     <Style x:Key="ComboBoxItemCapsuleBaseStyle" BasedOn="{x:Null}" TargetType="ComboBoxItem">
         <Setter Property="MinWidth" Value="40"/>
@@ -85,6 +85,6 @@
     </Style>
 
     <hc:HorizontalAlignmentPathTemplateSelector x:Key="HorizontalAlignmentPathTemplateSelector"/>
-    <hc:VerticalAlignmentPathTemplateSelector x:Key="VerticalAlignmentPathTemplateSelector"/>-->
+    <hc:VerticalAlignmentPathTemplateSelector x:Key="VerticalAlignmentPathTemplateSelector"/>
 
 </ResourceDictionary>
