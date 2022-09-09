@@ -516,6 +516,7 @@ public sealed class MessageBox : Window
         switch (messageBoxButton)
         {
             case MessageBoxButton.OK:
+                messageBox._messageBoxResult = MessageBoxResult.Yes;
                 messageBox._showOk = true;
                 messageBox._buttonOk = new Button
                 {
@@ -528,6 +529,7 @@ public sealed class MessageBox : Window
 
                 break;
             case MessageBoxButton.OKCancel:
+                messageBox._messageBoxResult = MessageBoxResult.Cancel;
                 messageBox._showOk = true;
                 messageBox._buttonOk = new Button
                 {
@@ -558,6 +560,7 @@ public sealed class MessageBox : Window
 
                 break;
             case MessageBoxButton.YesNo:
+                messageBox._messageBoxResult = MessageBoxResult.Cancel;
                 messageBox._showYes = true;
                 messageBox._buttonYes = new Button
                 {
@@ -587,6 +590,7 @@ public sealed class MessageBox : Window
 
                 break;
             case MessageBoxButton.YesNoCancel:
+                messageBox._messageBoxResult = MessageBoxResult.Cancel;
                 messageBox._showYes = true;
                 messageBox._buttonYes = new Button
                 {

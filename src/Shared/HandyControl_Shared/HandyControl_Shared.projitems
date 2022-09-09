@@ -93,6 +93,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Tag\TagContainer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\HighlightTextBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Text\SimpleText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\GrowlShowMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\LinearLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\TipPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\IEventArgsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\LaunchUriOrFileAction.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\MouseDragElementBehaviorEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Converter\Object2BooleanReConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\FullScreenHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Window\GlowWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\EnumItem.cs" />
