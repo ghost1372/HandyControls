@@ -16,7 +16,7 @@ using HandyControl.Tools.Extension;
 namespace HandyControl.Controls;
 
 /// <summary>
-///     message notification
+///     消息提醒
 /// </summary>
 [TemplatePart(Name = ElementPanelMore, Type = typeof(Panel))]
 [TemplatePart(Name = ElementGridMain, Type = typeof(Grid))]
@@ -41,6 +41,8 @@ public class Growl : Control
         new FrameworkPropertyMetadata(default(GrowlShowMode), FrameworkPropertyMetadataOptions.Inherits));
     public static readonly DependencyProperty ShowDateTimeProperty = DependencyProperty.Register(
         "ShowDateTime", typeof(bool), typeof(Growl), new PropertyMetadata(ValueBoxes.TrueBox));
+    public static readonly DependencyProperty ShowPersianDateTimeProperty = DependencyProperty.Register(
+        "ShowPersianDateTime", typeof(bool), typeof(Growl), new PropertyMetadata(ValueBoxes.FalseBox));
     public static readonly DependencyProperty MessageProperty = DependencyProperty.Register(
         "Message", typeof(string), typeof(Growl), new PropertyMetadata(default(string)));
     public static readonly DependencyProperty TimeProperty = DependencyProperty.Register(
@@ -70,12 +72,12 @@ public class Growl : Control
     private int _waitTime = 6;
 
     /// <summary>
-    ///     count
+    ///     计数
     /// </summary>
     private int _tickCount;
 
     /// <summary>
-    ///     Turn off timer
+    ///     关闭计时器
     /// </summary>
     private DispatcherTimer _timerClose;
 
@@ -94,6 +96,12 @@ public class Growl : Control
     {
         get => (bool) GetValue(ShowDateTimeProperty);
         set => SetValue(ShowDateTimeProperty, ValueBoxes.BooleanBox(value));
+    }
+
+    public bool ShowPersianDateTime
+    {
+        get => (bool) GetValue(ShowPersianDateTimeProperty);
+        set => SetValue(ShowPersianDateTimeProperty, ValueBoxes.BooleanBox(value));
     }
 
     public string Message
@@ -251,7 +259,7 @@ public class Growl : Control
     private static bool GetIsCreatedAutomatically(DependencyObject element) => (bool) element.GetValue(IsCreatedAutomaticallyProperty);
 
     /// <summary>
-    ///     Start timer
+    ///     开始计时器
     /// </summary>
     private void StartTimer()
     {
@@ -277,7 +285,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Message container
+    ///     消息容器
     /// </summary>
     /// <param name="panel"></param>
     private static void SetGrowlPanel(Panel panel)
@@ -364,7 +372,7 @@ public class Growl : Control
                     }
 
                     GrowlWindow.Show(true);
-                    
+
                     var showDateTime = growlInfo.ShowDateTime;
                     var time = DateTime.Now;
                     if (growlInfo.ShowPersianDateTime)
@@ -401,7 +409,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Display information
+    ///     显示信息
     /// </summary>
     /// <param name="growlInfo"></param>
     private static void Show(GrowlInfo growlInfo)
@@ -417,7 +425,7 @@ public class Growl : Control
                     if (growlInfo.ShowPersianDateTime)
                     {
                         System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
-                        time = new DateTime(pc.GetYear(DateTime.Now), pc.GetMonth(DateTime.Now), pc.GetDayOfMonth(DateTime.Now),DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Local);
+                        time = new DateTime(pc.GetYear(DateTime.Now), pc.GetMonth(DateTime.Now), pc.GetDayOfMonth(DateTime.Now), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Local);
                         showDateTime = false;
                     }
 
@@ -606,7 +614,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     success
+    ///     成功
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -617,7 +625,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Success
+    ///     成功
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Success(GrowlInfo growlInfo)
@@ -627,7 +635,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Success Global
+    ///     成功
     /// </summary>
     /// <param name="message"></param>
     public static void SuccessGlobal(string message) => SuccessGlobal(new GrowlInfo
@@ -636,7 +644,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Success Global
+    ///     成功
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void SuccessGlobal(GrowlInfo growlInfo)
@@ -646,7 +654,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Info
+    ///     消息
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -657,7 +665,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Info
+    ///     消息
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Info(GrowlInfo growlInfo)
@@ -667,7 +675,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Info Global
+    ///     消息
     /// </summary>
     /// <param name="message"></param>
     public static void InfoGlobal(string message) => InfoGlobal(new GrowlInfo
@@ -676,7 +684,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Info Global
+    ///     消息
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void InfoGlobal(GrowlInfo growlInfo)
@@ -686,7 +694,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Warning
+    ///     警告
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -697,7 +705,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Warning
+    ///     警告
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Warning(GrowlInfo growlInfo)
@@ -707,7 +715,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Warning Global
+    ///     警告
     /// </summary>
     /// <param name="message"></param>
     public static void WarningGlobal(string message) => WarningGlobal(new GrowlInfo
@@ -716,7 +724,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Warning Global
+    ///     警告
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void WarningGlobal(GrowlInfo growlInfo)
@@ -726,7 +734,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Error
+    ///     错误
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -737,7 +745,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Error
+    ///     错误
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Error(GrowlInfo growlInfo)
@@ -747,7 +755,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Error Global
+    ///     错误
     /// </summary>
     /// <param name="message"></param>
     public static void ErrorGlobal(string message) => ErrorGlobal(new GrowlInfo
@@ -756,7 +764,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Error Global
+    ///     错误
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void ErrorGlobal(GrowlInfo growlInfo)
@@ -766,7 +774,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Fatal
+    ///     严重
     /// </summary>
     /// <param name="message"></param>
     /// <param name="token"></param>
@@ -777,7 +785,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Fatal
+    ///     严重
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Fatal(GrowlInfo growlInfo)
@@ -787,7 +795,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Fatal Global
+    ///     严重
     /// </summary>
     /// <param name="message"></param>
     public static void FatalGlobal(string message) => FatalGlobal(new GrowlInfo
@@ -796,7 +804,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Fatal Global
+    ///     严重
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void FatalGlobal(GrowlInfo growlInfo)
@@ -806,7 +814,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Ask
+    ///     询问
     /// </summary>
     /// <param name="message"></param>
     /// <param name="actionBeforeClose"></param>
@@ -819,7 +827,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Ask
+    ///     询问
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void Ask(GrowlInfo growlInfo)
@@ -829,7 +837,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Ask Global
+    ///     询问
     /// </summary>
     /// <param name="message"></param>
     /// <param name="actionBeforeClose"></param>
@@ -840,7 +848,7 @@ public class Growl : Control
     });
 
     /// <summary>
-    ///     Ask Global
+    ///     询问
     /// </summary>
     /// <param name="growlInfo"></param>
     public static void AskGlobal(GrowlInfo growlInfo)
@@ -852,7 +860,7 @@ public class Growl : Control
     private void ButtonClose_OnClick(object sender, RoutedEventArgs e) => Close(false);
 
     /// <summary>
-    ///     Close
+    ///     关闭
     /// </summary>
     private void Close(bool invokeParam)
     {
@@ -894,7 +902,7 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Clear
+    ///     清除
     /// </summary>
     /// <param name="token"></param>
     public static void Clear(string token = "")
@@ -913,13 +921,13 @@ public class Growl : Control
     }
 
     /// <summary>
-    ///     Clear
+    ///     清除
     /// </summary>
     /// <param name="panel"></param>
     private static void Clear(Panel panel) => panel?.Children.Clear();
 
     /// <summary>
-    ///     Clear Global
+    ///     清除
     /// </summary>
     public static void ClearGlobal()
     {
