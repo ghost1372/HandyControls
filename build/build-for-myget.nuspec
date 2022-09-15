@@ -24,6 +24,7 @@
       <group targetFramework=".NETFramework4.7.1" />
       <group targetFramework=".NETFramework4.7.2" />
       <group targetFramework=".NETFramework4.8" />
+      <group targetFramework=".NETFramework4.8.1" />
       <group targetFramework=".NETCoreApp3.0" />
       <group targetFramework=".NETCoreApp3.1" />
       <group targetFramework="net5.0" />
@@ -174,6 +175,19 @@
     <file src="lib\net48\HandyControl.dll" target="lib\net48\HandyControl.dll" />
     <file src="lib\net48\HandyControl.pdb" target="lib\net48\HandyControl.pdb" />
     <file src="lib\net48\HandyControl.xml" target="lib\net48\HandyControl.xml" />
+    <file src="lib\net481\ca-ES\HandyControl.resources.dll" target="lib\net481\ca-ES\HandyControl.resources.dll" />
+    <file src="lib\net481\en\HandyControl.resources.dll" target="lib\net481\en\HandyControl.resources.dll" />
+    <file src="lib\net481\fa\HandyControl.resources.dll" target="lib\net481\fa\HandyControl.resources.dll" />
+    <file src="lib\net481\fr\HandyControl.resources.dll" target="lib\net481\fr\HandyControl.resources.dll" />
+    <file src="lib\net481\ja\HandyControl.resources.dll" target="lib\net481\ja\HandyControl.resources.dll" />
+    <file src="lib\net481\ko-KR\HandyControl.resources.dll" target="lib\net481\ko-KR\HandyControl.resources.dll" />
+    <file src="lib\net481\pl\HandyControl.resources.dll" target="lib\net481\pl\HandyControl.resources.dll" />
+    <file src="lib\net481\pt-BR\HandyControl.resources.dll" target="lib\net481\pt-BR\HandyControl.resources.dll" />
+    <file src="lib\net481\ru\HandyControl.resources.dll" target="lib\net481\ru\HandyControl.resources.dll" />
+    <file src="lib\net481\tr\HandyControl.resources.dll" target="lib\net481\tr\HandyControl.resources.dll" />
+    <file src="lib\net481\HandyControl.dll" target="lib\net481\HandyControl.dll" />
+    <file src="lib\net481\HandyControl.pdb" target="lib\net481\HandyControl.pdb" />
+    <file src="lib\net481\HandyControl.xml" target="lib\net481\HandyControl.xml" />
     <file src="lib\net5.0\ca-ES\HandyControl.resources.dll" target="lib\net5.0\ca-ES\HandyControl.resources.dll" />
     <file src="lib\net5.0\en\HandyControl.resources.dll" target="lib\net5.0\en\HandyControl.resources.dll" />
     <file src="lib\net5.0\fa\HandyControl.resources.dll" target="lib\net5.0\fa\HandyControl.resources.dll" />
