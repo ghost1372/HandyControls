@@ -353,6 +353,9 @@ public class InteropMethods
     public static extern IntPtr GetWindow(IntPtr hwnd, int nCmd);
 
     [DllImport(InteropValues.ExternDll.User32)]
+    internal static extern IntPtr GetActiveWindow();
+
+    [DllImport(InteropValues.ExternDll.User32)]
     [return: MarshalAs(UnmanagedType.Bool)]
     public static extern bool IsWindowVisible(IntPtr hwnd);
 

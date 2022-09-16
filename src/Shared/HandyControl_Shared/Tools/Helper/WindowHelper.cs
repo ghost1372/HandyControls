@@ -20,7 +20,11 @@ public static partial class WindowHelper
     ///     Get the active window in the current application
     /// </summary>
     /// <returns></returns>
-    public static Window GetActiveWindow() => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+    public static Window GetActiveWindow()
+    {
+        var activeWindow = InteropMethods.GetActiveWindow();
+        return Application.Current.Windows.OfType<Window>().FirstOrDefault(x => x.GetHandle() == activeWindow);
+    }
 
     private static readonly BitArray _cacheValid = new((int) InteropValues.CacheSlot.NumSlots);
 
