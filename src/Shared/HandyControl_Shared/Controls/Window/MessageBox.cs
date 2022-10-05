@@ -499,7 +499,7 @@ public sealed class MessageBox : Window
         {
             Message = messageBoxText,
             Owner = ownerWindow,
-            WindowStartupLocation = WindowStartupLocation.CenterScreen,
+            WindowStartupLocation = ownerIsNull ? WindowStartupLocation.CenterScreen : WindowStartupLocation.CenterOwner,
             ShowTitle = true,
             Title = caption ?? string.Empty,
             CancelContent = cancelContent ?? Properties.Langs.Lang.Cancel,
