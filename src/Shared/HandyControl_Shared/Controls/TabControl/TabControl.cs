@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 using HandyControl.Data;
 using HandyControl.Themes;
@@ -118,6 +119,15 @@ public class TabControl : System.Windows.Controls.TabControl
     {
         get => (bool) GetValue(ShowContextMenuProperty);
         set => SetValue(ShowContextMenuProperty, ValueBoxes.BooleanBox(value));
+    }
+
+    public static readonly DependencyProperty CanBeClosedByMiddleButtonProperty =
+        DependencyProperty.Register("CanBeClosedByMiddleButton", typeof(bool), typeof(TabControl), new PropertyMetadata(ValueBoxes.TrueBox));
+
+    public bool CanBeClosedByMiddleButton
+    {
+        get => (bool) GetValue(CanBeClosedByMiddleButtonProperty);
+        set => SetValue(CanBeClosedByMiddleButtonProperty, ValueBoxes.BooleanBox(value));
     }
 
     /// <summary>
@@ -311,8 +321,11 @@ public class TabControl : System.Windows.Controls.TabControl
     {
         if (!IsTabFillEnabled)
         {
-            _itemShowCount = (int) (ActualWidth / TabItemWidth);
-            _buttonOverflow?.Show(ShowOverflowButton && Items.Count > 0 && Items.Count >= _itemShowCount);
+            double actualWidth = ActualWidth;
+            double tabItemWidth = TabItemWidth;
+
+            _itemShowCount = (int) (actualWidth / tabItemWidth);
+            _buttonOverflow?.Show(Items.Count > 0 && Items.Count * tabItemWidth >= actualWidth && ShowOverflowButton);
         }
     }
 
@@ -338,14 +351,25 @@ public class TabControl : System.Windows.Controls.TabControl
                 var menuItem = new MenuItem
                 {
                     HeaderStringFormat = ItemStringFormat,
-                    HeaderTemplate = ItemTemplate,
-                    HeaderTemplateSelector = ItemTemplateSelector,
-                    Header = item.Header,
-                    Width = TabItemWidth,
                     IsChecked = item.IsSelected,
                     IsCheckable = true,
                     IsEnabled = item.IsEnabled
                 };
+
+                if (item.DataContext is not null)
+                {
+                    menuItem.SetBinding(HeaderedItemsControl.HeaderProperty, new Binding(DisplayMemberPath)
+                    {
+                        Source = item.DataContext
+                    });
+                }
+                else
+                {
+                    menuItem.SetBinding(HeaderedItemsControl.HeaderProperty, new Binding(HeaderedItemsControl.HeaderProperty.Name)
+                    {
+                        Source = item
+                    });
+                }
 
                 menuItem.Click += delegate
                 {
@@ -407,7 +431,10 @@ public class TabControl : System.Windows.Controls.TabControl
                 if (ItemContainerGenerator.ContainerFromItem(item) is not TabItem tabItem) continue;
 
                 tabItem.RaiseEvent(argsClosing);
-                if (argsClosing.Cancel) return;
+                if (argsClosing.Cancel)
+                {
+                    continue;
+                }
 
                 tabItem.RaiseEvent(new RoutedEventArgs(TabItem.ClosedEvent, item));
                 list.Remove(item);
