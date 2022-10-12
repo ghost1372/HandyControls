@@ -476,11 +476,11 @@ Source files:
   <ControlTemplate x:Key="GroupBoxBaseTopTemplate" TargetType="GroupBox">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" MinHeight="30" />
+        <RowDefinition Height="Auto" />
         <RowDefinition />
       </Grid.RowDefinitions>
-      <Border MinHeight="30" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,0,0,6">
-        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="10,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+      <Border MinHeight="{Binding Path=(hc:TitleElement.MinHeight), RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,0,0,6">
+        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="{Binding Path=(hc:TitleElement.Padding), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
       </Border>
       <Border Grid.Row="1" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
         <ContentPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
@@ -490,11 +490,11 @@ Source files:
   <ControlTemplate x:Key="GroupBoxBaseLeftTemplate" TargetType="GroupBox">
     <Grid>
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto" MinWidth="30" />
+        <ColumnDefinition Width="Auto" />
         <ColumnDefinition />
       </Grid.ColumnDefinitions>
-      <Border MinWidth="30" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="False" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,0,6,0">
-        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="0,10" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RenderTransformOrigin="0.5,0.5">
+      <Border MinWidth="{Binding Path=(hc:TitleElement.MinWidth), RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" ClipToBounds="False" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" Margin="0,0,6,0">
+        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="{Binding Path=(hc:TitleElement.Padding), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RenderTransformOrigin="0.5,0.5">
           <ContentPresenter.LayoutTransform>
             <TransformGroup>
               <RotateTransform Angle="-90" />
@@ -510,28 +510,28 @@ Source files:
   <ControlTemplate x:Key="GroupBoxTabTopTemplate" TargetType="GroupBox">
     <Grid>
       <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" MinHeight="30" />
+        <RowDefinition Height="Auto" />
         <RowDefinition />
       </Grid.RowDefinitions>
       <Border Grid.Row="1" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='0,0,1,1'}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
         <ContentPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
       </Border>
-      <Border Grid.Row="0" MinHeight="30" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,1,1,0'}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='1,1,0,0'}">
-        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="10,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+      <Border Grid.Row="0" MinHeight="{Binding Path=(hc:TitleElement.MinHeight), RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,1,1,0'}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='1,1,0,0'}">
+        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="{Binding Path=(hc:TitleElement.Padding), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
       </Border>
     </Grid>
   </ControlTemplate>
   <ControlTemplate x:Key="GroupBoxTabLeftTemplate" TargetType="GroupBox">
     <Grid>
       <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto" MinWidth="30" />
+        <ColumnDefinition Width="Auto" />
         <ColumnDefinition />
       </Grid.ColumnDefinitions>
       <Border Grid.Column="1" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='0,1,1,0'}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
         <ContentPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
       </Border>
-      <Border Grid.Column="0" MinWidth="30" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,1,0,1'}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='1,0,0,1'}">
-        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="0,10" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+      <Border Grid.Column="0" MinWidth="{Binding Path=(hc:TitleElement.MinWidth), RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,1,0,1'}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='1,0,0,1'}">
+        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="{Binding Path=(hc:TitleElement.Padding), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
           <ContentPresenter.LayoutTransform>
             <TransformGroup>
               <RotateTransform Angle="-90" />
@@ -1470,7 +1470,7 @@ Source files:
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="hc:CheckComboBoxItem">
-          <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{Binding Padding,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,0,1,0'}" SnapsToDevicePixels="true">
+          <Border x:Name="Bd" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{Binding Padding,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,0,1,0'}" SnapsToDevicePixels="true">
             <CheckBox Foreground="{TemplateBinding Foreground}" HorizontalAlignment="Stretch" MinHeight="{TemplateBinding MinHeight}" FocusVisualStyle="{x:Null}" IsChecked="{Binding IsSelected,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}">
               <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
             </CheckBox>
@@ -1608,7 +1608,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -1665,7 +1665,7 @@ Source files:
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -1680,7 +1680,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -1735,7 +1735,7 @@ Source files:
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <ControlTemplate x:Key="ComboBoxLeftTemplate" TargetType="ComboBox">
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -1750,7 +1750,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -1832,7 +1832,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -1889,7 +1889,7 @@ Source files:
     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -1904,7 +1904,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -1959,7 +1959,7 @@ Source files:
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <ControlTemplate x:Key="ComboBoxEditableLeftTemplate" TargetType="ComboBox">
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -1974,7 +1974,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -2793,6 +2793,9 @@ Source files:
     <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
     <Setter Property="hc:TitleElement.Background" Value="{DynamicResource SecondaryRegionBrush}" />
     <Setter Property="hc:TitleElement.TitlePlacement" Value="Top" />
+    <Setter Property="hc:TitleElement.Padding" Value="4 0" />
+    <Setter Property="hc:TitleElement.MinHeight" Value="{StaticResource DefaultControlHeight}" />
+    <Setter Property="hc:TitleElement.MinWidth" Value="{StaticResource DefaultControlHeight}" />
     <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -2802,6 +2805,7 @@ Source files:
     <Style.Triggers>
       <Trigger Property="hc:TitleElement.TitlePlacement" Value="Left">
         <Setter Property="Template" Value="{StaticResource GroupBoxBaseLeftTemplate}" />
+        <Setter Property="hc:TitleElement.Padding" Value="0 4" />
       </Trigger>
     </Style.Triggers>
   </Style>
@@ -2853,6 +2857,7 @@ Source files:
     <Style.Triggers>
       <Trigger Property="hc:TitleElement.TitlePlacement" Value="Left">
         <Setter Property="Template" Value="{StaticResource GroupBoxTabLeftTemplate}" />
+        <Setter Property="hc:TitleElement.Padding" Value="0 4" />
       </Trigger>
     </Style.Triggers>
   </Style>
@@ -2887,6 +2892,7 @@ Source files:
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="HorizontalAlignment" Value="Center" />
     <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Height" Value="{StaticResource DefaultControlHeight}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="Label">
@@ -2956,6 +2962,17 @@ Source files:
         <Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
       </MultiTrigger>
+      <Trigger Property="GridView.ColumnCollection" Value="{x:Null}">
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="ListViewItem">
+              <Border CornerRadius="4" x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+              </Border>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
     </Style.Triggers>
   </Style>
   <Style x:Key="LoadingBaseStyle" TargetType="hc:LoadingBase">
@@ -3002,6 +3019,7 @@ Source files:
     <Setter Property="hc:MenuAttach.ItemPadding" Value="{StaticResource DefaultControlPadding}" />
     <Setter Property="hc:MenuAttach.PopupVerticalOffset" Value="-9" />
     <Setter Property="hc:MenuAttach.PopupHorizontalOffset" Value="10" />
+    <Setter Property="OverridesDefaultStyle" Value="True" />
     <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
     <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -4326,135 +4344,6 @@ Source files:
       </Setter.Value>
     </Setter>
   </Style>
-  <Style x:Key="ToolBarVerticalOverflowButtonStyle" TargetType="ToggleButton">
-    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
-    <Setter Property="MinHeight" Value="0" />
-    <Setter Property="MinWidth" Value="0" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="ToggleButton">
-          <Border x:Name="Bd" SnapsToDevicePixels="true" CornerRadius="4" Background="{TemplateBinding Background}">
-            <Path x:Name="PathMore" Data="{StaticResource RightGeometry}" Height="8" Margin="4,4,8,4" HorizontalAlignment="Right" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform" SnapsToDevicePixels="True" />
-          </Border>
-          <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-              <Setter Property="Fill" TargetName="PathMore" Value="{DynamicResource PrimaryBrush}" />
-            </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="true">
-              <Setter Property="Fill" TargetName="PathMore" Value="{DynamicResource PrimaryBrush}" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="false">
-              <Setter Property="Visibility" Value="Collapsed" />
-            </Trigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-  <Style x:Key="ToolBarHorizontalOverflowButtonStyle" TargetType="ToggleButton">
-    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
-    <Setter Property="MinHeight" Value="0" />
-    <Setter Property="MinWidth" Value="0" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="ToggleButton">
-          <Border x:Name="Bd" SnapsToDevicePixels="true" CornerRadius="4" Background="{TemplateBinding Background}">
-            <Path x:Name="PathMore" Data="{StaticResource DownGeometry}" Width="8" Margin="4,4,4,8" VerticalAlignment="Bottom" Fill="{DynamicResource PrimaryTextBrush}" Stretch="Uniform" SnapsToDevicePixels="True" />
-          </Border>
-          <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
-              <Setter Property="Fill" TargetName="PathMore" Value="{DynamicResource PrimaryBrush}" />
-            </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="true">
-              <Setter Property="Fill" TargetName="PathMore" Value="{DynamicResource PrimaryBrush}" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="false">
-              <Setter Property="Visibility" Value="Collapsed" />
-            </Trigger>
-          </ControlTemplate.Triggers>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
-  <ControlTemplate x:Key="ToolBarVerticalTemplate" TargetType="ToolBar">
-    <Grid x:Name="Grid" SnapsToDevicePixels="true">
-      <Grid.RowDefinitions>
-        <RowDefinition />
-        <RowDefinition Height="Auto" />
-      </Grid.RowDefinitions>
-      <hc:SimplePanel x:Name="OverflowGrid" Grid.Row="1">
-        <ToggleButton Margin="0,4,0,0" x:Name="OverflowButton" ClickMode="Press" FocusVisualStyle="{x:Null}" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{TemplateBinding HasOverflowItems}" Style="{StaticResource ToolBarVerticalOverflowButtonStyle}" />
-        <Popup x:Name="OverflowPopup" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Right" StaysOpen="false">
-          <Border x:Name="ToolBarSubMenuBorder" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}" RenderOptions.ClearTypeHint="Enabled">
-            <ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel" KeyboardNavigation.DirectionalNavigation="Cycle" FocusVisualStyle="{x:Null}" Focusable="true" Margin="6" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle" WrapWidth="200" />
-          </Border>
-        </Popup>
-      </hc:SimplePanel>
-      <Border x:Name="MainPanelBorder" Grid.Row="0" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
-        <DockPanel KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
-          <Thumb x:Name="ToolBarThumb" DockPanel.Dock="Top" Style="{StaticResource ToolBarThumbVerticalStyle}" Height="10" />
-          <ContentPresenter x:Name="ToolBarHeader" DockPanel.Dock="Top" ContentSource="Header" HorizontalAlignment="Center" Margin="0,4,0,4" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
-          <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-        </DockPanel>
-      </Border>
-    </Grid>
-    <ControlTemplate.Triggers>
-      <Trigger Property="IsOverflowOpen" Value="true">
-        <Setter Property="IsEnabled" TargetName="ToolBarThumb" Value="false" />
-      </Trigger>
-      <Trigger Property="Header" Value="{x:Null}">
-        <Setter Property="Visibility" TargetName="ToolBarHeader" Value="Collapsed" />
-      </Trigger>
-      <Trigger Property="ToolBarTray.IsLocked" Value="true">
-        <Setter Property="Visibility" TargetName="ToolBarThumb" Value="Collapsed" />
-      </Trigger>
-    </ControlTemplate.Triggers>
-  </ControlTemplate>
-  <ControlTemplate x:Key="ToolBarHorizontalTemplate" TargetType="ToolBar">
-    <Grid x:Name="Grid" SnapsToDevicePixels="true">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition />
-        <ColumnDefinition Width="Auto" />
-      </Grid.ColumnDefinitions>
-      <hc:SimplePanel x:Name="OverflowGrid" Grid.Column="1">
-        <ToggleButton Margin="4,0,0,0" x:Name="OverflowButton" ClickMode="Press" FocusVisualStyle="{x:Null}" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{TemplateBinding HasOverflowItems}" Style="{StaticResource ToolBarHorizontalOverflowButtonStyle}" />
-        <Popup x:Name="OverflowPopup" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom" StaysOpen="false">
-          <Border x:Name="ToolBarSubMenuBorder" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}" RenderOptions.ClearTypeHint="Enabled">
-            <ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel" KeyboardNavigation.DirectionalNavigation="Cycle" FocusVisualStyle="{x:Null}" Focusable="true" Margin="6" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle" WrapWidth="200" />
-          </Border>
-        </Popup>
-      </hc:SimplePanel>
-      <Border x:Name="MainPanelBorder" Grid.Column="0" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
-        <DockPanel KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
-          <Thumb x:Name="ToolBarThumb" Style="{StaticResource ToolBarThumbHorizontalStyle}" Width="10" />
-          <ContentPresenter x:Name="ToolBarHeader" ContentSource="Header" HorizontalAlignment="Center" Margin="4,0,4,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
-          <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-        </DockPanel>
-      </Border>
-    </Grid>
-    <ControlTemplate.Triggers>
-      <Trigger Property="IsOverflowOpen" Value="true">
-        <Setter Property="IsEnabled" TargetName="ToolBarThumb" Value="false" />
-      </Trigger>
-      <Trigger Property="Header" Value="{x:Null}">
-        <Setter Property="Visibility" TargetName="ToolBarHeader" Value="Collapsed" />
-      </Trigger>
-      <Trigger Property="ToolBarTray.IsLocked" Value="true">
-        <Setter Property="Visibility" TargetName="ToolBarThumb" Value="Collapsed" />
-      </Trigger>
-    </ControlTemplate.Triggers>
-  </ControlTemplate>
-  <Style x:Key="ToolBarBaseStyle" TargetType="ToolBar">
-    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
-    <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
-    <Setter Property="Margin" Value="0,0,4,4" />
-    <Setter Property="Template" Value="{StaticResource ToolBarHorizontalTemplate}" />
-    <Style.Triggers>
-      <Trigger Property="Orientation" Value="Vertical">
-        <Setter Property="Template" Value="{StaticResource ToolBarVerticalTemplate}" />
-      </Trigger>
-    </Style.Triggers>
-  </Style>
   <Style x:Key="ToolTipBaseStyle" TargetType="ToolTip">
     <Setter Property="Padding" Value="0,6" />
     <Setter Property="Background" Value="White" />
@@ -4656,6 +4545,10 @@ Source files:
     </Setter>
   </Style>
   <Style BasedOn="{StaticResource ChatBubbleBaseStyle}" TargetType="hc:ChatBubble" />
+  <Style x:Key="CheckComboBoxItem.Small" BasedOn="{StaticResource CheckComboBoxItemBaseStyle}" TargetType="hc:CheckComboBoxItem">
+    <Setter Property="Padding" Value="6,0" />
+    <Setter Property="MinHeight" Value="20" />
+  </Style>
   <Style x:Key="ClockRadioButtonStyle" TargetType="hc:ClockRadioButton">
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -4772,8 +4665,16 @@ Source files:
     <Setter Property="Padding" Value="0" />
   </Style>
   <Style BasedOn="{StaticResource GroupBoxBaseStyle}" TargetType="GroupBox" />
+  <Style x:Key="GroupBox.Small" BasedOn="{StaticResource GroupBoxBaseStyle}" TargetType="GroupBox">
+    <Setter Property="hc:TitleElement.MinHeight" Value="20" />
+    <Setter Property="hc:TitleElement.MinWidth" Value="20" />
+  </Style>
   <Style x:Key="GroupBoxOriginal" BasedOn="{StaticResource GroupBoxOriginalBaseStyle}" TargetType="GroupBox" />
   <Style x:Key="GroupBoxTab" BasedOn="{StaticResource GroupBoxTabBaseStyle}" TargetType="GroupBox" />
+  <Style x:Key="GroupBoxTab.Small" BasedOn="{StaticResource GroupBoxTab}" TargetType="GroupBox">
+    <Setter Property="hc:TitleElement.MinHeight" Value="20" />
+    <Setter Property="hc:TitleElement.MinWidth" Value="20" />
+  </Style>
   <ControlTemplate x:Key="BusyIndicatorTemplate" TargetType="{x:Type hc:BusyIndicator}">
     <Grid>
       <VisualStateManager.VisualStateGroups>
@@ -6390,24 +6291,49 @@ Source files:
       </Setter.Value>
     </Setter>
   </Style>
-  <Style BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
+  <Style x:Key="LabelDefault" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
     <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
     <Setter Property="BorderThickness" Value="1" />
+  </Style>
+  <Style BasedOn="{StaticResource LabelDefault}" TargetType="Label" />
+  <Style x:Key="LabelDefault.Small" BasedOn="{StaticResource LabelDefault}" TargetType="Label">
+    <Setter Property="Height" Value="20" />
+    <Setter Property="Padding" Value="6,0" />
   </Style>
   <Style x:Key="LabelPrimary" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
     <Setter Property="Background" Value="{DynamicResource PrimaryBrush}" />
   </Style>
+  <Style x:Key="LabelPrimary.Small" BasedOn="{StaticResource LabelPrimary}" TargetType="Label">
+    <Setter Property="Height" Value="20" />
+    <Setter Property="Padding" Value="6,0" />
+  </Style>
   <Style x:Key="LabelSuccess" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
     <Setter Property="Background" Value="{DynamicResource SuccessBrush}" />
+  </Style>
+  <Style x:Key="LabelSuccess.Small" BasedOn="{StaticResource LabelSuccess}" TargetType="Label">
+    <Setter Property="Height" Value="20" />
+    <Setter Property="Padding" Value="6,0" />
   </Style>
   <Style x:Key="LabelInfo" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
     <Setter Property="Background" Value="{DynamicResource InfoBrush}" />
   </Style>
+  <Style x:Key="LabelInfo.Small" BasedOn="{StaticResource LabelInfo}" TargetType="Label">
+    <Setter Property="Height" Value="20" />
+    <Setter Property="Padding" Value="6,0" />
+  </Style>
   <Style x:Key="LabelWarning" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
     <Setter Property="Background" Value="{DynamicResource WarningBrush}" />
   </Style>
+  <Style x:Key="LabelWarning.Small" BasedOn="{StaticResource LabelWarning}" TargetType="Label">
+    <Setter Property="Height" Value="20" />
+    <Setter Property="Padding" Value="6,0" />
+  </Style>
   <Style x:Key="LabelDanger" BasedOn="{StaticResource LabelBaseStyle}" TargetType="Label">
     <Setter Property="Background" Value="{DynamicResource DangerBrush}" />
+  </Style>
+  <Style x:Key="LabelDanger.Small" BasedOn="{StaticResource LabelDanger}" TargetType="Label">
+    <Setter Property="Height" Value="20" />
+    <Setter Property="Padding" Value="6,0" />
   </Style>
   <Style x:Key="ListViewBaseStyle" TargetType="ListView">
     <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
@@ -6498,6 +6424,19 @@ Source files:
         </MultiTrigger.Conditions>
         <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
       </MultiTrigger>
+      <Trigger Property="View" Value="{x:Null}">
+        <Setter Property="Template">
+          <Setter.Value>
+            <ControlTemplate TargetType="ListView">
+              <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                <ScrollViewer Focusable="false">
+                  <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                </ScrollViewer>
+              </Border>
+            </ControlTemplate>
+          </Setter.Value>
+        </Setter>
+      </Trigger>
     </Style.Triggers>
   </Style>
   <Style BasedOn="{StaticResource ListViewBaseStyle}" TargetType="ListView" />
@@ -7251,7 +7190,6 @@ Source files:
     </Setter>
   </Style>
   <Style BasedOn="{StaticResource ToolBarTrayBaseStyle}" TargetType="ToolBarTray" />
-  <Style BasedOn="{StaticResource ToolBarBaseStyle}" TargetType="ToolBar" />
   <Style BasedOn="{StaticResource ToolTipBaseStyle}" TargetType="ToolTip" />
   <Style BasedOn="{StaticResource WatermarkBaseStyle}" TargetType="hc:Watermark" />
   <Style TargetType="ResizeGrip">
@@ -7696,7 +7634,7 @@ Source files:
           <Border Effect="{StaticResource EffectShadow2}" BorderThickness="0,1,0,0" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <Grid Margin="0,4" ClipToBounds="False">
+                <Grid Margin="2" ClipToBounds="False">
                   <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
@@ -7757,7 +7695,7 @@ Source files:
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -7772,7 +7710,7 @@ Source files:
           <Border Effect="{StaticResource EffectShadow2}" BorderThickness="0,1,0,0" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <Grid Margin="0,4" ClipToBounds="False">
+                <Grid Margin="2" ClipToBounds="False">
                   <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
@@ -7830,7 +7768,7 @@ Source files:
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <ControlTemplate x:Key="CheckComboBoxExtendLeftTemplate" TargetType="hc:CheckComboBox">
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -7845,7 +7783,7 @@ Source files:
           <Border Effect="{StaticResource EffectShadow2}" BorderThickness="0,1,0,0" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <Grid Margin="0,4" ClipToBounds="False">
+                <Grid Margin="2" ClipToBounds="False">
                   <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
@@ -12553,7 +12491,7 @@ Source files:
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -12568,7 +12506,7 @@ Source files:
           <Border Effect="{StaticResource EffectShadow2}" BorderThickness="0,1,0,0" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <Grid Margin="0,4" ClipToBounds="False">
+                <Grid Margin="2" ClipToBounds="False">
                   <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
@@ -12666,7 +12604,7 @@ Source files:
         <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
       </Storyboard>
     </ControlTemplate.Resources>
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -12681,7 +12619,7 @@ Source files:
           <Border Effect="{StaticResource EffectShadow2}" BorderThickness="0,1,0,0" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <Grid Margin="0,4" ClipToBounds="False">
+                <Grid Margin="2" ClipToBounds="False">
                   <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition />
@@ -12892,7 +12830,7 @@ Source files:
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -12907,7 +12845,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -13002,7 +12940,7 @@ Source files:
         <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
       </Storyboard>
     </ControlTemplate.Resources>
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -13017,7 +12955,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -13115,7 +13053,7 @@ Source files:
     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -13130,7 +13068,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -13246,7 +13184,7 @@ Source files:
     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
-        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
         <ColumnDefinition />
@@ -13261,7 +13199,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -13277,7 +13215,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder_AutoComplete" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <StackPanel Name="PART_AutoCompletePanel" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -13395,7 +13333,7 @@ Source files:
         <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
       </Storyboard>
     </ControlTemplate.Resources>
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -13410,7 +13348,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -13523,7 +13461,7 @@ Source files:
         <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
       </Storyboard>
     </ControlTemplate.Resources>
-    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}">
+    <Grid x:Name="templateRoot" SnapsToDevicePixels="true" MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
         <ColumnDefinition />
@@ -13538,7 +13476,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -13554,7 +13492,7 @@ Source files:
           <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder_AutoComplete" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
             <hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <hc:ToggleBlock.CheckedContent>
-                <ScrollViewer Margin="2,2,2,0">
+                <ScrollViewer Margin="2">
                   <StackPanel Name="PART_AutoCompletePanel" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </ScrollViewer>
               </hc:ToggleBlock.CheckedContent>
@@ -15145,6 +15083,7 @@ Source files:
   </Style>
   <Style x:Key="MenuItemBaseStyle" TargetType="MenuItem">
     <Setter Property="Padding" Value="{Binding Path=(hc:MenuAttach.ItemPadding),RelativeSource={RelativeSource AncestorType=MenuBase}}" />
+    <Setter Property="OverridesDefaultStyle" Value="True" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="BorderThickness" Value="0" />
     <Setter Property="hc:ScrollViewer.PanningMode" Value="Both" />
@@ -15311,7 +15250,7 @@ Source files:
                     <Border Margin="0,0,10,0" IsHitTestVisible="False" Grid.Column="0" x:Name="GlyphPanel" CornerRadius="2" Background="{DynamicResource PrimaryBrush}" ClipToBounds="False" HorizontalAlignment="Right" Height="16" Visibility="Hidden" VerticalAlignment="Center" Width="16">
                       <Path UseLayoutRounding="True" Width="12" Height="12" Data="{StaticResource CheckedGeometry}" StrokeThickness="2" Stretch="Uniform" Stroke="{DynamicResource TextIconBrush}" />
                     </Border>
-                    <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="0,3" x:Name="ContentPresenter" ContentTemplate="{TemplateBinding HeaderTemplate}" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="0,3" x:Name="ContentPresenter" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentTemplate="{TemplateBinding HeaderTemplate}" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     <Path x:Name="Path" Grid.Column="4" Width="10" Height="10" HorizontalAlignment="Left" Data="{StaticResource RightGeometry}" Stretch="Uniform" Fill="{TemplateBinding Foreground}" VerticalAlignment="Center" />
                     <Popup Grid.Column="1" x:Name="PART_Popup" AllowsTransparency="True" Focusable="False" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Right" VerticalOffset="{Binding Path=(hc:MenuAttach.PopupVerticalOffset),RelativeSource={RelativeSource AncestorType=MenuBase}}" HorizontalOffset="{Binding Path=(hc:MenuAttach.PopupHorizontalOffset),RelativeSource={RelativeSource AncestorType=MenuBase}}">
                       <Border Effect="{StaticResource EffectShadow2}" Margin="8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="SubMenuBorder" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
@@ -16770,6 +16709,95 @@ Source files:
       </Trigger>
     </Style.Triggers>
   </Style>
+  <Style x:Key="ToolBarOverflowButtonStyle" BasedOn="{StaticResource ToggleButtonIcon}" TargetType="ToggleButton">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="MinHeight" Value="0" />
+    <Setter Property="MinWidth" Value="0" />
+    <Setter Property="Height" Value="Auto" />
+    <Setter Property="Width" Value="Auto" />
+    <Setter Property="ClickMode" Value="Press" />
+    <Style.Triggers>
+      <Trigger Property="IsMouseOver" Value="True">
+        <Setter Property="Background" Value="{DynamicResource BorderBrush}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <ControlTemplate x:Key="ToolBarVerticalTemplate" TargetType="ToolBar">
+    <Border x:Name="MainPanelBorder" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+      <Grid SnapsToDevicePixels="true">
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DockPanel KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
+          <Thumb x:Name="ToolBarThumb" DockPanel.Dock="Top" Style="{StaticResource ToolBarThumbVerticalStyle}" Height="10" Margin="0 4 0 0" />
+          <ContentPresenter x:Name="ToolBarHeader" DockPanel.Dock="Top" ContentSource="Header" HorizontalAlignment="Center" Margin="4 4 4 0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
+          <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="{TemplateBinding Padding}" />
+        </DockPanel>
+        <ToggleButton x:Name="ButtonOverflow" Margin="2 0 2 2" Padding="6 4" HorizontalContentAlignment="Right" hc:IconElement.Height="8" hc:IconSwitchElement.GeometrySelected="{StaticResource LeftGeometry}" hc:IconElement.Geometry="{StaticResource RightGeometry}" Style="{StaticResource ToolBarOverflowButtonStyle}" Grid.Row="1" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{TemplateBinding HasOverflowItems}" />
+        <Popup PlacementTarget="{Binding ElementName=ButtonOverflow}" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Right" StaysOpen="false">
+          <Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}" RenderOptions.ClearTypeHint="Enabled">
+            <ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel" KeyboardNavigation.DirectionalNavigation="Cycle" FocusVisualStyle="{x:Null}" Focusable="true" Margin="6" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle" WrapWidth="200" />
+          </Border>
+        </Popup>
+      </Grid>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsOverflowOpen" Value="true">
+        <Setter Property="IsEnabled" TargetName="ToolBarThumb" Value="false" />
+      </Trigger>
+      <Trigger Property="Header" Value="{x:Null}">
+        <Setter Property="Visibility" TargetName="ToolBarHeader" Value="Collapsed" />
+      </Trigger>
+      <Trigger Property="ToolBarTray.IsLocked" Value="true">
+        <Setter Property="Visibility" TargetName="ToolBarThumb" Value="Collapsed" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <ControlTemplate x:Key="ToolBarHorizontalTemplate" TargetType="ToolBar">
+    <Border x:Name="MainPanelBorder" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+      <Grid SnapsToDevicePixels="true">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <DockPanel KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
+          <Thumb x:Name="ToolBarThumb" Style="{StaticResource ToolBarThumbHorizontalStyle}" Width="10" Margin="4 0 0 0" />
+          <ContentPresenter x:Name="ToolBarHeader" ContentSource="Header" HorizontalAlignment="Center" Margin="4 4 0 4" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
+          <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="{TemplateBinding Padding}" />
+        </DockPanel>
+        <ToggleButton x:Name="ButtonOverflow" Margin="0 2 2 2" Padding="4 6" VerticalContentAlignment="Bottom" hc:IconElement.Width="8" hc:IconSwitchElement.GeometrySelected="{StaticResource UpGeometry}" hc:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ToolBarOverflowButtonStyle}" Grid.Column="1" IsChecked="{Binding IsOverflowOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{TemplateBinding HasOverflowItems}" />
+        <Popup PlacementTarget="{Binding ElementName=ButtonOverflow}" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsOverflowOpen, RelativeSource={RelativeSource TemplatedParent}}" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom" StaysOpen="false">
+          <Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" Background="{DynamicResource RegionBrush}" RenderOptions.ClearTypeHint="Enabled">
+            <ToolBarOverflowPanel x:Name="PART_ToolBarOverflowPanel" KeyboardNavigation.DirectionalNavigation="Cycle" FocusVisualStyle="{x:Null}" Focusable="true" Margin="6" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" KeyboardNavigation.TabNavigation="Cycle" WrapWidth="200" />
+          </Border>
+        </Popup>
+      </Grid>
+    </Border>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsOverflowOpen" Value="true">
+        <Setter Property="IsEnabled" TargetName="ToolBarThumb" Value="false" />
+      </Trigger>
+      <Trigger Property="Header" Value="{x:Null}">
+        <Setter Property="Visibility" TargetName="ToolBarHeader" Value="Collapsed" />
+      </Trigger>
+      <Trigger Property="ToolBarTray.IsLocked" Value="true">
+        <Setter Property="Visibility" TargetName="ToolBarThumb" Value="Collapsed" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <Style x:Key="ToolBarBaseStyle" TargetType="ToolBar">
+    <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
+    <Setter Property="Padding" Value="4" />
+    <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+    <Setter Property="Template" Value="{StaticResource ToolBarHorizontalTemplate}" />
+    <Style.Triggers>
+      <Trigger Property="Orientation" Value="Vertical">
+        <Setter Property="Template" Value="{StaticResource ToolBarVerticalTemplate}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
   <Style BasedOn="{StaticResource ColorPickerBaseStyle}" TargetType="hc:ColorPicker" />
   <Style BasedOn="{StaticResource ComboBoxPlusBaseStyle}" TargetType="hc:ComboBox" />
   <Style x:Key="ComboBoxPlus.Small" BasedOn="{StaticResource ComboBoxPlusBaseStyle}" TargetType="hc:ComboBox">
@@ -17356,6 +17384,7 @@ Source files:
     <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,3" />
     <Setter Property="Padding" Value="6,0" />
   </Style>
+  <Style BasedOn="{StaticResource ToolBarBaseStyle}" TargetType="ToolBar" />
   <Style x:Key="Tag4CheckComboBoxStyle" BasedOn="{StaticResource TagBaseStyle}" TargetType="hc:Tag">
     <Setter Property="Padding" Value="6,3,4,3" />
     <Setter Property="Height" Value="Auto" />
@@ -17523,12 +17552,14 @@ Source files:
   </Style>
   <Style x:Key="CheckComboBox.Small" BasedOn="{StaticResource CheckComboBoxBaseStyle}" TargetType="hc:CheckComboBox">
     <Setter Property="TagStyle" Value="{StaticResource Tag4CheckComboBoxStyle.Small}" />
+    <Setter Property="ItemContainerStyle" Value="{StaticResource CheckComboBoxItem.Small}" />
     <Setter Property="MinHeight" Value="20" />
     <Setter Property="Padding" Value="6,1" />
   </Style>
   <Style x:Key="CheckComboBoxExtend" BasedOn="{StaticResource CheckComboBoxExtendBaseStyle}" TargetType="hc:CheckComboBox" />
   <Style x:Key="CheckComboBoxExtend.Small" BasedOn="{StaticResource CheckComboBoxExtend}" TargetType="hc:CheckComboBox">
     <Setter Property="TagStyle" Value="{StaticResource Tag4CheckComboBoxStyle.Small}" />
+    <Setter Property="ItemContainerStyle" Value="{StaticResource CheckComboBoxItem.Small}" />
     <Setter Property="hc:InfoElement.MinContentHeight" Value="20" />
     <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,3" />
     <Setter Property="MinHeight" Value="20" />
@@ -17537,6 +17568,7 @@ Source files:
   <Style x:Key="CheckComboBoxPlus" BasedOn="{StaticResource CheckComboBoxPlusBaseStyle}" TargetType="hc:CheckComboBox" />
   <Style x:Key="CheckComboBoxPlus.Small" BasedOn="{StaticResource CheckComboBoxPlus}" TargetType="hc:CheckComboBox">
     <Setter Property="TagStyle" Value="{StaticResource Tag4CheckComboBoxStyle.Small}" />
+    <Setter Property="ItemContainerStyle" Value="{StaticResource CheckComboBoxItem.Small}" />
     <Setter Property="hc:InfoElement.MinContentHeight" Value="20" />
     <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,3" />
     <Setter Property="MinHeight" Value="20" />
