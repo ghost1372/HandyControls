@@ -226,7 +226,7 @@ public class ColorPicker : Control, ISingleOpen
     #region Properties
 
     internal static readonly DependencyProperty ChannelAProperty = DependencyProperty.Register(
-        "ChannelA", typeof(int), typeof(ColorPicker), new PropertyMetadata(255));
+        nameof(ChannelA), typeof(int), typeof(ColorPicker), new PropertyMetadata(255));
 
     internal int ChannelA
     {
@@ -235,7 +235,7 @@ public class ColorPicker : Control, ISingleOpen
     }
 
     internal static readonly DependencyProperty ChannelRProperty = DependencyProperty.Register(
-        "ChannelR", typeof(int), typeof(ColorPicker), new PropertyMetadata(255));
+        nameof(ChannelR), typeof(int), typeof(ColorPicker), new PropertyMetadata(255));
 
     internal int ChannelR
     {
@@ -244,7 +244,7 @@ public class ColorPicker : Control, ISingleOpen
     }
 
     internal static readonly DependencyProperty ChannelGProperty = DependencyProperty.Register(
-        "ChannelG", typeof(int), typeof(ColorPicker), new PropertyMetadata(255));
+        nameof(ChannelG), typeof(int), typeof(ColorPicker), new PropertyMetadata(255));
 
     internal int ChannelG
     {
@@ -253,7 +253,7 @@ public class ColorPicker : Control, ISingleOpen
     }
 
     internal static readonly DependencyProperty ChannelBProperty = DependencyProperty.Register(
-        "ChannelB", typeof(int), typeof(ColorPicker), new PropertyMetadata(255));
+        nameof(ChannelB), typeof(int), typeof(ColorPicker), new PropertyMetadata(255));
 
     internal int ChannelB
     {
@@ -262,7 +262,7 @@ public class ColorPicker : Control, ISingleOpen
     }
 
     public static readonly DependencyProperty SelectedBrushProperty = DependencyProperty.Register(
-        "SelectedBrush", typeof(SolidColorBrush), typeof(ColorPicker), new PropertyMetadata(Brushes.White, OnSelectedBrushChanged, CoerceSelectedBrush));
+        nameof(SelectedBrush), typeof(SolidColorBrush), typeof(ColorPicker), new PropertyMetadata(Brushes.White, OnSelectedBrushChanged, CoerceSelectedBrush));
 
     private static object CoerceSelectedBrush(DependencyObject d, object basevalue)
     {
@@ -301,7 +301,7 @@ public class ColorPicker : Control, ISingleOpen
     }
 
     internal static readonly DependencyProperty SelectedBrushWithoutOpacityProperty = DependencyProperty.Register(
-        "SelectedBrushWithoutOpacity", typeof(SolidColorBrush), typeof(ColorPicker), new PropertyMetadata(Brushes.White));
+        nameof(SelectedBrushWithoutOpacity), typeof(SolidColorBrush), typeof(ColorPicker), new PropertyMetadata(Brushes.White));
 
     internal SolidColorBrush SelectedBrushWithoutOpacity
     {
@@ -310,7 +310,7 @@ public class ColorPicker : Control, ISingleOpen
     }
 
     internal static readonly DependencyProperty BackColorProperty = DependencyProperty.Register(
-        "BackColor", typeof(SolidColorBrush), typeof(ColorPicker), new PropertyMetadata(Brushes.Red));
+        nameof(BackColor), typeof(SolidColorBrush), typeof(ColorPicker), new PropertyMetadata(Brushes.Red));
 
     internal SolidColorBrush BackColor
     {
@@ -319,7 +319,7 @@ public class ColorPicker : Control, ISingleOpen
     }
 
     internal static readonly DependencyProperty ShowListProperty = DependencyProperty.Register(
-        "ShowList", typeof(List<bool>), typeof(ColorPicker), new PropertyMetadata(new List<bool>
+        nameof(ShowList), typeof(List<bool>), typeof(ColorPicker), new PropertyMetadata(new List<bool>
         {
             true, false, false
         }));

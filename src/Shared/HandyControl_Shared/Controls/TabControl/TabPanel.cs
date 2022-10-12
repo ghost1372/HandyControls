@@ -46,7 +46,7 @@ public class TabPanel : Panel
     ///     是否将标签填充
     /// </summary>
     public static readonly DependencyProperty IsTabFillEnabledProperty = DependencyProperty.Register(
-        "IsTabFillEnabled", typeof(bool), typeof(TabPanel), new PropertyMetadata(ValueBoxes.FalseBox));
+        nameof(IsTabFillEnabled), typeof(bool), typeof(TabPanel), new PropertyMetadata(ValueBoxes.FalseBox));
 
     /// <summary>
     ///     是否将标签填充
@@ -61,7 +61,7 @@ public class TabPanel : Panel
     ///     标签宽度
     /// </summary>
     public static readonly DependencyProperty TabItemWidthProperty = DependencyProperty.Register(
-        "TabItemWidth", typeof(double), typeof(TabPanel), new PropertyMetadata(200.0));
+        nameof(TabItemWidth), typeof(double), typeof(TabPanel), new PropertyMetadata(200.0));
 
     /// <summary>
     ///     标签宽度
@@ -76,7 +76,7 @@ public class TabPanel : Panel
     ///     标签高度
     /// </summary>
     public static readonly DependencyProperty TabItemHeightProperty = DependencyProperty.Register(
-        "TabItemHeight", typeof(double), typeof(TabPanel), new PropertyMetadata(30.0));
+        nameof(TabItemHeight), typeof(double), typeof(TabPanel), new PropertyMetadata(30.0));
 
     /// <summary>
     ///     标签高度

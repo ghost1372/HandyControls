@@ -100,7 +100,7 @@ public partial class CoverView : RegularItemsControl
     protected override bool IsItemItsOwnContainerOverride(object item) => item is CoverViewItem;
 
     public static readonly DependencyProperty CoverViewContentStyleProperty = DependencyProperty.Register(
-        "CoverViewContentStyle", typeof(Style), typeof(CoverView), new PropertyMetadata(default(Style)));
+        nameof(CoverViewContentStyle), typeof(Style), typeof(CoverView), new PropertyMetadata(default(Style)));
 
     public Style CoverViewContentStyle
     {
@@ -109,7 +109,7 @@ public partial class CoverView : RegularItemsControl
     }
 
     internal static readonly DependencyProperty GroupsProperty = DependencyProperty.Register(
-        "Groups", typeof(int), typeof(CoverView),
+        nameof(Groups), typeof(int), typeof(CoverView),
         new FrameworkPropertyMetadata(ValueBoxes.Int5Box, FrameworkPropertyMetadataOptions.AffectsMeasure,
             OnGroupsChanged, CoerceGroups));
 
@@ -133,7 +133,7 @@ public partial class CoverView : RegularItemsControl
     }
 
     public static readonly DependencyProperty ItemContentHeightProperty = DependencyProperty.Register(
-        "ItemContentHeight", typeof(double), typeof(CoverView), new PropertyMetadata(ValueBoxes.Double300Box),
+        nameof(ItemContentHeight), typeof(double), typeof(CoverView), new PropertyMetadata(ValueBoxes.Double300Box),
         ValidateHelper.IsInRangeOfPosDoubleIncludeZero);
 
     public double ItemContentHeight
@@ -143,7 +143,7 @@ public partial class CoverView : RegularItemsControl
     }
 
     public static readonly DependencyProperty ItemContentHeightFixedProperty = DependencyProperty.Register(
-        "ItemContentHeightFixed", typeof(bool), typeof(CoverView), new PropertyMetadata(ValueBoxes.TrueBox));
+        nameof(ItemContentHeightFixed), typeof(bool), typeof(CoverView), new PropertyMetadata(ValueBoxes.TrueBox));
 
     public bool ItemContentHeightFixed
     {
@@ -152,7 +152,7 @@ public partial class CoverView : RegularItemsControl
     }
 
     public static readonly DependencyProperty ItemHeaderTemplateProperty = DependencyProperty.Register(
-        "ItemHeaderTemplate", typeof(DataTemplate), typeof(CoverView), new PropertyMetadata(default(DataTemplate)));
+        nameof(ItemHeaderTemplate), typeof(DataTemplate), typeof(CoverView), new PropertyMetadata(default(DataTemplate)));
 
     public DataTemplate ItemHeaderTemplate
     {

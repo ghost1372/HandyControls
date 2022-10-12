@@ -81,31 +81,15 @@ public partial class Window : System.Windows.Window
 
     #endregion 
 
-    #region prop
+        public static readonly DependencyProperty NonClientAreaContentProperty = DependencyProperty.Register(
+            nameof(NonClientAreaContent), typeof(object), typeof(Window), new PropertyMetadata(default(object)));
 
     public static readonly DependencyProperty NonClientAreaContentProperty = DependencyProperty.Register(
         "NonClientAreaContent", typeof(object), typeof(Window), new PropertyMetadata(default(object)));
 
-    public object NonClientAreaContent
-    {
-        get => GetValue(NonClientAreaContentProperty);
-        set => SetValue(NonClientAreaContentProperty, value);
-    }
-
     public static readonly DependencyProperty CloseButtonHoverBackgroundProperty = DependencyProperty.Register(
-        "CloseButtonHoverBackground", typeof(Brush), typeof(Window),
+        nameof(CloseButtonHoverBackground), typeof(Brush), typeof(Window),
         new PropertyMetadata(default(Brush)));
-
-    public Brush CloseButtonHoverBackground
-    {
-        get => (Brush) GetValue(CloseButtonHoverBackgroundProperty);
-        set => SetValue(CloseButtonHoverBackgroundProperty, value);
-    }
-
-    public static readonly DependencyProperty CloseButtonHoverForegroundProperty =
-        DependencyProperty.Register(
-            "CloseButtonHoverForeground", typeof(Brush), typeof(Window),
-            new PropertyMetadata(default(Brush)));
 
     public Brush CloseButtonHoverForeground
     {
@@ -113,8 +97,10 @@ public partial class Window : System.Windows.Window
         set => SetValue(CloseButtonHoverForegroundProperty, value);
     }
 
-    public static readonly DependencyProperty CloseButtonBackgroundProperty = DependencyProperty.Register(
-        "CloseButtonBackground", typeof(Brush), typeof(Window), new PropertyMetadata(Brushes.Transparent));
+        public static readonly DependencyProperty CloseButtonHoverForegroundProperty =
+            DependencyProperty.Register(
+                nameof(CloseButtonHoverForeground), typeof(Brush), typeof(Window),
+                new PropertyMetadata(default(Brush)));
 
     public Brush CloseButtonBackground
     {
@@ -122,9 +108,8 @@ public partial class Window : System.Windows.Window
         set => SetValue(CloseButtonBackgroundProperty, value);
     }
 
-    public static readonly DependencyProperty CloseButtonForegroundProperty = DependencyProperty.Register(
-        "CloseButtonForeground", typeof(Brush), typeof(Window),
-        new PropertyMetadata(Brushes.White));
+        public static readonly DependencyProperty CloseButtonBackgroundProperty = DependencyProperty.Register(
+            nameof(CloseButtonBackground), typeof(Brush), typeof(Window), new PropertyMetadata(Brushes.Transparent));
 
     public Brush CloseButtonForeground
     {
@@ -132,8 +117,9 @@ public partial class Window : System.Windows.Window
         set => SetValue(CloseButtonForegroundProperty, value);
     }
 
-    public static readonly DependencyProperty OtherButtonBackgroundProperty = DependencyProperty.Register(
-        "OtherButtonBackground", typeof(Brush), typeof(Window), new PropertyMetadata(Brushes.Transparent));
+        public static readonly DependencyProperty CloseButtonForegroundProperty = DependencyProperty.Register(
+            nameof(CloseButtonForeground), typeof(Brush), typeof(Window),
+            new PropertyMetadata(Brushes.White));
 
     public Brush OtherButtonBackground
     {
@@ -141,9 +127,8 @@ public partial class Window : System.Windows.Window
         set => SetValue(OtherButtonBackgroundProperty, value);
     }
 
-    public static readonly DependencyProperty OtherButtonForegroundProperty = DependencyProperty.Register(
-        "OtherButtonForeground", typeof(Brush), typeof(Window),
-        new PropertyMetadata(Brushes.White));
+        public static readonly DependencyProperty OtherButtonBackgroundProperty = DependencyProperty.Register(
+            nameof(OtherButtonBackground), typeof(Brush), typeof(Window), new PropertyMetadata(Brushes.Transparent));
 
     public Brush OtherButtonForeground
     {
@@ -151,9 +136,9 @@ public partial class Window : System.Windows.Window
         set => SetValue(OtherButtonForegroundProperty, value);
     }
 
-    public static readonly DependencyProperty OtherButtonHoverBackgroundProperty = DependencyProperty.Register(
-        "OtherButtonHoverBackground", typeof(Brush), typeof(Window),
-        new PropertyMetadata(default(Brush)));
+        public static readonly DependencyProperty OtherButtonForegroundProperty = DependencyProperty.Register(
+            nameof(OtherButtonForeground), typeof(Brush), typeof(Window),
+            new PropertyMetadata(Brushes.White));
 
     public Brush OtherButtonHoverBackground
     {
@@ -161,9 +146,8 @@ public partial class Window : System.Windows.Window
         set => SetValue(OtherButtonHoverBackgroundProperty, value);
     }
 
-    public static readonly DependencyProperty OtherButtonHoverForegroundProperty =
-        DependencyProperty.Register(
-            "OtherButtonHoverForeground", typeof(Brush), typeof(Window),
+        public static readonly DependencyProperty OtherButtonHoverBackgroundProperty = DependencyProperty.Register(
+            nameof(OtherButtonHoverBackground), typeof(Brush), typeof(Window),
             new PropertyMetadata(default(Brush)));
 
     public Brush OtherButtonHoverForeground
@@ -291,14 +275,10 @@ public partial class Window : System.Windows.Window
             _tempNonClientAreaHeight += 8;
         }
 
-        CommandBindings.Add(new CommandBinding(SystemCommands.MinimizeWindowCommand,
-            (s, e) => WindowState = WindowState.Minimized));
-        CommandBindings.Add(new CommandBinding(SystemCommands.MaximizeWindowCommand,
-            (s, e) => WindowState = WindowState.Maximized));
-        CommandBindings.Add(new CommandBinding(SystemCommands.RestoreWindowCommand,
-            (s, e) => WindowState = WindowState.Normal));
-        CommandBindings.Add(new CommandBinding(SystemCommands.CloseWindowCommand, (s, e) => Close()));
-        CommandBindings.Add(new CommandBinding(SystemCommands.ShowSystemMenuCommand, ShowSystemMenu));
+        public static readonly DependencyProperty OtherButtonHoverForegroundProperty =
+            DependencyProperty.Register(
+                nameof(OtherButtonHoverForeground), typeof(Brush), typeof(Window),
+                new PropertyMetadata(default(Brush)));
 
         _tempWindowState = WindowState;
         _tempWindowStyle = WindowStyle;
@@ -312,8 +292,9 @@ public partial class Window : System.Windows.Window
             _tempNonClientAreaHeight -= 8;
         }
 
-        if (SizeToContent != SizeToContent.WidthAndHeight)
-            return;
+        public static readonly DependencyProperty NonClientAreaBackgroundProperty = DependencyProperty.Register(
+            nameof(NonClientAreaBackground), typeof(Brush), typeof(Window),
+            new PropertyMetadata(default(Brush)));
 
         SizeToContent = SizeToContent.Height;
         Dispatcher.BeginInvoke(new Action(() => { SizeToContent = SizeToContent.WidthAndHeight; }));
@@ -337,9 +318,95 @@ public partial class Window : System.Windows.Window
 
         if (monitor != IntPtr.Zero && mmi != null)
         {
-            InteropValues.APPBARDATA appBarData = default;
-            var autoHide = InteropMethods.SHAppBarMessage(4, ref appBarData) != 0;
-            if (autoHide)
+            get => (Brush) GetValue(NonClientAreaBackgroundProperty);
+            set => SetValue(NonClientAreaBackgroundProperty, value);
+        }
+
+        public static readonly DependencyProperty NonClientAreaForegroundProperty = DependencyProperty.Register(
+            nameof(NonClientAreaForeground), typeof(Brush), typeof(Window),
+            new PropertyMetadata(default(Brush)));
+
+        public Brush NonClientAreaForeground
+        {
+            get => (Brush) GetValue(NonClientAreaForegroundProperty);
+            set => SetValue(NonClientAreaForegroundProperty, value);
+        }
+
+        public static readonly DependencyProperty NonClientAreaHeightProperty = DependencyProperty.Register(
+            nameof(NonClientAreaHeight), typeof(double), typeof(Window),
+            new PropertyMetadata(22.0));
+
+        public double NonClientAreaHeight
+        {
+            get => (double) GetValue(NonClientAreaHeightProperty);
+            set => SetValue(NonClientAreaHeightProperty, value);
+        }
+
+        public static readonly DependencyProperty ShowNonClientAreaProperty = DependencyProperty.Register(
+            nameof(ShowNonClientArea), typeof(bool), typeof(Window),
+            new PropertyMetadata(ValueBoxes.TrueBox, OnShowNonClientAreaChanged));
+
+        public bool ShowNonClientArea
+        {
+            get => (bool) GetValue(ShowNonClientAreaProperty);
+            set => SetValue(ShowNonClientAreaProperty, ValueBoxes.BooleanBox(value));
+        }
+
+        public static readonly DependencyProperty ShowTitleProperty = DependencyProperty.Register(
+            nameof(ShowTitle), typeof(bool), typeof(Window), new PropertyMetadata(ValueBoxes.TrueBox));
+
+        public bool ShowTitle
+        {
+            get => (bool) GetValue(ShowTitleProperty);
+            set => SetValue(ShowTitleProperty, ValueBoxes.BooleanBox(value));
+        }
+
+        public static readonly DependencyProperty IsFullScreenProperty = DependencyProperty.Register(
+            nameof(IsFullScreen), typeof(bool), typeof(Window),
+            new PropertyMetadata(ValueBoxes.FalseBox, OnIsFullScreenChanged));
+
+        public bool IsFullScreen
+        {
+            get => (bool) GetValue(IsFullScreenProperty);
+            set => SetValue(IsFullScreenProperty, ValueBoxes.BooleanBox(value));
+        }
+
+        public static readonly DependencyProperty ShowIconProperty = DependencyProperty.Register(
+            nameof(ShowIcon), typeof(bool), typeof(Window), new PropertyMetadata(ValueBoxes.TrueBox));
+
+        public bool ShowIcon
+        {
+            get => (bool) GetValue(ShowIconProperty);
+            set => SetValue(ShowIconProperty, value);
+        }
+
+        #endregion
+
+        #region methods
+
+        #region public
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _nonClientArea = GetTemplateChild(ElementNonClientArea) as UIElement;
+        }
+
+        #endregion
+
+        #region protected
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            this.GetHwndSource()?.AddHook(HwndSourceHook);
+        }
+
+        protected override void OnStateChanged(EventArgs e)
+        {
+            base.OnStateChanged(e);
+            if (WindowState == WindowState.Maximized)
             {
                 var monitorInfo = default(InteropValues.MONITORINFO);
                 monitorInfo.cbSize = (uint) Marshal.SizeOf(typeof(InteropValues.MONITORINFO));
