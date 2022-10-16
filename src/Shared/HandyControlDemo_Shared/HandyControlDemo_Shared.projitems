@@ -264,6 +264,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\UniformSpacingPanelDemoCtl.xaml.cs">
       <DependentUpon>UniformSpacingPanelDemoCtl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\WatermarkDemoCtl.xaml.cs">
+      <DependentUpon>WatermarkDemoCtl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)UserControl\Controls\WaterfallPanelDemoCtl.xaml.cs">
       <DependentUpon>WaterfallPanelDemoCtl.xaml</DependentUpon>
     </Compile>
@@ -812,6 +815,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\UniformSpacingPanelDemoCtl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)UserControl\Controls\WatermarkDemoCtl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

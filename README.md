@@ -187,6 +187,9 @@ Step 4: Enjoy coding
 ### WinUI Mica Material
 
 ![image](https://user-images.githubusercontent.com/9213496/139542436-037f0233-e8c6-4c04-9e16-4d50035ed0b3.png)
+### Watermark
+
+![Watermark](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/Watermark.png)
 
 ### AutoCompleteTextBox
 
@@ -204,11 +207,11 @@ Step 4: Enjoy coding
 
 ![FlexPanel](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/FlexPanel.gif)
 
+## History publication
+
 ### CheckComboBox
 
 ![CheckComboBox](https://raw.githubusercontent.com/HandyOrg/HandyOrgResource/master/HandyControl/Resources/CheckComboBox.png)
-
-## History publication
 
 ### ImageSelector
 
