@@ -21,7 +21,7 @@ public partial class Window
 
     public static readonly DependencyProperty TitleMarginProperty = DependencyProperty.Register(
         "TitleMargin", typeof(Thickness), typeof(Window),
-        new PropertyMetadata(0));
+        new PropertyMetadata(new Thickness(0)));
 
     public Thickness TitleMargin
     {

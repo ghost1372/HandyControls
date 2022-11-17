@@ -19,6 +19,6 @@
     <DefineConstants>TRACE;Core</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HandyControls" Version="3.4.2" />
+    <PackageReference Include="HandyControls" Version="3.4.4" />
   </ItemGroup>
 </Project>
