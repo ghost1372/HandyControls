@@ -79,7 +79,7 @@
                             </interactivity:Interaction.Triggers>
                             <Image IsHitTestVisible="False" Name="Icon" Source="{TemplateBinding Icon}" VerticalAlignment="Center" Width="16" Height="16" />
                         </Button>
-                        <TextBlock Grid.Column="1" Text="{TemplateBinding Title}" Padding="10,0,0,0" VerticalAlignment="Center">
+                        <TextBlock Grid.Column="1" Text="{TemplateBinding Title}" Padding="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding TitleAlignment}" Margin="{TemplateBinding TitleMargin}">
                             <TextBlock.Visibility>
                                 <MultiBinding Converter="{StaticResource BooleanArr2VisibilityConverter}">
                                     <MultiBinding.Bindings>
@@ -202,7 +202,7 @@
                                     </interactivity:Interaction.Triggers>
                                     <Image IsHitTestVisible="False" Source="{TemplateBinding Icon}" VerticalAlignment="Center" Width="16" Height="16" />
                                 </Button>
-                                <TextBlock Grid.Column="1" Text="{TemplateBinding Title}" Padding="10,0,0,0" VerticalAlignment="Center">
+                                <TextBlock Grid.Column="1" Text="{TemplateBinding Title}" Padding="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding TitleAlignment}" Margin="{TemplateBinding TitleMargin}">
                                     <TextBlock.Visibility>
                                         <MultiBinding Converter="{StaticResource BooleanArr2VisibilityConverter}">
                                             <MultiBinding.Bindings>

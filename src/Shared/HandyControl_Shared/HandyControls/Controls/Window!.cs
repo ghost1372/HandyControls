@@ -7,6 +7,30 @@ namespace HandyControl.Controls;
 
 public partial class Window
 {
+    #region Title
+
+    public static readonly DependencyProperty TitleAlignmentProperty = DependencyProperty.Register(
+        "TitleAlignment", typeof(HorizontalAlignment), typeof(Window),
+        new PropertyMetadata(HorizontalAlignment.Left));
+
+    public HorizontalAlignment TitleAlignment
+    {
+        get => (HorizontalAlignment) GetValue(TitleAlignmentProperty);
+        set => SetValue(TitleAlignmentProperty, (HorizontalAlignment) value);
+    }
+
+    public static readonly DependencyProperty TitleMarginProperty = DependencyProperty.Register(
+        "TitleMargin", typeof(Thickness), typeof(Window),
+        new PropertyMetadata(0));
+
+    public Thickness TitleMargin
+    {
+        get => (Thickness) GetValue(TitleMarginProperty);
+        set => SetValue(TitleMarginProperty, (Thickness) value);
+    }
+
+    #endregion
+
     #region Mica
 
     public static readonly DependencyProperty SystemBackdropTypeProperty = DependencyProperty.Register(
