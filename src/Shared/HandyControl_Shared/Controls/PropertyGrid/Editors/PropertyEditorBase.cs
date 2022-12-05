@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace HandyControl.Controls;
@@ -14,7 +15,7 @@ public abstract class PropertyEditorBase : DependencyObject
                 Source = propertyItem.Value,
                 Mode = GetBindingMode(propertyItem),
                 UpdateSourceTrigger = GetUpdateSourceTrigger(propertyItem),
-                Converter = GetConverter(propertyItem)
+                Converter = GetConverter(propertyItem),
             });
 
     public abstract DependencyProperty GetDependencyProperty();

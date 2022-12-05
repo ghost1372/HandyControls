@@ -1,0 +1,30 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:hc="clr-namespace:HandyControl.Controls">
+
+    <Style BasedOn="{StaticResource ColorPickerBoxBaseStyle}" TargetType="hc:ColorPickerBox"/>
+
+    <Style x:Key="ColorPickerBox.Small" BasedOn="{StaticResource ColorPickerBoxBaseStyle}" TargetType="hc:ColorPickerBox">
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="Padding" Value="6,0"/>
+    </Style>
+
+    <Style x:Key="ColorPickerBoxExtend" BasedOn="{StaticResource ColorPickerBoxExtendBaseStyle}" TargetType="hc:ColorPickerBox"/>
+
+    <Style x:Key="ColorPickerBoxExtend.Small" BasedOn="{StaticResource ColorPickerBoxExtend}" TargetType="hc:ColorPickerBox">
+        <Setter Property="hc:InfoElement.MinContentHeight" Value="20"/>
+        <Setter Property="hc:InfoElement.ContentHeight" Value="20"/>
+        <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,3"/>
+        <Setter Property="Padding" Value="6,0"/>
+    </Style>
+
+    <Style x:Key="ColorPickerBoxPlus" BasedOn="{StaticResource ColorPickerBoxPlusBaseStyle}" TargetType="hc:ColorPickerBox"/>
+
+    <Style x:Key="ColorPickerBoxPlus.Small" BasedOn="{StaticResource ColorPickerBoxPlus}" TargetType="hc:ColorPickerBox">
+        <Setter Property="hc:InfoElement.MinContentHeight" Value="20"/>
+        <Setter Property="hc:InfoElement.ContentHeight" Value="20"/>
+        <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,3"/>
+        <Setter Property="Padding" Value="6,0"/>
+    </Style>
+
+</ResourceDictionary>

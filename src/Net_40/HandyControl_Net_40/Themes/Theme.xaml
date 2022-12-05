@@ -24,6 +24,7 @@ Source files:
 ..\..\Shared\HandyControl_Shared\Themes\Styles\Base\ChatBubbleBaseStyle.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\Base\CheckBoxBaseStyle.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\Base\ColorPickerBaseStyle.xaml
+..\..\Shared\HandyControl_Shared\Themes\Styles\Base\ColorPickerBoxBaseStyle.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\Base\ContextMenuBaseStyle.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\Base\CoverFlowBaseStyle.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\Base\CoverViewBaseStyle.xaml
@@ -100,6 +101,7 @@ Source files:
 ..\..\Shared\HandyControl_Shared\Themes\Styles\Clock.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\Col.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\ColorPicker.xaml
+..\..\Shared\HandyControl_Shared\Themes\Styles\ColorPickerBox.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\ComboBox.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\ContentControl.xaml
 ..\..\Shared\HandyControl_Shared\Themes\Styles\ContextMenu.xaml
@@ -13369,7 +13371,7 @@ Themes\Styles\Window.xaml
               <RowDefinition Height="122" />
               <RowDefinition Height="110" />
               <RowDefinition Height="62" />
-              <RowDefinition Height="62" />
+              <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Border BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}" Grid.RowSpan="4" Background="{TemplateBinding Background}" />
             <local:SimplePanel Margin="1" Grid.Row="0">
@@ -13455,7 +13457,7 @@ Themes\Styles\Window.xaml
             <Border Grid.Row="2" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
               <WrapPanel Name="PART_PanelColor" Margin="6" HorizontalAlignment="Center" />
             </Border>
-            <Border Grid.Row="3" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
+            <Border Height="62" Grid.Row="3" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}" Visibility="{TemplateBinding ShowConfirmButton,Converter={StaticResource Boolean2VisibilityConverter}}">
               <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Command="interactivity:ControlCommands.Cancel" Content="{ex:Lang Key={x:Static langs:LangKeys.Cancel}}" Width="80" Margin="0,0,16,0" />
                 <Button Command="interactivity:ControlCommands.Confirm" Content="{ex:Lang Key={x:Static langs:LangKeys.Confirm}}" Width="80" Style="{StaticResource ButtonPrimary}" />
@@ -13465,6 +13467,335 @@ Themes\Styles\Window.xaml
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+  </Style>
+  <Style x:Key="ColorPickerBoxBaseStyle" TargetType="hc:ColorPickerBox">
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
+    <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
+    <Setter Property="Padding" Value="{StaticResource DefaultInputPadding}" />
+    <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,8,6,8" />
+    <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+    <Setter Property="MinHeight" Value="{StaticResource DefaultControlHeight}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CaretBrush" Value="{DynamicResource PrimaryTextBrush}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="hc:ColorPickerBox">
+          <Border x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+            <Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="25" />
+              </Grid.ColumnDefinitions>
+              <!--<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Margin="3,0,0,0" HorizontalAlignment="Left" Width="16" Padding="0" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>-->
+              <Button Height="16" Style="{StaticResource ButtonDefault}" Margin="3,0,0,0" HorizontalAlignment="Left" Width="16" Padding="0" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Background="{TemplateBinding SelectedBrush}" Focusable="False" Grid.Row="0" />
+              <local:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+              <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+            </Grid>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="false">
+              <Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+            </Trigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsMouseOver" Value="true" />
+                <Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+              </MultiTrigger.Conditions>
+              <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+            </MultiTrigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="IsMouseOver" Value="true" />
+                <Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+              </MultiTrigger.Conditions>
+              <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            </MultiTrigger>
+            <Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+              <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            </Trigger>
+            <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+              <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <ControlTemplate x:Key="ColorPickerBoxExtendTopTemplate" TargetType="hc:ColorPickerBox">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
+      </Grid.RowDefinitions>
+      <DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
+        <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
+        <TextBlock local:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Margin="1,0,1,0" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
+      </DockPanel>
+      <Border Grid.Row="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+        <Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25" />
+          </Grid.ColumnDefinitions>
+          <!--<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Margin="3,0,0,0" HorizontalAlignment="Left" Width="16" Padding="0" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button"  Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>-->
+          <Button Height="16" Style="{StaticResource ButtonDefault}" Margin="3,0,0,0" HorizontalAlignment="Left" Width="16" Padding="0" x:Name="PART_Button" BorderThickness="0" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Background="{TemplateBinding SelectedBrush}" Focusable="False" Grid.Row="0" />
+          <local:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+          <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+        </Grid>
+      </Border>
+    </Grid>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsEnabled" Value="false">
+        <Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+      </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+        </MultiTrigger.Conditions>
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+        </MultiTrigger.Conditions>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+      </MultiTrigger>
+      <Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+        <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <ControlTemplate x:Key="ColorPickerBoxExtendLeftTemplate" TargetType="hc:ColorPickerBox">
+    <Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding Path=(hc:TitleElement.VerticalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{Binding Path=(hc:TitleElement.MarginOnTheLeft),RelativeSource={RelativeSource TemplatedParent}}">
+        <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
+        <TextBlock local:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
+      </DockPanel>
+      <Border Grid.Column="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+        <Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="25" />
+          </Grid.ColumnDefinitions>
+          <!--<Button Height="{x:Static system:Double.NaN}" Style="{StaticResource ButtonIcon}" Margin="3,0,0,0" HorizontalAlignment="Left" Width="16" Padding="0" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button"  Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>-->
+          <Button Height="16" Style="{StaticResource ButtonDefault}" Margin="3,0,0,0" HorizontalAlignment="Left" Width="16" Padding="0" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Background="{TemplateBinding SelectedBrush}" Focusable="False" Grid.Row="0" />
+          <local:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+          <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+        </Grid>
+      </Border>
+    </Grid>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsEnabled" Value="false">
+        <Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+      </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+        </MultiTrigger.Conditions>
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+        </MultiTrigger.Conditions>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+      </MultiTrigger>
+      <Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+        <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <Style x:Key="ColorPickerBoxExtendBaseStyle" BasedOn="{StaticResource ColorPickerBoxBaseStyle}" TargetType="hc:ColorPickerBox">
+    <Setter Property="Height" Value="Auto" />
+    <Setter Property="hc:InfoElement.Symbol" Value="●" />
+    <Setter Property="hc:InfoElement.ContentHeight" Value="{x:Static system:Double.NaN}" />
+    <Setter Property="hc:InfoElement.MinContentHeight" Value="{StaticResource DefaultControlHeight}" />
+    <Setter Property="Template" Value="{StaticResource ColorPickerBoxExtendTopTemplate}" />
+    <Style.Triggers>
+      <Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+        <Setter Property="Template" Value="{StaticResource ColorPickerBoxExtendLeftTemplate}" />
+        <Setter Property="Width" Value="Auto" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  <ControlTemplate x:Key="ColorPickerBoxPlusTopTemplate" TargetType="hc:ColorPickerBox">
+    <ControlTemplate.Resources>
+      <Storyboard x:Key="StoryboardShow">
+        <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2" />
+      </Storyboard>
+      <Storyboard x:Key="StoryboardHidden">
+        <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
+      </Storyboard>
+    </ControlTemplate.Resources>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Double2GridLengthConverter}}" />
+      </Grid.RowDefinitions>
+      <DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{TemplateBinding Padding}">
+        <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
+        <TextBlock local:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Margin="1,0,1,0" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
+      </DockPanel>
+      <TextBlock FontSize="12" Grid.Row="1" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}" />
+      <Border Grid.Row="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+        <Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="25" />
+          </Grid.ColumnDefinitions>
+          <Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
+          <!--<Button Height="{x:Static system:Double.NaN}" Margin="3,0,0,0" HorizontalAlignment="Left" Style="{StaticResource ButtonIcon}" Width="16" Padding="0" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button"  Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>-->
+          <Button Height="16" Style="{StaticResource ButtonDefault}" Margin="3,0,0,0" HorizontalAlignment="Left" Width="16" Padding="0" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Background="{TemplateBinding SelectedBrush}" Focusable="False" Grid.Row="0" />
+          <local:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+          <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+        </Grid>
+      </Border>
+    </Grid>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsEnabled" Value="false">
+        <Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+      </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+        </MultiTrigger.Conditions>
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+        </MultiTrigger.Conditions>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="ShowClearButton" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
+      </MultiTrigger>
+      <Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+        <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsError" Value="true">
+        <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}" />
+        <Trigger.EnterActions>
+          <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+        </Trigger.EnterActions>
+        <Trigger.ExitActions>
+          <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+        </Trigger.ExitActions>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <ControlTemplate x:Key="ColorPickerBoxPlusLeftTemplate" TargetType="hc:ColorPickerBox">
+    <ControlTemplate.Resources>
+      <Storyboard x:Key="StoryboardShow">
+        <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,-18" Duration="0:0:.2" />
+      </Storyboard>
+      <Storyboard x:Key="StoryboardHidden">
+        <ThicknessAnimation Storyboard.TargetName="TextBlockError" Storyboard.TargetProperty="Margin" To="9,0,0,4" Duration="0:0:0" />
+      </Storyboard>
+    </ControlTemplate.Resources>
+    <Grid MinHeight="{Binding Path=(hc:InfoElement.MinContentHeight),RelativeSource={RelativeSource TemplatedParent}}" Height="{Binding Path=(hc:InfoElement.ContentHeight),RelativeSource={RelativeSource TemplatedParent}}">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="{Binding Path=(hc:InfoElement.TitleWidth),RelativeSource={RelativeSource TemplatedParent}}" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <DockPanel LastChildFill="True" Visibility="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource String2VisibilityConverter}}" HorizontalAlignment="{Binding Path=(hc:TitleElement.HorizontalAlignment),RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{Binding Path=(hc:TitleElement.VerticalAlignment),RelativeSource={RelativeSource TemplatedParent}}" Margin="{Binding Path=(hc:TitleElement.MarginOnTheLeft),RelativeSource={RelativeSource TemplatedParent}}">
+        <ContentPresenter DockPanel.Dock="Right" TextElement.Foreground="{DynamicResource DangerBrush}" Margin="4,0,0,0" Content="{Binding Path=(hc:InfoElement.Symbol),RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding Path=(hc:InfoElement.Necessary),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" />
+        <TextBlock local:TextBlockAttach.AutoTooltip="True" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" Text="{Binding Path=(hc:InfoElement.Title),RelativeSource={RelativeSource TemplatedParent}}" />
+      </DockPanel>
+      <TextBlock FontSize="12" Text="{TemplateBinding ErrorStr}" Name="TextBlockError" VerticalAlignment="Bottom" Margin="9,0,0,4" Foreground="{DynamicResource DangerBrush}" Grid.Column="1" />
+      <Border Grid.Column="1" x:Name="templateRoot" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+        <Grid x:Name="PART_Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="25" />
+          </Grid.ColumnDefinitions>
+          <Button Height="{x:Static system:Double.NaN}" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Width="16" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=templateRoot}" />
+          <!--<Button Height="{x:Static system:Double.NaN}" Margin="3,0,0,0" HorizontalAlignment="Left" Style="{StaticResource ButtonIcon}" Width="16" Padding="0" hc:IconElement.Geometry="{StaticResource ClockGeometry}" x:Name="PART_Button"  Grid.Column="2" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Focusable="False" Grid.Row="0"/>-->
+          <Button Height="16" Style="{StaticResource ButtonDefault}" Margin="3,0,0,0" HorizontalAlignment="Left" Width="16" Padding="0" x:Name="PART_Button" Grid.Column="1" Foreground="{Binding BorderBrush,ElementName=templateRoot}" Background="{TemplateBinding SelectedBrush}" Focusable="False" Grid.Row="0" />
+          <local:WatermarkTextBox CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" x:Name="PART_TextBox" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" Grid.Column="0" Focusable="{TemplateBinding Focusable}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Grid.Row="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+          <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=templateRoot}" StaysOpen="False" />
+        </Grid>
+      </Border>
+    </Grid>
+    <ControlTemplate.Triggers>
+      <Trigger Property="IsEnabled" Value="false">
+        <Setter Property="Opacity" TargetName="templateRoot" Value="0.4" />
+      </Trigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="IsOpen" Value="false" SourceName="PART_Popup" />
+        </MultiTrigger.Conditions>
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="IsOpen" Value="true" SourceName="PART_Popup" />
+        </MultiTrigger.Conditions>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+      </MultiTrigger>
+      <MultiTrigger>
+        <MultiTrigger.Conditions>
+          <Condition Property="IsMouseOver" Value="true" SourceName="templateRoot" />
+          <Condition Property="ShowClearButton" Value="True" />
+        </MultiTrigger.Conditions>
+        <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
+      </MultiTrigger>
+      <Trigger Property="IsFocused" Value="true" SourceName="PART_TextBox">
+        <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource PrimaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsOpen" Value="True" SourceName="PART_Popup">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
+      </Trigger>
+      <Trigger Property="IsError" Value="true">
+        <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource DangerBrush}" />
+        <Trigger.EnterActions>
+          <BeginStoryboard Storyboard="{StaticResource StoryboardShow}" />
+        </Trigger.EnterActions>
+        <Trigger.ExitActions>
+          <BeginStoryboard Storyboard="{StaticResource StoryboardHidden}" />
+        </Trigger.ExitActions>
+      </Trigger>
+    </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <Style x:Key="ColorPickerBoxPlusBaseStyle" BasedOn="{StaticResource ColorPickerBoxExtendBaseStyle}" TargetType="hc:ColorPickerBox">
+    <Setter Property="IsError" Value="{Binding Path=(Validation.HasError),RelativeSource={RelativeSource Self}}" />
+    <Setter Property="Template" Value="{StaticResource ColorPickerBoxPlusTopTemplate}" />
+    <Style.Triggers>
+      <Trigger Property="hc:InfoElement.TitlePlacement" Value="Left">
+        <Setter Property="Template" Value="{StaticResource ColorPickerBoxPlusLeftTemplate}" />
+        <Setter Property="Width" Value="Auto" />
+      </Trigger>
+    </Style.Triggers>
   </Style>
   <Style x:Key="ContextMenuBaseStyle" TargetType="ContextMenu">
     <Setter Property="hc:MenuAttach.ItemPadding" Value="{StaticResource DefaultControlPadding}" />
@@ -16647,6 +16978,25 @@ Themes\Styles\Window.xaml
     </Style.Triggers>
   </Style>
   <Style BasedOn="{StaticResource ColorPickerBaseStyle}" TargetType="hc:ColorPicker" />
+  <Style BasedOn="{StaticResource ColorPickerBoxBaseStyle}" TargetType="hc:ColorPickerBox" />
+  <Style x:Key="ColorPickerBox.Small" BasedOn="{StaticResource ColorPickerBoxBaseStyle}" TargetType="hc:ColorPickerBox">
+    <Setter Property="MinHeight" Value="20" />
+    <Setter Property="Padding" Value="6,0" />
+  </Style>
+  <Style x:Key="ColorPickerBoxExtend" BasedOn="{StaticResource ColorPickerBoxExtendBaseStyle}" TargetType="hc:ColorPickerBox" />
+  <Style x:Key="ColorPickerBoxExtend.Small" BasedOn="{StaticResource ColorPickerBoxExtend}" TargetType="hc:ColorPickerBox">
+    <Setter Property="hc:InfoElement.MinContentHeight" Value="20" />
+    <Setter Property="hc:InfoElement.ContentHeight" Value="20" />
+    <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,3" />
+    <Setter Property="Padding" Value="6,0" />
+  </Style>
+  <Style x:Key="ColorPickerBoxPlus" BasedOn="{StaticResource ColorPickerBoxPlusBaseStyle}" TargetType="hc:ColorPickerBox" />
+  <Style x:Key="ColorPickerBoxPlus.Small" BasedOn="{StaticResource ColorPickerBoxPlus}" TargetType="hc:ColorPickerBox">
+    <Setter Property="hc:InfoElement.MinContentHeight" Value="20" />
+    <Setter Property="hc:InfoElement.ContentHeight" Value="20" />
+    <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,3" />
+    <Setter Property="Padding" Value="6,0" />
+  </Style>
   <Style BasedOn="{StaticResource ComboBoxPlusBaseStyle}" TargetType="hc:ComboBox" />
   <Style x:Key="ComboBoxPlus.Small" BasedOn="{StaticResource ComboBoxPlusBaseStyle}" TargetType="hc:ComboBox">
     <Setter Property="ItemContainerStyle" Value="{StaticResource ComboBoxItem.Small}" />

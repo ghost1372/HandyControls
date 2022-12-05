@@ -137,7 +137,7 @@
                             <RowDefinition Height="122"/>
                             <RowDefinition Height="110"/>
                             <RowDefinition Height="62"/>
-                            <RowDefinition Height="62"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Border BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}" Grid.RowSpan="4" Background="{TemplateBinding Background}"/>
                         <hc:SimplePanel Margin="1" Grid.Row="0">
@@ -223,7 +223,7 @@
                         <Border Grid.Row="2" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
                             <WrapPanel Name="PART_PanelColor" Margin="6" HorizontalAlignment="Center"/>
                         </Border>
-                        <Border Grid.Row="3" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                        <Border Height="62" Grid.Row="3" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}" Visibility="{TemplateBinding ShowConfirmButton,Converter={StaticResource Boolean2VisibilityConverter}}">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Button Command="interactivity:ControlCommands.Cancel" Content="{ex:Lang Key={x:Static langs:LangKeys.Cancel}}" Width="80" Margin="0,0,16,0"/>
                                 <Button Command="interactivity:ControlCommands.Confirm" Content="{ex:Lang Key={x:Static langs:LangKeys.Confirm}}" Width="80" Style="{StaticResource ButtonPrimary}"/>

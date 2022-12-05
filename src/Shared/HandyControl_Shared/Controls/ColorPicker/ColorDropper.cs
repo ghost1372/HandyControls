@@ -84,7 +84,7 @@ internal class ColorDropper
             Mouse.OverrideCursor = Cursors.Arrow;
             MouseHook.Stop();
             MouseHook.StatusChanged -= MouseHook_StatusChanged;
-            ColorPicker.IsCheckedToggleButtonDropper(false);
+            _colorPicker?.IsCheckedToggleButtonDropper(false);
             window?.Close();
         }
     }

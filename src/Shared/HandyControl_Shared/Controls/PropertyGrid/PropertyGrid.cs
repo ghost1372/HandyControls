@@ -127,7 +127,7 @@ public class PropertyGrid : Control
         if (obj == null || _itemsControl == null) return;
 
         _dataView = CollectionViewSource.GetDefaultView(TypeDescriptor.GetProperties(obj.GetType()).OfType<PropertyDescriptor>()
-            .Where(item => PropertyResolver.ResolveIsBrowsable(item)).Select(CreatePropertyItem)
+            .Where(item => PropertyResolver.ResolveIsBrowsable(item)).Select(CreatePropertyItem).Where(y => y != null)
             .Do(item => item.InitElement()));
 
         SortByCategory(null, null);

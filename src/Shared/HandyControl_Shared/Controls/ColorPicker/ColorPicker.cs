@@ -330,6 +330,14 @@ public class ColorPicker : Control, ISingleOpen
         set => SetValue(ShowListProperty, value);
     }
 
+    public static readonly DependencyProperty ShowConfirmButtonProperty = DependencyProperty.Register(
+        nameof(ShowConfirmButton), typeof(bool), typeof(ColorPicker), new PropertyMetadata(ValueBoxes.FalseBox));
+
+    public bool ShowConfirmButton
+    {
+        get => (bool) GetValue(ShowConfirmButtonProperty);
+        set => SetValue(ShowConfirmButtonProperty, ValueBoxes.BooleanBox(value));
+    }
     #endregion Properties
 
     /// <summary>
@@ -743,8 +751,11 @@ public class ColorPicker : Control, ISingleOpen
 
     public bool CanDispose => true;
 
-    public static void IsCheckedToggleButtonDropper(bool value)
+    public void IsCheckedToggleButtonDropper(bool value)
     {
-        ColorPicker.cPicker._toggleButtonDropper.IsChecked = value;
+        if (this._toggleButtonDropper != null)
+        {
+            this._toggleButtonDropper.IsChecked = value;
+        }
     }
 }
