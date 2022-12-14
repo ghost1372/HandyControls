@@ -15,6 +15,7 @@ public partial class PropertyGridDemoCtl
             Enum = Gender.Female,
             Boolean = true,
             Integer = 98,
+            Double = double.NaN,
             VerticalAlignment = VerticalAlignment.Stretch
         };
     }

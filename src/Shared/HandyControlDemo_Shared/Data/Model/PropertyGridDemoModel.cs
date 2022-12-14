@@ -15,6 +15,9 @@ public class PropertyGridDemoModel
     [Category("Category2")]
     public bool Boolean { get; set; }
 
+    [Category("Category2")]
+    public double Double { get; set; }
+
     [Category("Category1")]
     public Gender Enum { get; set; }
 

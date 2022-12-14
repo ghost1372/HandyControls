@@ -88,7 +88,7 @@ public class NumericUpDown : Control
     {
         if (double.TryParse(_textBox.Text, out double value))
         {
-            if (value >= Minimum && value <= Maximum)
+            if (double.IsNaN(value) || double.IsInfinity(value) || (value >= Minimum && value <= Maximum))
             {
                 SetCurrentValue(ValueProperty, value);
             }
@@ -120,7 +120,7 @@ public class NumericUpDown : Control
         }
     }
 
-    private string CurrentText => string.IsNullOrWhiteSpace(ValueFormat)
+    private string CurrentText => Value == double.NaN ? Value.ToString() : string.IsNullOrWhiteSpace(ValueFormat)
         ? DecimalPlaces.HasValue
             ? Value.ToString($"#0.{new string('0', DecimalPlaces.Value)}")
             : Value.ToString()
@@ -146,11 +146,12 @@ public class NumericUpDown : Control
 
     /// <summary>
     ///     当前值
+    ///     2022-12-14 - remove ValidateValueCallback - ValidateHelper.IsInRangeOfDouble because for property Width/Height double.NaN is Auto Width/Height
     /// </summary>
     public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(
         nameof(Value), typeof(double), typeof(NumericUpDown),
         new FrameworkPropertyMetadata(ValueBoxes.Double0Box, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
-            OnValueChanged, CoerceValue), ValidateHelper.IsInRangeOfDouble);
+            OnValueChanged, CoerceValue));
 
     private static void OnValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
@@ -178,18 +179,18 @@ public class NumericUpDown : Control
         var ctl = (NumericUpDown) d;
         var minimum = ctl.Minimum;
         var num = (double) basevalue;
-        if (num < minimum)
+        if (!double.IsNaN(num) && num < minimum)
         {
             ctl.Value = minimum;
             return minimum;
         }
         var maximum = ctl.Maximum;
-        if (num > maximum)
+        if (!double.IsNaN(num) && num > maximum)
         {
             ctl.Value = maximum;
         }
         ctl.SetText();
-        return num > maximum ? maximum : num;
+        return !double.IsNaN(num) && num > maximum ? maximum : num;
     }
 
     /// <summary>
