@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows;
-using System.Windows.Media;
 using HandyControl.Properties.Langs;
 
 namespace HandyControl.Controls;
@@ -50,16 +47,16 @@ public class PropertyResolver
     {
         var editorAttribute = propertyDescriptor.Attributes.OfType<EditorAttribute>().FirstOrDefault();
         var editor = editorAttribute == null || string.IsNullOrEmpty(editorAttribute.EditorTypeName)
-            ? CreateDefaultEditor(propertyDescriptor.PropertyType)
+            ? CreateDefaultEditor(propertyDescriptor)
             : CreateEditor(Type.GetType(editorAttribute.EditorTypeName));
 
         return editor;
     }
 
-    public virtual PropertyEditorBase CreateDefaultEditor(Type type) =>
-        EditorResolver.TypeEditorsDictionary.TryGetValue(type, out var editorType)
-            ? editorType 
-            : type.IsSubclassOf(typeof(Enum))
+    public virtual PropertyEditorBase CreateDefaultEditor(PropertyDescriptor propertyDescriptor) =>
+        EditorResolver.TypeEditorsDictionary.TryGetValue(propertyDescriptor.PropertyType, out var editorType)
+            ? editorType
+            : propertyDescriptor.PropertyType.IsSubclassOf(typeof(Enum))
                 ? new EnumPropertyEditor()
                 : new ReadOnlyTextPropertyEditor();
 
