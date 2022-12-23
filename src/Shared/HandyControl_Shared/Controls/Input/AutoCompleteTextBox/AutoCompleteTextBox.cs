@@ -36,6 +36,7 @@ public class AutoCompleteTextBox : ComboBox
         _searchTextBox = GetTemplateChild(SearchTextBox) as System.Windows.Controls.TextBox;
         if (_searchTextBox != null)
         {
+            _searchTextBox.Text = Text;
             _searchTextBox.GotFocus += SearchTextBoxGotFocus;
             _searchTextBox.PreviewKeyDown += SearchTextBoxKeyDown;
             _searchTextBox.TextChanged += SearchTextBoxTextChanged;
@@ -142,6 +143,8 @@ public class AutoCompleteTextBox : ComboBox
         _searchTextBox.CaretIndex = _searchTextBox.Text.Length;
 
         ignoreTextChanging = true;
+        if (string.IsNullOrEmpty(_searchTextBox.Text))
+            _searchTextBox.Text = Text;
 
         Text = _searchTextBox.Text;
 

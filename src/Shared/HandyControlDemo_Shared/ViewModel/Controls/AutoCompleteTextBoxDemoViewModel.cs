@@ -8,7 +8,7 @@ namespace HandyControlDemo.ViewModel;
 
 public class AutoCompleteTextBoxDemoViewModel : ViewModelBase
 {
-    private string _searchText;
+    private string _searchText = "test";
 
     public string SearchText
     {
