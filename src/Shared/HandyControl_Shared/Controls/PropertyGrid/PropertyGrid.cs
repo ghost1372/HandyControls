@@ -124,7 +124,11 @@ public class PropertyGrid : Control
 
     private void UpdateItems(object obj)
     {
-        if (obj == null || _itemsControl == null) return;
+        if (obj == null || _itemsControl == null)
+        {
+            _itemsControl.ItemsSource = null;
+            return;
+        }
 
         _dataView = CollectionViewSource.GetDefaultView(TypeDescriptor.GetProperties(obj.GetType()).OfType<PropertyDescriptor>()
             .Where(item => PropertyResolver.ResolveIsBrowsable(item)).Select(CreatePropertyItem).Where(y => y != null)
