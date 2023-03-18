@@ -20,7 +20,7 @@ namespace HandyControl.Controls;
 [TemplatePart(Name = ElementTextBox, Type = typeof(WatermarkTextBox))]
 [TemplatePart(Name = ElementButton, Type = typeof(Button))]
 [TemplatePart(Name = ElementPopup, Type = typeof(Popup))]
-public class PersianDateTimePicker : Control, IDataInput
+public class PersianDateTimePicker : Control
 {
     #region Constants
 
@@ -238,44 +238,6 @@ public class PersianDateTimePicker : Control, IDataInput
         SetCurrentValue(TextProperty, value);
     }
 
-    public Func<string, OperationResult<bool>> VerifyFunc { get; set; }
-
-    public static readonly DependencyProperty IsErrorProperty = DependencyProperty.Register(
-        "IsError", typeof(bool), typeof(PersianDateTimePicker), new PropertyMetadata(ValueBoxes.FalseBox));
-
-    public bool IsError
-    {
-        get => (bool) GetValue(IsErrorProperty);
-        set => SetValue(IsErrorProperty, ValueBoxes.BooleanBox(value));
-    }
-
-    public static readonly DependencyProperty ErrorStrProperty = DependencyProperty.Register(
-        "ErrorStr", typeof(string), typeof(PersianDateTimePicker), new PropertyMetadata(default(string)));
-
-    public string ErrorStr
-    {
-        get => (string) GetValue(ErrorStrProperty);
-        set => SetValue(ErrorStrProperty, value);
-    }
-
-    public static readonly DependencyProperty TextTypeProperty = DependencyProperty.Register(
-        "TextType", typeof(TextType), typeof(PersianDateTimePicker), new PropertyMetadata(default(TextType)));
-
-    public TextType TextType
-    {
-        get => (TextType) GetValue(TextTypeProperty);
-        set => SetValue(TextTypeProperty, value);
-    }
-
-    public static readonly DependencyProperty ShowClearButtonProperty = DependencyProperty.Register(
-        "ShowClearButton", typeof(bool), typeof(PersianDateTimePicker), new PropertyMetadata(ValueBoxes.FalseBox));
-
-    public bool ShowClearButton
-    {
-        get => (bool) GetValue(ShowClearButtonProperty);
-        set => SetValue(ShowClearButtonProperty, ValueBoxes.BooleanBox(value));
-    }
-
     public static readonly DependencyProperty SelectionBrushProperty =
         TextBoxBase.SelectionBrushProperty.AddOwner(typeof(PersianDateTimePicker));
 
@@ -416,52 +378,6 @@ public class PersianDateTimePicker : Control, IDataInput
         {
             SetCurrentValue(DisplayDateTimeProperty, selectedDateTime);
         }
-    }
-
-    public virtual bool VerifyData()
-    {
-        OperationResult<bool> result;
-
-        if (VerifyFunc != null)
-        {
-            result = VerifyFunc.Invoke(Text);
-        }
-        else
-        {
-            if (!string.IsNullOrEmpty(Text))
-            {
-                result = OperationResult.Success();
-            }
-            else if (InfoElement.GetNecessary(this))
-            {
-                result = OperationResult.Failed(Properties.Langs.Lang.IsNecessary);
-            }
-            else
-            {
-                result = OperationResult.Success();
-            }
-        }
-
-        var isError = !result.Data;
-        if (isError)
-        {
-            SetCurrentValue(IsErrorProperty, ValueBoxes.TrueBox);
-            SetCurrentValue(ErrorStrProperty, result.Message);
-        }
-        else
-        {
-            isError = Validation.GetHasError(this);
-            if (isError)
-            {
-                SetCurrentValue(ErrorStrProperty, Validation.GetErrors(this)[0].ErrorContent?.ToString());
-            }
-            else
-            {
-                SetCurrentValue(IsErrorProperty, ValueBoxes.FalseBox);
-                SetCurrentValue(ErrorStrProperty, default(string));
-            }
-        }
-        return !isError;
     }
 
     public override string ToString() => SelectedDateTime?.ToString(DateTimeFormat) ?? string.Empty;
