@@ -6,7 +6,7 @@ using HandyControl.Data;
 
 namespace HandyControl.Controls;
 
-public class ListBoxAttach
+public partial class ListBoxAttach
 {
     public static readonly DependencyProperty SelectedItemsProperty = DependencyProperty.RegisterAttached(
         "SelectedItems", typeof(IList), typeof(ListBoxAttach),
