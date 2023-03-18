@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace HandyControl.Controls;
 
-public class ListBoxAttach
+public partial class ListBoxAttach
 {
     public static readonly DependencyProperty IsOddEvenRowProperty = DependencyProperty.RegisterAttached(
       "IsOddEvenRow", typeof(bool), typeof(ListBoxAttach), new FrameworkPropertyMetadata(ValueBoxes.FalseBox, FrameworkPropertyMetadataOptions.Inherits));
