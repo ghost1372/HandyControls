@@ -456,7 +456,6 @@ public class PersianDateTimePicker : Control
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         SetValueNoCallback(TextProperty, _textBox.Text);
-        VerifyData();
     }
 
     private bool ProcessPersianDateTimePickerKey(KeyEventArgs e)
