@@ -6,7 +6,6 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using HandyControl.Themes;
 using HandyControl.Tools.Interop;
-using HandyControl.Data;
 #if NET40
 using Microsoft.Windows.Shell;
 #else
@@ -132,6 +131,8 @@ stylesetted:;
         }
         SetWindowChrome(window, true);
         Apply(windowHandle, type);
+
+
         return true;
     }
 
@@ -293,15 +294,8 @@ stylesetted:;
         // https://stackoverflow.com/questions/743906/how-to-hide-close-button-in-wpf-window
         try
         {
-            if (_window != null && _window is HandyControl.Controls.Window && _window.ResizeMode == ResizeMode.NoResize)
-            {
-                return false;
-            }
-            else
-            {
-                InteropMethods.SetWindowLong(handle, -16, InteropMethods.GetWindowLong(handle, -16) & ~0x80000);
-                return true;
-            }
+            InteropMethods.SetWindowLong(handle, -16, InteropMethods.GetWindowLong(handle, -16) & ~0x80000);
+            return true;
         }
         catch (Exception)
         {
@@ -443,21 +437,35 @@ stylesetted:;
 
 #if !NET40
         chrome.NonClientFrameEdges = NonClientFrameEdges.None;
-        chrome.UseAeroCaptionButtons = false;
+        if (_window is HandyControl.Controls.Window)
+        {
+            chrome.UseAeroCaptionButtons = false;
+        }
+        else if (_window is System.Windows.Window)
+        {
+            chrome.UseAeroCaptionButtons = true;
+        }
 #endif
         chrome.CornerRadius = new CornerRadius();
 
         if (isMica)
         {
-            chrome.ResizeBorderThickness = new Thickness(4);
             chrome.GlassFrameThickness = new Thickness(-1);
+
+            if (_window.WindowState == WindowState.Maximized || _window.ResizeMode == ResizeMode.NoResize)
+            {
+                chrome.ResizeBorderThickness = new Thickness(0);
+            }
+            else
+            {
+                chrome.ResizeBorderThickness = new Thickness(6);
+            }
         }
         else
         {
             chrome.ResizeBorderThickness = new Thickness(8);
             chrome.GlassFrameThickness = new Thickness(0,0,0,1);
         }
-        
         return chrome;
     }
 
