@@ -171,6 +171,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ResourceDictionaryEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ResourceDictionaryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\Theme.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeAnimationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeResources.cs" />

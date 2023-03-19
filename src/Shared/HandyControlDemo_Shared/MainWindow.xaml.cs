@@ -14,7 +14,12 @@ namespace HandyControlDemo;
 
 public partial class MainWindow
 {
-    public MainWindow() => InitializeComponent();
+    internal static MainWindow Instance { get; set; }
+    public MainWindow()
+    {
+        InitializeComponent();
+        Instance = this;
+    }
 
     protected override void OnContentRendered(EventArgs e)
     {

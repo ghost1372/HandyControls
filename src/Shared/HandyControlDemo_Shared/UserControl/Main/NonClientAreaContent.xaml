@@ -152,7 +152,7 @@
                     </Button>
                 </hc:UniformSpacingPanel>
                 <hc:Divider LineStrokeDashArray="2,2" Orientation="Vertical" Margin="0,20" LineStrokeThickness="2"/>
-                <StackPanel Button.Click="ButtonSkins_OnClick"  Margin="10,10,10,10">
+                <StackPanel Button.Click="ButtonSkins_OnClick"  Margin="40,10,10,10">
                     <Button Tag="{x:Static hc:ApplicationTheme.Light}" Style="{StaticResource ButtonCustom}">
                         <Border Background="White" Width="32" Height="21" CornerRadius="2" BorderThickness="1" BorderBrush="{DynamicResource BorderBrush}"/>
                     </Button>

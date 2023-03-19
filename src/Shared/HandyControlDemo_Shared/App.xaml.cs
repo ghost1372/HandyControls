@@ -9,7 +9,6 @@ using System.Runtime;
 #endif
 using System.Threading;
 using System.Windows;
-using HandyControl.Controls;
 using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
@@ -96,6 +95,8 @@ namespace HandyControlDemo
 
         internal void UpdateSkin(ApplicationTheme theme)
         {
+            ThemeAnimationHelper.AnimateTheme(HandyControlDemo.MainWindow.Instance, ThemeAnimationHelper.SlideDirection.Top, 0.3, 1, 0.5);
+
             ThemeManager.Current.ApplicationTheme = theme;
 
             var demoResources = new ResourceDictionary
@@ -105,6 +106,9 @@ namespace HandyControlDemo
             };
 
             Resources.MergedDictionaries[0].MergedDictionaries.InsertOrReplace(1, demoResources);
+
+            ThemeAnimationHelper.AnimateTheme(HandyControlDemo.MainWindow.Instance, ThemeAnimationHelper.SlideDirection.Bottom, 0.3, 0.5, 1);
+
         }
 
         private void UpdateRegistry()
