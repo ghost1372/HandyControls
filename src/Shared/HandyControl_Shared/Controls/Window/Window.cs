@@ -304,6 +304,13 @@ namespace HandyControl.Controls
             _tempWindowStyle = WindowStyle;
             _tempResizeMode = ResizeMode;
 
+            if (ResizeMode == ResizeMode.NoResize || WindowState == WindowState.Maximized)
+            {
+                var chrome = WindowChrome.GetWindowChrome(this);
+                chrome.ResizeBorderThickness = new Thickness(0);
+                WindowChrome.SetWindowChrome(this, chrome);
+            }
+
             SwitchIsFullScreen(_isFullScreen);
             SwitchShowNonClientArea(_showNonClientArea);
 

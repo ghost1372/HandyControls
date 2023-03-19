@@ -130,8 +130,8 @@ stylesetted:;
             }
         }
         SetWindowChrome(window, true);
-        Apply(windowHandle, type);
 
+        Apply(windowHandle, type);
 
         return true;
     }
@@ -447,19 +447,10 @@ stylesetted:;
         }
 #endif
         chrome.CornerRadius = new CornerRadius();
-
         if (isMica)
         {
             chrome.GlassFrameThickness = new Thickness(-1);
-
-            if (_window.WindowState == WindowState.Maximized || _window.ResizeMode == ResizeMode.NoResize)
-            {
-                chrome.ResizeBorderThickness = new Thickness(0);
-            }
-            else
-            {
-                chrome.ResizeBorderThickness = new Thickness(6);
-            }
+            chrome.ResizeBorderThickness = new Thickness(6);
         }
         else
         {
