@@ -53,6 +53,7 @@ namespace HandyControl.Themes
         internal Brush DefaultAccentColor;
         private const string RegistryThemePath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
         private const string RegSysMode = "SystemUsesLightTheme";
+        private const string RegAppMode = "AppsUseLightTheme";
         private ApplicationTheme _currenTheme;
         private Brush _currentAccent;
         private bool _usingSystemTheme;
@@ -66,7 +67,7 @@ namespace HandyControl.Themes
                     _usingSystemTheme = value;
                     if (value)
                     {
-                        initSystemTheme();
+                        initSystemTheme(true);
                     }
                     else
                     {
@@ -75,9 +76,29 @@ namespace HandyControl.Themes
                 }
             }
         }
-        private void initSystemTheme()
+        private bool _usingWindowsAppTheme;
+        public bool UsingWindowsAppTheme
         {
-            _currenTheme = GetSystemTheme();
+            get => _usingWindowsAppTheme;
+            set
+            {
+                if (_usingWindowsAppTheme != value)
+                {
+                    _usingWindowsAppTheme = value;
+                    if (value)
+                    {
+                        initSystemTheme(false);
+                    }
+                    else
+                    {
+                        resetSystemTheme();
+                    }
+                }
+            }
+        }
+        private void initSystemTheme(bool isSystemTheme)
+        {
+            _currenTheme = GetSystemTheme(isSystemTheme);
             _currentAccent = GetAccentColorFromSystem();
             AccentColor = _currentAccent;
             ApplicationTheme = _currenTheme;
@@ -99,12 +120,21 @@ namespace HandyControl.Themes
         /// Returns theme used for Windows
         /// </summary>
         /// <returns></returns>
-        public static ApplicationTheme GetSystemTheme()
+        public static ApplicationTheme GetSystemTheme(bool isSystemTheme)
         {
             using var key = Registry.CurrentUser.OpenSubKey(RegistryThemePath);
-            var themeValue = key?.GetValue(RegSysMode) as int?;
+            var systemThemeValue = key?.GetValue(RegSysMode) as int?;
+            var appThemeValue = key?.GetValue(RegAppMode) as int?;
 
-            return themeValue != 0 ? Themes.ApplicationTheme.Light : Themes.ApplicationTheme.Dark;
+            if (isSystemTheme)
+            {
+                return systemThemeValue != 0 ? Themes.ApplicationTheme.Light : Themes.ApplicationTheme.Dark;
+            }
+            else
+            {
+                return appThemeValue != 0 ? Themes.ApplicationTheme.Light : Themes.ApplicationTheme.Dark;
+            }
+
         }
 
         public Brush GetAccentColorFromSystem()
@@ -138,7 +168,20 @@ namespace HandyControl.Themes
                 case UserPreferenceCategory.General:
                     DispatcherHelper.RunOnMainThread(() =>
                     {
-                        var changedTheme = GetSystemTheme();
+                        Themes.ApplicationTheme changedTheme;
+                        if (UsingSystemTheme && !UsingWindowsAppTheme)
+                        {
+                            changedTheme = GetSystemTheme(true);
+                        }
+                        else if (UsingWindowsAppTheme && !UsingSystemTheme)
+                        {
+                            changedTheme = GetSystemTheme(false);
+                        }
+                        else
+                        {
+                            changedTheme = GetSystemTheme(true);
+                        }
+                        
                         var changedAccent = GetAccentColorFromSystem();
                         if ((_currenTheme != changedTheme) || (_currentAccent != changedAccent))
                         {

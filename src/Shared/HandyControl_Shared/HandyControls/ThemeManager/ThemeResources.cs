@@ -19,6 +19,7 @@ public class ThemeResources : ResourceDictionaryEx, ISupportInitialize
 
     private bool _canBeAccessedAcrossThreads;
     private bool _usingSystemTheme;
+    private bool _usingWindowsAppTheme;
 
     public ThemeResources()
     {
@@ -110,6 +111,19 @@ public class ThemeResources : ResourceDictionaryEx, ISupportInitialize
             if (ThemeManager.Current.UsingSystemTheme != value)
             {
                 ThemeManager.Current.UsingSystemTheme = value;
+            }
+        }
+    }
+
+    public bool UsingWindowsAppTheme
+    {
+        get => _usingWindowsAppTheme;
+        set
+        {
+            _usingWindowsAppTheme = value;
+            if (ThemeManager.Current.UsingWindowsAppTheme != value)
+            {
+                ThemeManager.Current.UsingWindowsAppTheme = value;
             }
         }
     }
