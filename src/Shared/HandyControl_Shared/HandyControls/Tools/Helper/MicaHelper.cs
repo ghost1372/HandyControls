@@ -465,5 +465,10 @@ stylesetted:;
     {
         var chrome = GetWindowChrome(isMica);
         WindowChrome.SetWindowChrome(window, chrome);
+        var hwnd = new WindowInteropHelper(window).Handle;
+        if (isMica)
+        {
+            RemoveTitleBar(hwnd);
+        }
     }
 }
