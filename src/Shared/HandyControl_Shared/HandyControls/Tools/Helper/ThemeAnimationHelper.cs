@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace HandyControl.Tools.Helper;
+namespace HandyControl.Tools;
 public static class ThemeAnimationHelper
 {
     public async static void AnimateTheme(UIElement element, SlideDirection slideDirection, double durationSeconds, double fromOpacity, double toOpacity)
