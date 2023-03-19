@@ -30,7 +30,7 @@ public static class ThemeAnimationHelper
         
             storyboard.Begin();
 #if NET40
-            Thread.Sleep(TimeSpan.FromSeconds(durationSeconds));
+            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(durationSeconds));
 #else
             await Task.Delay(TimeSpan.FromSeconds(durationSeconds)); // Wait for the fade out animation to finish
 #endif
