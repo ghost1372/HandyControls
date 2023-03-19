@@ -278,6 +278,11 @@ namespace HandyControl.Controls
                 BorderThickness = _actualBorderThickness;
                 NonClientAreaHeight = _tempNonClientAreaHeight;
             }
+
+            if (MicaHelper.IsMica)
+            {
+                FixCut();
+            }
         }
 
         protected void OnLoaded(RoutedEventArgs args)
@@ -324,6 +329,7 @@ namespace HandyControl.Controls
 
             SizeToContent = SizeToContent.Height;
             Dispatcher.BeginInvoke(new Action(() => { SizeToContent = SizeToContent.WidthAndHeight; }));
+            SizeChanged += Window_SizeChanged;
         }
 
         protected override void OnContentRendered(EventArgs e)

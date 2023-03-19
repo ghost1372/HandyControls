@@ -28,6 +28,7 @@ public enum BackdropType
 /// </summary>
 public static class MicaHelper
 {
+    internal static bool IsMica = false; 
     private static System.Windows.Window _window;
 
     private static int _pvTrueAttribute = 0x01;
@@ -132,7 +133,7 @@ stylesetted:;
         SetWindowChrome(window, true);
 
         Apply(windowHandle, type);
-
+        IsMica = true;
         return true;
     }
 
@@ -197,6 +198,7 @@ stylesetted:;
         }
 
         Remove(windowHandle);
+        IsMica = false;
     }
 
     /// <summary>

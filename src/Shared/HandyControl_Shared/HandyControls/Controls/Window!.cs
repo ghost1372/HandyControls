@@ -1,8 +1,12 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 using HandyControl.Data;
 using HandyControl.Tools;
+using HandyControl.Tools.Interop;
+
 namespace HandyControl.Controls;
 
 public partial class Window
@@ -105,4 +109,30 @@ public partial class Window
     private Button _ButtonMax;
     private Button _ButtonRestore;
     #endregion
+
+    private const int GW_HWNDNEXT = 2;
+    public void FixCut()
+    {
+        if (WindowState == WindowState.Maximized)
+        {
+            IntPtr hWnd = new WindowInteropHelper(Application.Current.MainWindow).Handle;
+
+            IntPtr hNext = hWnd;
+            do
+                hNext = InteropMethods.GetWindow(hNext, GW_HWNDNEXT);
+            while (!InteropMethods.IsWindowVisible(hNext));
+
+            InteropMethods.SetForegroundWindow(hNext);
+
+            Activate();
+        }
+    }
+
+    private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        if (MicaHelper.IsMica)
+        {
+            FixCut();
+        }
+    }
 }
