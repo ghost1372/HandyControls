@@ -25,6 +25,8 @@ using DatePickerDateValidationErrorEventArgs = Microsoft.Windows.Controls.DatePi
 using DatePickerFormat = Microsoft.Windows.Controls.DatePickerFormat;
 using DatePickerTextBox = Microsoft.Windows.Controls.Primitives.DatePickerTextBox;
 using CalendarBlackoutDatesCollection = Microsoft.Windows.Controls.CalendarBlackoutDatesCollection;
+using System.Windows.Media;
+
 namespace HandyControl.Controls;
 
 /// <summary>
@@ -91,7 +93,6 @@ public class PersianDatePicker : Control
     }
 
     #endregion Public Events
-
     /// <summary>
     /// Static constructor
     /// </summary>

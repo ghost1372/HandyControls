@@ -3,17 +3,20 @@
                     xmlns:hc="clr-namespace:HandyControl.Controls">
 
     <Style BasedOn="{StaticResource DatePickerBaseStylePersian}" TargetType="hc:PersianDatePicker"/>
-    <Style x:Key="DatePickerExtendPersian" BasedOn="{StaticResource DatePickerExtendBaseStylePersian}" TargetType="hc:PersianDatePicker"/>
 
     <Style x:Key="DatePickerPersian.Small" BasedOn="{StaticResource DatePickerBaseStylePersian}" TargetType="hc:PersianDatePicker">
         <Setter Property="MinHeight" Value="20"/>
         <Setter Property="Padding" Value="6,0"/>
     </Style>
 
+    <Style x:Key="DatePickerExtendPersian" BasedOn="{StaticResource DatePickerExtendBaseStylePersian}" TargetType="hc:PersianDatePicker"/>
+
     <Style x:Key="DatePickerExtendPersian.Small" BasedOn="{StaticResource DatePickerExtendPersian}" TargetType="hc:PersianDatePicker">
         <Setter Property="hc:InfoElement.MinContentHeight" Value="20"/>
         <Setter Property="hc:InfoElement.ContentHeight" Value="20"/>
-        <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,3"/>
+        <Setter Property="hc:TitleElement.MarginOnTheLeft" Value="0,3,6,0"/>
+        <Setter Property="hc:TitleElement.MarginOnTheTop" Value="6,0,0,1" />
         <Setter Property="Padding" Value="6,0"/>
+        <Setter Property="MinHeight" Value="20" />
     </Style>
 </ResourceDictionary>
