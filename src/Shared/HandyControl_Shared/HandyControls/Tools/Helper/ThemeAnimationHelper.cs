@@ -6,7 +6,11 @@ using System.Windows.Media.Animation;
 namespace HandyControl.Tools;
 public static class ThemeAnimationHelper
 {
-    public async static void AnimateTheme(UIElement element, SlideDirection slideDirection, double durationSeconds, double fromOpacity, double toOpacity)
+    public
+#if !NET40
+        async
+#endif
+        static void AnimateTheme(UIElement element, SlideDirection slideDirection, double durationSeconds, double fromOpacity, double toOpacity)
     {
         if (element != null)
         {
