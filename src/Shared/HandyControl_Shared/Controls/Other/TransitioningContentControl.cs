@@ -56,6 +56,7 @@ public class TransitioningContentControl : ContentControl
     private void TransitioningContentControl_Loaded(object sender, RoutedEventArgs e)
     {
         IsVisibleChanged += TransitioningContentControl_IsVisibleChanged;
+        StartTransition();
     }
 
     private void TransitioningContentControl_Unloaded(object sender, RoutedEventArgs e)
