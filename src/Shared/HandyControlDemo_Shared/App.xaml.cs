@@ -12,6 +12,7 @@ using System.Windows;
 using HandyControl.Themes;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
+using HandyControl.Tools.Helper;
 using HandyControlDemo.Data;
 using HandyControlDemo.Properties.Langs;
 using HandyControlDemo.Tools;
