@@ -32,16 +32,8 @@ body:
       options:
         - "HandyControl 3.4.0"
         - "HandyControl 3.3.0"
-        - "HandyControl 3.2.0"
-        - "HandyControl 3.1.0"
-        - "HandyControl 3.0.0"
-        - "HandyControls (Custom version) 3.4.0"
-        - "HandyControls (Custom version) 3.3.11"
-        - "HandyControls (Custom version) 3.3.10"
-        - "HandyControls (Custom version) 3.3.9"
-        - "HandyControls (Custom version) 3.3.8.1"
-        - "HandyControls (Custom version) 3.3.8"
-        - "HandyControls (Custom version) 3.3.7"
+        - "HandyControls (Custom version) 3.4.5"
+        - "HandyControls (Custom version) 3.4.4"
   - type: dropdown
     attributes:
       label: IDE
@@ -58,6 +50,7 @@ body:
       description: please specify for which framework type you have encountered the issue.
       multiple: true
       options:
+        - ".Net 7.0"
         - ".Net 6.0"
         - ".Net 5.0"
         - ".Net Core 3.1"
@@ -80,6 +73,7 @@ body:
       multiple: true
       options:
         - "Insider Build (xxxxx)"
+        - "Windows 11 (22621)"
         - "Windows 11 (22000)"
         - "May 2021 Update (19043)"
         - "October 2020 Update (19042)"
