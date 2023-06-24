@@ -26,7 +26,7 @@ public static class FullScreenHelper
     /// </summary>
     private static readonly DependencyProperty BeforeFullScreenWindowStyleProperty =
         DependencyProperty.RegisterAttached("BeforeFullScreenWindowStyle",
-            typeof(InteropValues.WindowStyles?), typeof(FullScreenHelper));
+            typeof(InteropValues.WindowStyles), typeof(FullScreenHelper));
 
     /// <summary>
     /// 开始进入全屏模式
