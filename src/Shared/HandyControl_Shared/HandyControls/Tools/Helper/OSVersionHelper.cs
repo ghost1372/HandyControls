@@ -183,6 +183,26 @@ public static class OSVersionHelper
     /// </summary>
     public static bool IsWindows11_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 22000);
 
+    /// <summary>
+    ///     Windows 11 Build 22621
+    /// </summary>
+    public static bool IsWindows11_22621 { get; } = IsWindowsNT && OSVersion == new Version(10, 0, 22621);
+
+    /// <summary>
+    ///     Windows 11 Build 22621 Or Greater
+    /// </summary>
+    public static bool IsWindows11_22621_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 22621);
+
+    /// <summary>
+    ///     Windows 11 Build 22631
+    /// </summary>
+    public static bool IsWindows11_22631 { get; } = IsWindowsNT && OSVersion == new Version(10, 0, 22631);
+
+    /// <summary>
+    ///     Windows 11 Build 22631 Or Greater
+    /// </summary>
+    public static bool IsWindows11_22631_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 22631);
+
     public static Version GetOSVersion()
     {
         var osv = new InteropValues.RTL_OSVERSIONINFOEX();

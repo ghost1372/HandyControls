@@ -554,6 +554,12 @@ Themes\Styles\Window.xaml
   <ItemsPanelTemplate x:Key="StackVerticalItemsPanelTemplate">
     <StackPanel FocusVisualStyle="{x:Null}" />
   </ItemsPanelTemplate>
+  <ItemsPanelTemplate x:Key="VirtualizingStackHorizontalItemsPanelTemplate">
+    <VirtualizingStackPanel FocusVisualStyle="{x:Null}" Orientation="Horizontal" />
+  </ItemsPanelTemplate>
+  <ItemsPanelTemplate x:Key="VirtualizingStackVerticalItemsPanelTemplate">
+    <VirtualizingStackPanel FocusVisualStyle="{x:Null}" />
+  </ItemsPanelTemplate>
   <ItemsPanelTemplate x:Key="WrapHorizontalItemsPanelTemplate">
     <WrapPanel FocusVisualStyle="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" />
   </ItemsPanelTemplate>
@@ -1849,7 +1855,7 @@ Themes\Styles\Window.xaml
             <local:Col Layout="12" x:Name="ColStart">
               <Line VerticalAlignment="Center" StrokeDashArray="{TemplateBinding LineStrokeDashArray}" Stroke="{TemplateBinding LineStroke}" X2="1" StrokeThickness="{TemplateBinding LineStrokeThickness}" Stretch="Fill" StrokeEndLineCap="Square" StrokeStartLineCap="Square" />
             </local:Col>
-            <local:Col Layout="0">
+            <local:Col IsFixed="True">
               <ContentPresenter Margin="{TemplateBinding Padding}" ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" />
             </local:Col>
             <local:Col Layout="12" x:Name="ColEnd">
@@ -2969,7 +2975,7 @@ Themes\Styles\Window.xaml
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <Style x:Key="ScrollViewerNativeBaseStyle" TargetType="ScrollViewer">
-    <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="VerticalScrollBarVisibility" Value="{Binding Path=(hc:ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}}" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Template" Value="{StaticResource ScrollViewerNativeAutoHideBaseControlTemplate}" />
     <Style.Triggers>
@@ -3065,7 +3071,7 @@ Themes\Styles\Window.xaml
     </ControlTemplate.Triggers>
   </ControlTemplate>
   <Style x:Key="ScrollViewerBaseStyle" TargetType="hc:ScrollViewer">
-    <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="VerticalScrollBarVisibility" Value="{Binding Path=(hc:ScrollViewer.VerticalScrollBarVisibility),RelativeSource={RelativeSource TemplatedParent}}" />
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Template" Value="{StaticResource ScrollViewerAutoHideBaseControlTemplate}" />
     <Style.Triggers>
@@ -3508,7 +3514,7 @@ Themes\Styles\Window.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="TabControl">
-          <Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+          <Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
               <ColumnDefinition x:Name="ColumnDefinition0" />
               <ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
@@ -3517,8 +3523,8 @@ Themes\Styles\Window.xaml
               <RowDefinition x:Name="RowDefinition0" Height="Auto" />
               <RowDefinition x:Name="RowDefinition1" Height="*" />
             </Grid.RowDefinitions>
-            <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
-            <Border x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+            <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" />
+            <Border x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" Grid.Row="1">
               <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </Border>
           </Grid>
@@ -3669,13 +3675,14 @@ Themes\Styles\Window.xaml
           </local:SimplePanel>
           <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="false">
-              <Setter Property="Opacity" TargetName="root" Value="0.4" />
+              <Setter Property="Opacity" TargetName="border" Value="0.4" />
+              <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.4" />
             </Trigger>
-            <Trigger Property="IsMouseOver" Value="true">
-              <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
+            <Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
+              <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
             </Trigger>
-            <Trigger Property="IsFocused" Value="true">
-              <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
+            <Trigger Property="IsFocused" Value="True">
+              <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -6152,7 +6159,7 @@ Themes\Styles\Window.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="TabControl">
-          <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+          <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
               <ColumnDefinition x:Name="ColumnDefinition0" />
               <ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
@@ -6162,9 +6169,9 @@ Themes\Styles\Window.xaml
               <RowDefinition x:Name="RowDefinition1" Height="*" />
             </Grid.RowDefinitions>
             <local:SlidingTabContainer x:Name="TabContainer" Background="{TemplateBinding Background}" Grid.Row="0" Grid.Column="0">
-              <StackPanel x:Name="headerPanel" Orientation="Horizontal" Background="Transparent" Margin="0" IsItemsHost="True" />
+              <StackPanel x:Name="headerPanel" KeyboardNavigation.TabNavigation="Once" KeyboardNavigation.DirectionalNavigation="Cycle" Orientation="Horizontal" Background="Transparent" Margin="0" IsItemsHost="True" />
             </local:SlidingTabContainer>
-            <Border x:Name="contentPanel" Margin="0,6,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+            <Border x:Name="contentPanel" Margin="0,6,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Grid.Column="0" Grid.Row="1">
               <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </Border>
           </Grid>
@@ -6213,7 +6220,7 @@ Themes\Styles\Window.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="TabControl">
-          <Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+          <Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
               <ColumnDefinition x:Name="ColumnDefinition0" />
               <ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
@@ -6222,8 +6229,8 @@ Themes\Styles\Window.xaml
               <RowDefinition x:Name="RowDefinition0" Height="Auto" />
               <RowDefinition x:Name="RowDefinition1" Height="*" />
             </Grid.RowDefinitions>
-            <UniformGrid Rows="1" x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
-            <Border x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+            <UniformGrid Rows="1" x:Name="headerPanel" KeyboardNavigation.TabNavigation="Once" KeyboardNavigation.DirectionalNavigation="Cycle" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" />
+            <Border x:Name="contentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" Grid.Row="1">
               <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </Border>
           </Grid>
@@ -6295,7 +6302,7 @@ Themes\Styles\Window.xaml
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="TabControl">
-          <Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+          <Grid x:Name="templateRoot" Background="{TemplateBinding Background}" ClipToBounds="true" SnapsToDevicePixels="true">
             <Grid.ColumnDefinitions>
               <ColumnDefinition x:Name="ColumnDefinition0" />
               <ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
@@ -6304,8 +6311,8 @@ Themes\Styles\Window.xaml
               <RowDefinition x:Name="RowDefinition0" Height="Auto" />
               <RowDefinition x:Name="RowDefinition1" Height="*" />
             </Grid.RowDefinitions>
-            <UniformGrid Rows="1" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1" />
-            <Border x:Name="contentPanel" Margin="0,6,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+            <UniformGrid Rows="1" KeyboardNavigation.TabNavigation="Once" KeyboardNavigation.DirectionalNavigation="Cycle" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0" Grid.Row="0" />
+            <Border x:Name="contentPanel" Margin="0,6,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource BorderBrush}" Background="{TemplateBinding Background}" Grid.Column="0" Grid.Row="1">
               <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             </Border>
           </Grid>
@@ -7059,6 +7066,7 @@ Themes\Styles\Window.xaml
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="ItemContainerStyle" Value="{StaticResource ListViewItemBaseStyle}" />
     <Setter Property="hc:GridViewAttach.ColumnHeaderHeight" Value="44" />
+    <Setter Property="hc:BorderElement.CornerRadius" Value="{StaticResource DefaultCornerRadius}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="ListView">
@@ -7080,7 +7088,7 @@ Themes\Styles\Window.xaml
               </DoubleAnimationUsingKeyFrames>
             </Storyboard>
           </ControlTemplate.Resources>
-          <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+          <Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
             <ScrollViewer Focusable="false">
               <ScrollViewer.Template>
                 <ControlTemplate TargetType="ScrollViewer">
@@ -7104,7 +7112,7 @@ Themes\Styles\Window.xaml
                         <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" />
                       </local:ToggleBlock.CheckedContent>
                       <local:ToggleBlock.UnCheckedContent>
-                        <local:Empty />
+                        <local:Empty Background="{DynamicResource RegionBrush}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" />
                       </local:ToggleBlock.UnCheckedContent>
                     </local:ToggleBlock>
                     <ScrollBar Style="{StaticResource ScrollBarBaseStyle}" Opacity="0" x:Name="PART_VerticalScrollBar" Grid.Column="1" Grid.Row="1" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}" />
@@ -7131,10 +7139,8 @@ Themes\Styles\Window.xaml
         <Setter Property="Template">
           <Setter.Value>
             <ControlTemplate TargetType="ListView">
-              <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
-                <ScrollViewer Focusable="false">
-                  <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                </ScrollViewer>
+              <Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                <local:Empty Background="{DynamicResource RegionBrush}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" />
               </Border>
             </ControlTemplate>
           </Setter.Value>
@@ -7205,7 +7211,6 @@ Themes\Styles\Window.xaml
   <Style x:Key="BadgeDanger" BasedOn="{StaticResource BadgeBaseStyle}" TargetType="hc:Badge">
     <Setter Property="Background" Value="{DynamicResource DangerBrush}" />
   </Style>
-  <Style x:Key="AutoCompleteTextBoxInternal" BasedOn="{StaticResource ComboBoxEditableTextBox}" TargetType="TextBox" />
   <Style x:Key="AutoCompleteTextBoxBaseStyle" TargetType="hc:AutoCompleteTextBox">
     <Setter Property="FocusVisualStyle" Value="{x:Null}" />
     <Setter Property="Background" Value="{DynamicResource RegionBrush}" />
@@ -7231,7 +7236,7 @@ Themes\Styles\Window.xaml
         <ControlTemplate TargetType="hc:AutoCompleteTextBox">
           <local:SimplePanel>
             <Border CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
-              <TextBox x:Name="PART_SearchTextBox" CaretBrush="{TemplateBinding CaretBrush}" Padding="{TemplateBinding Padding}" Style="{StaticResource AutoCompleteTextBoxInternal}" />
+              <TextBox x:Name="PART_SearchTextBox" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource TemplatedParent}}" CaretBrush="{TemplateBinding CaretBrush}" Padding="{TemplateBinding Padding}" Style="{StaticResource ComboBoxEditableTextBox}" />
             </Border>
             <Popup x:Name="PART_Popup" AllowsTransparency="true" IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
               <Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="8,0,8,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=toggleButton}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
@@ -7791,7 +7796,7 @@ Themes\Styles\Window.xaml
           <Border x:Name="Bd" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
             <local:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <local:ToggleBlock.CheckedContent>
-                <local:ScrollViewer IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" CanContentScroll="false" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                <local:ScrollViewer IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                   <ItemsPresenter />
                 </local:ScrollViewer>
               </local:ToggleBlock.CheckedContent>
@@ -9235,10 +9240,10 @@ Themes\Styles\Window.xaml
         <Setter Property="Opacity" TargetName="Placeholder" Value="0.4" />
       </Trigger>
       <Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
-        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
       </Trigger>
-      <Trigger Property="IsFocused" Value="true">
-        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
+      <Trigger Property="IsFocused" Value="True">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
       </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
@@ -9263,10 +9268,10 @@ Themes\Styles\Window.xaml
         <Setter Property="Opacity" TargetName="Placeholder" Value="0.4" />
       </Trigger>
       <Trigger Property="IsMouseOver" Value="true" SourceName="PART_ContentHost">
-        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
       </Trigger>
-      <Trigger Property="IsFocused" Value="true">
-        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
+      <Trigger Property="IsFocused" Value="True">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
       </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
@@ -9617,7 +9622,7 @@ Themes\Styles\Window.xaml
             <Border Grid.RowSpan="4" Background="{TemplateBinding Background}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
               <local:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
                 <local:ToggleBlock.CheckedContent>
-                  <local:ScrollViewer IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" CanContentScroll="false" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                  <local:ScrollViewer IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                     <ItemsPresenter />
                   </local:ScrollViewer>
                 </local:ToggleBlock.CheckedContent>
@@ -11996,7 +12001,7 @@ Themes\Styles\Window.xaml
         <Border Grid.Column="0" Margin="-4 0">
           <local:UniformSpacingPanel x:Name="PART_Panel" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Spacing="{TemplateBinding TagSpacing}" ChildWrapping="Wrap" ItemVerticalAlignment="Center" />
         </Border>
-        <Button Height="Auto" Width="Auto" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" local:IconElement.Width="14" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,0,4,0" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=border}" />
+        <Button Height="Auto" Width="Auto" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" local:IconElement.Width="14" Command="interactivity:ControlCommands.Clear" Visibility="Hidden" Name="ButtonClear" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,0,4,0" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=border}" />
         <Popup x:Name="PART_Popup" StaysOpen="False" PlacementTarget="{Binding ElementName=border}" AllowsTransparency="true" IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
           <Decorator Margin="8 0">
             <Border Effect="{StaticResource EffectShadow2}" BorderThickness="0,1,0,0" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=border}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
@@ -12091,7 +12096,7 @@ Themes\Styles\Window.xaml
         <Border Grid.Column="0" Margin="-4 0">
           <local:UniformSpacingPanel x:Name="PART_Panel" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Spacing="{TemplateBinding TagSpacing}" ChildWrapping="Wrap" ItemVerticalAlignment="Center" />
         </Border>
-        <Button Height="Auto" Width="Auto" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" local:IconElement.Width="14" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,0,4,0" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=border}" />
+        <Button Height="Auto" Width="Auto" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" local:IconElement.Width="14" Command="interactivity:ControlCommands.Clear" Visibility="Hidden" Name="ButtonClear" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="0,0,4,0" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=border}" />
         <Popup x:Name="PART_Popup" StaysOpen="False" PlacementTarget="{Binding ElementName=border}" AllowsTransparency="true" IsOpen="{Binding IsDropDownOpen,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Margin="1" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
           <Decorator Margin="8 0">
             <Border Effect="{StaticResource EffectShadow2}" BorderThickness="0,1,0,0" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder" MinWidth="{Binding ActualWidth, ElementName=border}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
@@ -12892,7 +12897,7 @@ Themes\Styles\Window.xaml
           <Border x:Name="Bd" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
             <local:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
               <local:ToggleBlock.CheckedContent>
-                <local:ScrollViewer IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" CanContentScroll="false" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
+                <local:ScrollViewer IsInertiaEnabled="{Binding Path=(hc:ScrollViewer.IsInertiaEnabled),RelativeSource={RelativeSource TemplatedParent}}" Focusable="false" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}">
                   <ItemsPresenter />
                 </local:ScrollViewer>
               </local:ToggleBlock.CheckedContent>
@@ -13464,6 +13469,11 @@ Themes\Styles\Window.xaml
             <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=border}" StaysOpen="False" />
           </Grid>
           <ControlTemplate.Triggers>
+            <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+              <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+              <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
               <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
             </Trigger>
@@ -13514,6 +13524,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -13561,6 +13576,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -13623,6 +13643,12 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="ButtonClear" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -13644,6 +13670,7 @@ Themes\Styles\Window.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsMouseOver" Value="true" SourceName="PART_Root" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="hc:InfoElement.IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
@@ -13679,6 +13706,12 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="ButtonClear" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -13700,6 +13733,7 @@ Themes\Styles\Window.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsMouseOver" Value="true" SourceName="PART_Root" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="hc:InfoElement.IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
@@ -13737,6 +13771,11 @@ Themes\Styles\Window.xaml
             <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=border}" StaysOpen="False" />
           </Grid>
           <ControlTemplate.Triggers>
+            <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+              <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+              <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
               <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
             </Trigger>
@@ -13787,6 +13826,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -13834,6 +13878,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -13896,6 +13945,12 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="ButtonClear" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -13917,6 +13972,7 @@ Themes\Styles\Window.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsMouseOver" Value="true" SourceName="PART_Root" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="hc:InfoElement.IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
@@ -13952,6 +14008,12 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="ButtonClear" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -13973,6 +14035,7 @@ Themes\Styles\Window.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsMouseOver" Value="true" SourceName="PART_Root" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="hc:InfoElement.IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
@@ -14203,6 +14266,11 @@ Themes\Styles\Window.xaml
             <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=border}" StaysOpen="False" />
           </Grid>
           <ControlTemplate.Triggers>
+            <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+              <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+              <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
               <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
             </Trigger>
@@ -14253,6 +14321,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -14300,6 +14373,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -14354,6 +14432,11 @@ Themes\Styles\Window.xaml
             <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=border}" StaysOpen="False" />
           </Grid>
           <ControlTemplate.Triggers>
+            <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+              <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+              <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
               <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
             </Trigger>
@@ -14404,6 +14487,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -14451,6 +14539,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -14513,6 +14606,12 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="ButtonClear" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -14534,6 +14633,7 @@ Themes\Styles\Window.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsMouseOver" Value="true" SourceName="PART_Root" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="hc:InfoElement.IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
@@ -14569,6 +14669,12 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="ButtonClear" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -14590,6 +14696,7 @@ Themes\Styles\Window.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsMouseOver" Value="true" SourceName="PART_Root" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="hc:InfoElement.IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
@@ -14938,8 +15045,8 @@ Themes\Styles\Window.xaml
                 <RowDefinition />
               </Grid.RowDefinitions>
               <local:WatermarkTextBox Grid.RowSpan="2" Focusable="True" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" x:Name="PART_TextBox" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" IsReadOnly="{TemplateBinding IsReadOnly}" />
-              <Button x:Name="UpButton" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
-              <Button x:Name="DownButton" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
+              <Button x:Name="UpButton" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
+              <Button x:Name="DownButton" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
             </Grid>
           </local:SimplePanel>
           <ControlTemplate.Triggers>
@@ -14978,8 +15085,8 @@ Themes\Styles\Window.xaml
           <RowDefinition />
         </Grid.RowDefinitions>
         <local:WatermarkTextBox Grid.RowSpan="2" Focusable="True" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" x:Name="PART_TextBox" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" IsReadOnly="{TemplateBinding IsReadOnly}" />
-        <Button x:Name="UpButton" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
-        <Button x:Name="DownButton" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
+        <Button x:Name="UpButton" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
+        <Button x:Name="DownButton" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
@@ -15020,8 +15127,8 @@ Themes\Styles\Window.xaml
           <RowDefinition />
         </Grid.RowDefinitions>
         <local:WatermarkTextBox Grid.RowSpan="2" Focusable="True" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" x:Name="PART_TextBox" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" IsReadOnly="{TemplateBinding IsReadOnly}" />
-        <Button x:Name="UpButton" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
-        <Button x:Name="DownButton" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
+        <Button x:Name="UpButton" VerticalContentAlignment="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
+        <Button x:Name="DownButton" VerticalContentAlignment="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="1" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
@@ -15073,8 +15180,8 @@ Themes\Styles\Window.xaml
         </Grid.RowDefinitions>
         <local:WatermarkTextBox Grid.RowSpan="2" Focusable="True" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" x:Name="PART_TextBox" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" IsReadOnly="{TemplateBinding IsReadOnly}" />
         <Button HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="2" Height="Auto" Width="Auto" Command="interactivity:ControlCommands.Clear" local:IconElement.Width="14" Padding="0,0,2,0" Visibility="Collapsed" Name="ButtonClear" Grid.Column="1" Style="{StaticResource ButtonIcon}" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{TemplateBinding BorderBrush}" />
-        <Button x:Name="UpButton" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="2" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
-        <Button x:Name="DownButton" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="2" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
+        <Button x:Name="UpButton" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="2" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
+        <Button x:Name="DownButton" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="2" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
@@ -15121,8 +15228,8 @@ Themes\Styles\Window.xaml
         </Grid.RowDefinitions>
         <local:WatermarkTextBox Grid.RowSpan="2" Focusable="True" Watermark="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" CaretBrush="{TemplateBinding CaretBrush}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" x:Name="PART_TextBox" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" IsReadOnly="{TemplateBinding IsReadOnly}" />
         <Button HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="2" Height="Auto" Width="Auto" Command="interactivity:ControlCommands.Clear" local:IconElement.Width="14" Padding="0,0,2,0" Visibility="Collapsed" Name="ButtonClear" Grid.Column="1" Style="{StaticResource ButtonIcon}" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{TemplateBinding BorderBrush}" />
-        <Button x:Name="UpButton" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="2" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
-        <Button x:Name="DownButton" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Focusable="False" Grid.Column="2" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
+        <Button x:Name="UpButton" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="0" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Prev" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="2" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource UpGeometry}" Style="{StaticResource ButtonIcon}" />
+        <Button x:Name="DownButton" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{TemplateBinding IsReadOnly, Converter={StaticResource Boolean2BooleanReConverter}}" Height="Auto" Width="Auto" Grid.Row="1" Visibility="{TemplateBinding ShowUpDownButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Next" local:IconElement.Height="6" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="2" Foreground="{TemplateBinding BorderBrush}" local:IconElement.Geometry="{StaticResource DownGeometry}" Style="{StaticResource ButtonIcon}" />
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
@@ -15343,7 +15450,7 @@ Themes\Styles\Window.xaml
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" />
-        <ScrollViewer Margin="-2,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+        <ScrollViewer Margin="-2,0,0,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
         <Button Height="Auto" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Command="interactivity:ControlCommands.Search" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="1" Style="{StaticResource ButtonIcon}" local:IconElement.Geometry="{StaticResource SearchGeometry}" Foreground="{TemplateBinding BorderBrush}" />
       </Grid>
     </Grid>
@@ -15377,7 +15484,7 @@ Themes\Styles\Window.xaml
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" />
-        <ScrollViewer Margin="-2,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+        <ScrollViewer Margin="-2,0,0,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
         <Button Height="Auto" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Command="interactivity:ControlCommands.Search" local:IconElement.Width="14" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" Grid.Column="1" Style="{StaticResource ButtonIcon}" local:IconElement.Geometry="{StaticResource SearchGeometry}" Foreground="{TemplateBinding BorderBrush}" />
       </Grid>
     </Grid>
@@ -15635,7 +15742,7 @@ Themes\Styles\Window.xaml
   </Style>
   <ControlTemplate x:Key="TabControlPlusTemplate" TargetType="hc:TabControl">
     <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-      <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+      <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true">
         <Grid.ColumnDefinitions>
           <ColumnDefinition x:Name="ColumnDefinition0" />
           <ColumnDefinition x:Name="ColumnDefinition1" Width="0" />
@@ -15645,7 +15752,7 @@ Themes\Styles\Window.xaml
           <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Border Background="{TemplateBinding Background}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BorderBrush}">
-          <local:TabPanel MinHeight="{TemplateBinding TabItemHeight}" TabItemHeight="{TemplateBinding TabItemHeight}" TabItemWidth="{TemplateBinding TabItemWidth}" IsTabFillEnabled="{TemplateBinding IsTabFillEnabled}" Margin="0,0,-1,-1" x:Name="PART_HeaderPanel" HorizontalAlignment="Left" Background="{DynamicResource SecondaryTextBrush}" IsItemsHost="true" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1">
+          <local:TabPanel MinHeight="{TemplateBinding TabItemHeight}" TabItemHeight="{TemplateBinding TabItemHeight}" TabItemWidth="{TemplateBinding TabItemWidth}" IsTabFillEnabled="{TemplateBinding IsTabFillEnabled}" Margin="0,0,-1,-1" x:Name="PART_HeaderPanel" HorizontalAlignment="Left" Background="{DynamicResource SecondaryTextBrush}" IsItemsHost="true">
             <interactivity:Interaction.Behaviors>
               <interactivity:FluidMoveBehavior AppliesTo="Children" Duration="{Binding FluidMoveDuration,ElementName=PART_HeaderPanel}">
                 <interactivity:FluidMoveBehavior.EaseX>
@@ -15655,7 +15762,7 @@ Themes\Styles\Window.xaml
             </interactivity:Interaction.Behaviors>
           </local:TabPanel>
         </Border>
-        <Border x:Name="contentPanel" Background="{DynamicResource SecondaryRegionBrush}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+        <Border x:Name="contentPanel" Background="{DynamicResource SecondaryRegionBrush}" Grid.Column="0" Grid.Row="1">
           <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
         </Border>
         <Border Visibility="{Binding Visibility,ElementName=PART_OverflowButton}" Margin="0,-1,0,0" Grid.Row="0" Grid.Column="0" BorderThickness="1,0,0,1" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}" HorizontalAlignment="Right">
@@ -15666,7 +15773,7 @@ Themes\Styles\Window.xaml
   </ControlTemplate>
   <ControlTemplate x:Key="TabControlPlusScrollableTemplate" TargetType="hc:TabControl">
     <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-      <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true" KeyboardNavigation.TabNavigation="Local">
+      <Grid x:Name="templateRoot" ClipToBounds="true" SnapsToDevicePixels="true">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="Auto" />
           <ColumnDefinition />
@@ -15684,7 +15791,7 @@ Themes\Styles\Window.xaml
         </Border>
         <local:ScrollViewer HorizontalScrollBarVisibility="Hidden" CanMouseWheel="True" local:ScrollViewerAttach.Orientation="Horizontal" IsInertiaEnabled="True" Grid.Row="0" Grid.Column="1" IsDeferredScrollingEnabled="True" x:Name="PART_OverflowScrollviewer">
           <Border Background="{TemplateBinding Background}" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource BorderBrush}" Name="PART_HeaderBorder">
-            <local:TabPanel MinHeight="{TemplateBinding TabItemHeight}" TabItemHeight="{TemplateBinding TabItemHeight}" TabItemWidth="{TemplateBinding TabItemWidth}" IsTabFillEnabled="{TemplateBinding IsTabFillEnabled}" Margin="0,0,-1,-1" x:Name="PART_HeaderPanel" HorizontalAlignment="Left" Background="{DynamicResource SecondaryTextBrush}" IsItemsHost="true" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1">
+            <local:TabPanel MinHeight="{TemplateBinding TabItemHeight}" TabItemHeight="{TemplateBinding TabItemHeight}" TabItemWidth="{TemplateBinding TabItemWidth}" IsTabFillEnabled="{TemplateBinding IsTabFillEnabled}" Margin="0,0,-1,-1" x:Name="PART_HeaderPanel" HorizontalAlignment="Left" Background="{DynamicResource SecondaryTextBrush}" IsItemsHost="true">
               <interactivity:Interaction.Behaviors>
                 <interactivity:FluidMoveBehavior AppliesTo="Children" Duration="{Binding FluidMoveDuration,ElementName=PART_HeaderPanel}">
                   <interactivity:FluidMoveBehavior.EaseX>
@@ -15705,7 +15812,7 @@ Themes\Styles\Window.xaml
             <local:ContextMenuToggleButton x:Name="PART_OverflowButton" Visibility="Collapsed" Padding="0" local:IconElement.Width="14" Height="Auto" BorderThickness="0" Background="{DynamicResource SecondaryRegionBrush}" Style="{StaticResource ToggleButtonIconTransparent}" local:IconSwitchElement.Geometry="{StaticResource DownGeometry}" local:IconSwitchElement.GeometrySelected="{StaticResource UpGeometry}" />
           </StackPanel>
         </Border>
-        <Border x:Name="contentPanel" Background="{DynamicResource SecondaryRegionBrush}" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
+        <Border x:Name="contentPanel" Background="{DynamicResource SecondaryRegionBrush}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
           <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
         </Border>
       </Grid>
@@ -15740,6 +15847,7 @@ Themes\Styles\Window.xaml
     <Setter Property="VerticalAlignment" Value="Center" />
     <Setter Property="Height" Value="{StaticResource DefaultControlHeight}" />
     <Setter Property="hc:TitleElement.Foreground" Value="{DynamicResource TextIconBrush}" />
+    <Setter Property="ShowCloseButton" Value="{Binding Path=(hc:TagContainer.ShowCloseButton), RelativeSource={RelativeSource AncestorType=hc:TagContainer}}" />
     <Setter Property="FocusVisualStyle">
       <Setter.Value>
         <Style>
@@ -15767,13 +15875,13 @@ Themes\Styles\Window.xaml
                 <ContentPresenter TextElement.Foreground="{Binding Path=(hc:TitleElement.Foreground),RelativeSource={RelativeSource TemplatedParent}}" ContentSource="Header" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" VerticalAlignment="Center" HorizontalAlignment="Center" />
               </Border>
               <ContentPresenter Margin="{TemplateBinding Padding}" Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-              <Button Focusable="False" Name="ButtonClose" Visibility="{TemplateBinding ShowCloseButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Close" Margin="0,0,6,0" Width="16" Grid.Column="2" Style="{StaticResource ButtonIcon}" Padding="0,11" local:IconElement.Geometry="{StaticResource DeleteGeometry}" Foreground="{TemplateBinding Foreground}" />
+              <Button Focusable="False" Name="ButtonClose" Padding="0" BorderThickness="0" local:IconElement.Width="8" Visibility="{TemplateBinding ShowCloseButton,Converter={StaticResource Boolean2VisibilityConverter}}" Command="interactivity:ControlCommands.Close" Margin="0,0,6,0" Width="16" Grid.Column="2" Style="{StaticResource ButtonIcon}" local:IconElement.Geometry="{StaticResource DeleteGeometry}" Foreground="{TemplateBinding Foreground}" />
             </Grid>
           </Border>
           <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True" SourceName="ButtonClose">
               <Setter Property="hc:IconElement.Geometry" Value="{StaticResource DeleteFillCircleGeometry}" TargetName="ButtonClose" />
-              <Setter Property="Padding" Value="0,6" TargetName="ButtonClose" />
+              <Setter Property="hc:IconElement.Width" Value="14" TargetName="ButtonClose" />
             </Trigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -15831,9 +15939,9 @@ Themes\Styles\Window.xaml
           <ColumnDefinition />
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Border x:Name="border" Grid.ColumnSpan="2" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
+        <Border x:Name="border" Grid.ColumnSpan="2" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
         <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" />
-        <ScrollViewer Margin="-2,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+        <ScrollViewer Margin="-2,0,0,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
         <Button Height="Auto" Width="Auto" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" local:IconElement.Width="14" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=border}" />
       </Grid>
     </Grid>
@@ -15843,17 +15951,18 @@ Themes\Styles\Window.xaml
         <Setter Property="Opacity" TargetName="root" Value="0.4" />
       </Trigger>
       <Trigger Property="IsMouseOver" Value="true" SourceName="root">
-        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
       </Trigger>
       <MultiTrigger>
         <MultiTrigger.Conditions>
-          <Condition Property="IsMouseOver" Value="true" SourceName="root" />
+          <Condition Property="IsMouseOver" Value="true" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
       <Trigger Property="IsFocused" Value="true">
-        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
       </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
@@ -15872,9 +15981,9 @@ Themes\Styles\Window.xaml
           <ColumnDefinition />
           <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Border x:Name="border" Grid.ColumnSpan="2" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{DynamicResource BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
+        <Border x:Name="border" Grid.ColumnSpan="2" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" />
         <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="{TemplateBinding Text,Converter={StaticResource String2VisibilityReConverter}}" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockDefaultThiLight}" Text="{Binding Path=(hc:InfoElement.Placeholder),RelativeSource={RelativeSource TemplatedParent}}" />
-        <ScrollViewer Margin="-2,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+        <ScrollViewer Margin="-2,0,0,0" Grid.Column="0" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
         <Button Height="Auto" Width="Auto" HorizontalContentAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" local:IconElement.Width="14" Command="interactivity:ControlCommands.Clear" Visibility="Collapsed" Name="ButtonClear" Grid.Column="1" Style="{StaticResource ButtonIcon}" Padding="{Binding Padding, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ThicknessSplitConverter}, ConverterParameter='0,0,1,0'}" local:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}" Foreground="{Binding BorderBrush,ElementName=border}" />
       </Grid>
     </Grid>
@@ -15884,17 +15993,18 @@ Themes\Styles\Window.xaml
         <Setter Property="Opacity" TargetName="root" Value="0.4" />
       </Trigger>
       <Trigger Property="IsMouseOver" Value="true" SourceName="root">
-        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource SecondaryBorderBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SecondaryBorderBrush}" />
       </Trigger>
       <MultiTrigger>
         <MultiTrigger.Conditions>
-          <Condition Property="IsMouseOver" Value="true" SourceName="root" />
+          <Condition Property="IsMouseOver" Value="true" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
-      <Trigger Property="IsFocused" Value="true">
-        <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryBrush}" />
+      <Trigger Property="IsFocused" Value="True">
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBrush}" />
       </Trigger>
     </ControlTemplate.Triggers>
   </ControlTemplate>
@@ -15923,6 +16033,11 @@ Themes\Styles\Window.xaml
             <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=border}" StaysOpen="False" />
           </Grid>
           <ControlTemplate.Triggers>
+            <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+              <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+              <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+              <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
               <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
             </Trigger>
@@ -15973,6 +16088,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -16020,6 +16140,11 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -16082,6 +16207,12 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="ButtonClear" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -16103,6 +16234,7 @@ Themes\Styles\Window.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsMouseOver" Value="true" SourceName="PART_Root" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="hc:InfoElement.IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
@@ -16138,6 +16270,12 @@ Themes\Styles\Window.xaml
       </Grid>
     </Grid>
     <ControlTemplate.Triggers>
+      <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+        <Setter TargetName="ButtonClear" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+        <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+        <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+      </Trigger>
       <Trigger Property="IsEnabled" Value="false">
         <Setter Property="Opacity" TargetName="PART_Root" Value="0.4" />
       </Trigger>
@@ -16159,6 +16297,7 @@ Themes\Styles\Window.xaml
         <MultiTrigger.Conditions>
           <Condition Property="IsMouseOver" Value="true" SourceName="PART_Root" />
           <Condition Property="hc:InfoElement.ShowClearButton" Value="True" />
+          <Condition Property="hc:InfoElement.IsReadOnly" Value="False" />
         </MultiTrigger.Conditions>
         <Setter Property="Visibility" Value="Visible" TargetName="ButtonClear" />
       </MultiTrigger>
