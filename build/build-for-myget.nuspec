@@ -10,7 +10,7 @@
     <licenseUrl>https://raw.githubusercontent.com/ghost1372/HandyControls/develop/LICENSE</licenseUrl>
     <projectUrl>https://github.com/ghost1372/HandyControls</projectUrl>
     <description>Contains some simple and commonly used WPF controls based on HandyControl</description>
-    <copyright>Copyright 2018-2021</copyright>
+    <copyright>Copyright 2018-2023</copyright>
     <tags>wpf wpf-ui style styles theme xaml control csharp relativepanel flipclock skin datagrid menu persian calendar gif togglebutton datagrid wpf-controls component cardview navigation dark-theme color-picker notification</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.0" />
