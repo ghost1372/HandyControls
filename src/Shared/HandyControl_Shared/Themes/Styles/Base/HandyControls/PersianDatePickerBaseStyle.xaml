@@ -45,6 +45,11 @@
                         <Popup Grid.Column="0" x:Name="PART_Popup" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" AllowsTransparency="True" Placement="Bottom" PlacementTarget="{Binding ElementName=border}" StaysOpen="False" />
                     </Grid>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+                            <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+                            <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Opacity" TargetName="PART_Root" Value="0.4"/>
                         </Trigger>
@@ -96,6 +101,11 @@
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+                <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+                <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" TargetName="PART_Root" Value="0.4"/>
             </Trigger>
@@ -144,6 +154,11 @@
             </Grid>
         </Grid>
         <ControlTemplate.Triggers>
+            <Trigger Property="hc:InfoElement.IsReadOnly" Value="True">
+                <Setter TargetName="PART_Button" Property="IsEnabled" Value="False" />
+                <Setter TargetName="PART_Button" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="PART_TextBox" Property="IsReadOnly" Value="True" />
+            </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" TargetName="PART_Root" Value="0.4"/>
             </Trigger>
