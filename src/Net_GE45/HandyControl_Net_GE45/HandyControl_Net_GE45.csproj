@@ -175,7 +175,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="XAMLTools.MSBuild" Version="1.0.0-alpha0143">
+    <PackageReference Include="XAMLTools.MSBuild" Version="1.0.0-alpha0167">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

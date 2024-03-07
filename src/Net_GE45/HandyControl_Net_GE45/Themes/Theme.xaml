@@ -333,12 +333,6 @@ Source files:
   <sys:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">30</sys:Double>
   <lang:LangProvider x:Key="Langs" />
   <SineEase x:Key="SineEaseOut" EasingMode="EaseOut" />
-  <ControlTemplate x:Key="BadgeDotTemplate" TargetType="hc:Badge">
-    <local:SimplePanel>
-      <ContentPresenter />
-      <Border Visibility="{TemplateBinding ShowBadge,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="{TemplateBinding BadgeMargin}" Width="10" Height="10" CornerRadius="5" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
-    </local:SimplePanel>
-  </ControlTemplate>
   <ItemsPanelTemplate x:Key="ButtonGroupHorizontalUniformItemsPanelTemplate">
     <UniformGrid FocusVisualStyle="{x:Null}" Rows="1" />
   </ItemsPanelTemplate>
@@ -508,40 +502,6 @@ Source files:
       </Border>
     </Grid>
   </ControlTemplate>
-  <ControlTemplate x:Key="GroupBoxTabTopTemplate" TargetType="GroupBox">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition />
-      </Grid.RowDefinitions>
-      <Border Grid.Row="1" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='0,0,1,1'}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
-        <ContentPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-      </Border>
-      <Border Grid.Row="0" MinHeight="{Binding Path=(hc:TitleElement.MinHeight), RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,1,1,0'}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='1,1,0,0'}">
-        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="{Binding Path=(hc:TitleElement.Padding), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-      </Border>
-    </Grid>
-  </ControlTemplate>
-  <ControlTemplate x:Key="GroupBoxTabLeftTemplate" TargetType="GroupBox">
-    <Grid>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto" />
-        <ColumnDefinition />
-      </Grid.ColumnDefinitions>
-      <Border Grid.Column="1" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='0,1,1,0'}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
-        <ContentPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-      </Border>
-      <Border Grid.Column="0" MinWidth="{Binding Path=(hc:TitleElement.MinWidth), RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,1,0,1'}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='1,0,0,1'}">
-        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="{Binding Path=(hc:TitleElement.Padding), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-          <ContentPresenter.LayoutTransform>
-            <TransformGroup>
-              <RotateTransform Angle="-90" />
-            </TransformGroup>
-          </ContentPresenter.LayoutTransform>
-        </ContentPresenter>
-      </Border>
-    </Grid>
-  </ControlTemplate>
   <ItemsPanelTemplate x:Key="UniformHorizontalItemsPanelTemplate">
     <UniformGrid FocusVisualStyle="{x:Null}" Rows="1" />
   </ItemsPanelTemplate>
@@ -591,13 +551,6 @@ Source files:
     <GradientStop Color="#60FFFFFF" Offset="0.6" />
     <GradientStop Color="#00FFFFFF" Offset="1" />
   </LinearGradientBrush>
-  <ControlTemplate x:Key="CircleProgressBarTemplate" TargetType="hc:CircleProgressBar">
-    <local:SimplePanel x:Name="TemplateRoot">
-      <shapes:Arc ArcThickness="{TemplateBinding ArcThickness}" Stretch="None" EndAngle="360" Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" StrokeThickness="0" />
-      <shapes:Arc ArcThickness="{TemplateBinding ArcThickness}" Stretch="None" Width="{TemplateBinding ActualWidth}" StrokeThickness="0" Height="{TemplateBinding ActualHeight}" x:Name="PART_Indicator" Fill="{TemplateBinding Foreground}" />
-      <TextBlock Visibility="{Binding ShowText,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Text}" />
-    </local:SimplePanel>
-  </ControlTemplate>
   <DrawingBrush x:Key="SortByCategoryDrawingBrush" o:Freeze="True">
     <DrawingBrush.Drawing>
       <DrawingGroup o:Freeze="True">
@@ -1178,6 +1131,12 @@ Source files:
         </BeginStoryboard>
       </EventTrigger>
     </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <ControlTemplate x:Key="BadgeDotTemplate" TargetType="hc:Badge">
+    <local:SimplePanel>
+      <ContentPresenter />
+      <Border Visibility="{TemplateBinding ShowBadge,Converter={StaticResource Boolean2VisibilityConverter}}" Margin="{TemplateBinding BadgeMargin}" Width="10" Height="10" CornerRadius="5" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+    </local:SimplePanel>
   </ControlTemplate>
   <ControlTemplate x:Key="BadgeProcessingTemplate" TargetType="hc:Badge">
     <local:SimplePanel>
@@ -2486,6 +2445,40 @@ Source files:
       </Trigger>
     </Style.Triggers>
   </Style>
+  <ControlTemplate x:Key="GroupBoxTabTopTemplate" TargetType="GroupBox">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+      <Border Grid.Row="1" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='0,0,1,1'}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+        <ContentPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+      </Border>
+      <Border Grid.Row="0" MinHeight="{Binding Path=(hc:TitleElement.MinHeight), RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,1,1,0'}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='1,1,0,0'}">
+        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="{Binding Path=(hc:TitleElement.Padding), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+      </Border>
+    </Grid>
+  </ControlTemplate>
+  <ControlTemplate x:Key="GroupBoxTabLeftTemplate" TargetType="GroupBox">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Border Grid.Column="1" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='0,1,1,0'}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+        <ContentPresenter Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+      </Border>
+      <Border Grid.Column="0" MinWidth="{Binding Path=(hc:TitleElement.MinWidth), RelativeSource={RelativeSource TemplatedParent}}" BorderThickness="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ThicknessSplitConverter},ConverterParameter='1,1,0,1'}" BorderBrush="{TemplateBinding BorderBrush}" Background="{Binding Path=(hc:TitleElement.Background),RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource CornerRadiusSplitConverter},ConverterParameter='1,0,0,1'}">
+        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}" Margin="{Binding Path=(hc:TitleElement.Padding), RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" ContentSource="Header" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+          <ContentPresenter.LayoutTransform>
+            <TransformGroup>
+              <RotateTransform Angle="-90" />
+            </TransformGroup>
+          </ContentPresenter.LayoutTransform>
+        </ContentPresenter>
+      </Border>
+    </Grid>
+  </ControlTemplate>
   <Style x:Key="GroupBoxTabBaseStyle" BasedOn="{StaticResource GroupBoxBaseStyle}" TargetType="GroupBox">
     <Setter Property="Template" Value="{StaticResource GroupBoxTabTopTemplate}" />
     <Style.Triggers>
@@ -2818,6 +2811,13 @@ Source files:
         </Trigger.EnterActions>
       </Trigger>
     </ControlTemplate.Triggers>
+  </ControlTemplate>
+  <ControlTemplate x:Key="CircleProgressBarTemplate" TargetType="hc:CircleProgressBar">
+    <local:SimplePanel x:Name="TemplateRoot">
+      <shapes:Arc ArcThickness="{TemplateBinding ArcThickness}" Stretch="None" EndAngle="360" Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}" StrokeThickness="0" />
+      <shapes:Arc ArcThickness="{TemplateBinding ArcThickness}" Stretch="None" Width="{TemplateBinding ActualWidth}" StrokeThickness="0" Height="{TemplateBinding ActualHeight}" x:Name="PART_Indicator" Fill="{TemplateBinding Foreground}" />
+      <TextBlock Visibility="{Binding ShowText,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource Boolean2VisibilityConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Text}" />
+    </local:SimplePanel>
   </ControlTemplate>
   <Style x:Key="ProgressBarCircleBaseStyle" TargetType="hc:CircleProgressBar">
     <Setter Property="Background" Value="{DynamicResource SecondaryRegionBrush}" />
@@ -6001,7 +6001,7 @@ Source files:
                       <RowDefinition Height="*" />
                       <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <DockPanel Grid.ColumnSpan="2">
+                    <DockPanel Grid.ColumnSpan="2" x:Name="Header">
                       <ScrollViewer DockPanel.Dock="Top" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Focusable="false">
                         <GridViewHeaderRowPresenter AllowsColumnReorder="{Binding View.AllowsColumnReorder, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderContainerStyle="{Binding View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderToolTip="{Binding View.ColumnHeaderToolTip, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderContextMenu="{Binding View.ColumnHeaderContextMenu, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderTemplate="{Binding View.ColumnHeaderTemplate, RelativeSource={RelativeSource AncestorType=ListView}}" ColumnHeaderTemplateSelector="{Binding View.ColumnHeaderTemplateSelector, RelativeSource={RelativeSource AncestorType=ListView}}" Columns="{Binding View.Columns, RelativeSource={RelativeSource AncestorType=ListView}}" Margin="2,0" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                       </ScrollViewer>
@@ -6024,6 +6024,9 @@ Source files:
                     <EventTrigger RoutedEvent="MouseLeave">
                       <BeginStoryboard Storyboard="{StaticResource Storyboard2}" />
                     </EventTrigger>
+                    <DataTrigger Binding="{Binding Path=View, RelativeSource={RelativeSource AncestorType=ListView}}" Value="{x:Null}">
+                      <Setter TargetName="Header" Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
                   </ControlTemplate.Triggers>
                 </ControlTemplate>
               </ScrollViewer.Template>
@@ -6041,7 +6044,7 @@ Source files:
         </MultiTrigger.Conditions>
         <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
       </MultiTrigger>
-      <Trigger Property="View" Value="{x:Null}">
+      <Trigger Property="HasItems" Value="False">
         <Setter Property="Template">
           <Setter.Value>
             <ControlTemplate TargetType="ListView">

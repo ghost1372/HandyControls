@@ -15,22 +15,22 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
-                        <hc:ThemeResources UsingSystemTheme="True"/>
-                        <ResourceDictionary Source="Resources/Themes/Basic/Colors/Dark.xaml"/>
+                        <hc:ThemeResources UsingSystemTheme="True" />
+                        <ResourceDictionary Source="Resources/Themes/Basic/Colors/Dark.xaml" />
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
-                        <hc:Theme/>
-                        <ResourceDictionary Source="Resources/Themes/Theme.xaml"/>
+                        <hc:Theme />
+                        <ResourceDictionary Source="Resources/Themes/Theme.xaml" />
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <langs:LangProvider x:Key="DemoLangs"/>
-            <viewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
-            <hc:EnumDataProvider x:Key="DemoTypes" Type="data:DemoType"/>
-            <hc:EnumDataProvider x:Key="ShowAnimations" Type="hc:ShowAnimation"/>
-            <hc:EnumDataProvider x:Key="HatchStyles" Type="hc:HatchStyle"/>
+            <langs:LangProvider x:Key="DemoLangs" />
+            <viewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
+            <hc:EnumDataProvider x:Key="DemoTypes" Type="data:DemoType" />
+            <hc:EnumDataProvider x:Key="ShowAnimations" Type="hc:ShowAnimation" />
+            <hc:EnumDataProvider x:Key="HatchStyles" Type="hc:HatchStyle" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

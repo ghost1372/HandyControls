@@ -1,18 +1,41 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Geometries.xaml"/>
+        <ResourceDictionary Source="Geometries.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <DrawingBrush o:Freeze="True" Opacity=".1" x:Key="CloudDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,157,157" ViewportUnits="Absolute" Stretch="Uniform" TileMode="Tile">
+    <DrawingBrush
+        x:Key="CloudDrawingBrush"
+        o:Freeze="True"
+        Opacity=".1"
+        RenderOptions.CacheInvalidationThresholdMaximum="2.0"
+        RenderOptions.CacheInvalidationThresholdMinimum="0.5"
+        RenderOptions.CachingHint="Cache"
+        Stretch="Uniform"
+        TileMode="Tile"
+        Viewport="0,0,157,157"
+        ViewportUnits="Absolute">
         <DrawingBrush.Drawing>
-            <ImageDrawing o:Freeze="True" ImageSource="/HandyControlDemo;component/Resources/Img/cloud.png" Rect="0,0,157,157"/>
+            <ImageDrawing
+                o:Freeze="True"
+                ImageSource="/HandyControlDemo;component/Resources/Img/cloud.png"
+                Rect="0,0,157,157" />
         </DrawingBrush.Drawing>
     </DrawingBrush>
-    
-    <DrawingBrush o:Freeze="True" x:Key="MainContentForegroundDrawingBrush" RenderOptions.CacheInvalidationThresholdMinimum="0.5" RenderOptions.CacheInvalidationThresholdMaximum="2.0" RenderOptions.CachingHint="Cache" Viewport="0,0,16,16" ViewportUnits="Absolute" Stretch="None" TileMode="Tile">
+
+    <DrawingBrush
+        x:Key="MainContentForegroundDrawingBrush"
+        o:Freeze="True"
+        RenderOptions.CacheInvalidationThresholdMaximum="2.0"
+        RenderOptions.CacheInvalidationThresholdMinimum="0.5"
+        RenderOptions.CachingHint="Cache"
+        Stretch="None"
+        TileMode="Tile"
+        Viewport="0,0,16,16"
+        ViewportUnits="Absolute">
         <DrawingBrush.Drawing>
             <GeometryDrawing o:Freeze="True" Brush="{DynamicResource MainContentForegroundBrush}">
                 <GeometryDrawing.Geometry>
@@ -25,40 +48,81 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <LinearGradientBrush o:Freeze="True" x:Key="MenuButtonBorderBrush" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop o:Freeze="True" Color="White" Offset="0"/>
-        <GradientStop o:Freeze="True" Color="#F2F2F2" Offset="1"/>
+    <LinearGradientBrush x:Key="MenuButtonBorderBrush" o:Freeze="True" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop o:Freeze="True" Offset="0" Color="White" />
+        <GradientStop o:Freeze="True" Offset="1" Color="#F2F2F2" />
     </LinearGradientBrush>
 
-    <LinearGradientBrush o:Freeze="True" x:Key="ToolBarBackground" EndPoint="0.5,1" StartPoint="0.5,0">
-        <GradientStop o:Freeze="True" Color="#F5F4F5" Offset="0"/>
-        <GradientStop o:Freeze="True" Color="#D1CFD1" Offset="1"/>
+    <LinearGradientBrush x:Key="ToolBarBackground" o:Freeze="True" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop o:Freeze="True" Offset="0" Color="#F5F4F5" />
+        <GradientStop o:Freeze="True" Offset="1" Color="#D1CFD1" />
     </LinearGradientBrush>
 
-    <SolidColorBrush o:Freeze="True" x:Key="MainBackgroundBrush" Color="{DynamicResource MainBackgroundColor}"/>
-    <SolidColorBrush o:Freeze="True" x:Key="MainContentForegroundBrush" Color="{DynamicResource MainContentForegroundColor}"/>
-    <SolidColorBrush o:Freeze="True" x:Key="MainContentBackgroundBrush" Color="{DynamicResource MainContentBackgroundColor}"/>
+    <SolidColorBrush
+        x:Key="MainBackgroundBrush"
+        o:Freeze="True"
+        Color="{DynamicResource MainBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="MainContentForegroundBrush"
+        o:Freeze="True"
+        Color="{DynamicResource MainContentForegroundColor}" />
+    <SolidColorBrush
+        x:Key="MainContentBackgroundBrush"
+        o:Freeze="True"
+        Color="{DynamicResource MainContentBackgroundColor}" />
 
-    <!--region AvalonEdit-->
-    <SolidColorBrush o:Freeze="True" x:Key="ControlAccentBrushKey" Color="{DynamicResource ControlAccentColorKey}"/>
-    <SolidColorBrush o:Freeze="True" x:Key="EditorBackground" Color="{DynamicResource EditorBackgroundColor}"/>
-    <SolidColorBrush o:Freeze="True" x:Key="EditorForeground" Color="{DynamicResource EditorForegroundColor}"/>
-    <SolidColorBrush o:Freeze="True" x:Key="EditorLineNumbersForeground" Color="{DynamicResource EditorLineNumbersForegroundColor}"/>
-    <SolidColorBrush o:Freeze="True" x:Key="EditorSelectionBrush" Color="{DynamicResource ControlAccentColorKey}" Opacity="0.75"/>
-    <SolidColorBrush o:Freeze="True" x:Key="EditorSelectionBorder" Color="{DynamicResource ControlAccentColorKey}" Opacity="0.75"/>
-    <SolidColorBrush o:Freeze="True" x:Key="EditorNonPrintableCharacterBrush" Color="{DynamicResource EditorNonPrintableCharacterColor}"/>
-    <SolidColorBrush o:Freeze="True" x:Key="EditorLinkTextForegroundBrush" Color="{DynamicResource EditorLinkTextForegroundColor}"/>
-    <SolidColorBrush o:Freeze="True" x:Key="EditorLinkTextBackgroundBrush" Color="{DynamicResource EditorLinkTextBackgroundColor}" />
-    <!--endregion-->
+    <!--  region AvalonEdit  -->
+    <SolidColorBrush
+        x:Key="ControlAccentBrushKey"
+        o:Freeze="True"
+        Color="{DynamicResource ControlAccentColorKey}" />
+    <SolidColorBrush
+        x:Key="EditorBackground"
+        o:Freeze="True"
+        Color="{DynamicResource EditorBackgroundColor}" />
+    <SolidColorBrush
+        x:Key="EditorForeground"
+        o:Freeze="True"
+        Color="{DynamicResource EditorForegroundColor}" />
+    <SolidColorBrush
+        x:Key="EditorLineNumbersForeground"
+        o:Freeze="True"
+        Color="{DynamicResource EditorLineNumbersForegroundColor}" />
+    <SolidColorBrush
+        x:Key="EditorSelectionBrush"
+        o:Freeze="True"
+        Opacity="0.75"
+        Color="{DynamicResource ControlAccentColorKey}" />
+    <SolidColorBrush
+        x:Key="EditorSelectionBorder"
+        o:Freeze="True"
+        Opacity="0.75"
+        Color="{DynamicResource ControlAccentColorKey}" />
+    <SolidColorBrush
+        x:Key="EditorNonPrintableCharacterBrush"
+        o:Freeze="True"
+        Color="{DynamicResource EditorNonPrintableCharacterColor}" />
+    <SolidColorBrush
+        x:Key="EditorLinkTextForegroundBrush"
+        o:Freeze="True"
+        Color="{DynamicResource EditorLinkTextForegroundColor}" />
+    <SolidColorBrush
+        x:Key="EditorLinkTextBackgroundBrush"
+        o:Freeze="True"
+        Color="{DynamicResource EditorLinkTextBackgroundColor}" />
+    <!--  endregion  -->
 
-    <!--region LeftMainContent-->
-    <DrawingBrush o:Freeze="True" x:Key="Brush.HandyControl">
+    <!--  region LeftMainContent  -->
+    <DrawingBrush x:Key="Brush.HandyControl" o:Freeze="True">
         <DrawingBrush.Drawing>
-            <GeometryDrawing o:Freeze="True" Brush="#f06632" Geometry="{StaticResource LogoGeometry}"/>
+            <GeometryDrawing
+                o:Freeze="True"
+                Brush="#f06632"
+                Geometry="{StaticResource LogoGeometry}" />
         </DrawingBrush.Drawing>
     </DrawingBrush>
-    
-    <DrawingBrush o:Freeze="True" x:Key="Brush.SortAscending">
+
+    <DrawingBrush x:Key="Brush.SortAscending" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -71,8 +135,8 @@
             </DrawingGroup>
         </DrawingBrush.Drawing>
     </DrawingBrush>
-    
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Brush">
+
+    <DrawingBrush x:Key="Brush.Brush" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -84,7 +148,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ButtonClick">
+    <DrawingBrush x:Key="Brush.ButtonClick" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -97,7 +161,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.RepeatButton">
+    <DrawingBrush x:Key="Brush.RepeatButton" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -108,7 +172,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Toggle">
+    <DrawingBrush x:Key="Brush.Toggle" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -121,7 +185,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.RadioButton">
+    <DrawingBrush x:Key="Brush.RadioButton" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -134,7 +198,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.CheckBoxChecked">
+    <DrawingBrush x:Key="Brush.CheckBoxChecked" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -149,7 +213,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ScrollBox">
+    <DrawingBrush x:Key="Brush.ScrollBox" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -162,7 +226,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Slider">
+    <DrawingBrush x:Key="Brush.Slider" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -175,7 +239,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.TextBlock">
+    <DrawingBrush x:Key="Brush.TextBlock" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -187,7 +251,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.TextBox">
+    <DrawingBrush x:Key="Brush.TextBox" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -200,7 +264,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ComboBox">
+    <DrawingBrush x:Key="Brush.ComboBox" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -219,7 +283,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.PasswordBox">
+    <DrawingBrush x:Key="Brush.PasswordBox" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -242,7 +306,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Expander">
+    <DrawingBrush x:Key="Brush.Expander" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -255,7 +319,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ProgressBar">
+    <DrawingBrush x:Key="Brush.ProgressBar" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -270,7 +334,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Calendar">
+    <DrawingBrush x:Key="Brush.Calendar" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -283,7 +347,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.DateTimePicker">
+    <DrawingBrush x:Key="Brush.DateTimePicker" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -300,7 +364,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.TabPage">
+    <DrawingBrush x:Key="Brush.TabPage" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -314,7 +378,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.DataGrid">
+    <DrawingBrush x:Key="Brush.DataGrid" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -328,7 +392,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.TreeView">
+    <DrawingBrush x:Key="Brush.TreeView" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -340,7 +404,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ListBox">
+    <DrawingBrush x:Key="Brush.ListBox" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -370,7 +434,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ListView">
+    <DrawingBrush x:Key="Brush.ListView" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -383,7 +447,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.GroupBox">
+    <DrawingBrush x:Key="Brush.GroupBox" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -396,7 +460,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ContextMenu">
+    <DrawingBrush x:Key="Brush.ContextMenu" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -412,7 +476,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.RichTextBox">
+    <DrawingBrush x:Key="Brush.RichTextBox" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -425,7 +489,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.WPFFlowDocument">
+    <DrawingBrush x:Key="Brush.WPFFlowDocument" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -439,7 +503,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ToolBar">
+    <DrawingBrush x:Key="Brush.ToolBar" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -452,7 +516,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.BorderElement">
+    <DrawingBrush x:Key="Brush.BorderElement" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -466,7 +530,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Label">
+    <DrawingBrush x:Key="Brush.Label" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -478,7 +542,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.FrameBorder">
+    <DrawingBrush x:Key="Brush.FrameBorder" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -491,7 +555,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.WindowsForm">
+    <DrawingBrush x:Key="Brush.WindowsForm" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -505,7 +569,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Path">
+    <DrawingBrush x:Key="Brush.Path" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -517,7 +581,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.DataGenerator">
+    <DrawingBrush x:Key="Brush.DataGenerator" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -531,7 +595,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Animation">
+    <DrawingBrush x:Key="Brush.Animation" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -543,7 +607,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Effects">
+    <DrawingBrush x:Key="Brush.Effects" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -556,7 +620,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.LikeFilled">
+    <DrawingBrush x:Key="Brush.LikeFilled" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -569,7 +633,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.PropertyGridEditorPart">
+    <DrawingBrush x:Key="Brush.PropertyGridEditorPart" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -603,7 +667,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Image">
+    <DrawingBrush x:Key="Brush.Image" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -619,7 +683,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ImageStack">
+    <DrawingBrush x:Key="Brush.ImageStack" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -632,7 +696,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Search">
+    <DrawingBrush x:Key="Brush.Search" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -645,7 +709,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.User">
+    <DrawingBrush x:Key="Brush.User" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -658,7 +722,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.CheckDot">
+    <DrawingBrush x:Key="Brush.CheckDot" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -670,7 +734,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.SplitButton">
+    <DrawingBrush x:Key="Brush.SplitButton" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -683,7 +747,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ButtonGroup">
+    <DrawingBrush x:Key="Brush.ButtonGroup" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -696,13 +760,16 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ProgressBarStatusBar8">
+    <DrawingBrush x:Key="Brush.ProgressBarStatusBar8" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
                     <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z">
                         <GeometryDrawing.Pen>
-                            <Pen Brush="#00FFFFFF" Thickness="1.0000003576278687" DashCap="Flat" />
+                            <Pen
+                                Brush="#00FFFFFF"
+                                DashCap="Flat"
+                                Thickness="1.0000003576278687" />
                         </GeometryDrawing.Pen>
                     </GeometryDrawing>
                     <GeometryDrawing Brush="#FFF6F6F6" Geometry="F1M2,14C1.099,14,0.0249999999999999,13.653,0.0249999999999999,12L0.0249999999999999,4.975C0.0249999999999999,3.665,0.69,3,2,3L14,3C15.309,3,16,3.691,16,5L16,12C16,13.309,15.309,14,14,14z" />
@@ -714,7 +781,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ToolTip">
+    <DrawingBrush x:Key="Brush.ToolTip" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -728,7 +795,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.NumericListBox">
+    <DrawingBrush x:Key="Brush.NumericListBox" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -741,7 +808,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.CheckBoxList">
+    <DrawingBrush x:Key="Brush.CheckBoxList" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -759,7 +826,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.AutoComplete">
+    <DrawingBrush x:Key="Brush.AutoComplete" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -772,7 +839,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Ellipsis">
+    <DrawingBrush x:Key="Brush.Ellipsis" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -784,7 +851,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Time">
+    <DrawingBrush x:Key="Brush.Time" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -797,7 +864,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.TimePicker">
+    <DrawingBrush x:Key="Brush.TimePicker" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -812,7 +879,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.SyncArrow">
+    <DrawingBrush x:Key="Brush.SyncArrow" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -824,7 +891,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.FlipVertical">
+    <DrawingBrush x:Key="Brush.FlipVertical" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -839,7 +906,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.HeartFilled">
+    <DrawingBrush x:Key="Brush.HeartFilled" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -852,7 +919,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.SplitKeyValuePair">
+    <DrawingBrush x:Key="Brush.SplitKeyValuePair" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -865,7 +932,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Tag">
+    <DrawingBrush x:Key="Brush.Tag" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -878,7 +945,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Dynamic">
+    <DrawingBrush x:Key="Brush.Dynamic" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -890,7 +957,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ContactCard">
+    <DrawingBrush x:Key="Brush.ContactCard" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -903,7 +970,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.DottedSplitter">
+    <DrawingBrush x:Key="Brush.DottedSplitter" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -918,7 +985,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ColorWheel">
+    <DrawingBrush x:Key="Brush.ColorWheel" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -937,7 +1004,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.GridPane">
+    <DrawingBrush x:Key="Brush.GridPane" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -957,7 +1024,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.IncreaseHorizontalSpacing">
+    <DrawingBrush x:Key="Brush.IncreaseHorizontalSpacing" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -969,7 +1036,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.TransformRelative">
+    <DrawingBrush x:Key="Brush.TransformRelative" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -982,7 +1049,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Panel">
+    <DrawingBrush x:Key="Brush.Panel" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -995,7 +1062,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.PolygonHexagon">
+    <DrawingBrush x:Key="Brush.PolygonHexagon" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1006,7 +1073,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.TransitioningContentControl">
+    <DrawingBrush x:Key="Brush.TransitioningContentControl" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1023,7 +1090,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.DetailDataView">
+    <DrawingBrush x:Key="Brush.DetailDataView" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1035,7 +1102,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.LinearCarousel">
+    <DrawingBrush x:Key="Brush.LinearCarousel" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1047,7 +1114,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Flow">
+    <DrawingBrush x:Key="Brush.Flow" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1060,7 +1127,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Message">
+    <DrawingBrush x:Key="Brush.Message" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1072,7 +1139,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Loading">
+    <DrawingBrush x:Key="Brush.Loading" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1102,7 +1169,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ColorPalette">
+    <DrawingBrush x:Key="Brush.ColorPalette" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1120,7 +1187,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Carousel">
+    <DrawingBrush x:Key="Brush.Carousel" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1132,7 +1199,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.SplitterControl">
+    <DrawingBrush x:Key="Brush.SplitterControl" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1145,7 +1212,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.HoverMenu">
+    <DrawingBrush x:Key="Brush.HoverMenu" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1164,7 +1231,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Timeline">
+    <DrawingBrush x:Key="Brush.Timeline" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1182,7 +1249,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Paginator">
+    <DrawingBrush x:Key="Brush.Paginator" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1199,7 +1266,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.MainMenuControl">
+    <DrawingBrush x:Key="Brush.MainMenuControl" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1212,7 +1279,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Procedure">
+    <DrawingBrush x:Key="Brush.Procedure" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1225,7 +1292,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Dialog">
+    <DrawingBrush x:Key="Brush.Dialog" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1241,7 +1308,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.WindowScreenshot">
+    <DrawingBrush x:Key="Brush.WindowScreenshot" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1253,7 +1320,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.GoToTop">
+    <DrawingBrush x:Key="Brush.GoToTop" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1266,7 +1333,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.FeedbackBubble">
+    <DrawingBrush x:Key="Brush.FeedbackBubble" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1279,7 +1346,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.GridLight">
+    <DrawingBrush x:Key="Brush.GridLight" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1325,7 +1392,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.NotificationHub">
+    <DrawingBrush x:Key="Brush.NotificationHub" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1338,7 +1405,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.ImageBrowser">
+    <DrawingBrush x:Key="Brush.ImageBrowser" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1352,7 +1419,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.FlowLayoutPanel">
+    <DrawingBrush x:Key="Brush.FlowLayoutPanel" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1364,7 +1431,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.TransactedReceiveScope">
+    <DrawingBrush x:Key="Brush.TransactedReceiveScope" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1376,7 +1443,7 @@
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
-    <DrawingBrush o:Freeze="True" x:Key="Brush.Indexer">
+    <DrawingBrush x:Key="Brush.Indexer" o:Freeze="True">
         <DrawingBrush.Drawing>
             <DrawingGroup>
                 <DrawingGroup.Children>
@@ -1387,5 +1454,5 @@
             </DrawingGroup>
         </DrawingBrush.Drawing>
     </DrawingBrush>
-    <!--endregion-->
+    <!--  endregion  -->
 </ResourceDictionary>

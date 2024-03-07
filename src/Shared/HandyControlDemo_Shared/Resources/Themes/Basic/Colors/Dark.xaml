@@ -5,7 +5,7 @@
     xmlns:o="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="../Geometries.xaml"/>
+        <ResourceDictionary Source="../Geometries.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Color x:Key="MainBackgroundColor">#262e2f</Color>
@@ -39,7 +39,7 @@
             <ImageDrawing
                 o:Freeze="True"
                 ImageSource="/HandyControlDemo;component/Resources/Img/cloud.png"
-                Rect="0,0,157,157"/>
+                Rect="0,0,157,157" />
         </DrawingBrush.Drawing>
     </DrawingBrush>
 
@@ -57,8 +57,8 @@
             <GeometryDrawing o:Freeze="True" Brush="{hc:StaticResource MainContentForegroundBrush}">
                 <GeometryDrawing.Geometry>
                     <GeometryGroup o:Freeze="True">
-                        <RectangleGeometry o:Freeze="True" Rect="0,0,8,8"/>
-                        <RectangleGeometry o:Freeze="True" Rect="8,8,8,8"/>
+                        <RectangleGeometry o:Freeze="True" Rect="0,0,8,8" />
+                        <RectangleGeometry o:Freeze="True" Rect="8,8,8,8" />
                     </GeometryGroup>
                 </GeometryDrawing.Geometry>
             </GeometryDrawing>
@@ -66,68 +66,68 @@
     </DrawingBrush>
 
     <LinearGradientBrush x:Key="MenuButtonBorderBrush" o:Freeze="True" StartPoint="0.5,0" EndPoint="0.5,1">
-        <GradientStop o:Freeze="True" Offset="0" Color="White"/>
-        <GradientStop o:Freeze="True" Offset="1" Color="#F2F2F2"/>
+        <GradientStop o:Freeze="True" Offset="0" Color="White" />
+        <GradientStop o:Freeze="True" Offset="1" Color="#F2F2F2" />
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="ToolBarBackground" o:Freeze="True" StartPoint="0.5,0" EndPoint="0.5,1">
-        <GradientStop o:Freeze="True" Offset="0" Color="#F5F4F5"/>
-        <GradientStop o:Freeze="True" Offset="1" Color="#D1CFD1"/>
+        <GradientStop o:Freeze="True" Offset="0" Color="#F5F4F5" />
+        <GradientStop o:Freeze="True" Offset="1" Color="#D1CFD1" />
     </LinearGradientBrush>
 
     <SolidColorBrush
         x:Key="MainBackgroundBrush"
         o:Freeze="True"
-        Color="{hc:StaticColor MainBackgroundColor}"/>
+        Color="{hc:StaticColor MainBackgroundColor}" />
     <SolidColorBrush
         x:Key="MainContentForegroundBrush"
         o:Freeze="True"
-        Color="{hc:StaticColor MainContentForegroundColor}"/>
+        Color="{hc:StaticColor MainContentForegroundColor}" />
     <SolidColorBrush
         x:Key="MainContentBackgroundBrush"
         o:Freeze="True"
-        Color="{hc:StaticColor MainContentBackgroundColor}"/>
+        Color="{hc:StaticColor MainContentBackgroundColor}" />
 
     <!--  region AvalonEdit  -->
 
     <SolidColorBrush
         x:Key="ControlAccentBrushKey"
         o:Freeze="True"
-        Color="{hc:StaticColor ControlAccentColorKey}"/>
+        Color="{hc:StaticColor ControlAccentColorKey}" />
     <SolidColorBrush
         x:Key="EditorBackground"
         o:Freeze="True"
-        Color="{hc:StaticColor EditorBackgroundColor}"/>
+        Color="{hc:StaticColor EditorBackgroundColor}" />
     <SolidColorBrush
         x:Key="EditorForeground"
         o:Freeze="True"
-        Color="{hc:StaticColor EditorForegroundColor}"/>
+        Color="{hc:StaticColor EditorForegroundColor}" />
     <SolidColorBrush
         x:Key="EditorLineNumbersForeground"
         o:Freeze="True"
-        Color="{hc:StaticColor EditorLineNumbersForegroundColor}"/>
+        Color="{hc:StaticColor EditorLineNumbersForegroundColor}" />
     <SolidColorBrush
         x:Key="EditorSelectionBrush"
         o:Freeze="True"
         Opacity="0.75"
-        Color="{hc:StaticColor ControlAccentColorKey}"/>
+        Color="{hc:StaticColor ControlAccentColorKey}" />
     <SolidColorBrush
         x:Key="EditorSelectionBorder"
         o:Freeze="True"
         Opacity="0.75"
-        Color="{hc:StaticColor ControlAccentColorKey}"/>
+        Color="{hc:StaticColor ControlAccentColorKey}" />
     <SolidColorBrush
         x:Key="EditorNonPrintableCharacterBrush"
         o:Freeze="True"
-        Color="{hc:StaticColor EditorNonPrintableCharacterColor}"/>
+        Color="{hc:StaticColor EditorNonPrintableCharacterColor}" />
     <SolidColorBrush
         x:Key="EditorLinkTextForegroundBrush"
         o:Freeze="True"
-        Color="{hc:StaticColor EditorLinkTextForegroundColor}"/>
+        Color="{hc:StaticColor EditorLinkTextForegroundColor}" />
     <SolidColorBrush
         x:Key="EditorLinkTextBackgroundBrush"
         o:Freeze="True"
-        Color="{hc:StaticColor EditorLinkTextBackgroundColor}"/>
+        Color="{hc:StaticColor EditorLinkTextBackgroundColor}" />
 
     <!--  endregion  -->
 
