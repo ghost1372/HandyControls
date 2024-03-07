@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>HandyControls</id>
-    <version>3.3.4</version>
+    <version>3.5.2</version>
     <authors>Mahdi Hosseini</authors>
     <owners>Mahdi Hosseini</owners>
     <title>HandyOrg</title>
