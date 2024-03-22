@@ -316,6 +316,7 @@ namespace HandyControl.Themes
             {
                 ctl.Resources["PrimaryBrush"] = e.NewValue;
                 ctl.Resources["DarkPrimaryBrush"] = e.NewValue;
+                ctl.Resources["TitleBrush"] = e.NewValue;
             }
         }
 
@@ -346,6 +347,7 @@ namespace HandyControl.Themes
         {
             Application.Current.Resources["PrimaryBrush"] = Value;
             Application.Current.Resources["DarkPrimaryBrush"] = Value;
+            Application.Current.Resources["TitleBrush"] = Value;
         }
 
         #endregion
