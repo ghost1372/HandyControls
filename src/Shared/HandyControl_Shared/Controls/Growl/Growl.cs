@@ -354,7 +354,7 @@ public class Growl : Control
             panel.Children.Add(growl);
         }
     }
-
+    
     private static void ShowGlobal(GrowlInfo growlInfo)
     {
         Application.Current.Dispatcher?.Invoke(
@@ -377,8 +377,6 @@ public class Growl : Control
                     var time = DateTime.Now;
                     if (growlInfo.ShowPersianDateTime)
                     {
-                        System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
-                        time = new DateTime(pc.GetYear(DateTime.Now), pc.GetMonth(DateTime.Now), pc.GetDayOfMonth(DateTime.Now), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Local);
                         showDateTime = false;
                     }
 
@@ -424,8 +422,6 @@ public class Growl : Control
                     var time = DateTime.Now;
                     if (growlInfo.ShowPersianDateTime)
                     {
-                        System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
-                        time = new DateTime(pc.GetYear(DateTime.Now), pc.GetMonth(DateTime.Now), pc.GetDayOfMonth(DateTime.Now), DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Local);
                         showDateTime = false;
                     }
 
