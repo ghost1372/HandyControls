@@ -102,6 +102,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\LinearLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\TipPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\DataGridAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\ListBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\MenuAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\TreeViewAttach.cs" />
