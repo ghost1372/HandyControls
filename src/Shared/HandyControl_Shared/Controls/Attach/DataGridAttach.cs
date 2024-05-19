@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,7 +9,7 @@ using HandyControl.Data;
 
 namespace HandyControl.Controls;
 
-public class DataGridAttach
+public partial class DataGridAttach
 {
     public static readonly DependencyProperty ApplyDefaultStyleProperty = DependencyProperty.RegisterAttached(
         "ApplyDefaultStyle", typeof(bool), typeof(DataGridAttach), new PropertyMetadata(ValueBoxes.FalseBox, OnApplyDefaultStyleChanged));
@@ -343,53 +344,61 @@ public class DataGridAttach
     public static bool GetShowSelectAllButton(DependencyObject element)
         => (bool) element.GetValue(ShowSelectAllButtonProperty);
 
-    #region HandyControls
-    internal static readonly DependencyProperty IsSelectAllProperty =
-        DependencyProperty.RegisterAttached("IsSelectAll", typeof(bool), typeof(DataGridAttach), new PropertyMetadata(false,
-            (o, e) =>
-            {
-                var dg = GetCurrentDataGrid(o);
-                ToggleButton tg = o as ToggleButton;
+    public static readonly DependencyProperty IsTristateSortingEnabledProperty = DependencyProperty.RegisterAttached(
+        "IsTristateSortingEnabled", typeof(bool), typeof(DataGridAttach), new PropertyMetadata(
+            ValueBoxes.FalseBox, OnIsTristateSortingEnabledChanged));
 
-                if (dg.SelectionMode != DataGridSelectionMode.Single)
-                {
-                    if (dg.SelectedItems.Count < 2)
-                    {
-                        tg.IsChecked = true;
-                    }
-
-                    if (tg.IsChecked == true)
-                    {
-                        dg.SelectAll();
-                    }
-                    else
-                    {
-                        dg.UnselectAll();
-                    }
-                }
-
-            }));
-    internal static bool GetIsSelectAll(DependencyObject obj)
+    private static void OnIsTristateSortingEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        return (bool) obj.GetValue(IsSelectAllProperty);
+        if (d is not DataGrid dataGrid)
+        {
+            return;
+        }
+
+        if ((bool) e.NewValue)
+        {
+            dataGrid.Sorting += DataGridOnSorting;
+        }
+        else
+        {
+            dataGrid.Sorting -= DataGridOnSorting;
+        }
     }
 
-    internal static void SetIsSelectAll(DependencyObject obj, bool value)
+    private static void DataGridOnSorting(object sender, DataGridSortingEventArgs e)
     {
-        obj.SetValue(IsSelectAllProperty, value);
+        if (sender is not DataGrid dataGrid ||
+            string.IsNullOrEmpty(e.Column.SortMemberPath) ||
+            e.Column.SortDirection is not ListSortDirection.Descending)
+        {
+            return;
+        }
+
+        var description = dataGrid.Items
+            .SortDescriptions
+            .FirstOrDefault(item => string.Equals(item.PropertyName, e.Column.SortMemberPath));
+        var index = dataGrid.Items.SortDescriptions.IndexOf(description);
+        if (index == -1)
+        {
+            return;
+        }
+
+        e.Column.SortDirection = null;
+        dataGrid.Items.SortDescriptions.RemoveAt(index);
+        dataGrid.Items.Refresh();
+
+        if ((Keyboard.Modifiers & ModifierKeys.Shift) != ModifierKeys.Shift)
+        {
+            dataGrid.Items.SortDescriptions.Clear();
+            dataGrid.Items.Refresh();
+        }
+
+        e.Handled = true;
     }
 
-    internal static readonly DependencyProperty CurrentDataGridProperty =
-        DependencyProperty.RegisterAttached("CurrentDataGrid", typeof(DataGrid), typeof(DataGridAttach), new PropertyMetadata(null));
+    public static void SetIsTristateSortingEnabled(DependencyObject element, bool value)
+        => element.SetValue(IsTristateSortingEnabledProperty, ValueBoxes.BooleanBox(value));
 
-    internal static DataGrid GetCurrentDataGrid(DependencyObject obj)
-    {
-        return (DataGrid) obj.GetValue(CurrentDataGridProperty);
-    }
-
-    internal static void SetCurrentDataGrid(DependencyObject obj, DataGrid value)
-    {
-        obj.SetValue(CurrentDataGridProperty, value);
-    }
-    #endregion
+    public static bool GetIsTristateSortingEnabled(DependencyObject element)
+        => (bool) element.GetValue(IsTristateSortingEnabledProperty);
 }

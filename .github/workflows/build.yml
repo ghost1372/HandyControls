@@ -1,4 +1,4 @@
-name: build
+name: Build
 
 on:
   push:
@@ -23,7 +23,9 @@ jobs:
           include-prerelease: true
 
       - name: Build
-        shell: pwsh
+        working-directory: ./build
         run: |
-          cd build
-          .\build.ps1
+            dotnet new tool-manifest
+            dotnet tool install cake.tool --version 4.0.0
+            dotnet tool install minver-cli --version 3.0.0
+            dotnet cake
