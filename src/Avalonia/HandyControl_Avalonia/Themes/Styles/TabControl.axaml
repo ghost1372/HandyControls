@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTheme x:Key="{x:Type TabControl}"
+                  TargetType="TabControl">
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderBrush}" />
+        <Setter Property="Background"
+                Value="{DynamicResource RegionBrush}" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DockPanel>
+                    <ItemsPresenter Name="PART_ItemsPresenter"
+                                    ItemsPanel="{TemplateBinding ItemsPanel}" />
+                    <Border Padding="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                        <ContentPresenter Name="PART_SelectedContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding SelectedContent}"
+                                          ContentTemplate="{TemplateBinding SelectedContentTemplate}" />
+                    </Border>
+                </DockPanel>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^[TabStripPlacement=Top] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="DockPanel.Dock"
+                    Value="Top" />
+        </Style>
+
+        <Style Selector="^[TabStripPlacement=Bottom] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="DockPanel.Dock"
+                    Value="Bottom" />
+        </Style>
+
+        <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="DockPanel.Dock"
+                    Value="Left" />
+        </Style>
+
+        <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation"
+                    Value="Vertical" />
+        </Style>
+
+        <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter">
+            <Setter Property="DockPanel.Dock"
+                    Value="Right" />
+        </Style>
+
+        <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+            <Setter Property="Orientation"
+                    Value="Vertical" />
+        </Style>
+
+        <Style Selector="^.inline">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="1"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

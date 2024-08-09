@@ -19,7 +19,9 @@ public class ConfigHelper : INotifyPropertyChanged
         
     }
 
-    public static ConfigHelper Instance = new Lazy<ConfigHelper>(() => new ConfigHelper()).Value;
+    private static readonly Lazy<ConfigHelper> InstanceInternal = new(() => new ConfigHelper(), isThreadSafe: true);
+
+    public static ConfigHelper Instance => InstanceInternal.Value;
 
     private XmlLanguage _lang = XmlLanguage.GetLanguage("en");
 
