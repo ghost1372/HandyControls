@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:hc="clr-namespace:HandyControl.Controls">
     <ControlTheme x:Key="BorderRegion"
                   TargetType="Border">
         <Setter Property="CornerRadius"
@@ -89,19 +90,36 @@
                 Value="{DynamicResource ThirdlyTextBrush}" />
     </ControlTheme>
 
+    <ControlTheme x:Key="BorderCircular"
+                  TargetType="Border">
+        <Setter Property="hc:BorderElement.Circular"
+                Value="True" />
+    </ControlTheme>
+
     <ControlTheme x:Key="BorderClip"
                   TargetType="Border">
         <Setter Property="Clip">
-            <Setter.Value>
-                <MultiBinding Converter="{StaticResource BorderClipConverter}">
-                    <Binding Path="Bounds.Width"
-                             RelativeSource="{RelativeSource Self}" />
-                    <Binding Path="Bounds.Height"
-                             RelativeSource="{RelativeSource Self}" />
-                    <Binding Path="CornerRadius"
-                             RelativeSource="{RelativeSource Self}" />
-                </MultiBinding>
-            </Setter.Value>
+            <MultiBinding Converter="{StaticResource BorderClipConverter}">
+                <Binding Path="Bounds.Width"
+                         RelativeSource="{RelativeSource Self}" />
+                <Binding Path="Bounds.Height"
+                         RelativeSource="{RelativeSource Self}" />
+                <Binding Path="CornerRadius"
+                         RelativeSource="{RelativeSource Self}" />
+            </MultiBinding>
+        </Setter>
+    </ControlTheme>
+
+    <ControlTheme x:Key="BorderCircularClip"
+                  BasedOn="{StaticResource BorderCircular}"
+                  TargetType="Border">
+        <Setter Property="Clip">
+            <MultiBinding Converter="{StaticResource BorderCircularClipConverter}">
+                <Binding Path="Bounds"
+                         RelativeSource="{RelativeSource Self}" />
+                <Binding Path="CornerRadius"
+                         RelativeSource="{RelativeSource Self}" />
+            </MultiBinding>
         </Setter>
     </ControlTheme>
 </ResourceDictionary>

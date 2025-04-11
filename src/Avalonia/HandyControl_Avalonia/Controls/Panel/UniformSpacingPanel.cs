@@ -59,6 +59,14 @@ public class UniformSpacingPanel : Panel
             ItemHorizontalAlignmentProperty,
             ItemVerticalAlignmentProperty
         );
+
+        OrientationProperty.Changed.AddClassHandler<UniformSpacingPanel>(OnOrientationChanged);
+    }
+
+    private static void OnOrientationChanged(AvaloniaObject element, AvaloniaPropertyChangedEventArgs e)
+    {
+        var p = (UniformSpacingPanel)element;
+        p._orientation = e.GetNewValue<Orientation>();
     }
 
     public Orientation Orientation
@@ -116,16 +124,6 @@ public class UniformSpacingPanel : Panel
     }
 
     private static double CoerceLength(AvaloniaObject _, double length) => length < 0 ? 0 : length;
-
-    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
-    {
-        base.OnPropertyChanged(change);
-
-        if (string.Equals(change.Property.Name, nameof(Orientation)))
-        {
-            _orientation = change.GetNewValue<Orientation>();
-        }
-    }
 
     protected override Size MeasureOverride(Size availableSize)
     {

@@ -32,4 +32,5 @@ public class MessageBoxInfo
     public string YesContent { get; set; }
     
     public string NoContent { get; set; }
+    public Window Owner { get; set; }
 }

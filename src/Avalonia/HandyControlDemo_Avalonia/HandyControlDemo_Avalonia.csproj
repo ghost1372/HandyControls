@@ -11,12 +11,16 @@
     <AssemblyName>HandyControlDemo</AssemblyName>
     <RootNamespace>HandyControlDemo</RootNamespace>
   </PropertyGroup>
+  
   <ItemGroup>
     <None Remove="Data\DemoInfo.json" />
     <None Remove="Resources\Img\cloud.png" />
     <None Remove="Resources\Img\icon.ico" />
   </ItemGroup>
+  
   <ItemGroup>
+    <EmbeddedResource Include="Data\DemoInfo.json" />
+    <AvaloniaResource Include="Resources\Img\cloud.png" />
     <AvaloniaResource Include="Resources\Img\icon.ico" />
   </ItemGroup>
 
@@ -32,46 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AvaloniaResource Include="Resources\Img\cloud.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Data\DemoInfo.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="App.axaml.cs">
-      <DependentUpon>App.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Properties\Langs\Lang.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Lang.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Main\LeftMainContent.axaml.cs">
-      <DependentUpon>LeftMainContent.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Main\MainContent.axaml.cs">
-      <DependentUpon>MainContent.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Styles\ButtonDemoCtrl.axaml.cs">
-      <DependentUpon>ButtonDemoCtrl.axaml</DependentUpon>
-    </Compile>
-    <Compile Update="UserControl\Styles\BrushDemoCtl.axaml.cs">
-      <DependentUpon>BoderDemoCtl.axaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UserControl\Styles\BorderDemoCtl.axaml.cs">
-      <DependentUpon>BorderDemoCtl.axaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UserControl\Styles\RepeatButtonDemoCtl.axaml.cs">
-      <DependentUpon>RepeatButtonDemoCtl.axaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Lang.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -84,10 +48,5 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Resources\Themes\Basic\Geometries.xaml" />
-    <AvaloniaXaml Include="Resources\Themes\Basic\Geometries.xaml" />
   </ItemGroup>
 </Project>
