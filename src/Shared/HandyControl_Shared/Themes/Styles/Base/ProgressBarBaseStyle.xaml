@@ -53,7 +53,7 @@
                                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource TextIconBrush}" Text="{Binding Path=(hc:VisualElement.Text),RelativeSource={RelativeSource TemplatedParent}}"/>
                                         </Border>
                                     </Border>
-                                    <Rectangle x:Name="PART_GlowRect" Fill="{StaticResource ProgressBarIndicatorAnimatedFill}" HorizontalAlignment="Left" Margin="-100,0,0,0" Width="100"/>
+                                    <Rectangle x:Name="PART_GlowRect" Fill="{DynamicResource ProgressBarIndicatorAnimatedFill}" HorizontalAlignment="Left" Margin="-100,0,0,0" Width="100"/>
                                     <Rectangle x:Name="Animation" Visibility="Collapsed" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5">
                                         <Rectangle.RenderTransform>
                                             <TransformGroup>
