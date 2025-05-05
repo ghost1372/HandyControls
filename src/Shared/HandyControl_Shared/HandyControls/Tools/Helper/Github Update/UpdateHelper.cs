@@ -139,3 +139,4 @@ public static partial class UpdateHelper
         return new string(version.Where(c => allowedChars.Contains(c)).ToArray());
     }
 }
+#endif
