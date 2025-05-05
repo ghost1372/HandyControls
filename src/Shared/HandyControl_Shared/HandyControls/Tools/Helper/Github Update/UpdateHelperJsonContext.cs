@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if !NET40
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace HandyControl.Tools;
@@ -8,3 +9,4 @@ namespace HandyControl.Tools;
 internal partial class UpdateHelperJsonContext : JsonSerializerContext
 {
 }
+#endif

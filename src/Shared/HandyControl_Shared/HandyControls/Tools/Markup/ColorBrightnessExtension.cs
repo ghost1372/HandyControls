@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !NET40
+using System;
 using System.Windows.Markup;
 using System.Windows.Media;
 
@@ -44,3 +45,4 @@ public partial class ColorBrightnessExtension : MarkupExtension
                     : ColorHelper.DarkenColor(Color, -(float) CorrectionFactor);
     }
 }
+#endif

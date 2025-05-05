@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿#if !NET40
+using System.Windows;
 using System.Windows.Media;
 using HandyControl.Tools;
 
@@ -52,3 +53,4 @@ public static class BrushAttach
         obj.SetValue(ColorCorrectionFactorProperty, value);
     }
 }
+#endif

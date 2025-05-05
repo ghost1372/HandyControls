@@ -103,6 +103,21 @@ public static partial class ApplicationHelper
         ProfileOptimization.SetProfileRoot(CachePath);
         ProfileOptimization.StartProfile("Profile");
     }
+
+
+    /// <summary>
+    /// Retrieves an enumeration value from a string representation. It requires the generic type to be an enum.
+    /// </summary>
+    /// <typeparam name="TEnum">The generic type must be an enumeration type to convert the string into its corresponding enum value.</typeparam>
+    /// <param name="text">The string representation of the enumeration value to be converted.</param>
+    /// <returns>The corresponding enumeration value of the specified type.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the generic type parameter is not an enumeration.</exception>
+    public static TEnum GetEnum<TEnum>(string text) where TEnum : struct
+    {
+        return !typeof(TEnum).GetTypeInfo().IsEnum
+            ? throw new InvalidOperationException("Generic parameter 'TEnum' must be an enum.")
+            : (TEnum) Enum.Parse(typeof(TEnum), text);
+    }
 #endif
 
     /// <summary>
@@ -150,20 +165,6 @@ public static partial class ApplicationHelper
         var sb = new System.Text.StringBuilder(MAX_PATH);
         InteropMethods.GetModuleFileName(IntPtr.Zero, sb, MAX_PATH);
         return sb.ToString();
-    }
-
-    /// <summary>
-    /// Retrieves an enumeration value from a string representation. It requires the generic type to be an enum.
-    /// </summary>
-    /// <typeparam name="TEnum">The generic type must be an enumeration type to convert the string into its corresponding enum value.</typeparam>
-    /// <param name="text">The string representation of the enumeration value to be converted.</param>
-    /// <returns>The corresponding enumeration value of the specified type.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the generic type parameter is not an enumeration.</exception>
-    public static TEnum GetEnum<TEnum>(string text) where TEnum : struct
-    {
-        return !typeof(TEnum).GetTypeInfo().IsEnum
-            ? throw new InvalidOperationException("Generic parameter 'TEnum' must be an enum.")
-            : (TEnum) Enum.Parse(typeof(TEnum), text);
     }
 }
 
