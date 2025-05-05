@@ -439,7 +439,7 @@ namespace HandyControl.Controls
                 case InteropValues.WM_SYSCOMMAND:
                     if (!ShowMaxButton)
                     {
-                        if ((int) wparam == InteropValues.SC_MAXIMIZE || (int) wparam == InteropValues.SC_RESTORE)
+                        if ((int) wparam == InteropValues.SC_MAXIMIZE)
                         {
                             handled = true;
                         }
