@@ -128,7 +128,7 @@ public static class StringExtension1
     /// <returns></returns>
     public static Color ToColor(this string colorString)
     {
-        return ColorHelper.GetColorFromString(colorString);
+        return ColorHelper.GetColorFromHex(colorString);
     }
 #endif
 }
