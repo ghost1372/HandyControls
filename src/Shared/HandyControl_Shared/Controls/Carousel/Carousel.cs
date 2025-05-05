@@ -22,7 +22,7 @@ namespace HandyControl.Controls;
 [DefaultProperty("Items")]
 [ContentProperty("Items")]
 [TemplatePart(Name = ElementPanelPage, Type = typeof(Panel))]
-public class Carousel : SimpleItemsControl, IDisposable
+public partial class Carousel : SimpleItemsControl, IDisposable
 {
     #region Constants
 

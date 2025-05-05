@@ -69,12 +69,12 @@
                     <hc:SimplePanel ClipToBounds="True">
                         <StackPanel x:Name="PART_Panel" Orientation="Horizontal"/>
                         <hc:SimplePanel x:Name="GridTop" Opacity="0">
-                            <Button Command="interactivity:ControlCommands.Prev" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Style="{StaticResource ButtonCustom}">
+                            <Button Command="interactivity:ControlCommands.Prev" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Style="{TemplateBinding PreviousButtonStyle}">
                                 <Border Width="50" Height="100" Background="{DynamicResource DarkOpacityBrush}" CornerRadius="4">
                                     <Path Margin="16" Fill="White" Style="{StaticResource LeftPathStyle}"/>
                                 </Border>
                             </Button>
-                            <Button Command="interactivity:ControlCommands.Next" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Style="{StaticResource ButtonCustom}">
+                            <Button Command="interactivity:ControlCommands.Next" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Style="{TemplateBinding NextButtonStyle}">
                                 <Border Width="50" Height="100" Background="{DynamicResource DarkOpacityBrush}" CornerRadius="4">
                                     <Path Margin="16" Fill="White" Style="{StaticResource RightPathStyle}"/>
                                 </Border>
