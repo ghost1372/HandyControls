@@ -2,7 +2,7 @@
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace HandyControl.Tools.Extension;
+namespace HandyControl.Tools;
 
 /// <summary>
 /// MarkupExtension to that can be used to brighten (positive) or darken (negative) a Color.
