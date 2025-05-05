@@ -21,7 +21,9 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: |
+            8.x.x
+            9.x.x
 
       - name: Build
         working-directory: ./build
