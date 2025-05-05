@@ -176,7 +176,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ResourceDictionaryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\Theme.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Converter\PersianDateConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ColorBrightnessExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\ColorBrightnessExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Github Update\UpdateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Github Update\UpdateHelperJsonContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Github Update\UpdateInfo.cs" />
