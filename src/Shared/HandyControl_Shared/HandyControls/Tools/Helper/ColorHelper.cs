@@ -64,109 +64,235 @@ public static class ColorHelper
 
 #if !NET40
     /// <summary>
-    /// Creates a Color from a XAML color string.
+    /// Converts a hexadecimal color string into a Color object, supporting both 6 and 8 character formats.
     /// </summary>
-    /// <param name="colorString"></param>
-    /// <returns></returns>
-    public static Color GetColorFromString(string colorString)
+    /// <param name="hexColor">The hexadecimal string representation of a color, which may include an alpha channel.</param>
+    /// <returns>A Color object representing the specified hexadecimal color.</returns>
+    public static Color GetColorFromHex(string hexColor)
     {
-        if (string.IsNullOrEmpty(colorString))
+        hexColor = hexColor.Replace("#", string.Empty);
+        byte a = 255;
+        byte r = 0;
+        byte g = 0;
+        byte b = 0;
+
+        if (hexColor.Length == 8)
         {
-            throw new ArgumentException(nameof(colorString));
+            a = Convert.ToByte(hexColor.Substring(0, 2), 16);
+            r = Convert.ToByte(hexColor.Substring(2, 2), 16);
+            g = Convert.ToByte(hexColor.Substring(4, 2), 16);
+            b = Convert.ToByte(hexColor.Substring(6, 2), 16);
+        }
+        else if (hexColor.Length == 6)
+        {
+            r = Convert.ToByte(hexColor.Substring(0, 2), 16);
+            g = Convert.ToByte(hexColor.Substring(2, 2), 16);
+            b = Convert.ToByte(hexColor.Substring(4, 2), 16);
         }
 
-        if (colorString[0] == '#')
+        return Color.FromArgb(a, r, g, b);
+    }
+
+    /// <summary>
+    /// Tints the color by the given percent.
+    /// </summary>
+    /// <param name="color">The color being tinted.</param>
+    /// <param name="percent">The percent to tint. Ex: 0.1 will make the color 10% lighter.</param>
+    /// <returns>The new tinted color.</returns>
+    public static Color LightenColor(Color color, float percent)
+    {
+        var lighting = GetBrightnessFromColor(color);
+        lighting = lighting + lighting * percent;
+        if (lighting > 1.0)
         {
-            switch (colorString.Length)
-            {
-                case 9:
-                    {
-                        var cuint = Convert.ToUInt32(colorString.Substring(1), 16);
-                        var a = (byte) (cuint >> 24);
-                        var r = (byte) ((cuint >> 16) & 0xff);
-                        var g = (byte) ((cuint >> 8) & 0xff);
-                        var b = (byte) (cuint & 0xff);
+            lighting = 1;
+        }
+        else if (lighting <= 0)
+        {
+            lighting = 0.1f;
+        }
+        var tintedColor = GetColorFromHsl(color.A, GetHueFromColor(color), GetSaturationFromColor(color), lighting);
 
-                        return Color.FromArgb(a, r, g, b);
-                    }
+        return tintedColor;
+    }
 
-                case 7:
-                    {
-                        var cuint = Convert.ToUInt32(colorString.Substring(1), 16);
-                        var r = (byte) ((cuint >> 16) & 0xff);
-                        var g = (byte) ((cuint >> 8) & 0xff);
-                        var b = (byte) (cuint & 0xff);
+    /// <summary>
+    /// Tints the color by the given percent.
+    /// </summary>
+    /// <param name="color">The color being tinted.</param>
+    /// <param name="percent">The percent to tint. Ex: 0.1 will make the color 10% darker.</param>
+    /// <returns>The new tinted color.</returns>
+    public static Color DarkenColor(Color color, float percent)
+    {
+        var lighting = GetBrightnessFromColor(color);
+        lighting = lighting - lighting * percent;
+        if (lighting > 1.0)
+        {
+            lighting = 1;
+        }
+        else if (lighting <= 0)
+        {
+            lighting = 0;
+        }
+        var tintedColor = GetColorFromHsl(color.A, GetHueFromColor(color), GetSaturationFromColor(color), lighting);
 
-                        return Color.FromArgb(255, r, g, b);
-                    }
+        return tintedColor;
+    }
+    /// <summary>
+    /// Gets the brightness of the color.
+    /// </summary>
+    /// <param name="color">The color.</param>
+    /// <returns>The brightness value.</returns>
+    public static float GetBrightnessFromColor(Color color)
+    {
+        return (color.R * 0.299f + color.G * 0.587f + color.B * 0.114f) / 255f;
+    }
 
-                case 5:
-                    {
-                        var cuint = Convert.ToUInt16(colorString.Substring(1), 16);
-                        var a = (byte) (cuint >> 12);
-                        var r = (byte) ((cuint >> 8) & 0xf);
-                        var g = (byte) ((cuint >> 4) & 0xf);
-                        var b = (byte) (cuint & 0xf);
-                        a = (byte) (a << 4 | a);
-                        r = (byte) (r << 4 | r);
-                        g = (byte) (g << 4 | g);
-                        b = (byte) (b << 4 | b);
+    /// <summary>
+    /// Gets the hue of the color.
+    /// </summary>
+    /// <param name="color">The color.</param>
+    /// <returns>The hue value.</returns>
+    public static float GetHueFromColor(Color color)
+    {
+        float r = color.R / 255f;
+        float g = color.G / 255f;
+        float b = color.B / 255f;
 
-                        return Color.FromArgb(a, r, g, b);
-                    }
+        float max = Math.Max(r, Math.Max(g, b));
+        float min = Math.Min(r, Math.Min(g, b));
 
-                case 4:
-                    {
-                        var cuint = Convert.ToUInt16(colorString.Substring(1), 16);
-                        var r = (byte) ((cuint >> 8) & 0xf);
-                        var g = (byte) ((cuint >> 4) & 0xf);
-                        var b = (byte) (cuint & 0xf);
-                        r = (byte) (r << 4 | r);
-                        g = (byte) (g << 4 | g);
-                        b = (byte) (b << 4 | b);
+        float hue = 0f;
 
-                        return Color.FromArgb(255, r, g, b);
-                    }
-
-                default:
-                    throw new FormatException(string.Format("The {0} string passed in the colorString argument is not a recognized Color format.", colorString));
-            }
+        if (max == min)
+        {
+            hue = 0f;
+        }
+        else if (max == r)
+        {
+            hue = (60f * ((g - b) / (max - min)) + 360f) % 360f;
+        }
+        else if (max == g)
+        {
+            hue = (60f * ((b - r) / (max - min)) + 120f) % 360f;
+        }
+        else if (max == b)
+        {
+            hue = (60f * ((r - g) / (max - min)) + 240f) % 360f;
         }
 
-        if (colorString.Length > 3 && colorString[0] == 's' && colorString[1] == 'c' && colorString[2] == '#')
+        return hue;
+    }
+
+    /// <summary>
+    /// Gets the saturation of the color.
+    /// </summary>
+    /// <param name="color">The color.</param>
+    /// <returns>The saturation value.</returns>
+    public static float GetSaturationFromColor(Color color)
+    {
+        float r = color.R / 255f;
+        float g = color.G / 255f;
+        float b = color.B / 255f;
+
+        float max = Math.Max(r, Math.Max(g, b));
+        float min = Math.Min(r, Math.Min(g, b));
+
+        float saturation = 0f;
+
+        if (max != 0)
         {
-            var values = colorString.Split(',');
-
-            if (values.Length == 4)
-            {
-                var scA = double.Parse(values[0].Substring(3), CultureInfo.InvariantCulture);
-                var scR = double.Parse(values[1], CultureInfo.InvariantCulture);
-                var scG = double.Parse(values[2], CultureInfo.InvariantCulture);
-                var scB = double.Parse(values[3], CultureInfo.InvariantCulture);
-
-                return Color.FromArgb((byte) (scA * 255), (byte) (scR * 255), (byte) (scG * 255), (byte) (scB * 255));
-            }
-
-            if (values.Length == 3)
-            {
-                var scR = double.Parse(values[0].Substring(3), CultureInfo.InvariantCulture);
-                var scG = double.Parse(values[1], CultureInfo.InvariantCulture);
-                var scB = double.Parse(values[2], CultureInfo.InvariantCulture);
-
-                return Color.FromArgb(255, (byte) (scR * 255), (byte) (scG * 255), (byte) (scB * 255));
-            }
-
-            throw new FormatException(string.Format("The {0} string passed in the colorString argument is not a recognized Color format (sc#[scA,]scR,scG,scB).", colorString));
+            saturation = (max - min) / max;
         }
 
-        var prop = typeof(Colors).GetTypeInfo().GetDeclaredProperty(colorString);
+        return saturation;
+    }
 
-        if (prop != null)
+    /// <summary>
+    /// Finds the best contrasting color (black or white)
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    public static Color ContrastColorBlackWhite(Color color)
+    {
+        double luma = ((0.299 * color.R) + (0.587 * color.G) + (0.114 * color.B)) / (double) 255;
+        return luma > 0.5 ? Colors.Black : Colors.White;
+    }
+    /// <summary>
+    /// Converts the HSL values to a Color.
+    /// </summary>
+    /// <param name="alpha">The alpha.</param>
+    /// <param name="hue">The hue.</param>
+    /// <param name="saturation">The saturation.</param>
+    /// <param name="lighting">The lighting.</param>
+    /// <returns></returns>
+    public static Color GetColorFromHsl(byte alpha, float hue, float saturation, float lighting)
+    {
+        //if (alpha is < 0 or > 255) {
+        //    throw new ArgumentOutOfRangeException("alpha");
+        //}
+        if (hue is < 0f or > 360f)
         {
-            return (Color) prop.GetValue(null);
+            throw new ArgumentOutOfRangeException("hue");
+        }
+        if (saturation is < 0f or > 1f)
+        {
+            throw new ArgumentOutOfRangeException("saturation");
+        }
+        if (lighting is < 0f or > 1f)
+        {
+            throw new ArgumentOutOfRangeException("lighting");
         }
 
-        throw new FormatException(string.Format("The {0} string passed in the colorString argument is not a recognized Color.", colorString));
+        if (0 == saturation)
+        {
+            return Color.FromArgb(alpha, Convert.ToByte(lighting * 255), Convert.ToByte(lighting * 255), Convert.ToByte(lighting * 255));
+        }
+
+        float fMax, fMid, fMin;
+        int iSextant;
+
+        if (0.5 < lighting)
+        {
+            fMax = lighting - (lighting * saturation) + saturation;
+            fMin = lighting + (lighting * saturation) - saturation;
+        }
+        else
+        {
+            fMax = lighting + (lighting * saturation);
+            fMin = lighting - (lighting * saturation);
+        }
+
+        iSextant = (int) Math.Floor(hue / 60f);
+        if (300f <= hue)
+        {
+            hue -= 360f;
+        }
+        hue /= 60f;
+        hue -= 2f * (float) Math.Floor(((iSextant + 1f) % 6f) / 2f);
+        fMid = 0 == iSextant % 2
+            ? hue * (fMax - fMin) + fMin
+            : fMin - hue * (fMax - fMin);
+
+        byte bMax = Convert.ToByte(fMax * 255);
+        byte bMid = Convert.ToByte(fMid * 255);
+        byte bMin = Convert.ToByte(fMin * 255);
+
+        switch (iSextant)
+        {
+            case 1:
+                return Color.FromArgb(alpha, bMid, bMax, bMin);
+            case 2:
+                return Color.FromArgb(alpha, bMin, bMax, bMid);
+            case 3:
+                return Color.FromArgb(alpha, bMin, bMid, bMax);
+            case 4:
+                return Color.FromArgb(alpha, bMid, bMin, bMax);
+            case 5:
+                return Color.FromArgb(alpha, bMax, bMin, bMid);
+            default:
+                return Color.FromArgb(alpha, bMax, bMid, bMin);
+        }
     }
 #endif
 }
