@@ -102,6 +102,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\LinearLayout.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\TipPlacement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DesignTime\IntellisenseResources.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\BrushAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\DataGridAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\ListBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Attach\MenuAttach.cs" />
@@ -175,6 +176,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ResourceDictionaryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\Theme.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Converter\PersianDateConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Extension\ColorBrightnessExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Github Update\SystemVersionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Github Update\UpdateHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Github Update\UpdateHelperJsonContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Github Update\UpdateInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\ThemeAnimationHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeDictionary.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\ThemeManager\ThemeManager.cs" />
@@ -250,12 +256,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\IniHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\DataContractJavaScriptConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\PolymorphicJsonConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\Internals\ReleaseInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\MicaHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\OSVersionHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\RegistryHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\TaskbarHelper.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\UpdateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\WindowHelper!.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Helper\XmlHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Logging\Internals\Formatters\DefaultLoggerFormatter.cs" />
