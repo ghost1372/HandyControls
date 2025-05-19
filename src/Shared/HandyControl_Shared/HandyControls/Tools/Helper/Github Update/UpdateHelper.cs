@@ -1,4 +1,4 @@
-﻿#if !NET40
+﻿#if NET6_0_OR_GREATER
 using System;
 using System.IO;
 using System.Linq;
@@ -7,11 +7,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-#if NETCOREAPP
 using System.Text.Json;
-#else
-using System.Web.Script.Serialization;
-#endif
 using HandyControl.Data;
 using HandyControl.Tools.Extension;
 using System.Collections.Generic;
@@ -55,14 +51,7 @@ public static partial class UpdateHelper
         response.EnsureSuccessStatusCode();
 
         var responseBody = await response.Content.ReadAsStringAsync();
-#if NETCOREAPP
         var releases = JsonSerializer.Deserialize<List<UpdateInfo>>(responseBody, UpdateHelperJsonContext.Default.ListUpdateInfo);
-#else
-            JavaScriptSerializer javaScript = new JavaScriptSerializer();
-            javaScript.RegisterConverters(new JavaScriptConverter[] { new DataContractJavaScriptConverter(true) });
-
-            var result = javaScript.Deserialize<List<UpdateInfo>>(reader.ReadToEnd());
-#endif
         if (releases == null || releases?.Count == 0)
         {
             return (notFoundUpdate, notFoundUpdate);
