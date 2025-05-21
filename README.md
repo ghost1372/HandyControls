@@ -9,7 +9,8 @@
   <span> · </span>
   <a href="https://github.com/ghost1372/HandyControls/tree/develop/src/Shared/HandyControlDemo_Shared">Samples</a>
   <span> · </span>
-  <span>Gallery App (Store) Will be Available Soon</span>
+  <a href="https://apps.microsoft.com/detail/HandyControl/9nxrsbg32mff?launch=true
+	&mode=mini">Gallery App (Store)</a>
 </h3>
 
 <p align="center">
@@ -127,6 +128,15 @@ This project is based on [HandyControl](https://github.com/handyOrg/HandyControl
 
 if your project is not listed here, let us know! 😀
 
+## 🚀 Explore Our Gallery App 🚀
+
+> [!NOTE]
+>  Want to see HandyControl in action? Head over to our Gallery App for a hands-on experience. You’ll find practical examples, usage scenarios, and interactive demos that showcase the power of our toolkit. Download from Microsoft Store.
+
+<a href="https://apps.microsoft.com/detail/HandyControl/9nxrsbg32mff?launch=true
+    &mode=mini">
+    <img src="https://get.microsoft.com/images/en-us%20dark.svg" width="200"/>
+</a>
 
 ## Documentation
 
