@@ -4,10 +4,14 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Shell;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControl.Tools.Interop;
+#if NET40
+using Microsoft.Windows.Shell;
+#else
+using System.Windows.Shell;
+#endif
 
 namespace HandyControl.Controls;
 
