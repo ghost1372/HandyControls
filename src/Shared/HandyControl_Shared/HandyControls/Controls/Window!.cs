@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Shell;
 using HandyControl.Data;
 using HandyControl.Tools;
 using HandyControl.Tools.Interop;
@@ -135,4 +137,46 @@ public partial class Window
             FixCut();
         }
     }
+
+    private void ApplyWindowChrome(WindowState windowsState)
+    {
+#if NET40
+            var chrome = new WindowChrome
+            {
+                CornerRadius = new CornerRadius(),
+                GlassFrameThickness = new Thickness(0, 0, 0, 1)
+            };
+#else
+        var chrome = new WindowChrome()
+        {
+            CaptionHeight = NonClientAreaHeight - 7,
+            CornerRadius = new CornerRadius(8),
+            GlassFrameThickness = new Thickness(-1),
+            ResizeBorderThickness = new Thickness(6)
+        };
+        if (windowsState == WindowState.Maximized)
+        {
+            chrome.ResizeBorderThickness = new Thickness(0);
+        }
+        else
+        {
+            chrome.ResizeBorderThickness = new Thickness(6);
+        }
+#endif
+        BindingOperations.SetBinding(chrome, WindowChrome.CaptionHeightProperty,
+            new Binding(NonClientAreaHeightProperty.Name) { Source = this });
+        WindowChrome.SetWindowChrome(this, chrome);
+    }
+
+#if !NET40
+    protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+    {
+        if (e.Property.Name is nameof(WindowState))
+        {
+            ApplyWindowChrome((WindowState) e.NewValue);
+        }
+        base.OnPropertyChanged(e);
+    }
+#endif
+
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using HandyControl.Data;
@@ -55,24 +54,7 @@ namespace HandyControl.Controls
 
         public Window()
         {
-#if NET40
-            var chrome = new WindowChrome
-            {
-                CornerRadius = new CornerRadius(),
-                GlassFrameThickness = new Thickness(0, 0, 0, 1)
-            };
-#else
-            var chrome = new WindowChrome
-            {
-                CornerRadius = new CornerRadius(),
-                ResizeBorderThickness = new Thickness(8),
-                GlassFrameThickness = new Thickness(0, 0, 0, 1),
-                UseAeroCaptionButtons = false
-            };
-#endif
-            BindingOperations.SetBinding(chrome, WindowChrome.CaptionHeightProperty,
-                new Binding(NonClientAreaHeightProperty.Name) { Source = this });
-            WindowChrome.SetWindowChrome(this, chrome);
+            ApplyWindowChrome(WindowState);
             _commonPadding = Padding;
 
             Loaded += (s, e) => OnLoaded(e);
