@@ -9,43 +9,24 @@ public class ThicknessSplitConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        if (value is Thickness thickness)
+        if (value is not Thickness thickness || parameter is not string str)
         {
-            if (parameter is string str)
-            {
-                var arr = str.Split(',');
-
-                if (arr.Length != 4)
-                {
-                    return thickness;
-                }
-
-                var result = new Thickness(thickness.Left, thickness.Top, thickness.Right, thickness.Bottom);
-
-                if (double.TryParse(arr[0], out double leftTimes))
-                {
-                    result.Left = leftTimes * thickness.Left;
-                }
-
-                if (double.TryParse(arr[1], out double topTimes))
-                {
-                    result.Top = topTimes * thickness.Top;
-                }
-
-                if (double.TryParse(arr[2], out double rightTimes))
-                {
-                    result.Right = rightTimes * thickness.Right;
-                }
-
-                if (double.TryParse(arr[3], out double bottomTimes))
-                {
-                    result.Bottom = bottomTimes * thickness.Bottom;
-                }
-
-                return result;
-            }
+            return value;
         }
-        return value;
+
+        var arr = str.Split(',');
+
+        if (arr.Length != 4)
+        {
+            return thickness;
+        }
+
+        return new Thickness(
+            left: double.TryParse(arr[0], out double leftTimes) ? leftTimes * thickness.Left : thickness.Left,
+            top: double.TryParse(arr[1], out double topTimes) ? topTimes * thickness.Top : thickness.Top,
+            right: double.TryParse(arr[2], out double rightTimes) ? rightTimes * thickness.Right : thickness.Right,
+            bottom: double.TryParse(arr[3], out double bottomTimes) ? bottomTimes * thickness.Bottom : thickness.Bottom
+        );
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

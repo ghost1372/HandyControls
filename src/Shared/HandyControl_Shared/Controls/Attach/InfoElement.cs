@@ -9,7 +9,7 @@ public class InfoElement : TitleElement
     ///     Placeholder
     /// </summary>
     public static readonly DependencyProperty PlaceholderProperty = DependencyProperty.RegisterAttached(
-        "Placeholder", typeof(string), typeof(InfoElement), new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.Inherits));
+        "Placeholder", typeof(string), typeof(InfoElement), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
 
     public static void SetPlaceholder(DependencyObject element, string value) => element.SetValue(PlaceholderProperty, value);
 
@@ -29,7 +29,7 @@ public class InfoElement : TitleElement
     ///     Symbol
     /// </summary>
     public static readonly DependencyProperty SymbolProperty = DependencyProperty.RegisterAttached(
-        "Symbol", typeof(string), typeof(InfoElement), new FrameworkPropertyMetadata(default(string), FrameworkPropertyMetadataOptions.Inherits));
+        "Symbol", typeof(string), typeof(InfoElement), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
 
     public static void SetSymbol(DependencyObject element, string value) => element.SetValue(SymbolProperty, value);
 

@@ -15,6 +15,9 @@
                 <MergeResourceInclude Source="/Themes/Basic/Brushes.axaml" />
                 <MergeResourceInclude Source="/Themes/Basic/Converters.axaml" />
 
+                <MergeResourceInclude Source="/Themes/Styles/DataValidationErrors.axaml" />
+                <MergeResourceInclude Source="/Themes/Styles/PopupRoot.axaml" />
+                <MergeResourceInclude Source="/Themes/Styles/ToolTip.axaml" />
                 <MergeResourceInclude Source="/Themes/Styles/TextBlock.axaml" />
                 <MergeResourceInclude Source="/Themes/Styles/ContentControl.axaml" />
                 <MergeResourceInclude Source="/Themes/Styles/UserControl.axaml" />
@@ -35,12 +38,13 @@
                 <MergeResourceInclude Source="/Themes/Styles/Expander.axaml" />
                 <MergeResourceInclude Source="/Themes/Styles/ProgressBar.axaml" />
                 <MergeResourceInclude Source="/Themes/Styles/Calendar.axaml" />
+                <MergeResourceInclude Source="/Themes/Styles/TextBox.axaml" />
+                <MergeResourceInclude Source="/Themes/Styles/ButtonSpinner.axaml" />
+                <MergeResourceInclude Source="/Themes/Styles/NumericUpDown.axaml" />
+                <MergeResourceInclude Source="/Themes/Styles/ComboBox.axaml" />
+                <MergeResourceInclude Source="/Themes/Styles/Menu.axaml" />
+                <MergeResourceInclude Source="/Themes/Styles/ContextMenu.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
-
-    <Style Selector=":is(UserControl)">
-        <Setter Property="Theme"
-                Value="{DynamicResource {x:Type UserControl}}" />
-    </Style>
 </Styles>

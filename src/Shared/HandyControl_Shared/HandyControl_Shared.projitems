@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\PasswordBoxAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\RectangleAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\ScrollViewerAttach.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\SelectAllButtonAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\TextBlockAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Attach\ToggleButtonAttach.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Base\AdornerElement.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\ClipGrid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\FlexPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\ElementGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\InverseStackPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\SimpleStackPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\Panel\UniformSpacingPanel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyGrid\Editors\DatePropertyEditor.cs" />
@@ -278,7 +280,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\Internals\MultiBindingExtensionBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)HandyControls\Tools\Markup\UpdatableMarkupExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\Enum\RunningDirection.cs" />
-    <Compile Include="..\..\Shared\HandyControl_Shared\Input\SimpleMouseBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\Helper\ControlTokenManager`1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Input\SimpleMouseBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\EventToCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\IEventArgsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interactivity\LaunchUriOrFileAction.cs" />
@@ -533,10 +536,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Interop\InteropValues.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\SafeFileMappingHandle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Interop\Handle\WpfSafeHandle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Collections\Pool\IPool`1.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Collections\Pool\SimplePool`1.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Collections\Pool\SynchronizedPool`1.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Collections\Queue\Deque`1.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\RegexJudgment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\RegexPatterns.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\StyleSelector\ButtonGroupItemStyleSelector.cs" />
