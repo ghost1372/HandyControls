@@ -13,7 +13,7 @@ public class TransitioningContentControl : ContentControl
     private FrameworkElement _contentPresenter;
 
     private static readonly Lazy<Storyboard> StoryboardBuildInDefault = new(() =>
-        ResourceHelper.GetResourceInternal<Storyboard>($"{default(TransitionMode)}Transition"), isThreadSafe: true);
+        ResourceHelper.GetResource<Storyboard>($"{default(TransitionMode)}Transition"), isThreadSafe: true);
 
     private Storyboard _storyboardBuildIn;
 
