@@ -1,23 +1,30 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:ClassModifier="internal"
                     xmlns:hc="https://handyorg.github.io/handycontrol">
 
     <ControlTheme x:Key="ContextMenuBaseStyle"
                   TargetType="ContextMenu">
         <Setter Property="hc:MenuAttach.ItemPadding"
                 Value="{StaticResource DefaultControlPadding}" />
+        <Setter Property="hc:MenuAttach.ItemMinHeight"
+                Value="{StaticResource DefaultControlHeight}" />
         <Setter Property="hc:MenuAttach.PopupVerticalOffset"
-                Value="-9" />
+                Value="-16" />
         <Setter Property="hc:MenuAttach.PopupHorizontalOffset"
-                Value="10" />
+                Value="1" />
         <Setter Property="Background"
                 Value="{DynamicResource RegionBrush}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource BorderBrush}" />
         <Setter Property="hc:BorderElement.CornerRadius"
                 Value="{StaticResource DefaultCornerRadius}" />
         <Setter Property="CornerRadius"
                 Value="{Binding $self.(hc:BorderElement.CornerRadius)}" />
         <Setter Property="Padding"
                 Value="2,2,2,0" />
+        <Setter Property="BorderThickness"
+                Value="1" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ContextMenu">
@@ -26,8 +33,8 @@
                             Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             MaxHeight="{TemplateBinding MaxHeight}"
-                            BorderThickness="1"
-                            BorderBrush="{DynamicResource BorderBrush}">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
                         <ScrollViewer Theme="{StaticResource ScrollViewerUpDown}"
                                       Margin="{TemplateBinding Padding}">
                             <ItemsPresenter Name="PART_ItemsPresenter"
@@ -49,10 +56,12 @@
                   TargetType="ContextMenu">
         <Setter Property="hc:MenuAttach.ItemPadding"
                 Value="6,0" />
+        <Setter Property="hc:MenuAttach.ItemMinHeight"
+                Value="20" />
         <Setter Property="hc:MenuAttach.PopupVerticalOffset"
-                Value="-3" />
+                Value="-11" />
         <Setter Property="hc:MenuAttach.PopupHorizontalOffset"
-                Value="6" />
+                Value="-2" />
     </ControlTheme>
 
 </ResourceDictionary>

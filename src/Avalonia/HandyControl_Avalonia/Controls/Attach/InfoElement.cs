@@ -38,7 +38,7 @@ public class InfoElement
 
     public static readonly AttachedProperty<double> MaxContentHeightProperty =
         AvaloniaProperty.RegisterAttached<InfoElement, AvaloniaObject, double>("MaxContentHeight",
-            defaultValue: double.PositiveInfinity);
+            defaultValue: double.PositiveInfinity, inherits: true);
 
     public static void SetMaxContentHeight(AvaloniaObject element, double value) =>
         element.SetValue(MaxContentHeightProperty, value);
@@ -54,7 +54,7 @@ public class InfoElement
     public static string GetRegexPattern(AvaloniaObject element) => element.GetValue(RegexPatternProperty);
 
     public static readonly AttachedProperty<bool> ShowClearButtonProperty =
-        AvaloniaProperty.RegisterAttached<InfoElement, AvaloniaObject, bool>("ShowClearButton");
+        AvaloniaProperty.RegisterAttached<InfoElement, AvaloniaObject, bool>("ShowClearButton", inherits: true);
 
     public static void SetShowClearButton(AvaloniaObject element, bool value) =>
         element.SetValue(ShowClearButtonProperty, value);

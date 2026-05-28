@@ -9,12 +9,14 @@
       [ "RepeatButton", "RepeatButtonDemo", "Brush.RepeatButton", "", "" ],
       [ "ToggleButton", "ToggleButtonDemo", "Brush.Toggle", "", "" ],
       [ "RadioButton", "RadioButtonDemo", "Brush.RadioButton", "", "" ],
+      [ "HyperlinkButton", "HyperlinkButtonDemo", "Brush.Hyperlink", "", "" ],
       [ "CheckBox", "CheckBoxDemo", "Brush.CheckBoxChecked", "", "" ],
       [ "ScrollViewer", "NativeScrollViewerDemo", "Brush.ScrollBox", "", "" ],
       [ "Slider", "SliderDemo", "Brush.Slider", "", "" ],
       [ "TextBlock", "TextBlockDemo", "Brush.TextBlock", "", "" ],
       [ "NumericUpDown", "NumericUpDownDemo", "Brush.NumericListBox", "", "" ],
       [ "TextBox", "TextBoxDemo", "Brush.TextBox", "", "" ],
+      [ "AutoCompleteBox", "AutoCompleteBoxDemo", "Brush.AutoComplete", "", "" ],
       [ "ComboBox", "ComboBoxDemo", "Brush.ComboBox", "", "" ],
       [ "Expander", "ExpanderDemo", "Brush.Expander", "", "" ],
       [ "ProgressBar", "NativeProgressBarDemo", "Brush.ProgressBar", "", "" ],
@@ -24,7 +26,7 @@
       [ "ListBox", "ListBoxDemo", "Brush.ListBox", "", "" ],
       [ "Menu", "MenuDemo", "Brush.ContextMenu", "", "" ],
       [ "Border", "BorderDemo", "Brush.BorderElement", "", "" ],
-      [ "Label", "LabelDemo", "Brush.Label", "", "" ],
+      [ "Label", "LabelDemo", "Brush.Label", "", "" ]
     ]
   },
   {

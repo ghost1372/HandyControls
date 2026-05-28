@@ -9,9 +9,11 @@ public class InfoElement : TitleElement
     ///     Placeholder
     /// </summary>
     public static readonly DependencyProperty PlaceholderProperty = DependencyProperty.RegisterAttached(
-        "Placeholder", typeof(string), typeof(InfoElement), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        "Placeholder", typeof(string), typeof(InfoElement),
+        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
 
-    public static void SetPlaceholder(DependencyObject element, string value) => element.SetValue(PlaceholderProperty, value);
+    public static void SetPlaceholder(DependencyObject element, string value) =>
+        element.SetValue(PlaceholderProperty, value);
 
     public static string GetPlaceholder(DependencyObject element) => (string) element.GetValue(PlaceholderProperty);
 
@@ -19,9 +21,11 @@ public class InfoElement : TitleElement
     ///     Necessary
     /// </summary>
     public static readonly DependencyProperty NecessaryProperty = DependencyProperty.RegisterAttached(
-        "Necessary", typeof(bool), typeof(InfoElement), new FrameworkPropertyMetadata(ValueBoxes.FalseBox, FrameworkPropertyMetadataOptions.Inherits));
+        "Necessary", typeof(bool), typeof(InfoElement),
+        new FrameworkPropertyMetadata(ValueBoxes.FalseBox, FrameworkPropertyMetadataOptions.Inherits));
 
-    public static void SetNecessary(DependencyObject element, bool value) => element.SetValue(NecessaryProperty, ValueBoxes.BooleanBox(value));
+    public static void SetNecessary(DependencyObject element, bool value) =>
+        element.SetValue(NecessaryProperty, ValueBoxes.BooleanBox(value));
 
     public static bool GetNecessary(DependencyObject element) => (bool) element.GetValue(NecessaryProperty);
 
@@ -29,7 +33,8 @@ public class InfoElement : TitleElement
     ///     Symbol
     /// </summary>
     public static readonly DependencyProperty SymbolProperty = DependencyProperty.RegisterAttached(
-        "Symbol", typeof(string), typeof(InfoElement), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        "Symbol", typeof(string), typeof(InfoElement),
+        new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
 
     public static void SetSymbol(DependencyObject element, string value) => element.SetValue(SymbolProperty, value);
 
@@ -39,9 +44,11 @@ public class InfoElement : TitleElement
     ///     ContentHeight
     /// </summary>
     public static readonly DependencyProperty ContentHeightProperty = DependencyProperty.RegisterAttached(
-        "ContentHeight", typeof(double), typeof(InfoElement), new FrameworkPropertyMetadata(28.0, FrameworkPropertyMetadataOptions.Inherits));
+        "ContentHeight", typeof(double), typeof(InfoElement),
+        new FrameworkPropertyMetadata(28.0, FrameworkPropertyMetadataOptions.Inherits));
 
-    public static void SetContentHeight(DependencyObject element, double value) => element.SetValue(ContentHeightProperty, value);
+    public static void SetContentHeight(DependencyObject element, double value) =>
+        element.SetValue(ContentHeightProperty, value);
 
     public static double GetContentHeight(DependencyObject element) => (double) element.GetValue(ContentHeightProperty);
 
@@ -49,7 +56,8 @@ public class InfoElement : TitleElement
     ///     MinContentHeight
     /// </summary>
     public static readonly DependencyProperty MinContentHeightProperty = DependencyProperty.RegisterAttached(
-        "MinContentHeight", typeof(double), typeof(InfoElement), new PropertyMetadata(28.0));
+        "MinContentHeight", typeof(double), typeof(InfoElement),
+        new FrameworkPropertyMetadata(28.0, FrameworkPropertyMetadataOptions.Inherits));
 
     public static void SetMinContentHeight(DependencyObject element, double value)
         => element.SetValue(MinContentHeightProperty, value);
@@ -61,7 +69,8 @@ public class InfoElement : TitleElement
     ///     MaxContentHeight
     /// </summary>
     public static readonly DependencyProperty MaxContentHeightProperty = DependencyProperty.RegisterAttached(
-        "MaxContentHeight", typeof(double), typeof(InfoElement), new PropertyMetadata(double.PositiveInfinity));
+        "MaxContentHeight", typeof(double), typeof(InfoElement),
+        new FrameworkPropertyMetadata(double.PositiveInfinity, FrameworkPropertyMetadataOptions.Inherits));
 
     public static void SetMaxContentHeight(DependencyObject element, double value)
         => element.SetValue(MaxContentHeightProperty, value);
@@ -82,7 +91,8 @@ public class InfoElement : TitleElement
         => (string) element.GetValue(RegexPatternProperty);
 
     public static readonly DependencyProperty ShowClearButtonProperty = DependencyProperty.RegisterAttached(
-        "ShowClearButton", typeof(bool), typeof(InfoElement), new PropertyMetadata(ValueBoxes.FalseBox));
+        "ShowClearButton", typeof(bool), typeof(InfoElement),
+        new FrameworkPropertyMetadata(ValueBoxes.FalseBox, FrameworkPropertyMetadataOptions.Inherits));
 
     public static void SetShowClearButton(DependencyObject element, bool value)
         => element.SetValue(ShowClearButtonProperty, ValueBoxes.BooleanBox(value));
@@ -93,7 +103,8 @@ public class InfoElement : TitleElement
     public static readonly DependencyProperty IsReadOnlyProperty = DependencyProperty.RegisterAttached(
         "IsReadOnly", typeof(bool), typeof(InfoElement), new PropertyMetadata(ValueBoxes.FalseBox));
 
-    public static void SetIsReadOnly(DependencyObject element, bool value) => element.SetValue(IsReadOnlyProperty, ValueBoxes.BooleanBox(value));
+    public static void SetIsReadOnly(DependencyObject element, bool value) =>
+        element.SetValue(IsReadOnlyProperty, ValueBoxes.BooleanBox(value));
 
     public static bool GetIsReadOnly(DependencyObject element) => (bool) element.GetValue(IsReadOnlyProperty);
 }

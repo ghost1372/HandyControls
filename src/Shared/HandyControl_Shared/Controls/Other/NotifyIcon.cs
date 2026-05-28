@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -34,8 +34,6 @@ public class NotifyIcon : FrameworkElement, IDisposable
     private IntPtr _iconDefaultHandle;
 
     private IconHandle _iconHandle;
-
-    private const int WmTrayMouseMessage = InteropValues.WM_USER + 1024;
 
     private string _windowClassName;
 
@@ -511,7 +509,7 @@ public class NotifyIcon : FrameworkElement, IDisposable
             _isTransparent = isTransparent;
             var data = new InteropValues.NOTIFYICONDATA
             {
-                uCallbackMessage = WmTrayMouseMessage,
+                uCallbackMessage = InteropValues.WM_TRAYMOUSEMESSAGE,
                 uFlags = InteropValues.NIF_MESSAGE | InteropValues.NIF_ICON | InteropValues.NIF_TIP,
                 hWnd = _messageWindowHandle,
                 uID = _id,
@@ -593,7 +591,9 @@ public class NotifyIcon : FrameworkElement, IDisposable
                         _dispatcherTimerPos.Interval = TimeSpan.FromMilliseconds(200);
                         _dispatcherTimerPos.Start();
                     }
-
+                    break;
+                case InteropValues.NIN_BALLOONUSERCLICK:
+                    RaiseEvent(new RoutedEventArgs(BalloonTipClickEvent));
                     break;
             }
         }
@@ -689,6 +689,16 @@ public class NotifyIcon : FrameworkElement, IDisposable
     {
         add => AddHandler(MouseDoubleClickEvent, value);
         remove => RemoveHandler(MouseDoubleClickEvent, value);
+    }
+
+    public static readonly RoutedEvent BalloonTipClickEvent =
+        EventManager.RegisterRoutedEvent("BalloonTipClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler),
+            typeof(NotifyIcon));
+
+    public event RoutedEventHandler BalloonTipClick
+    {
+        add => AddHandler(BalloonTipClickEvent, value);
+        remove => RemoveHandler(BalloonTipClickEvent, value);
     }
 
     private void UpdateDataContext(FrameworkElement target, object oldValue, object newValue)
