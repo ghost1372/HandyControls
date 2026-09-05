@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -158,7 +158,7 @@ public partial class Window
             GlassFrameThickness = new Thickness(-1),
             ResizeBorderThickness = new Thickness(6)
         };
-        if (windowsState == WindowState.Maximized)
+        if (windowsState == WindowState.Maximized || ResizeMode == ResizeMode.NoResize)
         {
             chrome.ResizeBorderThickness = new Thickness(0);
         }
