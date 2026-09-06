@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <!--If you are willing to use Windows/MacOS native APIs you will need to create 3 projects.
@@ -18,13 +18,19 @@
   <ItemGroup>
     <None Remove="Data\DemoInfo.json" />
     <None Remove="Resources\Img\cloud.png" />
+    <None Remove="Resources\Img\Dance.png" />
     <None Remove="Resources\Img\icon.ico" />
+    <None Remove="Resources\Img\Avatar\*.png" />
+    <None Remove="Resources\Img\Album\*.jpg" />
   </ItemGroup>
   
   <ItemGroup>
     <EmbeddedResource Include="Data\DemoInfo.json" />
     <AvaloniaResource Include="Resources\Img\cloud.png" />
+    <AvaloniaResource Include="Resources\Img\Dance.png" />
     <AvaloniaResource Include="Resources\Img\icon.ico" />
+    <AvaloniaResource Include="Resources\Img\Avatar\*.png" />
+    <AvaloniaResource Include="Resources\Img\Album\*.jpg" />
   </ItemGroup>
 
   <ItemGroup>

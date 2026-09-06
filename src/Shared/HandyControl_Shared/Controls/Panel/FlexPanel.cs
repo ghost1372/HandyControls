@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -455,6 +455,7 @@ public class FlexPanel : Panel
         var isHorizontal = flexDirection == FlexDirection.Row || flexDirection == FlexDirection.RowReverse;
         var isReverse = flexDirection == FlexDirection.RowReverse || flexDirection == FlexDirection.ColumnReverse;
         var itemCount = lineInfo.ItemEndIndex - lineInfo.ItemStartIndex;
+        if (itemCount <= 0) return;
         var children = InternalChildren;
         var lineFreeU = lineInfo.LineU - lineInfo.ItemsU;
         var constraintFreeU = _uvConstraint.U - lineInfo.ItemsU;

@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:vm="clr-namespace:HandyControlDemo.ViewModel"
+             xmlns:data="clr-namespace:HandyControlDemo.Data"
+             xmlns:cv="clr-namespace:HandyControlDemo.Tools.Converter"
+             xmlns:langs="clr-namespace:HandyControlDemo.Properties.Langs"
+             x:Class="HandyControlDemo.UserControl.HoneycombPanelDemo"
+             x:DataType="vm:CardDemoViewModel"
+             Background="{DynamicResource RegionBrush}"
+             DataContext="{Binding CardDemo, Source={x:Static vm:ViewModelLocator.Instance}}">
+    <UserControl.Resources>
+        <cv:StringToBitmapConverter x:Key="StringToBitmap" />
+    </UserControl.Resources>
+    <TransitioningContentControl>
+        <Grid Margin="32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <hc:ButtonGroup Margin="0,0,0,16">
+                <Button Command="{Binding AddItemCommand}" Content="{x:Static langs:Lang.AddItem}" />
+                <Button Command="{Binding RemoveItemCommand}" Content="{x:Static langs:Lang.RemoveItem}" />
+            </hc:ButtonGroup>
+            <Border Grid.Row="1" Padding="0" Theme="{StaticResource BorderRegion}">
+                <ListBox Background="Transparent"
+                         BorderThickness="0"
+                         Theme="{StaticResource ListBoxCustom}"
+                         ItemsSource="{Binding DataList}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <hc:HoneycombPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="data:CardModel">
+                            <hc:Gravatar Theme="{StaticResource GravatarCircle}"
+                                         Margin="10"
+                                         Source="{Binding Content, Converter={StaticResource StringToBitmap}}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+        </Grid>
+    </TransitioningContentControl>
+</UserControl>

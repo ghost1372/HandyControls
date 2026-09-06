@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             x:Class="HandyControlDemo.UserControl.DatePickerDemo"
+             Background="{DynamicResource RegionBrush}">
+    <TransitioningContentControl>
+        <ScrollViewer>
+            <hc:UniformSpacingPanel Spacing="32"
+                                    Margin="32"
+                                    ChildWrapping="Wrap">
+                <StackPanel>
+                    <DatePicker SelectedDate="{x:Static system:DateTimeOffset.Now}" />
+                    <DatePicker Margin="0,16,0,0"
+                                IsEnabled="False"
+                                SelectedDate="{x:Static system:DateTimeOffset.Now}" />
+
+                    <DatePicker SelectedDate="{x:Static system:DateTimeOffset.Now}"
+                                hc:TitleElement.Title="This is the title"
+                                Theme="{StaticResource DatePickerExtend}"
+                                Margin="0,32,0,0" />
+                    <DatePicker SelectedDate="{x:Static system:DateTimeOffset.Now}"
+                                hc:TitleElement.Title="This item must be filled in"
+                                Theme="{StaticResource DatePickerExtend}"
+                                hc:InfoElement.Necessary="True"
+                                Margin="0,16,0,0" />
+
+                    <DatePicker SelectedDate="{x:Static system:DateTimeOffset.Now}"
+                                hc:TitleElement.TitleWidth="140"
+                                hc:TitleElement.TitlePlacement="Left"
+                                hc:TitleElement.Title="The title is on the left"
+                                Theme="{StaticResource DatePickerExtend}"
+                                Margin="0,32,0,0" />
+                </StackPanel>
+                <StackPanel>
+                    <DatePicker SelectedDate="{x:Static system:DateTimeOffset.Now}"
+                                Theme="{StaticResource DatePicker.Small}" />
+                    <DatePicker Margin="0,16,0,0"
+                                IsEnabled="False"
+                                SelectedDate="{x:Static system:DateTimeOffset.Now}"
+                                Theme="{StaticResource DatePicker.Small}" />
+
+                    <DatePicker SelectedDate="{x:Static system:DateTimeOffset.Now}"
+                                hc:TitleElement.Title="This is the title"
+                                Theme="{StaticResource DatePickerExtend.Small}"
+                                Margin="0,32,0,0" />
+                    <DatePicker SelectedDate="{x:Static system:DateTimeOffset.Now}"
+                                hc:TitleElement.Title="This item must be filled in"
+                                Theme="{StaticResource DatePickerExtend.Small}"
+                                hc:InfoElement.Necessary="True"
+                                Margin="0,16,0,0" />
+
+                    <DatePicker SelectedDate="{x:Static system:DateTimeOffset.Now}"
+                                hc:TitleElement.TitleWidth="140"
+                                hc:TitleElement.TitlePlacement="Left"
+                                hc:TitleElement.Title="The title is on the left"
+                                Theme="{StaticResource DatePickerExtend.Small}"
+                                Margin="0,32,0,0" />
+                </StackPanel>
+            </hc:UniformSpacingPanel>
+        </ScrollViewer>
+    </TransitioningContentControl>
+</UserControl>

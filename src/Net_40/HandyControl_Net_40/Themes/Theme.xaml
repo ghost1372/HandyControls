@@ -6006,7 +6006,7 @@
 						</Border>
 					</Decorator>
 				</Popup>
-				<Popup x:Name="PART_Popup_AutoComplete" PlacementTarget="{Binding ElementName=border}" AllowsTransparency="true" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+				<Popup x:Name="PART_Popup_AutoComplete" StaysOpen="False" PlacementTarget="{Binding ElementName=border}" AllowsTransparency="true" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
 					<Decorator Margin="8 0">
 						<Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder_AutoComplete" MinWidth="{Binding ActualWidth, ElementName=border}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
 							<hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
@@ -6215,7 +6215,7 @@
 						</Border>
 					</Decorator>
 				</Popup>
-				<Popup x:Name="PART_Popup_AutoComplete" PlacementTarget="{Binding ElementName=border}" AllowsTransparency="true" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
+				<Popup x:Name="PART_Popup_AutoComplete" StaysOpen="False" PlacementTarget="{Binding ElementName=border}" AllowsTransparency="true" PopupAnimation="{StaticResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}" Placement="Bottom">
 					<Decorator Margin="8 0">
 						<Border BorderThickness="0,1,0,0" Effect="{StaticResource EffectShadow2}" Margin="0,0,0,8" CornerRadius="{Binding Path=(hc:BorderElement.CornerRadius),RelativeSource={RelativeSource TemplatedParent}}" x:Name="dropDownBorder_AutoComplete" MinWidth="{Binding ActualWidth, ElementName=border}" MaxHeight="{TemplateBinding MaxDropDownHeight}" BorderBrush="{DynamicResource BorderBrush}" Background="{DynamicResource RegionBrush}">
 							<hc:ToggleBlock IsChecked="{Binding HasItems,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
@@ -9252,6 +9252,7 @@
 				<MultiTrigger.Conditions>
 					<Condition Property="IsSelected" Value="true" />
 					<Condition Property="Selector.IsSelectionActive" Value="false" />
+					<Condition Property="hc:VisualElement.StaysHighlighted" Value="false" />
 				</MultiTrigger.Conditions>
 				<Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}" />
 				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
@@ -9358,6 +9359,7 @@
 				<MultiTrigger.Conditions>
 					<Condition Property="IsSelected" Value="true" />
 					<Condition Property="Selector.IsSelectionActive" Value="false" />
+					<Condition Property="hc:VisualElement.StaysHighlighted" Value="false" />
 				</MultiTrigger.Conditions>
 				<Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}" />
 				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
@@ -11621,6 +11623,7 @@
 							<MultiTrigger.Conditions>
 								<Condition Property="IsSelected" Value="true" />
 								<Condition Property="IsSelectionActive" Value="false" />
+								<Condition Property="hc:VisualElement.StaysHighlighted" Value="false" />
 							</MultiTrigger.Conditions>
 							<Setter Property="Background" TargetName="Bd" Value="{DynamicResource DarkDefaultBrush}" />
 							<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
@@ -11855,6 +11858,7 @@
 				<MultiTrigger.Conditions>
 					<Condition Property="IsSelected" Value="true" />
 					<Condition Property="Selector.IsSelectionActive" Value="false" />
+					<Condition Property="hc:VisualElement.StaysHighlighted" Value="false" />
 				</MultiTrigger.Conditions>
 				<Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}" />
 				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
@@ -11907,6 +11911,7 @@
 				<MultiTrigger.Conditions>
 					<Condition Property="IsSelected" Value="true" />
 					<Condition Property="Selector.IsSelectionActive" Value="false" />
+					<Condition Property="hc:VisualElement.StaysHighlighted" Value="false" />
 				</MultiTrigger.Conditions>
 				<Setter Property="Background" Value="{DynamicResource DarkDefaultBrush}" />
 				<Setter Property="Foreground" Value="{DynamicResource PrimaryTextBrush}" />
@@ -12522,6 +12527,7 @@
 											<hc:SimplePanel.Visibility>
 												<MultiBinding Converter="{StaticResource DataGridSelectAllButtonVisibilityConverter}">
 													<Binding Path="HeadersVisibility" RelativeSource="{RelativeSource AncestorType=DataGrid}" />
+													<Binding Path="SelectionMode" RelativeSource="{RelativeSource AncestorType=DataGrid}" />
 													<Binding Path="(hc:DataGridAttach.ShowSelectAllButton)" RelativeSource="{RelativeSource AncestorType=DataGrid}" />
 												</MultiBinding>
 											</hc:SimplePanel.Visibility>

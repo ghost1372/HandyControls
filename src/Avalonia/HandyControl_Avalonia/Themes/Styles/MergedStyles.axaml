@@ -32,9 +32,13 @@
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/UserControl.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Window.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Button.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/SplitButton.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/DropDownButton.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ProgressButton.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/HyperlinkButton.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/RepeatButton.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ToggleButton.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ToggleSwitch.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/RadioButton.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/CheckBox.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Border.axaml" />
@@ -45,10 +49,20 @@
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/TreeView.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Label.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Slider.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Rate.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Pagination.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Expander.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ProgressBar.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Loading.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Calendar.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/CalendarDatePicker.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/DatePicker.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Dialog.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Clock.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/TimePicker.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/TextBox.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/SearchBar.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/PinBox.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/AutoCompleteBox.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ButtonSpinner.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/NumericUpDown.axaml" />
@@ -57,6 +71,15 @@
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ContextMenu.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/SelectableTextBlock.axaml" />
                 <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/HeaderedContentControl.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Card.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ElementGroup.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ButtonGroup.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Gravatar.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Tag.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Badge.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/GotoTop.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/Shield.axaml" />
+                <MergeResourceInclude Source="avares://HandyControl/Themes/Styles/ImageSelector.axaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
