@@ -29,3 +29,7 @@ public class Boolean2StringConverter : IValueConverter
         throw new NotSupportedException();
     }
 }
+
+public class Boolean2StrConverter : Boolean2StringConverter
+{
+}

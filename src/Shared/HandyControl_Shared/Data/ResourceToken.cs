@@ -170,6 +170,8 @@ public class ResourceToken
 
     public const string Boolean2StringConverter = nameof(Boolean2StringConverter);
 
+    public const string Boolean2StrConverter = nameof(Boolean2StrConverter);
+
     public const string Int2StringConverter = nameof(Int2StringConverter);
 
     public const string BorderClipConverter = nameof(BorderClipConverter);
