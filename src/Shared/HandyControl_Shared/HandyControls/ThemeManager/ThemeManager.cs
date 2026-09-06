@@ -1,4 +1,4 @@
-﻿// http://github.com/kinnara/ModernWpf
+// http://github.com/kinnara/ModernWpf
 
 using System;
 using System.Collections.Generic;
@@ -143,14 +143,28 @@ namespace HandyControl.Themes
             if (OSVersionHelper.GetOSVersion().Major < 10)
             {
 #if NET40
-                return ResourceHelper.GetResource<Brush>("PrimaryBrush");
+                var brush = ResourceHelper.GetResource<Brush>("PrimaryBrush");
+                return brush ?? DefaultAccentColor;
 #else
-                return SystemParameters.WindowGlassBrush;
+                var brush = SystemParameters.WindowGlassBrush;
+                return brush ?? DefaultAccentColor;
 #endif
             }
             else
             {
-                return new SolidColorBrush(AccentColorSet.ActiveSet["SystemAccent"]);
+                try
+                {
+                    var activeSet = AccentColorSet.ActiveSet;
+                    if (activeSet != null)
+                    {
+                        return new SolidColorBrush(activeSet["SystemAccent"]);
+                    }
+                }
+                catch
+                {
+                    // Ignore exceptions from interop calls (e.g., during system preference changes)
+                }
+                return DefaultAccentColor ?? new SolidColorBrush(Colors.Blue);
             }
         }
 
@@ -168,37 +182,44 @@ namespace HandyControl.Themes
                 case UserPreferenceCategory.General:
                     DispatcherHelper.RunOnMainThread(() =>
                     {
-                        Themes.ApplicationTheme changedTheme;
-                        if (UsingSystemTheme && !UsingWindowsAppTheme)
+                        try
                         {
-                            changedTheme = GetSystemTheme(true);
-                        }
-                        else if (UsingWindowsAppTheme && !UsingSystemTheme)
-                        {
-                            changedTheme = GetSystemTheme(false);
-                        }
-                        else
-                        {
-                            changedTheme = GetSystemTheme(true);
-                        }
-                        
-                        var changedAccent = GetAccentColorFromSystem();
-                        if ((_currenTheme != changedTheme) || (_currentAccent != changedAccent))
-                        {
-                            _currenTheme = changedTheme;
-                            _currentAccent = changedAccent;
-
-                            if (UsingSystemTheme)
+                            Themes.ApplicationTheme changedTheme;
+                            if (UsingSystemTheme && !UsingWindowsAppTheme)
                             {
-                                ApplicationTheme = changedTheme;
-                                AccentColor = changedAccent;
+                                changedTheme = GetSystemTheme(true);
                             }
-                            var systemTheme = new SystemTheme()
+                            else if (UsingWindowsAppTheme && !UsingSystemTheme)
                             {
-                                AccentBrush = changedAccent, CurrentTheme = changedTheme
-                            };
-                            OnSystemThemeChanged(systemTheme);
-                            ThemeResources.Current.OnSystemThemeChanged(systemTheme);
+                                changedTheme = GetSystemTheme(false);
+                            }
+                            else
+                            {
+                                changedTheme = GetSystemTheme(true);
+                            }
+
+                            var changedAccent = GetAccentColorFromSystem();
+                            if (changedAccent != null && ((_currenTheme != changedTheme) || (_currentAccent != changedAccent)))
+                            {
+                                _currenTheme = changedTheme;
+                                _currentAccent = changedAccent;
+
+                                if (UsingSystemTheme)
+                                {
+                                    ApplicationTheme = changedTheme;
+                                    AccentColor = changedAccent;
+                                }
+                                var systemTheme = new SystemTheme()
+                                {
+                                    AccentBrush = changedAccent, CurrentTheme = changedTheme
+                                };
+                                OnSystemThemeChanged(systemTheme);
+                                ThemeResources.Current?.OnSystemThemeChanged(systemTheme);
+                            }
+                        }
+                        catch
+                        {
+                            // Silently handle any exceptions that occur during system theme changes
                         }
                     });
                     break;
@@ -345,6 +366,9 @@ namespace HandyControl.Themes
 
         private void applyAccentColor(object Value)
         {
+            if (Application.Current == null || Value == null)
+                return;
+
             Application.Current.Resources["PrimaryBrush"] = Value;
             Application.Current.Resources["DarkPrimaryBrush"] = Value;
             Application.Current.Resources["TitleBrush"] = Value;
