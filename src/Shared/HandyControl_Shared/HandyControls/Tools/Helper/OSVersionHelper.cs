@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using HandyControl.Tools.Interop;
 
@@ -212,6 +212,36 @@ public static class OSVersionHelper
     ///     Windows 11 Build 26100 Or Greater
     /// </summary>
     public static bool IsWindows11_26100_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 26100, OSVersion.Revision);
+
+    /// <summary>
+    ///     Windows 11 Build 26200
+    /// </summary>
+    public static bool IsWindows11_26200 { get; } = IsWindowsNT && OSVersion == new Version(10, 0, 26200, OSVersion.Revision);
+
+    /// <summary>
+    ///     Windows 11 Build 26200 Or Greater
+    /// </summary>
+    public static bool IsWindows11_26200_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 26200, OSVersion.Revision);
+
+    /// <summary>
+    ///     Windows 11 Build 28000
+    /// </summary>
+    public static bool IsWindows11_28000 { get; } = IsWindowsNT && OSVersion == new Version(10, 0, 28000, OSVersion.Revision);
+
+    /// <summary>
+    ///     Windows 11 Build 28000 Or Greater
+    /// </summary>
+    public static bool IsWindows11_28000_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 28000, OSVersion.Revision);
+
+    /// <summary>
+    ///     Windows 11 Build 26300
+    /// </summary>
+    public static bool IsWindows11_26300 { get; } = IsWindowsNT && OSVersion == new Version(10, 0, 26300, OSVersion.Revision);
+
+    /// <summary>
+    ///     Windows 11 Build 26300 Or Greater
+    /// </summary>
+    public static bool IsWindows11_26300_OrGreater { get; } = IsWindowsNT && OSVersion >= new Version(10, 0, 26300, OSVersion.Revision);
 
     public static Version GetOSVersion()
     {
