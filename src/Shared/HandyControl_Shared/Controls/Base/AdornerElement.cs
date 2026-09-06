@@ -34,8 +34,10 @@ public abstract class AdornerElement : Control, IDisposable
     private static void OnInstanceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
         if (d is not FrameworkElement target) return;
-        var element = (AdornerElement) e.NewValue;
-        element.OnInstanceChanged(target);
+        if (e.NewValue is AdornerElement element)
+        {
+            element.OnInstanceChanged(target);
+        }
     }
 
     protected virtual void OnInstanceChanged(FrameworkElement target) => Target = target;
