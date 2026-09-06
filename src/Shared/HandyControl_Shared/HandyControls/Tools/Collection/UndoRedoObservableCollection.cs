@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using HandyControl.Tools;
 
-namespace HandyControl.Controls;
+namespace HandyControl.Collections;
 
 /// <summary>ObservableCollection which supports undo/redo.</summary>
 /// <typeparam name="TElement">type of elements</typeparam>

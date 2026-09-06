@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Threading;
 using HandyControl.Tools;
 
-namespace HandyControl.Controls;
+namespace HandyControl.Collections;
 
 /// <summary>
 /// Thread-safe collection. You can safely bind it to a WPF control using the property.

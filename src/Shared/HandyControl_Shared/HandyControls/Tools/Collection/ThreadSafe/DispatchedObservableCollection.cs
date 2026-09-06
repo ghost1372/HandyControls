@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Threading;
-using HandyControl.Controls;
+using HandyControl.Collections;
 
 namespace HandyControl.Tools;
 

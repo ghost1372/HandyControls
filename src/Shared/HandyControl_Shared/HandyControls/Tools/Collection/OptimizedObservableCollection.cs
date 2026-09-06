@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace HandyControl.Controls;
+namespace HandyControl.Collections;
 
 /// <summary> 
 	/// Represents a dynamic data collection that provides notifications when items get added, removed, or when the whole list is refreshed. 
