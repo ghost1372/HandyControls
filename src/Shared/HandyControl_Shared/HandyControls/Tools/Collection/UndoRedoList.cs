@@ -8,7 +8,7 @@ using System.Linq;
 using HandyControl.Tools;
 using HandyControl.Tools.Extension;
 
-namespace HandyControl.Controls;
+namespace HandyControl.Collections;
 
 /// <summary>IList implemented collection which supports undo/redo.</summary>
 /// <typeparam name="TElement">type of elements</typeparam>
