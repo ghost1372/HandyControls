@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using HandyControl.Data;
@@ -47,5 +47,12 @@ public sealed class GrowlWindow : Window
     }
 
     protected override void OnSourceInitialized(EventArgs e)
-        => InteropMethods.IntDestroyMenu(this.GetHwndSource().CreateHandleRef());
+    {
+        base.OnSourceInitialized(e);
+        var hwndSource = this.GetHwndSource();
+        if (hwndSource != null)
+        {
+            InteropMethods.IntDestroyMenu(hwndSource.CreateHandleRef());
+        }
+    }
 }
