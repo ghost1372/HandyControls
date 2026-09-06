@@ -199,23 +199,31 @@ namespace HandyControl.Themes
                             }
 
                             var changedAccent = GetAccentColorFromSystem();
-                            if (changedAccent != null && ((_currenTheme != changedTheme) || (_currentAccent != changedAccent)))
-                            {
-                                _currenTheme = changedTheme;
-                                _currentAccent = changedAccent;
 
-                                if (UsingSystemTheme)
-                                {
-                                    ApplicationTheme = changedTheme;
-                                    AccentColor = changedAccent;
-                                }
-                                var systemTheme = new SystemTheme()
-                                {
-                                    AccentBrush = changedAccent, CurrentTheme = changedTheme
-                                };
-                                OnSystemThemeChanged(systemTheme);
-                                ThemeResources.Current?.OnSystemThemeChanged(systemTheme);
+                            // Only proceed if theme or accent color actually changed
+                            if (changedAccent == null)
+                                return;
+
+                            bool themeChanged = _currenTheme != changedTheme;
+                            bool accentChanged = !BrushesEqual(_currentAccent, changedAccent);
+
+                            if (!themeChanged && !accentChanged)
+                                return;
+
+                            _currenTheme = changedTheme;
+                            _currentAccent = changedAccent;
+
+                            if (UsingSystemTheme)
+                            {
+                                ApplicationTheme = changedTheme;
+                                AccentColor = changedAccent;
                             }
+                            var systemTheme = new SystemTheme()
+                            {
+                                AccentBrush = changedAccent, CurrentTheme = changedTheme
+                            };
+                            OnSystemThemeChanged(systemTheme);
+                            ThemeResources.Current?.OnSystemThemeChanged(systemTheme);
                         }
                         catch
                         {
@@ -224,6 +232,21 @@ namespace HandyControl.Themes
                     });
                     break;
             }
+        }
+
+        private bool BrushesEqual(Brush brush1, Brush brush2)
+        {
+            if (ReferenceEquals(brush1, brush2))
+                return true;
+
+            if (brush1 == null || brush2 == null)
+                return false;
+
+            // Compare SolidColorBrush by color value
+            if (brush1 is SolidColorBrush solid1 && brush2 is SolidColorBrush solid2)
+                return solid1.Color == solid2.Color;
+
+            return false;
         }
 
         #endregion
