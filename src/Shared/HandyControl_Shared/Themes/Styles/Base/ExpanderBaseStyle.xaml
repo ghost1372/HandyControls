@@ -34,7 +34,7 @@
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value=".4" />
             </Trigger>
-            <Trigger Property="Tag" Value="Vertical">
+            <Trigger Property="hc:ExpanderElement.HeaderTextOrientation" Value="Vertical">
                 <Setter TargetName="HeaderText" Property="LayoutTransform">
                     <Setter.Value>
                         <RotateTransform Angle="90" />
@@ -48,7 +48,7 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
-            <Trigger Property="Tag" Value="Horizontal">
+            <Trigger Property="hc:ExpanderElement.HeaderTextOrientation" Value="Horizontal">
                 <Setter TargetName="HeaderText" Property="LayoutTransform">
                     <Setter.Value>
                         <RotateTransform Angle="90" />
@@ -120,7 +120,7 @@
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value=".4" />
             </Trigger>
-            <Trigger Property="Tag" Value="Vertical">
+            <Trigger Property="hc:ExpanderElement.HeaderTextOrientation" Value="Vertical">
                 <Setter TargetName="HeaderText" Property="LayoutTransform">
                     <Setter.Value>
                         <RotateTransform Angle="90" />
@@ -134,7 +134,7 @@
                     </Setter.Value>
                 </Setter>
             </Trigger>
-            <Trigger Property="Tag" Value="Horizontal">
+            <Trigger Property="hc:ExpanderElement.HeaderTextOrientation" Value="Horizontal">
                 <Setter TargetName="HeaderText" Property="LayoutTransform">
                     <Setter.Value>
                         <RotateTransform Angle="90" />
