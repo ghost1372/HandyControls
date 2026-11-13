@@ -19,7 +19,7 @@
                             <RotateTransform Angle="-90" />
                         </TransformGroup>
                     </Grid.LayoutTransform>
-                    <ContentPresenter ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    <ContentPresenter Name="HeaderText" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     <Path Name="PathArrow" IsHitTestVisible="False" Grid.Column="1" Stretch="Uniform" Fill="{TemplateBinding Foreground}" Data="{StaticResource UpGeometry}" Width="12" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="Center" />
                 </Grid>
             </ToggleButton>
@@ -33,6 +33,27 @@
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value=".4" />
+            </Trigger>
+            <Trigger Property="hc:ExpanderElement.HeaderTextOrientation" Value="Vertical">
+                <Setter TargetName="HeaderText" Property="LayoutTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="90" />
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="HeaderText" Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center" Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Expander}}" />
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="hc:ExpanderElement.HeaderTextOrientation" Value="Horizontal">
+                <Setter TargetName="HeaderText" Property="LayoutTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="90" />
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -84,7 +105,7 @@
                             <RotateTransform Angle="-90" />
                         </TransformGroup>
                     </Grid.LayoutTransform>
-                    <ContentPresenter ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    <ContentPresenter Name="HeaderText" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                     <Path Name="PathArrow" IsHitTestVisible="False" Grid.Column="1" Stretch="Uniform" Fill="{TemplateBinding Foreground}" Data="{StaticResource DownGeometry}" Width="12" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="Center" />
                 </Grid>
             </ToggleButton>
@@ -98,6 +119,27 @@
             </Trigger>
             <Trigger Property="IsEnabled" Value="false">
                 <Setter Property="Opacity" Value=".4" />
+            </Trigger>
+            <Trigger Property="hc:ExpanderElement.HeaderTextOrientation" Value="Vertical">
+                <Setter TargetName="HeaderText" Property="LayoutTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="90" />
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="HeaderText" Property="ContentTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center" Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Expander}}" />
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="hc:ExpanderElement.HeaderTextOrientation" Value="Horizontal">
+                <Setter TargetName="HeaderText" Property="LayoutTransform">
+                    <Setter.Value>
+                        <RotateTransform Angle="90" />
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
